@@ -7,8 +7,7 @@
     <authors>Kai Liu</authors>
     <owners>Jakub Bereżański</owners>
     <projectUrl>http://code.kliu.org/misc/elevate/</projectUrl>
-    <!--<licenseUrl>https://raw.github.com/jberezanski/ChocolateyPackages/master/elevate.native/tools/license.txt</licenseUrl>-->
-    <licenseUrl>https://raw.github.com/jberezanski/ChocolateyPackages/master/LICENSE</licenseUrl>
+    <licenseUrl>https://raw.github.com/jberezanski/ChocolateyPackages/master/elevate.native/tools/license.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Executes the given command with administrative privileges, triggering UAC elevation prompt if needed.
 This particular utility works for all users, does not induce the overhead of managed code and takes care to pass the command arguments along for execution verbatim.</description>
