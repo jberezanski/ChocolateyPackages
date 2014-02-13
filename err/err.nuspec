@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>err</id>
+    <version>6.0.4011</version>
+    <title>Win32 error code look-up tool</title>
+    <authors>Microsoft</authors>
+    <owners>Jakub Bereżański</owners>
+    <projectUrl>http://www.microsoft.com/en-us/download/details.aspx?id=985</projectUrl>
+    <licenseUrl>https://raw.github.com/jberezanski/ChocolateyPackages/master/err/eula.txt</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Use the Error Code Lookup tool to determine error values from decimal and hexadecimal error codes in Microsoft Windows® operating systems. The tool can look up one or more values at a time. All values on the command line will be looked up in the tool's internal tables (generated from Win32 API header files) and presented to you. If available, informational data associated with the value or values will also be shown. The tool is also able to show error codes associated with symbolic error names (e.g. E_FAIL).
+Although published as "Microsoft Exchange Server Error Code Look-up", this tool is not in fact specific to Exchange.
+Run "err /?" for usage instructions.</description>
+    <summary>Determine error values from decimal and hexadecimal error codes in Microsoft Windows® operating systems.</summary>
+    <tags>error code hresult ntstatus lookup</tags>
+    <dependencies>
+      <dependency id="chocolatey" version="0.9.8.21" />
+    </dependencies> 
+  </metadata>
+</package>
