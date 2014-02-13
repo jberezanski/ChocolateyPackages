@@ -6,6 +6,6 @@ if not exist "%OUTDIR%\." mkdir "%OUTDIR%"
 pushd "%OUTDIR%"
 for /f %%a in ('dir /s /b %ROOTDIR%\*.nuspec') do (
 	echo Packing %%~na
-	cpack %%a
+	call cpack %%a
 )
 popd
