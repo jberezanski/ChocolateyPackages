@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>javaruntime-preventasktoolbar</id>
-    <version>1.0</version>
+    <version>1.1</version>
     <title>Prevent Ask.com toolbar installation by Java</title>
     <authors>Danilo Roascio</authors>
     <owners>Jakub Bereżański</owners>
