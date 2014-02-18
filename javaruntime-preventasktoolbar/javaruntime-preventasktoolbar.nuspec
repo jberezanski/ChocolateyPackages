@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>javaruntime-preventasktoolbar</id>
-    <version>1.1</version>
+    <version>1.2</version>
     <title>Prevent Ask.com toolbar installation by Java</title>
     <authors>Danilo Roascio</authors>
     <owners>Jakub Bereżański</owners>
@@ -12,5 +12,8 @@
 This is particularily relevant for Java updates, which also try to install that toolbar.</description>
     <summary>Prevent Java installer/updater from offering to install the Ask.com toolbar</summary>
     <tags>java ask toolbar disable prevent adware update admin</tags>
+    <dependencies>
+      <dependency id="chocolatey" version="0.9.8.21" />
+    </dependencies>
   </metadata>
 </package>
