@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>fciv</id>
-        <version>1.0.0.0</version>
+        <version>1.0.0.20140521</version>
         <title>File Checksum Integrity Verifier</title>
         <authors>Microsoft</authors>
         <owners>Thai Phan</owners>
