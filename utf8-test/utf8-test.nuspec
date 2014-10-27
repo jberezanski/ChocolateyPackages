@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>utf8-test</id>
+    <version>1.0.0</version>
+    <title>UTF-8 encoding test package (c)(r)MuTM ©®µ™</title>
+    <authors>Jakub Bereżański</authors>
+    <owners>Jakub Bereżański</owners>
+    <projectUrl>http://github.org/jberezanski/ChocolateyPackages/utf8-test/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package tests Chocolatey toolchain support for files saved as UTF-8.
+This nuspec file is saved WITH a byte order mark (BOM).
+Symbols (c),(r),Mu,TM: ©®µ™    
+Polish accented letters a,c,l,o: ąćłó</description>
+    <summary>Summary with special chars (c)(r)MuTM ©®µ™</summary>
+    <tags>bom utf-8 utf8 test</tags>
+  </metadata>
+</package>
