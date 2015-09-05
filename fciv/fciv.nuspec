@@ -2,17 +2,18 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>fciv</id>
-        <version>1.0.0.20140521</version>
+        <version>1.0.0.20150904</version>
         <title>File Checksum Integrity Verifier</title>
         <authors>Microsoft</authors>
-        <owners>Thai Phan</owners>
+        <owners>Thai Phan, Jakub Bereżański</owners>
         <licenseUrl>http://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx</licenseUrl>
         <projectUrl>http://support.microsoft.com/kb/841290</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>The File Checksum Integrity Verifier tool is an command line utility that computes MD5 or SHA1 cryptographic hashes for files</description>
-        <tags>microsoft file checksum md5 sha1</tags>
+        <tags>microsoft file checksum md5 sha1 KB841290</tags>
+        <releaseNotes>
+        1.0.0.20150904:
+        Added checksum.
+        </releaseNotes>
     </metadata>
-    <files>
-        <file src="tools\chocolateyInstall.ps1" target="tools\chocolateyInstall.ps1" />
-    </files>
 </package>

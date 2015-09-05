@@ -1,5 +1,14 @@
-# Download and extract fciv to package path. Chocolatey will automatically create a stub exe in a directory in PATH.
-Install-ChocolateyPackage 'fciv' 'exe' "/T:$($env:chocolateyPackageFolder) /Q" 'http://download.microsoft.com/download/c/f/4/cf454ae0-a4bb-4123-8333-a1b6737712f7/Windows-KB841290-x86-ENU.exe'
+﻿# Download and extract fciv to package path. Chocolatey will automatically create a stub exe in a directory in PATH.
+$arguments = @{
+    packageName = 'fciv'
+    url = 'http://download.microsoft.com/download/c/f/4/cf454ae0-a4bb-4123-8333-a1b6737712f7/Windows-KB841290-x86-ENU.exe'
+    checksumType = 'sha1'
+    checksum = '99FB35D97A5EE0DF703F0CDD02F2D787D6741F65'
+    installerType = 'exe'
+    silentArgs = """/T:${Env:chocolateyPackageFolder}"" /Q"
+    validExitCodes = @(0)
+}
+Install-ChocolateyPackage @arguments
 
 # Cleanup after previous package version, which extracted to $Env:SystemDrive\tools\fciv
 # This should not influence the installation of this version, so catch and ignore all errors.
@@ -8,7 +17,7 @@ try {
     $fcivPath = Join-Path $Env:SystemDrive 'tools\fciv'
     if (Test-Path $fcivPath) {
       Write-Debug "Removing previous installation location $fcivPath"
-	  Remove-Item $fcivPath -Recurse -ErrorAction Continue
+      Remove-Item $fcivPath -Recurse -ErrorAction Continue
     }
 
     $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')

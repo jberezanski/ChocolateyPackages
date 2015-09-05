@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>elevate.native</id>
-    <version>1.3.0</version>
+    <version>1.3.0.20150904</version>
     <title>Elevate (native Win32)</title>
     <authors>Kai Liu</authors>
     <owners>Jakub Bereżański</owners>
@@ -12,9 +12,11 @@
     <description>Executes the given command with administrative privileges, triggering UAC elevation prompt if needed.
 This particular utility works for all users, does not induce the overhead of managed code and takes care to pass the command arguments along for execution verbatim.</description>
     <summary>Command-Line UAC Elevation Utility</summary>
-    <tags>uac admin elevate</tags>
-    <dependencies>
-      <dependency id="chocolatey" version="0.9.8.21" />
-    </dependencies> 
+    <tags>uac admin elevate sudo</tags>
+    <releaseNotes>
+    1.3.0.20150904:
+    Added checksum.
+    Removed dependency on minimum Chocolatey version, as Chocolatey has long since included the necessary functionality and handling of such dependency is buggy in current client.
+    </releaseNotes>
   </metadata>
 </package>
