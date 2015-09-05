@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>vs2012.5</id>
+        <version>11.0.61219.0</version>
+        <title>Visual Studio 2012 Update 5</title>
+        <authors>Microsoft</authors>
+        <owners>Jakub Bereżański</owners>
+        <projectUrl>https://support.microsoft.com/en-us/kb/3072098</projectUrl>
+        <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/496e6d3a51067f764b7a1a1b4664a3601791a96f/icons/vs2012.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+Visual Studio 2012 updates are cumulative releases that include new features and fixes that were delivered in previous Visual Studio 2012 Updates.
+
+The following technology improvements have been made in Visual Studio 2012.5:
+
+  - Team Project Rename support for Local Workspaces
+
+The following issues have been fixed in Visual Studio 2012.5:
+
+  - In Source Control Explorer, a branch operation causes an error and is not completed.
+        </description>
+        <tags>Microsoft Visual Studio VisualStudio 2012 VS VS2012 Update 5 KB3072098</tags>
+    </metadata>
+</package>
