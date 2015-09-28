@@ -3,22 +3,15 @@
     <metadata>
         <id>visualstudio2012-update</id>
         <version>11.0.61219.0</version>
-        <title>Visual Studio 2012 Update (latest)</title>
+        <title>PLEASE REJECT THIS VERSION</title>
         <authors>Microsoft</authors>
         <owners>Jakub Bereżański</owners>
         <projectUrl>http://www.microsoft.com/en-us/search/result.aspx?q=Visual%20Studio%202012%20Update&amp;form=DLC</projectUrl>
         <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/496e6d3a51067f764b7a1a1b4664a3601791a96f/icons/vs2012.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
-Visual Studio 2012 updates are cumulative releases that include new features and fixes that were delivered in previous Visual Studio 2012 Updates.
-
-This meta package installs the latest released update for Visual Studio 2012.
+PLEASE REJECT THIS VERSION. Superseded by 5.0.0.0.
         </description>
-        <tags>Microsoft Visual Studio VisualStudio 2012 VS VS2012 Update</tags>
-        <releaseNotes>
-        11.0.61219.0:
-        Installs Update 5.
-        </releaseNotes>
         <dependencies>
             <dependency id="vs2012.5" />
         </dependencies>
