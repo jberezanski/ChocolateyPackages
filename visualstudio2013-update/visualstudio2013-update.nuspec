@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>visualstudio2013-update</id>
-        <version>12.0.40629.0</version>
+        <version>5.0.0.0</version>
         <title>Visual Studio 2013 Update (latest)</title>
         <authors>Microsoft</authors>
         <owners>Jakub Bereżański</owners>
@@ -16,7 +16,7 @@ This meta package installs the latest released update for Visual Studio 2013.
         </description>
         <tags>Microsoft Visual Studio VisualStudio 2013 VS VS2013 Update</tags>
         <releaseNotes>
-        12.0.40629.0:
+        5.0.0.0:
         Installs Update 5.
         </releaseNotes>
         <dependencies>

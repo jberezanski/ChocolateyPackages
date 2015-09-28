@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>visualstudio2012-update</id>
-        <version>11.0.61219.0</version>
+        <version>5.0.0.0</version>
         <title>Visual Studio 2012 Update (latest)</title>
         <authors>Microsoft</authors>
         <owners>Jakub Bereżański</owners>
@@ -16,7 +16,7 @@ This meta package installs the latest released update for Visual Studio 2012.
         </description>
         <tags>Microsoft Visual Studio VisualStudio 2012 VS VS2012 Update</tags>
         <releaseNotes>
-        11.0.61219.0:
+        5.0.0.0:
         Installs Update 5.
         </releaseNotes>
         <dependencies>
