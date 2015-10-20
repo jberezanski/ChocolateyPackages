@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>visualstudio2015-update</id>
+        <version>1.0.0.0-ctp</version>
+        <title>Visual Studio 2015 Update (latest)</title>
+        <authors>Microsoft</authors>
+        <owners>Jakub Bereżański</owners>
+        <projectUrl>https://msdn.microsoft.com/en-us/library/5db54450-b622-4284-b902-ee94952bdd58.aspx</projectUrl>
+        <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs2015.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+Visual Studio 2015 updates are cumulative releases that include new features and fixes that were delivered in previous Visual Studio 2015 Updates.
+
+This package installs the latest released update for Visual Studio 2015.
+        </description>
+        <tags>Microsoft Visual Studio VisualStudio 2015 VS VS2015 Update</tags>
+        <releaseNotes>
+Installs Update 1 CTP (version 14.0.24606.0).
+
+The following technology improvements have been made in Visual Studio 2015.1:
+
+  - You can now Edit and Continue to edit code while debugging Windows Store C++ projects.
+  - The C# Interactive Window is back in Visual Studio, as well as the command-line C# REPL window.
+  - Released scripting APIs that enable you to build and run C# as a script. The scripting APIs are available on GitHub.
+  - Released csi.exe, which is a tool that you can use to run a C# script file (.csx) from the Developer Command Prompt.
+  - Team Explorer now features a new Pull Requests hub where users can see the list of pull requests that they have created, as well as the pull requests that others have assigned to them.
+  - Improved Create Pull Request experience: now, users can publish branches and create pull requests in a single action. 
+  - We now have a branch policy that requires associated work items for any pull request.
+
+The following issues have been fixed in Visual Studio 2015.1:
+
+  - Assume that you have an application in Visual Studio 2015. When you reference Win2D package by using Manage NuGet references, and then build the application, build errors occur.
+
+For a list of known issues and workarounds, see [this page](https://msdn.microsoft.com/en-us/library/5db54450-b622-4284-b902-ee94952bdd58.aspx).
+        </releaseNotes>
+    </metadata>
+</package>
