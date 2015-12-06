@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>visualstudio2015-update</id>
-        <version>1.0.0.0-ctp</version>
+        <version>1.0.0.0</version>
         <title>Visual Studio 2015 Update (latest)</title>
         <authors>Microsoft</authors>
         <owners>Jakub Bereżański</owners>
-        <projectUrl>https://msdn.microsoft.com/en-us/library/5db54450-b622-4284-b902-ee94952bdd58.aspx</projectUrl>
+        <projectUrl>https://www.visualstudio.com/news/vs2015-update1-vs</projectUrl>
         <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs2015.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
@@ -16,10 +16,20 @@ This package installs the latest released update for Visual Studio 2015.
         </description>
         <tags>Microsoft Visual Studio VisualStudio 2015 VS VS2015 Update</tags>
         <releaseNotes>
-Installs Update 1 CTP (version 14.0.24606.0).
+Installs Update 1 (version 14.0.24720.0).
 
 The following technology improvements have been made in Visual Studio 2015.1:
 
+  - New Visual Studio Icon.
+  - .NET Framework 4.6.1. Visual Studio 2015 Update 1 includes the latest version (4.6.1) of the .NET Framework.
+  - The Visual Studio editor now provides built-in syntax highlighting and basic IntelliSense support for languages including Go, Java, Perl, R, Ruby, and Swift.
+  - IncrediBuild-Visual Studio partnership. With this collaboration and at no additional cost, developers can use IncrediBuild’s build engine to lay out build plans for their applications with more parallelized execution of the build.
+  - Tools for Universal Windows Apps v1.2. This update enables you to build and submit apps to the Windows Store targeting Windows 10 SDK Version 1511. It includes several developer productivity improvements to .NET Native, the XAML designer, the manifest designer, Windows Store packaging, and the debugger in this release.
+  - Native support for behaviors in Universal Windows apps.
+  - MSTest and CodeCoverage support for ASP.NET 5.
+  - Parallel Test Execution: The Visual Studio testing tools introduce support for parallel execution of test cases leveraging the available cores on the machine, with Test Explorer indicating the progress of parallel tests.
+  - Managing analysis issues. With this update you can now suppress all current issues to a global suppression file, view and manage baselined issues, show analysis warnings and messages for only "my code changes", and remove duplicate instances of warnings in the error list to focus results to the unique set.
+  - NuGet and NuGet Package Manager. NuGet 3.3 is now bundled with Update 1, and we’ve made a number of changes to the NuGet Package Manager interface (...).
   - You can now Edit and Continue to edit code while debugging Windows Store C++ projects.
   - The C# Interactive Window is back in Visual Studio, as well as the command-line C# REPL window.
   - Released scripting APIs that enable you to build and run C# as a script. The scripting APIs are available on GitHub.
@@ -30,9 +40,12 @@ The following technology improvements have been made in Visual Studio 2015.1:
 
 The following issues have been fixed in Visual Studio 2015.1:
 
+  - Assume that you add Application Insights to a Windows-based application of yours that failed because of a permissions issue. In this situation, you receive a new error message. This error message was improved and now includes the subscription name.
+  - In the Diagnostics Hub output in the Output window, the Diagnostic Tools window displays a"The Diagnostic Tools failed unexpectedly" message that includes "A cluster resource failed" or "Unable to Start Standard Collector".
+  - When you open the Diagnostic Tools window in Visual Studio 2015, the UI display is delayed.
   - Assume that you have an application in Visual Studio 2015. When you reference Win2D package by using Manage NuGet references, and then build the application, build errors occur.
 
-For a list of known issues and workarounds, see [this page](https://msdn.microsoft.com/en-us/library/5db54450-b622-4284-b902-ee94952bdd58.aspx).
+For a list of known issues and workarounds, see [this page](https://msdn.microsoft.com/en-US/library/mt622450.aspx).
         </releaseNotes>
     </metadata>
 </package>

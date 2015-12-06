@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>vs2015.1</id>
-        <version>1.0.0.0-ctp</version>
-        <title>Visual Studio 2015 Update 1 CTP</title>
+        <version>1.0.0.0</version>
+        <title>Visual Studio 2015 Update 1</title>
         <authors>Microsoft</authors>
         <owners>Jakub Bereżański</owners>
-        <projectUrl>https://msdn.microsoft.com/en-us/library/5db54450-b622-4284-b902-ee94952bdd58.aspx</projectUrl>
+        <projectUrl>https://www.visualstudio.com/en-us/news/vs2015-update1-vs.aspx</projectUrl>
         <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs2015.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
@@ -14,7 +14,7 @@ This package is provided as a convenience for users accustomed to previous Visua
         </description>
         <tags>Microsoft Visual Studio VisualStudio 2015 VS VS2015 Update</tags>
         <dependencies>
-            <dependency id="visualstudio2015-update" version="1.0.0.0-ctp" />
+            <dependency id="visualstudio2015-update" version="1.0.0.0" />
         </dependencies>
     </metadata>
 </package>
