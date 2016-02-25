@@ -16,7 +16,7 @@ This package installs the latest released update for Visual Studio 2015.
         </description>
         <tags>Microsoft Visual Studio VisualStudio 2015 VS VS2015 Update</tags>
         <releaseNotes>
-Installs Update 2 CTP (version ***TODO***).
+Installs Update 2 CTP (version 14.0.25008.00).
 
 This update contains improvements in the following areas:
 
