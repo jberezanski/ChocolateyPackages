@@ -3,18 +3,21 @@
     <metadata>
         <id>visualstudio2015-update</id>
         <version>2.0.0.0-ctp</version>
+        <!--<packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2015-update</packageSourceUrl>-->
+        <owners>Jakub Bereżański</owners>
         <title>Visual Studio 2015 Update (latest)</title>
         <authors>Microsoft</authors>
-        <owners>Jakub Bereżański</owners>
         <projectUrl>https://www.visualstudio.com/en-us/news/vs2015-update2-vs.aspx</projectUrl>
         <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs2015.png</iconUrl>
+        <licenseUrl>https://www.microsoft.com/en-us/download/details.aspx?id=13350</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <summary>This package installs the latest released update for Visual Studio 2015.</summary>
+        <tags>Microsoft Visual Studio VisualStudio 2015 VS VS2015 Update admin</tags>
         <description>
 Visual Studio 2015 updates are cumulative releases that include new features and fixes that were delivered in previous Visual Studio 2015 Updates.
 
 This package installs the latest released update for Visual Studio 2015.
         </description>
-        <tags>Microsoft Visual Studio VisualStudio 2015 VS VS2015 Update</tags>
         <releaseNotes>
 Installs Update 2 CTP (version 14.0.25008.00).
 
