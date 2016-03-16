@@ -1,9 +1,9 @@
-﻿$packageVersion = '2.0.0.0-ctp'
+﻿$packageVersion = '2.0.0.0-rc'
 $arguments = @{
     packageName = 'visualstudio2015-update'
-    url = 'https://download.microsoft.com/download/d/e/d/ded1709a-cda8-491d-ace6-0ef20c07502c/vs2015.2%20ctp.exe'
+    url = 'http://download.microsoft.com/download/b/f/3/bf3d7cc0-4c16-4fcf-8533-15241da1de95/vs2015.2%20rc.exe'
     checksumType = 'sha1'
-    checksum = 'C4A9C7E16E78C3E063AE011DED3CB23FE6FBF733'
+    checksum = '475EA6234BD4E7292874FE0AE4A08FBD9BE10D67'
     installerType = 'exe'
     silentArgs = "/Passive /NoRestart /Log ""${Env:TEMP}\${packageName}-${packageVersion}.log"""
     validExitCodes = @(0, 3010)

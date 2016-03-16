@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>visualstudio2015-update</id>
-        <version>2.0.0.0-ctp</version>
+        <version>2.0.0.0-rc</version>
         <!--<packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2015-update</packageSourceUrl>-->
         <owners>Jakub Bereżański</owners>
         <title>Visual Studio 2015 Update (latest)</title>
@@ -19,13 +19,16 @@ Visual Studio 2015 updates are cumulative releases that include new features and
 This package installs the latest released update for Visual Studio 2015.
         </description>
         <releaseNotes>
-Installs Update 2 CTP (version 14.0.25008.00).
+Installs Update 2 RC (version 14.0.25029.00).
 
 This update contains improvements in the following areas:
 
   - Visual Studio Tools for Apache Cordova
   - Visual C++
   - C# and Visual Basic
+  - .NET Framework 4.6.1
+  - Visual Studio IDE
+  - NuGet
   - TypeScript
   - Application Insights
   - Team Explorer
@@ -33,7 +36,7 @@ This update contains improvements in the following areas:
   - Parallel Test Execution
   - Performance &amp; Reliability
 
-For a list of fixed bugs, known issues and workarounds, see [this page](https://msdn.microsoft.com/en-US/library/783044d2-151d-4aeb-b052-e7acac981c4d).
+For a list of fixed bugs, known issues and workarounds, see [this page](https://msdn.microsoft.com/en-us/library/mt685942.aspx).
         </releaseNotes>
     </metadata>
 </package>
