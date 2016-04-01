@@ -2,10 +2,10 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>vs2015.2</id>
-        <version>2.0.0.0-rc</version>
+        <version>2.0.0.0</version>
         <!--<packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/vs2015.2</packageSourceUrl>-->
         <owners>Jakub Bereżański</owners>
-        <title>Visual Studio 2015 Update 2 RC</title>
+        <title>Visual Studio 2015 Update 2</title>
         <authors>Microsoft</authors>
         <projectUrl>https://www.visualstudio.com/en-us/news/vs2015-update2-vs.aspx</projectUrl>
         <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs2015.png</iconUrl>
@@ -17,7 +17,7 @@
 This package is provided as a convenience for users accustomed to previous Visual Studio Update Chocolatey packaging practices. The package [visualstudio2015-update](https://chocolatey.org/packages/visualstudio2015-update) is superior in that it can be updated once future Visual Studio 2015 Updates are released.
         </description>
         <dependencies>
-            <dependency id="visualstudio2015-update" version="2.0.0.0-rc" />
+            <dependency id="visualstudio2015-update" version="2.0.0.0" />
         </dependencies>
     </metadata>
 </package>
