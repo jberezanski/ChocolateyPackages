@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>dotnet4.6.2</id>
+    <version>4.6.01532.0-preview1</version>
+    <title>Microsoft .NET Framework 4.6.2 (Preview)</title>
+    <authors>Microsoft</authors>
+    <owners>Jakub Bereżański</owners>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2016/03/30/announcing-the-net-framework-4-6-2-preview/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Microsoft .NET Framework 4.6.2 is a highly compatible in-place update to the Microsoft .NET Framework 4, the .NET Framework 4.5, the .NET Framework 4.5.1, the .NET Framework 4.5.2, the .NET Framework 4.6, and the .NET Framework 4.6.1.
+You can see the full set of changes in the .NET Framework 4.6.2 Preview in the [change list](https://github.com/Microsoft/dotnet/blob/master/releases/net462/dotnet462-changes.md) and [API diff](https://github.com/Microsoft/dotnet/blob/master/releases/net462/dotnet462-api-changes.md) on [GitHub](https://github.com/microsoft/dotnet).
+
+The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.6.2-devpack).</description>
+    <summary>The Microsoft .NET Framework 4.6.2 is a highly compatible in-place update to the Microsoft .NET Framework 4, the .NET Framework 4.5, the .NET Framework 4.5.1, the .NET Framework 4.5.2, the .NET Framework 4.6, and the .NET Framework 4.6.1.</summary>
+    <tags>Microsoft .NET Framework 4.6.2 Redistributable</tags>
+  </metadata>
+</package>
