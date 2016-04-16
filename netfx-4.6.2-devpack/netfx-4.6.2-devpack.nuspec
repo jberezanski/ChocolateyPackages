@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>netfx-4.6.2-devpack</id>
+    <version>4.6.01532.0-preview1</version>
+    <title>Microsoft .NET Framework 4.6.2 Developer Pack (Preview)</title>
+    <authors>Microsoft</authors>
+    <owners>Jakub Bereżański</owners>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2016/03/30/announcing-the-net-framework-4-6-2-preview/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Microsoft .NET Framework 4.6.2 Preview Developer Pack is a single package that bundles the .NET Framework 4.6.2 Preview, the .NET 4.6.2 Preview Targeting Pack and the .NET 4.6.2 Preview SDK. The corresponding language pack for Dev Pack contains the .NET Framework 4.6.2 Preview language pack, .NET 4.6.2 Preview SDK language pack and the Intellisense files. Developers can use this package to install all the different components for .NET 4.6.2 Preview and build applications targeting the .NET Framework 4.6.2 Preview using either Visual Studio 2015, Visual Studio 2013, Visual Studio 2012 or third party IDEs.</description>
+    <summary>Developers can use this package to install all the different components for .NET 4.6.2 Preview and build applications targeting the .NET Framework 4.6.2 Preview.</summary>
+    <tags>Microsoft .NET Framework 4.6.2 Developer Target Targeting Pack</tags>
+    <dependencies>
+      <dependency id="dotnet4.6.2" />
+    </dependencies>
+  </metadata>
+</package>
