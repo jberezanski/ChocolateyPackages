@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio15enterprise</id>
-    <version>15.0.0.0-preview1</version>
+    <version>15.0.25123.0-preview1</version>
     <owners>Jakub Bereżański</owners>
     <title>Visual Studio "15" Enterprise (Preview)</title>
     <authors>Microsoft</authors>
