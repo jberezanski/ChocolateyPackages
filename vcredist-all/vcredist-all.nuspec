@@ -1,0 +1,30 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>vcredist-all</id>
+    <version>1.0.0.0</version>
+    <owners>Jakub Bereżański</owners>
+    <title>Microsoft Visual C++ Runtime - all versions</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://support.microsoft.com/en-us/kb/2977003</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs15.png</iconUrl>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Microsoft Visual C++ Runtime - all versions</summary>
+    <tags>Microsoft Visual C++ Runtime Redistributable vcredist vcruntime admin</tags>
+    <description>
+Microsoft Visual C++ Runtime - all versions
+    </description>
+    <releaseNotes>
+Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="vcredist2005" />
+      <dependency id="vcredist2008" />
+      <dependency id="vcredist2010" />
+      <dependency id="vcredist2012" />
+      <dependency id="vcredist2013" />
+      <dependency id="vcredist2015" />
+    </dependencies>
+  </metadata>
+</package>
