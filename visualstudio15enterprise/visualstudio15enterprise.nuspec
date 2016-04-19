@@ -47,7 +47,14 @@ Examples:
 Initial package release.
     </releaseNotes>
     <dependencies>
-      <dependency id="netfx-4.6.2-devpack" version="4.6.01532.0-preview1" />
+      <dependency id="vcredist2012" />
+      <dependency id="vcredist2013" />
+      <dependency id="vcredist2015" />
+      <dependency id="netfx-4.6.2-devpack" />
+      <dependency id="netfx-4.6.1-devpack" />
+      <dependency id="dotnet4.6-targetpack" />
+      <dependency id="netfx-4.5.2-devpack" />
+      <dependency id="netfx-4.5.1-devpack" />
     </dependencies>
   </metadata>
 </package>
