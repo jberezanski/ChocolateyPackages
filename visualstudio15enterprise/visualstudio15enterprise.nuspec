@@ -17,7 +17,7 @@
 
 Visual Studio Enterprise "15" Preview is an early build of the next major release of Visual Studio. Preview provides early adopters with an opportunity to try out the new and improved product features, and the ability to share feedback with the product team.
 
-PLEASE NOTE: This preview has not been subject to final validation and is not meant to be run on production workstations or servers.
+**PLEASE NOTE**: This preview has not been subject to final validation and is not meant to be run on production workstations or servers.
 
 To find out what's new in Visual Studio "15" Preview, see the [Visual Studio "15" Preview release notes](https://www.visualstudio.com/news/vs15-preview-vs). For a list of fixed bugs and known issues, see the [Visual Studio "15" Preview MSDN Article](http://go.microsoft.com/fwlink/?LinkId=747840).
 
@@ -34,7 +34,7 @@ Here is example that includes the SQL Tools and Windows Phone Emulators:
     choco install visualstudio15enterprise -packageParameters "--Features SQL,WindowsPhone81Emulators"
 
 ##### Available features:
-- *TODO*
+- **TODO**
 
 #### Using own configuration file
 Specifying the optional features above modifies the configuration file used during installation (AdminDeployment.xml). If that is not enough you can provide this file on your own.
