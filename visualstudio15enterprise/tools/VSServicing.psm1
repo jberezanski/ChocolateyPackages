@@ -226,6 +226,10 @@ param(
 
     $installerType = 'exe'
     $silentArgs = '/Uninstall /Force /Passive /NoRestart'
+    $validExitCodes = @(
+        0, # success
+        3010 # success, restart required
+    )
 
     $app = Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -like "$ApplicationName*"} | Sort-Object { $_.Name } | Select-Object -First 1
     if ($app -ne $null)
@@ -233,7 +237,14 @@ param(
         $uninstaller = Get-Childitem "$env:ProgramData\Package Cache\" -Recurse -Filter $UninstallerName | ? { $_.VersionInfo.ProductVersion.StartsWith($app.Version)}
         if ($uninstaller -ne $null)
         {
-            Uninstall-ChocolateyPackage $PackageName $installerType $silentArgs $uninstaller.FullName
+            $arguments = @{
+                packageName = $PackageName
+                fileType = $installerType
+                silentArgs = $silentArgs
+                file = $uninstaller.FullName
+                validExitCodes = $validExitCodes
+            }
+            Uninstall-ChocolateyPackage @arguments
         }
     }
 }
