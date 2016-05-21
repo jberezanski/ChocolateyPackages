@@ -164,7 +164,7 @@ param(
     Write-Debug "Default AdminFile: $defaultAdminFile"
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
-    if ($packageParameters.Length -gt 0) { Write-Output $packageParameters }
+    if ($packageParameters.Length -gt 0) { Write-Debug $packageParameters }
 
     $adminFile = Generate-Admin-File $packageParameters $defaultAdminFile
     Write-Debug "AdminFile: $adminFile"
@@ -183,7 +183,7 @@ param(
         checksumType = 'sha1'
     }
     $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,$_.Value }) -join ' '
-    Write-Output "Install-ChocolateyPackage $argumentsDump"
+    Write-Debug "Install-ChocolateyPackage $argumentsDump"
     Install-ChocolateyPackage @arguments
 }
 
@@ -244,6 +244,8 @@ param(
                 file = $uninstaller.FullName
                 validExitCodes = $validExitCodes
             }
+            $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,$_.Value }) -join ' '
+            Write-Debug "Uninstall-ChocolateyPackage $argumentsDump"
             Uninstall-ChocolateyPackage @arguments
         }
     }
