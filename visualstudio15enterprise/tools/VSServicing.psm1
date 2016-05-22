@@ -91,6 +91,7 @@ function Update-AdminFile($parameters, $adminFile)
     $selectableItemCustomizations = $xml.DocumentElement.SelectableItemCustomizations
     $featuresSelectedByDefault = $selectableItemCustomizations.ChildNodes | Where-Object { $_.GetAttribute('Hidden') -eq 'no' -and $_.GetAttribute('Selected') -eq 'yes' } | Select-Object -ExpandProperty Id
     $selectedFeatures = New-Object System.Collections.ArrayList
+    $invalidFeatures = New-Object System.Collections.ArrayList
     foreach ($feature in $features)
     {
         $node = $selectableItemCustomizations.SelectSingleNode("*[@Id=""$feature""]")
@@ -99,6 +100,18 @@ function Update-AdminFile($parameters, $adminFile)
             $node.Selected = "yes"
             $selectedFeatures.Add($feature) | Out-Null
         }
+        else
+        {
+            $invalidFeatures.Add($feature) | Out-Null
+        }
+    }
+    if ($invalidFeatures.Count -gt 0)
+    {
+        $errorMessage = "Invalid feature name(s): $invalidFeatures"
+        $validFeatureNames = $selectableItemCustomizations.ChildNodes | Select-Object -ExpandProperty Id
+        Write-Warning $errorMessage
+        Write-Warning "Valid feature names are: $validFeatureNames"
+        throw $errorMessage
     }
     Write-Verbose "Features selected by default: $featuresSelectedByDefault"
     Write-Verbose "Features selected using package parameters: $selectedFeatures"
