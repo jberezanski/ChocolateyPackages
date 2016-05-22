@@ -87,9 +87,10 @@ function Update-AdminFile($parameters, $adminFile)
     $features = $s.Split(',')
     [xml]$xml = Get-Content $adminFile
 
+    $selectableItemCustomizations = $xml.DocumentElement.SelectableItemCustomizations
     foreach ($feature in $features)
     {
-        $node = $xml.DocumentElement.SelectableItemCustomizations.ChildNodes | ? {$_.Id -eq "$feature"}
+        $node = $selectableItemCustomizations.SelectSingleNode("*[@Id=""$feature""]")
         if ($node -ne $null)
         {
             $node.Selected = "yes"
