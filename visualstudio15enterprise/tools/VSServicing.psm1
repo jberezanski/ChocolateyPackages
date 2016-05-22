@@ -34,7 +34,7 @@ function Parse-Parameters ($s)
 }
 
 # Generates customizations file. Returns its path
-function Generate-Admin-File($parameters, $defaultAdminFile)
+function Generate-AdminFile($parameters, $defaultAdminFile)
 {
     $adminFile = $parameters['AdminFile']
     $features = $parameters['Features']
@@ -76,7 +76,7 @@ function Generate-Admin-File($parameters, $defaultAdminFile)
 }
 
 # Turns on features in the customizations file
-function Update-Admin-File($parameters, $adminFile)
+function Update-AdminFile($parameters, $adminFile)
 {
     if (!$adminFile) { return }
     $s = $parameters['Features']
@@ -96,7 +96,7 @@ function Update-Admin-File($parameters, $adminFile)
     $xml.Save($adminFile)
 }
 
-function Generate-Install-Arguments-String($parameters, $adminFile)
+function Generate-InstallArgumentsString($parameters, $adminFile)
 {
     $s = "/Passive /NoRestart /Log ""${Env:TEMP}\${packageName}.log"""
 
@@ -166,12 +166,12 @@ param(
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     if ($packageParameters.Length -gt 0) { Write-Debug $packageParameters }
 
-    $adminFile = Generate-Admin-File $packageParameters $defaultAdminFile
+    $adminFile = Generate-AdminFile $packageParameters $defaultAdminFile
     Write-Debug "AdminFile: $adminFile"
 
-    Update-Admin-File $packageParameters $adminFile
+    Update-AdminFile $packageParameters $adminFile
 
-    $silentArgs = Generate-Install-Arguments-String $packageParameters $adminFile $PackageName
+    $silentArgs = Generate-InstallArgumentsString $packageParameters $adminFile $PackageName
 
     $arguments = @{
         packageName = $PackageName
