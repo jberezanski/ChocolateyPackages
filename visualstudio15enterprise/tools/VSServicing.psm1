@@ -1,4 +1,6 @@
-﻿# Parse input argument string into a hashtable
+﻿# based on code from the visualstudio2015community package, with several extensions and modifications
+
+# Parse input argument string into a hashtable
 # Format: --AdminFile file location --Features WebTools,Win8SDK --ProductKey AB-D1
 function Parse-Parameters ($s)
 {
