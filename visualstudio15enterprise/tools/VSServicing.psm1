@@ -34,7 +34,7 @@ function Parse-Parameters ($s)
 }
 
 # Generates customizations file. Returns its path
-function Generate-AdminFile($parameters, $defaultAdminFile)
+function Generate-AdminFile($parameters, $defaultAdminFile, $packageName)
 {
     $adminFile = $parameters['AdminFile']
     $features = $parameters['Features']
@@ -43,7 +43,7 @@ function Generate-AdminFile($parameters, $defaultAdminFile)
         return $null
     }
 
-    $localAdminFile = (Join-Path $env:temp 'AdminDeployment.xml')
+    $localAdminFile = Join-Path $Env:TEMP "${packageName}_AdminDeployment.xml"
     if (Test-Path $localAdminFile)
     {
         Remove-Item $localAdminFile
@@ -166,7 +166,7 @@ param(
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     if ($packageParameters.Length -gt 0) { Write-Debug $packageParameters }
 
-    $adminFile = Generate-AdminFile $packageParameters $defaultAdminFile
+    $adminFile = Generate-AdminFile $packageParameters $defaultAdminFile $PackageName
     Write-Debug "AdminFile: $adminFile"
 
     Update-AdminFile $packageParameters $adminFile
