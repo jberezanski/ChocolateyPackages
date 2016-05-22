@@ -68,6 +68,7 @@ function Generate-AdminFile($parameters, $defaultAdminFile, $packageName)
                 throw 'Invalid AdminFile setting.'
             }
         }
+        Write-Verbose "Using provided AdminFile: $adminFile"
     }
     elseif ($features)
     {
@@ -88,14 +89,19 @@ function Update-AdminFile($parameters, $adminFile)
     [xml]$xml = Get-Content $adminFile
 
     $selectableItemCustomizations = $xml.DocumentElement.SelectableItemCustomizations
+    $featuresSelectedByDefault = $selectableItemCustomizations.ChildNodes | Where-Object { $_.GetAttribute('Hidden') -eq 'no' -and $_.GetAttribute('Selected') -eq 'yes' } | Select-Object -ExpandProperty Id
+    $selectedFeatures = New-Object System.Collections.ArrayList
     foreach ($feature in $features)
     {
         $node = $selectableItemCustomizations.SelectSingleNode("*[@Id=""$feature""]")
         if ($node -ne $null)
         {
             $node.Selected = "yes"
+            $selectedFeatures.Add($feature) | Out-Null
         }
     }
+    Write-Verbose "Features selected by default: $featuresSelectedByDefault"
+    Write-Verbose "Features selected using package parameters: $selectedFeatures"
     $xml.Save($adminFile)
 }
 
@@ -111,8 +117,9 @@ function Generate-InstallArgumentsString($parameters, $adminFile)
     }
 
     $pk = $parameters['ProductKey']
-    if ($pk)
+    if ($pk -and (-not [string]::IsNullOrEmpty($pk)))
     {
+        Write-Verbose "Using provided product key: ...-$($pk.Substring([Math]::Max($pk.Length - 5, 0)))"
         $s = $s + " /ProductKey $pk"
     }
 
