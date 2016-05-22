@@ -2,7 +2,7 @@
 
 # Parse input argument string into a hashtable
 # Format: --AdminFile file location --Features WebTools,Win8SDK --ProductKey AB-D1
-function Parse-Parameters ($s)
+function Parse-Parameters($s)
 {
     $parameters = @{ }
 
@@ -101,7 +101,9 @@ function Update-AdminFile($parameters, $adminFile)
 
 function Generate-InstallArgumentsString($parameters, $adminFile)
 {
-    $s = "/Passive /NoRestart /Log ""${Env:TEMP}\${packageName}.log"""
+    $logFilePath = Join-Path $Env:TEMP "${packageName}.log"
+    Write-Debug "Log file path: $logFilePath"
+    $s = "/Passive /NoRestart /Log ""$logFilePath"""
 
     if ($adminFile)
     {
