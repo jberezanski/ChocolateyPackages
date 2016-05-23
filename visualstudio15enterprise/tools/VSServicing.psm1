@@ -414,7 +414,7 @@ function Uninstall-VSChocolateyPackage
         [int[]] $rebootExitCodes,
         [int[]] $priorRebootRequiredExitCodes
     )
-    Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs: `'$silentArgs`', file: `'$file`', validExitCodes: `'$validExitCodes`', rebootExitCodes: `'$rebootExitCodes`'";
+    Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs: `'$silentArgs`', file: `'$file`', successExitCodes: `'$successExitCodes`', rebootExitCodes: `'$rebootExitCodes`'";
 
     $installMessage = "Uninstalling $packageName..."
     write-host $installMessage
