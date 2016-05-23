@@ -365,7 +365,7 @@ function Install-VSChocolateyInstallPackage {
     $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $filePath -validExitCodes $validExitCodes
     $needsReboot = $false
     $Env:ChocolateyExitCode = $exitCode
-    if ($rebootExitCodes -ne $null -and $rebootExitCodes -contains $exitCode)
+    if (($rebootExitCodes | Measure-Object).Count -gt 0 -and $rebootExitCodes -contains $exitCode)
     {
         $needsReboot = $true
     }
@@ -406,7 +406,7 @@ function Uninstall-VSChocolateyPackage
     $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
     $needsReboot = $false
     $Env:ChocolateyExitCode = $exitCode
-    if ($rebootExitCodes -ne $null -and $rebootExitCodes -contains $exitCode)
+    if (($rebootExitCodes | Measure-Object).Count -gt 0 -and $rebootExitCodes -contains $exitCode)
     {
         $needsReboot = $true
     }
