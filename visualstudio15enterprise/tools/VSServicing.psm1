@@ -348,7 +348,8 @@ function Install-VSChocolateyInstallPackage {
         [string] $silentArgs = '',
         [string] $file,
         [int[]] $successExitCodes = @(0),
-        [int[]] $rebootExitCodes
+        [int[]] $rebootExitCodes,
+        [int[]] $priorRebootRequiredExitCodes
     )
     Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:`'$file`', args: `'$silentArgs`', successExitCodes: `'$successExitCodes`', rebootExitCodes: `'$rebootExitCodes`'"
     $installMessage = "Installing $packageName..."
@@ -361,23 +362,41 @@ function Install-VSChocolateyInstallPackage {
     $validExitCodes = @()
     if (($successExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $successExitCodes }
     if (($rebootExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $rebootExitCodes }
+    if (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $priorRebootRequiredExitCodes }
 
-    $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $filePath -validExitCodes $validExitCodes
-    $needsReboot = $false
+    $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
     $Env:ChocolateyExitCode = $exitCode
-    if (($rebootExitCodes | Measure-Object).Count -gt 0 -and $rebootExitCodes -contains $exitCode)
+    if (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0 -and $priorRebootRequiredExitCodes -contains $exitCode)
     {
         $needsReboot = $true
+        $success = $false
     }
-
-    $baseMessage = "$packageName has been installed."
-    if ($needsReboot)
+    elseif (($rebootExitCodes | Measure-Object).Count -gt 0 -and $rebootExitCodes -contains $exitCode)
     {
-        Write-Warning "$baseMessage However, a reboot is required to finalize the installation."
+        $needsReboot = $true
+        $success = $true
     }
     else
     {
-        Write-Host $baseMessage
+        $needsReboot = $false
+        $success = $true
+    }
+
+    if ($success)
+    {
+        $baseMessage = "$packageName has been installed."
+        if ($needsReboot)
+        {
+            Write-Warning "$baseMessage However, a reboot is required to finalize the installation."
+        }
+        else
+        {
+            Write-Host $baseMessage
+        }
+    }
+    else
+    {
+        throw "The computer must be rebooted before installing ${packageName}. Please reboot the computer and run the installation again."
     }
 }
 
@@ -392,7 +411,8 @@ function Uninstall-VSChocolateyPackage
         [string] $silentArgs = '',
         [string] $file,
         [int[]] $successExitCodes = @(0),
-        [int[]] $rebootExitCodes
+        [int[]] $rebootExitCodes,
+        [int[]] $priorRebootRequiredExitCodes
     )
     Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs: `'$silentArgs`', file: `'$file`', validExitCodes: `'$validExitCodes`', rebootExitCodes: `'$rebootExitCodes`'";
 
@@ -402,23 +422,41 @@ function Uninstall-VSChocolateyPackage
     $validExitCodes = @()
     if (($successExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $successExitCodes }
     if (($rebootExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $rebootExitCodes }
+    if (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $priorRebootRequiredExitCodes }
 
     $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
-    $needsReboot = $false
     $Env:ChocolateyExitCode = $exitCode
-    if (($rebootExitCodes | Measure-Object).Count -gt 0 -and $rebootExitCodes -contains $exitCode)
+    if (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0 -and $priorRebootRequiredExitCodes -contains $exitCode)
     {
         $needsReboot = $true
+        $success = $false
     }
-
-    $baseMessage = "$packageName has been uninstalled."
-    if ($needsReboot)
+    elseif (($rebootExitCodes | Measure-Object).Count -gt 0 -and $rebootExitCodes -contains $exitCode)
     {
-        Write-Warning "$baseMessage However, a reboot is required to finalize the uninstallation."
+        $needsReboot = $true
+        $success = $true
     }
     else
     {
-        Write-Host $baseMessage
+        $needsReboot = $false
+        $success = $true
+    }
+
+    if ($success)
+    {
+        $baseMessage = "$packageName has been uninstalled."
+        if ($needsReboot)
+        {
+            Write-Warning "$baseMessage However, a reboot is required to finalize the uninstallation."
+        }
+        else
+        {
+            Write-Host $baseMessage
+        }
+    }
+    else
+    {
+        throw "The computer must be rebooted before uninstalling ${packageName}. Please reboot the computer and run the uninstallation again."
     }
 }
 
@@ -464,7 +502,9 @@ param(
         0 # success
     )
     $rebootExitCodes = @(
-        3010, # success, restart required
+        3010 # success, restart required
+    )
+    $priorRebootExitCodes = @(
         -2147185721 # Restart is required before installation can continue
     )
 
@@ -486,6 +526,7 @@ param(
         silentArgs = $silentArgs
         successExitCodes = $successExitCodes
         rebootExitCodes = $rebootExitCodes
+        priorRebootExitCodes = $priorRebootExitCodes
         url = $Url
         checksum = $ChecksumSha1
         checksumType = 'sha1'
