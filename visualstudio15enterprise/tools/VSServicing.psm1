@@ -471,8 +471,7 @@ param(
     )
     $rebootExitCodes = @(
         3010, # success, restart required
-        2147781575, # pending restart required
-        -2147185721 # pending restart required
+        -2147185721 # Restart is required before installation can continue
     )
 
     $defaultAdminFile = (Join-Path $PSScriptRoot 'AdminDeployment.xml')
