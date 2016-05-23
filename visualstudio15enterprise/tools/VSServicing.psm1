@@ -342,6 +342,7 @@ function Install-VSChocolateyPackage
 # - VS installers are exe
 # - dropped support for chocolateyInstallArguments and chocolateyInstallOverride
 # - removed unreferenced parameter
+# - refactored logic shared with Uninstall-VSChocolateyPackage to a generic function
 function Install-VSChocolateyInstallPackage {
     param(
         [string] $packageName,
@@ -359,51 +360,14 @@ function Install-VSChocolateyInstallPackage {
         throw 'Package parameters incorrect, File cannot be empty.'
     }
 
-    $validExitCodes = @()
-    if (($successExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $successExitCodes }
-    if (($rebootExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $rebootExitCodes }
-    if (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $priorRebootRequiredExitCodes }
-
-    $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
-    $Env:ChocolateyExitCode = $exitCode
-    if (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0 -and $priorRebootRequiredExitCodes -contains $exitCode)
-    {
-        $needsReboot = $true
-        $success = $false
-    }
-    elseif (($rebootExitCodes | Measure-Object).Count -gt 0 -and $rebootExitCodes -contains $exitCode)
-    {
-        $needsReboot = $true
-        $success = $true
-    }
-    else
-    {
-        $needsReboot = $false
-        $success = $true
-    }
-
-    if ($success)
-    {
-        $baseMessage = "$packageName has been installed."
-        if ($needsReboot)
-        {
-            Write-Warning "$baseMessage However, a reboot is required to finalize the installation."
-        }
-        else
-        {
-            Write-Host $baseMessage
-        }
-    }
-    else
-    {
-        throw "The computer must be rebooted before installing ${packageName}. Please reboot the computer and run the installation again."
-    }
+    Start-VSServicingOperation @PSBoundParameters -operationTexts @('installed', 'installing', 'installation')
 }
 
 # based on Uninstall-ChocolateyPackage (01db65b), with changes:
 # - added recognition of exit codes signifying reboot requirement
 # - VS installers are exe
 # - dropped support for chocolateyInstallArguments and chocolateyInstallOverride
+# - refactored logic shared with Install-VSChocolateyInstallPackage to a generic function
 function Uninstall-VSChocolateyPackage
 {
     param(
@@ -417,7 +381,24 @@ function Uninstall-VSChocolateyPackage
     Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs: `'$silentArgs`', file: `'$file`', successExitCodes: `'$successExitCodes`', rebootExitCodes: `'$rebootExitCodes`'";
 
     $installMessage = "Uninstalling $packageName..."
-    write-host $installMessage
+    Write-Host $installMessage
+
+    Start-VSServicingOperation @PSBoundParameters -operationTexts @('uninstalled', 'uninstalling', 'uninstallation')
+}
+
+function Start-VSServicingOperation
+{
+    param(
+        [string] $packageName,
+        [string] $silentArgs,
+        [string] $file,
+        [int[]] $successExitCodes,
+        [int[]] $rebootExitCodes,
+        [int[]] $priorRebootRequiredExitCodes,
+        [string[]] $operationTexts
+    )
+
+    $frobbed, $frobbing, $frobbage = $operationTexts
 
     $validExitCodes = @()
     if (($successExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $successExitCodes }
@@ -444,19 +425,18 @@ function Uninstall-VSChocolateyPackage
 
     if ($success)
     {
-        $baseMessage = "$packageName has been uninstalled."
         if ($needsReboot)
         {
-            Write-Warning "$baseMessage However, a reboot is required to finalize the uninstallation."
+            Write-Warning "${packageName} has been ${frobbed}. However, a reboot is required to finalize the ${frobbage}."
         }
         else
         {
-            Write-Host $baseMessage
+            Write-Host "${packageName} has been ${frobbed}."
         }
     }
     else
     {
-        throw "The computer must be rebooted before uninstalling ${packageName}. Please reboot the computer and run the uninstallation again."
+        throw "The computer must be rebooted before ${frobbing} ${packageName}. Please reboot the computer and run the ${frobbage} again."
     }
 }
 
