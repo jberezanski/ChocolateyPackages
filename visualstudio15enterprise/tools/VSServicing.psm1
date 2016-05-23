@@ -560,6 +560,9 @@ param(
     $rebootExitCodes = @(
         3010 # success, restart required
     )
+    $priorRebootExitCodes = @(
+        -2147185721 # Restart is required before installation can continue
+    )
 
     $app = Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -like "$ApplicationName*"} | Sort-Object { $_.Name } | Select-Object -First 1
     if ($app -ne $null)
@@ -573,6 +576,7 @@ param(
                 file = $uninstaller.FullName
                 successExitCodes = $successExitCodes
                 rebootExitCodes = $rebootExitCodes
+                priorRebootExitCodes = $priorRebootExitCodes
             }
             $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,$_.Value }) -join ' '
             Write-Debug "Uninstall-VSChocolateyPackage $argumentsDump"
