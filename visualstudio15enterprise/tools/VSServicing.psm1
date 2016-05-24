@@ -325,12 +325,12 @@ function Install-VSChocolateyPackage
         checksum64 = $checksum64
         checksumType64 = $checksumType64
     }
-    $filePath = Get-ChocolateyWebFile @arguments
+    Get-ChocolateyWebFile @arguments | Out-Null
 
     $arguments = @{
         packageName = $packageName
         silentArgs = $silentArgs
-        file = $filePath
+        file = $localFilePath
         successExitCodes = $successExitCodes
         rebootExitCodes = $rebootExitCodes
     }
