@@ -4,6 +4,7 @@
 # Format: --AdminFile file location --Features WebTools,Win8SDK --ProductKey AB-D1
 function Parse-Parameters($s)
 {
+    Write-Debug "Running 'Parse-Parameters' with s:'$s'";
     $parameters = @{ }
 
     if (!$s)
@@ -38,6 +39,7 @@ function Parse-Parameters($s)
 # Generates customizations file. Returns its path
 function Generate-AdminFile($parameters, $defaultAdminFile, $packageName)
 {
+    Write-Debug "Running 'Generate-AdminFile' with parameters:'$parameters', defaultAdminFile:'$defaultAdminFile', packageName:'$packageName'";
     $adminFile = $parameters['AdminFile']
     $features = $parameters['Features']
     if (!$adminFile -and !$features)
@@ -81,6 +83,7 @@ function Generate-AdminFile($parameters, $defaultAdminFile, $packageName)
 # Turns on features in the customizations file
 function Update-AdminFile($parameters, $adminFile)
 {
+    Write-Debug "Running 'Update-AdminFile' with parameters:'$parameters', adminFile:'$adminFile'";
     if (!$adminFile) { return }
     $s = $parameters['Features']
     if (!$s) { return }
@@ -120,6 +123,7 @@ function Update-AdminFile($parameters, $adminFile)
 
 function Generate-InstallArgumentsString($parameters, $adminFile)
 {
+    Write-Debug "Running 'Generate-InstallArgumentsString' with parameters:'$parameters', adminFile:'$adminFile'";
     $logFilePath = Join-Path $Env:TEMP "${packageName}.log"
     Write-Debug "Log file path: $logFilePath"
     $s = "/Passive /NoRestart /Log ""$logFilePath"""
@@ -161,7 +165,7 @@ param(
   [switch] $noSleep,
   $validExitCodes = @(0)
 )
-  Write-Debug "Running 'Start-VSChocolateyProcessAsAdmin' with exeToRun:`'$exeToRun`', statements: `'$statements`' ";
+  Write-Debug "Running 'Start-VSChocolateyProcessAsAdmin' with exeToRun:'$exeToRun', statements:'$statements', minimized:$minimized, noSleep:$noSleep, validExitCodes:'$validExitCodes'";
 
   $wrappedStatements = $statements
   if ($wrappedStatements -eq $null) { $wrappedStatements = ''}
@@ -302,7 +306,7 @@ function Install-VSChocolateyPackage
         [string] $checksumType64 = ''
     )
 
-    Write-Debug "Running 'Install-VSChocolateyPackage' for $packageName with url:`'$url`', args: `'$silentArgs`', url64bit: `'$url64bit`', checksum: `'$checksum`', checksumType: `'$checksumType`', checksum64: `'$checksum64`', checksumType64: `'$checksumType64`', successExitCodes: `'$successExitCodes`', rebootExitCodes: `'$rebootExitCodes`'";
+    Write-Debug "Running 'Install-VSChocolateyPackage' for $packageName with url:'$url', args:'$silentArgs', url64bit:'$url64bit', checksum:'$checksum', checksumType:'$checksumType', checksum64:'$checksum64', checksumType64:'$checksumType64', successExitCodes:'$successExitCodes', rebootExitCodes:'$rebootExitCodes'";
 
     $chocTempDir = $env:TEMP
     $tempDir = Join-Path $chocTempDir "$packageName"
@@ -352,7 +356,7 @@ function Install-VSChocolateyInstallPackage {
         [int[]] $rebootExitCodes,
         [int[]] $priorRebootRequiredExitCodes
     )
-    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:`'$file`', args: `'$silentArgs`', successExitCodes: `'$successExitCodes`', rebootExitCodes: `'$rebootExitCodes`'"
+    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:'$file', silentArgs:'$silentArgs', successExitCodes:'$successExitCodes', rebootExitCodes:'$rebootExitCodes', priorRebootRequiredExitCodes:'$priorRebootRequiredExitCodes'"
     $installMessage = "Installing $packageName..."
     Write-Host $installMessage
 
@@ -378,7 +382,7 @@ function Uninstall-VSChocolateyPackage
         [int[]] $rebootExitCodes,
         [int[]] $priorRebootRequiredExitCodes
     )
-    Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs: `'$silentArgs`', file: `'$file`', successExitCodes: `'$successExitCodes`', rebootExitCodes: `'$rebootExitCodes`'";
+    Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs:'$silentArgs', file:'$file', successExitCodes:'$successExitCodes', rebootExitCodes:'$rebootExitCodes', priorRebootRequiredExitCodes:'$priorRebootRequiredExitCodes'"
 
     $installMessage = "Uninstalling $packageName..."
     Write-Host $installMessage
@@ -397,6 +401,7 @@ function Start-VSServicingOperation
         [int[]] $priorRebootRequiredExitCodes,
         [string[]] $operationTexts
     )
+    Write-Debug "Running 'Start-VSServicingOperation' for $packageName with silentArgs:'$silentArgs', file:'$file', successExitCodes:'$successExitCodes', rebootExitCodes:'$rebootExitCodes', priorRebootRequiredExitCodes:'$priorRebootRequiredExitCodes'"
 
     $frobbed, $frobbing, $frobbage = $operationTexts
 
@@ -436,7 +441,8 @@ function Start-VSServicingOperation
     }
     else
     {
-        throw "The computer must be rebooted before ${frobbing} ${packageName}. Please reboot the computer and run the ${frobbage} again."
+        $msg = "The computer must be rebooted before ${frobbing} ${packageName}. Please reboot the computer and run the ${frobbage} again."
+        throw $msg
     }
 }
 
@@ -471,12 +477,12 @@ This method has no error handling built into it.
 .LINK
 Install-ChocolateyPackage
 #>
-param(
-  [string] $PackageName,
-  [string] $Url,
-  [string] $ChecksumSha1
-)
-    Write-Debug "Running 'Install-VS' for $PackageName with url:`'$Url`'";
+    param(
+      [string] $PackageName,
+      [string] $Url,
+      [string] $ChecksumSha1
+    )
+    Write-Debug "Running 'Install-VS' for $PackageName with Url:'$Url' ChecksumSha1:$ChecksumSha1";
 
     $successExitCodes = @(
         0 # success
@@ -511,7 +517,7 @@ param(
         checksum = $ChecksumSha1
         checksumType = 'sha1'
     }
-    $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,$_.Value }) -join ' '
+    $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Install-VSChocolateyPackage $argumentsDump"
     Install-VSChocolateyPackage @arguments
 }
@@ -546,12 +552,12 @@ This method has no error handling built into it.
 .LINK
 Uninstall-ChocolateyPackage
 #>
-param(
-  [string] $PackageName,
-  [string] $ApplicationName,
-  [string] $UninstallerName
-)
-    Write-Debug "Running 'Uninstall-VS' for $PackageName with url:`'$url`'";
+    param(
+      [string] $PackageName,
+      [string] $ApplicationName,
+      [string] $UninstallerName
+    )
+    Write-Debug "Running 'Uninstall-VS' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName'";
 
     $silentArgs = '/Uninstall /Force /Passive /NoRestart'
     $successExitCodes = @(
@@ -564,9 +570,11 @@ param(
         -2147185721 # Restart is required before installation can continue
     )
 
+    Write-Debug "Looking for Windows Installer Product with name starting with '$ApplicationName'"
     $app = Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -like "$ApplicationName*"} | Sort-Object { $_.Name } | Select-Object -First 1
     if ($app -ne $null)
     {
+        Write-Debug "Looking for file '$UninstallerName' version '$($app.Version)' in Package Cache"
         $uninstaller = Get-Childitem "$env:ProgramData\Package Cache\" -Recurse -Filter $UninstallerName | ? { $_.VersionInfo.ProductVersion.StartsWith($app.Version)}
         if ($uninstaller -ne $null)
         {
@@ -578,7 +586,7 @@ param(
                 rebootExitCodes = $rebootExitCodes
                 priorRebootExitCodes = $priorRebootExitCodes
             }
-            $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,$_.Value }) -join ' '
+            $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
             Write-Debug "Uninstall-VSChocolateyPackage $argumentsDump"
             Uninstall-VSChocolateyPackage @arguments
         }
