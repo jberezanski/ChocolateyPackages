@@ -502,8 +502,8 @@ Install-ChocolateyPackage
     $rebootExitCodes = @(
         3010 # success, restart required
     )
-    $priorRebootExitCodes = @(
-        -2147185721 # Restart is required before installation can continue
+    $priorRebootRequiredExitCodes = @(
+        -2147185721 # Restart is required before (un)installation can continue
     )
 
     $defaultAdminFile = (Join-Path $PSScriptRoot 'AdminDeployment.xml')
@@ -524,7 +524,7 @@ Install-ChocolateyPackage
         silentArgs = $silentArgs
         successExitCodes = $successExitCodes
         rebootExitCodes = $rebootExitCodes
-        priorRebootExitCodes = $priorRebootExitCodes
+        priorRebootRequiredExitCodes = $priorRebootRequiredExitCodes
         url = $Url
         checksum = $ChecksumSha1
         checksumType = 'sha1'
@@ -585,8 +585,8 @@ Uninstall-ChocolateyPackage
     $rebootExitCodes = @(
         3010 # success, restart required
     )
-    $priorRebootExitCodes = @(
-        -2147185721 # Restart is required before installation can continue
+    $priorRebootRequiredExitCodes = @(
+        -2147185721 # Restart is required before (un)installation can continue
     )
 
     Write-Debug "Looking for Windows Installer Product with name starting with '$ApplicationName'"
@@ -603,7 +603,7 @@ Uninstall-ChocolateyPackage
                 file = $uninstaller.FullName
                 successExitCodes = $successExitCodes
                 rebootExitCodes = $rebootExitCodes
-                priorRebootExitCodes = $priorRebootExitCodes
+                priorRebootRequiredExitCodes = $priorRebootRequiredExitCodes
             }
             $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
             Write-Debug "Uninstall-VSChocolateyPackage $argumentsDump"
