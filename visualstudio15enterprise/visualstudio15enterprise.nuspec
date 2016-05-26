@@ -95,6 +95,14 @@ It is also possible to provide a product key via packageParameters:
 #### Full customization example:
 
     choco install visualstudio15enterprise -packageParameters "--AdminFile c:\path to your\AdminDeployment.xml --Features SQLV1,Win10_EmulatorV1 --ProductKey 12345-ABCDE-67890-FEDBC-76543"
+
+### Installation notes
+A reboot will most certainly be required after installing/uninstalling this package. A reboot might even be required _before_ installing/uninstalling - if the system is awaiting a reboot due to Windows updates having been installed, or if you are attempting to uninstall the package immediately after installing it. The package will provide informative messages in each case.
+
+On some systems with older .NET 4.x versions, the installation of .NET 4.6.2 (via netfx-4.6.2-devpack) might put the system in such a state that the Visual Studio installer will reboot the computer (ignoring the /NoRestart switch) and set itself up to automatically resume the installation after the user logs back on. This behavior has been observed on Windows 8.1 with .NET 4.5.2.
+If complete control over reboots is required, such as in automation scenarios, it is advisable to install the dependencies (esp. netfx-4.6.2-devpack) first, perform a reboot if necessary, and only after that proceed to install this package.
+
+The installation/uninstallation will take a fair amount of time and on slower systems may exceed the default Chocolatey execution timeout (45 minutes). Use the --execution-timeout argument of choco.exe to increase that timeout.
     </description>
     <releaseNotes>
 Initial package release.
