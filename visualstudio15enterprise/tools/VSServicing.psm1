@@ -482,6 +482,12 @@ Install-ChocolateyPackage
       [string] $Url,
       [string] $ChecksumSha1
     )
+    if ($Env:ChocolateyPackageDebug -ne $null)
+    {
+        $VerbosePreference = 'Continue'
+        $DebugPreference = 'Continue'
+        Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
+    }
     Write-Debug "Running 'Install-VS' for $PackageName with Url:'$Url' ChecksumSha1:$ChecksumSha1";
 
     $successExitCodes = @(
@@ -557,6 +563,12 @@ Uninstall-ChocolateyPackage
       [string] $ApplicationName,
       [string] $UninstallerName
     )
+    if ($Env:ChocolateyPackageDebug -ne $null)
+    {
+        $VerbosePreference = 'Continue'
+        $DebugPreference = 'Continue'
+        Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
+    }
     Write-Debug "Running 'Uninstall-VS' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName'";
 
     $silentArgs = '/Uninstall /Force /Passive /NoRestart'
