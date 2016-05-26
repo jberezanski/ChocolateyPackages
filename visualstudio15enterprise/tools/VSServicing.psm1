@@ -156,14 +156,15 @@ if (-not (Test-Path -Path Function:\Set-PowerShellExitCode))
     }
 }
 
-# based on Start-ChocolateyProcessAsAdmin (8734611), included here renamed but otherwise unchanged to add exit code support to old Chocolatey
+# based on Start-ChocolateyProcessAsAdmin (8734611), included here only slightly modified (renamed, stricter parameter binding), to add exit code support to old Chocolatey
 function Start-VSChocolateyProcessAsAdmin {
+[CmdletBinding()]
 param(
   [string] $statements,
   [string] $exeToRun = 'powershell',
   [switch] $minimized,
   [switch] $noSleep,
-  $validExitCodes = @(0)
+  [int[]]$validExitCodes = @(0)
 )
   Write-Debug "Running 'Start-VSChocolateyProcessAsAdmin' with exeToRun:'$exeToRun', statements:'$statements', minimized:$minimized, noSleep:$noSleep, validExitCodes:'$validExitCodes'";
 
@@ -293,6 +294,7 @@ Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may t
 # - removed Get-ChocolateyWebFile options support (for compatibility with old Chocolatey)
 function Install-VSChocolateyPackage
 {
+    [CmdletBinding()]
     param(
         [string] $packageName,
         [string] $silentArgs = '',
@@ -348,6 +350,7 @@ function Install-VSChocolateyPackage
 # - removed unreferenced parameter
 # - refactored logic shared with Uninstall-VSChocolateyPackage to a generic function
 function Install-VSChocolateyInstallPackage {
+    [CmdletBinding()]
     param(
         [string] $packageName,
         [string] $silentArgs = '',
@@ -374,6 +377,7 @@ function Install-VSChocolateyInstallPackage {
 # - refactored logic shared with Install-VSChocolateyInstallPackage to a generic function
 function Uninstall-VSChocolateyPackage
 {
+    [CmdletBinding()]
     param(
         [string] $packageName,
         [string] $silentArgs = '',
@@ -392,6 +396,7 @@ function Uninstall-VSChocolateyPackage
 
 function Start-VSServicingOperation
 {
+    [CmdletBinding()]
     param(
         [string] $packageName,
         [string] $silentArgs,
@@ -477,6 +482,7 @@ This method has no error handling built into it.
 .LINK
 Install-ChocolateyPackage
 #>
+    [CmdletBinding()]
     param(
       [string] $PackageName,
       [string] $Url,
@@ -558,6 +564,7 @@ This method has no error handling built into it.
 .LINK
 Uninstall-ChocolateyPackage
 #>
+    [CmdletBinding()]
     param(
       [string] $PackageName,
       [string] $ApplicationName,
