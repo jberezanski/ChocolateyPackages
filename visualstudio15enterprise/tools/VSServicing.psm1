@@ -589,27 +589,50 @@ Uninstall-ChocolateyPackage
         -2147185721 # Restart is required before (un)installation can continue
     )
 
-    Write-Debug "Looking for Windows Installer Product with name starting with '$ApplicationName'"
-    $app = Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -like "$ApplicationName*"} | Sort-Object { $_.Name } | Select-Object -First 1
-    if ($app -ne $null)
+    $informMaintainer = "Please report this to the maintainer of this package ($PackageName)."
+    Write-Debug "Looking for Uninstall key for '$ApplicationName'"
+    $uninstallKey = @('Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall', 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall') `
+    | Where-Object { Test-Path -Path $_ } `
+    | Get-ChildItem `
+    | Where-Object { $displayName = $_ | Get-ItemProperty -Name DisplayName -ErrorAction SilentlyContinue | Select-Object -ExpandProperty DisplayName; $displayName -eq $ApplicationName } `
+    | Where-Object { $systemComponent = $_ | Get-ItemProperty -Name SystemComponent -ErrorAction SilentlyContinue | Select-Object -ExpandProperty SystemComponent; $systemComponent -ne 1 }
+    $count = ($uninstallKey | Measure-Object).Count
+    Write-Debug "Found $count Uninstall key(s)"
+    if ($count -eq 0)
     {
-        Write-Debug "Looking for file '$UninstallerName' version '$($app.Version)' in Package Cache"
-        $uninstaller = Get-Childitem "$env:ProgramData\Package Cache\" -Recurse -Filter $UninstallerName | ? { $_.VersionInfo.ProductVersion.StartsWith($app.Version)}
-        if ($uninstaller -ne $null)
-        {
-            $arguments = @{
-                packageName = $PackageName
-                silentArgs = $silentArgs
-                file = $uninstaller.FullName
-                successExitCodes = $successExitCodes
-                rebootExitCodes = $rebootExitCodes
-                priorRebootRequiredExitCodes = $priorRebootRequiredExitCodes
-            }
-            $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
-            Write-Debug "Uninstall-VSChocolateyPackage $argumentsDump"
-            Uninstall-VSChocolateyPackage @arguments
-        }
+        Write-Warning "Uninstall information for $ApplicationName could not be found. This probably means the application was uninstalled outside Chocolatey."
+        return
     }
+    if ($count -gt 1)
+    {
+        throw "More than one Uninstall key found for $ApplicationName! $informMaintainer"
+    }
+
+    Write-Debug "Using Uninstall key: $($uninstallKey.PSPath)"
+    $uninstallString = $uninstallKey | Get-ItemProperty -Name UninstallString | Select-Object -ExpandProperty UninstallString
+    Write-Debug "UninstallString: $uninstallString"
+    if (-not ($uninstallString -match '^\s*(\"[^\"]+\")|([^\s]+)'))
+    {
+        throw "UninstallString '$uninstallString' is not of the expected format. $informMaintainer"
+    }
+    $uninstallerPath = $matches[0].Trim('"')
+    Write-Debug "uninstallerPath: $uninstallerPath"
+    if ((Split-Path -Path $uninstallerPath -Leaf) -ne $UninstallerName)
+    {
+        throw "The uninstaller file name is unexpected (uninstallerPath: $uninstallerPath). $informMaintainer"
+    }
+
+    $arguments = @{
+        packageName = $PackageName
+        silentArgs = $silentArgs
+        file = $uninstallerPath
+        successExitCodes = $successExitCodes
+        rebootExitCodes = $rebootExitCodes
+        priorRebootRequiredExitCodes = $priorRebootRequiredExitCodes
+    }
+    $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
+    Write-Debug "Uninstall-VSChocolateyPackage $argumentsDump"
+    Uninstall-VSChocolateyPackage @arguments
 }
 
 Export-ModuleMember Install-VS, Uninstall-VS
