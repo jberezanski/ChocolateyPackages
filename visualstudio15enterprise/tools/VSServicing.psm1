@@ -345,10 +345,11 @@ function Install-VSChocolateyPackage
         [string] $checksum = '',
         [string] $checksumType = '',
         [string] $checksum64 = '',
-        [string] $checksumType64 = ''
+        [string] $checksumType64 = '',
+        [string] $logFilePath
     )
 
-    Write-Debug "Running 'Install-VSChocolateyPackage' for $packageName with url:'$url', args:'$silentArgs', url64bit:'$url64bit', checksum:'$checksum', checksumType:'$checksumType', checksum64:'$checksum64', checksumType64:'$checksumType64'";
+    Write-Debug "Running 'Install-VSChocolateyPackage' for $packageName with url:'$url', args:'$silentArgs', url64bit:'$url64bit', checksum:'$checksum', checksumType:'$checksumType', checksum64:'$checksum64', checksumType64:'$checksumType64', logFilePath:'$logFilePath'";
 
     $chocTempDir = $env:TEMP
     $tempDir = Join-Path $chocTempDir "$packageName"
@@ -377,6 +378,7 @@ function Install-VSChocolateyPackage
         packageName = $packageName
         silentArgs = $silentArgs
         file = $localFilePath
+        logFilePath = $logFilePath
     }
     Install-VSChocolateyInstallPackage @arguments
 }
@@ -393,9 +395,10 @@ function Install-VSChocolateyInstallPackage {
     param(
         [string] $packageName,
         [string] $silentArgs = '',
-        [string] $file
+        [string] $file,
+        [string] $logFilePath
     )
-    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:'$file', silentArgs:'$silentArgs'"
+    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:'$file', silentArgs:'$silentArgs', logFilePath:'$logFilePath'"
     $installMessage = "Installing $packageName..."
     Write-Host $installMessage
 
@@ -435,9 +438,10 @@ function Start-VSServicingOperation
         [string] $packageName,
         [string] $silentArgs,
         [string] $file,
+        [string] $logFilePath,
         [string[]] $operationTexts
     )
-    Write-Debug "Running 'Start-VSServicingOperation' for $packageName with silentArgs:'$silentArgs', file:'$file', operationTexts:'$operationTexts'"
+    Write-Debug "Running 'Start-VSServicingOperation' for $packageName with silentArgs:'$silentArgs', file:'$file', logFilePath:$logFilePath', operationTexts:'$operationTexts'"
 
     $frobbed, $frobbing, $frobbage = $operationTexts
 
@@ -450,17 +454,44 @@ function Start-VSServicingOperation
     $priorRebootRequiredExitCodes = @(
         -2147185721 # Restart is required before (un)installation can continue
     )
+    $blockExitCodes = @(
+        -2147205120, # block, restart not required
+        -2147172352 # block, restart required
+    )
 
     $validExitCodes = @()
     if (($successExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $successExitCodes }
     if (($rebootExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $rebootExitCodes }
     if (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $priorRebootRequiredExitCodes }
+    if (($blockExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $blockExitCodes }
 
     $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
     $Env:ChocolateyExitCode = $exitCode
-    if (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0 -and $priorRebootRequiredExitCodes -contains $exitCode)
+    $warnings = @()
+    if (($blockExitCodes | Measure-Object).Count -gt 0 -and $blockExitCodes -contains $exitCode)
     {
-        $needsReboot = $true
+        $exceptionMessage = "${packageName} cannot be ${frobbed} on this system."
+        $success = $false
+        if ($logFilePath -ne '' -and (Test-Path -Path $logFilePath))
+        {
+            # [0C40:07D8][2016-05-28T23:17:32]i000: MUX:  Stop Block: MinimumOSLevel : This version of Visual Studio requires a computer with a !$!http://go.microsoft.com/fwlink/?LinkID=647155&clcid=0x409!,!newer version of Windows!@!.
+            # [0C40:07D8][2016-05-28T23:17:32]i000: MUX:  Stop Block: SystemRebootPendingBlock : The computer needs to be restarted before setup can continue. Please restart the computer and run setup again.
+            $blocks = Get-Content -Path $logFilePath `
+                | Select-String '(?<=Stop Block: ).+$' `
+                | Select-Object -ExpandProperty Matches `
+                | Where-Object { $_.Success -eq $true } `
+                | Select-Object -ExpandProperty Value `
+                | Sort-Object -Unique
+            if (($blocks | Measure-Object).Count -gt 0)
+            {
+                $warnings = @("${packageName} cannot be ${frobbed} due to the following issues:") + $blocks
+                $exceptionMessage += " You may attempt to fix the issues listed and try again."
+            }
+        }
+    }
+    elseif (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0 -and $priorRebootRequiredExitCodes -contains $exitCode)
+    {
+        $exceptionMessage = "The computer must be rebooted before ${frobbing} ${packageName}. Please reboot the computer and run the ${frobbage} again."
         $success = $false
     }
     elseif (($rebootExitCodes | Measure-Object).Count -gt 0 -and $rebootExitCodes -contains $exitCode)
@@ -487,8 +518,11 @@ function Start-VSServicingOperation
     }
     else
     {
-        $msg = "The computer must be rebooted before ${frobbing} ${packageName}. Please reboot the computer and run the ${frobbage} again."
-        throw $msg
+        if ($warnings -ne $null)
+        {
+            $warnings | Write-Warning
+        }
+        throw $exceptionMessage
     }
 }
 
@@ -567,6 +601,7 @@ Install-ChocolateyPackage
         url = $Url
         checksum = $ChecksumSha1
         checksumType = 'sha1'
+        logFilePath = $logFilePath
     }
     $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Install-VSChocolateyPackage $argumentsDump"
