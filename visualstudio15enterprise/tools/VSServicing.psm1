@@ -2,12 +2,16 @@
 
 # Parse input argument string into a hashtable
 # Format: --AdminFile file location --Features WebTools,Win8SDK --ProductKey AB-D1
-function Parse-Parameters($s)
+function Parse-Parameters
 {
+    [CmdletBinding()]
+    Param (
+        [string] $s
+    )
     Write-Debug "Running 'Parse-Parameters' with s:'$s'";
     $parameters = @{ }
 
-    if (!$s)
+    if ($s -eq '')
     {
         Write-Debug "No package parameters."
         return $parameters
@@ -37,12 +41,20 @@ function Parse-Parameters($s)
 }
 
 # Generates customizations file. Returns its path
-function Generate-AdminFile($parameters, $defaultAdminFile, $packageName)
+function Generate-AdminFile
 {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory = $true)]
+        [hashtable] $parameters,
+        [string] $adminFile,
+        [Parameter(Mandatory = $true)]
+        [string] $packageName
+    )
     Write-Debug "Running 'Generate-AdminFile' with parameters:'$parameters', defaultAdminFile:'$defaultAdminFile', packageName:'$packageName'";
     $adminFile = $parameters['AdminFile']
     $features = $parameters['Features']
-    if (!$adminFile -and !$features)
+    if ($adminFile -eq '' -and !$features)
     {
         return $null
     }
@@ -81,10 +93,16 @@ function Generate-AdminFile($parameters, $defaultAdminFile, $packageName)
 }
 
 # Turns on features in the customizations file
-function Update-AdminFile($parameters, $adminFile)
+function Update-AdminFile
 {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory = $true)]
+        [hashtable] $parameters,
+        [string] $adminFile
+    )
     Write-Debug "Running 'Update-AdminFile' with parameters:'$parameters', adminFile:'$adminFile'";
-    if (!$adminFile) { return }
+    if ($adminFile -eq '') { return }
     $s = $parameters['Features']
     if (!$s) { return }
 
