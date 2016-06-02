@@ -302,6 +302,7 @@ function Install-VSChocolateyPackage
         [alias("url64")][string] $url64bit = '',
         [int[]] $successExitCodes = @(0),
         [int[]] $rebootExitCodes,
+        [int[]] $priorRebootRequiredExitCodes,
         [string] $checksum = '',
         [string] $checksumType = '',
         [string] $checksum64 = '',
@@ -339,6 +340,7 @@ function Install-VSChocolateyPackage
         file = $localFilePath
         successExitCodes = $successExitCodes
         rebootExitCodes = $rebootExitCodes
+        priorRebootRequiredExitCodes = $priorRebootRequiredExitCodes
     }
     Install-VSChocolateyInstallPackage @arguments
 }
