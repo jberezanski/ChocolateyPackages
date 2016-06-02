@@ -309,6 +309,7 @@ Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may t
 # - VS installers are exe
 # - local file name is extracted from the url (to avoid passing -getOriginalFileName to Get-ChocolateyWebFile for compatibility with old Chocolatey)
 # - removed Get-ChocolateyWebFile options support (for compatibility with old Chocolatey)
+# - removed exit code parameters in order to centralize exit code logic
 function Install-VSChocolateyPackage
 {
     [CmdletBinding()]
@@ -317,16 +318,13 @@ function Install-VSChocolateyPackage
         [string] $silentArgs = '',
         [string] $url,
         [alias("url64")][string] $url64bit = '',
-        [int[]] $successExitCodes = @(0),
-        [int[]] $rebootExitCodes,
-        [int[]] $priorRebootRequiredExitCodes,
         [string] $checksum = '',
         [string] $checksumType = '',
         [string] $checksum64 = '',
         [string] $checksumType64 = ''
     )
 
-    Write-Debug "Running 'Install-VSChocolateyPackage' for $packageName with url:'$url', args:'$silentArgs', url64bit:'$url64bit', checksum:'$checksum', checksumType:'$checksumType', checksum64:'$checksum64', checksumType64:'$checksumType64', successExitCodes:'$successExitCodes', rebootExitCodes:'$rebootExitCodes'";
+    Write-Debug "Running 'Install-VSChocolateyPackage' for $packageName with url:'$url', args:'$silentArgs', url64bit:'$url64bit', checksum:'$checksum', checksumType:'$checksumType', checksum64:'$checksum64', checksumType64:'$checksumType64'";
 
     $chocTempDir = $env:TEMP
     $tempDir = Join-Path $chocTempDir "$packageName"
@@ -355,9 +353,6 @@ function Install-VSChocolateyPackage
         packageName = $packageName
         silentArgs = $silentArgs
         file = $localFilePath
-        successExitCodes = $successExitCodes
-        rebootExitCodes = $rebootExitCodes
-        priorRebootRequiredExitCodes = $priorRebootRequiredExitCodes
     }
     Install-VSChocolateyInstallPackage @arguments
 }
@@ -368,17 +363,15 @@ function Install-VSChocolateyPackage
 # - dropped support for chocolateyInstallArguments and chocolateyInstallOverride
 # - removed unreferenced parameter
 # - refactored logic shared with Uninstall-VSChocolateyPackage to a generic function
+# - removed exit code parameters in order to centralize exit code logic
 function Install-VSChocolateyInstallPackage {
     [CmdletBinding()]
     param(
         [string] $packageName,
         [string] $silentArgs = '',
-        [string] $file,
-        [int[]] $successExitCodes = @(0),
-        [int[]] $rebootExitCodes,
-        [int[]] $priorRebootRequiredExitCodes
+        [string] $file
     )
-    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:'$file', silentArgs:'$silentArgs', successExitCodes:'$successExitCodes', rebootExitCodes:'$rebootExitCodes', priorRebootRequiredExitCodes:'$priorRebootRequiredExitCodes'"
+    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:'$file', silentArgs:'$silentArgs'"
     $installMessage = "Installing $packageName..."
     Write-Host $installMessage
 
@@ -394,18 +387,16 @@ function Install-VSChocolateyInstallPackage {
 # - VS installers are exe
 # - dropped support for chocolateyInstallArguments and chocolateyInstallOverride
 # - refactored logic shared with Install-VSChocolateyInstallPackage to a generic function
+# - removed exit code parameters in order to centralize exit code logic
 function Uninstall-VSChocolateyPackage
 {
     [CmdletBinding()]
     param(
         [string] $packageName,
         [string] $silentArgs = '',
-        [string] $file,
-        [int[]] $successExitCodes = @(0),
-        [int[]] $rebootExitCodes,
-        [int[]] $priorRebootRequiredExitCodes
+        [string] $file
     )
-    Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs:'$silentArgs', file:'$file', successExitCodes:'$successExitCodes', rebootExitCodes:'$rebootExitCodes', priorRebootRequiredExitCodes:'$priorRebootRequiredExitCodes'"
+    Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs:'$silentArgs', file:'$file'"
 
     $installMessage = "Uninstalling $packageName..."
     Write-Host $installMessage
@@ -420,14 +411,21 @@ function Start-VSServicingOperation
         [string] $packageName,
         [string] $silentArgs,
         [string] $file,
-        [int[]] $successExitCodes,
-        [int[]] $rebootExitCodes,
-        [int[]] $priorRebootRequiredExitCodes,
         [string[]] $operationTexts
     )
-    Write-Debug "Running 'Start-VSServicingOperation' for $packageName with silentArgs:'$silentArgs', file:'$file', successExitCodes:'$successExitCodes', rebootExitCodes:'$rebootExitCodes', priorRebootRequiredExitCodes:'$priorRebootRequiredExitCodes'"
+    Write-Debug "Running 'Start-VSServicingOperation' for $packageName with silentArgs:'$silentArgs', file:'$file', operationTexts:'$operationTexts'"
 
     $frobbed, $frobbing, $frobbage = $operationTexts
+
+    $successExitCodes = @(
+        0 # success
+    )
+    $rebootExitCodes = @(
+        3010 # success, restart required
+    )
+    $priorRebootRequiredExitCodes = @(
+        -2147185721 # Restart is required before (un)installation can continue
+    )
 
     $validExitCodes = @()
     if (($successExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $successExitCodes }
@@ -516,16 +514,6 @@ Install-ChocolateyPackage
     }
     Write-Debug "Running 'Install-VS' for $PackageName with Url:'$Url' ChecksumSha1:$ChecksumSha1";
 
-    $successExitCodes = @(
-        0 # success
-    )
-    $rebootExitCodes = @(
-        3010 # success, restart required
-    )
-    $priorRebootRequiredExitCodes = @(
-        -2147185721 # Restart is required before (un)installation can continue
-    )
-
     $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ApplicationName
     $count = ($uninstallKey | Measure-Object).Count
     if ($count -gt 0)
@@ -550,9 +538,6 @@ Install-ChocolateyPackage
     $arguments = @{
         packageName = $PackageName
         silentArgs = $silentArgs
-        successExitCodes = $successExitCodes
-        rebootExitCodes = $rebootExitCodes
-        priorRebootRequiredExitCodes = $priorRebootRequiredExitCodes
         url = $Url
         checksum = $ChecksumSha1
         checksumType = 'sha1'
@@ -607,15 +592,6 @@ Uninstall-ChocolateyPackage
     Write-Debug "Running 'Uninstall-VS' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName'";
 
     $silentArgs = '/Uninstall /Force /Passive /NoRestart'
-    $successExitCodes = @(
-        0 # success
-    )
-    $rebootExitCodes = @(
-        3010 # success, restart required
-    )
-    $priorRebootRequiredExitCodes = @(
-        -2147185721 # Restart is required before (un)installation can continue
-    )
 
     $informMaintainer = "Please report this to the maintainer of this package ($PackageName)."
     $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ApplicationName
@@ -649,9 +625,6 @@ Uninstall-ChocolateyPackage
         packageName = $PackageName
         silentArgs = $silentArgs
         file = $uninstallerPath
-        successExitCodes = $successExitCodes
-        rebootExitCodes = $rebootExitCodes
-        priorRebootRequiredExitCodes = $priorRebootRequiredExitCodes
     }
     $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Uninstall-VSChocolateyPackage $argumentsDump"
