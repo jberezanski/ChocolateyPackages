@@ -121,14 +121,20 @@ function Update-AdminFile($parameters, $adminFile)
     $xml.Save($adminFile)
 }
 
-function Generate-InstallArgumentsString($parameters, $adminFile)
+function Generate-InstallArgumentsString
 {
-    Write-Debug "Running 'Generate-InstallArgumentsString' with parameters:'$parameters', adminFile:'$adminFile'";
-    $logFilePath = Join-Path $Env:TEMP "${packageName}.log"
-    Write-Debug "Log file path: $logFilePath"
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory = $true)]
+        [hashtable] $parameters,
+        [string] $adminFile,
+        [Parameter(Mandatory = $true)]
+        [string] $logFilePath
+    )
+    Write-Debug "Running 'Generate-InstallArgumentsString' with parameters:'$parameters', adminFile:'$adminFile', logFilePath:'$logFilePath'";
     $s = "/Passive /NoRestart /Log ""$logFilePath"""
 
-    if ($adminFile)
+    if ($adminFile -ne '')
     {
         $s = $s + " /AdminFile $adminFile"
     }
@@ -533,7 +539,9 @@ Install-ChocolateyPackage
 
     Update-AdminFile $packageParameters $adminFile
 
-    $silentArgs = Generate-InstallArgumentsString $packageParameters $adminFile $PackageName
+    $logFilePath = Join-Path $Env:TEMP "${PackageName}.log"
+    Write-Debug "Log file path: $logFilePath"
+    $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath
 
     $arguments = @{
         packageName = $PackageName
