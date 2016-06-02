@@ -143,6 +143,23 @@ function Generate-InstallArgumentsString($parameters, $adminFile)
     return $s
 }
 
+function Get-VSUninstallRegistryKey
+{
+    [CmdletBinding()]
+    Param (
+        [string] $ApplicationName
+    )
+
+    Write-Debug "Looking for Uninstall key for '$ApplicationName'"
+    $uninstallKey = @('Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall', 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall') `
+    | Where-Object { Test-Path -Path $_ } `
+    | Get-ChildItem `
+    | Where-Object { $displayName = $_ | Get-ItemProperty -Name DisplayName -ErrorAction SilentlyContinue | Select-Object -ExpandProperty DisplayName; $displayName -eq $ApplicationName } `
+    | Where-Object { $systemComponent = $_ | Get-ItemProperty -Name SystemComponent -ErrorAction SilentlyContinue | Select-Object -ExpandProperty SystemComponent; $systemComponent -ne 1 }
+
+    return $uninstallKey
+}
+
 if (-not (Test-Path -Path Function:\Set-PowerShellExitCode))
 {
     # based on Set-PowerShellExitCode (07277ac), included here unchanged to add exit code support to old Chocolatey
@@ -487,6 +504,7 @@ Install-ChocolateyPackage
     [CmdletBinding()]
     param(
       [string] $PackageName,
+      [string] $ApplicationName,
       [string] $Url,
       [string] $ChecksumSha1
     )
@@ -507,6 +525,14 @@ Install-ChocolateyPackage
     $priorRebootRequiredExitCodes = @(
         -2147185721 # Restart is required before (un)installation can continue
     )
+
+    $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ApplicationName
+    $count = ($uninstallKey | Measure-Object).Count
+    if ($count -gt 0)
+    {
+        Write-Warning "$ApplicationName is already installed. Please use Programs and Features in the Control Panel to modify or repair it."
+        return
+    }
 
     $defaultAdminFile = (Join-Path $PSScriptRoot 'AdminDeployment.xml')
     Write-Debug "Default AdminFile: $defaultAdminFile"
@@ -592,12 +618,7 @@ Uninstall-ChocolateyPackage
     )
 
     $informMaintainer = "Please report this to the maintainer of this package ($PackageName)."
-    Write-Debug "Looking for Uninstall key for '$ApplicationName'"
-    $uninstallKey = @('Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall', 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall') `
-    | Where-Object { Test-Path -Path $_ } `
-    | Get-ChildItem `
-    | Where-Object { $displayName = $_ | Get-ItemProperty -Name DisplayName -ErrorAction SilentlyContinue | Select-Object -ExpandProperty DisplayName; $displayName -eq $ApplicationName } `
-    | Where-Object { $systemComponent = $_ | Get-ItemProperty -Name SystemComponent -ErrorAction SilentlyContinue | Select-Object -ExpandProperty SystemComponent; $systemComponent -ne 1 }
+    $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ApplicationName
     $count = ($uninstallKey | Measure-Object).Count
     Write-Debug "Found $count Uninstall key(s)"
     if ($count -eq 0)
