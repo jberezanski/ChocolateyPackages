@@ -167,6 +167,19 @@ function Generate-InstallArgumentsString
     return $s
 }
 
+function Generate-UninstallArgumentsString
+{
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory = $true)]
+        [string] $logFilePath
+    )
+    Write-Debug "Running 'Generate-UninstallArgumentsString' with logFilePath:'$logFilePath'";
+    $s = "/Uninstall /Force /Passive /NoRestart /Log ""$logFilePath"""
+
+    return $s
+}
+
 function Get-VSUninstallRegistryKey
 {
     [CmdletBinding()]
@@ -652,8 +665,6 @@ Uninstall-ChocolateyPackage
     }
     Write-Debug "Running 'Uninstall-VS' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName'";
 
-    $silentArgs = '/Uninstall /Force /Passive /NoRestart'
-
     $informMaintainer = "Please report this to the maintainer of this package ($PackageName)."
     $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ApplicationName
     $count = ($uninstallKey | Measure-Object).Count
@@ -681,6 +692,10 @@ Uninstall-ChocolateyPackage
     {
         throw "The uninstaller file name is unexpected (uninstallerPath: $uninstallerPath). $informMaintainer"
     }
+
+    $logFilePath = Join-Path $Env:TEMP "${PackageName}_uninstall.log"
+    Write-Debug "Log file path: $logFilePath"
+    $silentArgs = Generate-UninstallArgumentsString -logFilePath $logFilePath
 
     $arguments = @{
         packageName = $PackageName
