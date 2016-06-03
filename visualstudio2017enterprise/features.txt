@@ -38,7 +38,7 @@ The supported feature codes are listed below, organized in the same way as in th
     AntV1                        |         Apache Ant (1.9.3)
     JavaJDKV1                    |         Java SE Development Kit (7.0.550.13)
     Node.jsV1                    |         Joyent Node.js
-                                 | Cross Platform Mobile Development
+                                 | Common Tools
     GitForWindowsV2              |     Git for Windows
     VS_SDK_GroupV2               |     Visual Studio Extensibility Tools Preview
 
