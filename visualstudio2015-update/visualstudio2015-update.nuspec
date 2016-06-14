@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>visualstudio2015-update</id>
-        <version>2.0.0.0</version>
+        <version>3.0.0.0-rc</version>
         <!--<packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2015-update</packageSourceUrl>-->
         <owners>Jakub Bereżański</owners>
         <title>Visual Studio 2015 Update (latest)</title>
         <authors>Microsoft</authors>
-        <projectUrl>https://www.visualstudio.com/en-us/news/vs2015-update2-vs.aspx</projectUrl>
+        <projectUrl>https://www.visualstudio.com/news/releasenotes/vs2015-update3-vs</projectUrl>
         <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs2015.png</iconUrl>
         <licenseUrl>https://www.microsoft.com/en-us/download/details.aspx?id=13350</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -19,26 +19,21 @@ Visual Studio 2015 updates are cumulative releases that include new features and
 This package installs the latest released update for Visual Studio 2015.
         </description>
         <releaseNotes>
-Installs Update 2 (version 14.0.25123.00).
+Installs Update 3 RC (version 14.0.25402.00).
 
 This update contains improvements in the following areas:
 
-  - Visual Studio Tools for Apache Cordova
-  - Visual Studio Tools for Universal Windows App Development
-  - Visual C++
-  - C# and Visual Basic
-  - .NET Framework 4.6.1
+  - Tools for Apache Cordova
+  - Application Insights and HockeyApp
+  - Debugging and Diagnostics
   - Visual Studio IDE
-  - NuGet
-  - TypeScript
-  - Developer Analytics Tools
-  - Team Explorer
-  - SQL Server Data Tools
-  - Python Tools for Visual Studio
-  - Parallel Test Execution
-  - Performance &amp; Reliability
+  - Tools for Universal Windows apps
+  - Architecture Tools
+  - Visual C++
+  - Web Developer Tools
+  - C# and Visual Basic
 
-For a list of known issues and workarounds, see [this page](https://msdn.microsoft.com/en-us/library/mt668659.aspx).
+For a list of known issues and workarounds, see [this page](https://msdn.microsoft.com/vs-knownissues/vs2015-update3-rc).
         </releaseNotes>
     </metadata>
 </package>
