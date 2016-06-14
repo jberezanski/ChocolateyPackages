@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017enterprise</id>
-    <version>15.0.25123.0-preview1</version>
+    <version>15.0.25123.20160614-preview1</version>
     <owners>Jakub Bereżański</owners>
     <title>Visual Studio "15" Enterprise (Preview)</title>
     <authors>Microsoft</authors>
     <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2016/03/30/visual-studio-15-preview/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs15.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f131b33a288773811906de152f12514dbecde5c8/icons/vs15.png</iconUrl>
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>Visual Studio Enterprise "15" Preview is an early build of the next major release of Visual Studio.</summary>
@@ -33,7 +33,7 @@ Optional features (C++, SQL tools, phone tools, etc.) are available but not inst
 You can provide optional parameters to include them during the install.
 Here is an example that includes the SQL Tools and Windows 10 Mobile Emulators:
 
-    choco install visualstudio15enterprise -packageParameters "--Features SQLV1,Win10_EmulatorV1"
+    choco install visualstudio2017enterprise -packageParameters "--Features SQLV1,Win10_EmulatorV1"
 
 Due to the package description length limit, the feature codes are listed in the features.txt file in the package.
 
@@ -41,17 +41,17 @@ Due to the package description length limit, the feature codes are listed in the
 Specifying the optional features above modifies the configuration file used during installation (AdminDeployment.xml). If that is not enough you can provide this file on your own. A default file is included in the package.
 Examples:
 
-    choco install visualstudio15enterprise -packageParameters "--AdminFile c:\path to your\AdminDeployment.xml"
-    choco install visualstudio15enterprise -packageParameters "--AdminFile http://path/to/your/AdminDeployment.xml"
+    choco install visualstudio2017enterprise -packageParameters "--AdminFile c:\path to your\AdminDeployment.xml"
+    choco install visualstudio2017enterprise -packageParameters "--AdminFile http://path/to/your/AdminDeployment.xml"
 
 #### Providing a product key
 It is also possible to provide a product key via packageParameters:
 
-    choco install visualstudio15enterprise -packageParameters "--ProductKey 12345-ABCDE-67890-FEDBC-76543"
+    choco install visualstudio2017enterprise -packageParameters "--ProductKey 12345-ABCDE-67890-FEDBC-76543"
 
 #### Full customization example:
 
-    choco install visualstudio15enterprise -packageParameters "--AdminFile c:\path to your\AdminDeployment.xml --Features SQLV1,Win10_EmulatorV1 --ProductKey 12345-ABCDE-67890-FEDBC-76543"
+    choco install visualstudio2017enterprise -packageParameters "--AdminFile c:\path to your\AdminDeployment.xml --Features SQLV1,Win10_EmulatorV1 --ProductKey 12345-ABCDE-67890-FEDBC-76543"
 
 ### Installation notes
 A reboot will most certainly be required after installing/uninstalling this package. A reboot might even be required _before_ installing/uninstalling - if the system is awaiting a reboot due to Windows updates having been installed, or if you are attempting to uninstall the package immediately after installing it. The package will provide informative messages in each case.
@@ -62,7 +62,7 @@ If complete control over reboots is required, such as in automation scenarios, i
 The installation/uninstallation will take a fair amount of time and on slower systems may exceed the default Chocolatey execution timeout (45 minutes). Use the --execution-timeout argument of choco.exe to increase that timeout.
     </description>
     <releaseNotes>
-Initial package release.
+Fixed package metadata: icon url, package name in example commands.
     </releaseNotes>
     <dependencies>
       <dependency id="vcredist2012" />
