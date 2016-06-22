@@ -8,7 +8,7 @@ The supported feature codes are listed below, organized in the same way as in th
     NativeLanguageSupport_MFCV1  |         Microsoft Foundation Classes for C++
     NativeLanguageSupport_XPV1   |         Windows XP Support for C++
     FSharpV1                     |     Visual F#
-    PythonToolsForVisualStudioV2 |     Python Tools for Visual Studio (March 2016 Preview)
+    PythonToolsForVisualStudioV3 |     Python Tools for Visual Studio (May 2016 Preview)
                                  | Windows and Web Development
     ClickOnceV1                  |     ClickOnce Publishing Tools
     OfficeDeveloperToolsV1       |     Microsoft Office Developer Tools
@@ -16,18 +16,18 @@ The supported feature codes are listed below, organized in the same way as in th
     WebToolsV1                   |     Microsoft Web Developer Tools
     PowerShellToolsV1            |     PowerShell Tools for Visual Studio
                                  |     Universal Windows App Development Tools
-    Windows10_ToolsAndSDKV2      |         Tools (2.0 Preview) and Windows SDK (10.0.10586)
+    Windows10_ToolsAndSDKV3      |         Tools (2.0 Preview 2) and Windows SDK (10.0.10586)
     Win10_EmulatorV1             |         Emulators for Windows 10 Mobile (10.0.10586)
     Win10SDK_10.0.10240          |         Windows 10 SDK (10.0.10240)
                                  | Cross Platform Mobile Development
-    XamarinVSCoreV1              |     C#/.NET (Xamarin)
-    MDDJSCoreV2A                 |     HTML/JavaScript (Apache Cordova) Update 8
+    XamarinVSCoreV2              |     C#/.NET (Xamarin v4.0.3)
+    MDDJSCoreV9                  |     HTML/JavaScript (Apache Cordova) Update 9
                                  |     Visual C++ Mobile Development
     L_MDDCPlusPlus_Android_V2    |         Visual C++ Android Development
     L_MDDCPlusPlus_iOS_V2        |         Visual C++ iOS Development
     L_MDDCPlusPlus_ClangC2_V4    |         Clang with Microsoft CodeGen (March 2016)
     WebSocket4NetV1              |     WebSocket4Net
-    AndroidEmulator.1.0.60201.1  |     Microsoft Visual Studio Emulator for Android (February 2016)
+    AndroidEmulator.1.0.60404.1  |     Microsoft Visual Studio Emulator for Android (April 2016)
                                  |     Common Tools and Software Development Kits
     AndroidNDK_32_V1             |         Android Native Development Kit (R10E, 32 bits)
     AndroidNDK_64_V1             |         Android Native Development Kit (R10E, 64 bits)
@@ -39,7 +39,7 @@ The supported feature codes are listed below, organized in the same way as in th
     JavaJDKV1                    |         Java SE Development Kit (7.0.550.13)
     Node.jsV1                    |         Joyent Node.js
                                  | Common Tools
-    GitForWindowsV2              |     Git for Windows
+    GitForWindowsV3              |     Git for Windows
     VS_SDK_GroupV2               |     Visual Studio Extensibility Tools Preview
 
 Note: Microsoft Web Developer Tools are selected by default, just like in the Visual Studio installer. This package does not currently provide a way to unselect features. To opt out of installing the web tools, use a custom configuration file (see the package description for details).
