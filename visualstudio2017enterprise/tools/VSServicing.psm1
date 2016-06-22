@@ -396,7 +396,7 @@ function Install-VSChocolateyPackage
     Install-VSChocolateyInstallPackage @arguments
 }
 
-# based on Install-VSChocolateyInstallPackage (fbe24a8), with changes:
+# based on Install-ChocolateyInstallPackage (fbe24a8), with changes:
 # - added recognition of exit codes signifying reboot requirement
 # - VS installers are exe
 # - dropped support for chocolateyInstallArguments and chocolateyInstallOverride
