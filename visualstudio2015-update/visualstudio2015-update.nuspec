@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>visualstudio2015-update</id>
-        <version>3.0.0.0-rc</version>
+        <version>3.0.0.0</version>
         <!--<packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2015-update</packageSourceUrl>-->
         <owners>Jakub Bereżański</owners>
         <title>Visual Studio 2015 Update (latest)</title>
         <authors>Microsoft</authors>
-        <projectUrl>https://www.visualstudio.com/news/releasenotes/vs2015-update3-vs</projectUrl>
+        <projectUrl>https://www.visualstudio.com/en-us/news/releasenotes/vs2015-update3-vs</projectUrl>
         <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs2015.png</iconUrl>
         <licenseUrl>https://www.microsoft.com/en-us/download/details.aspx?id=13350</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -19,21 +19,25 @@ Visual Studio 2015 updates are cumulative releases that include new features and
 This package installs the latest released update for Visual Studio 2015.
         </description>
         <releaseNotes>
-Installs Update 3 RC (version 14.0.25402.00).
+Installs Update 3 (version 14.0.25421.03).
 
 This update contains improvements in the following areas:
 
   - Tools for Apache Cordova
-  - Application Insights and HockeyApp
+  - Developer Analytics Tools
   - Debugging and Diagnostics
   - Visual Studio IDE
   - Tools for Universal Windows apps
   - Architecture Tools
   - Visual C++
+  - Node.js Tools for Visual Studio
   - Web Developer Tools
+  - TypeScript
   - C# and Visual Basic
+  - Team Explorer
+  - Xamarin
 
-For a list of known issues and workarounds, see [this page](https://msdn.microsoft.com/vs-knownissues/vs2015-update3-rc).
+For a list of known issues and workarounds, see [this page](https://msdn.microsoft.com/vs-knownissues/vs2015-update3).
         </releaseNotes>
     </metadata>
 </package>
