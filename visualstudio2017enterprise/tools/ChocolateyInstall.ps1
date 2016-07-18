@@ -2,6 +2,6 @@
 
 Install-VS `
     -PackageName 'visualstudio2017enterprise' `
-    -ApplicationName 'Microsoft Visual Studio Enterprise 15 Preview 2' `
-    -Url 'https://download.microsoft.com/download/7/e/9/7e931754-39ee-4bbf-9e31-12a193943c62/vs_enterprise.exe' `
-    -ChecksumSha1 '7B8E97DFD88A0613FC859E65BBE8ACA95233BBBA'
+    -ApplicationName 'Microsoft Visual Studio Enterprise 15 Preview 3' `
+    -Url 'https://download.microsoft.com/download/e/e/6/ee6e936e-6323-4b51-a6f3-7b276b7e168a/vs_enterprise.exe' `
+    -ChecksumSha1 '6A63984CAFE972D655817395CC12054068077015'

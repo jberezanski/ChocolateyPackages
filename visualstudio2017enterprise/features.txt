@@ -16,12 +16,12 @@ The supported feature codes are listed below, organized in the same way as in th
     WebToolsV1                   |     Microsoft Web Developer Tools
     PowerShellToolsV1            |     PowerShell Tools for Visual Studio
                                  |     Universal Windows App Development Tools
-    Windows10_ToolsAndSDKV3      |         Tools (2.0 Preview 2) and Windows SDK (10.0.10586)
+    Windows10_ToolsAndSDKV4      |         Tools (2.0 Preview 3) and Windows SDK (10.0.10586)
     Win10_EmulatorV1             |         Emulators for Windows 10 Mobile (10.0.10586)
     Win10SDK_10.0.10240          |         Windows 10 SDK (10.0.10240)
                                  | Cross Platform Mobile Development
-    XamarinVSCoreV2              |     C#/.NET (Xamarin v4.0.3)
-    MDDJSCoreV9                  |     HTML/JavaScript (Apache Cordova) Update 9
+    XamarinVSCoreV3              |     C#/.NET (Xamarin v4.1.1)
+    MDDJSCoreV10                 |     HTML/JavaScript (Apache Cordova) Update 10
                                  |     Visual C++ Mobile Development
     L_MDDCPlusPlus_Android_V2    |         Visual C++ Android Development
     L_MDDCPlusPlus_iOS_V2        |         Visual C++ iOS Development

@@ -2,26 +2,26 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017enterprise</id>
-    <version>15.0.25302.20160622-preview2</version>
+    <version>15.0.25428.1-preview3</version>
     <owners>Jakub Bereżański</owners>
-    <title>Visual Studio "15" Enterprise (Preview 2)</title>
+    <title>Visual Studio "15" Enterprise (Preview 3)</title>
     <authors>Microsoft</authors>
-    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2016/05/10/visual-studio-15-preview-2/</projectUrl>
+    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2016/07/07/visual-studio-15-preview-3/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f131b33a288773811906de152f12514dbecde5c8/icons/vs15.png</iconUrl>
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>Visual Studio Enterprise "15" Preview 2 is an early build of the next major release of Visual Studio.</summary>
+    <summary>Visual Studio Enterprise "15" Preview 3 is an early build of the next major release of Visual Studio.</summary>
     <tags>Microsoft Visual Studio VisualStudio 15 vNext v.Next VS VS15 2017 Enterprise IDE admin</tags>
     <description>
 ### Overview
 
-Visual Studio Enterprise "15" Preview 2 is an early build of the next major release of Visual Studio. Preview provides early adopters with an opportunity to try out the new and improved product features, and the ability to share feedback with the product team.
+Visual Studio Enterprise "15" Preview 3 is an early build of the next major release of Visual Studio. Preview provides early adopters with an opportunity to try out the new and improved product features, and the ability to share feedback with the product team.
 
 **PLEASE NOTE**: This preview has not been subject to final validation and is not meant to be run on production workstations or servers.
 
 **DISCLAIMER**: The package id is just an educated guess based on the naming of the Web Platform Installer product VWDOrVs2017AzurePack - Microsoft Azure SDK for .NET (VS "15" Preview). There is no official confirmation that Visual Studio "15" will be released in 2017 or that it will be named Visual Studio 2017.
 
-To find out what's new in Visual Studio "15" Preview 2, see the [Visual Studio "15" Preview 2 release notes](https://www.visualstudio.com/news/releasenotes/vs15-relnotes). For a list of fixed bugs and known issues, see the [Visual Studio "15" Preview 2 MSDN Article](https://msdn.microsoft.com/vs-knownissues/vs15-preview2).
+To find out what's new in Visual Studio "15" Preview 3, see the [Visual Studio "15" Preview 3 release notes](https://www.visualstudio.com/news/releasenotes/vs15-relnotes). For a list of fixed bugs and known issues, see the [Visual Studio "15" Preview 3 MSDN Article](https://msdn.microsoft.com/vs-knownissues/vs15-preview3).
 
 [System requirements](https://www.visualstudio.com/visual-studio-15-system-requirements-vs.aspx)
 
@@ -62,8 +62,7 @@ If complete control over reboots is required, such as in automation scenarios, i
 The installation/uninstallation will take a fair amount of time and on slower systems may exceed the default Chocolatey execution timeout (45 minutes). Use the --execution-timeout argument of choco.exe to increase that timeout.
     </description>
     <releaseNotes>
-15.0.25302.20160622: Updated release notes.
-15.0.25302.0: Some of the feature codes have changed in Preview 2. Please verify and update package parameters in customized installations.
+15.0.25428.1: Some of the feature codes have changed in Preview 3. Please verify and update package parameters in customized installations.
     </releaseNotes>
     <dependencies>
       <dependency id="vcredist2012" />

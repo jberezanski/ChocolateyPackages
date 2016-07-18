@@ -2,5 +2,5 @@
 
 Uninstall-VS `
     -PackageName 'visualstudio2017enterprise' `
-    -ApplicationName 'Microsoft Visual Studio Enterprise 15 Preview 2' `
+    -ApplicationName 'Microsoft Visual Studio Enterprise 15 Preview 3' `
     -UninstallerName 'vs_enterprise.exe'
