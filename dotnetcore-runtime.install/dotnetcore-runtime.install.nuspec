@@ -8,7 +8,7 @@
     <owners>Jakub Bereżański</owners>
     <licenseUrl>https://cdn.rawgit.com/dotnet/core/290743955c7dec3315e72da5dcd589b2bd177e71/LICENSE</licenseUrl>
     <projectUrl>https://dot.net/core</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/52f38af477ca7a425469b8e61b0f044da45aead5/icons/dotnetcore.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.NET Core is a general purpose development platform maintained by Microsoft and the .NET community on GitHub. It is cross-platform, supporting Windows, macOS and Linux, and can be used in device, cloud, and embedded/IoT scenarios.
 
