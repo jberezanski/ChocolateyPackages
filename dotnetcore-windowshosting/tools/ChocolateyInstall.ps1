@@ -80,6 +80,7 @@ function Get-PassiveOrQuietArgument
         Write-Verbose "Performing an $Scenario with visible progress window (default)."
         $passiveOrQuiet = 'passive'
     }
+    return $passiveOrQuiet
 }
 
 Ensure-IisOrIisExpressInstalled

@@ -19,6 +19,7 @@ The native installer is instructed to skip installing the .NET Core Runtime (OPT
     <summary>This package installs the ASP.NET Core Module for IIS and/or IIS Express, enabling hosting of ASP.NET Core applications.</summary>
     <tags>Microsoft .NET Core Runtime Redistributable ASP.NET Module ANCM admin</tags>
     <dependencies>
+      <dependency id="chocolatey-uninstall.extension" version="1.1.0" />
     </dependencies>
   </metadata>
 </package>
