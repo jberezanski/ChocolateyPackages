@@ -88,7 +88,7 @@ Ensure-IisOrIisExpressInstalled
 $passiveOrQuiet = Get-PassiveOrQuietArgument -Scenario 'installation'
 $arguments = @{
     packageName = $data.PackageName
-    silentArgs = "OPT_INSTALL_REDIST=0 /install /$passiveOrQuiet /norestart /log ""${Env:TEMP}\$($data.PackageName).log"""
+    silentArgs = "$($data.AdditionalInstallerArguments) /install /$passiveOrQuiet /norestart /log ""${Env:TEMP}\$($data.PackageName).log"""
     validExitCodes = @(
         0, # success
         3010 # success, restart required
@@ -96,9 +96,9 @@ $arguments = @{
     url = $data.Url
     checksum = $data.Checksum
     checksumType = $data.ChecksumType
-    url64 = $data.Url
-    checksum64 = $data.Checksum
-    checksumType64 = $data.ChecksumType
+    url64 = $data.Url64
+    checksum64 = $data.Checksum64
+    checksumType64 = $data.ChecksumType64
 }
 
 Install-ChocolateyPackage @arguments
