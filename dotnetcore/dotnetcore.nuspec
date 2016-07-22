@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>dotnetcore</id>
+    <version>1.0.0</version>
+    <title>Microsoft .NET Core</title>
+    <authors>Microsoft</authors>
+    <owners>Jakub Bereżański</owners>
+    <licenseUrl>https://cdn.rawgit.com/dotnet/core/290743955c7dec3315e72da5dcd589b2bd177e71/LICENSE</licenseUrl>
+    <projectUrl>https://dot.net/core</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.NET Core is a general purpose development platform maintained by Microsoft and the .NET community on GitHub. It is cross-platform, supporting Windows, macOS and Linux, and can be used in device, cloud, and embedded/IoT scenarios.
+
+This package provides the complete environment for running .NET Core console and ASP.NET Core applications.</description>
+    <summary>This package provides the complete environment for running .NET Core console and ASP.NET Core applications.</summary>
+    <tags>Microsoft .NET Core Runtime Redistributable</tags>
+    <dependencies>
+      <dependency id="dotnetcore-runtime" version="1.0.0" />
+      <dependency id="dotnetcore-windowshosting" version="1.0.0" />
+    </dependencies>
+  </metadata>
+</package>
