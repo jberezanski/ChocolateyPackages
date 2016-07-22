@@ -1,6 +1,8 @@
 ﻿$ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 2
 
+$data = & (Join-Path -Path (Split-Path -Path $MyInvocation.MyCommand.Path) -ChildPath data.ps1)
+
 function Get-DismPath
 {
     # .NET Core supports Windows 7 or later - this aligns nicely with dism.exe availability
@@ -65,33 +67,37 @@ function Test-QuietRequested
     return $Env:chocolateyPackageParameters -like '*Quiet*'
 }
 
-Ensure-IisOrIisExpressInstalled
-
-if (Test-QuietRequested) {
-    Write-Verbose 'Performing a quiet installation, as requested.'
-    $passiveOrQuiet = 'quiet'
-} else {
-    Write-Verbose 'Performing an installation with visible progress window (default).'
-    $passiveOrQuiet = 'passive'
+function Get-PassiveOrQuietArgument
+{
+    [CmdletBinding()]
+    Param (
+        [string] $Scenario = 'installation'
+    )
+    if (Test-QuietRequested) {
+        Write-Verbose "Performing a quiet $Scenario, as requested."
+        $passiveOrQuiet = 'quiet'
+    } else {
+        Write-Verbose "Performing an $Scenario with visible progress window (default)."
+        $passiveOrQuiet = 'passive'
+    }
 }
 
-$packageName = 'dotnetcore-windowshosting'
-$url = 'https://download.microsoft.com/download/A/3/8/A38489F3-9777-41DD-83F8-2CBDFAB2520C/DotNetCore.1.0.0-WindowsHosting.exe'
-$checksum = 'A9291EFEF99D1246CEA8A80DE776DBCEB40EE3CC'
-$checksumType = 'sha1'
+Ensure-IisOrIisExpressInstalled
+
+$passiveOrQuiet = Get-PassiveOrQuietArgument -Scenario 'installation'
 $arguments = @{
-    packageName = $packageName
-    silentArgs = "OPT_INSTALL_REDIST=0 /$passiveOrQuiet /norestart /log ""${Env:TEMP}\${packageName}.log"""
+    packageName = $data.PackageName
+    silentArgs = "OPT_INSTALL_REDIST=0 /install /$passiveOrQuiet /norestart /log ""${Env:TEMP}\$($data.PackageName).log"""
     validExitCodes = @(
         0, # success
         3010 # success, restart required
     )
-    url = $url
-    checksum = $checksum
-    checksumType = $checksumType
-    url64 = $url
-    checksum64 = $checksum
-    checksumType64 = $checksumType
+    url = $data.Url
+    checksum = $data.Checksum
+    checksumType = $data.ChecksumType
+    url64 = $data.Url
+    checksum64 = $data.Checksum
+    checksumType64 = $data.ChecksumType
 }
 
 Install-ChocolateyPackage @arguments
