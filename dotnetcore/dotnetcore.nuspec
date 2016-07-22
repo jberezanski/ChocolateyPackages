@@ -14,7 +14,7 @@
 
 This package provides the complete environment for running .NET Core console and ASP.NET Core applications.</description>
     <summary>This package provides the complete environment for running .NET Core console and ASP.NET Core applications.</summary>
-    <tags>Microsoft .NET Core Runtime Redistributable</tags>
+    <tags>Microsoft .NET Core Runtime Redistributable ASP.NET Module ANCM</tags>
     <dependencies>
       <dependency id="dotnetcore-runtime" version="1.0.0" />
       <dependency id="dotnetcore-windowshosting" version="1.0.0" />

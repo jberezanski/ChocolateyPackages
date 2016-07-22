@@ -1,5 +1,5 @@
 ﻿$ErrorActionPreference = 'Stop'
-Set-StrictMode -Version 5
+Set-StrictMode -Version 2
 
 function Test-QuietRequested
 {

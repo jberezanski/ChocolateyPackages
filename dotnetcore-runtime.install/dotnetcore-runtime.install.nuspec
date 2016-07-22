@@ -16,6 +16,7 @@ This package is required to run console applications with the .NET Core runtime.
     <summary>This package is required to run console applications with the .NET Core runtime.</summary>
     <tags>Microsoft .NET Core Runtime Redistributable admin</tags>
     <dependencies>
+      <dependency id="vcredist2015" version="14.0.23506.0" />
     </dependencies>
   </metadata>
 </package>

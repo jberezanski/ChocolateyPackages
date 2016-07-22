@@ -1,5 +1,5 @@
 ﻿$ErrorActionPreference = 'Stop'
-Set-StrictMode -Version 5
+Set-StrictMode -Version 2
 
 function Get-DismPath
 {
@@ -15,7 +15,7 @@ function Test-IisInstalled
 {
     $dism = Get-DismPath
     $iisState = 'Unknown'
-    & $dism /Online /Get-FeatureInfo /FeatureName:IIS-WebServer | Tee-Object -Variable dismOutput | Select-String -Pattern '^State : (\w+)$' | ForEach-Object { $iisState = $_.Matches.Groups[1] }
+    & $dism /English /Online /Get-FeatureInfo /FeatureName:IIS-WebServer | Tee-Object -Variable dismOutput | Select-String -Pattern '^State : (\w+)$' | ForEach-Object { $iisState = $_.Matches.Groups[1].Value }
     if ($LastExitCode -ne 0) {
         Write-Warning "Unable to determine IIS installation state (dism.exe exit code: $LastExitCode)"
         Write-Warning 'dism.exe output:'
@@ -24,7 +24,7 @@ function Test-IisInstalled
         Write-Debug 'dism.exe output:'
         $dismOutput | Write-Debug
     }
-    $iisInstalled = $iisState -eq 'Installed'
+    $iisInstalled = $iisState -eq 'Enabled'
     return $iisInstalled
 }
 

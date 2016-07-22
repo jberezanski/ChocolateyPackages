@@ -6,18 +6,18 @@
     <title>Microsoft .NET Core - Windows Server Hosting</title>
     <authors>Microsoft</authors>
     <owners>Jakub Bereżański</owners>
-    <licenseUrl>https://cdn.rawgit.com/dotnet/core/290743955c7dec3315e72da5dcd589b2bd177e71/LICENSE</licenseUrl>
+    <licenseUrl>https://cdn.rawgit.com/aspnet/Home/1f8898d3a153855e5057e7641ed0c1a5443afeac/LICENSE.txt</licenseUrl>
     <projectUrl>https://dot.net/core</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/52f38af477ca7a425469b8e61b0f044da45aead5/icons/dotnetcore.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.NET Core is a general purpose development platform maintained by Microsoft and the .NET community on GitHub. It is cross-platform, supporting Windows, macOS and Linux, and can be used in device, cloud, and embedded/IoT scenarios.
 
-This package installs the ASP.NET Core Module for IIS and/or IIS Express, enabling running of ASP.NET Core applications.
+This package installs the ASP.NET Core Module for IIS and/or IIS Express, enabling running of ASP.NET Core applications. IIS must be enabled and/or IIS Express must be installed prior to installing this package. ASP.NET Core does not use any managed IIS modules, so no ASP.NET IIS features need to be enabled.
 
-The native installer is instructed to skip installing the .NET Core Runtime (OPT_INSTALL_REDIST=0). The Chocolatey package dotnetcore-runtime should be used to install the runtime, if needed.
+The native installer is instructed to skip installing the .NET Core Runtime (OPT_INSTALL_REDIST=0). The package [dotnetcore-runtime](https://chocolatey.org/packages/dotnetcore-runtime) should be used to install the runtime when hosting "portable" ASP.NET Core applications (which use the machine-wide runtime). Hosting of "self-contained" ASP.NET Core applications does not require the runtime to be installed, because those applications include the desired runtime as part of their binaries.
 </description>
     <summary>This package installs the ASP.NET Core Module for IIS and/or IIS Express, enabling hosting of ASP.NET Core applications.</summary>
-    <tags>Microsoft .NET Core Runtime Redistributable ASP.NET Module admin</tags>
+    <tags>Microsoft .NET Core Runtime Redistributable ASP.NET Module ANCM admin</tags>
     <dependencies>
     </dependencies>
   </metadata>
