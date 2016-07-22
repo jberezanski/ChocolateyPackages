@@ -12,7 +12,12 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.NET Core is a general purpose development platform maintained by Microsoft and the .NET community on GitHub. It is cross-platform, supporting Windows, macOS and Linux, and can be used in device, cloud, and embedded/IoT scenarios.
 
-This package is required to run console applications with the .NET Core runtime. The .NET Core Runtime is installed machine-wide, using a native installer.</description>
+This package is required to run console applications with the .NET Core runtime. The .NET Core Runtime is installed machine-wide, using a native installer.
+
+The package supports the following parameters (--package-parameters, --params):
+Quiet - suppress display of native installer progress window (may be needed on Server Core)
+Example: cinst -y --params="Quiet" dotnetcore-runtime.install
+</description>
     <summary>This package is required to run console applications with the .NET Core runtime.</summary>
     <tags>Microsoft .NET Core Runtime Redistributable admin</tags>
     <dependencies>
