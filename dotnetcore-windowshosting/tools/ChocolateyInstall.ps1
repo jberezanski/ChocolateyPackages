@@ -17,7 +17,7 @@ function Test-IisInstalled
 {
     $dism = Get-DismPath
     $iisState = 'Unknown'
-    & $dism /English /Online /Get-FeatureInfo /FeatureName:IIS-WebServer | Tee-Object -Variable dismOutput | Select-String -Pattern '^State : (\w+)$' | ForEach-Object { $iisState = $_.Matches.Groups[1].Value }
+    & $dism /English /Online /Get-FeatureInfo /FeatureName:IIS-WebServer | Tee-Object -Variable dismOutput | Select-String -Pattern '^State : (\w+)$' | ForEach-Object { $iisState = $_.Matches[0].Groups[1].Value }
     if ($LastExitCode -ne 0) {
         Write-Warning "Unable to determine IIS installation state (dism.exe exit code: $LastExitCode)"
         Write-Warning 'dism.exe output:'
