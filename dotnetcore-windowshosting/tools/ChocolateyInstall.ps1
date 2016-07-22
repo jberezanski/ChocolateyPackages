@@ -53,7 +53,7 @@ function Ensure-IisOrIisExpressInstalled
     if ($iisInstalled) {
         Write-Verbose 'IIS is enabled.'
     } else {
-        Write-Warning 'IIS is not enabled. The ASP.NET Core Module for IIS requires IIS to be enabled before installing the module. To install the module, enable IIS and install this package again using the -Force switch.'
+        Write-Warning 'IIS is not enabled. The ASP.NET Core Module for IIS requires IIS to be enabled before installing the module. To install the module, enable IIS and install this package again using the --force switch.'
     }
     if ($iisExpressInstalled) {
         Write-Verbose 'IIS Express is installed.'
