@@ -7,6 +7,7 @@
     <authors>Microsoft</authors>
     <owners>Jakub Bereżański</owners>
     <licenseUrl>https://cdn.rawgit.com/dotnet/core/290743955c7dec3315e72da5dcd589b2bd177e71/LICENSE</licenseUrl>
+    <copyright>.NET Foundation and Contributors</copyright>
     <projectUrl>https://dot.net/core</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/52f38af477ca7a425469b8e61b0f044da45aead5/icons/dotnetcore.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
