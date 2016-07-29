@@ -3,7 +3,7 @@
   <metadata>
     <id>dotnetcore-runtime.install</id>
     <version>1.0.0</version>
-    <title>Microsoft .NET Core Runtime</title>
+    <title>Microsoft .NET Core Runtime (Install)</title>
     <authors>Microsoft</authors>
     <owners>Jakub Bereżański</owners>
     <licenseUrl>https://cdn.rawgit.com/dotnet/core/290743955c7dec3315e72da5dcd589b2bd177e71/LICENSE</licenseUrl>
