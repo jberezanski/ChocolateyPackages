@@ -1,8 +1,8 @@
 ﻿$productNameWithVersion = 'Microsoft .NET Framework 4.6.2'
-$release = 394747
+$release = 394802
 $packageName = 'dotnet4.6.2'
-$url = 'https://download.microsoft.com/download/1/7/5/175E764B-E417-4FBB-95DF-62676FC7B2EA/NDP462-KB3120735-x86-x64-AllOS-ENU.exe'
-$checksum = '8DA7B2FD679B677AEF15CD45AE4F49D5973E99EF'
+$url = 'https://download.microsoft.com/download/F/9/4/F942F07D-F26F-4F30-B4E3-EBD54FABA377/NDP462-KB3151800-x86-x64-AllOS-ENU.exe'
+$checksum = 'A70F856BDA33D45AD0A8AD035F73092441715431'
 $checksumType = 'sha1'
 $arguments = @{
     packageName = $packageName
