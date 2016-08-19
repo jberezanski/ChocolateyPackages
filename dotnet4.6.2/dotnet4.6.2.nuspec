@@ -15,6 +15,9 @@ You can see the full set of changes in the .NET Framework 4.6.2 in the [change l
 
 The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.6.2-devpack).</description>
     <releaseNotes>
+##### Software
+https://support.microsoft.com/en-us/kb/3151796
+##### Package
 4.6.01590.0: Initial package release.
     </releaseNotes>
     <summary>The Microsoft .NET Framework 4.6.2 is a highly compatible in-place update to the Microsoft .NET Framework 4, the .NET Framework 4.5, the .NET Framework 4.5.1, the .NET Framework 4.5.2, the .NET Framework 4.6, and the .NET Framework 4.6.1.</summary>
