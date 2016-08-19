@@ -17,7 +17,7 @@ The matching Developer Pack can be installed using [this package](https://chocol
     <summary>The Microsoft .NET Framework 4.6.2 is a highly compatible in-place update to the Microsoft .NET Framework 4, the .NET Framework 4.5, the .NET Framework 4.5.1, the .NET Framework 4.5.2, the .NET Framework 4.6, and the .NET Framework 4.6.1.</summary>
     <tags>Microsoft .NET Framework 4.6.2 Redistributable admin</tags>
     <dependencies>
-      <dependency id="KB2919355" />
+      <dependency id="KB2919355" version="1.0.20160719" />
     </dependencies>
   </metadata>
 </package>
