@@ -147,21 +147,42 @@ function Generate-InstallArgumentsString
         [hashtable] $parameters,
         [string] $adminFile,
         [Parameter(Mandatory = $true)]
-        [string] $logFilePath
+        [string] $logFilePath,
+        [switch] $assumeNewVS15Installer
     )
-    Write-Debug "Running 'Generate-InstallArgumentsString' with parameters:'$parameters', adminFile:'$adminFile', logFilePath:'$logFilePath'";
-    $s = "/Passive /NoRestart /Log ""$logFilePath"""
-
-    if ($adminFile -ne '')
+    Write-Debug "Running 'Generate-InstallArgumentsString' with parameters:'$parameters', adminFile:'$adminFile', logFilePath:'$logFilePath', assumeNewVS15Installer:'$assumeNewVS15Installer'";
+    if ($assumeNewVS15Installer)
     {
-        $s = $s + " /AdminFile $adminFile"
+        Write-Warning "The new VS ""15"" installer does not support setting the path to the log file yet."
+        $s = ''
+        if ($adminFile -ne '')
+        {
+            Write-Warning "The new VS ""15"" installer does not support an admin file yet."
+        }
+        Write-Warning "The new VS ""15"" installer does not support silent installation yet."
+    }
+    else
+    {
+        $s = "/Passive /NoRestart /Log ""$logFilePath"""
+
+        if ($adminFile -ne '')
+        {
+            $s = $s + " /AdminFile $adminFile"
+        }
     }
 
     $pk = $parameters['ProductKey']
     if ($pk -and (-not [string]::IsNullOrEmpty($pk)))
     {
-        Write-Verbose "Using provided product key: ...-$($pk.Substring([Math]::Max($pk.Length - 5, 0)))"
-        $s = $s + " /ProductKey $pk"
+        if ($assumeNewVS15Installer)
+        {
+            Write-Warning "The new VS ""15"" installer does not support providing a product key yet."
+        }
+        else
+        {
+            Write-Verbose "Using provided product key: ...-$($pk.Substring([Math]::Max($pk.Length - 5, 0)))"
+            $s = $s + " /ProductKey $pk"
+        }
     }
 
     return $s
@@ -172,10 +193,20 @@ function Generate-UninstallArgumentsString
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $true)]
-        [string] $logFilePath
+        [string] $logFilePath,
+        [switch] $assumeNewVS15Installer
     )
-    Write-Debug "Running 'Generate-UninstallArgumentsString' with logFilePath:'$logFilePath'";
-    $s = "/Uninstall /Force /Passive /NoRestart /Log ""$logFilePath"""
+    Write-Debug "Running 'Generate-UninstallArgumentsString' with logFilePath:'$logFilePath', assumeNewVS15Installer:'$assumeNewVS15Installer'";
+    if ($assumeNewVS15Installer)
+    {
+        Write-Warning "The new VS ""15"" installer does not support setting the path to the log file yet."
+        $s = "/uninstall"
+        Write-Warning "The new VS ""15"" installer does not support silent uninstallation yet."
+    }
+    else
+    {
+        $s = "/Uninstall /Force /Passive /NoRestart /Log ""$logFilePath"""
+    }
 
     return $s
 }
@@ -359,7 +390,8 @@ function Install-VSChocolateyPackage
         [string] $checksumType = '',
         [string] $checksum64 = '',
         [string] $checksumType64 = '',
-        [string] $logFilePath
+        [string] $logFilePath,
+        [switch] $assumeNewVS15Installer
     )
 
     Write-Debug "Running 'Install-VSChocolateyPackage' for $packageName with url:'$url', args:'$silentArgs', url64bit:'$url64bit', checksum:'$checksum', checksumType:'$checksumType', checksum64:'$checksum64', checksumType64:'$checksumType64', logFilePath:'$logFilePath'";
@@ -392,6 +424,7 @@ function Install-VSChocolateyPackage
         silentArgs = $silentArgs
         file = $localFilePath
         logFilePath = $logFilePath
+        assumeNewVS15Installer = $assumeNewVS15Installer
     }
     Install-VSChocolateyInstallPackage @arguments
 }
@@ -409,9 +442,10 @@ function Install-VSChocolateyInstallPackage {
         [string] $packageName,
         [string] $silentArgs = '',
         [string] $file,
-        [string] $logFilePath
+        [string] $logFilePath,
+        [switch] $assumeNewVS15Installer
     )
-    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:'$file', silentArgs:'$silentArgs', logFilePath:'$logFilePath'"
+    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:'$file', silentArgs:'$silentArgs', logFilePath:'$logFilePath', assumeNewVS15Installer:'$assumeNewVS15Installer'"
     $installMessage = "Installing $packageName..."
     Write-Host $installMessage
 
@@ -452,9 +486,10 @@ function Start-VSServicingOperation
         [string] $silentArgs,
         [string] $file,
         [string] $logFilePath,
-        [string[]] $operationTexts
+        [string[]] $operationTexts,
+        [switch] $assumeNewVS15Installer
     )
-    Write-Debug "Running 'Start-VSServicingOperation' for $packageName with silentArgs:'$silentArgs', file:'$file', logFilePath:$logFilePath', operationTexts:'$operationTexts'"
+    Write-Debug "Running 'Start-VSServicingOperation' for $packageName with silentArgs:'$silentArgs', file:'$file', logFilePath:$logFilePath', operationTexts:'$operationTexts', assumeNewVS15Installer:'$assumeNewVS15Installer'"
 
     $frobbed, $frobbing, $frobbage = $operationTexts
 
@@ -479,6 +514,37 @@ function Start-VSServicingOperation
     if (($blockExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $blockExitCodes }
 
     $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
+    if ($assumeNewVS15Installer)
+    {
+        Write-Debug 'Looking for vs_installer.exe processes spawned by the bootstrapper'
+        $installerProcesses = Get-Process -Name 'vs_installer' -ErrorAction SilentlyContinue
+        $installerProcessesCount = ($installerProcesses | Measure-Object).Count
+        if ($installerProcessesCount -gt 0)
+        {
+            Write-Debug "Found $installerProcessesCount vs_installer.exe process(es): $($installerProcesses | Select-Object -ExpandProperty Id)"
+            Write-Debug "Waiting for all vs_installer.exe processes to exit"
+            $installerProcesses | Wait-Process
+            foreach ($proc in $installerProcesses)
+            {
+                if ($proc.ExitCode -ne 0)
+                {
+                    Write-Warning "vs_installer.exe process $($proc.Id) exited with code $($proc.ExitCode)"
+                    if ($exitCode -eq 0)
+                    {
+                        $exitCode = $proc.ExitCode
+                    }
+                }
+                else
+                {
+                    Write-Debug "vs_installer.exe process $($proc.Id) exited with code $($proc.ExitCode)"
+                }
+            }
+        }
+        else
+        {
+            Write-Debug 'Did not find any running vs_installer.exe processes.'
+        }
+    }
     $Env:ChocolateyExitCode = $exitCode
     $warnings = @()
     if (($blockExitCodes | Measure-Object).Count -gt 0 -and $blockExitCodes -contains $exitCode)
@@ -575,7 +641,9 @@ Install-ChocolateyPackage
       [string] $PackageName,
       [string] $ApplicationName,
       [string] $Url,
-      [string] $ChecksumSha1
+      [string] $ChecksumSha1,
+      [switch] $AssumeNewVS15Installer,
+      [string] $InstallerDisplayName = $ApplicationName
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
     {
@@ -585,28 +653,42 @@ Install-ChocolateyPackage
     }
     Write-Debug "Running 'Install-VS' for $PackageName with Url:'$Url' ChecksumSha1:$ChecksumSha1";
 
-    $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ApplicationName
+    $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $InstallerDisplayName
     $count = ($uninstallKey | Measure-Object).Count
     if ($count -gt 0)
     {
-        Write-Warning "$ApplicationName is already installed. Please use Programs and Features in the Control Panel to modify or repair it."
+        if ($AssumeNewVS15Installer)
+        {
+            Write-Warning "$ApplicationName is already installed. Please use $InstallerDisplayName in the Start Menu to modify or repair it."
+        }
+        else
+        {
+            Write-Warning "$ApplicationName is already installed. Please use Programs and Features in the Control Panel to modify or repair it."
+        }
         return
     }
-
-    $defaultAdminFile = (Join-Path $PSScriptRoot 'AdminDeployment.xml')
-    Write-Debug "Default AdminFile: $defaultAdminFile"
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     if ($packageParameters.Length -gt 0) { Write-Debug $packageParameters }
 
-    $adminFile = Generate-AdminFile $packageParameters $defaultAdminFile $PackageName
-    Write-Debug "AdminFile: $adminFile"
+    if ($AssumeNewVS15Installer)
+    {
+        $adminFile = $null
+    }
+    else
+    {
+        $defaultAdminFile = (Join-Path $PSScriptRoot 'AdminDeployment.xml')
+        Write-Debug "Default AdminFile: $defaultAdminFile"
 
-    Update-AdminFile $packageParameters $adminFile
+        $adminFile = Generate-AdminFile $packageParameters $defaultAdminFile $PackageName
+        Write-Debug "AdminFile: $adminFile"
+
+        Update-AdminFile $packageParameters $adminFile
+    }
 
     $logFilePath = Join-Path $Env:TEMP "${PackageName}.log"
     Write-Debug "Log file path: $logFilePath"
-    $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath
+    $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS15Installer:$AssumeNewVS15Installer
 
     $arguments = @{
         packageName = $PackageName
@@ -615,6 +697,7 @@ Install-ChocolateyPackage
         checksum = $ChecksumSha1
         checksumType = 'sha1'
         logFilePath = $logFilePath
+        assumeNewVS15Installer = $AssumeNewVS15Installer
     }
     $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Install-VSChocolateyPackage $argumentsDump"
@@ -655,7 +738,9 @@ Uninstall-ChocolateyPackage
     param(
       [string] $PackageName,
       [string] $ApplicationName,
-      [string] $UninstallerName
+      [string] $UninstallerName,
+      [switch] $AssumeNewVS15Installer,
+      [string] $InstallerDisplayName = $ApplicationName
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
     {
@@ -663,30 +748,40 @@ Uninstall-ChocolateyPackage
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Uninstall-VS' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName'";
+    Write-Debug "Running 'Uninstall-VS' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName' AssumeNewVS15Installer:'$AssumeNewVS15Installer' InstallerDisplayName:'$InstallerDisplayName'";
 
     $informMaintainer = "Please report this to the maintainer of this package ($PackageName)."
-    $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ApplicationName
+    $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $InstallerDisplayName
     $count = ($uninstallKey | Measure-Object).Count
     Write-Debug "Found $count Uninstall key(s)"
     if ($count -eq 0)
     {
-        Write-Warning "Uninstall information for $ApplicationName could not be found. This probably means the application was uninstalled outside Chocolatey."
+        Write-Warning "Uninstall information for $InstallerDisplayName could not be found. This probably means the application was uninstalled outside Chocolatey."
         return
     }
     if ($count -gt 1)
     {
-        throw "More than one Uninstall key found for $ApplicationName! $informMaintainer"
+        throw "More than one Uninstall key found for $InstallerDisplayName! $informMaintainer"
     }
 
     Write-Debug "Using Uninstall key: $($uninstallKey.PSPath)"
     $uninstallString = $uninstallKey | Get-ItemProperty -Name UninstallString | Select-Object -ExpandProperty UninstallString
     Write-Debug "UninstallString: $uninstallString"
-    if (-not ($uninstallString -match '^\s*(\"[^\"]+\")|([^\s]+)'))
+    if ($AssumeNewVS15Installer)
+    {
+        # C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe /uninstall
+        $uninstallerExePathRegexString = '^(.+[^\s])\s/uninstall$'
+    }
+    else
+    {
+        # "C:\ProgramData\Package Cache\{4f075c79-8ee3-4c85-9408-828736d1f7f3}\vs_community.exe"  /uninstall
+        $uninstallerExePathRegexString = '^\s*(\"[^\"]+\")|([^\s]+)'
+    }
+    if (-not ($uninstallString -match $uninstallerExePathRegexString))
     {
         throw "UninstallString '$uninstallString' is not of the expected format. $informMaintainer"
     }
-    $uninstallerPath = $matches[0].Trim('"')
+    $uninstallerPath = $matches[1].Trim('"')
     Write-Debug "uninstallerPath: $uninstallerPath"
     if ((Split-Path -Path $uninstallerPath -Leaf) -ne $UninstallerName)
     {
@@ -695,7 +790,7 @@ Uninstall-ChocolateyPackage
 
     $logFilePath = Join-Path $Env:TEMP "${PackageName}_uninstall.log"
     Write-Debug "Log file path: $logFilePath"
-    $silentArgs = Generate-UninstallArgumentsString -logFilePath $logFilePath
+    $silentArgs = Generate-UninstallArgumentsString -logFilePath $logFilePath -assumeNewVS15Installer:$AssumeNewVS15Installer
 
     $arguments = @{
         packageName = $PackageName
