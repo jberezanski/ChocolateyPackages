@@ -30,9 +30,9 @@ For a few basic usage examples, see the [DiskSpd page on the TechNet Gallery](ht
 The full documentation is installed with the package; you can also [read it online](https://github.com/Microsoft/diskspd/blob/master/DiskSpd_Documentation.pdf).
     </description>
     <releaseNotes>
-### Software
+##### Software
 [DiskSpd Release Notes](https://github.com/Microsoft/diskspd/blob/master/README.md)
-### Package
+##### Package
 2.0.17: Initial package release for software version 2.0.17.
     </releaseNotes>
     <dependencies>
