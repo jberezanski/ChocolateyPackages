@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>diskspd</id>
+    <version>2.0.17</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/diskspd</packageSourceUrl>
+    <owners>Jakub Bereżański</owners>
+    <title>The DiskSpd Storage Performance Tool</title>
+    <authors>Microsoft</authors>
+    <projectUrl>http://aka.ms/diskspd</projectUrl>
+    <copyright>2016 Microsoft</copyright>
+    <licenseUrl>http://aka.ms/diskspd</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/microsoft/diskspd</projectSourceUrl>
+    <docsUrl>https://github.com/Microsoft/diskspd/blob/master/DiskSpd_Documentation.pdf</docsUrl>
+    <bugTrackerUrl>https://github.com/microsoft/diskspd/issues</bugTrackerUrl>
+    <tags>diskspd storage test performance benchmark load generator iops sqliosim sqlio sql server</tags>
+    <summary>DiskSpd is a storage load generator / performance test tool from the Microsoft Windows, Windows Server and Cloud Server Infrastructure Engineering teams.</summary>
+    <description>
+DiskSpd is a highly customizable I/O load generator tool that can be used to run storage performance tests against files, partitions, or physical disks. DiskSpd can generate a wide variety of disk request patterns for use in analyzing and diagnosing storage performance issues, without running a full end-to-end workload. You can simulate SQL Server I/O activity or more complex, changing access patterns, returning detailed XML output for use in automated results analysis.
+
+Select highlights include:
+- Ability to target physical disks in addition to partitions and files
+- Variable read/write IO percentage settings
+- Custom CPU affinity options
+- Consumable XML output option
+- Synchronization and tracing functionality
+
+For a few basic usage examples, see the [DiskSpd page on the TechNet Gallery](http://aka.ms/diskspd).
+The full documentation is installed with the package; you can also [read it online](https://github.com/Microsoft/diskspd/blob/master/DiskSpd_Documentation.pdf).
+    </description>
+    <releaseNotes>
+### Software
+[DiskSpd Release Notes](https://github.com/Microsoft/diskspd/blob/master/README.md)
+### Package
+2.0.17: Initial package release for software version 2.0.17.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey" version="0.9.8.20" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
