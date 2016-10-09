@@ -2,8 +2,8 @@
 
 Install-VS `
     -PackageName 'visualstudio2017enterprise' `
-    -ApplicationName 'Microsoft Visual Studio Enterprise 15 Preview 4' `
-    -Url 'https://download.microsoft.com/download/2/0/0/200fe227-bc0d-4dc5-b78d-15e70cc85e81/vs_bootstrapper.exe' `
-    -ChecksumSha1 '82AC865C7987B0F9CF3F5E6BF5B17C659A951439' `
+    -ApplicationName 'Microsoft Visual Studio Enterprise 15 Preview 5' `
+    -Url 'https://download.microsoft.com/download/D/1/5/D15E2DBA-ED51-487F-8CC0-4126D90043FB/vs_Enterprise.exe' `
+    -ChecksumSha1 'EF62172B0B8394BE9F1B52DB9986EF982209BBF1' `
     -AssumeNewVS15Installer `
     -InstallerDisplayName 'Microsoft Visual Studio Installer'
