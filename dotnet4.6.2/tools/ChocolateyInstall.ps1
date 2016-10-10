@@ -9,7 +9,8 @@ $arguments = @{
     silentArgs = "/Passive /NoRestart /Log ""${Env:TEMP}\${packageName}.log"""
     validExitCodes = @(
         0, # success
-        3010 # success, restart required
+        3010, # success, restart required
+        5100 # success, restart required
     )
     url = $url
     checksum = $checksum
