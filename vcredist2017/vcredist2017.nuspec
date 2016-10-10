@@ -32,7 +32,7 @@
 14.0.24516: Initial release for Visual Studio "15" Preview 5
     </releaseNotes>
     <dependencies>
-      <!--<dependency id="KB3033929" />--> <!-- for Win7 SP1; package is TODO-->
+      <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
     </dependencies>
   </metadata>
