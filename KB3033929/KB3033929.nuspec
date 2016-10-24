@@ -22,7 +22,7 @@ This update is required to install Visual Studio "15" on Windows 7 or Windows Se
         <releaseNotes>
 1.0.0: initial package release
         </releaseNotes>
-        <tags>Microsoft Visual Studio 2015 Windows Update KB3033929</tags>
+        <tags>Microsoft Windows Update KB3033929 admin Visual Studio 15</tags>
         <dependencies>
         </dependencies>
     </metadata>
