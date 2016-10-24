@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>vcredist2017</id>
-    <version>14.0.24516.0-preview5</version>
+    <version>14.0.24516.20161024-preview5</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/vcredist2017</packageSourceUrl>
     <owners>Jakub Bereżański</owners>
     <title>Microsoft Visual C++ Redistributable for Visual Studio "15" Preview 5 </title>
@@ -29,7 +29,7 @@
 ##### Software
 [Visual Studio "15" Release Notes](https://www.visualstudio.com/news/releasenotes/vs15-relnotes)
 ##### Package
-14.0.24516: Initial release for Visual Studio "15" Preview 5
+14.0.24516.20161024: Added dependency on KB3033929
     </releaseNotes>
     <dependencies>
       <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
