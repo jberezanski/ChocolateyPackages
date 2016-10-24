@@ -3,6 +3,7 @@
   <metadata>
     <id>visualstudio2017enterprise</id>
     <version>15.0.25802.20161024-preview5</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017enterprise</packageSourceUrl>
     <owners>Jakub Bereżański</owners>
     <title>Visual Studio "15" Enterprise (Preview 5)</title>
     <authors>Microsoft</authors>
@@ -10,8 +11,10 @@
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/2088adf39b0254247dfbd7a32c286ed9437a80af/icons/vs15.png</iconUrl>
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>Visual Studio Enterprise "15" Preview 5 is an early build of the next major release of Visual Studio.</summary>
+    <docsUrl>https://www.visualstudio.com/en-us/news/releasenotes/vs15-relnotes</docsUrl>
+    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
     <tags>Microsoft Visual Studio VisualStudio 15 vNext v.Next VS VS15 2017 Enterprise IDE admin notSilent</tags>
+    <summary>Visual Studio Enterprise "15" Preview 5 is an early build of the next major release of Visual Studio.</summary>
     <description>
 ### Overview
 

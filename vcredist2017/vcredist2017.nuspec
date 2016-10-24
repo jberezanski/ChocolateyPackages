@@ -13,6 +13,7 @@
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://msdn.microsoft.com/library/jj620919.aspx</docsUrl>
+    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
     <tags>Microsoft Visual C++ Redistributable 15 vNext v.Next 2017 Studio admin</tags>
     <summary>Run-time components that are required to run C++ applications that are built by using Visual Studio "15" Preview 5</summary>
     <description>Microsoft Visual C++ Redistributable for Visual Studio "15" Preview 5 installs run-time components of Visual C++ libraries. These components are required to run C++ applications that are developed using Visual Studio "15" Preview 5 and link dynamically to Visual C++ libraries. The packages can be used to run such applications on a computer even if it does not have Visual Studio “15” Preview 5 installed. These packages also install run-time components of C Runtime (CRT), Standard C++, MFC, C++ AMP, and OpenMP libraries.
