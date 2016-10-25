@@ -14,11 +14,19 @@
         <tags>Microsoft Windows Update KB976932 admin notSilent</tags>
         <summary>The update installs Service Pack 1 for Windows 7 and for Windows Server 2008 R2</summary>
         <description>
-SP1 for Windows 7 and for Windows Server 2008 R2 is a recommended collection of updates and improvements to Windows that are combined into a single installable update. 
+### Overview
+
+Service Pack 1 (SP1) for Windows 7 and for Windows Server 2008 R2 is a recommended collection of updates and improvements to Windows that are combined into a single installable update. 
 
 Windows 7 SP1 can help make your computer safer and more reliable. Windows Server 2008 R2 SP1 provides a comprehensive set of innovations for enterprise-class virtualization. This includes new virtualization capabilities with Dynamic Memory and Microsoft RemoteFX.
 
-***NOTE***: the computer will restart automatically a few times during the installation of this update.
+This update is also a prerequisite for many applications and later updates.
+
+### Installation notes
+
+The computer will need to be restarted after the installation of this update.
+
+The installation will take a fair amount of time and on slower systems may exceed the default Chocolatey execution timeout (45 minutes). Use the --execution-timeout argument of choco.exe to increase that timeout.
         </description>
         <releaseNotes>
 1.0.0: initial package release
