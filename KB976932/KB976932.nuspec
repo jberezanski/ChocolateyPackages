@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>KB976932</id>
+        <version>1.0.0</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB976932</packageSourceUrl>
+        <owners>Jakub Bereżański</owners>
+        <title>Service Pack 1 (SP1) for Windows 7 and for Windows Server 2008 R2</title>
+        <authors>Microsoft</authors>
+        <projectUrl>https://support.microsoft.com/en-us/kb/976932</projectUrl>
+        <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
+        <licenseUrl>https://support.microsoft.com/en-us/kb/976932</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>Microsoft Windows Update KB976932 admin notSilent</tags>
+        <summary>The update installs Service Pack 1 for Windows 7 and for Windows Server 2008 R2</summary>
+        <description>
+SP1 for Windows 7 and for Windows Server 2008 R2 is a recommended collection of updates and improvements to Windows that are combined into a single installable update. 
+
+Windows 7 SP1 can help make your computer safer and more reliable. Windows Server 2008 R2 SP1 provides a comprehensive set of innovations for enterprise-class virtualization. This includes new virtualization capabilities with Dynamic Memory and Microsoft RemoteFX.
+
+***NOTE***: the computer will restart automatically a few times during the installation of this update.
+        </description>
+        <releaseNotes>
+1.0.0: initial package release
+        </releaseNotes>
+        <dependencies>
+<!--
+            <dependency id="KB2454826" version="1.0.0" />
+            <dependency id="KB2534366" version="1.0.0" />
+            <dependency id="KB2533552" version="1.0.0" />
+-->
+        </dependencies>
+    </metadata>
+</package>
