@@ -17,6 +17,8 @@
 Microsoft has released a security advisory for IT professionals about SHA-2 code signing support. The security advisory announces the availability of a security update and contains additional security-related information. To view the security advisory, go to the following Microsoft website: 
 https://technet.microsoft.com/en-us/library/security/3033929
 
+This package requires Service Pack 1 for Windows 7 or Windows Server 2008 R2 to be installed first. The [KB976932 package](https://chocolatey.org/packages/KB976932) may be used to install it.
+
 On systems other than Windows 7 or Windows Server 2008 R2, this package installs successfully, but does nothing.
 
 This update is required to install Visual Studio "15" on Windows 7 or Windows Server 2008 R2.
