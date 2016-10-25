@@ -15,6 +15,12 @@ if (Get-WmiObject -Class Win32_QuickFixEngineering -Filter ('HotFixID = "{0}"' -
     return
 }
 
+$os = Get-WmiObject -Class Win32_OperatingSystem
+if ($os.ServicePackMajorVersion -lt 1)
+{
+    throw 'This update requires Service Pack 1 to be installed first. The "KB976932" package may be used to install it.'
+}
+
 if ($os.ProductType -eq '1') {
     # Windows 7
     $url = "https://download.microsoft.com/download/3/7/4/37473F39-5728-4153-9A25-64C09DE9ED52/Windows6.1-KB3033929-x86.msu"
