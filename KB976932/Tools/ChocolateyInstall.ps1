@@ -22,6 +22,16 @@ if ($os.ServicePackMajorVersion -ge 1)
     return
 }
 
+# test Windows Update reboot markers
+$rebootPendingCbs = Test-Path -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending'
+Write-Verbose "Component Based Servicing signals reboot pending: $rebootPendingCbs"
+$rebootPendingWuAu = Test-Path -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired'
+Write-Verbose "Automatic Updates signal reboot required: $rebootPendingWuAu"
+if ($rebootPendingCbs -or $rebootPendingWuAu)
+{
+    throw 'The computer needs to be rebooted before installing Service Pack 1. Please reboot the computer and try installing this package again.'
+}
+
 Write-Host "Installing $($os.Caption) Service Pack 1 ($kb)"
 
 $url = "https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X86.exe"
