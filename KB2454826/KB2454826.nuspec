@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>KB2454826</id>
+        <version>1.0.0</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB2454826</packageSourceUrl>
+        <owners>Jakub Bereżański</owners>
+        <title>Performance and functionality update for Windows 7 and for Windows Server 2008 R2</title>
+        <authors>Microsoft</authors>
+        <projectUrl>https://support.microsoft.com/en-us/kb/2454826</projectUrl>
+        <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
+        <licenseUrl>https://support.microsoft.com/en-us/kb/2454826</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>Microsoft Windows Update KB2454826 admin SP1 Service Pack 1</tags>
+        <summary>This update provides a set of performance and functionality improvements to graphics, XPS, and Media Foundation components.</summary>
+        <description>
+This update provides a set of performance and functionality improvements to graphics, XPS, and Media Foundation components:
+- Functionality and performance improvements for the graphics platform.
+- Performance improvements when you print from XPS-based applications to GDI-based print drivers.
+- Functionality and performance improvements for some streaming issues that are related to Media Foundation.
+
+This update is one of the recommended updates to install before installing Service Pack 1 for Windows 7 or Windows Server 2008 R2.
+
+On systems other than Windows 7 or Windows Server 2008 R2, this package installs successfully, but does nothing.
+        </description>
+        <releaseNotes>
+1.0.0: initial package release
+        </releaseNotes>
+        <dependencies>
+        </dependencies>
+    </metadata>
+</package>

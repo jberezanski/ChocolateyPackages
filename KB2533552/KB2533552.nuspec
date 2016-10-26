@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>KB2533552</id>
+        <version>1.0.0</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB2533552</packageSourceUrl>
+        <owners>Jakub Bereżański</owners>
+        <title>"0xC000009A" error message when you try to install Windows 7 SP1 or Windows Server 2008 R2 SP1</title>
+        <authors>Microsoft</authors>
+        <projectUrl>https://support.microsoft.com/en-us/kb/2533552</projectUrl>
+        <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
+        <licenseUrl>https://support.microsoft.com/en-us/kb/2533552</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>Microsoft Windows Update KB2533552 admin SP1 Service Pack 1</tags>
+        <summary>This update fixes an issue that may occur during installation of Service Pack 1 for Windows 7 or Windows Server 2008 R2.</summary>
+        <description>
+When you try to install Windows 7 Service Pack 1 (SP1) or Windows Server 2008 R2 Service Pack 1 (SP1) on a computer that has more than 10 language packs installed, the computer stops responding at a black screen. Additionally, you receive an "0xC000009A" error message. This issue occurs because the number of open registry key handles for subkeys that have the same name is limited to 65,535 in the registry. Each language pack that is installed on the computer increases the number of open registry key handles. This update resolves this issue.
+
+This update is one of the recommended updates to install before installing Service Pack 1 for Windows 7 or Windows Server 2008 R2.
+
+On systems other than Windows 7 or Windows Server 2008 R2, this package installs successfully, but does nothing.
+        </description>
+        <releaseNotes>
+1.0.0: initial package release
+        </releaseNotes>
+        <dependencies>
+        </dependencies>
+    </metadata>
+</package>
