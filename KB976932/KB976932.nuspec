@@ -11,8 +11,8 @@
         <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
         <licenseUrl>https://support.microsoft.com/en-us/kb/976932</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <tags>Microsoft Windows Update KB976932 admin notSilent</tags>
-        <summary>The update installs Service Pack 1 for Windows 7 and for Windows Server 2008 R2</summary>
+        <tags>Microsoft Windows Update KB976932 admin Service Pack 1 SP1</tags>
+        <summary>The update installs Service Pack 1 for Windows 7 and for Windows Server 2008 R2.</summary>
         <description>
 ### Overview
 
@@ -27,16 +27,16 @@ This update is also a prerequisite for many applications and later updates.
 The computer will need to be restarted after the installation of this update.
 
 The installation will take a fair amount of time and on slower systems may exceed the default Chocolatey execution timeout (45 minutes). Use the --execution-timeout argument of choco.exe to increase that timeout.
+
+On systems other than Windows 7 or Windows Server 2008 R2, this package installs successfully, but does nothing.
         </description>
         <releaseNotes>
 1.0.0: initial package release
         </releaseNotes>
         <dependencies>
-<!--
             <dependency id="KB2454826" version="1.0.0" />
             <dependency id="KB2534366" version="1.0.0" />
             <dependency id="KB2533552" version="1.0.0" />
--->
         </dependencies>
     </metadata>
 </package>

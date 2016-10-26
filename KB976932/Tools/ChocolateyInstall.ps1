@@ -24,8 +24,6 @@ if ($os.ServicePackMajorVersion -ge 1)
 
 Write-Host "Installing $($os.Caption) Service Pack 1 ($kb)"
 
-Write-Warning 'TODO: languages!'
-
 $url = "https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X86.exe"
 $url64 = "https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X64.exe"
 $checksum = 'E5449839955A22FC4DD596291AFF1433B998F9797E1C784232226ABA1F8ABD97'
