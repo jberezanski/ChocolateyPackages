@@ -5,7 +5,7 @@
         <version>1.0.0</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB2534366</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
-        <title>"0xC000009A" error message when you try to install Windows 7 SP1 or Windows Server 2008 R2 SP1</title>
+        <title>Fix for error 0xC000009A when installing SP1 for Windows 7 / Server 2008 R2</title>
         <authors>Microsoft</authors>
         <projectUrl>https://support.microsoft.com/en-us/kb/2534366</projectUrl>
         <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>

@@ -5,7 +5,7 @@
         <version>1.0.0</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB2533552</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
-        <title>An update that prevents a "0xC0000034" error message when you try to install Windows 7 SP1, Windows Server 2008 R2 SP1, or Windows Embedded Standard 7 SP1</title>
+        <title>Fix for error 0xC0000034 when installing SP1 for Windows 7 / Server 2008 R2</title>
         <authors>Microsoft</authors>
         <projectUrl>https://support.microsoft.com/en-us/kb/2533552</projectUrl>
         <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
