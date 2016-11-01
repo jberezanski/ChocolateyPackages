@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>KB2533623</id>
+        <version>1.0.0</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB2533623</packageSourceUrl>
+        <owners>Jakub Bereżański</owners>
+        <title>Microsoft Security Advisory: Insecure library loading could allow remote code execution</title>
+        <authors>Microsoft</authors>
+        <projectUrl>https://support.microsoft.com/en-us/kb/2533623</projectUrl>
+        <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
+        <licenseUrl>https://support.microsoft.com/en-us/kb/2533623</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>Microsoft Windows Update KB2533623 admin .NET Core</tags>
+        <summary>The update adds new API enhancements for Windows to help developers correctly and securely load external libraries.</summary>
+        <description>
+Microsoft has released a Microsoft security advisory about this issue for IT professionals. The security advisory contains additional security-related information. To view the security advisory, visit the following Microsoft website: 
+http://www.microsoft.com/technet/security/advisory/2269637.mspx
+
+Microsoft has released new API enhancements for Windows to help developers correctly and securely load external libraries. For more information, visit the following Microsoft webpages: 
+[SetDefaultDllDirectories](http://msdn.microsoft.com/en-us/library/hh310515(VS.85).aspx)
+[AddDllDirectory](http://msdn.microsoft.com/en-us/library/hh310513(VS.85).aspx)
+[RemoveDllDirectory](http://msdn.microsoft.com/en-us/library/hh310514(VS.85).aspx)
+
+On systems other than Windows 7, Windows Server 2008 R2, Windows Vista or Windows Server 2008, this package installs successfully, but does nothing.
+
+This update is required for .NET Core on Windows 7 or Windows Server 2008 R2.
+        </description>
+        <releaseNotes>
+1.0.0: initial package release
+        </releaseNotes>
+        <dependencies>
+        </dependencies>
+    </metadata>
+</package>
