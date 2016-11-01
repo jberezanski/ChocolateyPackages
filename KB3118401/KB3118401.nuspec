@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>KB3118401</id>
+        <version>1.0.0</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB3118401</packageSourceUrl>
+        <owners>Jakub Bereżański</owners>
+        <title>Update for Universal C Runtime in Windows (version 10.0.10586)</title>
+        <authors>Microsoft</authors>
+        <projectUrl>https://support.microsoft.com/en-us/kb/3118401</projectUrl>
+        <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
+        <licenseUrl>https://support.microsoft.com/en-us/kb/3118401</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>Microsoft Windows Update KB3118401 admin Visual Studio 2015</tags>
+        <summary>Install this package to update the Universal C Runtime (CRT) in Windows.</summary>
+        <description>
+The Windows 10 Universal CRT is a Windows operating system component that enables CRT functionality on the Windows operating system. This update allows Windows desktop applications that depend on the Windows 10 Universal CRT release to run on earlier Windows operating systems.
+
+Microsoft Visual Studio 2015 creates a dependency on the Universal CRT when applications are built by using the Windows 10 Software Development Kit (SDK). You can install this update on earlier Windows operating systems to enable these applications to run correctly.
+
+This update installs version 10.0.10586 of the Universal CRT, which is the same version as included in Windows 10 November Update (1511).
+
+This package applies to the following operating systems:
+- Windows Server 2012 R2
+- Windows 8.1
+- Windows Server 2012
+- Windows Server 2008 R2 Service Pack 1 (SP1)
+- Windows 7 SP1
+- Windows Server 2008 Service Pack 2 (SP2)
+- Windows Vista SP2
+
+On other systems this package installs successfully, but does nothing.
+        </description>
+        <releaseNotes>
+1.0.0: initial package release
+        </releaseNotes>
+        <dependencies>
+            <dependency id="KB2919355" version="1.0.20160915" />
+        </dependencies>
+    </metadata>
+</package>
