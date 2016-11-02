@@ -24,10 +24,13 @@ This package applies to the following operating systems:
 - Windows Server 2012 R2
 - Windows 8.1
 - Windows Server 2012
+- Windows 8 (*)
 - Windows Server 2008 R2 Service Pack 1 (SP1)
 - Windows 7 SP1
 - Windows Server 2008 Service Pack 2 (SP2)
 - Windows Vista SP2
+
+(*) Windows 8 is no longer supported by Microsoft and an official installer for KB3118401 has not been released for this OS. On 64-bit Windows 8 this package will use the installer for Windows Server 2012. On 32-bit Windows 8 this package will fail to install; you should upgrade to Windows 8.1 or use the KB2999226 package, which installs an older version of the Universal CRT.
 
 On other systems this package installs successfully, but does nothing.
         </description>
