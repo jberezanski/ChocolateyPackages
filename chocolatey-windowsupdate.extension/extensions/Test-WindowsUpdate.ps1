@@ -30,7 +30,7 @@ function Test-WindowsUpdate
     [CmdletBinding()]
     Param
     (
-        [ValidatePattern('^(?-i:KB)\d+$')] [Parameter(Mandatory = $true)] [string] $Id
+        [ValidatePattern('^KB\d+$')] [Parameter(Mandatory = $true)] [string] $Id
     )
     Begin
     {

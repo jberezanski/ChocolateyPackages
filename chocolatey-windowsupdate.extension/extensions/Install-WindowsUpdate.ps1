@@ -128,7 +128,7 @@ function Install-WindowsUpdate
     [CmdletBinding(SupportsShouldProcess = $true)]
     Param
     (
-        [ValidatePattern('^(?-i:KB)\d+$')] [Parameter(Mandatory = $true)] [string] $Id,
+        [ValidatePattern('^KB\d+$')] [Parameter(Mandatory = $true)] [string] $Id,
         [Parameter(Mandatory = $true)] [hashtable] $MsuData,
         [Parameter(Mandatory = $true)] [string] $ChecksumType,
         [hashtable] $ServicePackRequirements
