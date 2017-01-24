@@ -87,6 +87,10 @@
             }
         }
 
+    One easy way of obtaining checksum values is to use the Get-FileHash cmdlet,
+    after downloading the MSU files:
+        gci *KB2999226* | Get-FileHash -Algorithm SHA256 | ft -a
+
 .PARAMETER ChecksumType
     The checksum algorithm used for all checksums provided in the MsuData
     parameter. The supported algorithms are the same as Chocolatey supports.
