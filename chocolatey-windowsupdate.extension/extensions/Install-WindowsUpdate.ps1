@@ -250,7 +250,7 @@ function Install-WindowsUpdate
             }
         }
 
-        $silentArgs = '/quiet /norestart /log:"$Env:TEMP\{0}.Install.evt"' -f $Id
+        $silentArgs = '/quiet /norestart /log:"{0}\{1}.Install.evt"' -f $Env:TEMP, $Id
 
         $ERROR_SUCCESS = 0
         $ERROR_SUCCESS_REBOOT_REQUIRED = 3010
@@ -260,7 +260,7 @@ function Install-WindowsUpdate
         {
             Set-StrictMode -Off
             Install-ChocolateyPackage `
-                -PackageName $kb `
+                -PackageName $Id `
                 -FileType 'msu' `
                 -SilentArgs $silentArgs `
                 -ChecksumType $ChecksumType `
