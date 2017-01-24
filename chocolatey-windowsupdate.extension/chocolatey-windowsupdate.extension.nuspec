@@ -20,7 +20,7 @@
 This package provides helper functions useful for developing packages for Windows updates (KBs).
     </description>
     <releaseNotes>
-    [Change log](https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/extensions/chocolatey-core.extension/CHANGELOG.md)
+    [Change log](https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-windowsupdate.extension/CHANGELOG.md)
 </releaseNotes>
     <dependencies>
     </dependencies>
