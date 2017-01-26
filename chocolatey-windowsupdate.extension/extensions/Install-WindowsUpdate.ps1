@@ -254,7 +254,8 @@ function Install-WindowsUpdate
             }
         }
 
-        $silentArgs = '/quiet /norestart /log:"{0}\{1}.Install.evt"' -f $Env:TEMP, $Id
+        $logPath = '{0}\{1}.Install.evt' -f $Env:TEMP, $Id
+        $silentArgs = '/quiet /norestart /log:"$logPath"'
 
         $ERROR_SUCCESS = 0
         $ERROR_SUCCESS_REBOOT_REQUIRED = 3010
@@ -262,15 +263,57 @@ function Install-WindowsUpdate
 
         if ($PSCmdlet.ShouldProcess("Update $Id", 'Download and install'))
         {
+            $exitCode = $null
+            $invalidExitCodeErrorMessage = $null
             Set-StrictMode -Off
-            Install-ChocolateyPackage `
-                -PackageName $Id `
-                -FileType 'msu' `
-                -SilentArgs $silentArgs `
-                -ChecksumType $ChecksumType `
-                -ChecksumType64 $ChecksumType `
-                -ValidExitCodes @($ERROR_SUCCESS, $ERROR_SUCCESS_REBOOT_REQUIRED, $WU_E_NOT_APPLICABLE) `
-                @urlArguments
+            try
+            {
+                # Start-ChocolateyProcessAsAdmin, invoked indirectly by Install-ChocolateyPackage,
+                # overwrites a few arbitrary exit codes with 0. The only execution path
+                # which faithfully preserves the original exit code is the error path.
+                # Pass only 0 as a valid exit code and catch the error thrown when
+                # the exit code is "invalid".
+                Install-ChocolateyPackage `
+                    -PackageName $Id `
+                    -FileType 'msu' `
+                    -SilentArgs $silentArgs `
+                    -ChecksumType $ChecksumType `
+                    -ChecksumType64 $ChecksumType `
+                    -ValidExitCodes @($ERROR_SUCCESS) `
+                    @urlArguments
+            }
+            catch [System.Management.Automation.RuntimeException]
+            {
+                if ($_.Exception.Message -notlike 'Running * was not successful. Exit code was*')
+                {
+                    throw
+                }
+
+                $invalidExitCodeErrorMessage = $_.Exception.Message
+            }
+            finally
+            {
+                Set-StrictMode -Version 2
+            }
+
+            $exitCode = Get-PowerShellExitCodeInternal
+            if ($exitCode -eq $ERROR_SUCCESS_REBOOT_REQUIRED)
+            {
+                Write-Warning "Update $Id has been installed, but a reboot is required to finalize the installation. Until the computer is rebooted, dependent packages may fail to install or function properly."
+            }
+            elseif ($exitCode -eq $WU_E_NOT_APPLICABLE)
+            {
+                Write-Host "Update $Id does not apply to this system. Either it was superseded by another already installed update, or a prerequisite update is missing."
+            }
+            elseif ($exitCode -eq 0 -or $exitCode -eq $null)
+            {
+                Write-Verbose "Update $Id has been installed successfully, a reboot is not required."
+            }
+            else
+            {
+                Write-Warning "Update $Id installation failed (exit code $exitCode). More details may be found in the installation log ($logPath) or the system CBS log (${Env:SystemRoot}\Logs\CBS\CBS.log)."
+                throw $invalidExitCodeErrorMessage
+            }
         }
     }
 }
