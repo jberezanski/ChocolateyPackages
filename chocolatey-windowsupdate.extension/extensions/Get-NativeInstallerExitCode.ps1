@@ -1,11 +1,11 @@
 <#
 .SYNOPSIS
-    Returns the exit code set earlier by a call to the Set-PowerShellExitCode helper.
+    Returns the exit code set earlier by a native installer executed via the Start-ChocolateyProcessAsAdmin helper.
 
 .OUTPUT
     System.Int32 or $null
 #>
-function Get-PowerShellExitCodeInternal
+function Get-NativeInstallerExitCode
 {
     [CmdletBinding()]
     Param

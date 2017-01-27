@@ -310,7 +310,7 @@ function Install-WindowsUpdate
                 Set-StrictMode -Version 2
             }
 
-            $exitCode = Get-PowerShellExitCodeInternal
+            $exitCode = Get-NativeInstallerExitCode
             if ($exitCode -eq $ERROR_SUCCESS_REBOOT_REQUIRED)
             {
                 Write-Warning "Update $Id has been installed, but a reboot is required to finalize the installation. Until the computer is rebooted, dependent packages may fail to install or function properly."
