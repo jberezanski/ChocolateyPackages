@@ -311,7 +311,17 @@ function Install-WindowsUpdate
             }
             else
             {
-                Write-Warning "Update $Id installation failed (exit code $exitCode). More details may be found in the installation log ($logPath) or the system CBS log (${Env:SystemRoot}\Logs\CBS\CBS.log)."
+                $errorDesc = Get-WindowsUpdateErrorDescription -ErrorCode $exitCode
+                if ($errorDesc -ne $null)
+                {
+                    Write-Warning ('Update {0} installation failed with code 0x{1:X8} ({2}: {3}).' -f $Id, [int]$exitCode, $errorDesc.Name, $errorDesc.Description)
+                }
+                else
+                {
+                    Write-Warning "Update $Id installation failed (exit code $exitCode)."
+                }
+
+                Write-Warning "More details may be found in the installation log ($logPath) or the system CBS log (${Env:SystemRoot}\Logs\CBS\CBS.log)."
                 throw $invalidExitCodeErrorMessage
             }
         }
