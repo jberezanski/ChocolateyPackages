@@ -3,7 +3,7 @@
     Returns the exit code set earlier by a call to the Set-PowerShellExitCode helper.
 
 .OUTPUT
-    System.Int64 or $null
+    System.Int32 or $null
 #>
 function Get-PowerShellExitCodeInternal
 {
@@ -24,8 +24,8 @@ function Get-PowerShellExitCodeInternal
             return $null
         }
 
-        [long] $exitCode = 0
-        if (-not ([long]::TryParse($exitCodeString, [ref]$exitCode)))
+        [int] $exitCode = 0
+        if (-not ([int]::TryParse($exitCodeString, [ref]$exitCode)))
         {
             Write-Warning "Unable to parse ChocolateyExitCode value: $exitCodeString"
             return $null
