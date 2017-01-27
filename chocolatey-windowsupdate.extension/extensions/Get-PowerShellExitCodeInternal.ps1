@@ -13,11 +13,6 @@ function Get-PowerShellExitCodeInternal
     )
     End
     {
-        if (Get-Command -Module chocolateyInstaller -Name Get-PowerShellExitCode -ErrorAction SilentlyContinue)
-        {
-            return chocolateyInstaller\Get-PowerShellExitCode
-        }
-
         $exitCodeString = Get-EnvironmentVariable -Name ChocolateyExitCode -Scope Process
         if ([string]::IsNullOrEmpty($exitCodeString))
         {
