@@ -60,8 +60,9 @@
     system versions.
 
     The value of this parameter should be a hashtable.
-    The keys are interpreted as two-part operating system version numbers,
-    with an optional suffix distinguishing between client and server systems.
+    The keys are interpreted as two- or three-part operating system version
+    numbers, with an optional suffix distinguishing between client and server
+    systems.
     The values should be hashtables with keys: Url, Checksum, Url64, Checksum64,
     interpreted according to established Chocolatey practices, and appropriate
     values. One of the pairs (Url+Checksum or Url64+Checksum64) may be missing,
@@ -72,7 +73,10 @@
         6.1 - Windows 7 / Server 2008 R2
         6.2 - Windows 8 / Server 2012
         6.3 - Windows 8.1 / Server 2012 R2
-        10.0 - Windows 10 / Server 2016
+        10.0 - Windows 10 / Server 2016 (any build)
+        10.0.10240 - Windows 10 RTM
+        10.0.10586 - Windows 10 1511
+        10.0.14393 - Windows 10 1607 / Server 2016 RTM
 
     The optional suffixes are "-client" and "-server", for respective operating
     system variants.
@@ -174,16 +178,21 @@ function Install-WindowsUpdate
                 $productType = 'server'
             }
 
-            $fallbackSelector = $version.ToString(2)
-            $selectorWithProductType = '{0}-{1}' -f $fallbackSelector, $productType
+            $version3 = $version.ToString(3)
+            $version2 = $version.ToString(2)
+            $selectors = @(
+                ('{0}-{1}' -f $version3, $productType),
+                $version3,
+                ('{0}-{1}' -f $version2, $productType),
+                $version2
+            )
 
             $props = @{
                 Version = $version
                 Caption = $caption
                 ServicePackMajorVersion = $wmiOS.ServicePackMajorVersion
                 ProductType = $productType
-                PreciseSelector = $selectorWithProductType
-                FallbackSelector = $fallbackSelector
+                Selectors = $selectors
             }
 
             Write-Verbose "Operating system: $caption, version $version, product type '$productType'"
@@ -201,20 +210,17 @@ function Install-WindowsUpdate
             )
             End
             {
-                if ($Rules.ContainsKey($OS.PreciseSelector))
+                foreach ($selector in $OS.Selectors)
                 {
-                    Write-Verbose "Located $RulesDescription rules using precise selector: $($OS.PreciseSelector)"
-                    return $Rules[$OS.PreciseSelector]
+                    if ($Rules.ContainsKey($selector))
+                    {
+                        Write-Verbose "Located $RulesDescription rules using selector: $selector"
+                        return $Rules[$selector]
+                    }
                 }
-                elseif ($Rules.ContainsKey($OS.FallbackSelector))
-                {
-                    Write-Verbose "Located $RulesDescription rules using fallback selector: $($OS.FallbackSelector)"
-                    return $Rules[$OS.FallbackSelector]
-                }
-                else
-                {
-                    return $null
-                }
+
+                Write-Verbose "No $RulesDescription rules defined for this operating system"
+                return $null
             }
         }
 
