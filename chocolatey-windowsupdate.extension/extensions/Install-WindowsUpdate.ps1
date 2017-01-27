@@ -318,6 +318,7 @@ function Install-WindowsUpdate
             elseif ($exitCode -eq $WU_E_NOT_APPLICABLE)
             {
                 Write-Host "Update $Id does not apply to this system. Either it was superseded by another already installed update, or a prerequisite update is missing."
+                Set-PowerShellExitCode -ExitCode $ERROR_SUCCESS
             }
             elseif ($exitCode -eq $ERROR_SUCCESS)
             {
