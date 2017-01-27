@@ -1,22 +1,42 @@
 ﻿# chocolatey-windowsupdate.extension
 
-This is a Powershell module that extends Chocolatey with Windows Update installation capabilities.
+This is a Chocolatey extension that simplifies building Chocolatey packages which install Windows updates.
+
+## Functions
+
+### Test-WindowsUpdate
+
+Checks whether the specified Windows update is installed.
+
+### Install-WindowsUpdate
+
+Installs the specified Windows update.
+
+The function builds on top of the standard `Install-ChocolateyPackage` Chocolatey helper function and provides the following features:
+- detection of operating system version and selection of the appropriate download link,
+- detection of the presence of the update (in case it is installed already),
+- verification of the operating system Service Pack version (in case the update requires a minimum specific Service Pack number of the given operating system),
+- warning the user of the need to reboot the computer (requires Chocolatey 0.9.10 or later),
+- recognition of update installation result codes to provide descriptive error messages (requires Chocolatey 0.9.10 or later),
+- support for -WhatIf and -Confirm common parameters to make testing easier.
 
 ## Installation
 
-Install via Chocolatey: `choco install chocolatey-windowsupdate.extension`.
+End users typically do not install this package directly - it is usually installed automatically as a dependency of another package.
 
-The module is usually automatically installed as a dependency of a package.
+Package authors interested in testing the usage of individual functions may install this package via Chocolatey: `choco install chocolatey-windowsupdate.extension`.
 
 ## Usage
 
-To create a package that uses an extension function from this module add the following to the `nuspec` specification:
+To  be able to use functions from this extension in a Chocolatey package, add the following to the `nuspec` specification:
 
     <dependencies>
         <dependency id="chocolatey-windowsupdate.extension" version="SPECIFY_LATEST_VERSION" />
     </dependencies>
 
 **NOTE**: Make sure you use adequate _minimum_ version.
+
+## Testing
 
 To test the functions you can import the module directly or via the `chocolateyInstaller.psm1` module:
 
@@ -121,10 +141,10 @@ To get the list of functions, load the module directly and invoke the following 
 
     Get-Command -Module chocolatey-windowsupdate
 
-To get help for a specific function use `help`:
+To get help for a specific function use the [help](https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/get-help) command:
 
     help Install-WindowsUpdate -Full
 
 ### Acknowledgement
 
-The structure of the Markdown files and code in the psm1 file are based on [chocolatey-core.extension](https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/extensions/chocolatey-core.extension).
+The structure of the Markdown files was inspired by [chocolatey-core.extension](https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/extensions/chocolatey-core.extension).

@@ -4,6 +4,20 @@
     from Microsoft.
 
 .DESCRIPTION
+    The function builds on top of the standard Install-ChocolateyPackage
+    Chocolatey helper function and provides the following features:
+    - detection of operating system version and selection of the appropriate
+      download link,
+    - detection of the presence of the update (in case it is installed already),
+    - verification of the operating system Service Pack version (in case the
+      update requires a minimum specific Service Pack number of the given
+      operating system),
+    - warning the user of the need to reboot the computer (requires Chocolatey
+      0.9.10 or later),
+    - recognition of update installation result codes to provide descriptive
+      error messages (requires Chocolatey 0.9.10 or later),
+    - support for -WhatIf and -Confirm common parameters to make testing easier.
+
     Given an update ID (KBnnnnnnnn) and a set of rules, the function performs
     the following actions:
     - checks whether the update applies to this operating system and exits
