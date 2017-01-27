@@ -319,9 +319,13 @@ function Install-WindowsUpdate
             {
                 Write-Host "Update $Id does not apply to this system. Either it was superseded by another already installed update, or a prerequisite update is missing."
             }
-            elseif ($exitCode -eq 0 -or $exitCode -eq $null)
+            elseif ($exitCode -eq $ERROR_SUCCESS)
             {
                 Write-Verbose "Update $Id has been installed successfully, a reboot is not required."
+            }
+            elseif ($exitCode -eq $null)
+            {
+                Write-Verbose "Update $Id installation has finished (this Chocolatey version does not provide the installer exit code)."
             }
             else
             {
