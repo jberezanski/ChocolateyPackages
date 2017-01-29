@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.6.2-devpack</id>
-    <version>4.6.01590.0</version>
+    <version>4.6.01590.20170129</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.6.2-devpack</packageSourceUrl>
     <owners>Jakub Bereżański</owners>
     <title>Microsoft .NET Framework 4.6.2 Developer Pack</title>
@@ -20,10 +20,10 @@
 ##### Software
 https://support.microsoft.com/en-us/kb/3151796
 ##### Package
-4.6.01590.0: Initial package release.
+4.6.01590.20170129: Updated dotnet4.6.2 dependency to fix installation on Windows Server Core; switched to Quiet mode for symmetry, too.
     </releaseNotes>
     <dependencies>
-      <dependency id="dotnet4.6.2" version="4.6.01590.0" />
+      <dependency id="dotnet4.6.2" version="4.6.01590.20170129" />
     </dependencies>
   </metadata>
 </package>

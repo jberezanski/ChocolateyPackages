@@ -4,7 +4,7 @@ $checksum = 'E9662691AB9E6CE2D1EEEBB9F94524707375B5ED'
 $checksumType = 'sha1'
 $arguments = @{
     packageName = $packageName
-    silentArgs = "/Passive /NoRestart /Log ""${Env:TEMP}\${packageName}.log"""
+    silentArgs = "/Quiet /NoRestart /Log ""${Env:TEMP}\${packageName}.log"""
     validExitCodes = @(
         0, # success
         3010 # success, restart required

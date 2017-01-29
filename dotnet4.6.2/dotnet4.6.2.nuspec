@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnet4.6.2</id>
-    <version>4.6.01590.0</version>
+    <version>4.6.01590.20170129</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnet4.6.2</packageSourceUrl>
     <owners>Jakub Bereżański</owners>
     <title>Microsoft .NET Framework 4.6.2</title>
@@ -23,7 +23,7 @@ The matching Developer Pack can be installed using [this package](https://chocol
 ##### Software
 https://support.microsoft.com/en-us/kb/3151796
 ##### Package
-4.6.01590.0: Initial package release.
+4.6.01590.20170129: Switched to Quiet mode to fix installation on Windows Server Core.
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160719" />
