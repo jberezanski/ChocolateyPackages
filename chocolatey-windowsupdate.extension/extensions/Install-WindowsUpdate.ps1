@@ -274,49 +274,17 @@ function Install-WindowsUpdate
             }
         }
 
-        $logPath = '{0}\{1}.Install.evt' -f $Env:TEMP, $Id
-        $silentArgs = '/quiet /norestart /log:"$logPath"'
-
         $ERROR_SUCCESS = 0
         $ERROR_SUCCESS_REBOOT_REQUIRED = 3010
         $WU_E_NOT_APPLICABLE = 0x80240017
 
-        if ($PSCmdlet.ShouldProcess("Update $Id", 'Download and install'))
-        {
-            $exitCode = $null
-            $invalidExitCodeErrorMessage = $null
-            Set-StrictMode -Off
-            try
-            {
-                # Start-ChocolateyProcessAsAdmin, invoked indirectly by Install-ChocolateyPackage,
-                # overwrites a few arbitrary exit codes with 0. The only execution path
-                # which faithfully preserves the original exit code is the error path.
-                # Pass only 0 as a valid exit code and catch the error thrown when
-                # the exit code is "invalid".
-                Install-ChocolateyPackage `
-                    -PackageName $Id `
-                    -FileType 'msu' `
-                    -SilentArgs $silentArgs `
-                    -ChecksumType $ChecksumType `
-                    -ChecksumType64 $ChecksumType `
-                    -ValidExitCodes @($ERROR_SUCCESS) `
-                    @urlArguments
-            }
-            catch [System.Management.Automation.RuntimeException]
-            {
-                if ($_.Exception.Message -notlike 'Running * was not successful. Exit code was*')
-                {
-                    throw
-                }
+        $logPath = '{0}\{1}.Install.evt' -f $Env:TEMP, $Id
+        $silentArgs = '/quiet /norestart /log:"$logPath"'
+        $validExitCodes = @($ERROR_SUCCESS, $ERROR_SUCCESS_REBOOT_REQUIRED, $WU_E_NOT_APPLICABLE)
 
-                $invalidExitCodeErrorMessage = $_.Exception.Message
-            }
-            finally
-            {
-                Set-StrictMode -Version 2
-            }
-
-            $exitCode = Get-NativeInstallerExitCode
+        $exitCodeHandler = {
+            $installResult = $_
+            $exitCode = $installResult.ExitCode
             if ($exitCode -eq $ERROR_SUCCESS_REBOOT_REQUIRED)
             {
                 Write-Warning "Update $Id has been installed, but a reboot is required to finalize the installation. Until the computer is rebooted, dependent packages may fail to install or function properly."
@@ -324,7 +292,7 @@ function Install-WindowsUpdate
             elseif ($exitCode -eq $WU_E_NOT_APPLICABLE)
             {
                 Write-Host "Update $Id does not apply to this system. Either it was superseded by another already installed update, or a prerequisite update is missing."
-                Set-PowerShellExitCode -ExitCode $ERROR_SUCCESS
+                $installResult.ExitCode = $ERROR_SUCCESS
             }
             elseif ($exitCode -eq $ERROR_SUCCESS)
             {
@@ -332,23 +300,38 @@ function Install-WindowsUpdate
             }
             elseif ($exitCode -eq $null)
             {
-                Write-Verbose "Update $Id installation has finished (this Chocolatey version does not provide the installer exit code)."
+                Write-Warning "Update $Id installation has finished, but this Chocolatey version does not provide the installer exit code. Please inform the maintainer of the chocolatey-windowsupdate.extension package."
             }
             else
             {
                 $errorDesc = Get-WindowsUpdateErrorDescription -ErrorCode $exitCode
                 if ($errorDesc -ne $null)
                 {
-                    Write-Warning ('Update {0} installation failed with code 0x{1:X8} ({2}: {3}).' -f $Id, [int]$exitCode, $errorDesc.Name, $errorDesc.Description)
+                    $errorMessage = 'Update {0} installation failed with code 0x{1:X8} ({2}: {3}).' -f $Id, [int]$exitCode, $errorDesc.Name, $errorDesc.Description
                 }
                 else
                 {
-                    Write-Warning "Update $Id installation failed (exit code $exitCode)."
+                    $errorMessage = "Update $Id installation failed (exit code $exitCode)."
                 }
 
+                # Write the error message as a warning so that the hint about log files comes after it. Then let the error message be thrown as an exception.
+                Write-Warning $errorMessage
                 Write-Warning "More details may be found in the installation log ($logPath) or the system CBS log (${Env:SystemRoot}\Logs\CBS\CBS.log)."
-                throw $invalidExitCodeErrorMessage
+                $installResult.ErrorMessage = $errorMessage
             }
+        }
+
+        if ($PSCmdlet.ShouldProcess("Update $Id", 'Download and install'))
+        {
+            Install-ChocolateyPackageAndHandleExitCode `
+                -PackageName $Id `
+                -FileType 'msu' `
+                -SilentArgs $silentArgs `
+                -ValidExitCodes $validExitCodes `
+                -ChecksumType $ChecksumType `
+                -ChecksumType64 $ChecksumType `
+                -ExitCodeHandler $exitCodeHandler `
+                @urlArguments
         }
     }
 }
