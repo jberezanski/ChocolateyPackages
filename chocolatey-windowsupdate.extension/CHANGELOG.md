@@ -2,7 +2,7 @@
 
 ## Version 1.0.1
 
-- Added a dependency on the earliest version of Chocolatey that exposes the native installer exit code to the install script.
+- Added support for versions of Chocolatey which do not expose the native installer exit code to the install script but provide it in the exception message (0.9.8.17 - 0.9.9.12).
 - Refactored and improved exit code handling.
 
 ## Version 1.0.0

@@ -23,7 +23,6 @@ This package provides helper functions useful for developing packages for Window
     [Change log](https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-windowsupdate.extension/CHANGELOG.md)
 </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey" version="0.9.10" /> <!-- first version which surfaces the native installer exit code -->
     </dependencies>
   </metadata>
 </package>
