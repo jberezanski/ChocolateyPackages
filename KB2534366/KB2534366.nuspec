@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>KB2534366</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB2534366</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
         <title>Fix for error 0xC000009A when installing SP1 for Windows 7 / Server 2008 R2</title>
@@ -21,9 +21,10 @@ This update is one of the recommended updates to install before installing Servi
 On systems other than Windows 7 or Windows Server 2008 R2, this package installs successfully, but does nothing.
         </description>
         <releaseNotes>
-1.0.0: initial package release
+1.0.1: package refactored to use chocolatey-windowsupdate.extension
         </releaseNotes>
         <dependencies>
+            <dependency id="chocolatey-windowsupdate.extension" version="1.0.1" />
         </dependencies>
     </metadata>
 </package>
