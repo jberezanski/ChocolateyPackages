@@ -279,7 +279,7 @@ function Install-WindowsUpdate
         $WU_E_NOT_APPLICABLE = 0x80240017
 
         $logPath = '{0}\{1}.Install.evt' -f $Env:TEMP, $Id
-        $silentArgs = '/quiet /norestart /log:"$logPath"'
+        $silentArgs = '/quiet /norestart /log:"{0}"' -f $logPath
         $validExitCodes = @($ERROR_SUCCESS, $ERROR_SUCCESS_REBOOT_REQUIRED, $WU_E_NOT_APPLICABLE)
 
         $exitCodeHandler = {
