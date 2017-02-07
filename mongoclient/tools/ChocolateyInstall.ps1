@@ -41,6 +41,10 @@ try
 
     Write-Host "Moving files to destination location: $destinationPath"
     Get-ChildItem -Path "$tempPath\windows-portable-x64" | Move-Item -Destination $destinationPath
+    if ($Env:ChocolateyPackageInstallLocation -eq $tempPath)
+    {
+        $Env:ChocolateyPackageInstallLocation = $destinationPath
+    }
 }
 finally
 {
