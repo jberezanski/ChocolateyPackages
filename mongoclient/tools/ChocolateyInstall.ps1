@@ -62,27 +62,35 @@ Get-ChildItem -Path "$destinationPath\*.exe" -Recurse | ForEach-Object { `
     New-Item -ItemType File -Path $shimgenControlFile | Out-Null
 }
 
-if (Test-ProcessAdminRights)
+if ((Get-Command -Name 'Install-ChocolateyShortcut' -ErrorAction SilentlyContinue) -ne $null)
 {
-    if (([System.Environment+SpecialFolder] | Get-Member -Static -Name 'CommonPrograms') -ne $null)
+    if (Test-ProcessAdminRights)
     {
-        Write-Verbose "Installing with administrator rights, so the program shortcut will be created in the all users Start Menu."
-        $shortcutSpecialFolder = [System.Environment+SpecialFolder]::CommonPrograms
+        if (([System.Environment+SpecialFolder] | Get-Member -Static -Name 'CommonPrograms') -ne $null)
+        {
+            Write-Verbose "Installing with administrator rights, so the program shortcut will be created in the all users Start Menu."
+            $shortcutSpecialFolder = [System.Environment+SpecialFolder]::CommonPrograms
+        }
+        else
+        {
+            Write-Warning "Installing with administrator rights, but this PowerShell version does not provide functionality required to install a shortcut in the all users Start Menu, so the program shortcut will be created in the Start Menu of the current user (${Env:UserDomain}\${Env:UserName})."
+            $shortcutSpecialFolder = [System.Environment+SpecialFolder]::Programs
+        }
     }
     else
     {
-        Write-Warning "Installing with administrator rights, but this PowerShell version does not provide functionality required to install a shortcut in the all users Start Menu, so the program shortcut will be created in the Start Menu of the current user (${Env:UserDomain}\${Env:UserName})."
+        Write-Warning "Installing without administrator rights, so the program shortcut will only be created in the Start Menu of the current user (${Env:UserDomain}\${Env:UserName})."
         $shortcutSpecialFolder = [System.Environment+SpecialFolder]::Programs
     }
+
+    $shortcutFilePath = Join-Path -Path ([Environment]::GetFolderPath($shortcutSpecialFolder)) -ChildPath 'Mongoclient.lnk'
+    Set-StrictMode -Off
+    Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath "$destinationPath\mongoclient.exe" -WorkingDirectory $destinationPath -Description 'Mongoclient'
+    Set-StrictMode -Version 2
+
+    Write-Host 'Mongoclient is accessible from the Start Menu or by typing "mongoclient" in a command prompt.'
 }
 else
 {
-    Write-Warning "Installing without administrator rights, so the program shortcut will only be created in the Start Menu of the current user (${Env:UserDomain}\${Env:UserName})."
-    $shortcutSpecialFolder = [System.Environment+SpecialFolder]::Programs
+    Write-Host 'Mongoclient is accessible by typing "mongoclient" in a command prompt (this Chocolatey version does not support Start Menu shortcut creation).'
 }
-
-$shortcutFilePath = Join-Path -Path ([Environment]::GetFolderPath($shortcutSpecialFolder)) -ChildPath 'Mongoclient.lnk'
-Set-StrictMode -Off
-Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath "$destinationPath\mongoclient.exe" -WorkingDirectory $destinationPath -Description 'Mongoclient'
-
-Write-Host 'Mongoclient is accessible from the Start Menu or by typing "mongoclient" in a command prompt.'
