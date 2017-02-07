@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>mongoclient</id>
+    <version>1.5.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/mongoclient</packageSourceUrl>
+    <owners>Jakub Bereżański</owners>
+    <title>mongoclient</title>
+    <authors>R. Sercan Özdemir</authors>
+    <projectUrl>http://www.mongoclient.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/rsercano/mongoclient/1.5.0/public/logo/head_4.png</iconUrl>
+    <copyright>Copyright R. Sercan Özdemir © 2016</copyright>
+    <licenseUrl>https://github.com/rsercano/mongoclient/blob/1.5.0/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/rsercano/mongoclient</projectSourceUrl>
+    <docsUrl>https://github.com/rsercano/mongoclient/wiki</docsUrl>
+    <bugTrackerUrl>https://github.com/rsercano/mongoclient/issues</bugTrackerUrl>
+    <tags>mongoclient mongo mongodb management</tags>
+    <summary>Mongoclient, MongoDB Management Tool</summary>
+    <description>
+Mongoclient is a simple way to manage MongoDB. To give you a brief background information; there's a lot of great tool to manage MongoDB, but none does not meet most of our requests. Mongoclient emphasis on end user's requests and gives them to use full capabilities of modern browsers (mobile as well) without struggling with shell commands, it also uses greatly visualized charts to show server status. If offers a responsive, fast interface to manage whole your database.
+
+Mongoclient's goal is becoming the new way to manage MongoDB. Instead of classic MongoDB management tools designs, it offers a huge flexibility to use it anywhere without paying anything, apart from this if someone in somewhere is using Mongoclient and happy with it, this means Mongoclient has reached it's goal.
+
+Note: supports 64-bit systems only.
+     </description>
+    <releaseNotes>
+#### Software
+[Mongoclient release notes](https://github.com/rsercano/mongoclient/blob/1.5.0/HISTORY.MD)
+#### Package
+1.5.0: initial package release for software version 1.5.0
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
