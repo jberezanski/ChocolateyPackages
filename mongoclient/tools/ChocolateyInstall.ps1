@@ -47,7 +47,7 @@ finally
     Remove-Item -Path $tempPath -Recurse -Force -ErrorAction Continue
 }
 
-Get-ChildItem -Path "$destinationPath\*.exe" -Recurse | ForEach-Object { `
+Get-ChildItem -Path $destinationPath -Filter '*.exe' -Recurse | ForEach-Object { `
     if ($_.Name -eq 'mongoclient.exe')
     {
         $suffix = '.gui'
