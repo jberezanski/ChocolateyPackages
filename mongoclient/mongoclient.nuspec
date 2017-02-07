@@ -23,7 +23,9 @@ Mongoclient is a simple way to manage MongoDB. To give you a brief background in
 
 Mongoclient's goal is becoming the new way to manage MongoDB. Instead of classic MongoDB management tools designs, it offers a huge flexibility to use it anywhere without paying anything, apart from this if someone in somewhere is using Mongoclient and happy with it, this means Mongoclient has reached it's goal.
 
-Note: supports 64-bit systems only.
+#### Notes
+- This package supports 64-bit systems only.
+- Files installed by this package have very long paths. The package is designed so that it will work with the default Chocolatey install location (C:\ProgramData\Chocolatey) or shorter. Problems may occur on systems using a custom, longer Chocolatey install location.
      </description>
     <releaseNotes>
 #### Software
