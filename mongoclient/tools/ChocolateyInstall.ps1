@@ -36,7 +36,7 @@ try
     $packageArgs.UnzipLocation  = $tempPath
     Write-Host 'Downloading the archive and extracting to a temporary location'
     Set-StrictMode -Off
-    Install-ChocolateyZipPackage @packageArgs
+    Install-ChocolateyZipPackage @packageArgs | Out-Null
     Set-StrictMode -Version 2
 
     Write-Host "Moving files to destination location: $destinationPath"
