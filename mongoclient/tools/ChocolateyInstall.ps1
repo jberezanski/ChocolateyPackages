@@ -64,13 +64,21 @@ Get-ChildItem -Path "$destinationPath\*.exe" -Recurse | ForEach-Object { `
 
 if (Test-ProcessAdminRights)
 {
-    Write-Verbose "Installing with administrator rights, so the program shortcut will be created in the all users Start Menu."
-    $shortcutSpecialFolder = 'CommonPrograms'
+    if (([System.Environment+SpecialFolder] | Get-Member -Static -Name 'CommonPrograms') -ne $null)
+    {
+        Write-Verbose "Installing with administrator rights, so the program shortcut will be created in the all users Start Menu."
+        $shortcutSpecialFolder = [System.Environment+SpecialFolder]::CommonPrograms
+    }
+    else
+    {
+        Write-Warning "Installing with administrator rights, but this PowerShell version does not provide functionality required to install a shortcut in the all users Start Menu, so the program shortcut will be created in the Start Menu of the current user (${Env:UserDomain}\${Env:UserName})."
+        $shortcutSpecialFolder = [System.Environment+SpecialFolder]::Programs
+    }
 }
 else
 {
     Write-Warning "Installing without administrator rights, so the program shortcut will only be created in the Start Menu of the current user (${Env:UserDomain}\${Env:UserName})."
-    $shortcutSpecialFolder = 'Programs'
+    $shortcutSpecialFolder = [System.Environment+SpecialFolder]::Programs
 }
 
 $shortcutFilePath = Join-Path -Path ([Environment]::GetFolderPath($shortcutSpecialFolder)) -ChildPath 'Mongoclient.lnk'
