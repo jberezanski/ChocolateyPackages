@@ -61,9 +61,9 @@ Get-ChildItem -Path $destinationPath -Filter '*.exe' -Recurse | ForEach-Object {
         $suffix = '.ignore'
     }
 
-    $shimgenControlFile = "$($_.FullName)$suffix"
-    Write-Verbose "Creating shimgen control file $shimgenControlFile"
-    New-Item -ItemType File -Path $shimgenControlFile | Out-Null
+    $shimControlFile = "$($_.FullName)$suffix"
+    Write-Verbose "Creating shimgen control file $shimControlFile"
+    New-Item -ItemType File -Path $shimControlFile | Out-Null
 }
 
 if ((Get-Command -Name 'Install-ChocolateyShortcut' -ErrorAction SilentlyContinue) -ne $null)
