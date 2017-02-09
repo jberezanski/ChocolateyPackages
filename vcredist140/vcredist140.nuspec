@@ -3,25 +3,23 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>vcredist140</id>
-    <version>14.0.24516.0-preview5</version>
+    <version>14.10.24629.0-rc1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/vcredist140</packageSourceUrl>
     <owners>Jakub Bereżański</owners>
-    <title>Microsoft Visual C++ Redistributable for Visual Studio "15" Preview 5</title>
+    <title>Microsoft Visual C++ Redistributable for Visual Studio 2017 RC (2016-11-16)</title>
     <authors>Microsoft</authors>
-    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2016/10/05/announcing-visual-studio-15-preview-5/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/2088adf39b0254247dfbd7a32c286ed9437a80af/icons/vs15.png</iconUrl>
+    <projectUrl>https://blogs.msdn.microsoft.com/vcblog/2016/11/16/visual-studio-2017-rc-now-available/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/e70e19e2476ebb77068520dc6666f09a50d8c8b6/icons/vcredist2017.png</iconUrl>
     <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://msdn.microsoft.com/library/jj620919.aspx</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>Microsoft Visual C++ Redistributable 140 15 admin</tags>
-    <summary>Run-time components that are required to run C++ applications that are built by using Visual Studio "15" Preview 5</summary>
-    <description>Microsoft Visual C++ Redistributable for Visual Studio "15" Preview 5 installs run-time components of Visual C++ libraries. These components are required to run C++ applications that are developed using Visual Studio "15" Preview 5 and link dynamically to Visual C++ libraries. The packages can be used to run such applications on a computer even if it does not have Visual Studio "15" installed. These packages also install run-time components of C Runtime (CRT), Standard C++, MFC, C++ AMP, and OpenMP libraries.
+    <tags>Microsoft Visual C++ Redistributable 140 2017 admin</tags>
+    <summary>Run-time components that are required to run C++ applications that are built by using Visual Studio 2017 RC</summary>
+    <description>Microsoft Visual C++ Redistributable for Visual Studio 2017 RC installs run-time components of Visual C++ libraries. These components are required to run C++ applications that are developed using Visual Studio 2017 RC and link dynamically to Visual C++ libraries. The packages can be used to run such applications on a computer even if it does not have Visual Studio 2017 installed. These packages also install run-time components of C Runtime (CRT), Standard C++, MFC, C++ AMP, and OpenMP libraries.
 
-**PLEASE NOTE**: This preview has not been subject to final validation and is not meant to be run on production workstations or servers.
-
-The Visual C++ Redistributable for Visual Studio "15" Preview 5 consists of files vcruntime140.dll, msvcp140.dll, vcomp140.dll, vcamp140.dll, mfc140.dll and other.
+The Visual C++ Redistributable for Visual Studio 2017 RC consists of files vcruntime140.dll, msvcp140.dll, vcomp140.dll, vcamp140.dll, mfc140.dll and other.
 
 [Supported Operating Systems](https://www.visualstudio.com/productinfo/visual-studio-15-system-requirements-vs): Windows 10, Windows 8.1 / Server 2012 R2 (with KB2919355), Windows 8 / Windows Server 2012, Windows 7 SP1 (with KB3033929) / Server 2008 R2 SP1, Windows Vista SP2 / Server 2008 SP2, Windows XP SP3 / Windows Server 2003 SP2
 
@@ -29,9 +27,9 @@ Note: on some systems, if KB2999226 is installed as a dependency of this package
     </description>
     <releaseNotes>
 ##### Software
-[Visual Studio "15" Preview 5 Release Notes](https://www.visualstudio.com/news/releasenotes/vs15-relnotes)
+[Visual Studio 2017 RC Release Notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-14.0.24516.0-preview5: Initial package release for Visual Studio "15" Preview 5.
+14.10.24629.0-rc1: Initial package release for Visual Studio 2017 RC (2016-11-16).
 </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-core.extension" version="1.0.5" />
