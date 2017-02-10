@@ -2,7 +2,7 @@
 
 Uninstall-VS `
     -PackageName 'visualstudio2017enterprise' `
-    -ApplicationName 'Microsoft Visual Studio Enterprise 15 Preview 5' `
+    -ApplicationName 'Microsoft Visual Studio Enterprise 2017 RC' `
     -UninstallerName 'vs_installer.exe' `
     -AssumeNewVS15Installer `
     -InstallerDisplayName 'Microsoft Visual Studio Installer'

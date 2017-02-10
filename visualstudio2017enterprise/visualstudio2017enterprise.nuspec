@@ -2,31 +2,30 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017enterprise</id>
-    <version>15.0.25802.20161024-preview5</version>
+    <version>15.0.26206.0-rc6</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017enterprise</packageSourceUrl>
-    <owners>Jakub Bereżański</owners>
-    <title>Visual Studio "15" Enterprise (Preview 5)</title>
+    <owners>jberezanski</owners>
+    <title>Visual Studio 2017 Enterprise Release Candidate (2017-02-07)</title>
     <authors>Microsoft</authors>
-    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2016/10/05/announcing-visual-studio-15-preview-5/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/2088adf39b0254247dfbd7a32c286ed9437a80af/icons/vs15.png</iconUrl>
+    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/02/07/another-update-to-visual-studio-2017-rc/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/d8f0990de2c1a674d29be90dc5759c23deaf6582/icons/vs2017.png</iconUrl>
+    <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <docsUrl>https://www.visualstudio.com/en-us/news/releasenotes/vs15-relnotes</docsUrl>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>Microsoft Visual Studio VisualStudio 15 vNext v.Next VS VS15 2017 Enterprise IDE admin notSilent</tags>
-    <summary>Visual Studio Enterprise "15" Preview 5 is an early build of the next major release of Visual Studio.</summary>
+    <tags>Microsoft Visual Studio VisualStudio VS 2017 Enterprise IDE admin notSilent</tags>
+    <summary>Fully-featured integrated development environment (IDE) for Android, iOS, Windows, web, and cloud.</summary>
     <description>
 ### Overview
 
-Visual Studio Enterprise "15" Preview 5 is an early build of the next major release of Visual Studio. Preview provides early adopters with an opportunity to try out the new and improved product features, and the ability to share feedback with the product team.
+Visual Studio Enterprise 2017 Release Candidate offers a new installation experience. The minimum installation is under 500MB, it installs and updates within minutes, and it uninstalls cleanly. You get basic code editing support for more than 20 languages along with debugging and source code control capabilities. You can also optionally add support for 17 different development workloads and related features.
 
-**PLEASE NOTE**: This preview has not been subject to final validation and is not meant to be run on production workstations or servers.
+Visual Studio Enterprise 2017 Release Candidate has a "go-live" license, i.e. it is [supported by Microsoft](https://www.visualstudio.com/vs/supportvs2017rc/).
 
-**DISCLAIMER**: The package id is just an educated guess based on the naming of the Web Platform Installer product VWDOrVs2017AzurePack - Microsoft Azure SDK for .NET (VS "15" Preview). There is no official confirmation that Visual Studio "15" will be released in 2017 or that it will be named Visual Studio 2017.
+To find out what's new in Visual Studio 2017 RC, or to see the known issues, see the [Visual Studio 2017 RC](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).
 
-To find out what's new in Visual Studio "15" Preview 5, or to see the known issues, see the [Visual Studio "15" Preview 5 release notes](https://www.visualstudio.com/news/releasenotes/vs15-relnotes).
-
-[System requirements](https://www.visualstudio.com/productinfo/visual-studio-15-system-requirements-vs)
+[System requirements](https://www.visualstudio.com/en-us/productinfo/vs2017-system-requirements-vs)
 
 ### Customizations
 
@@ -44,9 +43,9 @@ The installation/uninstallation will take a fair amount of time and on slower sy
     </description>
     <releaseNotes>
 ##### Software
-[Visual Studio "15" release notes](https://www.visualstudio.com/news/releasenotes/vs15-relnotes)
+[Visual Studio 2017 RC release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.0.25802.20161024: Added dependency on KB3033929
+15.0.26206.0: Initial package release for Visual Studio 2017 Enterprise Release Candidate (2017-02-07)
     </releaseNotes>
     <dependencies>
       <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
