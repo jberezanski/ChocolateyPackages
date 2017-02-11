@@ -154,12 +154,11 @@ function Generate-InstallArgumentsString
     if ($assumeNewVS15Installer)
     {
         Write-Warning "The new VS ""15"" installer does not support setting the path to the log file yet."
-        $s = ''
+        $s = '--passive --norestart --wait'
         if ($adminFile -ne '')
         {
             Write-Warning "The new VS ""15"" installer does not support an admin file yet."
         }
-        Write-Warning "The new VS ""15"" installer does not support silent installation yet."
     }
     else
     {
@@ -174,13 +173,13 @@ function Generate-InstallArgumentsString
     $pk = $parameters['ProductKey']
     if ($pk -and (-not [string]::IsNullOrEmpty($pk)))
     {
+        Write-Verbose "Using provided product key: ...-$($pk.Substring([Math]::Max($pk.Length - 5, 0)))"
         if ($assumeNewVS15Installer)
         {
-            Write-Warning "The new VS ""15"" installer does not support providing a product key yet."
+            $s = $s + " --productkey $pk"
         }
         else
         {
-            Write-Verbose "Using provided product key: ...-$($pk.Substring([Math]::Max($pk.Length - 5, 0)))"
             $s = $s + " /ProductKey $pk"
         }
     }
@@ -516,6 +515,7 @@ function Start-VSServicingOperation
     $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
     if ($assumeNewVS15Installer)
     {
+        # should not be needed anymore since we are passing --wait to the bootstrapper
         Write-Debug 'Looking for vs_installer.exe processes spawned by the bootstrapper'
         $installerProcesses = Get-Process -Name 'vs_installer' -ErrorAction SilentlyContinue
         $installerProcessesCount = ($installerProcesses | Measure-Object).Count

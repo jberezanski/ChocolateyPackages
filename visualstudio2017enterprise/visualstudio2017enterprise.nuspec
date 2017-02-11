@@ -14,7 +14,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs 2017 enterprise ide admin notsilent</tags>
+    <tags>microsoft visual studio visualstudio vs 2017 enterprise ide admin</tags>
     <summary>Fully-featured integrated development environment (IDE) for Android, iOS, Windows, web, and cloud.</summary>
     <description>
 ### Overview
@@ -29,13 +29,17 @@ To find out what's new in Visual Studio 2017 RC, or to see the known issues, see
 
 ### Customizations
 
-This release uses the new Visual Studio installer. The package logic has not been updated to support customizations yet.
+This release uses the new Visual Studio installer. The package logic has not been updated to support full customizations yet.
+The package installs only the bare minimum required (the Core Editor workload). To add more workloads/components, launch the Visual Studio Installer application from the Start Menu.
+
+#### Providing a product key
+It is possible to provide a product key via packageParameters:
+
+    choco install visualstudio15enterprise -packageParameters "--ProductKey 12345-ABCDE-67890-FEDBC-76543"
 
 ### Installation notes
 
-**IMPORTANT**: This release uses the new Visual Studio installer. The package logic has not been updated to support unattended installation yet. Therefore, the installation of this page will require user interaction.
-
-A reboot will most certainly be required after installing/uninstalling this package. A reboot might even be required _before_ installing/uninstalling - if the system is awaiting a reboot due to Windows updates having been installed, or if you are attempting to uninstall the package immediately after installing it. The package will provide informative messages in each case.
+A reboot may be required after installing/uninstalling this package. A reboot might even be required _before_ installing/uninstalling - if the system is awaiting a reboot due to Windows updates having been installed, or if you are attempting to uninstall the package immediately after installing it. The package will provide informative messages in each case.
 
 If complete control over reboots is required, such as in automation scenarios, it is advisable to install the dependencies (esp. dotnet4.6 or later) first, perform a reboot if necessary, and only after that proceed to install this package.
 
@@ -45,13 +49,13 @@ The installation/uninstallation will take a fair amount of time and on slower sy
 ##### Software
 [Visual Studio 2017 RC release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.0.26206.0: Initial package release for Visual Studio 2017 Enterprise Release Candidate (2017-02-07)
+15.0.26206.0: Initial package release for Visual Studio 2017 Enterprise Release Candidate (2017-02-07). Unattended install works again.
     </releaseNotes>
     <dependencies>
       <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
-      <dependency id="vcredist2017" version="14.10.24930.20170211-rc6" />
-      <dependency id="dotnet4.6.1" version="4.6.01055.001" /> <!-- actually, the minimum requirement is 4.6, but 4.6.1 fixes a few major bugs -->
+      <dependency id="vcredist2017" version="14.10.24930.20170211-rc6" /> <!-- not strictly required for core editor, but needed for most other workloads -->
+      <dependency id="dotnet4.6.1" version="4.6.01055.001" /> <!-- actually, the minimum requirement is 4.6, but 4.6.1 fixes a few major bugs and is also needed for most workloads -->
     </dependencies>
   </metadata>
 </package>
