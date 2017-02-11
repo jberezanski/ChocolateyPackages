@@ -14,7 +14,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>Microsoft Visual Studio VisualStudio VS 2017 Enterprise IDE admin notSilent</tags>
+    <tags>microsoft visual studio visualstudio vs 2017 enterprise ide admin notsilent</tags>
     <summary>Fully-featured integrated development environment (IDE) for Android, iOS, Windows, web, and cloud.</summary>
     <description>
 ### Overview
@@ -29,11 +29,11 @@ To find out what's new in Visual Studio 2017 RC, or to see the known issues, see
 
 ### Customizations
 
-This release uses the new Visual Studio installer, which does not support customizations yet.
+This release uses the new Visual Studio installer. The package logic has not been updated to support customizations yet.
 
 ### Installation notes
 
-**IMPORTANT**: This release uses the new Visual Studio installer, which does not support unattended installation yet. Therefore, the installation of this page will require user interaction.
+**IMPORTANT**: This release uses the new Visual Studio installer. The package logic has not been updated to support unattended installation yet. Therefore, the installation of this page will require user interaction.
 
 A reboot will most certainly be required after installing/uninstalling this package. A reboot might even be required _before_ installing/uninstalling - if the system is awaiting a reboot due to Windows updates having been installed, or if you are attempting to uninstall the package immediately after installing it. The package will provide informative messages in each case.
 
@@ -50,9 +50,8 @@ The installation/uninstallation will take a fair amount of time and on slower sy
     <dependencies>
       <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
-      <dependency id="vcredist2012" version="11.0.60610" />
-      <dependency id="vcredist2015" version="14.0.24215.20160928" /> <!-- actually, VS15 depends on version="14.0.24406", but the package on chocolatey.org is outdated -->
-      <dependency id="dotnet4.6.1" version="4.6.01055.001" />
+      <dependency id="vcredist2017" version="14.10.24930.20170211-rc6" />
+      <dependency id="dotnet4.6.1" version="4.6.01055.001" /> <!-- actually, the minimum requirement is 4.6, but 4.6.1 fixes a few major bugs -->
     </dependencies>
   </metadata>
 </package>
