@@ -199,8 +199,7 @@ function Generate-UninstallArgumentsString
     if ($assumeNewVS15Installer)
     {
         Write-Warning "The new VS ""15"" installer does not support setting the path to the log file yet."
-        $s = "/uninstall"
-        Write-Warning "The new VS ""15"" installer does not support silent uninstallation yet."
+        $s = "/uninstall --passive --norestart"
     }
     else
     {
@@ -467,9 +466,10 @@ function Uninstall-VSChocolateyPackage
     param(
         [string] $packageName,
         [string] $silentArgs = '',
-        [string] $file
+        [string] $file,
+        [switch] $assumeNewVS15Installer
     )
-    Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs:'$silentArgs', file:'$file'"
+    Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs:'$silentArgs', file:'$file', assumeNewVS15Installer:'$assumeNewVS15Installer'"
 
     $installMessage = "Uninstalling $packageName..."
     Write-Host $installMessage
@@ -543,6 +543,48 @@ function Start-VSServicingOperation
         else
         {
             Write-Debug 'Did not find any running vs_installer.exe processes.'
+        }
+
+        # Not only does a process remain running after vs_installer /uninstall finishes, but that process
+        # pops up a message box at end! Sheesh.
+        Write-Debug 'Looking for vs_installer.windows.exe processes spawned by the uninstaller'
+        $installerProcesses = Get-Process -Name 'vs_installer.windows' -ErrorAction SilentlyContinue
+        $installerProcessesCount = ($installerProcesses | Measure-Object).Count
+        if ($installerProcessesCount -gt 0)
+        {
+            Write-Debug "Found $installerProcessesCount vs_installer.windows.exe process(es): $($installerProcesses | Select-Object -ExpandProperty Id)"
+            Write-Debug "Waiting for all vs_installer.windows.exe processes to become input-idle"
+            foreach ($p in $installerProcesses)
+            {
+                [void] $p.Handle # make sure we get the exit code http://stackoverflow.com/a/23797762/266876
+                $p.WaitForInputIdle()
+            }
+            Write-Debug "Sending CloseMainWindow to all vs_installer.windows.exe processes"
+            foreach ($p in $installerProcesses)
+            {
+                $p.CloseMainWindow()
+            }
+            Write-Debug "Waiting for all vs_installer.windows.exe processes to exit"
+            $installerProcesses | Wait-Process
+            foreach ($proc in $installerProcesses)
+            {
+                if ($proc.ExitCode -ne 0)
+                {
+                    Write-Warning "vs_installer.windows.exe process $($proc.Id) exited with code $($proc.ExitCode)"
+                    if ($exitCode -eq 0)
+                    {
+                        $exitCode = $proc.ExitCode
+                    }
+                }
+                else
+                {
+                    Write-Debug "vs_installer.windows.exe process $($proc.Id) exited with code $($proc.ExitCode)"
+                }
+            }
+        }
+        else
+        {
+            Write-Debug 'Did not find any running vs_installer.windows.exe processes.'
         }
     }
     $Env:ChocolateyExitCode = $exitCode
@@ -796,6 +838,7 @@ Uninstall-ChocolateyPackage
         packageName = $PackageName
         silentArgs = $silentArgs
         file = $uninstallerPath
+        assumeNewVS15Installer = $AssumeNewVS15Installer
     }
     $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Uninstall-VSChocolateyPackage $argumentsDump"

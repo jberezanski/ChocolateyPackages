@@ -49,7 +49,7 @@ The installation/uninstallation will take a fair amount of time and on slower sy
 ##### Software
 [Visual Studio 2017 RC release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.0.26206.0: Initial package release for Visual Studio 2017 Enterprise Release Candidate (2017-02-07). Unattended install works again.
+15.0.26206.0: Initial package release for Visual Studio 2017 Enterprise Release Candidate (2017-02-07). Unattended install and uninstall works again.
     </releaseNotes>
     <dependencies>
       <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
