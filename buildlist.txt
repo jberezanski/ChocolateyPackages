@@ -1,0 +1,1 @@
+visualstudio2017enterprise\visualstudio2017enterprise.nuspec
