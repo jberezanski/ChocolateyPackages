@@ -1,1 +1,2 @@
 visualstudio2017enterprise\visualstudio2017enterprise.nuspec
+visualstudio2017-workload-manageddesktop\visualstudio2017-workload-manageddesktop.nuspec
