@@ -1,0 +1,59 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2017-workload-manageddesktop</id>
+    <version>1.0.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-manageddesktop</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>.NET Desktop Development workload for Visual Studio 2017</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.visualstudio.com/vs/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/d8f0990de2c1a674d29be90dc5759c23deaf6582/icons/vs2017.png</iconUrl>
+    <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
+    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs 2017 ide workload .net managed desktop admin</tags>
+    <summary>Build WPF, Windows Forms and console applications using the .NET Framework.</summary>
+    <description>
+### Overview
+
+This package adds the .NET Desktop Development workload to an existing installation of Visual Studio 2017 (Enterprise, Professional or Community).
+
+The lists of components included in this workload in respective Visual Studio 2017 products are shown here:
+- [Enterprise](https://www.visualstudio.com/en-us/productinfo/vs2017-install-product-Enterprise.workloads#net-desktop-development)
+- [Professional](https://www.visualstudio.com/en-us/productinfo/vs2017-install-product-Professional.workloads#net-desktop-development)
+- [Community](https://www.visualstudio.com/en-us/productinfo/vs2017-install-product-Community.workloads#net-desktop-development)
+
+Visual Studio 2017 must be installed first, for example using Chocolatey packages: [visualstudio2017enterprise](https://chocolatey.org/packages/visualstudio2017enterprise), [visualstudio2017professional](https://chocolatey.org/packages/visualstudio2017professional), [visualstudio2017community](https://chocolatey.org/packages/visualstudio2017community).
+
+### Customizations
+
+The package does not know how to detect installed Visual Studio products yet, so it requires to be told via parameters,
+either:
+
+- `--installPath` - the path where the product is installed, for example "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise"
+
+or (both are needed):
+
+- `--productId` - the identifier of the product, for example "Microsoft.VisualStudio.Product.Enterprise"
+- `--channelId` - the release channel, should be "VisualStudio.15.Release"
+
+By default, the package installs only components required by the workload. Package parameters can be used to include recommended and/or optional components:
+
+- `--includeRecommended` - Includes the recommended components.
+- `--includeOptional` - Includes the optional components.
+
+Example:
+
+    choco install visualstudio2017-workload-manageddesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.15.Release --includeRecommended --includeOptional"
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
+##### Package
+1.0.0: Initial package release.
+    </releaseNotes>
+  </metadata>
+</package>
