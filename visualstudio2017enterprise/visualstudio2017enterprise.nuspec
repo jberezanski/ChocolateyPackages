@@ -35,15 +35,13 @@ The package installs only the bare minimum required (the Core Editor workload). 
 #### Providing a product key
 It is possible to provide a product key via packageParameters:
 
-    choco install visualstudio15enterprise -packageParameters "--ProductKey 12345-ABCDE-67890-FEDBC-76543"
+    choco install visualstudio2017enterprise -packageParameters "--ProductKey 12345-ABCDE-67890-FEDBC-76543"
 
 ### Installation notes
 
 A reboot may be required after installing/uninstalling this package. A reboot might even be required _before_ installing/uninstalling - if the system is awaiting a reboot due to Windows updates having been installed, or if you are attempting to uninstall the package immediately after installing it. The package will provide informative messages in each case.
 
 If complete control over reboots is required, such as in automation scenarios, it is advisable to install the dependencies (esp. dotnet4.6 or later) first, perform a reboot if necessary, and only after that proceed to install this package.
-
-The installation/uninstallation will take a fair amount of time and on slower systems may exceed the default Chocolatey execution timeout (45 minutes). Use the --execution-timeout argument of choco.exe to increase that timeout.
     </description>
     <releaseNotes>
 ##### Software
