@@ -647,7 +647,7 @@ function Start-VSServicingOperation
     }
 }
 
-function Install-VS {
+function Install-VisualStudio {
 <#
 .SYNOPSIS
 Installs Visual Studio
@@ -666,7 +666,7 @@ This is the url to download the VS web installer.
 The SHA-1 hash of the VS web installer file.
 
 .EXAMPLE
-Install-VS -PackageName VisualStudio2015Community -Url 'http://download.microsoft.com/download/zzz/vs_community.exe' -ChecksumSha1 'ABCDEF0123456789ABCDEF0123456789ABCDEF12'
+Install-VisualStudio -PackageName VisualStudio2015Community -Url 'http://download.microsoft.com/download/zzz/vs_community.exe' -ChecksumSha1 'ABCDEF0123456789ABCDEF0123456789ABCDEF12'
 
 .OUTPUTS
 None
@@ -746,7 +746,7 @@ Install-ChocolateyPackage
     Install-VSChocolateyPackage @arguments
 }
 
-function Uninstall-VS {
+function Uninstall-VisualStudio {
 <#
 .SYNOPSIS
 Uninstalls Visual Studio
@@ -764,7 +764,7 @@ The VisualStudio app name - i.e. 'Microsoft Visual Studio Community 2015'.
 This name of the installer executable - i.e. 'vs_community.exe'.
 
 .EXAMPLE
-Uninstall-VS 'VisualStudio2015Community' 'Microsoft Visual Studio Community 2015' 'vs_community.exe'
+Uninstall-VisualStudio 'VisualStudio2015Community' 'Microsoft Visual Studio Community 2015' 'vs_community.exe'
 
 .OUTPUTS
 None
@@ -952,4 +952,4 @@ function Start-VisualStudioModifyOperation
     }
 }
 
-Export-ModuleMember Install-VS, Uninstall-VS, Install-VisualStudioWorkload, Uninstall-VisualStudioWorkload
+Export-ModuleMember Install-VisualStudio, Uninstall-VisualStudio, Install-VisualStudioWorkload, Uninstall-VisualStudioWorkload

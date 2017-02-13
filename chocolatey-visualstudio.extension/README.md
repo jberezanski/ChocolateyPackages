@@ -4,11 +4,11 @@ This is a Chocolatey extension that simplifies building Chocolatey packages whic
 
 ## Functions
 
-### Install-VS
+### Install-VisualStudio
 
 TODO
 
-### Uninstall-VS
+### Uninstall-VisualStudio
 
 TODO
 
@@ -45,7 +45,7 @@ To test the functions you can import the module directly or via the `chocolateyI
 
 You can now test any of the functions:
 
-    PS> Install-VS TODO
+    PS> Install-VisualStudio TODO
 
 Keep in mind that functions may work fully only in the context of the `chocolateyInstaller` module.
 
@@ -55,7 +55,7 @@ To get the list of functions, load the module directly and invoke the following 
 
 To get help for a specific function use the [help](https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/get-help) command:
 
-    help Install-VS -Full
+    help Install-VisualStudio -Full
 
 ### Acknowledgement
 
