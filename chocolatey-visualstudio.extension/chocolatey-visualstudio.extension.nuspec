@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>chocolatey-visualstudio.extension</id>
+    <version>1.0.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-visualstudio.extension</packageSourceUrl>
+    <owners>Jakub Bereżański</owners>
+    <title>Chocolatey Visual Studio servicing extensions</title>
+    <authors>Jakub Bereżański</authors>
+    <projectUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-visualstudio.extension</projectUrl>
+    <copyright>© 2017 Jakub Bereżański</copyright>
+    <licenseUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/8086c84fed16d4150a50ba1e97fd6b75e3c4f511/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-visualstudio.extension/README.md</docsUrl>
+    <bugTrackerUrl>https://github.com/jberezanski/ChocolateyPackages/issues</bugTrackerUrl>
+    <tags>chocolatey extension admin visual studio</tags>
+    <summary>Helper functions useful for developing packages for installing and servicing Microsoft Visual Studio.</summary>
+    <description>
+This package provides helper functions useful for developing packages for installing and servicing Microsoft Visual Studio.
+    </description>
+    <releaseNotes>
+    [Change log](https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-visualstudio.extension/CHANGELOG.md)
+</releaseNotes>
+    <dependencies>
+    </dependencies>
+  </metadata>
+</package>
