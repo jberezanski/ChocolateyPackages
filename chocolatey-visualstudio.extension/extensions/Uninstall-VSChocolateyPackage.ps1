@@ -11,9 +11,9 @@ function Uninstall-VSChocolateyPackage
         [string] $packageName,
         [string] $silentArgs = '',
         [string] $file,
-        [switch] $assumeNewVS15Installer
+        [switch] $assumeNewVS2017Installer
     )
-    Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs:'$silentArgs', file:'$file', assumeNewVS15Installer:'$assumeNewVS15Installer'"
+    Write-Debug "Running 'Uninstall-VSChocolateyPackage' for $packageName with silentArgs:'$silentArgs', file:'$file', assumeNewVS2017Installer:'$assumeNewVS2017Installer'"
 
     $installMessage = "Uninstalling $packageName..."
     Write-Host $installMessage

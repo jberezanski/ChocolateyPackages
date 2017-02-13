@@ -12,9 +12,9 @@ function Install-VSChocolateyInstallPackage {
         [string] $silentArgs = '',
         [string] $file,
         [string] $logFilePath,
-        [switch] $assumeNewVS15Installer
+        [switch] $assumeNewVS2017Installer
     )
-    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:'$file', silentArgs:'$silentArgs', logFilePath:'$logFilePath', assumeNewVS15Installer:'$assumeNewVS15Installer'"
+    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:'$file', silentArgs:'$silentArgs', logFilePath:'$logFilePath', assumeNewVS2017Installer:'$assumeNewVS2017Installer'"
     $installMessage = "Installing $packageName..."
     Write-Host $installMessage
 

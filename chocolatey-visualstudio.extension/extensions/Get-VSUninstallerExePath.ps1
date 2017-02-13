@@ -4,7 +4,7 @@
     param(
       [string] $PackageName,
       [string] $UninstallerName,
-      [switch] $AssumeNewVS15Installer,
+      [switch] $AssumeNewVS2017Installer,
       [string] $InstallerDisplayName
     )
 
@@ -25,7 +25,7 @@
     Write-Debug "Using Uninstall key: $($uninstallKey.PSPath)"
     $uninstallString = $uninstallKey | Get-ItemProperty -Name UninstallString | Select-Object -ExpandProperty UninstallString
     Write-Debug "UninstallString: $uninstallString"
-    if ($AssumeNewVS15Installer)
+    if ($AssumeNewVS2017Installer)
     {
         # C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe /uninstall
         $uninstallerExePathRegexString = '^(.+[^\s])\s/uninstall$'

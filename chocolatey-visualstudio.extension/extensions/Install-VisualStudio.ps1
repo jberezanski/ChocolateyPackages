@@ -35,7 +35,7 @@ Install-ChocolateyPackage
       [string] $ApplicationName,
       [string] $Url,
       [string] $ChecksumSha1,
-      [switch] $AssumeNewVS15Installer,
+      [switch] $AssumeNewVS2017Installer,
       [string] $InstallerDisplayName = $ApplicationName
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
@@ -50,7 +50,7 @@ Install-ChocolateyPackage
     $count = ($uninstallKey | Measure-Object).Count
     if ($count -gt 0)
     {
-        if ($AssumeNewVS15Installer)
+        if ($AssumeNewVS2017Installer)
         {
             Write-Warning "$ApplicationName is already installed. Please use $InstallerDisplayName in the Start Menu to modify or repair it."
         }
@@ -64,7 +64,7 @@ Install-ChocolateyPackage
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     if ($packageParameters.Length -gt 0) { Write-Debug $packageParameters }
 
-    if ($AssumeNewVS15Installer)
+    if ($AssumeNewVS2017Installer)
     {
         $adminFile = $null
     }
@@ -81,7 +81,7 @@ Install-ChocolateyPackage
 
     $logFilePath = Join-Path $Env:TEMP "${PackageName}.log"
     Write-Debug "Log file path: $logFilePath"
-    $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS15Installer:$AssumeNewVS15Installer
+    $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$AssumeNewVS2017Installer
 
     $arguments = @{
         packageName = $PackageName
@@ -90,7 +90,7 @@ Install-ChocolateyPackage
         checksum = $ChecksumSha1
         checksumType = 'sha1'
         logFilePath = $logFilePath
-        assumeNewVS15Installer = $AssumeNewVS15Installer
+        assumeNewVS2017Installer = $AssumeNewVS2017Installer
     }
     $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Install-VSChocolateyPackage $argumentsDump"

@@ -33,7 +33,7 @@ Uninstall-ChocolateyPackage
       [string] $PackageName,
       [string] $ApplicationName,
       [string] $UninstallerName,
-      [switch] $AssumeNewVS15Installer,
+      [switch] $AssumeNewVS2017Installer,
       [string] $InstallerDisplayName = $ApplicationName
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
@@ -42,23 +42,23 @@ Uninstall-ChocolateyPackage
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Uninstall-VS' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName' AssumeNewVS15Installer:'$AssumeNewVS15Installer' InstallerDisplayName:'$InstallerDisplayName'";
+    Write-Debug "Running 'Uninstall-VS' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName' AssumeNewVS2017Installer:'$AssumeNewVS2017Installer' InstallerDisplayName:'$InstallerDisplayName'";
 
     $uninstallerPath = Get-VSUninstallerExePath `
                         -PackageName $PackageName `
                         -UninstallerName $UninstallerName `
                         -InstallerDisplayName $InstallerDisplayName `
-                        -AssumeNewVS15Installer:$AssumeNewVS15Installer
+                        -AssumeNewVS2017Installer:$AssumeNewVS2017Installer
 
     $logFilePath = Join-Path $Env:TEMP "${PackageName}_uninstall.log"
     Write-Debug "Log file path: $logFilePath"
-    $silentArgs = Generate-UninstallArgumentsString -logFilePath $logFilePath -assumeNewVS15Installer:$AssumeNewVS15Installer
+    $silentArgs = Generate-UninstallArgumentsString -logFilePath $logFilePath -assumeNewVS2017Installer:$AssumeNewVS2017Installer
 
     $arguments = @{
         packageName = $PackageName
         silentArgs = $silentArgs
         file = $uninstallerPath
-        assumeNewVS15Installer = $AssumeNewVS15Installer
+        assumeNewVS2017Installer = $AssumeNewVS2017Installer
     }
     $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Uninstall-VSChocolateyPackage $argumentsDump"

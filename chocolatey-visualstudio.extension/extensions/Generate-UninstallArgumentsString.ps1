@@ -4,12 +4,12 @@
     Param (
         [Parameter(Mandatory = $true)]
         [string] $logFilePath,
-        [switch] $assumeNewVS15Installer
+        [switch] $assumeNewVS2017Installer
     )
-    Write-Debug "Running 'Generate-UninstallArgumentsString' with logFilePath:'$logFilePath', assumeNewVS15Installer:'$assumeNewVS15Installer'";
-    if ($assumeNewVS15Installer)
+    Write-Debug "Running 'Generate-UninstallArgumentsString' with logFilePath:'$logFilePath', assumeNewVS2017Installer:'$assumeNewVS2017Installer'";
+    if ($assumeNewVS2017Installer)
     {
-        Write-Warning "The new VS ""15"" installer does not support setting the path to the log file yet."
+        Write-Warning "The new VS 2017 installer does not support setting the path to the log file yet."
         $s = "/uninstall --passive --norestart"
     }
     else

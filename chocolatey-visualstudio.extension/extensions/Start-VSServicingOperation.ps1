@@ -7,9 +7,9 @@
         [string] $file,
         [string] $logFilePath,
         [string[]] $operationTexts,
-        [switch] $assumeNewVS15Installer
+        [switch] $assumeNewVS2017Installer
     )
-    Write-Debug "Running 'Start-VSServicingOperation' for $packageName with silentArgs:'$silentArgs', file:'$file', logFilePath:$logFilePath', operationTexts:'$operationTexts', assumeNewVS15Installer:'$assumeNewVS15Installer'"
+    Write-Debug "Running 'Start-VSServicingOperation' for $packageName with silentArgs:'$silentArgs', file:'$file', logFilePath:$logFilePath', operationTexts:'$operationTexts', assumeNewVS2017Installer:'$assumeNewVS2017Installer'"
 
     $frobbed, $frobbing, $frobbage = $operationTexts
 
@@ -34,7 +34,7 @@
     if (($blockExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $blockExitCodes }
 
     $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
-    if ($assumeNewVS15Installer)
+    if ($assumeNewVS2017Installer)
     {
         # should not be needed anymore since we are passing --wait to the bootstrapper
         Write-Debug 'Looking for vs_installer.exe processes spawned by the bootstrapper'

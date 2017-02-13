@@ -17,7 +17,7 @@ function Install-VSChocolateyPackage
         [string] $checksum64 = '',
         [string] $checksumType64 = '',
         [string] $logFilePath,
-        [switch] $assumeNewVS15Installer
+        [switch] $assumeNewVS2017Installer
     )
 
     Write-Debug "Running 'Install-VSChocolateyPackage' for $packageName with url:'$url', args:'$silentArgs', url64bit:'$url64bit', checksum:'$checksum', checksumType:'$checksumType', checksum64:'$checksum64', checksumType64:'$checksumType64', logFilePath:'$logFilePath'";
@@ -50,7 +50,7 @@ function Install-VSChocolateyPackage
         silentArgs = $silentArgs
         file = $localFilePath
         logFilePath = $logFilePath
-        assumeNewVS15Installer = $assumeNewVS15Installer
+        assumeNewVS2017Installer = $assumeNewVS2017Installer
     }
     Install-VSChocolateyInstallPackage @arguments
 }
