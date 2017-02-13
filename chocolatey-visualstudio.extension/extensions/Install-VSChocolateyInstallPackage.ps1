@@ -1,0 +1,26 @@
+﻿# based on Install-ChocolateyInstallPackage (fbe24a8), with changes:
+# - added recognition of exit codes signifying reboot requirement
+# - VS installers are exe
+# - dropped support for chocolateyInstallArguments and chocolateyInstallOverride
+# - removed unreferenced parameter
+# - refactored logic shared with Uninstall-VSChocolateyPackage to a generic function
+# - removed exit code parameters in order to centralize exit code logic
+function Install-VSChocolateyInstallPackage {
+    [CmdletBinding()]
+    param(
+        [string] $packageName,
+        [string] $silentArgs = '',
+        [string] $file,
+        [string] $logFilePath,
+        [switch] $assumeNewVS15Installer
+    )
+    Write-Debug "Running 'Install-VSChocolateyInstallPackage' for $packageName with file:'$file', silentArgs:'$silentArgs', logFilePath:'$logFilePath', assumeNewVS15Installer:'$assumeNewVS15Installer'"
+    $installMessage = "Installing $packageName..."
+    Write-Host $installMessage
+
+    if ($file -eq '' -or $file -eq $null) {
+        throw 'Package parameters incorrect, File cannot be empty.'
+    }
+
+    Start-VSServicingOperation @PSBoundParameters -operationTexts @('installed', 'installing', 'installation')
+}
