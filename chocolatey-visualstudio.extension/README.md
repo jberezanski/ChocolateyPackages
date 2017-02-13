@@ -60,3 +60,5 @@ To get help for a specific function use the [help](https://msdn.microsoft.com/en
 ### Acknowledgement
 
 The structure of the Markdown files was inspired by [chocolatey-core.extension](https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/extensions/chocolatey-core.extension).
+
+The module code was initially based on the logic of the `visualstudio2015community` package, later extensively expanded and improved in the `visualstudio2017enterprise` package.
