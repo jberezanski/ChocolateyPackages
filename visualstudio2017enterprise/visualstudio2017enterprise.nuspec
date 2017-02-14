@@ -10,7 +10,7 @@
     <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/02/07/another-update-to-visual-studio-2017-rc/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/d8f0990de2c1a674d29be90dc5759c23deaf6582/icons/vs2017.png</iconUrl>
     <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
-    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <licenseUrl>https://www.visualstudio.com/license-terms/mlt551018/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
