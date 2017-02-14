@@ -37,7 +37,7 @@
     $packageParameters['norestart'] = ''
     if (-not $packageParameters.ContainsKey('quiet') -and -not $packageParameters.ContainsKey('passive'))
     {
-        $packageParameters['passive'] = ''
+        $packageParameters['quiet'] = ''
     }
 
     $argumentSets = ,$packageParameters

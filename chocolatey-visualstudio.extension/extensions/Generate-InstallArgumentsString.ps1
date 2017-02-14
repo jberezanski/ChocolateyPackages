@@ -13,7 +13,7 @@
     if ($assumeNewVS2017Installer)
     {
         Write-Warning "The new VS 2017 installer does not support setting the path to the log file yet."
-        $s = '--passive --norestart --wait'
+        $s = '--quiet --norestart --wait'
         if ($adminFile -ne '')
         {
             Write-Warning "The new VS 2017 installer does not support an admin file yet."
@@ -21,7 +21,7 @@
     }
     else
     {
-        $s = "/Passive /NoRestart /Log ""$logFilePath"""
+        $s = "/Quiet /NoRestart /Log ""$logFilePath"""
 
         if ($adminFile -ne '')
         {

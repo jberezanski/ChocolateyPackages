@@ -10,11 +10,11 @@
     if ($assumeNewVS2017Installer)
     {
         Write-Warning "The new VS 2017 installer does not support setting the path to the log file yet."
-        $s = "/uninstall --passive --norestart"
+        $s = "/uninstall --quiet --norestart"
     }
     else
     {
-        $s = "/Uninstall /Force /Passive /NoRestart /Log ""$logFilePath"""
+        $s = "/Uninstall /Force /Quiet /NoRestart /Log ""$logFilePath"""
     }
 
     return $s
