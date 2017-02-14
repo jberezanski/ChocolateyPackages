@@ -25,8 +25,10 @@
         nickname = 'nickname'
     }
     $propertyNameSelector = (($expectedProductProperties.Values + $optionalProductProperties.Values) | ForEach-Object { "($_)" }) -join '|'
-    $regexText = '"(?<name>{0})"\s*:\s*"(?<value>[^\"]+)"' -f $propertyNameSelector
-    $rx = New-Object -TypeName System.Text.RegularExpressions.Regex -ArgumentList @($regexText, 'ExplicitCapture,IgnorePatternWhitespace,Singleline')
+    $regexTextBasicInfo = '"(?<name>{0})"\s*:\s*"(?<value>[^\"]+)"' -f $propertyNameSelector
+    $rxBasicInfo = New-Object -TypeName System.Text.RegularExpressions.Regex -ArgumentList @($regexTextBasicInfo, 'ExplicitCapture,IgnorePatternWhitespace,Singleline')
+    $regexTextSingleProductInfo = '\s*{\s*[^}]*"id"\s*:\s*"(?<packageId>[^\"]+)"[^}]*}'
+    $rxSelectedPackages = [regex]('"selectedPackages"\s*:\s*\[(({0})(\s*,{0})*)\]' -f $regexTextSingleProductInfo)
 
     $instanceDataPaths = Get-ChildItem -Path $BasePath | Where-Object { $_.PSIsContainer -eq $true } | Select-Object -ExpandProperty FullName
     foreach ($instanceDataPath in $instanceDataPaths)
@@ -44,7 +46,7 @@
             continue
         }
 
-        $instanceData = @{}
+        $instanceData = @{ selectedPackages = @{} }
         foreach ($name in ($expectedProductProperties.Keys + $optionalProductProperties.Keys))
         {
             $instanceData[$name] = $null
@@ -52,7 +54,7 @@
 
         # unfortunately, PowerShell 2.0 does not have ConvertFrom-Json
         $text = [IO.File]::ReadAllText($stateJsonPath)
-        $matches = $rx.Matches($text)
+        $matches = $rxBasicInfo.Matches($text)
         foreach ($match in $matches)
         {
             if ($match -eq $null -or -not $match.Success)
@@ -60,8 +62,8 @@
                 continue
             }
 
-            $name = $match.Groups['name'] -replace '"id', 'Id' -replace '[^a-zA-Z]', ''
-            $value = $match.Groups['value'] -replace '\\\\', '\'
+            $name = $match.Groups['name'].Value -replace '"id', 'Id' -replace '[^a-zA-Z]', ''
+            $value = $match.Groups['value'].Value -replace '\\\\', '\'
             $instanceData[$name] = $value
         }
 
@@ -78,6 +80,18 @@
             Write-Debug "Skipping product because its productLineVersion ($($instanceData.productLineVersion)) is not equal to VisualStudioYear argument value ($VisualStudioYear)"
             continue
         }
+
+        $match = $rxSelectedPackages.Match($text)
+        if ($match.Success)
+        {
+            foreach ($capture in $match.Groups['packageId'].Captures)
+            {
+                $packageId = $capture.Value
+                $instanceData.selectedPackages[$packageId] = $true
+            }
+        }
+
+        Write-Debug ('Parsed instance selected packages: {0}' -f ($instanceData.selectedPackages.Keys -join ' '))
 
         Write-Output $instanceData
     }
