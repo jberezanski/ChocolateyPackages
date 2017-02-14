@@ -1,26 +1,30 @@
 ﻿function Start-VisualStudioModifyOperation
 {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true)] [string] $PackageName,
         [Parameter(Mandatory = $true)] [string[]] $ArgumentList,
         [Parameter(Mandatory = $true)] [string] $VisualStudioVersion,
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
-        [Parameter(Mandatory = $true)] [string[]] $operationTexts
+        [Parameter(Mandatory = $true)] [string[]] $operationTexts,
+        [string] $InstallerPath
     )
     Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioVersion:'$VisualStudioVersion' VisualStudioYear:'$VisualStudioYear'";
 
     $frobbed, $frobbing, $frobbage = $operationTexts
 
-    $uninstallerPath = Get-VSUninstallerExePath `
-                        -PackageName $PackageName `
-                        -UninstallerName 'vs_installer.exe' `
-                        -InstallerDisplayName "Microsoft Visual Studio $VisualStudioYear" `
-                        -AssumeNewVS2017Installer
-
-    if ($uninstallerPath -eq $null)
+    if ($InstallerPath -eq '')
     {
-        throw "Unable to determine the location of the Visual Studio Installer. Is Visual Studio $VisualStudioYear installed?"
+        $InstallerPath = Get-VSUninstallerExePath `
+                            -PackageName $PackageName `
+                            -UninstallerName 'vs_installer.exe' `
+                            -InstallerDisplayName "Microsoft Visual Studio $VisualStudioYear" `
+                            -AssumeNewVS2017Installer
+
+        if ($InstallerPath -eq $null)
+        {
+            throw "Unable to determine the location of the Visual Studio Installer. Is Visual Studio $VisualStudioYear installed?"
+        }
     }
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
