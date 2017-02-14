@@ -49,6 +49,7 @@ Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may t
 
   $exeIsTextFile = [System.IO.Path]::GetFullPath($exeToRun) + ".istext"
   if (([System.IO.File]::Exists($exeIsTextFile))) {
+    Set-StrictMode -Off
     Set-PowerShellExitCode 4
     throw "The file was a text file but is attempting to be run as an executable - '$exeToRun'"
   }
@@ -120,6 +121,7 @@ Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may t
 
   Write-Debug "Command [`"$exeToRun`" $wrappedStatements] exited with `'$exitCode`'."
   if ($validExitCodes -notcontains $exitCode) {
+    Set-StrictMode -Off
     Set-PowerShellExitCode $exitCode
     throw "Running [`"$exeToRun`" $statements] was not successful. Exit code was '$exitCode'. See log for possible error messages."
   }

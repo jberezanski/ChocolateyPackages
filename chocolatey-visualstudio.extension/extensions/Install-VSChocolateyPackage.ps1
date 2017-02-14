@@ -43,7 +43,9 @@ function Install-VSChocolateyPackage
         checksum64 = $checksum64
         checksumType64 = $checksumType64
     }
+    Set-StrictMode -Off
     Get-ChocolateyWebFile @arguments | Out-Null
+    Set-StrictMode -Version 2
 
     $arguments = @{
         packageName = $packageName

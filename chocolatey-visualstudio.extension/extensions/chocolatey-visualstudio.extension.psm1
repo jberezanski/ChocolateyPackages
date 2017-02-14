@@ -1,4 +1,5 @@
-﻿$scriptRoot = Split-Path -Path $MyInvocation.MyCommand.Definition
+﻿Set-StrictMode -Version 2
+$scriptRoot = Split-Path -Path $MyInvocation.MyCommand.Definition
 
 $publicFunctions = @(
     'Install-VisualStudio',
