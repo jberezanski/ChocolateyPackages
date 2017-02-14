@@ -25,11 +25,18 @@ function Parse-Parameters
     {
         Write-Debug "Package parameter kvp: $kvp"
         $delimiterIndex = $kvp.IndexOf($kvpDelimiter)
-        if (($delimiterIndex -le 0) -or ($delimiterIndex -ge ($kvp.Length - 1))) { continue }
+        if (($delimiterIndex -le 0) -or ($delimiterIndex -ge ($kvp.Length - 1))) { $delimiterIndex = $kvp.Length }
 
-        $key = $kvp.Substring(0, $delimiterIndex).Trim().ToLower()
+        $key = $kvp.Substring(0, $delimiterIndex).Trim()
         if ($key -eq '') { continue }
-        $value = $kvp.Substring($delimiterIndex + 1).Trim()
+        if ($delimiterIndex -lt $kvp.Length)
+        {
+            $value = $kvp.Substring($delimiterIndex + 1).Trim()
+        }
+        else
+        {
+            $value = ''
+        }
 
         Write-Debug "Package parameter: key=$key, value=$value"
         $parameters.Add($key, $value)
