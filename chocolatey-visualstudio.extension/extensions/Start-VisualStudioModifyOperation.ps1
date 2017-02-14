@@ -28,7 +28,6 @@
     }
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
-    if ($packageParameters.Length -gt 0) { Write-Debug $packageParameters }
 
     for ($i = 0; $i -lt $ArgumentList.Length; $i += 2)
     {
@@ -41,10 +40,74 @@
         $packageParameters['passive'] = ''
     }
 
-    $silentArgs = 'modify ' + (($packageParameters.GetEnumerator() | ForEach-Object { '--{0} {1}' -f $_.Key, $_.Value }) -f ' ')
-    $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $uninstallerPath -validExitCodes @(0, 3010)
-    $Env:ChocolateyExitCode = $exitCode
-    if ($exitCode -eq 3010)
+    $argumentSets = ,$packageParameters
+    if ($packageParameters.ContainsKey('installPath'))
+    {
+        if ($packageParameters.ContainsKey('productId'))
+        {
+            Write-Warning 'Parameter issue: productId is ignored when installPath is specified.'
+        }
+
+        if ($packageParameters.ContainsKey('channelId'))
+        {
+            Write-Warning 'Parameter issue: channelId is ignored when installPath is specified.'
+        }
+    }
+    elseif ($packageParameters.ContainsKey('productId'))
+    {
+        if (-not $packageParameters.ContainsKey('channelId'))
+        {
+            throw "Parameter error: when productId is specified, channelId must be specified, too."
+        }
+    }
+    elseif ($packageParameters.ContainsKey('channelId'))
+    {
+        throw "Parameter error: when channelId is specified, productId must be specified, too."
+    }
+    else
+    {
+        $installedProducts = Get-WillowInstalledProducts
+        if (($installedProducts | Measure-Object).Count -eq 0)
+        {
+            throw "Unable to detect any supported Visual Studio $VisualStudioYear product. You may try passing --installPath or both --productId and --channelId parameters."
+        }
+
+        $argumentSets = @()
+        foreach ($productInfo in $installedProducts)
+        {
+            $argumentSet = $packageParameters.Clone()
+            $argumentSet['installPath'] = $productInfo.installationPath
+            $argumentSets += $argumentSet
+        }
+    }
+
+    $overallExitCode = 0
+    foreach ($argumentSet in $argumentSets)
+    {
+        if ($argumentSet.ContainsKey('installPath'))
+        {
+            Write-Debug "Modifying Visual Studio product: [installPath = '$($argumentSet.installPath)']"
+        }
+        else
+        {
+            Write-Debug "Modifying Visual Studio product: [productId = '$($argumentSet.productId)' channelId = '$($argumentSet.channelId)']"
+        }
+
+        $silentArgs = 'modify ' + (($argumentSet.GetEnumerator() | ForEach-Object { '--{0} {1}' -f $_.Key, $_.Value }) -f ' ')
+        $exitCode = -1
+        if ($PSCmdlet.ShouldProcess("Executable: $InstallerPath", "Start with arguments: $silentArgs"))
+        {
+            $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $InstallerPath -validExitCodes @(0, 3010)
+        }
+
+        if ($overallExitCode -eq 0)
+        {
+            $overallExitCode = $exitCode
+        }
+    }
+
+    $Env:ChocolateyExitCode = $overallExitCode
+    if ($overallExitCode -eq 3010)
     {
         Write-Warning "${PackageName} has been ${frobbed}. However, a reboot is required to finalize the ${frobbage}."
     }
