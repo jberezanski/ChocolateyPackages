@@ -55,5 +55,8 @@ Example:
 ##### Package
 1.0.0: Initial package release.
     </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.0.0" />
+    </dependencies>
   </metadata>
 </package>

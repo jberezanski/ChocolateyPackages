@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017enterprise</id>
-    <version>15.0.26206.0-rc6</version>
+    <version>15.0.26206.20170214-rc6</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017enterprise</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Enterprise Release Candidate (2017-02-07)</title>
@@ -47,9 +47,10 @@ If complete control over reboots is required, such as in automation scenarios, i
 ##### Software
 [Visual Studio 2017 RC release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.0.26206.0: Initial package release for Visual Studio 2017 Enterprise Release Candidate (2017-02-07). Unattended install and uninstall works again.
+15.0.26206.20170214: Package refactored to use chocolatey-visualstudio.extension.
     </releaseNotes>
     <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.0.0" />
       <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="vcredist2017" version="14.10.24930.20170211-rc6" /> <!-- not strictly required for core editor, but needed for most other workloads -->

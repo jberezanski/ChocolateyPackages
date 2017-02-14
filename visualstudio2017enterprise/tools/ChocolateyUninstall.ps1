@@ -1,8 +1,6 @@
-﻿Import-Module -Name (Join-Path -Path (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition) -ChildPath 'VSServicing.psm1')
-
-Uninstall-VS `
+﻿Uninstall-VisualStudio `
     -PackageName 'visualstudio2017enterprise' `
     -ApplicationName 'Microsoft Visual Studio 2017' `
     -UninstallerName 'vs_installer.exe' `
-    -AssumeNewVS15Installer `
+    -AssumeNewVS2017Installer `
     -InstallerDisplayName 'Microsoft Visual Studio 2017'
