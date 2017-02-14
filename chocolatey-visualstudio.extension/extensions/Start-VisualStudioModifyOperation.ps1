@@ -93,6 +93,14 @@
             Write-Debug "Modifying Visual Studio product: [productId = '$($argumentSet.productId)' channelId = '$($argumentSet.channelId)']"
         }
 
+        foreach ($kvp in $argumentSet.Clone().GetEnumerator())
+        {
+            if ($kvp.Value -match '^(([^"].*\s)|(\s))')
+            {
+                $argumentSet[$kvp.Key] = '"{0}"' -f $kvp.Value
+            }
+        }
+
         $silentArgs = 'modify ' + (($argumentSet.GetEnumerator() | ForEach-Object { '--{0} {1}' -f $_.Key, $_.Value }) -f ' ')
         $exitCode = -1
         if ($PSCmdlet.ShouldProcess("Executable: $InstallerPath", "Start with arguments: $silentArgs"))
