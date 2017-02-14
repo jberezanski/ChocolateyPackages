@@ -72,9 +72,35 @@
             throw "Unable to detect any supported Visual Studio $VisualStudioYear product. You may try passing --installPath or both --productId and --channelId parameters."
         }
 
+        if ($packageParameters.ContainsKey('add'))
+        {
+            $packageIdsList = $packageParameters['add']
+            $unwantedPackageSelector = { $productInfo.selectedPackages.ContainsKey($_) }
+            $unwantedStateDescription = 'contains'
+        }
+        elseif ($packageParameters.ContainsKey('remove'))
+        {
+            $packageIdsList = $packageParameters['remove']
+            $unwantedPackageSelector = { -not $productInfo.selectedPackages.ContainsKey($_) }
+            $unwantedStateDescription = 'does not contain'
+        }
+        else
+        {
+            throw "Unsupported scenario: neither 'add' nor 'remove' is present in parameters collection"
+        }
+
+        $packageIds = ($packageIdsList -split ' ') | ForEach-Object { $_ -split ';' | Select-Object -First 1 }
+
         $argumentSets = @()
         foreach ($productInfo in $installedProducts)
         {
+            $unwantedPackages = $packageIds | Where-Object $unwantedPackageSelector
+            if (($unwantedPackages | Measure-Object).Count -gt 0)
+            {
+                Write-Verbose ("Product at path '{0}' will not be modified because it already {1} package(s): {2}" -f $productInfo.installationPath, $unwantedStateDescription, ($unwantedPackages -join ' '))
+                continue
+            }
+
             $argumentSet = $packageParameters.Clone()
             $argumentSet['installPath'] = $productInfo.installationPath
             $argumentSets += $argumentSet
