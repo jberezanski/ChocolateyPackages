@@ -66,7 +66,7 @@
     }
     else
     {
-        $installedProducts = Get-WillowInstalledProducts
+        $installedProducts = Get-WillowInstalledProducts -VisualStudioYear $VisualStudioYear
         if (($installedProducts | Measure-Object).Count -eq 0)
         {
             throw "Unable to detect any supported Visual Studio $VisualStudioYear product. You may try passing --installPath or both --productId and --channelId parameters."
