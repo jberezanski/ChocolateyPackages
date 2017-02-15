@@ -62,8 +62,6 @@ Install-ChocolateyPackage
     }
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
-    if ($packageParameters.Length -gt 0) { Write-Debug $packageParameters }
-
     if ($AssumeNewVS2017Installer)
     {
         $adminFile = $null

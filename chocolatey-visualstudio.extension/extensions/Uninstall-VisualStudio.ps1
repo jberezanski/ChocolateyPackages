@@ -50,6 +50,7 @@ Uninstall-ChocolateyPackage
                         -InstallerDisplayName $InstallerDisplayName `
                         -AssumeNewVS2017Installer:$AssumeNewVS2017Installer
 
+    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     if ($AssumeNewVS2017Installer)
     {
         $logFilePath = $null
@@ -60,7 +61,7 @@ Uninstall-ChocolateyPackage
         Write-Debug "Log file path: $logFilePath"
     }
 
-    $silentArgs = Generate-UninstallArgumentsString -logFilePath $logFilePath -assumeNewVS2017Installer:$AssumeNewVS2017Installer
+    $silentArgs = Generate-UninstallArgumentsString -parameters $packageParameters -logFilePath $logFilePath -assumeNewVS2017Installer:$AssumeNewVS2017Installer
 
     $arguments = @{
         packageName = $PackageName
