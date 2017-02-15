@@ -34,7 +34,8 @@ Install-ChocolateyPackage
       [string] $PackageName,
       [string] $ApplicationName,
       [string] $Url,
-      [string] $ChecksumSha1,
+      [string] $Checksum,
+      [string] $ChecksumType,
       [switch] $AssumeNewVS2017Installer,
       [string] $ProgramsAndFeaturesDisplayName = $ApplicationName
     )
@@ -89,8 +90,8 @@ Install-ChocolateyPackage
         packageName = $PackageName
         silentArgs = $silentArgs
         url = $Url
-        checksum = $ChecksumSha1
-        checksumType = 'sha1'
+        checksum = $Checksum
+        checksumType = $ChecksumType
         logFilePath = $logFilePath
         assumeNewVS2017Installer = $AssumeNewVS2017Installer
     }
