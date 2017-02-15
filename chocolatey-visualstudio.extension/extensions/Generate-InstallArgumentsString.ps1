@@ -5,15 +5,18 @@
         [Parameter(Mandatory = $true)]
         [hashtable] $parameters,
         [string] $adminFile,
-        [Parameter(Mandatory = $true)]
         [string] $logFilePath,
         [switch] $assumeNewVS2017Installer
     )
     Write-Debug "Running 'Generate-InstallArgumentsString' with parameters:'$parameters', adminFile:'$adminFile', logFilePath:'$logFilePath', assumeNewVS2017Installer:'$assumeNewVS2017Installer'";
     if ($assumeNewVS2017Installer)
     {
-        Write-Warning "The new VS 2017 installer does not support setting the path to the log file yet."
         $s = '--quiet --norestart --wait'
+        if ($logFilePath -ne '')
+        {
+            Write-Warning "The new VS 2017 installer does not support setting the path to the log file yet."
+        }
+
         if ($adminFile -ne '')
         {
             Write-Warning "The new VS 2017 installer does not support an admin file yet."
@@ -21,7 +24,11 @@
     }
     else
     {
-        $s = "/Quiet /NoRestart /Log ""$logFilePath"""
+        $s = "/Quiet /NoRestart"
+        if ($logFilePath -ne '')
+        {
+            $s = $s + " /Log ""$logFilePath"""
+        }
 
         if ($adminFile -ne '')
         {

@@ -67,6 +67,7 @@ Install-ChocolateyPackage
     if ($AssumeNewVS2017Installer)
     {
         $adminFile = $null
+        $logFilePath = $null
     }
     else
     {
@@ -77,10 +78,11 @@ Install-ChocolateyPackage
         Write-Debug "AdminFile: $adminFile"
 
         Update-AdminFile $packageParameters $adminFile
+
+        $logFilePath = Join-Path $Env:TEMP "${PackageName}.log"
+        Write-Debug "Log file path: $logFilePath"
     }
 
-    $logFilePath = Join-Path $Env:TEMP "${PackageName}.log"
-    Write-Debug "Log file path: $logFilePath"
     $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$AssumeNewVS2017Installer
 
     $arguments = @{
