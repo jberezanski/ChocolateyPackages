@@ -6,6 +6,7 @@
         [Parameter(Mandatory = $true)] [string[]] $ArgumentList,
         [Parameter(Mandatory = $true)] [string] $VisualStudioVersion,
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
+        [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
         [Parameter(Mandatory = $true)] [string[]] $operationTexts,
         [string] $InstallerPath
     )
@@ -90,14 +91,33 @@
         }
 
         $packageIds = ($packageIdsList -split ' ') | ForEach-Object { $_ -split ';' | Select-Object -First 1 }
+        $applicableProductIds = $ApplicableProducts | ForEach-Object { "Microsoft.VisualStudio.Product.$_" }
+        Write-Debug ('This package supports Visual Studio product id(s): {0}' -f ($applicableProductIds -join ' '))
 
         $argumentSets = @()
         foreach ($productInfo in $installedProducts)
         {
+            $applicable = $false
+            $thisProductIds = $productInfo.selectedPackages.Keys | Where-Object { $_ -like 'Microsoft.VisualStudio.Product.*' }
+            Write-Debug ('Product at path ''{0}'' has product id(s): {1}' -f $productInfo.installationPath, ($thisProductIds -join ' '))
+            foreach ($thisProductId in $thisProductIds)
+            {
+                if ($applicableProductIds -contains $thisProductId)
+                {
+                    $applicable = $true
+                }
+            }
+
+            if (-not $applicable)
+            {
+                Write-Verbose ('Product at path ''{0}'' will not be modified because it does not support package(s): {1}' -f $productInfo.installationPath, $packageIds)
+                continue
+            }
+
             $unwantedPackages = $packageIds | Where-Object $unwantedPackageSelector
             if (($unwantedPackages | Measure-Object).Count -gt 0)
             {
-                Write-Verbose ("Product at path '{0}' will not be modified because it already {1} package(s): {2}" -f $productInfo.installationPath, $unwantedStateDescription, ($unwantedPackages -join ' '))
+                Write-Verbose ('Product at path ''{0}'' will not be modified because it already {1} package(s): {2}' -f $productInfo.installationPath, $unwantedStateDescription, ($unwantedPackages -join ' '))
                 continue
             }
 
