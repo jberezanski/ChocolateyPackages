@@ -6,19 +6,23 @@ This is a Chocolatey extension that simplifies building Chocolatey packages whic
 
 ### Install-VisualStudio
 
-TODO
+Installs a product from the Visual Studio family (Professional, Enterprise, Community, Build Tools etc.).
+Supports both the classic MSI installer of Visual Studio up to 2017 Preview 3 and the new "Willow" installer of Visual Studio 2017 RC.
 
 ### Uninstall-VisualStudio
 
-TODO
+Uninstalls a product from the Visual Studio family (Professional, Enterprise, Community, Build Tools etc.).
+Supports both the classic MSI installer of Visual Studio up to 2017 Preview 3 and the new "Willow" installer of Visual Studio 2017 RC.
 
 ### Install-VisualStudioWorkload
 
-TODO
+Adds a workload (a set of features) to installed products from the Visual Studio 2017 family.
+Supports the new "Willow" installer of Visual Studio 2017 RC only.
 
 ### Uninstall-VisualStudioWorkload
 
-TODO
+Removes a workload (a set of features) from installed products from the Visual Studio 2017 family.
+Supports the new "Willow" installer of Visual Studio 2017 RC only.
 
 ## Installation
 
@@ -45,7 +49,42 @@ To test the functions you can import the module directly or via the `chocolateyI
 
 You can now test any of the functions:
 
-    PS> Install-VisualStudio TODO
+    PS> Install-VisualStudio `
+        -PackageName 'visualstudio2017enterprise' `
+        -ApplicationName 'Microsoft Visual Studio Enterprise 2017 RC' `
+        -Url 'https://download.microsoft.com/download/4/2/9/429C6D6F-543E-4BB4-A2C7-4EFA7F8DE59D/vs_Enterprise.exe' `
+        -Checksum '493364F350657B537077E72E7400DBF8875CD773' `
+        -ChecksumType 'SHA1' `
+        -InstallerTechnology 'WillowVS2017OrLater' `
+        -ProgramsAndFeaturesDisplayName 'Microsoft Visual Studio 2017'
+
+    PS> Install-VisualStudioWorkload `
+        -PackageName 'visualstudio2017-workload-manageddesktop' `
+        -Workload 'Microsoft.VisualStudio.Workload.ManagedDesktop' `
+        -VisualStudioYear '2017' `
+        -ApplicableProducts @('Community', 'Professional', 'Enterprise')
+
+    PS> Uninstall-VisualStudioWorkload `
+        -PackageName 'visualstudio2017-workload-manageddesktop' `
+        -Workload 'Microsoft.VisualStudio.Workload.ManagedDesktop' `
+        -VisualStudioYear '2017' `
+        -ApplicableProducts @('Community', 'Professional', 'Enterprise')
+
+    PS> Uninstall-VisualStudio `
+        -PackageName 'visualstudio2017enterprise' `
+        -ApplicationName 'Microsoft Visual Studio Enterprise 2017 RC' `
+        -UninstallerName 'vs_installer.exe' `
+        -InstallerTechnology 'WillowVS2017OrLater' `
+        -ProgramsAndFeaturesDisplayName 'Microsoft Visual Studio 2017'
+
+    # this must be run from a script and requires the presence of an AdminDeployment.xml file next to the script
+    Install-VisualStudio `
+        -PackageName 'visualstudio2017enterprise' `
+        -ApplicationName 'Microsoft Visual Studio Enterprise 15 Preview 3' `
+        -Url 'https://download.microsoft.com/download/e/e/6/ee6e936e-6323-4b51-a6f3-7b276b7e168a/vs_enterprise.exe' `
+        -Checksum '6A63984CAFE972D655817395CC12054068077015' `
+        -ChecksumType 'SHA1' `
+        -InstallerTechnology 'MsiVS2015OrEarlier'
 
 Keep in mind that functions may work fully only in the context of the `chocolateyInstaller` module.
 
