@@ -1,4 +1,4 @@
-﻿function Install-VisualStudioWorkload
+﻿function Remove-VisualStudioWorkload
 {
     [CmdletBinding()]
     param(
@@ -14,6 +14,6 @@
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
 
-    Write-Debug "Running 'Install-VisualStudioWorkload' with PackageName:'$PackageName' Workload:'$Workload' VisualStudioYear:'$VisualStudioYear'";
-    Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList @('add', "Microsoft.VisualStudio.Workload.$Workload") -VisualStudioYear $VisualStudioYear -ApplicableProducts $ApplicableProducts -operationTexts @('installed', 'installing', 'installation')
+    Write-Debug "Running 'Remove-VisualStudioWorkload' with PackageName:'$PackageName' Workload:'$Workload' VisualStudioYear:'$VisualStudioYear'";
+    Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList @('remove', "Microsoft.VisualStudio.Workload.$Workload") -VisualStudioYear $VisualStudioYear -ApplicableProducts $ApplicableProducts -operationTexts @('uninstalled', 'uninstalling', 'uninstallation')
 }

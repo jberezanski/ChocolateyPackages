@@ -14,12 +14,12 @@ Supports both the classic MSI installer of Visual Studio up to 2017 Preview 3 an
 Uninstalls a product from the Visual Studio family (Professional, Enterprise, Community, Build Tools etc.).
 Supports both the classic MSI installer of Visual Studio up to 2017 Preview 3 and the new "Willow" installer of Visual Studio 2017 RC.
 
-### Install-VisualStudioWorkload
+### Add-VisualStudioWorkload
 
 Adds a workload (a set of features) to installed products from the Visual Studio 2017 family.
 Supports the new "Willow" installer of Visual Studio 2017 RC only.
 
-### Uninstall-VisualStudioWorkload
+### Remove-VisualStudioWorkload
 
 Removes a workload (a set of features) from installed products from the Visual Studio 2017 family.
 Supports the new "Willow" installer of Visual Studio 2017 RC only.
@@ -58,13 +58,13 @@ You can now test any of the functions:
         -InstallerTechnology 'WillowVS2017OrLater' `
         -ProgramsAndFeaturesDisplayName 'Microsoft Visual Studio 2017'
 
-    PS> Install-VisualStudioWorkload `
+    PS> Add-VisualStudioWorkload `
         -PackageName 'visualstudio2017-workload-manageddesktop' `
         -Workload 'Microsoft.VisualStudio.Workload.ManagedDesktop' `
         -VisualStudioYear '2017' `
         -ApplicableProducts @('Community', 'Professional', 'Enterprise')
 
-    PS> Uninstall-VisualStudioWorkload `
+    PS> Remove-VisualStudioWorkload `
         -PackageName 'visualstudio2017-workload-manageddesktop' `
         -Workload 'Microsoft.VisualStudio.Workload.ManagedDesktop' `
         -VisualStudioYear '2017' `

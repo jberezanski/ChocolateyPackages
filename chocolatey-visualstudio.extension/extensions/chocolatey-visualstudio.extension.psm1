@@ -4,8 +4,8 @@ $scriptRoot = Split-Path -Path $MyInvocation.MyCommand.Definition
 $publicFunctions = @(
     'Install-VisualStudio',
     'Uninstall-VisualStudio',
-    'Install-VisualStudioWorkload',
-    'Uninstall-VisualStudioWorkload'
+    'Add-VisualStudioWorkload',
+    'Remove-VisualStudioWorkload'
 )
 
 Get-ChildItem -Path "$scriptRoot\*.ps1" | ForEach-Object { . $_ }
