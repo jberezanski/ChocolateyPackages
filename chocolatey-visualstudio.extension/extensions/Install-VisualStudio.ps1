@@ -36,7 +36,7 @@ Install-ChocolateyPackage
       [string] $Url,
       [string] $ChecksumSha1,
       [switch] $AssumeNewVS2017Installer,
-      [string] $InstallerDisplayName = $ApplicationName
+      [string] $ProgramsAndFeaturesDisplayName = $ApplicationName
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
     {
@@ -44,21 +44,23 @@ Install-ChocolateyPackage
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Install-VS' for $PackageName with Url:'$Url' ChecksumSha1:$ChecksumSha1";
+    Write-Debug "Running 'Install-VS' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType";
 
-    $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $InstallerDisplayName
+    $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ProgramsAndFeaturesDisplayName
     $count = ($uninstallKey | Measure-Object).Count
     if ($count -gt 0)
     {
         if ($AssumeNewVS2017Installer)
         {
-            Write-Warning "$ApplicationName is already installed. Please use $InstallerDisplayName in the Start Menu to modify or repair it."
+            # TODO: implement detection of products installed by Willow
+            # (there is a single Programs and Features entry for all products, so its presence is not enough)
+            Write-Debug "Programs and Features entry '$ProgramsAndFeaturesDisplayName' detected, this or other product from this family is installed"
         }
         else
         {
             Write-Warning "$ApplicationName is already installed. Please use Programs and Features in the Control Panel to modify or repair it."
+            return
         }
-        return
     }
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters

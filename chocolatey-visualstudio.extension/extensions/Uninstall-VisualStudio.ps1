@@ -34,7 +34,7 @@ Uninstall-ChocolateyPackage
       [string] $ApplicationName,
       [string] $UninstallerName,
       [switch] $AssumeNewVS2017Installer,
-      [string] $InstallerDisplayName = $ApplicationName
+      [string] $ProgramsAndFeaturesDisplayName = $ApplicationName
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
     {
@@ -42,12 +42,12 @@ Uninstall-ChocolateyPackage
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Uninstall-VS' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName' AssumeNewVS2017Installer:'$AssumeNewVS2017Installer' InstallerDisplayName:'$InstallerDisplayName'";
+    Write-Debug "Running 'Uninstall-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName' AssumeNewVS2017Installer:'$AssumeNewVS2017Installer' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName'";
 
     $uninstallerPath = Get-VSUninstallerExePath `
                         -PackageName $PackageName `
                         -UninstallerName $UninstallerName `
-                        -InstallerDisplayName $InstallerDisplayName `
+                        -ProgramsAndFeaturesDisplayName $ProgramsAndFeaturesDisplayName `
                         -AssumeNewVS2017Installer:$AssumeNewVS2017Installer
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters

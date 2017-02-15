@@ -5,21 +5,21 @@
       [string] $PackageName,
       [string] $UninstallerName,
       [switch] $AssumeNewVS2017Installer,
-      [string] $InstallerDisplayName
+      [string] $ProgramsAndFeaturesDisplayName
     )
 
     $informMaintainer = "Please report this to the maintainer of this package ($PackageName)."
-    $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $InstallerDisplayName
+    $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ProgramsAndFeaturesDisplayName
     $count = ($uninstallKey | Measure-Object).Count
     Write-Debug "Found $count Uninstall key(s)"
     if ($count -eq 0)
     {
-        Write-Warning "Uninstall information for $InstallerDisplayName could not be found. This probably means the application was uninstalled outside Chocolatey."
+        Write-Warning "Uninstall information for $ProgramsAndFeaturesDisplayName could not be found. This probably means the application was uninstalled outside Chocolatey."
         return $null
     }
     if ($count -gt 1)
     {
-        throw "More than one Uninstall key found for $InstallerDisplayName! $informMaintainer"
+        throw "More than one Uninstall key found for $ProgramsAndFeaturesDisplayName! $informMaintainer"
     }
 
     Write-Debug "Using Uninstall key: $($uninstallKey.PSPath)"

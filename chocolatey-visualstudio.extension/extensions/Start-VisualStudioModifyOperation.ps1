@@ -18,7 +18,7 @@
         $InstallerPath = Get-VSUninstallerExePath `
                             -PackageName $PackageName `
                             -UninstallerName 'vs_installer.exe' `
-                            -InstallerDisplayName "Microsoft Visual Studio $VisualStudioYear" `
+                            -ProgramsAndFeaturesDisplayName "Microsoft Visual Studio $VisualStudioYear" `
                             -AssumeNewVS2017Installer
 
         if ($InstallerPath -eq $null)
