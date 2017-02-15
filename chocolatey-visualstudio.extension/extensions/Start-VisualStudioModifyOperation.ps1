@@ -4,13 +4,12 @@
     param(
         [Parameter(Mandatory = $true)] [string] $PackageName,
         [Parameter(Mandatory = $true)] [string[]] $ArgumentList,
-        [Parameter(Mandatory = $true)] [string] $VisualStudioVersion,
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
         [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
         [Parameter(Mandatory = $true)] [string[]] $operationTexts,
         [string] $InstallerPath
     )
-    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioVersion:'$VisualStudioVersion' VisualStudioYear:'$VisualStudioYear'";
+    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear'";
 
     $frobbed, $frobbing, $frobbage = $operationTexts
 
