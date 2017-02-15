@@ -29,13 +29,16 @@ To find out what's new in Visual Studio 2017 RC, or to see the known issues, see
 
 ### Customizations
 
-This release uses the new Visual Studio installer. The package logic has not been updated to support full customizations yet.
-The package installs only the bare minimum required (the Core Editor workload). To add more workloads/components, launch the Visual Studio Installer application from the Start Menu.
+By default, the package installs only the bare minimum required (the Core Editor workload). The easiest way to add more workloads is to use the workload packages: `visualstudio2017-workload-*`, e.g. [visualstudio2017-workload-manageddesktop](https://chocolatey.org/packages/visualstudio2017-workload-manageddesktop).
 
-#### Providing a product key
-It is possible to provide a product key via packageParameters:
+However, the package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
 
-    choco install visualstudio2017enterprise -packageParameters "--ProductKey 12345-ABCDE-67890-FEDBC-76543"
+After installing the package, more workloads/components can also be added interactively, by launching the Visual Studio Installer application from the Start Menu.
+
+#### Full installation
+As an example of using package parameters, this command will install Visual Studio with all available workloads and optional components and display progress during the installation:
+
+    choco install visualstudio2017enterprise -packageParameters "--allWorkloads --includeRecommended --includeOptional --passive"
 
 ### Installation notes
 

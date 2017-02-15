@@ -30,8 +30,16 @@ Visual Studio 2017 must be installed first, for example using Chocolatey package
 
 ### Customizations
 
-The package does not know how to detect installed Visual Studio products yet, so it requires to be told via parameters,
-either:
+The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+
+By default, the package installs only components required by the workload. Package parameters can be used to include recommended and/or optional components:
+
+- `--includeRecommended` - Includes the recommended components.
+- `--includeOptional` - Includes the optional components.
+
+By default, the package will detect installed Visual Studio products and add the workload to all products that support it and do not have it installed already.
+
+In order to act on one specific product when several are installed, the product needs to be indicated to the package via parameters, either:
 
 - `--installPath` - the path where the product is installed, for example "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise"
 
@@ -40,12 +48,11 @@ or (both are needed):
 - `--productId` - the identifier of the product, for example "Microsoft.VisualStudio.Product.Enterprise"
 - `--channelId` - the release channel, should be "VisualStudio.15.Release"
 
-By default, the package installs only components required by the workload. Package parameters can be used to include recommended and/or optional components:
+Example 1. Installing the workload on all products, including recommended, but not optional components:
 
-- `--includeRecommended` - Includes the recommended components.
-- `--includeOptional` - Includes the optional components.
+    choco install visualstudio2017-workload-manageddesktop --package-parameters "--includeRecommended"
 
-Example:
+Example 2. Installing the workload on one specific product, including all recommended and optional components:
 
     choco install visualstudio2017-workload-manageddesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.15.Release --includeRecommended --includeOptional"
     </description>
