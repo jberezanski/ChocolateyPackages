@@ -36,7 +36,7 @@ Install-ChocolateyPackage
       [string] $Url,
       [string] $Checksum,
       [string] $ChecksumType,
-      [switch] $AssumeNewVS2017Installer,
+      [ValidateSet('MsiVS2015OrEarlier', 'WillowVS2017OrLater')] [string] $InstallerTechnology,
       [string] $ProgramsAndFeaturesDisplayName = $ApplicationName
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
@@ -45,13 +45,15 @@ Install-ChocolateyPackage
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Install-VS' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType";
+    Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName'";
+
+    $assumeNewVS2017Installer = $InstallerTechnology -eq 'WillowVS2017OrLater'
 
     $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ProgramsAndFeaturesDisplayName
     $count = ($uninstallKey | Measure-Object).Count
     if ($count -gt 0)
     {
-        if ($AssumeNewVS2017Installer)
+        if ($assumeNewVS2017Installer)
         {
             # TODO: implement detection of products installed by Willow
             # (there is a single Programs and Features entry for all products, so its presence is not enough)
@@ -65,7 +67,7 @@ Install-ChocolateyPackage
     }
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
-    if ($AssumeNewVS2017Installer)
+    if ($assumeNewVS2017Installer)
     {
         $adminFile = $null
         $logFilePath = $null
@@ -84,7 +86,7 @@ Install-ChocolateyPackage
         Write-Debug "Log file path: $logFilePath"
     }
 
-    $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$AssumeNewVS2017Installer
+    $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer
 
     $arguments = @{
         packageName = $PackageName
@@ -93,7 +95,7 @@ Install-ChocolateyPackage
         checksum = $Checksum
         checksumType = $ChecksumType
         logFilePath = $logFilePath
-        assumeNewVS2017Installer = $AssumeNewVS2017Installer
+        assumeNewVS2017Installer = $assumeNewVS2017Installer
     }
     $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Install-VSChocolateyPackage $argumentsDump"

@@ -33,7 +33,7 @@ Uninstall-ChocolateyPackage
       [string] $PackageName,
       [string] $ApplicationName,
       [string] $UninstallerName,
-      [switch] $AssumeNewVS2017Installer,
+      [ValidateSet('MsiVS2015OrEarlier', 'WillowVS2017OrLater')] [string] $InstallerTechnology,
       [string] $ProgramsAndFeaturesDisplayName = $ApplicationName
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
@@ -42,16 +42,18 @@ Uninstall-ChocolateyPackage
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Uninstall-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName' AssumeNewVS2017Installer:'$AssumeNewVS2017Installer' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName'";
+    Write-Debug "Running 'Uninstall-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' UninstallerName:'$UninstallerName' InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName'";
+
+    $assumeNewVS2017Installer = $InstallerTechnology -eq 'WillowVS2017OrLater'
 
     $uninstallerPath = Get-VSUninstallerExePath `
                         -PackageName $PackageName `
                         -UninstallerName $UninstallerName `
                         -ProgramsAndFeaturesDisplayName $ProgramsAndFeaturesDisplayName `
-                        -AssumeNewVS2017Installer:$AssumeNewVS2017Installer
+                        -AssumeNewVS2017Installer:$assumeNewVS2017Installer
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
-    if ($AssumeNewVS2017Installer)
+    if ($assumeNewVS2017Installer)
     {
         $logFilePath = $null
     }
@@ -61,13 +63,13 @@ Uninstall-ChocolateyPackage
         Write-Debug "Log file path: $logFilePath"
     }
 
-    $silentArgs = Generate-UninstallArgumentsString -parameters $packageParameters -logFilePath $logFilePath -assumeNewVS2017Installer:$AssumeNewVS2017Installer
+    $silentArgs = Generate-UninstallArgumentsString -parameters $packageParameters -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer
 
     $arguments = @{
         packageName = $PackageName
         silentArgs = $silentArgs
         file = $uninstallerPath
-        assumeNewVS2017Installer = $AssumeNewVS2017Installer
+        assumeNewVS2017Installer = $assumeNewVS2017Installer
     }
     $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Uninstall-VSChocolateyPackage $argumentsDump"
