@@ -36,36 +36,6 @@
     $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
     if ($assumeNewVS2017Installer)
     {
-        # should not be needed anymore since we are passing --wait to the bootstrapper
-        Write-Debug 'Looking for vs_installer.exe processes spawned by the bootstrapper'
-        $installerProcesses = Get-Process -Name 'vs_installer' -ErrorAction SilentlyContinue
-        $installerProcessesCount = ($installerProcesses | Measure-Object).Count
-        if ($installerProcessesCount -gt 0)
-        {
-            Write-Debug "Found $installerProcessesCount vs_installer.exe process(es): $($installerProcesses | Select-Object -ExpandProperty Id)"
-            Write-Debug "Waiting for all vs_installer.exe processes to exit"
-            $installerProcesses | Wait-Process
-            foreach ($proc in $installerProcesses)
-            {
-                if ($proc.ExitCode -ne 0)
-                {
-                    Write-Warning "vs_installer.exe process $($proc.Id) exited with code $($proc.ExitCode)"
-                    if ($exitCode -eq 0)
-                    {
-                        $exitCode = $proc.ExitCode
-                    }
-                }
-                else
-                {
-                    Write-Debug "vs_installer.exe process $($proc.Id) exited with code $($proc.ExitCode)"
-                }
-            }
-        }
-        else
-        {
-            Write-Debug 'Did not find any running vs_installer.exe processes.'
-        }
-
         # Not only does a process remain running after vs_installer /uninstall finishes, but that process
         # pops up a message box at end! Sheesh.
         Write-Debug 'Looking for vs_installer.windows.exe processes spawned by the uninstaller'
