@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>KB3033929</id>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB3033929</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
         <title>Microsoft security advisory: Availability of SHA-2 code signing support for Windows 7 and Windows Server 2008 R2: March 10, 2015</title>
@@ -11,7 +11,7 @@
         <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
         <licenseUrl>https://support.microsoft.com/en-us/kb/3033929</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <tags>Microsoft Windows Update KB3033929 admin Visual Studio 2017</tags>
+        <tags>microsoft windows update kb3033929 admin visual studio 2017</tags>
         <summary>The update adds SHA-2 hashing algorithm signing and verification support to Windows 7 and Windows Server 2008 R2</summary>
         <description>
 Microsoft has released a security advisory for IT professionals about SHA-2 code signing support. The security advisory announces the availability of a security update and contains additional security-related information. To view the security advisory, go to the following Microsoft website: 
@@ -24,10 +24,11 @@ On systems other than Windows 7 or Windows Server 2008 R2, this package installs
 This update is required to install Visual Studio 2017 on Windows 7 or Windows Server 2008 R2.
         </description>
         <releaseNotes>
-1.0.1: package refactored to use chocolatey-windowsupdate.extension
+1.0.2: added checksums, updated dependency version, added dependency on KB3035131, made tags lowercase
         </releaseNotes>
         <dependencies>
-            <dependency id="chocolatey-windowsupdate.extension" version="1.0.0" />
+            <dependency id="chocolatey-windowsupdate.extension" version="1.0.1" />
+            <dependency id="KB3035131" version="1.0.0" />
         </dependencies>
     </metadata>
 </package>
