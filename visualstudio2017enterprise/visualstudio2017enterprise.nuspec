@@ -56,8 +56,7 @@ If complete control over reboots is required, such as in automation scenarios, i
       <dependency id="chocolatey-visualstudio.extension" version="1.0.0" />
       <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
-      <dependency id="vcredist2017" version="14.10.24930.20170211-rc6" /> <!-- not strictly required for core editor, but needed for most other workloads -->
-      <dependency id="dotnet4.6.1" version="4.6.01055.001" /> <!-- actually, the minimum requirement is 4.6, but 4.6.1 fixes a few major bugs and is also needed for most workloads -->
+      <dependency id="dotnet4.6" version="4.6.00081.20150925" />
     </dependencies>
   </metadata>
 </package>
