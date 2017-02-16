@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>KB2882822</id>
+        <version>1.0.0</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB2882822</packageSourceUrl>
+        <owners>Jakub Bereżański</owners>
+        <title>ITraceRelogger interface support for Windows 7 SP1 and Windows Server 2008 R2 SP1</title>
+        <authors>Microsoft</authors>
+        <projectUrl>https://support.microsoft.com/en-us/kb/2882822</projectUrl>
+        <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
+        <licenseUrl>https://support.microsoft.com/en-us/kb/2882822</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>microsoft windows update kb2882822 admin visual studio 2015</tags>
+        <summary>The update adds ITraceRelogger interface support to Windows Embedded Standard 7 SP1, Windows 7 SP1 and Windows Server 2008 R2 SP1</summary>
+        <description>
+The ITraceRelogger interface is a dependency for certain features to work (for example, the UI Responsiveness tool in Internet Explorer 11 F12 tools). After the update is installed, the application that is dependent on the ITraceRelogger interface can now enable certain features that runs in Windows Embedded Standard 7 SP1, Windows 7 SP1 and Windows Server 2008 R2 SP1.
+
+This package requires Service Pack 1 for Windows 7 or Windows Server 2008 R2 to be installed first. The [KB976932 package](https://chocolatey.org/packages/KB976932) may be used to install it.
+
+On systems other than Windows 7 or Windows Server 2008 R2, this package installs successfully, but does nothing.
+
+This update is required by Visual Studio 2015 Update 3 on Windows 7 or Windows Server 2008 R2.
+        </description>
+        <releaseNotes>
+1.0.0: initial package release
+        </releaseNotes>
+        <dependencies>
+            <dependency id="chocolatey-windowsupdate.extension" version="1.0.1" />
+        </dependencies>
+    </metadata>
+</package>
