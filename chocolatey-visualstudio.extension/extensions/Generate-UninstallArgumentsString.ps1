@@ -22,7 +22,7 @@
             $argumentSet['quiet'] = ''
         }
 
-        $s = '/uninstall' + (($argumentSet.GetEnumerator() | ForEach-Object { '--{0} {1}' -f $_.Key, $_.Value }) -f ' ')
+        $s = '/uninstall ' + (($argumentSet.GetEnumerator() | ForEach-Object { '--{0} {1}' -f $_.Key, $_.Value }) -f ' ')
     }
     else
     {
