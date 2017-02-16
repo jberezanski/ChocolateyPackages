@@ -1,4 +1,7 @@
 chocolatey-visualstudio.extension\chocolatey-visualstudio.extension.nuspec
+KB2882822\KB2882822.nuspec
+KB3033929\KB3033929.nuspec
+KB3035131\KB3035131.nuspec
 visualstudio2017enterprise\visualstudio2017enterprise.nuspec
 visualstudio2017-workload-manageddesktop\visualstudio2017-workload-azure.nuspec
 visualstudio2017-workload-manageddesktop\visualstudio2017-workload-data.nuspec
