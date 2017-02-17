@@ -18,4 +18,8 @@ visualstudio2017-workload-manageddesktop\visualstudio2017-workload-office.nuspec
 visualstudio2017-workload-manageddesktop\visualstudio2017-workload-universal.nuspec
 visualstudio2017-workload-manageddesktop\visualstudio2017-workload-visualstudioextension.nuspec
 visualstudio2017-workload-manageddesktop\visualstudio2017-workload-webcrossplat.nuspec
+..\KennethB-Chocolatey-Packages\VisualStudio2015Community\VisualStudio2015Community.nuspec
+..\KennethB-Chocolatey-Packages\VisualStudio2015Enterprise\VisualStudio2015Enterprise.nuspec
 ..\KennethB-Chocolatey-Packages\VisualStudio2015Professional\VisualStudio2015Professional.nuspec
+..\jivkok-Chocolatey-Packages\VisualStudio2017Community\VisualStudioCommunity2017.nuspec
+..\jivkok-Chocolatey-Packages\VisualStudio2017Professional\VisualStudioProfessional2017.nuspec
