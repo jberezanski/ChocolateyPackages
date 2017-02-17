@@ -56,6 +56,7 @@ If complete control over reboots is required, such as in automation scenarios, i
       <dependency id="chocolatey-visualstudio.extension" version="1.0.0" />
       <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
+      <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnet4.6" version="4.6.00081.20150925" />
     </dependencies>
   </metadata>
