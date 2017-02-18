@@ -9,7 +9,7 @@
         <authors>Microsoft</authors>
         <projectUrl>https://support.microsoft.com/en-us/kb/2882822</projectUrl>
         <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
-        <licenseUrl>https://support.microsoft.com/en-us/kb/2882822</licenseUrl>
+        <licenseUrl>http://go.microsoft.com/fwlink/?LinkID=206977</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <tags>microsoft windows update kb2882822 admin visual studio 2015</tags>
         <summary>The update adds ITraceRelogger interface support to Windows Embedded Standard 7 SP1, Windows 7 SP1 and Windows Server 2008 R2 SP1</summary>
