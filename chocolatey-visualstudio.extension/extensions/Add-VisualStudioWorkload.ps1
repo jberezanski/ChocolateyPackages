@@ -15,5 +15,5 @@
     }
 
     Write-Debug "Running 'Add-VisualStudioWorkload' with PackageName:'$PackageName' Workload:'$Workload' VisualStudioYear:'$VisualStudioYear'";
-    Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList @('add', "Microsoft.VisualStudio.Workload.$Workload") -VisualStudioYear $VisualStudioYear -ApplicableProducts $ApplicableProducts -operationTexts @('installed', 'installing', 'installation')
+    Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList @('add', "Microsoft.VisualStudio.Workload.$Workload") -VisualStudioYear $VisualStudioYear -ApplicableProducts $ApplicableProducts -OperationTexts @('installed', 'installing', 'installation')
 }

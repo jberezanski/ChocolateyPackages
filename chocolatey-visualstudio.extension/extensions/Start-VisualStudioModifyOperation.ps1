@@ -6,12 +6,12 @@
         [Parameter(Mandatory = $true)] [string[]] $ArgumentList,
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
         [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
-        [Parameter(Mandatory = $true)] [string[]] $operationTexts,
+        [Parameter(Mandatory = $true)] [string[]] $OperationTexts,
         [string] $InstallerPath
     )
-    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear'";
+    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' InstallerPath:'$InstallerPath'";
 
-    $frobbed, $frobbing, $frobbage = $operationTexts
+    $frobbed, $frobbing, $frobbage = $OperationTexts
 
     if ($InstallerPath -eq '')
     {
@@ -146,7 +146,7 @@
             }
         }
 
-        $silentArgs = 'modify ' + (($argumentSet.GetEnumerator() | ForEach-Object { '--{0} {1}' -f $_.Key, $_.Value }) -f ' ')
+        $silentArgs = 'modify' + (($argumentSet.GetEnumerator() | ForEach-Object { ' --{0} {1}' -f $_.Key, $_.Value }) -join '')
         $exitCode = -1
         if ($PSCmdlet.ShouldProcess("Executable: $InstallerPath", "Start with arguments: $silentArgs"))
         {
