@@ -5,7 +5,8 @@ $publicFunctions = @(
     'Install-VisualStudio',
     'Uninstall-VisualStudio',
     'Add-VisualStudioWorkload',
-    'Remove-VisualStudioWorkload'
+    'Remove-VisualStudioWorkload',
+    'Remove-VisualStudioProduct'
 )
 
 Get-ChildItem -Path "$scriptRoot\*.ps1" | ForEach-Object { . $_ }

@@ -3,13 +3,14 @@
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true)] [string] $PackageName,
-        [Parameter(Mandatory = $true)] [string[]] $ArgumentList,
+        [AllowEmptyCollection()] [Parameter(Mandatory = $true)] [string[]] $ArgumentList,
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
         [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
         [Parameter(Mandatory = $true)] [string[]] $OperationTexts,
+        [ValidateSet('modify', 'uninstall')] [string] $Operation = 'modify',
         [string] $InstallerPath
     )
-    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' InstallerPath:'$InstallerPath'";
+    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' InstallerPath:'$InstallerPath'";
 
     $frobbed, $frobbing, $frobbage = $OperationTexts
 
@@ -72,21 +73,34 @@
             throw "Unable to detect any supported Visual Studio $VisualStudioYear product. You may try passing --installPath or both --productId and --channelId parameters."
         }
 
-        if ($packageParameters.ContainsKey('add'))
+        if ($Operation -eq 'modify')
         {
-            $packageIdsList = $packageParameters['add']
-            $unwantedPackageSelector = { $productInfo.selectedPackages.ContainsKey($_) }
-            $unwantedStateDescription = 'contains'
+            if ($packageParameters.ContainsKey('add'))
+            {
+                $packageIdsList = $packageParameters['add']
+                $unwantedPackageSelector = { $productInfo.selectedPackages.ContainsKey($_) }
+                $unwantedStateDescription = 'contains'
+            }
+            elseif ($packageParameters.ContainsKey('remove'))
+            {
+                $packageIdsList = $packageParameters['remove']
+                $unwantedPackageSelector = { -not $productInfo.selectedPackages.ContainsKey($_) }
+                $unwantedStateDescription = 'does not contain'
+            }
+            else
+            {
+                throw "Unsupported scenario: neither 'add' nor 'remove' is present in parameters collection"
+            }
         }
-        elseif ($packageParameters.ContainsKey('remove'))
+        elseif ($Operation -eq 'uninstall')
         {
-            $packageIdsList = $packageParameters['remove']
-            $unwantedPackageSelector = { -not $productInfo.selectedPackages.ContainsKey($_) }
-            $unwantedStateDescription = 'does not contain'
+            $packageIdsList = ''
+            $unwantedPackageSelector = { $false }
+            $unwantedStateDescription = '<unused>'
         }
         else
         {
-            throw "Unsupported scenario: neither 'add' nor 'remove' is present in parameters collection"
+            throw "Unsupported Operation: $Operation"
         }
 
         $packageIds = ($packageIdsList -split ' ') | ForEach-Object { $_ -split ';' | Select-Object -First 1 }
@@ -146,7 +160,7 @@
             }
         }
 
-        $silentArgs = 'modify' + (($argumentSet.GetEnumerator() | ForEach-Object { ' --{0} {1}' -f $_.Key, $_.Value }) -join '')
+        $silentArgs = $Operation + (($argumentSet.GetEnumerator() | ForEach-Object { ' --{0} {1}' -f $_.Key, $_.Value }) -join '')
         $exitCode = -1
         if ($PSCmdlet.ShouldProcess("Executable: $InstallerPath", "Start with arguments: $silentArgs"))
         {

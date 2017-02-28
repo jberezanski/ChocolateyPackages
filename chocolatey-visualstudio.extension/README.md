@@ -11,8 +11,10 @@ Supports both the classic MSI installer of Visual Studio up to 2017 Preview 3 an
 
 ### Uninstall-VisualStudio
 
-Uninstalls a product from the Visual Studio family (Professional, Enterprise, Community, Build Tools etc.).
-Supports both the classic MSI installer of Visual Studio up to 2017 Preview 3 and the new "Willow" installer of Visual Studio 2017 RC.
+For Visual Studio editions using the classic MSI installer (Visual Studio up to 2017 Preview 3), uninstalls an installed product
+from the Visual Studio family (Professional, Enterprise, Community, Build Tools etc.).
+For Visual Studio editions using the new "Willow" installer of Visual Studio 2017 RC, uninstalls the Visual Studio Installer
+and all installed products from the Visual Studio 2017 family.
 
 ### Add-VisualStudioWorkload
 
@@ -22,6 +24,11 @@ Supports the new "Willow" installer of Visual Studio 2017 RC only.
 ### Remove-VisualStudioWorkload
 
 Removes a workload (a set of features) from installed products from the Visual Studio 2017 family.
+Supports the new "Willow" installer of Visual Studio 2017 RC only.
+
+### Remove-VisualStudioProduct
+
+Removes an installed product from the Visual Studio 2017 family (Professional, Enterprise, Community, Build Tools etc.).
 Supports the new "Willow" installer of Visual Studio 2017 RC only.
 
 ## Installation

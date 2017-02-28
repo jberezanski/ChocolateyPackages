@@ -1,5 +1,10 @@
 ﻿# CHANGELOG
 
+## Version 1.1.0
+
+- Added helper: Remove-VisualStudioProduct.
+- Fixed argument string generation in Start-VisualStudioModifyOperation (affects Add-VisualStudioWorkload and Remove-VisualStudioWorkload).
+
 ## Version 1.0.0
 
 - Initial release with helpers: Install-VisualStudio, Uninstall-VisualStudio, Add-VisualStudioWorkload, Remove-VisualStudioWorkload.
