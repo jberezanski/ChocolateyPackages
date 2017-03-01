@@ -14,7 +14,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs 2017 ide workload .net managed desktop admin</tags>
+    <tags>microsoft visual studio visualstudio vs 2017 ide workload .net managed desktop wpf windows-forms admin</tags>
     <summary>Build WPF, Windows Forms and console applications using the .NET Framework.</summary>
     <description>
 ### Overview
