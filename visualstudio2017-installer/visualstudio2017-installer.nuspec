@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2017-installer</id>
+    <version>1.0.0-rc1</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-installer</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Visual Studio 2017 Installer (remove only)</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/02/07/another-update-to-visual-studio-2017-rc/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/d8f0990de2c1a674d29be90dc5759c23deaf6582/icons/vs2017.png</iconUrl>
+    <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
+    <licenseUrl>https://www.visualstudio.com/license-terms/mlt551018/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
+    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs 2017 admin</tags>
+    <summary>Provides a way to uninstall the Visual Studio 2017 Installer.</summary>
+    <description>
+Uninstalling this package removes the Visual Studio 2017 Installer, which remains present after the Visual Studio product packages (such as visualstudio2017enterprise or visualstudio2017buildtools) are uninstalled.
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2017 RC release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
+##### Package
+1.0.0-rc1: Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.1.0" />
+    </dependencies>
+  </metadata>
+</package>
