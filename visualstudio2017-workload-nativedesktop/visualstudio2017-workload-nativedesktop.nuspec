@@ -64,7 +64,7 @@ Example 2. Installing the workload on one specific product, including all recomm
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.1.0" />
-<!-- TODO -->
+      <dependency id="dotnet4.6.1" version="4.6.01055.20161213" />
     </dependencies>
   </metadata>
 </package>
