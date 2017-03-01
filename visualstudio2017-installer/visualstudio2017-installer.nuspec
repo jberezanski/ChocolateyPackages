@@ -14,10 +14,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs 2017 admin</tags>
+    <tags>microsoft visual studio visualstudio vs 2017 installer admin</tags>
     <summary>Provides a way to uninstall the Visual Studio 2017 Installer.</summary>
     <description>
-Uninstalling this package removes the Visual Studio 2017 Installer, which remains present after the Visual Studio product packages (such as visualstudio2017enterprise or visualstudio2017buildtools) are uninstalled.
+Uninstalling this package removes the Visual Studio 2017 Installer, which remains present after the Visual Studio product packages (such as [visualstudio2017enterprise](https://chocolatey.org/packages/visualstudio2017enterprise) or [visualstudio2017buildtools](https://chocolatey.org/packages/visualstudio2017buildtools)) are uninstalled.
     </description>
     <releaseNotes>
 ##### Software
