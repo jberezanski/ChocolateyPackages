@@ -46,7 +46,7 @@ Example. Installing the workload, including recommended, but not optional compon
 1.0.0-rc1: Initial package release.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.0.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.1.0" />
       <dependency id="vcredist2017" version="14.10.24930.20170211-rc6" />
     </dependencies>
   </metadata>

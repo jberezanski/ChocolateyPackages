@@ -63,7 +63,7 @@ Example 2. Installing the workload on one specific product, including all recomm
 1.0.0-rc1: Initial package release.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.0.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.1.0" />
 <!-- TODO -->
     </dependencies>
   </metadata>
