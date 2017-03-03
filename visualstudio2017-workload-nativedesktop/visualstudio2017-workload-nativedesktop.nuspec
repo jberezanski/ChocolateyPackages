@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-workload-nativedesktop</id>
-    <version>1.0.0-rc1</version>
+    <version>1.1.0-rc2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-nativedesktop</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Desktop development with C++ workload for Visual Studio 2017</title>
@@ -30,11 +30,11 @@ Visual Studio 2017 must be installed first, for example using Chocolatey package
 
 ### Customizations
 
-The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --includeRecommended` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
 
-By default, the package installs only components required by the workload. Package parameters can be used to include recommended and/or optional components:
+By default, the package installs components required by and recommended for the workload. Package parameters can be used to adjust this behavior:
 
-- `--includeRecommended` - Includes the recommended components.
+- `--no-includeRecommended` - Does not include the recommended components.
 - `--includeOptional` - Includes the optional components.
 
 By default, the package will detect installed Visual Studio products and add the workload to all products that support it and do not have it installed already.
@@ -50,20 +50,25 @@ or (both are needed):
 
 Example 1. Installing the workload on all products, including recommended, but not optional components:
 
-    choco install visualstudio2017-workload-nativedesktop --package-parameters "--includeRecommended"
+    choco install visualstudio2017-workload-nativedesktop
 
 Example 2. Installing the workload on one specific product, including all recommended and optional components:
 
-    choco install visualstudio2017-workload-nativedesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.15.Release --includeRecommended --includeOptional"
+    choco install visualstudio2017-workload-nativedesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.15.Release --includeOptional"
+
+Example 3. Installing the workload on all products, including only required components:
+
+    choco install visualstudio2017-workload-nativedesktop --package-parameters "--no-includeRecommended"
     </description>
     <releaseNotes>
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.0.0-rc1: Initial package release.
+1.1.0-rc2: Installing recommended components by default.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.1.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.2.0" />
+      <dependency id="vcredist2017" version="14.10.24930.20170211-rc6" />
       <dependency id="dotnet4.6.1" version="4.6.01055.20161213" />
     </dependencies>
   </metadata>
