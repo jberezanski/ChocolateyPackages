@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version 1.2.0
+
+- Added switch -IncludeRecommendedComponentsByDefault to Add-VisualStudioWorkload. The user may disable it by passing '--no-includeRecommended' in package parameters.
+
 ## Version 1.1.0
 
 - Added helper: Remove-VisualStudioProduct.

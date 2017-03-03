@@ -3,7 +3,7 @@
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true)] [string] $PackageName,
-        [AllowEmptyCollection()] [Parameter(Mandatory = $true)] [string[]] $ArgumentList,
+        [AllowEmptyCollection()] [AllowEmptyString()] [Parameter(Mandatory = $true)] [string[]] $ArgumentList,
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
         [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
         [Parameter(Mandatory = $true)] [string[]] $OperationTexts,
@@ -39,6 +39,19 @@
     if (-not $packageParameters.ContainsKey('quiet') -and -not $packageParameters.ContainsKey('passive'))
     {
         $packageParameters['quiet'] = ''
+    }
+
+    # --no-foo cancels --foo
+    $negativeSwitches = $packageParameters.GetEnumerator() | Where-Object { $_.Key -match '^no-.' -and $_.Value -eq '' } | Select-Object -ExpandProperty Key
+    foreach ($negativeSwitch in $negativeSwitches)
+    {
+        if ($negativeSwitch -eq $null)
+        {
+            continue
+        }
+
+        $packageParameters.Remove($negativeSwitch.Substring(3))
+        $packageParameters.Remove($negativeSwitch)
     }
 
     $argumentSets = ,$packageParameters
