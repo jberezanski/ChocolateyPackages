@@ -25,6 +25,7 @@ Initial package release.
       <dependency id="vcredist2012" />
       <dependency id="vcredist2013" />
       <dependency id="vcredist2015" />
+      <dependency id="vcredist2017" />
     </dependencies>
   </metadata>
 </package>
