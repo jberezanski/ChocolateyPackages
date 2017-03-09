@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-workload-office</id>
-    <version>1.0.0-rc1</version>
+    <version>1.1.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-office</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Office/SharePoint development workload for Visual Studio 2017</title>
     <authors>Microsoft</authors>
     <projectUrl>https://www.visualstudio.com/vs/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/d8f0990de2c1a674d29be90dc5759c23deaf6582/icons/vs2017.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
     <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
-    <licenseUrl>https://www.visualstudio.com/license-terms/mlt551018/</licenseUrl>
+    <licenseUrl>https://www.visualstudio.com/license-terms/mlt687465/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
@@ -63,12 +63,12 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.0.0-rc1: Initial package release.
+1.1.0: Updated metadata and dependencies to Visual Studio 2017 RTM.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.2.0" />
       <dependency id="vcredist2013" version="12.0.30501.20150616" />
-      <dependency id="vcredist2017" version="14.10.24930.20170211-rc6" />
+      <dependency id="vcredist2017" version="14.10.25008.0" />
       <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" />
       <dependency id="netfx-4.5.2-devpack" version="4.5.5165101" />
       <dependency id="KB2882822" version="1.0.0" />
