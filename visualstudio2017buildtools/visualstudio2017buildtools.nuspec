@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017buildtools</id>
-    <version>15.0.26206.0-rc6</version>
+    <version>15.0.26228.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017buildtools</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>Visual Studio 2017 Build Tools Release Candidate (2017-02-07)</title>
+    <title>Visual Studio 2017 Build Tools</title>
     <authors>Microsoft</authors>
-    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/02/07/another-update-to-visual-studio-2017-rc/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/d8f0990de2c1a674d29be90dc5759c23deaf6582/icons/vs2017.png</iconUrl>
+    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/03/07/announcing-visual-studio-2017-general-availability-and-more/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
     <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
-    <licenseUrl>https://www.visualstudio.com/license-terms/mlt551018/</licenseUrl>
+    <licenseUrl>https://www.visualstudio.com/license-terms/mlt687465/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
@@ -21,43 +21,44 @@
 
 These Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE. There are options to install the Visual C++ compilers and libraries, MFC, ATL, and C++/CLI support.
 
-Visual Studio Build Tools 2017 Release Candidate has a "go-live" license, i.e. it is [supported by Microsoft](https://www.visualstudio.com/vs/supportvs2017rc/).
-
-To find out what's new in Visual Studio 2017 RC, or to see the known issues, see the [Visual Studio 2017 RC](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).
-
+To find out what's new or to see the known issues, see the [Visual Studio 2017 Release Notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).  
 [System requirements](https://www.visualstudio.com/en-us/productinfo/vs2017-system-requirements-vs)
 
 ### Customizations
 
-By default, the package installs only the bare minimum required (the MSBuild Tools workload). The easiest way to add more workloads is to use the workload packages: [visualstudio2017-workload-vctools](https://chocolatey.org/packages/visualstudio2017-workload-vctools) or [visualstudio2017-workload-webbuildtools](https://chocolatey.org/packages/visualstudio2017-workload-webbuildtools).
+By default, the package installs only the bare minimum required (the MSBuild Tools workload). The easiest way to add more workloads is to use the workload packages:
+- [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2017-workload-vctools)
+- [Web development build tools](https://chocolatey.org/packages/visualstudio2017-workload-webbuildtools).
 
-However, the package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
 
-After installing the package, more workloads/components can also be added interactively, by launching the Visual Studio Installer application from the Start Menu.
+After installing the package, more features can also be added by launching the Visual Studio Installer application from the Start Menu.
+
+The language of the installed software can be controlled using the package parameter `--locale &lt;language&gt;`.
+The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio#list-of-language-locales). By default, the operating system display language is used.
 
 #### Full installation
-As an example of using package parameters, this command will install Visual Studio with all available workloads and optional components and display progress during the installation:
+This command will install Visual Studio Build Tools with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
 
-    choco install visualstudio2017buildtools -packageParameters "--allWorkloads --includeRecommended --includeOptional --passive"
+    choco install visualstudio2017buildtools --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
 
-### Installation notes
+### Notes
 
-A reboot may be required after installing/uninstalling this package. A reboot might even be required _before_ installing/uninstalling - if the system is awaiting a reboot due to Windows updates having been installed, or if you are attempting to uninstall the package immediately after installing it. The package will provide informative messages in each case.
-
-If complete control over reboots is required, such as in automation scenarios, it is advisable to install the dependencies (esp. dotnet4.6 or later) first, perform a reboot if necessary, and only after that proceed to install this package.
+A reboot may be required after (or even _before_) installing/uninstalling this package.
+If control over reboots is required, it is advisable to install the dependencies (esp. dotnet4.6.1 or later) first, perform a reboot if necessary, and then install this package.
     </description>
     <releaseNotes>
 ##### Software
-[Visual Studio 2017 RC release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
+[Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.0.26206.0: Initial package release for Visual Studio 2017 Build Tools Release Candidate (2017-02-07).
+15.0.26228.0: Initial package release for Visual Studio 2017 RTM.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.1.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.2.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnet4.6.1" version="4.6.01055.20161213" />
-      <dependency id="visualstudio2017-installer" version="1.0.0-rc1" />
+      <dependency id="visualstudio2017-installer" version="1.0.0" />
     </dependencies>
   </metadata>
 </package>
