@@ -1,3 +1,4 @@
 [submodule "dotnetcore"]
 	path = dotnetcore
 	url = https://github.com/jberezanski/dotnetcore-chocolateypackages.git
+	branch = master
