@@ -5,7 +5,7 @@
     <version>15.0.26228.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017testprofessional</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>Visual Studio 2017 Test Professional Release Candidate (2017-02-07)</title>
+    <title>Visual Studio 2017 Test Professional</title>
     <authors>Microsoft</authors>
     <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/03/07/announcing-visual-studio-2017-general-availability-and-more/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
