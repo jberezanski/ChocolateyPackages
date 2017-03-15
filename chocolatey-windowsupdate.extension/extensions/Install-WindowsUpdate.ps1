@@ -277,10 +277,11 @@ function Install-WindowsUpdate
         $ERROR_SUCCESS = 0
         $ERROR_SUCCESS_REBOOT_REQUIRED = 3010
         $WU_E_NOT_APPLICABLE = 0x80240017
+        $WU_S_ALREADY_INSTALLED = 0x00240006
 
         $logPath = '{0}\{1}.Install.evt' -f $Env:TEMP, $Id
         $silentArgs = '/quiet /norestart /log:"{0}"' -f $logPath
-        $validExitCodes = @($ERROR_SUCCESS, $ERROR_SUCCESS_REBOOT_REQUIRED, $WU_E_NOT_APPLICABLE)
+        $validExitCodes = @($ERROR_SUCCESS, $ERROR_SUCCESS_REBOOT_REQUIRED, $WU_E_NOT_APPLICABLE, $WU_S_ALREADY_INSTALLED)
 
         $exitCodeHandler = {
             $installResult = $_
@@ -292,6 +293,11 @@ function Install-WindowsUpdate
             elseif ($exitCode -eq $WU_E_NOT_APPLICABLE)
             {
                 Write-Host "Update $Id does not apply to this system. Either it was superseded by another already installed update, or a prerequisite update is missing."
+                $installResult.ExitCode = $ERROR_SUCCESS
+            }
+            elseif ($exitCode -eq $WU_S_ALREADY_INSTALLED)
+            {
+                Write-Verbose "Update $Id is already installed on this system (probably superseded by another already installed update)."
                 $installResult.ExitCode = $ERROR_SUCCESS
             }
             elseif ($exitCode -eq $ERROR_SUCCESS)
