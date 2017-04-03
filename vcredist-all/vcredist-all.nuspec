@@ -3,18 +3,23 @@
   <metadata>
     <id>vcredist-all</id>
     <version>1.0.0</version>
-    <owners>Jakub Bereżański</owners>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/vcredist-all</packageSourceUrl>
+    <owners>jberezanski</owners>
     <title>Microsoft Visual C++ Runtime - all versions</title>
     <authors>Microsoft</authors>
     <projectUrl>https://support.microsoft.com/en-us/kb/2977003</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs15.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://msdn.microsoft.com/library/jj620919.aspx</docsUrl>
+    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+    <tags>microsoft visual c++ runtime redistributable vcredist vcruntime admin</tags>
     <summary>Run-time components that are required to run C++ applications that are built by using Visual Studio</summary>
-    <tags>Microsoft Visual C++ Runtime Redistributable vcredist vcruntime admin</tags>
     <description>Microsoft Visual C++ Redistributable installs run-time components of Visual C++ libraries. These components are required to run C++ applications that are developed using Visual Studio and link dynamically to Visual C++ libraries. The packages can be used to run such applications on a computer even if it does not have Visual Studio installed. These packages also install run-time components of C Runtime (CRT), Standard C++, MFC, C++ AMP, and OpenMP libraries.
 
 This metapackage installs packages for all Visual C++ Runtime releases since 2005.
+
+(Yes, dependencies on vcredist2015 and vcredist2017 are redundant, but are included here because other packages depend on them.)
     </description>
     <releaseNotes>
 Initial package release.
