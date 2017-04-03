@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>vcredist-all</id>
-    <version>1.0.0.0</version>
+    <version>1.0.0</version>
     <owners>Jakub Bereżański</owners>
     <title>Microsoft Visual C++ Runtime - all versions</title>
     <authors>Microsoft</authors>
@@ -10,10 +10,11 @@
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs15.png</iconUrl>
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>Microsoft Visual C++ Runtime - all versions</summary>
+    <summary>Run-time components that are required to run C++ applications that are built by using Visual Studio</summary>
     <tags>Microsoft Visual C++ Runtime Redistributable vcredist vcruntime admin</tags>
-    <description>
-Microsoft Visual C++ Runtime - all versions
+    <description>Microsoft Visual C++ Redistributable installs run-time components of Visual C++ libraries. These components are required to run C++ applications that are developed using Visual Studio and link dynamically to Visual C++ libraries. The packages can be used to run such applications on a computer even if it does not have Visual Studio installed. These packages also install run-time components of C Runtime (CRT), Standard C++, MFC, C++ AMP, and OpenMP libraries.
+
+This metapackage installs packages for all Visual C++ Runtime releases since 2005.
     </description>
     <releaseNotes>
 Initial package release.
@@ -24,6 +25,7 @@ Initial package release.
       <dependency id="vcredist2010" />
       <dependency id="vcredist2012" />
       <dependency id="vcredist2013" />
+      <dependency id="vcredist140" />
       <dependency id="vcredist2015" />
       <dependency id="vcredist2017" />
     </dependencies>
