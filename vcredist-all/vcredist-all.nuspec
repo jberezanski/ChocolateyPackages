@@ -20,14 +20,14 @@ This metapackage installs packages for all Visual C++ Runtime releases since 200
 Initial package release.
     </releaseNotes>
     <dependencies>
-      <dependency id="vcredist2005" />
-      <dependency id="vcredist2008" />
-      <dependency id="vcredist2010" />
-      <dependency id="vcredist2012" />
-      <dependency id="vcredist2013" />
-      <dependency id="vcredist140" />
-      <dependency id="vcredist2015" />
-      <dependency id="vcredist2017" />
+      <dependency id="vcredist2005" version="8.1.0.20160118" />
+      <dependency id="vcredist2008" version="9.0.30729.6161" />
+      <dependency id="vcredist2010" version="10.0.40219.2" />
+      <dependency id="vcredist2012" version="11.0.61031" />
+      <dependency id="vcredist2013" version="12.0.30501.20150616" />
+      <dependency id="vcredist140" version="14.10.25008.0" />
+      <dependency id="vcredist2015" version="14.0.24215.20170201" />
+      <dependency id="vcredist2017" version="14.10.25008.0" />
     </dependencies>
   </metadata>
 </package>
