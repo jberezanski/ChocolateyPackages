@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017feedbackclient</id>
-    <version>15.0.26228.0</version>
+    <version>15.0.26228.20170331</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017feedbackclient</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Feedback Client</title>
@@ -20,6 +20,8 @@
 ### Overview
 
 Collect feedback about your software projects using the Feedback Client for Visual Studio.
+
+Feedback client is a desktop based application targeted at Stakeholders, that allows them to provide rich feedback in terms of screenshots, video, audio and attachments for Visual Studio Team Services or Team Foundation Server.
 
 To find out what's new or to see the known issues, see the [Visual Studio 2017 Release Notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).  
 [System requirements](https://www.visualstudio.com/en-us/productinfo/vs2017-system-requirements-vs)
@@ -45,7 +47,7 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.0.26228.0: Initial package release for Visual Studio 2017 RTM.
+15.0.26228.20170331: Initial package release for Visual Studio 2017 version 15.0.26228.12.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.2.0" />
