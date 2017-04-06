@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017feedbackclient</id>
-    <version>15.0.26228.20170331</version>
+    <version>15.1.26403.20170405</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017feedbackclient</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Feedback Client</title>
     <authors>Microsoft</authors>
-    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/03/07/announcing-visual-studio-2017-general-availability-and-more/</projectUrl>
+    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/04/05/visual-studio-2017-update/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
     <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
     <licenseUrl>https://www.visualstudio.com/license-terms/mlt687465/</licenseUrl>
@@ -47,7 +47,7 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.0.26228.20170331: Initial package release for Visual Studio 2017 version 15.0.26228.12.
+15.1.26403.20170405: Package metadata updated for Visual Studio 2017 version 15.1.26403.0 (the native installer always installs the latest released Visual Studio 2017 build).
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.2.0" />
