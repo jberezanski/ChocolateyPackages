@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>KB4019990</id>
+        <version>1.0.0</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB4019990</packageSourceUrl>
+        <owners>jberezanski</owners>
+        <title>Update for the d3dcompiler_47.dll component on Windows Server 2012, Windows 7, and Windows Server 2008 R2</title>
+        <authors>Microsoft</authors>
+        <projectUrl>https://support.microsoft.com/en-us/kb/4019990</projectUrl>
+        <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
+        <licenseUrl>http://go.microsoft.com/fwlink/?LinkID=206977</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>microsoft windows update kb4019990 admin</tags>
+        <summary>This update is a prerequisite for installing the .NET Framework 4.7 on Windows 7, Windows Server 2008 R2 or Windows Server 2012.</summary>
+        <description>
+This update addresses an issue in Windows Server 2012, Windows 7 Service Pack 1 (SP1), and Windows Server 2008 R2 SP1 that is described in the following Knowledge Base article: [The .NET Framework 4.7 installation is blocked on Windows 7, Windows Server 2008 R2 and Windows Server 2012 because of a missing d3dcompiler update](https://support.microsoft.com/en-us/help/4020302/the-net-framework-4-7-installation-is-blocked-on-windows-7-windows-ser).
+
+This package requires Service Pack 1 for Windows 7 or Windows Server 2008 R2 to be installed first. The [KB976932 package](https://chocolatey.org/packages/KB976932) may be used to install it.
+
+On systems running Windows 8.1 / Windows Server 2012 R2 or later, this package installs successfully, but does nothing.
+
+This update is a prerequisite for installing the .NET Framework 4.7 on Windows 7, Windows Server 2008 R2 or Windows Server 2012.
+        </description>
+        <releaseNotes>
+1.0.0: initial package release
+        </releaseNotes>
+        <dependencies>
+            <dependency id="chocolatey-windowsupdate.extension" version="1.0.2" />
+        </dependencies>
+    </metadata>
+</package>

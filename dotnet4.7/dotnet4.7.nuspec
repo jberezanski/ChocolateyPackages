@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>dotnet4.7</id>
+    <version>4.7.2053.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnet4.7</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft .NET Framework 4.7</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2017/04/05/announcing-the-net-framework-4-7/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
+    <bugTrackerUrl>http://connect.microsoft.com/VisualStudio</bugTrackerUrl>
+    <tags>microsoft .net framework 4.7 redistributable runtime admin</tags>
+    <summary>The .NET Framework 4.7 is a highly compatible and in-place update to the .NET Framework 4, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, and 4.6.2.</summary>
+    <description>The .NET Framework 4.7 is a highly compatible and in-place update to the .NET Framework 4, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, and 4.6.2.
+You can see the full set of changes in the .NET Framework 4.7 in the [change list](https://github.com/Microsoft/dotnet/blob/master/releases/net47/dotnet47-changes.md) and [API diff](https://github.com/Microsoft/dotnet/blob/master/releases/net47/dotnet47-api-changes.md) on [GitHub](https://github.com/microsoft/dotnet).
+
+The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.7-devpack).</description>
+    <releaseNotes>
+##### Software
+https://support.microsoft.com/en-us/kb/4015088
+##### Package
+4.7.2053.0: Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="KB2919355" version="1.0.20160915" />
+      <dependency id="KB4019990" version="1.0.0" />
+    </dependencies>
+  </metadata>
+</package>

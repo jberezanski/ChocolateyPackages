@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>netfx-4.7-devpack</id>
+    <version>4.7.2053.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.7-devpack</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft .NET Framework 4.7 Developer Pack</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2017/04/05/announcing-the-net-framework-4-7/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
+    <bugTrackerUrl>http://connect.microsoft.com/VisualStudio</bugTrackerUrl>
+    <tags>microsoft .net framework 4.7 developer target targeting pack multi dotnet netfx kb3186612 admin</tags>
+    <summary>The .NET Framework 4.7 Developer Pack lets developers build applications that target the .NET Framework 4.7.</summary>
+    <description>The .NET Framework 4.7 Developer Pack lets developers build applications that target the .NET Framework 4.7 by using Visual Studio 2015, or third-party IDEs. This is a single package that bundles the .NET Framework 4.7, the .NET 4.7 Targeting Pack, and the .NET Framework 4.7 SDK.</description>
+    <releaseNotes>
+##### Software
+https://support.microsoft.com/en-us/help/3186612/the-net-framework-4-7-developer-pack-and-language-packs
+##### Package
+4.7.2053.0: Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="dotnet4.7" version="4.7.2053.0" />
+    </dependencies>
+  </metadata>
+</package>
