@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+    <metadata>
+        <id>visualstudio2015-powershelltools</id>
+        <version>3.0.539</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2015-powershelltools</packageSourceUrl>
+        <owners>jberezanski</owners>
+        <title>PowerShell Tools for Visual Studio 2015</title>
+        <authors>Microsoft</authors>
+        <projectUrl>https://marketplace.visualstudio.com/items?itemName=AdamRDriscoll.PowerShellToolsforVisualStudio2015</projectUrl>
+        <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/a4590410f8bf8a4682cecb225ab6937df926046b/icons/visualstudio2015-powershelltools.png</iconUrl>
+        <licenseUrl>https://marketplace.visualstudio.com/items/AdamRDriscoll.PowerShellToolsforVisualStudio2015/license</licenseUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <projectSourceUrl>https://github.com/adamdriscoll/poshtools/</projectSourceUrl>
+        <docsUrl>https://github.com/adamdriscoll/poshtools/wiki</docsUrl>
+        <bugTrackerUrl>https://github.com/adamdriscoll/poshtools/issues</bugTrackerUrl>
+        <tags>visual studio 2015 powershell tools vsix admin</tags>
+        <summary>A set of tools for developing and debugging PowerShell scripts and modules in Visual Studio.</summary>
+        <description>
+PowerShell Tools for Visual Studio – PowerShell editing and debugging in Visual Studio.
+
+#### Requirements
+- Microsoft Visual Studio 2015
+- PowerShell v3 or later
+
+#### Overview
+PowerShell Tools for Visual Studio brings the richness of the Visual Studio development experience together with the power of PowerShell. Using this extension you can:
+
+- Edit, run and debug PowerShell scripts locally and remotely using the Visual Studio debugger 
+- Create projects for PowerShell scripts and modules 
+- Leverage Visual Studio’s locals, watch, call stack for your scripts and modules 
+- Use the PowerShell interactive REPL window to execute PowerShell scripts and command right from Visual Studio 
+- Automated Testing support using Pester 
+
+#### Details
+An improved editing experience offers syntax highlighting, IntelliSense and code folding. You can quickly navigate your scripts with a function selection drop down. 
+A rich debugging experience allows you to execute and single step through local and remote scripts. With support for breakpoints, the locals window and the call stack window you can easily find and fix bugs in your scripts. 
+Support for running utilizing features such as DSC, Workflows and 64-bit modules (e.g. Sharepoint). 
+The PowerShell Interactive Window provides instant execution with IntelliSense and remote session support. 
+A project system is available to organize scripts and easily integrate with source control systems. It also offers a mechanism to provide module information for use in MSBuild scripts. 
+Test adapter support for discovering and running Pester tests. 
+</description>
+        <releaseNotes>
+##### Software
+[PowerShell Tools for Visual Studio Release Notes](https://github.com/adamdriscoll/poshtools/releases)
+##### Package
+3.0.539: Initial package release for software version 3.0.539.
+        </releaseNotes>
+    </metadata>
+    <files>
+        <file src="tools\**" target="tools" />
+    </files>
+</package>
