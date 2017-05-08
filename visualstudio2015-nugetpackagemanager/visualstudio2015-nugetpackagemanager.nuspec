@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+    <metadata>
+        <id>visualstudio2015-nugetpackagemanager</id>
+        <version>3.5.0</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2015-nugetpackagemanager</packageSourceUrl>
+        <owners>jberezanski</owners>
+        <title>NuGet Package Manager for Visual Studio 2015</title>
+        <authors>Microsoft</authors>
+        <projectUrl>https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManagerforVisualStudio2015</projectUrl>
+        <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/a4590410f8bf8a4682cecb225ab6937df926046b/icons/visualstudio2015-nugetpackagemanager.png</iconUrl>
+        <licenseUrl>https://marketplace.visualstudio.com/items/NuGetTeam.NuGetPackageManagerforVisualStudio2015/license</licenseUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <projectSourceUrl>https://github.com/NuGet/Home</projectSourceUrl>
+        <docsUrl>https://github.com/NuGet/Home/wiki</docsUrl>
+        <bugTrackerUrl>https://github.com/NuGet/Home/issues</bugTrackerUrl>
+        <tags>visual studio 2015 nuget package manager vsix admin</tags>
+        <summary>A collection of tools to automate the process of downloading, installing, upgrading, configuring, and removing packages from a VS Project.</summary>
+        <description>A collection of tools to automate the process of downloading, installing, upgrading, configuring, and removing packages from a VS Project.</description>
+        <releaseNotes>
+##### Software
+[NuGet 3.5 Release Notes](https://docs.microsoft.com/en-us/nuget/release-notes/nuget-3.5-rtm)
+##### Package
+3.5.0: Initial package release for software version 3.5.0.
+        </releaseNotes>
+    </metadata>
+    <files>
+        <file src="tools\**" target="tools" />
+    </files>
+</package>
