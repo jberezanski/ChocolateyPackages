@@ -1,3 +1,4 @@
+dotnetcore\aspnetcore-runtimepackagestore\aspnetcore-runtimepackagestore.nuspec
 dotnetcore\dotnetcore\dotnetcore.nuspec
 dotnetcore\dotnetcore-runtime\dotnetcore-runtime.nuspec
 dotnetcore\dotnetcore-runtime.install\dotnetcore-runtime.install.nuspec
