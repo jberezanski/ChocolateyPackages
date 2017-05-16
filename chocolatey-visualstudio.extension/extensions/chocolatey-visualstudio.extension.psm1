@@ -1,4 +1,5 @@
 ﻿Set-StrictMode -Version 2
+$ErrorActionPreference = 'Stop'
 $scriptRoot = Split-Path -Path $MyInvocation.MyCommand.Definition
 
 $publicFunctions = @(
