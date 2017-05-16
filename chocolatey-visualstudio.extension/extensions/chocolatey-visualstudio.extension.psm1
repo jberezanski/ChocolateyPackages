@@ -3,11 +3,12 @@ $ErrorActionPreference = 'Stop'
 $scriptRoot = Split-Path -Path $MyInvocation.MyCommand.Definition
 
 $publicFunctions = @(
-    'Install-VisualStudio',
-    'Uninstall-VisualStudio',
-    'Add-VisualStudioWorkload',
-    'Remove-VisualStudioWorkload',
+    'Install-VisualStudio'
+    'Uninstall-VisualStudio'
+    'Add-VisualStudioWorkload'
+    'Remove-VisualStudioWorkload'
     'Remove-VisualStudioProduct'
+    'Get-VisualStudioInstance'
 )
 
 Get-ChildItem -Path "$scriptRoot\*.ps1" | ForEach-Object { . $_ }

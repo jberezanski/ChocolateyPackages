@@ -31,6 +31,12 @@ Supports the new "Willow" installer of Visual Studio 2017 RC only.
 Removes an installed product from the Visual Studio 2017 family (Professional, Enterprise, Community, Build Tools etc.).
 Supports the new "Willow" installer of Visual Studio 2017 RC only.
 
+### Get-VisualStudioInstance
+
+Returns information about all Visual Studio instances installed on the machine.
+The returned objects contain properties: InstallationPath, InstallationVersion, ProductId, ChannelId.
+The last two properties have values only for instances of Visual Studio 2017.
+
 ## Installation
 
 End users typically do not install this package directly - it is usually installed automatically as a dependency of another package.
