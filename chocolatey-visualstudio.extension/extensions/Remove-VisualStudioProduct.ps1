@@ -19,6 +19,6 @@
     Write-Verbose ("Found {0} installed Visual Studio 2017 or later product(s)" -f $remainingProductsCount)
     if ($remainingProductsCount -gt 0)
     {
-        Write-Warning "If Chocolatey asks permission to run the Auto Uninstaller, please answer No! Otherwise, you might lose other Visual Studio products installed on your machine."
+        Write-Warning "If Chocolatey asks permission to run the Auto Uninstaller, please answer No. Otherwise, you might lose other Visual Studio products installed on your machine."
     }
 }

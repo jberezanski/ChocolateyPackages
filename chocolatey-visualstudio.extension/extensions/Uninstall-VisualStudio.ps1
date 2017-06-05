@@ -71,7 +71,7 @@ Uninstall-ChocolateyPackage
         file = $uninstallerPath
         assumeNewVS2017Installer = $assumeNewVS2017Installer
     }
-    $argumentsDump = ($arguments.GetEnumerator() | % { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
+    $argumentsDump = ($arguments.GetEnumerator() | ForEach-Object { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Uninstall-VSChocolateyPackage $argumentsDump"
     Uninstall-VSChocolateyPackage @arguments
 }
