@@ -3,8 +3,10 @@ KB2882822\KB2882822.nuspec
 KB3033929\KB3033929.nuspec
 KB3035131\KB3035131.nuspec
 visualstudio2017buildtools\visualstudio2017buildtools.nuspec
+visualstudio2017community\visualstudio2017community.nuspec
 visualstudio2017enterprise\visualstudio2017enterprise.nuspec
 visualstudio2017feedbackclient\visualstudio2017feedbackclient.nuspec
+visualstudio2017professional\visualstudio2017professional.nuspec
 visualstudio2017teamexplorer\visualstudio2017teamexplorer.nuspec
 visualstudio2017testagent\visualstudio2017testagent.nuspec
 visualstudio2017testcontroller\visualstudio2017testcontroller.nuspec
@@ -31,5 +33,3 @@ visualstudio2017-workload-webcrossplat\visualstudio2017-workload-webcrossplat.nu
 ..\KennethB-Chocolatey-Packages\VisualStudio2015Community\VisualStudio2015Community.nuspec
 ..\KennethB-Chocolatey-Packages\VisualStudio2015Enterprise\VisualStudio2015Enterprise.nuspec
 ..\KennethB-Chocolatey-Packages\VisualStudio2015Professional\VisualStudio2015Professional.nuspec
-..\jivkok-Chocolatey-Packages\VisualStudio2017Community\VisualStudioCommunity2017.nuspec
-..\jivkok-Chocolatey-Packages\VisualStudio2017Professional\VisualStudioProfessional2017.nuspec
