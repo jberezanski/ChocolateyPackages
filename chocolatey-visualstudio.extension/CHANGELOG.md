@@ -1,5 +1,10 @@
 ﻿# CHANGELOG
 
+## Version 1.4.0
+
+- Install-VisualStudio can detect existing Visual Studio 2017 products and skip the installation (an interim solution before upgrading is implemented).
+- Remove-VisualStudioProduct warns the user not to allow the Chocolatey Auto Uninstaller to run.
+
 ## Version 1.3.0
 
 - New helper: Get-VisualStudioInstance.
