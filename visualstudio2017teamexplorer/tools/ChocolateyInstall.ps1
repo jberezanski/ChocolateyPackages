@@ -5,4 +5,5 @@
     -Checksum '6AA9F385124FBB75B4A23E076769257FACDF9593B78CE54CAFBE17398B8BAD6B' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
-    -ProgramsAndFeaturesDisplayName 'Microsoft Visual Studio 2017'
+    -Product 'TeamExplorer' `
+    -VisualStudioYear '2017'

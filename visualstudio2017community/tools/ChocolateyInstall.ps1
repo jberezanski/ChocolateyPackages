@@ -5,4 +5,5 @@ Install-VisualStudio `
     -Checksum 'A964FA078C0FA9115001302FF80D8119995814B58322646A46C4F3B894479471' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
-    -ProgramsAndFeaturesDisplayName 'Microsoft Visual Studio 2017'
+    -Product 'Community' `
+    -VisualStudioYear '2017'

@@ -5,4 +5,5 @@
     -Checksum 'B68A5048A63EEF39ACC074646D79F7C16B5A948336BF120A07FA94FF6847E163' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
-    -ProgramsAndFeaturesDisplayName 'Microsoft Visual Studio 2017'
+    -Product 'TestAgent' `
+    -VisualStudioYear '2017'

@@ -5,4 +5,5 @@
     -Checksum '251385994C4253FD7237351123E4BF007EDD13E320C2D7566A2AE52CCF7318E4' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
-    -ProgramsAndFeaturesDisplayName 'Microsoft Visual Studio 2017'
+    -Product 'TestController' `
+    -VisualStudioYear '2017'

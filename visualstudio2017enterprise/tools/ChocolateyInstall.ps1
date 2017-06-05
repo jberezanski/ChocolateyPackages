@@ -5,4 +5,5 @@
     -Checksum 'C97815A46F637B693E2C827D101A56846F4A2509ECB2B3CF88E7AFAFEEDADEDA' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
-    -ProgramsAndFeaturesDisplayName 'Microsoft Visual Studio 2017'
+    -Product 'Enterprise' `
+    -VisualStudioYear '2017'

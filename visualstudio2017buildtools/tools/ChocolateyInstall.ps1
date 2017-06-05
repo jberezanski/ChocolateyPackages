@@ -5,4 +5,5 @@
     -Checksum 'DF4EC6B5A7041873AA6F814E5B7CE51E9C5D39A2C2FC8802B46F2CC64A9116CD' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
-    -ProgramsAndFeaturesDisplayName 'Microsoft Visual Studio 2017'
+    -Product 'BuildTools' `
+    -VisualStudioYear '2017'

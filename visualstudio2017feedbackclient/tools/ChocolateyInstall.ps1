@@ -5,4 +5,5 @@
     -Checksum '75BC8FFF0E22340B5845370BB36F9B50B9A6E2D72FC263516A4BB171CF757DEC' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
-    -ProgramsAndFeaturesDisplayName 'Microsoft Visual Studio 2017'
+    -Product 'FeedbackClient' `
+    -VisualStudioYear '2017'
