@@ -1,4 +1,4 @@
 Remove-VisualStudioProduct `
-    -PackageName 'VisualStudio2017Professional' `
+    -PackageName 'visualstudio2017professional' `
     -Product 'Professional' `
     -VisualStudioYear '2017'

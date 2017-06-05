@@ -1,4 +1,4 @@
 Remove-VisualStudioProduct `
-    -PackageName 'VisualStudio2017Community' `
+    -PackageName 'visualstudio2017community' `
     -Product 'Community' `
     -VisualStudioYear '2017'
