@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>VisualStudio2017Professional</id>
+    <title>Visual Studio 2017 Professional</title>
+    <version>15.1.26403.20170405</version>
+    <authors>Microsoft</authors>
+    <owners>Jivko Kolev,jberezanski</owners>
+    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/04/05/visual-studio-2017-update/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
+    <licenseUrl>https://www.visualstudio.com/license-terms/mlt687465/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Professional developer tools, services, and subscription benefits for small teams</summary>
+    <description>### Overview
+Professional developer tools, services, and subscription benefits for small teams.
+
+To find out what's new or to see the known issues, see the [Visual Studio 2017 Release Notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).  
+[System requirements](https://www.visualstudio.com/en-us/productinfo/vs2017-system-requirements-vs)
+
+### Customizations and Optional features
+By default, the package installs only the bare minimum required (the Core Editor workload). The easiest way to add more development features is to use the workload packages:
+- [Azure development](https://chocolatey.org/packages/visualstudio2017-workload-azure)
+- [Data storage and processing](https://chocolatey.org/packages/visualstudio2017-workload-data)
+- [.NET desktop development](https://chocolatey.org/packages/visualstudio2017-workload-manageddesktop)
+- [Game development with Unity](https://chocolatey.org/packages/visualstudio2017-workload-managedgame)
+- [Linux development with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativecrossplat)
+- [Desktop development with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativedesktop)
+- [Game development with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativegame)
+- [Mobile development with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativemobile)
+- [.NET Core cross-platform development](https://chocolatey.org/packages/visualstudio2017-workload-netcoretools)
+- [Mobile development with .NET](https://chocolatey.org/packages/visualstudio2017-workload-netcrossplat)
+- [ASP.NET and web development](https://chocolatey.org/packages/visualstudio2017-workload-netweb)
+- [Node.js development](https://chocolatey.org/packages/visualstudio2017-workload-node)
+- [Office/SharePoint development](https://chocolatey.org/packages/visualstudio2017-workload-office)
+- [Universal Windows Platform development](https://chocolatey.org/packages/visualstudio2017-workload-universal)
+- [Visual Studio extension development](https://chocolatey.org/packages/visualstudio2017-workload-visualstudioextension)
+- [Mobile development with JavaScript](https://chocolatey.org/packages/visualstudio2017-workload-webcrossplat)
+
+All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+
+After installing the package, more features can also be added by launching the Visual Studio Installer application from the Start Menu.
+
+The language of the installed software can be controlled using the package parameter `--locale &lt;language&gt;`.
+The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio#list-of-language-locales). By default, the operating system display language is used.
+
+#### Full installation
+This command will install Visual Studio with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
+
+    choco install visualstudio2017professional --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+
+### Notes
+
+A reboot may be required after (or even _before_) installing/uninstalling this package.
+If control over reboots is required, please install the dependencies (like dotnet4.6.1 or later) first, perform a reboot if needed, and then continue with the VS package install.
+</description>
+    <releaseNotes>##### Software
+[Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
+##### Package
+15.1.26403.20170405: Package metadata updated for Visual Studio 2017 version 15.1.26403.0 (the native installer always installs the latest released Visual Studio 2017 build).
+</releaseNotes>
+    <tags>Microsoft Visual Studio 2017 Professional IDE VisualStudio VS VS15 admin</tags>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.2.0" />
+      <dependency id="KB3033929" version="1.0.0" />
+      <dependency id="KB2919355" version="1.0.20160915" />
+      <dependency id="KB2999226" version="1.0.20161201" />
+      <dependency id="dotnet4.6.1" version="4.6.01055.20161213" />
+      <dependency id="visualstudio2017-installer" version="1.0.0" />
+    </dependencies>
+    <packageSourceUrl>https://github.com/jberezanski/jivkok-Chocolatey-Packages/tree/vs2017-release/VisualStudio2017Professional</packageSourceUrl>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
+    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+  </metadata>
+  <files>
+    <file src="Tools\*" target="Tools\" />
+  </files>
+</package>
