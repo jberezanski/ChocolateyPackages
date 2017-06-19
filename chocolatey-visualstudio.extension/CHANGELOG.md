@@ -1,5 +1,8 @@
 ﻿# CHANGELOG
 
+## Version 1.4.1
+- Fixed encoding of recently added files.
+
 ## Version 1.4.0
 
 - Install-VisualStudio can detect existing Visual Studio 2017 products and skip the installation (an interim solution before upgrading is implemented).

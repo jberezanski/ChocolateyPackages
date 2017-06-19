@@ -1,4 +1,4 @@
-function Get-VisualStudioInstance
+﻿function Get-VisualStudioInstance
 {
 <#
 .SYNOPSIS

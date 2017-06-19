@@ -1,4 +1,4 @@
-function Get-VSLegacyInstance
+﻿function Get-VSLegacyInstance
 {
     [CmdletBinding()]
     Param

@@ -1,4 +1,4 @@
-function Get-VSProductReference
+﻿function Get-VSProductReference
 {
     [CmdletBinding()]
     Param
