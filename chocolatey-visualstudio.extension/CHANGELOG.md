@@ -1,5 +1,8 @@
 ﻿# CHANGELOG
 
+## Version 1.5.0
+- New helper: Get-VisualStudioInstaller.
+
 ## Version 1.4.1
 - Fixed encoding of recently added files.
 
