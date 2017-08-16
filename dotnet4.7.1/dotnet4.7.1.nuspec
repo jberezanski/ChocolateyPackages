@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>dotnet4.7.1</id>
+    <version>4.7.2538.0-preview1</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnet4.7.1</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft .NET Framework 4.7.1 (Preview)</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2017/08/07/welcome-to-the-net-framework-4-7-1-early-access/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <licenseUrl>https://github.com/Microsoft/dotnet-framework-early-access/blob/04bdf8e09bad7e52be0ef0de2916905f4915828a/microsoft-dotnet-framework-pre-release-license.txt</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
+    <bugTrackerUrl>https://github.com/Microsoft/dotnet-framework-early-access/issues</bugTrackerUrl>
+    <tags>microsoft .net framework 4.7.1 redistributable runtime admin</tags>
+    <summary>The .NET Framework 4.7.1 is the next version of the .NET Framework.</summary>
+    <description>This is an early access build of .NET Framework 4.7.1. The .NET Framework 4.7.1 is the next version of the .NET Framework. It is currently feature-complete and in the testing phase. Microsoft is asking for individuals and companies to help validate the quality and compatibility of the release. It is not ready for production and is not supported. The current build of the .NET Framework 4.7.1 being shared is build 2538.
+
+You can see the full set of changes in the .NET Framework 4.7.1 in the [change list](https://github.com/Microsoft/dotnet/blob/a60a6c074cef0460d97e126274c98fb7705354c8/releases/net471/dotnet471-changes.md) on [GitHub](https://github.com/microsoft/dotnet).</description>
+    <releaseNotes>
+##### Software
+https://github.com/Microsoft/dotnet/blob/a60a6c074cef0460d97e126274c98fb7705354c8/releases/net471/README.md
+##### Package
+4.7.2538.0-preview1: Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="KB2919355" version="1.0.20160915" />
+    </dependencies>
+  </metadata>
+</package>
