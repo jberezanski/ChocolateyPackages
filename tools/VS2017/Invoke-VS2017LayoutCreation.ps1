@@ -16,7 +16,7 @@ Process
         $fileBaseName = (Get-Item -Path $filePath).BaseName
         $dest = "$baseDir\$fileBaseName"
         Write-Host "$filePath -> $dest"
-        $p = Start-Process -FilePath $filePath -ArgumentList @('--layout', $dest, '--lang', 'en-us', '--locale', 'en-us', '--wait') -PassThru
+        $p = Start-Process -FilePath $filePath -ArgumentList @('--layout', $dest, '--lang', 'en-us', '--locale', 'en-us', '--wait', '--passive') -PassThru
         $p | Wait-Process
         if ($p.ExitCode -ne 0)
         {
