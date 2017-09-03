@@ -2,6 +2,8 @@
 
 ## Version 1.5.0
 - New helper: Get-VisualStudioInstaller.
+- New package parameter: '--bootstrapperPath D:\Path\vs_Enterprise.exe' can be used to install Visual Studio from a previously created offline installation source ("layout").
+  Supported by the Install-VisualStudio helper, both for Visual Studio 2017 and 2015.
 
 ## Version 1.4.1
 - Fixed encoding of recently added files.
