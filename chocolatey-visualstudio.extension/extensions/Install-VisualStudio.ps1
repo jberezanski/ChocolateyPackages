@@ -111,6 +111,13 @@ Install-ChocolateyPackage
 
     $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer
 
+    $creatingLayout = $packageParameters.ContainsKey('layout')
+    if ($creatingLayout)
+    {
+        $layoutPath = $packageParameters['layout']
+        Write-Warning "Creating an offline installation source for $PackageName in '$layoutPath'. $PackageName will not be actually installed."
+    }
+
     $arguments = @{
         packageName = $PackageName
         silentArgs = $silentArgs
@@ -124,4 +131,17 @@ Install-ChocolateyPackage
     $argumentsDump = ($arguments.GetEnumerator() | ForEach-Object { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
     Write-Debug "Install-VSChocolateyPackage $argumentsDump"
     Install-VSChocolateyPackage @arguments
+
+    if ($creatingLayout)
+    {
+        Write-Warning "An offline installation source for $PackageName has been created in '$layoutPath'."
+        $bootstrapperExeName = $Url -split '[/\\]' | Select-Object -Last 1
+        if ($bootstrapperExeName -like '*.exe')
+        {
+            Write-Warning "To install $PackageName using this source, pass '--bootstrapperPath $layoutPath\$bootstrapperExeName' as package parameters."
+        }
+        Write-Warning 'Installation will now be terminated so that Chocolatey does not register this package as installed, do not be alarmed.'
+        Set-PowerShellExitCode -exitCode 814
+        throw 'An offline installation source has been created; the software has not been actually installed.'
+    }
 }

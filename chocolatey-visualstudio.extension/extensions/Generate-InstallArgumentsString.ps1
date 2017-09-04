@@ -23,7 +23,10 @@
 
         $argumentSet = $parameters.Clone()
         $argumentSet['wait'] = ''
-        $argumentSet['norestart'] = ''
+        if (-not $argumentSet.ContainsKey('layout'))
+        {
+            $argumentSet['norestart'] = ''
+        }
         if (-not $argumentSet.ContainsKey('quiet') -and -not $argumentSet.ContainsKey('passive'))
         {
             $argumentSet['quiet'] = ''
@@ -42,6 +45,12 @@
         if ($adminFile -ne '')
         {
             $s = $s + " /AdminFile $adminFile"
+        }
+
+        if ($parameters.ContainsKey('layout'))
+        {
+            # TODO: CHECK THIS, perhaps /NoRestart is incompatible with this?
+            $s = $s + " /Layout ""$($parameters['layout'])"""
         }
     }
 
