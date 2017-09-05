@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>iisexpress</id>
+    <version>10.0.0.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/iisexpress</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft IIS Express</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/en-us/download/details.aspx?id=48264/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://www.iis.net/learn/extensions/introduction-to-iis-express</docsUrl>
+    <tags>microsoft iis express web server developer admin</tags>
+    <summary>Internet Information Services (IIS) 10.0 Express is a free, simple and self-contained version of IIS that is optimized for developers.</summary>
+    <description>Internet Information Services (IIS) 10.0 Express is a free, simple and self-contained version of IIS that is optimized for developers. IIS 10.0 Express makes it easy to use the most current version of IIS to develop and test websites. IIS 10.0 Express has all the core capabilities of IIS 10.0 and additional features to ease website development.
+
+The benefits of using IIS 10.0 Express include: 
+- The same web server that runs on your production server is now available on your development computer. 
+- Most tasks can be done without the need for administrative privileges.
+- IIS Express runs on Windows 7 Service Pack 1 and all later versions of Windows.
+- Many users can work independently on the same computer.</description>
+    <releaseNotes>
+10.0.0.0: Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="dotnet4.0" version="4.0.30319.20141222" />
+    </dependencies>
+  </metadata>
+</package>
