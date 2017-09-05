@@ -8,7 +8,7 @@
     <title>Microsoft IIS Express</title>
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/en-us/download/details.aspx?id=48264/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <iconUrl>https://www.microsoft.com/web/media/gallery/apps-screenshots/Microsoft-App-Request-Routing.png</iconUrl>
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://www.iis.net/learn/extensions/introduction-to-iis-express</docsUrl>
