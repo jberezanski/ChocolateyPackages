@@ -49,36 +49,40 @@ Install-ChocolateyPackage
     }
     Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName' VisualStudioYear:'$VisualStudioYear' Product:'$Product'";
 
+    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
+    $creatingLayout = $packageParameters.ContainsKey('layout')
     $assumeNewVS2017Installer = $InstallerTechnology -eq 'WillowVS2017OrLater'
 
-    if ($assumeNewVS2017Installer)
+    if (-not $creatingLayout)
     {
-        # there is a single Programs and Features entry for all products, so its presence is not enough
-        if ($VisualStudioYear -ne '' -and $Product -ne '')
+        if ($assumeNewVS2017Installer)
         {
-            $prodRef = Get-VSProductReference -VisualStudioYear $VisualStudioYear -Product $Product
-            $products = Get-WillowInstalledProducts | Where-Object { $_ -ne $null -and $_.channelId -eq $prodRef.ChannelId -and $_.productId -eq $prodRef.ProductId }
-            $productsCount = ($products | Measure-Object).Count
-            Write-Verbose ("Found {0} installed Visual Studio product(s) with ChannelId = {1} and ProductId = {2}" -f $productsCount, $prodRef.ChannelId, $prodRef.ProductId)
-            if ($productsCount -gt 0)
+            # there is a single Programs and Features entry for all products, so its presence is not enough
+            if ($VisualStudioYear -ne '' -and $Product -ne '')
             {
-                Write-Warning "$ApplicationName is already installed. Please use the Visual Studio Installer to modify or repair it."
+                $prodRef = Get-VSProductReference -VisualStudioYear $VisualStudioYear -Product $Product
+                $products = Get-WillowInstalledProducts | Where-Object { $_ -ne $null -and $_.channelId -eq $prodRef.ChannelId -and $_.productId -eq $prodRef.ProductId }
+                $productsCount = ($products | Measure-Object).Count
+                Write-Verbose ("Found {0} installed Visual Studio product(s) with ChannelId = {1} and ProductId = {2}" -f $productsCount, $prodRef.ChannelId, $prodRef.ProductId)
+                if ($productsCount -gt 0)
+                {
+                    Write-Warning "$ApplicationName is already installed. Please use the Visual Studio Installer to modify or repair it."
+                    return
+                }
+            }
+        }
+        else
+        {
+            $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ProgramsAndFeaturesDisplayName
+            $count = ($uninstallKey | Measure-Object).Count
+            if ($count -gt 0)
+            {
+                Write-Warning "$ApplicationName is already installed. Please use Programs and Features in the Control Panel to modify or repair it."
                 return
             }
         }
     }
-    else
-    {
-        $uninstallKey = Get-VSUninstallRegistryKey -ApplicationName $ProgramsAndFeaturesDisplayName
-        $count = ($uninstallKey | Measure-Object).Count
-        if ($count -gt 0)
-        {
-            Write-Warning "$ApplicationName is already installed. Please use Programs and Features in the Control Panel to modify or repair it."
-            return
-        }
-    }
 
-    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     if ($assumeNewVS2017Installer)
     {
         $adminFile = $null
@@ -111,7 +115,6 @@ Install-ChocolateyPackage
 
     $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer
 
-    $creatingLayout = $packageParameters.ContainsKey('layout')
     if ($creatingLayout)
     {
         $layoutPath = $packageParameters['layout']
