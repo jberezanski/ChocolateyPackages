@@ -26,6 +26,16 @@ Supports the new "Willow" installer of Visual Studio 2017 RC only.
 Removes a workload (a set of features) from installed products from the Visual Studio 2017 family.
 Supports the new "Willow" installer of Visual Studio 2017 RC only.
 
+### Add-VisualStudioComponent
+
+Adds a component (an individual feature) to installed products from the Visual Studio 2017 family.
+Supports the new "Willow" installer of Visual Studio 2017 RC only.
+
+### Remove-VisualStudioComponent
+
+Removes a component (an individual feature) from installed products from the Visual Studio 2017 family.
+Supports the new "Willow" installer of Visual Studio 2017 RC only.
+
 ### Remove-VisualStudioProduct
 
 Removes an installed product from the Visual Studio 2017 family (Professional, Enterprise, Community, Build Tools etc.).

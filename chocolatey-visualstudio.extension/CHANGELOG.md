@@ -1,4 +1,6 @@
 ﻿# CHANGELOG
+## Version 1.4.2
+- Added functions for managing Visual Stuio compoents
 
 ## Version 1.4.1
 - Fixed encoding of recently added files.
