@@ -45,7 +45,7 @@ Supports the new "Willow" installer of Visual Studio 2017 RC only.
 
 ### Install-VisualStudioInstaller
 
-Installs or upgrades the Visual Studio Installer.
+Installs or updates the Visual Studio Installer.
 Supports the new "Willow" installer of Visual Studio 2017 RC only.
 
 ## Installation

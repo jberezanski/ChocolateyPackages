@@ -2,14 +2,14 @@
 {
 <#
 .SYNOPSIS
-Installs or upgrades the Visual Studio 2017 Installer.
+Installs or updates the Visual Studio 2017 Installer.
 
 .DESCRIPTION
 This function checks for the presence of the Visual Studio 2017 Installer.
 If the Installer is not present, it is installed using the bootstrapper application
 (e.g. vs_FeedbackClient.exe), either downloaded from the provided $Url or indicated
 via the 'bootstrapperPath' package parameter (which takes precedence).
-If the Installer is present, it will be upgraded/reinstalled if:
+If the Installer is present, it will be updated/reinstalled if:
 - $RequiredVersion was provided and the existing Installer version is lower,
 - $RequiredVersion was provided, the existing Installer version is equal and $Force
   was specified,
