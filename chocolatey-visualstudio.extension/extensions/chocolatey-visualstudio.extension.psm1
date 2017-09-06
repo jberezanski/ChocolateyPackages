@@ -10,6 +10,7 @@ $publicFunctions = @(
     'Remove-VisualStudioProduct'
     'Get-VisualStudioInstance'
     'Get-VisualStudioInstaller'
+    'Install-VisualStudioInstaller'
 )
 
 Get-ChildItem -Path "$scriptRoot\*.ps1" | ForEach-Object { . $_ }
