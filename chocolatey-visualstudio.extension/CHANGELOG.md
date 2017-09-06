@@ -10,6 +10,7 @@
   Retrieves an object containing the executable path and version number of the Visual Studio Installer (VS 2017+) installed on the system, if present.
 - New helper: Install-VisualStudioInstaller.
   Installs or updates the Visual Studio Installer (VS 2017+).
+  Can work from an offline installation source using package parameters, syntax: '--bootstrapperPath D:\Path\vs_Enterprise.exe --offline D:\Path\vs_installer.opc'
 
 ## Version 1.4.1
 - Fixed encoding of recently added files.

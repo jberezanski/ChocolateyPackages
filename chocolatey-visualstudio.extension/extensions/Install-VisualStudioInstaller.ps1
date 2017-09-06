@@ -100,7 +100,9 @@ If the Installer is present, it will be upgraded/reinstalled if:
         $installerFilePath = $null
     }
 
-    $silentArgs = '--quiet --update'
+    $silentArgsFromParameters = ($packageParameters.GetEnumerator() | ForEach-Object { '--{0} {1}' -f $_.Key, $_.Value }) -f ' '
+    # --update must be last
+    $silentArgs = "--quiet $silentArgsFromParameters --update"
     $arguments = @{
         packageName = $PackageName
         silentArgs = $silentArgs
