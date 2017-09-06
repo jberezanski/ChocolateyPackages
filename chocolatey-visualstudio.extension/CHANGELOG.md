@@ -1,6 +1,7 @@
 ﻿# CHANGELOG
 
 ## Version 1.5.0
+- New helpers: Add-VisualStudioComponent, Remove-VisualStudioComponent
 - New package parameter: '--layout D:\Path' can be used to create an offline installation source ("layout").
   Package installation using this parameter will throw an error at the end (code 814) so that Chocolatey does not register the package as installed.
   Supported by the Install-VisualStudio helper, both for Visual Studio 2017 and 2015.
