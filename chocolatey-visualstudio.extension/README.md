@@ -37,6 +37,17 @@ Returns information about all Visual Studio instances installed on the machine.
 The returned objects contain properties: InstallationPath, InstallationVersion, ProductId, ChannelId.
 The last two properties have values only for instances of Visual Studio 2017.
 
+### Get-VisualStudioInstaller
+
+Returns information about the Visual Studio Installer, if installed on the machine.
+The returned object contain properties: Path, Version.
+Supports the new "Willow" installer of Visual Studio 2017 RC only.
+
+### Install-VisualStudioInstaller
+
+Installs or upgrades the Visual Studio Installer.
+Supports the new "Willow" installer of Visual Studio 2017 RC only.
+
 ## Installation
 
 End users typically do not install this package directly - it is usually installed automatically as a dependency of another package.
