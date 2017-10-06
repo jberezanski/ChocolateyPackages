@@ -20,7 +20,7 @@
 You can see the full set of changes in the .NET Framework 4.7.1 in the [change list](https://github.com/Microsoft/dotnet/blob/a60a6c074cef0460d97e126274c98fb7705354c8/releases/net471/dotnet471-changes.md) on [GitHub](https://github.com/microsoft/dotnet).</description>
     <releaseNotes>
 ##### Software
-https://github.com/Microsoft/dotnet/blob/a60a6c074cef0460d97e126274c98fb7705354c8/releases/net471/README.md
+[.NET Framework 4.7.1 build 2538 release notes](https://github.com/Microsoft/dotnet/blob/a60a6c074cef0460d97e126274c98fb7705354c8/releases/net471/README.md)
 ##### Package
 4.7.2538.0-preview1: Initial package release.
     </releaseNotes>
