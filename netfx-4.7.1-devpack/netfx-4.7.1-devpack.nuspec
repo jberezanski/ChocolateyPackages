@@ -2,34 +2,30 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.7.1-devpack</id>
-    <version>4.7.2539.0-preview</version>
+    <version>4.7.2558.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.7.1-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.7.1 Developer Pack</title>
     <authors>Microsoft</authors>
-    <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2017/08/07/welcome-to-the-net-framework-4-7-1-early-access/</projectUrl>
+    <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2017/10/17/announcing-the-net-framework-4-7-1/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
-    <bugTrackerUrl>https://github.com/Microsoft/dotnet-framework-early-access/issues/new</bugTrackerUrl>
-    <tags>microsoft .net framework 4.7.1 developer target targeting pack multi dotnet netfx kb3186612 admin</tags>
+    <bugTrackerUrl>https://github.com/Microsoft/dotnet/issues</bugTrackerUrl>
+    <tags>microsoft .net framework 4.7.1 developer target targeting pack multi dotnet netfx admin</tags>
     <summary>The .NET Framework 4.7.1 Developer Pack lets developers build applications that target the .NET Framework 4.7.1.</summary>
-    <description>The .NET Framework 4.7.1 Developer Pack lets developers build applications that target the .NET Framework 4.7.1 by using Visual Studio 2015, Visual Studio 2017, or third-party IDEs. This is a single package that bundles the .NET Framework 4.7.1, the .NET 4.7.1 Targeting Pack, and the .NET Framework 4.7.1 SDK.
-
-The .NET Framework 4.7.1 is the next version of the .NET Framework. It is currently feature-complete and in the testing phase. It is not ready for production and is not supported. The current build of the .NET Framework 4.7.1 being shared is build 2539.
-
-You can see the full set of changes in the .NET Framework 4.7.1 in the [change list](https://github.com/Microsoft/dotnet/blob/ea8ea661a6ee296a364e6a7a654e1457fb710125/releases/net471/dotnet471-changes.md) on [GitHub](https://github.com/microsoft/dotnet).</description>
+    <description>The Microsoft .NET Framework 4.7.1 Developer Pack is a single package that bundles the .NET Framework 4.7.1, the .NET 4.7.1 Targeting Pack and the .NET 4.7.1 SDK. Developers can use this package to install all the different components for .NET 4.7.1 and build applications targeting the .NET Framework 4.7.1 using either Visual Studio 2017, Visual Studio 2015 or other IDEs.</description>
     <releaseNotes>
 ##### Software
-[.NET Framework 4.7.1 build 2539 release notes](https://github.com/Microsoft/dotnet/blob/ea8ea661a6ee296a364e6a7a654e1457fb710125/releases/net471/README.md)
+[.NET Framework 4.7.1 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net471/README.md)
+[.NET Framework 4.7.1 known issues](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-known-issues.md)
 ##### Package
-4.7.2539.0-preview: Initial package release.
+4.7.2558.0: Initial package release.
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />
-<!-- TODO: fix this once a matching runtime package is published -->
-<!--      <dependency id="dotnet4.7.1" version="tbd" /> -->
+      <dependency id="dotnet4.7.1" version="4.7.2558.0" />
     </dependencies>
   </metadata>
 </package>

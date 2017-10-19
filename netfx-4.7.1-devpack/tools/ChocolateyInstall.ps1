@@ -1,6 +1,6 @@
 ﻿$packageName = 'netfx-4.7.1-devpack'
-$url = 'https://download.microsoft.com/download/5/B/D/5BD1CB75-43AA-4408-9147-B75FCDA6B062/NDP471-DevPack-ENU.exe'
-$checksum = 'E8AD06901414968CB7C324895F442EE7E1745E9ADB46E236877281FA698C9DEE'
+$url = 'https://download.microsoft.com/download/9/0/1/901B684B-659E-4CBD-BEC8-B3F06967C2E7/NDP471-DevPack-ENU.exe'
+$checksum = 'A615488D2C5229AFF3B97C56F7E5519CC7AC4F58B638A8E159B19C5C3D455C7B'
 $checksumType = 'sha256'
 $arguments = @{
     packageName = $packageName
