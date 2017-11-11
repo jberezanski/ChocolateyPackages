@@ -23,6 +23,7 @@ visualstudio2017-workload-nativedesktop\visualstudio2017-workload-nativedesktop.
 visualstudio2017-workload-nativegame\visualstudio2017-workload-nativegame.nuspec
 visualstudio2017-workload-nativemobile\visualstudio2017-workload-nativemobile.nuspec
 visualstudio2017-workload-netcoretools\visualstudio2017-workload-netcoretools.nuspec
+visualstudio2017-workload-netcorebuildtools\visualstudio2017-workload-netcorebuildtools.nuspec
 visualstudio2017-workload-netcrossplat\visualstudio2017-workload-netcrossplat.nuspec
 visualstudio2017-workload-netweb\visualstudio2017-workload-netweb.nuspec
 visualstudio2017-workload-node\visualstudio2017-workload-node.nuspec
