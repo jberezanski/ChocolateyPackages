@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version vNext
+- New helper: Get-VisualStudioInstallerHealth (checks for corruption observed sometimes after installer update)
+- Install-VisualStudioInstaller will check for installer corruption after update and will attempt to repair the installer by renaming the installer directory and retrying the update.
+
 ## Version 1.6.0
 - New helper: Install-VisualStudioVsixExtension. Supports Visual Studio 2010-2017 and replaces Install-ChocolateyVsixPackage.
 - New helper: Get-VisualStudioVsixInstaller.

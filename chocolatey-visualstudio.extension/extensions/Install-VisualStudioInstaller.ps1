@@ -113,6 +113,66 @@ If the Installer is present, it will be updated/reinstalled if:
         installerFilePath = $installerFilePath
     }
     $argumentsDump = ($arguments.GetEnumerator() | ForEach-Object { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
-    Write-Debug "Install-VSChocolateyPackage $argumentsDump"
-    Install-VSChocolateyPackage @arguments
+
+    $attempt = 0
+    do
+    {
+        $retry = $false
+        $attempt += 1
+        Write-Debug "Install-VSChocolateyPackage $argumentsDump"
+        Install-VSChocolateyPackage @arguments
+
+        $updated = Get-VisualStudioInstaller
+        if ($updated -eq $null)
+        {
+            throw 'The Visual Studio Installer is not present even after supposedly successful update!'
+        }
+
+        if ($updated.Version -ne $null)
+        {
+             if ($RequiredVersion -ne $null)
+             {
+                if ($updated.Version -lt $RequiredVersion)
+                {
+                    Write-Warning "The Visual Studio Installer got updated to version $($updated.Version), which is still lower than the requirement of version $RequiredVersion or later."
+                }
+                else
+                {
+                    Write-Verbose "The Visual Studio Installer got updated to version $($updated.Version), which satisfies the requirement of version $RequiredVersion or later."
+                }
+             }
+             else
+             {
+                Write-Verbose "The Visual Studio Installer got updated to version $($updated.Version)."
+             }
+        }
+        else
+        {
+            Write-Warning "Unable to determine the Visual Studio Installer version after the update."
+        }
+
+        $updatedHealth = $updated | Get-VisualStudioInstallerHealth
+        if (-not $updatedHealth.IsHealthy)
+        {
+            if ($attempt -eq 1)
+            {
+                Write-Warning "The Visual Studio Installer got broken after update (missing files: $($updatedHealth.MissingFiles -join ', ')). Attempting to repair it."
+                $installerDir = Split-Path -Path $updated.Path
+                $newName = '{0}.backup-{1:yyyyMMddHHmmss}' -f (Split-Path -Leaf -Path $installerDir), (Get-Date)
+                Write-Verbose "Renaming directory '$installerDir' to '$newName'"
+                Rename-Item -Path $installerDir -NewName $newName
+                Write-Verbose 'Retrying the installation'
+                $retry = $true
+            }
+            else
+            {
+                throw "The Visual Studio Installer is still broken even after the attempt to repair it."
+            }
+        }
+        else
+        {
+            Write-Verbose 'The Visual Studio Installer is healthy (no missing files).'
+        }
+    }
+    while ($retry)
 }
