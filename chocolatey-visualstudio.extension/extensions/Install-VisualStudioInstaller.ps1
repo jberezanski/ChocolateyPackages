@@ -82,9 +82,20 @@ If the Installer is present, it will be updated/reinstalled if:
         $shouldUpdate = $true
     }
 
+    $attemptingRepair = $false
     if (-not $shouldUpdate)
     {
-        return
+        $existingHealth = $existing | Get-VisualStudioInstallerHealth
+        if ($existingHealth -ne $null -and -not $existingHealth.IsHealthy)
+        {
+            Write-Warning "The Visual Studio Installer is broken (missing files: $($existingHealth.MissingFiles -join ', ')). Attempting to reinstall it."
+            $shouldUpdate = $true
+            $attemptingRepair = $true
+        }
+        else
+        {
+            return
+        }
     }
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
@@ -156,7 +167,16 @@ If the Installer is present, it will be updated/reinstalled if:
         {
             if ($attempt -eq 1)
             {
-                Write-Warning "The Visual Studio Installer got broken after update (missing files: $($updatedHealth.MissingFiles -join ', ')). Attempting to repair it."
+                if ($attemptingRepair)
+                {
+                    $msg = 'is still broken after reinstall'
+                }
+                else
+                {
+                    $msg = 'got broken after update'
+                }
+
+                Write-Warning "The Visual Studio Installer $msg (missing files: $($updatedHealth.MissingFiles -join ', ')). Attempting to repair it."
                 $installerDir = Split-Path -Path $updated.Path
                 $newName = '{0}.backup-{1:yyyyMMddHHmmss}' -f (Split-Path -Leaf -Path $installerDir), (Get-Date)
                 Write-Verbose "Renaming directory '$installerDir' to '$newName'"
