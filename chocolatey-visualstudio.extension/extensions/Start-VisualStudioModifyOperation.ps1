@@ -7,7 +7,7 @@
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
         [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
         [Parameter(Mandatory = $true)] [string[]] $OperationTexts,
-        [ValidateSet('modify', 'uninstall')] [string] $Operation = 'modify',
+        [ValidateSet('modify', 'uninstall', 'update')] [string] $Operation = 'modify',
         [string] $InstallerPath,
         [version] $RequiredProductVersion
     )
@@ -117,7 +117,7 @@
                 throw "Unsupported scenario: neither 'add' nor 'remove' is present in parameters collection"
             }
         }
-        elseif ($Operation -eq 'uninstall')
+        elseif (@('uninstall', 'update') -contains $Operation)
         {
             $packageIdsList = ''
             $unwantedPackageSelector = { $false }
@@ -148,7 +148,15 @@
 
             if (-not $applicable)
             {
-                Write-Verbose ('Product at path ''{0}'' will not be modified because it does not support package(s): {1}' -f $productInfo.installationPath, $packageIds)
+                if (($packageIds | Measure-Object).Count -gt 0)
+                {
+                    Write-Verbose ('Product at path ''{0}'' will not be modified because it does not support package(s): {1}' -f $productInfo.installationPath, $packageIds)
+                }
+                else
+                {
+                    Write-Verbose ('Product at path ''{0}'' will not be modified because it is not present on the list of applicable products: {1}' -f $productInfo.installationPath, $ApplicableProducts)
+                }
+
                 continue
             }
 
