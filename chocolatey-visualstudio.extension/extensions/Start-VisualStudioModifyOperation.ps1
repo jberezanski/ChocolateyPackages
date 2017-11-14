@@ -16,16 +16,13 @@
 
     if ($InstallerPath -eq '')
     {
-        $InstallerPath = Get-VSUninstallerExePath `
-                            -PackageName $PackageName `
-                            -UninstallerName 'vs_installer.exe' `
-                            -ProgramsAndFeaturesDisplayName "Microsoft Visual Studio $VisualStudioYear" `
-                            -AssumeNewVS2017Installer
-
-        if ($InstallerPath -eq $null)
+        $installer = Get-VisualStudioInstaller
+        if ($installer -eq $null)
         {
             throw "Unable to determine the location of the Visual Studio Installer. Is Visual Studio $VisualStudioYear installed?"
         }
+
+        $InstallerPath = $installer.Path
     }
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
