@@ -39,7 +39,8 @@ Install-ChocolateyPackage
       [ValidateSet('MsiVS2015OrEarlier', 'WillowVS2017OrLater')] [string] $InstallerTechnology,
       [string] $ProgramsAndFeaturesDisplayName = $ApplicationName,
       [string] $VisualStudioYear,
-      [string] $Product
+      [string] $Product,
+      [switch] $AllowUpdate
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
     {
@@ -47,7 +48,7 @@ Install-ChocolateyPackage
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName' VisualStudioYear:'$VisualStudioYear' Product:'$Product'";
+    Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName' VisualStudioYear:'$VisualStudioYear' Product:'$Product' AllowUpdate:'$AllowUpdate'";
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     $creatingLayout = $packageParameters.ContainsKey('layout')
@@ -66,7 +67,15 @@ Install-ChocolateyPackage
                 Write-Verbose ("Found {0} installed Visual Studio product(s) with ChannelId = {1} and ProductId = {2}" -f $productsCount, $prodRef.ChannelId, $prodRef.ProductId)
                 if ($productsCount -gt 0)
                 {
-                    Write-Warning "$ApplicationName is already installed. Please use the Visual Studio Installer to modify or repair it."
+                    if ($AllowUpdate)
+                    {
+                        Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList @() -VisualStudioYear $VisualStudioYear  -ApplicableProducts @($Product) -OperationTexts @('update', 'updating', 'update') -Operation 'update'
+                    }
+                    else
+                    {
+                        Write-Warning "$ApplicationName is already installed. Please use the Visual Studio Installer to modify or repair it."
+                    }
+
                     return
                 }
             }
