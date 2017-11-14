@@ -5,7 +5,8 @@ function Add-VisualStudioComponent
         [Parameter(Mandatory = $true)] [string] $PackageName,
         [Parameter(Mandatory = $true)] [string] $Component,
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
-        [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts
+        [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
+        [version] $RequiredProductVersion
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
     {
@@ -14,9 +15,9 @@ function Add-VisualStudioComponent
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
 
-    Write-Debug "Running 'Add-VisualStudioComponent' with PackageName:'$PackageName' Component:'$Component' VisualStudioYear:'$VisualStudioYear'";
+    Write-Debug "Running 'Add-VisualStudioComponent' with PackageName:'$PackageName' Component:'$Component' VisualStudioYear:'$VisualStudioYear' RequiredProductVersion:'$RequiredProductVersion'";
     $argumentList = @('add', "$Component")
     
 
-    Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList $argumentList -VisualStudioYear $VisualStudioYear -ApplicableProducts $ApplicableProducts -OperationTexts @('installed', 'installing', 'installation')
+    Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList $argumentList -VisualStudioYear $VisualStudioYear -ApplicableProducts $ApplicableProducts -RequiredProductVersion $RequiredProductVersion -OperationTexts @('installed', 'installing', 'installation')
 }

@@ -8,9 +8,10 @@
         [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
         [Parameter(Mandatory = $true)] [string[]] $OperationTexts,
         [ValidateSet('modify', 'uninstall')] [string] $Operation = 'modify',
-        [string] $InstallerPath
+        [string] $InstallerPath,
+        [version] $RequiredProductVersion
     )
-    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' InstallerPath:'$InstallerPath'";
+    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' InstallerPath:'$InstallerPath' RequiredProductVersion:'$RequiredProductVersion'";
 
     $frobbed, $frobbing, $frobbage = $OperationTexts
 
@@ -156,6 +157,20 @@
             {
                 Write-Verbose ('Product at path ''{0}'' will not be modified because it already {1} package(s): {2}' -f $productInfo.installationPath, $unwantedStateDescription, ($unwantedPackages -join ' '))
                 continue
+            }
+
+            if ($RequiredProductVersion -ne $null)
+            {
+                $existingProductVersion = [version]$productInfo.installationVersion
+                if ($existingProductVersion -lt $RequiredProductVersion)
+                {
+                    Write-Warning ('Product at path ''{0}'' will not be modified because its version ({1}) is lower than the required minimum ({2}). Please update the product first and reinstall this package.' -f $productInfo.installationPath, $existingProductVersion, $RequiredProductVersion)
+                    continue
+                }
+                else
+                {
+                    Write-Verbose ('Product at path ''{0}'' will be modified because its version ({1}) satisfies the version requirement of {2} or higher.' -f $productInfo.installationPath, $existingProductVersion, $RequiredProductVersion)
+                }
             }
 
             $argumentSet = $baseArgumentSet.Clone()
