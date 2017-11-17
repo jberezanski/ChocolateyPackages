@@ -9,9 +9,14 @@
         [Parameter(Mandatory = $true)] [string[]] $OperationTexts,
         [ValidateSet('modify', 'uninstall', 'update')] [string] $Operation = 'modify',
         [string] $InstallerPath,
-        [version] $RequiredProductVersion
+        [version] $RequiredProductVersion,
+        [hashtable] $PackageParameters,
+        [string] $BootstrapperUrl,
+        [string] $BootstrapperChecksum,
+        [string] $BootstrapperChecksumType,
+        [PSObject] $ProductReference
     )
-    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' InstallerPath:'$InstallerPath' RequiredProductVersion:'$RequiredProductVersion'";
+    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' InstallerPath:'$InstallerPath' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType'";
 
     $frobbed, $frobbing, $frobbage = $OperationTexts
 
@@ -26,7 +31,14 @@
         $InstallerPath = $installer.Path
     }
 
-    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
+    if ($PackageParameters -eq $null)
+    {
+        $PackageParameters = Parse-Parameters $env:chocolateyPackageParameters
+    }
+    else
+    {
+        $PackageParameters = $PackageParameters.Clone()
+    }
 
     $argumentSetFromArgumentList = @{}
     for ($i = 0; $i -lt $ArgumentList.Length; $i += 2)
@@ -184,6 +196,12 @@
             $argumentSet['installPath'] = $productInfo.installationPath
             $argumentSets += $argumentSet
         }
+    }
+
+    # todo: move this inside the foreach, so that we can take advantage of channelId
+    if ($Operation -ne 'uninstall')
+    {
+        Install-VSInstaller -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $ProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -Force
     }
 
     $overallExitCode = 0

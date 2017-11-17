@@ -4,6 +4,7 @@ function Install-VSInstaller
     param(
       [Parameter(Mandatory = $true)] [string] $PackageName,
       [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
+      [PSObject] $ProductReference,
       [string] $Url,
       [string] $Checksum,
       [string] $ChecksumType,
@@ -87,6 +88,18 @@ function Install-VSInstaller
     else
     {
         $installerFilePath = $null
+        if ($Url -eq '')
+        {
+            $Url, $Checksum, $ChecksumType = Get-VSBootstrapperUrlFromChannelManifest -PackageParameters $PackageParameters -ProductReference $ProductReference
+        }
+    }
+
+    $whitelist = @('offline')
+    $parametersToRemove = $PackageParameters.Keys | Where-Object { $whitelist -notcontains $_ }
+    foreach ($parameterToRemove in $parametersToRemove)
+    {
+        Write-Debug "Filtering out package parameter not passed to the bootstrapper during VS Installer update: '$parameterToRemove'"
+        $PackageParameters.Remove($parameterToRemove)
     }
 
     # --update must be last
