@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-workload-netcorebuildtools</id>
-    <version>1.0.0</version>
+    <version>1.0.0-dev</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-netcorebuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET Core build tools workload for Visual Studio 2017 Build Tools</title>
@@ -51,7 +51,8 @@ Example 3. Installing the workload, including only required components:
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.2.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.6.0-dev" />
+      <dependency id="visualstudio2017buildtools" version="15.4" />
     </dependencies>
   </metadata>
 </package>
