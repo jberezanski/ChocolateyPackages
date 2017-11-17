@@ -20,10 +20,6 @@ MissingFiles (System.String[])
     (
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true)] [string] $Path
     )
-    Begin
-    {
-        Set-StrictMode -Version 2
-    }
     Process
     {
         if ($Path -like '*.exe')
