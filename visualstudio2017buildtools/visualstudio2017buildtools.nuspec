@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017buildtools</id>
-    <version>15.2.26430.20170605</version>
+    <version>15.2.26430.20171118-dev</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017buildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Build Tools</title>
@@ -59,7 +59,7 @@ vNext:
 - Added a link to the .NET Core Build Tools workload package.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.4.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.6.0-dev" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnet4.6.1" version="4.6.01055.20161213" />
