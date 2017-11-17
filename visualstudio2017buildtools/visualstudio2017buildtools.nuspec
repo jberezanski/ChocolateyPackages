@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017buildtools</id>
-    <version>15.2.26430.20171118-dev</version>
+    <version>15.4.4.0-dev</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017buildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Build Tools</title>
