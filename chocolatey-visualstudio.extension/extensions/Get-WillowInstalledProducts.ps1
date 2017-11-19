@@ -19,6 +19,7 @@
         installationPath = 'installationPath'
         installationVersion = 'installationVersion'
         channelId = 'channelId'
+        channelUri = 'channelUri'
         productId = 'product"\s*:\s*{\s*"id'
         enginePath = 'enginePath'
     }

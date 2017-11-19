@@ -17,6 +17,7 @@
 
     $props = @{
         ChannelId = $channelId
+        ChannelUri = $null
         ProductId = $productId
     }
 

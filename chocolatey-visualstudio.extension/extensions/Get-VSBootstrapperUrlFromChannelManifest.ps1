@@ -26,6 +26,15 @@ function Get-VSBootstrapperUrlFromChannelManifest
         else
         {
             Write-Debug "Package parameters do not contain 'channelUri' or it is empty"
+            if ($ProductReference -ne $null -and -not [string]::IsNullOrEmpty($ProductReference.ChannelUri))
+            {
+                $manifestUri = $ProductReference.ChannelUri
+                Write-Debug "Using manifest URI from the provided ProductReference: '$manifestUri'"
+            }
+            else
+            {
+                Write-Debug "ProductReference has not been provided or does not contain the channel manifest URI"
+            }
         }
     }
 
