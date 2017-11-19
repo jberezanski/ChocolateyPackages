@@ -105,7 +105,7 @@ function Install-VSInstaller
     # --update must be last
     $silentArgs = ConvertTo-ArgumentString -InitialUnstructuredArguments @('--quiet') -Arguments $packageParameters -FinalUnstructuredArguments @('--update') -Syntax 'Willow'
     $arguments = @{
-        packageName = $PackageName
+        packageName = 'Visual Studio Installer'
         silentArgs = $silentArgs
         url = $Url
         checksum = $Checksum
@@ -132,21 +132,35 @@ function Install-VSInstaller
 
         if ($updated.Version -ne $null)
         {
-             if ($RequiredVersion -ne $null)
-             {
-                if ($updated.Version -lt $RequiredVersion)
+            if ($existing -eq $null -or $existing.Version -eq $null -or $existing.Version -lt $updated.Version)
+            {
+                if ($RequiredVersion -ne $null)
                 {
-                    Write-Warning "The Visual Studio Installer got updated to version $($updated.Version), which is still lower than the requirement of version $RequiredVersion or later."
+                    if ($updated.Version -lt $RequiredVersion)
+                    {
+                        Write-Warning "The Visual Studio Installer got updated to version $($updated.Version), which is still lower than the requirement of version $RequiredVersion or later."
+                    }
+                    else
+                    {
+                        Write-Verbose "The Visual Studio Installer got updated to version $($updated.Version), which satisfies the requirement of version $RequiredVersion or later."
+                    }
                 }
                 else
                 {
-                    Write-Verbose "The Visual Studio Installer got updated to version $($updated.Version), which satisfies the requirement of version $RequiredVersion or later."
+                    Write-Verbose "The Visual Studio Installer got updated to version $($updated.Version)."
                 }
-             }
-             else
-             {
-                Write-Verbose "The Visual Studio Installer got updated to version $($updated.Version)."
-             }
+            }
+            else
+            {
+                if ($existing.Version -eq $updated.Version)
+                {
+                    Write-Verbose "The Visual Studio Installer version $($updated.Version) was reinstalled."
+                }
+                else
+                {
+                    Write-Warning "The Visual Studio Installer got updated, but its version after update ($($updated.Version)) is lower than the version before update ($($existing.Version))."
+                }
+            }
         }
         else
         {
