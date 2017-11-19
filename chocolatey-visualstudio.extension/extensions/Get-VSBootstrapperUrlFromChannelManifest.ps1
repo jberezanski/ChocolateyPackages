@@ -2,8 +2,8 @@ function Get-VSBootstrapperUrlFromChannelManifest
 {
     [CmdletBinding()]
     param(
-      [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
-      [PSObject] $ProductReference
+        [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
+        [PSObject] $ProductReference
     )
     Write-Debug 'Trying to obtain vs_Setup.exe URL from the channel manifest'
 
@@ -58,7 +58,7 @@ function Get-VSBootstrapperUrlFromChannelManifest
             }
             else
             {
-                 Write-Debug "ProductReference has not been provided; channel id is not known"
+                Write-Debug "ProductReference has not been provided; channel id is not known"
             }
         }
         if ($channelId -ne $null)
