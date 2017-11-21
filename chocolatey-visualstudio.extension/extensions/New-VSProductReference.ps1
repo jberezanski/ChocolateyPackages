@@ -5,12 +5,14 @@ function New-VSProductReference
     (
         [Parameter(Mandatory = $true)] [string] $ChannelId,
         [Parameter(Mandatory = $true)] [string] $ProductId,
-        [string] $ChannelUri
+        [string] $ChannelUri,
+        [string] $InstallChannelUri
     )
 
     $props = @{
         ChannelId = $ChannelId
         ChannelUri = $ChannelUri
+        InstallChannelUri = $InstallChannelUri
         ProductId = $ProductId
     }
 
