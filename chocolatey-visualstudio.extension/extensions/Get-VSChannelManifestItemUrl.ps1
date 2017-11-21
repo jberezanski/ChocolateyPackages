@@ -77,7 +77,7 @@ function Get-VSChannelManifestItemUrl
 
     if (-not [string]::IsNullOrEmpty($url))
     {
-        Write-Verbose "$ChannelItemType url determined from the channel manifest: '$url' (checksum: '$checksum', type: '$checksumType'"
+        Write-Verbose "$ChannelItemType url determined from the channel manifest: '$url' (checksum: '$checksum', type: '$checksumType')"
         return $url, $checksum, $checksumType
     }
     else

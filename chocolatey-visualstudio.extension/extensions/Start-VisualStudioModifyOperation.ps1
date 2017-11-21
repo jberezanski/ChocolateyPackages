@@ -223,8 +223,11 @@
         {
             if ($PSCmdlet.ShouldProcess("Visual Studio Installer", "update"))
             {
-                # TODO: download VS component manifest and determine required engine version
-                Install-VSInstaller -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $thisProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -Force
+                # TODO: if bootstrapperPath present, check for existence of Catalog.json instead of downloading the VS component manifest
+                # TODO: if bootstrapperPath present, check for existence of vs_installer.opc and auto add --offline
+                # TODO: same for installLayoutPath
+                $requiredEngineVersion = Get-VSRequiredEngineVersion -PackageParameters $PackageParameters -ProductReference $thisProductReference
+                Install-VSInstaller -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $thisProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -RequiredVersion $requiredEngineVersion
                 $installerUpdated = $true
             }
         }

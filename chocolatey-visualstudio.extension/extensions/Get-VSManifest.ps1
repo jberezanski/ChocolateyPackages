@@ -18,9 +18,9 @@ function Get-VSManifest
     $localFilePath = Join-Path $tempDir $localFileName
 
     $localFile = Get-Item -Path $localFilePath -ErrorAction SilentlyContinue
-    if ($localFile -ne $null -and (Get-Date).AddDays(-1) -lt $localFile.LastWriteTime -and $localFile.LastWriteTime -lt (Get-Date))
+    if ($localFile -ne $null -and (Get-Date).ToUniversalTime().AddDays(-1) -lt $localFile.LastWriteTimeUtc -and $localFile.LastWriteTimeUtc -lt (Get-Date).ToUniversalTime())
     {
-        Write-Verbose ("Found cached file '{0}' last updated on {1:yyyy-MM-dd HH:mm:ss} UTC - less than one day ago (now is {2:yyyy-MM-dd HH:mm:ss} UTC)" -f $localFilePath, $localFile.LastWriteTimeUtc, (Get-Date))
+        Write-Verbose ("Found cached file '{0}' last updated on {1:yyyy-MM-dd HH:mm:ss} UTC - less than one day ago (now is {2:yyyy-MM-dd HH:mm:ss} UTC)" -f $localFilePath, $localFile.LastWriteTimeUtc, (Get-Date).ToUniversalTime())
     }
     else
     {
@@ -30,7 +30,7 @@ function Get-VSManifest
         }
         else
         {
-            Write-Verbose ("Found cached file '{0}' last updated on {1:yyyy-MM-dd HH:mm:ss} UTC which is outside the allowed 1-day window (now is {2:yyyy-MM-dd HH:mm:ss} UTC)" -f $localFilePath, $localFile.LastWriteTimeUtc, (Get-Date))
+            Write-Verbose ("Found cached file '{0}' last updated on {1:yyyy-MM-dd HH:mm:ss} UTC which is outside the allowed 1-day window (now is {2:yyyy-MM-dd HH:mm:ss} UTC)" -f $localFilePath, $localFile.LastWriteTimeUtc, (Get-Date).ToUniversalTime())
         }
 
         $fileInLayout = $null
@@ -65,6 +65,7 @@ function Get-VSManifest
     # VS 2017 requires Windows 7 or later, so .NET 3.5 or later is guaranteed, therefore we can use System.Web.Extensions
     [System.Reflection.Assembly]::LoadWithPartialName("System.Web.Extensions") | Out-Null
     $serializer = New-Object -TypeName 'System.Web.Script.Serialization.JavaScriptSerializer'
+    $serializer.MaxJsonLength = [int]::MaxValue
     Write-Verbose "Parsing the manifest file ($Description)"
     $manifest = $serializer.DeserializeObject($manifestContent)
 
