@@ -31,6 +31,7 @@ function Get-VSManifest
         else
         {
             Write-Verbose ("Found cached file '{0}' last updated on {1:yyyy-MM-dd HH:mm:ss} UTC which is outside the allowed 1-day window (now is {2:yyyy-MM-dd HH:mm:ss} UTC)" -f $localFilePath, $localFile.LastWriteTimeUtc, (Get-Date).ToUniversalTime())
+            Remove-Item -Path $localFile
         }
 
         $fileInLayout = $null
