@@ -21,7 +21,8 @@ If the Installer is present, it will be updated/reinstalled if:
       [string] $Url,
       [string] $Checksum,
       [string] $ChecksumType,
-      [version] $RequiredVersion,
+      [Alias('RequiredVersion')] [version] $RequiredInstallerVersion,
+      [version] $RequiredEngineVersion,
       [switch] $Force
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
@@ -30,7 +31,7 @@ If the Installer is present, it will be updated/reinstalled if:
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Install-VisualStudioInstaller' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType RequiredVersion:'$RequiredVersion' Force:'$Force'";
+    Write-Debug "Running 'Install-VisualStudioInstaller' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType RequiredInstallerVersion:'$RequiredInstallerVersion' RequiredEngineVersion:'$RequiredEngineVersion' Force:'$Force'";
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
 

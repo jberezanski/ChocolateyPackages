@@ -8,52 +8,49 @@ function Install-VSInstaller
       [string] $Url,
       [string] $Checksum,
       [string] $ChecksumType,
-      [version] $RequiredVersion,
+      [Alias('RequiredVersion')] [version] $RequiredInstallerVersion,
+      [version] $RequiredEngineVersion,
       [switch] $Force
     )
-    Write-Debug "Running 'Install-VSInstaller' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType RequiredVersion:'$RequiredVersion' Force:'$Force'";
+    Write-Debug "Running 'Install-VSInstaller' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType RequiredInstallerVersion:'$RequiredInstallerVersion' RequiredEngineVersion:'$RequiredEngineVersion' Force:'$Force'";
 
+    Write-Debug 'Determining whether the Visual Studio Installer needs to be installed/updated/reinstalled'
+    $shouldUpdate = $false
     $existing = Get-VisualStudioInstaller
     if ($existing -ne $null)
     {
         Write-Debug 'The Visual Studio Installer is already present'
-        if ($existing.Version -ne $null -and $RequiredVersion -ne $null)
+        if ($existing.Version -ne $null -and $RequiredInstallerVersion -ne $null)
         {
-            if ($existing.Version -lt $RequiredVersion)
+            if ($existing.Version -lt $RequiredInstallerVersion)
             {
-                Write-Debug 'The existing Visual Studio Installer version is lower than requested, so it will be updated'
+                Write-Debug 'The existing Visual Studio Installer version is lower than requested, so it should be updated'
                 $shouldUpdate = $true
             }
-            elseif ($existing.Version -eq $RequiredVersion)
+            elseif ($existing.Version -eq $RequiredInstallerVersion)
             {
-                if ($Force)
-                {
-                    Write-Debug 'The existing Visual Studio Installer version is equal to requested, but it will be updated because -Force was used'
-                    $shouldUpdate = $true
-                }
-                else
-                {
-                    Write-Debug 'The existing Visual Studio Installer version is equal to requested, so it will not be updated'
-                    $shouldUpdate = $false
-                }
+                Write-Debug 'The existing Visual Studio Installer version is equal to requested (no update required)'
             }
             else
             {
-                Write-Debug 'The existing Visual Studio Installer version is greater than requested, so it will not be updated'
-                $shouldUpdate = $false
+                Write-Debug 'The existing Visual Studio Installer version is greater than requested (no update required)'
             }
         }
-        else
+
+        if ($existing.EngineVersion -ne $null -and $RequiredEngineVersion -ne $null)
         {
-            if ($Force)
+            if ($existing.EngineVersion -lt $RequiredEngineVersion)
             {
-                Write-Debug 'The Visual Studio Installer is already present, but it will be updated because -Force was used'
+                Write-Debug 'The existing Visual Studio Installer engine version is lower than requested, so it should be updated'
                 $shouldUpdate = $true
+            }
+            elseif ($existing.EngineVersion -eq $RequiredEngineVersion)
+            {
+                Write-Debug 'The existing Visual Studio Installer engine version is equal to requested (no update required)'
             }
             else
             {
-                Write-Debug 'The Visual Studio Installer is already present and will not be updated'
-                $shouldUpdate = $false
+                Write-Debug 'The existing Visual Studio Installer engine version is greater than requested (no update required)'
             }
         }
     }
@@ -73,10 +70,17 @@ function Install-VSInstaller
             $shouldUpdate = $true
             $attemptingRepair = $true
         }
-        else
-        {
-            return
-        }
+    }
+
+    if (-not $shouldUpdate -and $Force)
+    {
+        Write-Debug 'The Visual Studio Installer does not need to be updated, but it will be reinstalled because -Force was used'
+        $shouldUpdate = $true
+    }
+
+    if (-not $shouldUpdate)
+    {
+        return
     }
 
     if ($packageParameters.ContainsKey('bootstrapperPath'))
@@ -130,41 +134,72 @@ function Install-VSInstaller
             throw 'The Visual Studio Installer is not present even after supposedly successful update!'
         }
 
-        if ($updated.Version -ne $null)
+        if ($existing -eq $null)
         {
-            if ($existing -eq $null -or $existing.Version -eq $null -or $existing.Version -lt $updated.Version)
+            Write-Verbose "The Visual Studio Installer version $($updated.Version) (engine version $($updated.EngineVersion)) was installed."
+        }
+        else
+        {
+            if ($updated.Version -eq $existing.Version -and $updated.EngineVersion -eq $existing.EngineVersion)
             {
-                if ($RequiredVersion -ne $null)
-                {
-                    if ($updated.Version -lt $RequiredVersion)
-                    {
-                        Write-Warning "The Visual Studio Installer got updated to version $($updated.Version), which is still lower than the requirement of version $RequiredVersion or later."
-                    }
-                    else
-                    {
-                        Write-Verbose "The Visual Studio Installer got updated to version $($updated.Version), which satisfies the requirement of version $RequiredVersion or later."
-                    }
-                }
-                else
-                {
-                    Write-Verbose "The Visual Studio Installer got updated to version $($updated.Version)."
-                }
+                Write-Verbose "The Visual Studio Installer version $($updated.Version) (engine version $($updated.EngineVersion)) was reinstalled."
             }
             else
             {
-                if ($existing.Version -eq $updated.Version)
+                if ($updated.Version -lt $existing.Version)
                 {
-                    Write-Verbose "The Visual Studio Installer version $($updated.Version) was reinstalled."
+                    Write-Warning "The Visual Studio Installer got updated, but its version after update ($($updated.Version)) is lower than the version before update ($($existing.Version))."
                 }
                 else
                 {
-                    Write-Warning "The Visual Studio Installer got updated, but its version after update ($($updated.Version)) is lower than the version before update ($($existing.Version))."
+                    if ($updated.EngineVersion -lt $existing.EngineVersion)
+                    {
+                        Write-Warning "The Visual Studio Installer got updated, but its engine version after update ($($updated.EngineVersion)) is lower than the engine version before update ($($existing.EngineVersion))."
+                    }
+                    else
+                    {
+                        Write-Verbose "The Visual Studio Installer got updated to version $($updated.Version) (engine version $($updated.EngineVersion))."
+                    }
+                }
+            }
+        }
+
+        if ($updated.Version -ne $null)
+        {
+            if ($RequiredInstallerVersion -ne $null)
+            {
+                if ($updated.Version -lt $RequiredInstallerVersion)
+                {
+                    Write-Warning "The Visual Studio Installer got updated to version $($updated.Version), which is still lower than the requirement of version $RequiredInstallerVersion or later."
+                }
+                else
+                {
+                    Write-Verbose "The Visual Studio Installer got updated to version $($updated.Version), which satisfies the requirement of version $RequiredInstallerVersion or later."
                 }
             }
         }
         else
         {
             Write-Warning "Unable to determine the Visual Studio Installer version after the update."
+        }
+
+        if ($updated.EngineVersion -ne $null)
+        {
+            if ($RequiredEngineVersion -ne $null)
+            {
+                if ($updated.EngineVersion -lt $RequiredEngineVersion)
+                {
+                    Write-Warning "The Visual Studio Installer engine got updated to version $($updated.EngineVersion), which is still lower than the requirement of version $RequiredEngineVersion or later."
+                }
+                else
+                {
+                    Write-Verbose "The Visual Studio Installer engine got updated to version $($updated.EngineVersion), which satisfies the requirement of version $RequiredEngineVersion or later."
+                }
+            }
+        }
+        else
+        {
+            Write-Warning "Unable to determine the Visual Studio Installer engine version after the update."
         }
 
         $updatedHealth = $updated | Get-VisualStudioInstallerHealth
