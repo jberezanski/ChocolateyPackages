@@ -3,5 +3,5 @@
     -Workload 'NetCoreBuildTools' `
     -VisualStudioYear '2017' `
     -ApplicableProducts @('BuildTools') `
-    -RequiredProductVersion '15.4' `
+    -RequiredProductVersion '15.3' `
     -IncludeRecommendedComponentsByDefault
