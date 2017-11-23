@@ -13,6 +13,7 @@ if it is present.
 A System.Management.Automation.PSObject with the following properties:
 Path (System.String)
 Version (System.Version)
+EngineVersion (System.Version)
 #>
     [CmdletBinding()]
     Param
@@ -22,12 +23,13 @@ Version (System.Version)
     $rxVersion = [regex]'"version":\s+"(?<value>[0-9\.]+)"'
     $basePaths = @(${Env:ProgramFiles}, ${Env:ProgramFiles(x86)}, ${Env:ProgramW6432})
     $installer = $basePaths | Where-Object { $_ -ne $null } | Sort-Object -Unique | ForEach-Object {
-        $candidate = Join-Path -Path $_ -ChildPath 'Microsoft Visual Studio\Installer\vs_installer.exe'
+        $basePath = $_
+        $candidate = Join-Path -Path $basePath -ChildPath 'Microsoft Visual Studio\Installer\vs_installer.exe'
         if (Test-Path -Path $candidate)
         {
             Write-Debug "Located VS installer executable: $candidate"
             $version = $null
-            $versionJsonPath = Join-Path -Path (Split-Path -Parent -Path $candidate) -ChildPath 'vs_installer.version.json'
+            $versionJsonPath = Join-Path -Path (Split-Path -Parent -Path $candidate) -ChildPath 'resources\app\package.json'
             if (Test-Path -Path $versionJsonPath)
             {
                 $text = Get-Content -Path $versionJsonPath
@@ -43,10 +45,12 @@ Version (System.Version)
                     try
                     {
                         $version = [version]$value
+                        Write-Debug ('Parsed Visual Studio Installer version: {0}' -f $version)
+                        break
                     }
                     catch
                     {
-                        Write-Warning ('Unable to parse Visual Studio Installer version ''{0}'' ({1})' -f $value, $_)
+                        Write-Warning ('Unable to parse Visual Studio Installer version ''{0}''' -f $value)
                     }
                 }
             }
@@ -54,13 +58,34 @@ Version (System.Version)
             {
                 Write-Warning ('Visual Studio Installer version file not found: {0}' -f $versionJsonPath)
             }
+            $engineVersion = $null
+            $engineDllPath = Join-Path -Path (Split-Path -Parent -Path $candidate) -ChildPath 'resources\app\ServiceHub\Services\Microsoft.VisualStudio.Setup.Service\Microsoft.VisualStudio.Setup.dll'
+            if (Test-Path -Path $engineDllPath)
+            {
+                $item = Get-Item -Path $engineDllPath
+                $engineVersionString = $item.VersionInfo.FileVersion
+                try
+                {
+                    $engineVersion = [version]$engineVersionString
+                    Write-Debug ('Parsed Visual Studio Installer engine version: {0}' -f $engineVersion)
+                }
+                catch
+                {
+                    Write-Warning ('Unable to parse Visual Studio Installer engine version ''{0}''' -f $engineVersionString)
+                }
+            }
+            else
+            {
+                Write-Warning ('Visual Studio Installer engine file not found: {0}' -f $engineDllPath)
+            }
             $item = Get-Item -Path $candidate
             $props = @{
                 Path = $candidate
                 Version = $version
+                EngineVersion = $engineVersion
             }
             $obj = New-Object -TypeName PSObject -Property $props
-            Write-Verbose ('Visual Studio Installer version {0} is present ({1}).' -f $obj.Version, $obj.Path)
+            Write-Verbose ('Visual Studio Installer version {0} (engine version {1}) is present ({2}).' -f $obj.Version, $obj.EngineVersion, $obj.Path)
             Write-Output $obj
         }
     }
