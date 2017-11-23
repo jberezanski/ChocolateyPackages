@@ -226,31 +226,8 @@
                 # TODO: if bootstrapperPath present, check for existence of Catalog.json instead of downloading the VS component manifest
                 # TODO: if bootstrapperPath present, check for existence of vs_installer.opc and auto add --offline
                 # TODO: same for installLayoutPath
-                $requiredEngineVersion = Get-VSRequiredEngineVersion -PackageParameters $PackageParameters -ProductReference $thisProductReference
-                # WRONG! EngineVersion != installer version
-                # logic extrapolated from Microsoft.VisualStudio.Setup.dll/Microsoft.VisualStudio.Setup.ChannelManager.EnsureEngineCanReadManifests()
-                # EngineVersion := FileVersion of <VS Installer>\resources\app\ServiceHub\Services\Microsoft.VisualStudio.Setup.Service\Microsoft.VisualStudio.Setup.dll
-                # EngineVersion is in catalog manifest ($manifest.engineVersion)
-                # installer version :=
-                <#
-resources\app\main\Main.js:
-var EXE_VERSION = require("../package.json").version;
-
-function createSetupEngineAdapter:
-    // exeVersionForEngine is used to detect updates. During development,
-    // checking for updates is undesired. Typically, a true release version
-    // looks like "x.y.build.qfe", otherwise the version is "x.y.z".
-    // Passing null for version skips checking for updates.
-    var exeVersionParts = EXE_VERSION.split(".");
-    var exeVersionForEngine = exeVersionParts.length > 3 ? EXE_VERSION : null;
-                #>
-                # (this gets passed to Microsoft.VisualStudio.Setup.Service.dll/Microsoft.VisualStudio.Setup.ProductsProviderService.Initialize()
-                # and from that through ((Service)base).Initialize() -> Service.InitializeSharedFields() to ChannelManagerFactory and ChannelManager)
-                # so: <VS Installer>\resources\app\package.json -> version
-                # NOT <VS Installer>\vs_installer.version.json -> version!
-                # installer version is in channel manifest ($bootstrapper.version)
-                # ChannelManager.EnsureEngineCanReadManifests() compares engine versions and installer versions; both comparisons must be satisfied (greater or equal)
-                Install-VSInstaller -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $thisProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -RequiredVersion $requiredEngineVersion
+                $requiredVersionInfo = Get-VSRequiredInstallerVersion -PackageParameters $PackageParameters -ProductReference $thisProductReference
+                Install-VSInstaller -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $thisProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -RequiredInstallerVersion $requiredVersionInfo.Version -RequiredEngineVersion $requiredVersionInfo.EngineVersion
                 $installerUpdated = $true
             }
         }
