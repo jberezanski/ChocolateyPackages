@@ -4,14 +4,18 @@ function Get-VSComponentManifest
     Param
     (
         [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
-        [PSObject] $ProductReference
+        [PSObject] $ProductReference,
+        [System.Collections.IDictionary] $ChannelManifest
     )
 
-    Write-Debug 'Obtaining the channel manifest'
-    $channelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ProductReference $ProductReference
+    if ($ChannelManifest -eq $null)
+    {
+        Write-Debug 'Obtaining the channel manifest'
+        $ChannelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ProductReference $ProductReference
+    }
 
     Write-Debug 'Parsing the channel manifest'
-    $url, $checksum, $checksumType = Get-VSChannelManifestItemUrl -Manifest $channelManifest -ChannelItemType 'Manifest'
+    $url, $checksum, $checksumType = Get-VSChannelManifestItemUrl -Manifest $ChannelManifest -ChannelItemType 'Manifest'
 
     if ($url -eq $null)
     {
