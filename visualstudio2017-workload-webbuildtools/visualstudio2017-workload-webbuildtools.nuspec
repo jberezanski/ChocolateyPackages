@@ -54,6 +54,7 @@ Example 3. Installing the workload, including only required components:
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.6.0-dev" />
+      <dependency id="visualstudio2017buildtools" version="15.0" />
     </dependencies>
   </metadata>
 </package>
