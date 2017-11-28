@@ -54,22 +54,30 @@ Install-ChocolateyPackage
     $creatingLayout = $packageParameters.ContainsKey('layout')
     $assumeNewVS2017Installer = $InstallerTechnology -eq 'WillowVS2017OrLater'
 
+    if ($VisualStudioYear -ne '' -and $Product -ne '')
+    {
+        $productReference = Get-VSProductReference -VisualStudioYear $VisualStudioYear -Product $Product
+    }
+    else
+    {
+        $productReference = $null
+    }
+
     if (-not $creatingLayout)
     {
         if ($assumeNewVS2017Installer)
         {
             # there is a single Programs and Features entry for all products, so its presence is not enough
-            if ($VisualStudioYear -ne '' -and $Product -ne '')
+            if ($productReference -ne $null)
             {
-                $prodRef = Get-VSProductReference -VisualStudioYear $VisualStudioYear -Product $Product
-                $products = Get-WillowInstalledProducts | Where-Object { $_ -ne $null -and $_.channelId -eq $prodRef.ChannelId -and $_.productId -eq $prodRef.ProductId }
+                $products = Get-WillowInstalledProducts | Where-Object { $_ -ne $null -and $_.channelId -eq $productReference.ChannelId -and $_.productId -eq $productReference.ProductId }
                 $productsCount = ($products | Measure-Object).Count
-                Write-Verbose ("Found {0} installed Visual Studio product(s) with ChannelId = {1} and ProductId = {2}" -f $productsCount, $prodRef.ChannelId, $prodRef.ProductId)
+                Write-Verbose ("Found {0} installed Visual Studio product(s) with ChannelId = {1} and ProductId = {2}" -f $productsCount, $productReference.ChannelId, $productReference.ProductId)
                 if ($productsCount -gt 0)
                 {
                     if ($AllowUpdate)
                     {
-                        Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList @() -VisualStudioYear $VisualStudioYear -ApplicableProducts @($Product) -OperationTexts @('update', 'updating', 'update') -Operation 'update' -PackageParameters $packageParameters -BootstrapperUrl $Url -BootstrapperChecksum $Checksum -BootstrapperChecksumType $ChecksumType -ProductReference $prodRef
+                        Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList @() -VisualStudioYear $VisualStudioYear -ApplicableProducts @($Product) -OperationTexts @('update', 'updating', 'update') -Operation 'update' -PackageParameters $packageParameters -BootstrapperUrl $Url -BootstrapperChecksum $Checksum -BootstrapperChecksumType $ChecksumType -ProductReference $productReference
                     }
                     else
                     {
@@ -120,6 +128,15 @@ Install-ChocolateyPackage
         {
             $layoutPath = $packageParameters['layout']
             Write-Warning "Creating an offline installation source for $PackageName in '$layoutPath'. $PackageName will not be actually installed."
+        }
+
+        if ($assumeNewVS2017Installer)
+        {
+            # TODO: if bootstrapperPath present, check for existence of Catalog.json instead of downloading the VS component manifest
+            # TODO: if bootstrapperPath present, check for existence of vs_installer.opc and auto add --offline
+            # TODO: same for installLayoutPath
+            $requiredVersionInfo = Get-VSRequiredInstallerVersion -PackageParameters $PackageParameters -ProductReference $productReference
+            Install-VSInstaller -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $productReference -Url $Url -Checksum $Checksum -ChecksumType $ChecksumType -RequiredInstallerVersion $requiredVersionInfo.Version -RequiredEngineVersion $requiredVersionInfo.EngineVersion
         }
 
         $arguments = @{
