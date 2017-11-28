@@ -8,6 +8,54 @@ function Wait-VSInstallerProcesses
 
     $exitCode = $null
 
+    # This sometimes happens when the VS installer is updated by the invoked bootstrapper.
+    # The initial process exits, leaving another instance of the VS installer performing the actual install in the background.
+    # This happens despite passing '--wait'.
+    Write-Debug 'Looking for still running VS installer processes'
+    $vsInstallerProcessNames = @('vs_bootstrapper', 'vs_setup_bootstrapper', 'vs_installer', 'vs_installershell', 'vs_installerservice')
+    $vsInstallerProcesses = Get-Process -Name $vsInstallerProcessNames -ErrorAction SilentlyContinue
+    $vsInstallerProcessCount = ($vsInstallerProcesses | Measure-Object).Count
+    if ($vsInstallerProcessCount -gt 0)
+    {
+        Write-Warning "Found $vsInstallerProcessCount still running Visual Studio installer processes:"
+        $vsInstallerProcesses | Sort-Object -Property Name, Id | ForEach-Object { '[{0}] {1}' -f $_.Id, $_.Name } | Write-Warning
+
+        if ($Behavior -eq 'Fail')
+        {
+            throw 'There are Visual Studio installer processes already running. Installation cannot continue.'
+        }
+
+        foreach ($p in $vsInstallerProcesses)
+        {
+            [void] $p.Handle # make sure we get the exit code http://stackoverflow.com/a/23797762/266876
+        }
+        Write-Warning "Waiting for the processes to finish..."
+        $vsInstallerProcesses | Wait-Process
+        foreach ($proc in $vsInstallerProcesses)
+        {
+            if ($exitCode -eq $null)
+            {
+                $exitCode = $proc.ExitCode
+            }
+            if ($proc.ExitCode -ne 0)
+            {
+                Write-Warning "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
+                if ($exitCode -eq 0)
+                {
+                    $exitCode = $proc.ExitCode
+                }
+            }
+            else
+            {
+                Write-Debug "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
+            }
+        }
+    }
+    else
+    {
+        Write-Debug 'Did not find any running VS installer processes.'
+    }
+
     # Not only does a process remain running after vs_installer /uninstall finishes, but that process
     # pops up a message box at end! Sheesh.
     Write-Debug 'Looking for vs_installer.windows.exe processes spawned by the uninstaller'
