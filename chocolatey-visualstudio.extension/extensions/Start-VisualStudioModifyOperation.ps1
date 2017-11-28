@@ -248,6 +248,11 @@
         if ($PSCmdlet.ShouldProcess("Executable: $($installer.Path)", "Start with arguments: $silentArgs"))
         {
             $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $installer.Path -validExitCodes @(0, 3010)
+            $auxExitCode = Wait-VSInstallerProcesses -Behavior 'Wait'
+            if ($auxExitCode -ne $null -and $exitCode -eq 0)
+            {
+                $exitCode = $auxExitCode
+            }
         }
 
         if ($overallExitCode -eq 0)
