@@ -229,11 +229,7 @@
         {
             if ($PSCmdlet.ShouldProcess("Visual Studio Installer", "update"))
             {
-                # TODO: if bootstrapperPath present, check for existence of Catalog.json instead of downloading the VS component manifest
-                # TODO: if bootstrapperPath present, check for existence of vs_installer.opc and auto add --offline
-                # TODO: same for installLayoutPath
-                $requiredVersionInfo = Get-VSRequiredInstallerVersion -PackageParameters $PackageParameters -ProductReference $thisProductReference
-                Install-VSInstaller -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $thisProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -RequiredInstallerVersion $requiredVersionInfo.Version -RequiredEngineVersion $requiredVersionInfo.EngineVersion
+                Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $thisProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType
                 $installerUpdated = $true
                 $shouldFixInstaller = $false
                 $installer = Get-VisualStudioInstaller
