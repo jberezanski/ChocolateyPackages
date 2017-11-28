@@ -11,6 +11,8 @@
     )
     Write-Debug "Running 'Start-VSServicingOperation' for $packageName with silentArgs:'$silentArgs', file:'$file', logFilePath:$logFilePath', operationTexts:'$operationTexts', assumeNewVS2017Installer:'$assumeNewVS2017Installer'"
 
+    Wait-VSInstallerProcesses -Behavior 'Fail'
+
     $frobbed, $frobbing, $frobbage = $operationTexts
 
     $successExitCodes = @(

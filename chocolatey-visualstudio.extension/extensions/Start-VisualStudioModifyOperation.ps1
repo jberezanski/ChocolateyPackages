@@ -17,6 +17,8 @@
     )
     Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType'";
 
+    Wait-VSInstallerProcesses -Behavior 'Fail'
+
     $frobbed, $frobbing, $frobbage = $OperationTexts
 
     if ($PackageParameters -eq $null)
