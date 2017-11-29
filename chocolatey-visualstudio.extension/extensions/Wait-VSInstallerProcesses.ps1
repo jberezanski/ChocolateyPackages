@@ -37,7 +37,7 @@ function Wait-VSInstallerProcesses
             {
                 $exitCode = $proc.ExitCode
             }
-            if ($proc.ExitCode -ne 0)
+            if ($proc.ExitCode -ne 0 -and $proc.ExitCode -ne $null)
             {
                 Write-Warning "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
                 if ($exitCode -eq 0)
@@ -47,7 +47,14 @@ function Wait-VSInstallerProcesses
             }
             else
             {
-                Write-Debug "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
+                if ($proc.ExitCode -ne $null)
+                {
+                    Write-Debug "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
+                }
+                else
+                {
+                    Write-Debug "$($proc.Name) process $($proc.Id) exited, exit code unknown"
+                }
             }
         }
     }
@@ -89,9 +96,9 @@ function Wait-VSInstallerProcesses
             {
                 $exitCode = $proc.ExitCode
             }
-            if ($proc.ExitCode -ne 0)
+            if ($proc.ExitCode -ne 0 -and $proc.ExitCode -ne $null)
             {
-                Write-Warning "vs_installer.windows.exe process $($proc.Id) exited with code $($proc.ExitCode)"
+                Write-Warning "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
                 if ($exitCode -eq 0)
                 {
                     $exitCode = $proc.ExitCode
@@ -99,7 +106,14 @@ function Wait-VSInstallerProcesses
             }
             else
             {
-                Write-Debug "vs_installer.windows.exe process $($proc.Id) exited with code $($proc.ExitCode)"
+                if ($proc.ExitCode -ne $null)
+                {
+                    Write-Debug "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
+                }
+                else
+                {
+                    Write-Debug "$($proc.Name) process $($proc.Id) exited, exit code unknown"
+                }
             }
         }
     }
