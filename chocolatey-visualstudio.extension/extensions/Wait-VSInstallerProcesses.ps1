@@ -8,7 +8,7 @@ function Wait-VSInstallerProcesses
 
     $exitCode = $null
 
-    Write-Debug 'Looking for still running VS installer processes'
+    Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Looking for still running VS installer processes' -f (Get-Date))
     $lazyQuitterProcessNames = @('vs_installershell', 'vs_installerservice')
     $lazyQuitterProcesses = Get-Process -Name $lazyQuitterProcessNames -ErrorAction SilentlyContinue
     $lazyQuitterProcessCount = ($lazyQuitterProcesses | Measure-Object).Count
@@ -16,9 +16,9 @@ function Wait-VSInstallerProcesses
     {
         Write-Debug "Found $lazyQuitterProcessCount still running Visual Studio installer processes which are known to exit asynchronously:"
         $lazyQuitterProcesses | Sort-Object -Property Name, Id | ForEach-Object { '[{0}] {1}' -f $_.Id, $_.Name } | Write-Debug
-        Write-Debug 'Giving the processes some time to exit'
+        Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Giving the processes some time to exit' -f (Get-Date))
         Start-Sleep -Seconds 1000
-        Write-Debug 'Looking for still running VS installer processes'
+        Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Looking for still running VS installer processes' -f (Get-Date))
     }
 
     # This sometimes happens when the VS installer is updated by the invoked bootstrapper.
@@ -42,6 +42,7 @@ function Wait-VSInstallerProcesses
             [void] $p.Handle # make sure we get the exit code http://stackoverflow.com/a/23797762/266876
         }
         Write-Warning "Waiting for the processes to finish..."
+        Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Waiting for the processes to finish' -f (Get-Date))
         $vsInstallerProcesses | Wait-Process
         foreach ($proc in $vsInstallerProcesses)
         {
@@ -49,23 +50,13 @@ function Wait-VSInstallerProcesses
             {
                 $exitCode = $proc.ExitCode
             }
+            Write-Debug ("[{0:yyyyMMdd HH:mm:ss.fff}] $($proc.Name) process $($proc.Id) exited with code '$($proc.ExitCode)'" -f (Get-Date))
             if ($proc.ExitCode -ne 0 -and $proc.ExitCode -ne $null)
             {
                 Write-Warning "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
                 if ($exitCode -eq 0)
                 {
                     $exitCode = $proc.ExitCode
-                }
-            }
-            else
-            {
-                if ($proc.ExitCode -ne $null)
-                {
-                    Write-Debug "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
-                }
-                else
-                {
-                    Write-Debug "$($proc.Name) process $($proc.Id) exited, exit code unknown"
                 }
             }
         }
@@ -77,7 +68,7 @@ function Wait-VSInstallerProcesses
 
     # Not only does a process remain running after vs_installer /uninstall finishes, but that process
     # pops up a message box at end! Sheesh.
-    Write-Debug 'Looking for vs_installer.windows.exe processes spawned by the uninstaller'
+    Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Looking for vs_installer.windows.exe processes spawned by the uninstaller' -f (Get-Date))
     $installerProcesses = Get-Process -Name 'vs_installer.windows' -ErrorAction SilentlyContinue
     $installerProcessesCount = ($installerProcesses | Measure-Object).Count
     if ($installerProcessesCount -gt 0)
@@ -89,18 +80,18 @@ function Wait-VSInstallerProcesses
         }
 
         Write-Debug "Found $installerProcessesCount vs_installer.windows.exe process(es): $($installerProcesses | Select-Object -ExpandProperty Id)"
-        Write-Debug "Waiting for all vs_installer.windows.exe processes to become input-idle"
+        Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Waiting for all vs_installer.windows.exe processes to become input-idle' -f (Get-Date))
         foreach ($p in $installerProcesses)
         {
             [void] $p.Handle # make sure we get the exit code http://stackoverflow.com/a/23797762/266876
             $p.WaitForInputIdle()
         }
-        Write-Debug "Sending CloseMainWindow to all vs_installer.windows.exe processes"
+        Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Sending CloseMainWindow to all vs_installer.windows.exe processes' -f (Get-Date))
         foreach ($p in $installerProcesses)
         {
             $p.CloseMainWindow()
         }
-        Write-Debug "Waiting for all vs_installer.windows.exe processes to exit"
+        Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Waiting for all vs_installer.windows.exe processes to exit' -f (Get-Date))
         $installerProcesses | Wait-Process
         foreach ($proc in $installerProcesses)
         {
@@ -108,23 +99,13 @@ function Wait-VSInstallerProcesses
             {
                 $exitCode = $proc.ExitCode
             }
+            Write-Debug ("[{0:yyyyMMdd HH:mm:ss.fff}] $($proc.Name) process $($proc.Id) exited with code '$($proc.ExitCode)'" -f (Get-Date))
             if ($proc.ExitCode -ne 0 -and $proc.ExitCode -ne $null)
             {
                 Write-Warning "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
                 if ($exitCode -eq 0)
                 {
                     $exitCode = $proc.ExitCode
-                }
-            }
-            else
-            {
-                if ($proc.ExitCode -ne $null)
-                {
-                    Write-Debug "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
-                }
-                else
-                {
-                    Write-Debug "$($proc.Name) process $($proc.Id) exited, exit code unknown"
                 }
             }
         }
