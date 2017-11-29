@@ -8,10 +8,22 @@ function Wait-VSInstallerProcesses
 
     $exitCode = $null
 
+    Write-Debug 'Looking for still running VS installer processes'
+    $lazyQuitterProcessNames = @('vs_installershell', 'vs_installerservice')
+    $lazyQuitterProcesses = Get-Process -Name $lazyQuitterProcessNames -ErrorAction SilentlyContinue
+    $lazyQuitterProcessCount = ($lazyQuitterProcesses | Measure-Object).Count
+    if ($lazyQuitterProcessCount -gt 0)
+    {
+        Write-Debug "Found $lazyQuitterProcessCount still running Visual Studio installer processes which are known to exit asynchronously:"
+        $lazyQuitterProcesses | Sort-Object -Property Name, Id | ForEach-Object { '[{0}] {1}' -f $_.Id, $_.Name } | Write-Debug
+        Write-Debug 'Giving the processes some time to exit'
+        Start-Sleep -Seconds 1000
+        Write-Debug 'Looking for still running VS installer processes'
+    }
+
     # This sometimes happens when the VS installer is updated by the invoked bootstrapper.
     # The initial process exits, leaving another instance of the VS installer performing the actual install in the background.
     # This happens despite passing '--wait'.
-    Write-Debug 'Looking for still running VS installer processes'
     $vsInstallerProcessNames = @('vs_bootstrapper', 'vs_setup_bootstrapper', 'vs_installer', 'vs_installershell', 'vs_installerservice')
     $vsInstallerProcesses = Get-Process -Name $vsInstallerProcessNames -ErrorAction SilentlyContinue
     $vsInstallerProcessCount = ($vsInstallerProcesses | Measure-Object).Count
