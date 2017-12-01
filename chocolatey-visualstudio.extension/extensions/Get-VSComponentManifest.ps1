@@ -26,7 +26,8 @@ function Get-VSComponentManifest
         return $null
     }
 
-    $catalogManifest = Get-VSManifest -Description 'catalog manifest' -Url $url -Checksum $checksum -ChecksumType $checksumType -LayoutFileName 'Catalog.json' -LayoutPath $layoutPath
+    # TODO: pass -Checksum and -ChecksumType
+    $catalogManifest = Get-VSManifest -Description 'catalog manifest' -Url $url -LayoutFileName 'Catalog.json' -LayoutPath $layoutPath
 
     return $catalogManifest
 }
