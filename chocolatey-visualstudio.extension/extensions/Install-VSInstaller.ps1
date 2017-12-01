@@ -103,6 +103,11 @@ function Install-VSInstaller
     $parametersToRemove = $PackageParameters.Keys | Where-Object { $whitelist -notcontains $_ }
     foreach ($parameterToRemove in $parametersToRemove)
     {
+        if ($parameterToRemove -eq $null)
+        {
+            continue
+        }
+
         Write-Debug "Filtering out package parameter not passed to the bootstrapper during VS Installer update: '$parameterToRemove'"
         $PackageParameters.Remove($parameterToRemove)
     }
