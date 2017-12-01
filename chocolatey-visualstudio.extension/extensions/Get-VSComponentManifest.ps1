@@ -5,7 +5,8 @@ function Get-VSComponentManifest
     (
         [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
         [PSObject] $ProductReference,
-        [System.Collections.IDictionary] $ChannelManifest
+        [System.Collections.IDictionary] $ChannelManifest,
+        [switch] $UseInstallChannelUri
     )
 
     $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
@@ -13,7 +14,7 @@ function Get-VSComponentManifest
     if ($ChannelManifest -eq $null)
     {
         Write-Debug 'Obtaining the channel manifest'
-        $ChannelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ProductReference $ProductReference -LayoutPath $layoutPath
+        $ChannelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ProductReference $ProductReference -LayoutPath $layoutPath -UseInstallChannelUri:$UseInstallChannelUri
     }
 
     Write-Debug 'Parsing the channel manifest'

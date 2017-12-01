@@ -10,9 +10,10 @@ function Install-VSInstaller
       [string] $ChecksumType,
       [Alias('RequiredVersion')] [version] $RequiredInstallerVersion,
       [version] $RequiredEngineVersion,
-      [switch] $Force
+      [switch] $Force,
+      [switch] $UseInstallChannelUri
     )
-    Write-Debug "Running 'Install-VSInstaller' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType RequiredInstallerVersion:'$RequiredInstallerVersion' RequiredEngineVersion:'$RequiredEngineVersion' Force:'$Force'";
+    Write-Debug "Running 'Install-VSInstaller' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType RequiredInstallerVersion:'$RequiredInstallerVersion' RequiredEngineVersion:'$RequiredEngineVersion' Force:'$Force' UseInstallChannelUri:'$UseInstallChannelUri'";
 
     Write-Debug 'Determining whether the Visual Studio Installer needs to be installed/updated/reinstalled'
     $shouldUpdate = $false
@@ -94,7 +95,7 @@ function Install-VSInstaller
         $installerFilePath = $null
         if ($Url -eq '')
         {
-            $Url, $Checksum, $ChecksumType = Get-VSBootstrapperUrlFromChannelManifest -PackageParameters $PackageParameters -ProductReference $ProductReference
+            $Url, $Checksum, $ChecksumType = Get-VSBootstrapperUrlFromChannelManifest -PackageParameters $PackageParameters -ProductReference $ProductReference -UseInstallChannelUri:$UseInstallChannelUri
         }
     }
 

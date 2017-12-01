@@ -8,10 +8,11 @@ function Assert-VSInstallerUpdated
         [PSObject] $ProductReference,
         [string] $Url,
         [string] $Checksum,
-        [string] $ChecksumType
+        [string] $ChecksumType,
+        [switch] $UseInstallChannelUri
     )
 
-    $requiredVersionInfo = Get-VSRequiredInstallerVersion -PackageParameters $PackageParameters -ProductReference $productReference
+    $requiredVersionInfo = Get-VSRequiredInstallerVersion -PackageParameters $PackageParameters -ProductReference $productReference -UseInstallChannelUri:$UseInstallChannelUri
     Install-VSInstaller `
         -RequiredInstallerVersion $requiredVersionInfo.Version `
         -RequiredEngineVersion $requiredVersionInfo.EngineVersion `

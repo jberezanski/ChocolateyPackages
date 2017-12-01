@@ -227,9 +227,10 @@
 
         if ($shouldFixInstaller -or ($Operation -ne 'uninstall' -and -not $installerUpdated))
         {
+            $useInstallChannelUri = $Operation -ne 'update'
             if ($PSCmdlet.ShouldProcess("Visual Studio Installer", "update"))
             {
-                Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $thisProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType
+                Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $thisProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -UseInstallChannelUri:$useInstallChannelUri
                 $installerUpdated = $true
                 $shouldFixInstaller = $false
                 $installer = Get-VisualStudioInstaller

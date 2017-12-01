@@ -4,20 +4,22 @@ function Get-VSChannelManifest
     Param
     (
         [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
-        [PSObject] $ProductReference
+        [PSObject] $ProductReference,
+        [switch] $UseInstallChannelUri
     )
 
     $manifestUri = $null
     # first, see if the caller provided the manifest uri via package parameters or ProductReference
     Write-Debug 'Checking if the channel manifest URI has been provided'
-    if ($PackageParameters.ContainsKey('installChannelUri') -and -not [string]::IsNullOrEmpty($PackageParameters['installChannelUri']))
+    Write-Debug ('InstallChannelUri will {0}' -f @{ $true = 'be used, if present'; $false = 'not be used' }[[bool]$UseInstallChannelUri])
+    if ($UseInstallChannelUri -and $PackageParameters.ContainsKey('installChannelUri') -and -not [string]::IsNullOrEmpty($PackageParameters['installChannelUri']))
     {
         $manifestUri = $PackageParameters['installChannelUri']
         Write-Debug "Using channel manifest URI from the 'installChannelUri' package parameter: '$manifestUri'"
     }
     else
     {
-        Write-Debug "Package parameters do not contain 'installChannelUri' or it is empty"
+        Write-Debug "Package parameters do not contain 'installChannelUri', it is empty or the scenario does not allow its use"
         if ($PackageParameters.ContainsKey('channelUri') -and -not [string]::IsNullOrEmpty($PackageParameters['channelUri']))
         {
             $manifestUri = $PackageParameters['channelUri']
@@ -28,7 +30,7 @@ function Get-VSChannelManifest
             Write-Debug "Package parameters do not contain 'channelUri' or it is empty"
             if ($ProductReference -ne $null)
             {
-                if (-not [string]::IsNullOrEmpty($ProductReference.InstallChannelUri))
+                if ($UseInstallChannelUri -and -not [string]::IsNullOrEmpty($ProductReference.InstallChannelUri))
                 {
                     $manifestUri = $ProductReference.InstallChannelUri
                     Write-Debug "Using manifest URI from the InstallChannelUri property of the provided ProductReference: '$manifestUri'"
