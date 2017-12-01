@@ -8,7 +8,7 @@ function Get-VSChannelManifest
     )
 
     $manifestUri = $null
-    # first, see if the caller provided the manifest uri via package parameters
+    # first, see if the caller provided the manifest uri via package parameters or ProductReference
     Write-Debug 'Checking if the channel manifest URI has been provided'
     if ($PackageParameters.ContainsKey('installChannelUri') -and -not [string]::IsNullOrEmpty($PackageParameters['installChannelUri']))
     {
@@ -26,15 +26,30 @@ function Get-VSChannelManifest
         else
         {
             Write-Debug "Package parameters do not contain 'channelUri' or it is empty"
-            # TODO: check $ProductReference.InstallChannelUri
-            if ($ProductReference -ne $null -and -not [string]::IsNullOrEmpty($ProductReference.ChannelUri))
+            if ($ProductReference -ne $null)
             {
-                $manifestUri = $ProductReference.ChannelUri
-                Write-Debug "Using manifest URI from the provided ProductReference: '$manifestUri'"
+                if (-not [string]::IsNullOrEmpty($ProductReference.InstallChannelUri))
+                {
+                    $manifestUri = $ProductReference.InstallChannelUri
+                    Write-Debug "Using manifest URI from the InstallChannelUri property of the provided ProductReference: '$manifestUri'"
+                }
+                else
+                {
+                    Write-Debug "ProductReference InstallChannelUri property is empty"
+                    if (-not [string]::IsNullOrEmpty($ProductReference.ChannelUri))
+                    {
+                        $manifestUri = $ProductReference.ChannelUri
+                        Write-Debug "Using manifest URI from the ChannelUri property of the provided ProductReference: '$manifestUri'"
+                    }
+                    else
+                    {
+                        Write-Debug "ProductReference ChannelUri property is empty"
+                    }
+                }
             }
             else
             {
-                Write-Debug "ProductReference has not been provided or does not contain the channel manifest URI"
+                Write-Debug "ProductReference has not been provided"
             }
         }
     }
