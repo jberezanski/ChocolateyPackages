@@ -17,7 +17,7 @@ function Wait-VSInstallerProcesses
         Write-Debug "Found $lazyQuitterProcessCount still running Visual Studio installer processes which are known to exit asynchronously:"
         $lazyQuitterProcesses | Sort-Object -Property Name, Id | ForEach-Object { '[{0}] {1}' -f $_.Id, $_.Name } | Write-Debug
         Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Giving the processes some time to exit' -f (Get-Date))
-        Start-Sleep -Seconds 1000
+        $lazyQuitterProcesses | Wait-Process -Timeout 1 -ErrorAction SilentlyContinue
         Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Looking for still running VS installer processes' -f (Get-Date))
     }
 
