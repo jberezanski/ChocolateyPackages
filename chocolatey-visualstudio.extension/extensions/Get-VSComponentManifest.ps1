@@ -8,10 +8,12 @@ function Get-VSComponentManifest
         [System.Collections.IDictionary] $ChannelManifest
     )
 
+    $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
+
     if ($ChannelManifest -eq $null)
     {
         Write-Debug 'Obtaining the channel manifest'
-        $ChannelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ProductReference $ProductReference
+        $ChannelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ProductReference $ProductReference -LayoutPath $layoutPath
     }
 
     Write-Debug 'Parsing the channel manifest'
@@ -23,12 +25,8 @@ function Get-VSComponentManifest
         return $null
     }
 
-    # TODO: if bootstrapperPath present, check for existence of Catalog.json instead of downloading the VS component manifest
-    # TODO: same for installLayoutPath
-
-    # TODO: pass -LayoutPath
     # TODO: pass -Checksum and -ChecksumType
-    $catalogManifest = Get-VSManifest -Description 'catalog manifest' -Url $url -LayoutFileName 'Catalog.json'
+    $catalogManifest = Get-VSManifest -Description 'catalog manifest' -Url $url -LayoutFileName 'Catalog.json' -LayoutPath $layoutPath
 
     return $catalogManifest
 }

@@ -84,11 +84,8 @@ function Get-VSChannelManifest
         Write-Debug "Fallback: using hardcoded channel manifest URI: '$manifestUri'"
     }
 
-    # TODO: if bootstrapperPath present, check for existence of ChannelManifest.json instead of downloading the VS component manifest
-    # TODO: same for installLayoutPath
-
-    # TODO: pass -LayoutPath
-    $manifest = Get-VSManifest -Description 'channel manifest' -Url $manifestUri -LayoutFileName 'ChannelManifest.json'
+    $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
+    $manifest = Get-VSManifest -Description 'channel manifest' -Url $manifestUri -LayoutFileName 'ChannelManifest.json' -LayoutPath $layoutPath
 
     return $manifest
 }
