@@ -16,7 +16,16 @@ function Get-VSManifest
     $tempDir = Join-Path $chocTempDir 'chocolatey-visualstudio.extension'
     if (![System.IO.Directory]::Exists($tempDir)) { [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null }
 
-    $localFileName = '{0}.man' -f $Url.GetHashCode()
+    if (-not [string]::IsNullOrEmpty($LayoutFileName))
+    {
+        $localFilePrefix = [IO.Path]::GetFileNameWithoutExtension($LayoutFileName) + '_'
+    }
+    else
+    {
+        $localFilePrefix = ''
+    }
+
+    $localFileName = '{0}{1}.man' -f $localFilePrefix, $Url.GetHashCode()
     $localFilePath = Join-Path $tempDir $localFileName
 
     $localFile = Get-Item -Path $localFilePath -ErrorAction SilentlyContinue
@@ -59,8 +68,24 @@ function Get-VSManifest
             }
 
             Set-StrictMode -Off
-            Get-ChocolateyWebFile @arguments | Out-Null
-            Set-StrictMode -Version 2
+            try
+            {
+                Get-ChocolateyWebFile @arguments | Out-Null
+            }
+            catch
+            {
+                if (Test-Path -Path $localFilePath)
+                {
+                    Write-Debug 'Download failed, removing the local file'
+                    Remove-Item -Path $localFilePath -ErrorAction SilentlyContinue
+                }
+
+                throw
+            }
+            finally
+            {
+                Set-StrictMode -Version 2
+            }
         }
     }
 
