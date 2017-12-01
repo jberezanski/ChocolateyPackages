@@ -5,6 +5,8 @@ function Get-VSManifest
     (
         [Parameter(Mandatory = $true)] [string] $Description,
         [Parameter(Mandatory = $true)] [string] $Url,
+        [string] $Checksum,
+        [string] $ChecksumType,
         [string] $LayoutFileName,
         [string] $LayoutPath
     )
@@ -52,6 +54,8 @@ function Get-VSManifest
                 packageName = $Description
                 fileFullPath = $localFilePath
                 url = $Url
+                checksum = $Checksum
+                checksumType = $ChecksumType
             }
 
             Set-StrictMode -Off
