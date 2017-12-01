@@ -106,8 +106,20 @@ function Install-VSInstaller
         $PackageParameters.Remove($parameterToRemove)
     }
 
-    # TODO: if bootstrapperPath present, check for existence of vs_installer.opc and auto add --offline
-    # TODO: same for installLayoutPath
+    # if installing from layout, check for existence of vs_installer.opc and auto add --offline
+    if (-not $packageParameters.ContainsKey('offline'))
+    {
+        $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
+        if ($layoutPath -ne $null)
+        {
+            $installerOpcPath = Join-Path -Path $layoutPath -ChildPath 'vs_installer.opc'
+            if (Test-Path -Path $installerOpcPath)
+            {
+                Write-Debug "Using the VS Installer package present in the layout path: $installerOpcPath"
+                $packageParameters['offline'] = $installerOpcPath
+            }
+        }
+    }
 
     # --update must be last
     $packageParameters['quiet'] = $null
