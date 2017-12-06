@@ -242,6 +242,21 @@
             throw 'The Visual Studio Installer is not present. Unable to continue.'
         }
 
+        # TODO: Resolve-VSLayoutPath and auto add --installLayoutPath
+
+        $blacklist = @('bootstrapperPath')
+        $parametersToRemove = $argumentSet.Keys | Where-Object { $blacklist -contains $_ }
+        foreach ($parameterToRemove in $parametersToRemove)
+        {
+            if ($parameterToRemove -eq $null)
+            {
+                continue
+            }
+
+            Write-Debug "Filtering out package parameter not passed to the VS Installer: '$parameterToRemove'"
+            $argumentSet.Remove($parameterToRemove)
+        }
+
         $silentArgs = ConvertTo-ArgumentString -InitialUnstructuredArguments @($Operation) -Arguments $argumentSet -Syntax 'Willow'
         $exitCode = -1
         if ($PSCmdlet.ShouldProcess("Executable: $($installer.Path)", "Start with arguments: $silentArgs"))

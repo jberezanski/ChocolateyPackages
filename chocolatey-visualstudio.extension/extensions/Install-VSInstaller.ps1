@@ -84,6 +84,21 @@ function Install-VSInstaller
         return
     }
 
+    # if installing from layout, check for existence of vs_installer.opc and auto add --offline
+    if (-not $packageParameters.ContainsKey('offline'))
+    {
+        $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
+        if ($layoutPath -ne $null)
+        {
+            $installerOpcPath = Join-Path -Path $layoutPath -ChildPath 'vs_installer.opc'
+            if (Test-Path -Path $installerOpcPath)
+            {
+                Write-Debug "Using the VS Installer package present in the layout path: $installerOpcPath"
+                $packageParameters['offline'] = $installerOpcPath
+            }
+        }
+    }
+
     if ($packageParameters.ContainsKey('bootstrapperPath'))
     {
         $installerFilePath = $packageParameters['bootstrapperPath']
@@ -110,21 +125,6 @@ function Install-VSInstaller
 
         Write-Debug "Filtering out package parameter not passed to the bootstrapper during VS Installer update: '$parameterToRemove'"
         $PackageParameters.Remove($parameterToRemove)
-    }
-
-    # if installing from layout, check for existence of vs_installer.opc and auto add --offline
-    if (-not $packageParameters.ContainsKey('offline'))
-    {
-        $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
-        if ($layoutPath -ne $null)
-        {
-            $installerOpcPath = Join-Path -Path $layoutPath -ChildPath 'vs_installer.opc'
-            if (Test-Path -Path $installerOpcPath)
-            {
-                Write-Debug "Using the VS Installer package present in the layout path: $installerOpcPath"
-                $packageParameters['offline'] = $installerOpcPath
-            }
-        }
     }
 
     # --update must be last
