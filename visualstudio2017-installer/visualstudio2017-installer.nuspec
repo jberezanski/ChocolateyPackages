@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-installer</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-installer</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Installer (remove only)</title>
@@ -23,10 +23,10 @@ Uninstalling this package removes the Visual Studio 2017 Installer, which remain
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.0.0: Initial package release for Visual Studio 2017 RTM.
+1.0.1: Updated dependency version to fix uninstall of recent Visual Studio 2017 versions.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.1.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.5.1" />
     </dependencies>
   </metadata>
 </package>
