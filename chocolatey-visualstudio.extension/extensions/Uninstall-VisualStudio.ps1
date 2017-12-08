@@ -46,19 +46,27 @@ Uninstall-ChocolateyPackage
 
     $assumeNewVS2017Installer = $InstallerTechnology -eq 'WillowVS2017OrLater'
 
-    $uninstallerPath = Get-VSUninstallerExePath `
-                        -PackageName $PackageName `
-                        -UninstallerName $UninstallerName `
-                        -ProgramsAndFeaturesDisplayName $ProgramsAndFeaturesDisplayName `
-                        -AssumeNewVS2017Installer:$assumeNewVS2017Installer
-
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     if ($assumeNewVS2017Installer)
     {
+        $vsInstaller = Get-VisualStudioInstaller
+        if ($vsInstaller -eq $null)
+        {
+            Write-Warning "Uninstall information for $PackageName could not be found. This probably means the application was uninstalled outside Chocolatey."
+            return
+        }
+
+        $uninstallerPath = $vsInstaller.Path
         $logFilePath = $null
     }
     else
     {
+        $uninstallerPath = Get-VSUninstallerExePath `
+            -PackageName $PackageName `
+            -UninstallerName $UninstallerName `
+            -ProgramsAndFeaturesDisplayName $ProgramsAndFeaturesDisplayName `
+            -AssumeNewVS2017Installer:$assumeNewVS2017Installer
+
         $logFilePath = Join-Path $Env:TEMP "${PackageName}_uninstall.log"
         Write-Debug "Log file path: $logFilePath"
     }
