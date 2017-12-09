@@ -64,7 +64,7 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.1.0: Updated metadata to Visual Studio 2017 RTM.
+1.1.1: Updated chocolatey-visualstudio.extension dependency version to [support recent VS 2017 updates](https://github.com/jberezanski/ChocolateyPackages/issues/28).
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.5.1" />
