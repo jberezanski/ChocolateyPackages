@@ -15,4 +15,5 @@ $servicePackRequirements = @{
     '6.1' = @{ ServicePackNumber = 1; ChocolateyPackage = 'KB976932' }
 }
 
+Import-Module $Env:ChocolateyInstall\extensions\chocolatey-windowsupdate\chocolatey-windowsupdate.psm1
 Install-WindowsUpdate -Id 'KB2882822' -MsuData $msuData -ChecksumType 'sha256' -ServicePackRequirements $servicePackRequirements

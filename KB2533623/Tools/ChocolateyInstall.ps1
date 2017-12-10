@@ -27,4 +27,5 @@
     }
 }
 
+Import-Module $Env:ChocolateyInstall\extensions\chocolatey-windowsupdate\chocolatey-windowsupdate.psm1
 Install-WindowsUpdate -Id 'KB2533623' -MsuData $msuData -ChecksumType 'SHA256'

@@ -57,4 +57,5 @@ $servicePackRequirements = @{
     '6.0' = @{ ServicePackNumber = 2; ChocolateyPackage = $null }
 }
 
+Import-Module $Env:ChocolateyInstall\extensions\chocolatey-windowsupdate\chocolatey-windowsupdate.psm1
 Install-WindowsUpdate -Id 'KB3118401' -MsuData $msuData -ChecksumType 'SHA256' -ServicePackRequirements $servicePackRequirements
