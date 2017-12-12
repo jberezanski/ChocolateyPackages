@@ -40,7 +40,8 @@ Install-ChocolateyPackage
       [string] $ProgramsAndFeaturesDisplayName = $ApplicationName,
       [string] $VisualStudioYear,
       [string] $Product,
-      [switch] $AllowUpdate
+      [switch] $AllowUpdate,
+      [version] $DesiredProductVersion
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
     {
@@ -48,7 +49,7 @@ Install-ChocolateyPackage
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName' VisualStudioYear:'$VisualStudioYear' Product:'$Product' AllowUpdate:'$AllowUpdate'";
+    Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName' VisualStudioYear:'$VisualStudioYear' Product:'$Product' AllowUpdate:'$AllowUpdate' DesiredProductVersion:'$DesiredProductVersion'";
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     $creatingLayout = $packageParameters.ContainsKey('layout')
@@ -77,7 +78,7 @@ Install-ChocolateyPackage
                 {
                     if ($AllowUpdate)
                     {
-                        Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList @() -VisualStudioYear $VisualStudioYear -ApplicableProducts @($Product) -OperationTexts @('update', 'updating', 'update') -Operation 'update' -PackageParameters $packageParameters -BootstrapperUrl $Url -BootstrapperChecksum $Checksum -BootstrapperChecksumType $ChecksumType -ProductReference $productReference
+                        Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList @() -VisualStudioYear $VisualStudioYear -ApplicableProducts @($Product) -OperationTexts @('update', 'updating', 'update') -Operation 'update' -PackageParameters $packageParameters -BootstrapperUrl $Url -BootstrapperChecksum $Checksum -BootstrapperChecksumType $ChecksumType -ProductReference $productReference -DesiredProductVersion $DesiredProductVersion
                     }
                     else
                     {
