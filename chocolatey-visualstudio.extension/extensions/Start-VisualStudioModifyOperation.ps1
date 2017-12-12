@@ -191,6 +191,7 @@
 
     $installer = $null
     $installerUpdated = $false
+    $channelCacheCleared = $false
     $overallExitCode = 0
     foreach ($argumentSet in $argumentSets)
     {
@@ -240,6 +241,18 @@
         if ($installer -eq $null)
         {
             throw 'The Visual Studio Installer is not present. Unable to continue.'
+        }
+
+        if ($Operation -ne 'uninstall' -and -not $channelCacheCleared)
+        {
+            # this works around concurrency issues in recent VS Installer versions (1.14.x),
+            # which lead to product updates not being detected
+            # due to the VS Installer failing to update the cached manifests (file in use)
+            if ($PSCmdlet.ShouldProcess("Visual Studio Installer channel cache", "clear"))
+            {
+                Clear-VSChannelCache
+                $channelCacheCleared = $true
+            }
         }
 
         # TODO: Resolve-VSLayoutPath and auto add --installLayoutPath
