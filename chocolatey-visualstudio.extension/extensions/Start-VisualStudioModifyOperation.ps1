@@ -164,8 +164,7 @@
                 $existingProductVersion = [version]$productInfo.installationVersion
                 if ($existingProductVersion -lt $RequiredProductVersion)
                 {
-                    Write-Warning ('Product at path ''{0}'' will not be modified because its version ({1}) is lower than the required minimum ({2}). Please update the product first and reinstall this package.' -f $productInfo.installationPath, $existingProductVersion, $RequiredProductVersion)
-                    continue
+                    throw ('Product at path ''{0}'' will not be modified because its version ({1}) is lower than the required minimum ({2}). Please update the product first and reinstall this package.' -f $productInfo.installationPath, $existingProductVersion, $RequiredProductVersion)
                 }
                 else
                 {
