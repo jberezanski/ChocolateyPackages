@@ -255,9 +255,9 @@
             }
         }
 
-        # TODO: Resolve-VSLayoutPath and auto add --installLayoutPath
+        # TODO: Resolve-VSLayoutPath and auto add --layoutPath
 
-        $blacklist = @('bootstrapperPath')
+        $blacklist = @('bootstrapperPath', 'installLayoutPath')
         $parametersToRemove = $argumentSet.Keys | Where-Object { $blacklist -contains $_ }
         foreach ($parameterToRemove in $parametersToRemove)
         {
