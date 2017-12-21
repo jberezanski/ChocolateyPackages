@@ -85,6 +85,7 @@ function Install-VSInstaller
     }
 
     # if installing from layout, check for existence of vs_installer.opc and auto add --offline
+    # TODO: only if --noWeb or if the version in layout will satisfy version requirements
     if (-not $packageParameters.ContainsKey('offline'))
     {
         $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters

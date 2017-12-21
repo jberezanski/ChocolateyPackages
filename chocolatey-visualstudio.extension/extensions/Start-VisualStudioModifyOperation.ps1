@@ -61,6 +61,7 @@
         }
     }
 
+    # TODO: move this closer to actual installer/bootstrapper invocation
     $baseArgumentSet['norestart'] = ''
     if (-not $baseArgumentSet.ContainsKey('quiet') -and -not $baseArgumentSet.ContainsKey('passive'))
     {
@@ -231,6 +232,7 @@
 
         if ($shouldFixInstaller -or ($Operation -ne 'uninstall' -and -not $installerUpdated))
         {
+            # TODO: $useInstallChannelUri only if --noWeb
             $useInstallChannelUri = $Operation -ne 'update'
             if ($PSCmdlet.ShouldProcess("Visual Studio Installer", "update"))
             {
@@ -240,6 +242,8 @@
                 $installer = Get-VisualStudioInstaller
             }
         }
+
+        # TODO: use bootstrapper if possible (layout or $BootstrapperUrl)
 
         if ($installer -eq $null)
         {

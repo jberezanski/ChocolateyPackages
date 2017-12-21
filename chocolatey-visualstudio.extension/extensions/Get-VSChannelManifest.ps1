@@ -101,6 +101,7 @@ function Get-VSChannelManifest
         Write-Debug "Fallback: using hardcoded channel manifest URI: '$manifestUri'"
     }
 
+    # TODO: look in LayoutPath only if --noWeb
     $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
     $manifest = Get-VSManifest -Description 'channel manifest' -Url $manifestUri -LayoutFileName 'ChannelManifest.json' -LayoutPath $layoutPath
 

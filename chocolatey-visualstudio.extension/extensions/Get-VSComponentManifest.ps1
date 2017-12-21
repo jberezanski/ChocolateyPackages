@@ -26,6 +26,7 @@ function Get-VSComponentManifest
         return $null
     }
 
+    # TODO: look in LayoutPath only if --noWeb
     # -Checksum and -ChecksumType are not passed, because the info from the channel manifest seems bogus - does not match reality
     $catalogManifest = Get-VSManifest -Description 'catalog manifest' -Url $url -LayoutFileName 'Catalog.json' -LayoutPath $layoutPath
 
