@@ -1,0 +1,1 @@
+﻿Install-ChocolateyPackage 'stylecop' 'msi' '/quiet' 'http://download.codeplex.com/Download?ProjectName=stylecop&DownloadId=323236&FileTime=129725389339900000&Build=18394'

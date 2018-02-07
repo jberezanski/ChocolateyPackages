@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>stylecop</id>
+    <version>4.7</version>
+    <title>StyleCop</title>
+    <authors>andyr,HowardvanRooijen</authors>
+    <owners>andyr,HowardvanRooijen</owners>
+    <licenseUrl>http://stylecop.codeplex.com/license</licenseUrl>
+    <projectUrl>http://stylecop.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. It can be run from inside of Visual Studio or integrated into an MSBuild project. StyleCop has also been integrated into many third-party development tools.|  Please install with chocolatey (http://nuget.org/List/Packages/chocolatey).</description>
+    <summary>StyleCop</summary>
+    <tags>stylecop</tags>
+  </metadata>
+</package>
