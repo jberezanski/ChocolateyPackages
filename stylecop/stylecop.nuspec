@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>stylecop</id>
-    <version>4.7.54.0</version>
+    <version>4.7.55.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/stylecop</packageSourceUrl>
     <owners>andyr,HowardvanRooijen,jberezanski</owners>
     <title>StyleCop</title>
@@ -45,14 +45,19 @@ Install order should be :
     </description>
     <releaseNotes>
 #### Software
-* Fixed the parsing of properties with object or collection initializers
-* Fixed SA1500 to not flag properties as violations just because there is an initializer on another line
-* Reworked how StyleCop is built
-** Removed the need for Environment.cmd
-** Removed the copies of WiX and Visual Studio SDK files and modified affected projects to use the installed versions
+* Renamed SA1216:NoValueFirstComparison to SA1131:UseReadableConditions to match the StyleCopAnalyzers project
+* Renamed SA1217:UsingStaticDirectivesMustBePlacedAfterUsingNamespaceDirectives to SA1216:UsingStaticDirectivesMustBePlacedAtTheCorrectLocation to match the StyleCopAnalyzers project
+* Fixed a potential IndexOutOfRangeException when parsing newline characters near a ternary operator
+* Modified CurlyBracketsForMultiLineStatementsMustNotShareLine to allow object and collection initializers on a single line within a multi-line lambda.
+* Documentation of all &lt;exception&gt; elements is now checked, instead of just the first one
+* Fixed parsing of fields or method parameters with a type similar to int?[,]
+* Stopped reporting SA1648:InheritDocMustBeUsedWithInheritingClass if the documentation includes a cref attribute
+* Included preferred alternate spellings when spellchecking
+* Fixed compatibility with ReSharper 8.x
+* Documentation rules are no longer checked if an &lt;exclude/&gt; tag is present
 
 #### Package
-4.7.54.0: initial package release for software version 4.7.54.
+4.7.55.0: initial package release for software version 4.7.55.
     </releaseNotes>
   </metadata>
   <files>
