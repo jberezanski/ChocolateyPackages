@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>stylecop</id>
-    <version>4.7.52.0</version>
+    <version>4.7.53.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/stylecop</packageSourceUrl>
     <owners>andyr,HowardvanRooijen,jberezanski</owners>
     <title>StyleCop</title>
@@ -45,18 +45,13 @@ Install order should be :
     </description>
     <releaseNotes>
 #### Software
-* First stable release with Visual Studio 2015 support
-* Fixed an exception that was thrown by the SpacingRules analyzer when a space exists before an opening square bracket in a field or index declaration
-* Fixed the parsing of single-line index initializers
-* Fixed the parsing of expression bodied indexers
-* Removed automatic update checks
-* Added support for long syntax Unicode character escape sequences
-* Added a ReSharper extension for ReSharper 10.0
-* Removed "hexidecimal" from CustomDictionary.xml
-* Added "ip" and "mx" to allowed name prefixes in default settings
+* Fixed the parsing of interpolated strings that contained nested strings
+* Fixed the parsing of multi-line property initializers
+* Fixed SA1003 to allow newlines before or after null conditional operators
+* Added a "devenv.exe /setup" step during uninstallation to avoid Visual Studio errors after uninstallation
 
 #### Package
-4.7.52.0: initial package release for software version 4.7.52.
+4.7.53.0: initial package release for software version 4.7.53.
     </releaseNotes>
   </metadata>
   <files>
