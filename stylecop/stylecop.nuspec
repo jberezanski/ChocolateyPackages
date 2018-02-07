@@ -2,15 +2,38 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>stylecop</id>
-    <version>4.7</version>
+    <version>4.7.49.0</version>
     <title>StyleCop</title>
     <authors>andyr,HowardvanRooijen</authors>
-    <owners>andyr,HowardvanRooijen</owners>
-    <licenseUrl>http://stylecop.codeplex.com/license</licenseUrl>
+    <owners>andyr,HowardvanRooijen,jberezanski</owners>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/stylecop</packageSourceUrl>
+    <licenseUrl>https://web.archive.org/web/20170904232326/http://stylecop.codeplex.com/license</licenseUrl>
     <projectUrl>http://stylecop.codeplex.com/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>StyleCop analyzes C# source code to enforce a set of style and consistency rules. It can be run from inside of Visual Studio or integrated into an MSBuild project. StyleCop has also been integrated into many third-party development tools.|  Please install with chocolatey (http://nuget.org/List/Packages/chocolatey).</description>
-    <summary>StyleCop</summary>
-    <tags>stylecop</tags>
+    <description>
+StyleCop analyzes C# source code to enforce a set of style and consistency rules. It can be run from inside of Visual Studio or integrated into an MSBuild project. StyleCop has also been integrated into many third-party development tools.
+
+The package installs the standalone StyleCop binaries, an extension for Visual Studio 2008-2013 and an extension for ReSharper 8.2 or earlier.
+
+This version is now compatible with R# 5.1 (5.1.3000.12), R# 6.0 (6.0.2202.688), R# 6.1 (6.1.37.86), R# 6.1.1 (6.1.1000.82),  R# 7.0.1 (7.0.1098.2760), R# 7.1.1 (7.1.3000.2254) and R# 8.2 (8.2.0.2160).
+
+Install order should be:
+* VS2008
+* VS2010
+* VS2012
+* VS2013
+* R#
+* StyleCop
+    </description>
+    <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules.</summary>
+    <tags>stylecop vsix admin visualstudio resharper</tags>
+    <releaseNotes>
+#### Package
+4.7.49.0: converted to embedded package after CodePlex switched to archive mode.
+    </releaseNotes>
   </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+    <file src="legal\**" target="legal" />
+  </files>
 </package>
