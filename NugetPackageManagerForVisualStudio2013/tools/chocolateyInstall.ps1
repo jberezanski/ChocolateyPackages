@@ -1,3 +1,4 @@
 $name = "NugetPackageManagerForVisualStudio2013"
-$url  = "http://visualstudiogallery.msdn.microsoft.com/4ec1526c-4a8c-4a84-b702-b21a8f5293ca/file/105933/6/NuGet.Tools.2013.vsix"
-Install-ChocolateyVsixPackage $name $url
+$url  = 'https://nugetteam.gallerycdn.vsassets.io/extensions/nugetteam/nugetpackagemanagerforvisualstudio2013/2.12.0.817/1488284100949/105933/11/NuGet.Tools.vsix'
+$sha256 = '46F0747DC5E122208A14DA88AC7D3CF87EE4153BC9E643CA1D94D7F6274BF600'
+Install-ChocolateyVsixPackage -PackageName $name -VsVersion 12 -VsixUrl $url -Checksum $sha256 -ChecksumType SHA256
