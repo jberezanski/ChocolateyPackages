@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>stylecop</id>
-    <version>4.7.49.0</version>
+    <version>4.7.52.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/stylecop</packageSourceUrl>
     <owners>andyr,HowardvanRooijen,jberezanski</owners>
     <title>StyleCop</title>
@@ -18,21 +18,45 @@
     <description>
 StyleCop analyzes C# source code to enforce a set of style and consistency rules. It can be run from inside of Visual Studio or integrated into an MSBuild project. StyleCop has also been integrated into many third-party development tools.
 
-The package installs the standalone StyleCop binaries, an extension for Visual Studio 2008-2013 and an extension for ReSharper 8.2 or earlier.
+The package installs the standalone StyleCop binaries, an extension for Visual Studio 2008-2015 and an extension for ReSharper 8.2 or earlier.
 
-This version is now compatible with R# 5.1 (5.1.3000.12), R# 6.0 (6.0.2202.688), R# 6.1 (6.1.37.86), R# 6.1.1 (6.1.1000.82),  R# 7.0.1 (7.0.1098.2760), R# 7.1.1 (7.1.3000.2254) and R# 8.2 (8.2.0.2160).
+This version is compatible with the following versions of ReSharper:
+* 5.1 (5.1.3000.12)
+* 6.0 (6.0.2202.688)
+* 6.1 (6.1.37.86)
+* 6.1.1 (6.1.1000.82)
+* 7.0.1 (7.0.1098.2760)
+* 7.1.1 (7.1.3000.2254)
+* 8.2.3 (8.2.3000.5176)
+* 9.2 (103.0.0.0) - as an extension from the ReSharper gallery
+** NOTE: An error may be displayed when the extension is first installed, but everything should still work normally
+* 10.0.2 (104.0.0.0) - as an extension from the ReSharper gallery
+** NOTE: An error may be displayed when the extension is first installed, but everything should still work normally
 
-Install order should be:
-* VS2008
-* VS2010
-* VS2012
-* VS2013
-* R#
+Install order should be :
+* Visual Studio 2008
+* Visual Studio 2010
+* Visual Studio 2012
+* Visual Studio 2013
+* Visual Studio 2015
+* ReSharper (optional)
 * StyleCop
+* StyleCop for ReSharper extensions (optional, and only for ReSharper 9.0 and newer)
     </description>
     <releaseNotes>
+#### Software
+* First stable release with Visual Studio 2015 support
+* Fixed an exception that was thrown by the SpacingRules analyzer when a space exists before an opening square bracket in a field or index declaration
+* Fixed the parsing of single-line index initializers
+* Fixed the parsing of expression bodied indexers
+* Removed automatic update checks
+* Added support for long syntax Unicode character escape sequences
+* Added a ReSharper extension for ReSharper 10.0
+* Removed "hexidecimal" from CustomDictionary.xml
+* Added "ip" and "mx" to allowed name prefixes in default settings
+
 #### Package
-4.7.49.0: converted to embedded package after CodePlex switched to archive mode.
+4.7.52.0: initial package release for software version 4.7.52.
     </releaseNotes>
   </metadata>
   <files>
