@@ -25,6 +25,8 @@ This extension allows analysis to be performed on any project opened in Visual S
 Alternatively, the [StyleCop.MSBuild NuGet package](https://www.nuget.org/packages/StyleCop.MSBuild) can be added to a project to allow analysis to be performed during the project build without installing any Visual Studio extensions.
 
 **Note**: there is a [known incompatibility](https://github.com/StyleCop/StyleCop/issues/50) between this version of the StyleCop extension for Visual Studio and the [StyleCop extension for ReSharper](https://resharper-plugins.jetbrains.com/packages/StyleCop.StyleCop/). Until it is [fixed](https://github.com/StyleCop/StyleCop/pull/167), a workaround is to use the Visual Studio extension from the last "classic" (MSI) StyleCop release (4.7.55.0), which can be obtained from the [StyleCop CodePlex project archive](https://archive.codeplex.com/?p=stylecop).
+
+**Note 2**: there is a [known bug](https://github.com/StyleCop/StyleCop/issues/166) in this version of the StyleCop extension for Visual Studio, which prevents it from installing on a machine where only Visual Studio 2013 Professional/Premium/Ultimate is installed and there is no later Visual Studio version present. Until it is fixed, a workaround is to install Visual Studio 2015 (for example, [2015 Professional](https://chocolatey.org/packages/visualstudio2015professional)), which will update the Visual Studio extension installer program and unblock the installation of this extension in Visual Studio 2013.
         </description>
         <releaseNotes>
 ##### Software
