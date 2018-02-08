@@ -1,16 +1,31 @@
-<?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>NugetPackageManagerForVisualStudio2013</id>
     <version>2.12.0.817</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/NugetPackageManagerForVisualStudio2013</packageSourceUrl>
+    <owners>IanC, jberezanski</owners>
     <title>NuGet Package Manager for Visual Studio 2013</title>
     <authors>Microsoft</authors>
-    <owners>IanC, jberezanski</owners>
-    <licenseUrl>https://marketplace.visualstudio.com/items/NuGetTeam.NuGetPackageManagerforVisualStudio2013/license</licenseUrl>
     <projectUrl>https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManagerforVisualStudio2013</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/1ef19971a8402c09220eba2effc971712270a5ef/icons/NugetPackageManagerForVisualStudio2013.png</iconUrl>
+    <licenseUrl>https://marketplace.visualstudio.com/items/NuGetTeam.NuGetPackageManagerforVisualStudio2013/license</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A collection of tools to automate the process of downloading, installing, upgrading, configuring, and removing packages from a VS Project.</description>
+    <projectSourceUrl>https://github.com/NuGet/Home</projectSourceUrl>
+    <docsUrl>https://github.com/NuGet/Home/wiki</docsUrl>
+    <bugTrackerUrl>https://github.com/NuGet/Home/issues</bugTrackerUrl>
+    <tags>visual studio 2013 nuget package manager visualstudio vsix admin</tags>
     <summary>A collection of tools to automate the process of downloading, installing, upgrading, configuring, and removing packages from a VS Project.</summary>
-    <tags>nuget package manager visualstudio vsix</tags>
+    <description>A collection of tools to automate the process of downloading, installing, upgrading, configuring, and removing packages from a VS Project.</description>
+    <releaseNotes>
+##### Software
+[NuGet 2.12 Release Notes](https://docs.microsoft.com/en-us/nuget/release-notes/nuget-2.12)
+##### Package
+2.12.0.817: Initial package release for software version 2.12.0.817.
+    </releaseNotes>
   </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
 </package>
