@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+    <metadata>
+        <id>visualstudio2017-stylecop</id>
+        <version>5.0.6419.0</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-stylecop</packageSourceUrl>
+        <owners>jberezanski</owners>
+        <title>StyleCop for Visual Studio 2017</title>
+        <authors>Chris Dahlberg, Andy Reeves</authors>
+        <projectUrl>https://marketplace.visualstudio.com/items?itemName=ChrisDahlberg.StyleCop</projectUrl>
+        <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6b020a7becf2fb65d21d31165e994bf040397f5c/icons/stylecop.png</iconUrl>
+        <licenseUrl>https://marketplace.visualstudio.com/items/ChrisDahlberg.StyleCop/license</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <projectSourceUrl>https://github.com/StyleCop/StyleCop</projectSourceUrl>
+        <docsUrl>https://github.com/StyleCop/StyleCop/wiki</docsUrl>
+        <bugTrackerUrl>https://github.com/StyleCop/StyleCop/issues</bugTrackerUrl>
+        <tags>stylecop source analysis visual studio 2017 extension vsix admin</tags>
+        <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules.</summary>
+        <description>
+StyleCop analyzes C# source code to enforce a set of style and consistency rules.
+
+This extension allows analysis to be performed on any project opened in Visual Studio without modifying the project.
+
+Alternatively, the [StyleCop.MSBuild NuGet package](https://www.nuget.org/packages/StyleCop.MSBuild) can be added to a project to allow analysis to be performed during the project build without installing any Visual Studio extensions.
+
+**Note**: there is a [known incompatibility](https://github.com/StyleCop/StyleCop/issues/50) between this version of the StyleCop extension for Visual Studio and the [StyleCop extension for ReSharper](https://resharper-plugins.jetbrains.com/packages/StyleCop.StyleCop/). A [fix](https://github.com/StyleCop/StyleCop/pull/167) is in progress, but not completed yet.
+        </description>
+        <releaseNotes>
+##### Software
+[Changes since StyleCop 4.7.55](https://github.com/StyleCop/StyleCop/compare/4.7.55.0...master@%7B2017-07-29%7D)
+##### Package
+5.0.6419.0: Initial package release for software version 5.0.6419.0.
+        </releaseNotes>
+    </metadata>
+    <files>
+        <file src="tools\**" target="tools" />
+    </files>
+</package>
