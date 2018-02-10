@@ -14,7 +14,7 @@ machine the extension is compatible with.
     [CmdletBinding()]
     param(
       [string] $PackageName,
-      [string] $Url,
+      [string] $VsixUrl,
       [string] $Checksum,
       [string] $ChecksumType
     )
@@ -24,18 +24,20 @@ machine the extension is compatible with.
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Install-VisualStudioVsixExtension' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType";
+    Write-Debug "Running 'Install-VisualStudioVsixExtension' for $PackageName with VsixUrl:'$VsixUrl' Checksum:$Checksum ChecksumType:$ChecksumType";
 
     $vsixInstaller = Get-VsixInstaller -Latest
+    Write-Verbose ('Found VSIXInstaller version {0}: {1}' -f $vsixInstaller.Version, $vsixInstaller.Path)
+
     $vsixPath = Get-VSWebFile `
         -PackageName $PackageName `
         -DefaultFileName "${PackageName}.vsix" `
         -FileDescription 'vsix file' `
-        -Url $url `
-        -Checksum $checksum `
-        -ChecksumType $checksumType
+        -Url $VsixUrl `
+        -Checksum $Checksum `
+        -ChecksumType $ChecksumType
 
-    Write-Verbose ('Installing {0} using VSIXInstaller version {1}' -f $PackageName, $vsixInstaller.Version)
+    Write-Host ('Installing {0} using VSIXInstaller version {1}' -f $PackageName, $vsixInstaller.Version)
     $logFileName = 'VSIXInstaller_{0}_{1:yyyyMMddHHmmss}.log' -f $PackageName, (Get-Date)
     $silentArgs = "/quiet /admin /logFile:$logFileName ""$vsixPath"""
     $validExitCodes = @(0, 1001)
