@@ -1,9 +1,8 @@
 ﻿# based on Install-ChocolateyPackage (a9519b5), with changes:
 # - added recognition of exit codes signifying reboot requirement
 # - VS installers are exe
-# - local file name is extracted from the url (to avoid passing -getOriginalFileName to Get-ChocolateyWebFile for compatibility with old Chocolatey)
-# - removed Get-ChocolateyWebFile options support (for compatibility with old Chocolatey)
 # - removed exit code parameters in order to centralize exit code logic
+# - download logic refactored into a separate function for reuse
 function Install-VSChocolateyPackage
 {
     [CmdletBinding()]
@@ -23,39 +22,17 @@ function Install-VSChocolateyPackage
 
     Write-Debug "Running 'Install-VSChocolateyPackage' for $packageName with url:'$url', args:'$silentArgs', url64bit:'$url64bit', checksum:'$checksum', checksumType:'$checksumType', checksum64:'$checksum64', checksumType64:'$checksumType64', logFilePath:'$logFilePath', installerFilePath:'$installerFilePath'";
 
-    if ($installerFilePath -eq '') {
-        $chocTempDir = $env:TEMP
-        $tempDir = Join-Path $chocTempDir "$packageName"
-        if ($env:packageVersion -ne $null) { $tempDir = Join-Path $tempDir "$env:packageVersion" }
-
-        if (![System.IO.Directory]::Exists($tempDir)) { [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null }
-        $urlForFileNameDetermination = $url
-        if ($urlForFileNameDetermination -eq '') { $urlForFileNameDetermination = $url64bit }
-        if ($urlForFileNameDetermination -like '*.exe') { $localFileName = $urlForFileNameDetermination.Substring($urlForFileNameDetermination.LastIndexOfAny(@('/', '\')) + 1) }
-        else { $localFileName = 'vs_setup.exe' }
-        $localFilePath = Join-Path $tempDir $localFileName
-
-        Write-Verbose "Downloading the installer executable"
-        $arguments = @{
-            packageName = $packageName
-            fileFullPath = $localFilePath
-            url = $url
-            url64bit = $url64bit
-            checksum = $checksum
-            checksumType = $checksumType
-            checksum64 = $checksum64
-            checksumType64 = $checksumType64
-        }
-        Set-StrictMode -Off
-        Get-ChocolateyWebFile @arguments | Out-Null
-        Set-StrictMode -Version 2
-    } else {
-        if (-not (Test-Path -Path $installerFilePath)) {
-            throw "The local installer executable does not exist: $installerFilePath"
-        }
-        Write-Verbose "Using a local installer executable: $installerFilePath"
-        $localFilePath = $installerFilePath
-    }
+    $localFilePath = Get-VSWebFile `
+        -PackageName $PackageName `
+        -DefaultFileName 'vs_setup.exe' `
+        -FileDescription 'installer executable' `
+        -Url $url `
+        -Url64Bit $url64bit `
+        -Checksum $checksum `
+        -ChecksumType $checksumType `
+        -Checksum64 $checksum64 `
+        -ChecksumType64 $checksumType64 `
+        -LocalFilePath $installerFilePath
 
     $arguments = @{
         packageName = $packageName
