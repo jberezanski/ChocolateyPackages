@@ -20,6 +20,7 @@
         installationVersion = 'installationVersion'
         channelId = 'channelId'
         productId = 'product"\s*:\s*{\s*"id'
+        enginePath = 'enginePath'
     }
     $optionalProductProperties = @{
         nickname = 'nickname'
