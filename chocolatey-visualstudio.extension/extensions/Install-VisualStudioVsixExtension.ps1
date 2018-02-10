@@ -12,11 +12,15 @@ The extension is installed in all Visual Studio instances present on the
 machine the extension is compatible with.
 #>
     [CmdletBinding()]
-    param(
-      [string] $PackageName,
-      [string] $VsixUrl,
-      [string] $Checksum,
-      [string] $ChecksumType
+    Param
+    (
+        [Alias('Name')] [string] $PackageName,
+        [Alias('Url')] [string] $VsixUrl,
+        [string] $Checksum,
+        [string] $ChecksumType,
+        [Alias('VisualStudioVersion')] [int] $VsVersion,
+        [hashtable] $Options,
+        [string] $File
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
     {
@@ -24,7 +28,22 @@ machine the extension is compatible with.
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Install-VisualStudioVsixExtension' for $PackageName with VsixUrl:'$VsixUrl' Checksum:$Checksum ChecksumType:$ChecksumType";
+    Write-Debug "Running 'Install-VisualStudioVsixExtension' for $PackageName with VsixUrl:'$VsixUrl' Checksum:$Checksum ChecksumType:$ChecksumType VsVersion:$VsVersion Options:$Options File:$File";
+
+    if ($VsVersion -ne 0)
+    {
+        Write-Warning "VsVersion is not supported yet. The extension will be installed in all compatible Visual Studio instances present."
+    }
+
+    if ($Options -ne $null -and $Options.Keys.Count -gt 0)
+    {
+        Write-Warning "The 'Options' parameter is not supported yet."
+    }
+
+    if ($VsixUrl -eq '')
+    {
+        $VsixUrl = $File
+    }
 
     $vsixInstaller = Get-VsixInstaller -Latest
     Write-Verbose ('Found VSIXInstaller version {0}: {1}' -f $vsixInstaller.Version, $vsixInstaller.Path)
