@@ -10,6 +10,7 @@ function Get-VsixInstaller
     $candidates = New-Object System.Collections.ArrayList
     $modernProducts = Get-WillowInstalledProducts
     $modernProducts `
+        | Where-Object { $_ -ne $null } `
         | ForEach-Object { $_['enginePath'] } `
         | Where-Object { -not [string]::IsNullOrEmpty($_) } `
         | Select-Object -Unique `
@@ -20,6 +21,7 @@ function Get-VsixInstaller
     {
         $legacyProducts = Get-VSLegacyInstance
         $legacyProducts `
+            | Where-Object { $_ -ne $null } `
             | Select-Object -ExpandProperty Path -Unique `
             | Where-Object { -not [string]::IsNullOrEmpty($_) } `
             | ForEach-Object { Get-Item -Path "$_\Common7\IDE\VSIXInstaller.exe" -ErrorAction SilentlyContinue } `
