@@ -5,4 +5,4 @@
   ChecksumType  = 'sha256'
 }
 
-Install-ChocolateyVsixPackage @packageArgs
+Install-VisualStudioVsixExtension @packageArgs
