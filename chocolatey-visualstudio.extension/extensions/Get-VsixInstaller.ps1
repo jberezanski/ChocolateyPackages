@@ -36,7 +36,7 @@ function Get-VsixInstaller
             @{ Name = 'Path'; Expression = { $_.FullName } }, 
             @{ Name = 'Version'; Expression = { [version]($rxVersion.Match($_.VersionInfo.ProductVersion).Value) } } `
         | Sort-Object -Property Version -Descending `
-        | ForEach-Object { Write-Debug ('Found VSIXInstaller.exe version ''{0}'': {1}' -f $_.Version, $_.Path) }
+        | ForEach-Object { Write-Debug ('Found VSIXInstaller.exe version ''{0}'': {1}' -f $_.Version, $_.Path); $_ }
 
     if ($Latest)
     {
