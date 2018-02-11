@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
     <metadata>
         <id>stylecop-vsix</id>
-        <version>5.0.6419.0</version>
+        <version>5.0.6419.0-rc1</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/stylecop-vsix</packageSourceUrl>
         <owners>jberezanski</owners>
         <title>StyleCop extension for Visual Studio</title>
