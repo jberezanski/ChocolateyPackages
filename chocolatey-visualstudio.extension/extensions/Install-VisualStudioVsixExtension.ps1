@@ -98,56 +98,9 @@ compatibility reasons.
         'logFile' = $logFileName
     }
 
-    foreach ($kvp in $packageParameters.Clone().GetEnumerator())
-    {
-        $val = $kvp.Value
-        if ($val -ne $null -and $val -is [string])
-        {
-            $val = $val.Trim('''" ') # quotes will be added later around the entire parameter chunk
-        }
-
-        $argumentSet[$kvp.Key] = $val
-    }
-
-    # --no-foo cancels --foo
-    $negativeSwitches = $packageParameters.GetEnumerator() | Where-Object { $_.Key -match '^no-.' -and $_.Value -eq '' } | Select-Object -ExpandProperty Key
-    foreach ($negativeSwitch in $negativeSwitches)
-    {
-        if ($negativeSwitch -eq $null)
-        {
-            continue
-        }
-
-        $argumentSet.Remove($negativeSwitch.Substring(3))
-        $argumentSet.Remove($negativeSwitch)
-    }
-
-    $exeArgsChunks = $argumentSet.GetEnumerator() | ForEach-Object `
-    {
-        if ([string]::IsNullOrEmpty($_.Value))
-        {
-            '/{0}' -f $_.Key
-        }
-        else
-        {
-            '/{0}:{1}' -f $_.Key, $_.Value
-        }
-    }
-
-    $exeArgsChunks += $vsixPath
-    $quotedExeArgsChunks = $exeArgsChunks | ForEach-Object `
-    {
-        if ($_ -match '^(([^"].*\s)|(\s))')
-        {
-            """$_"""
-        }
-        else
-        {
-            $_
-        }
-    }
-
-    $exeArgsString = $quotedExeArgsChunks -join ' '
+    Merge-AdditionalArguments -Arguments $argumentSet -AdditionalArguments $packageParameters
+    Remove-NegatedArguments -Arguments $argumentSet -RemoveNegativeSwitches
+    $exeArgsString = ConvertTo-ArgumentString -Arguments $argumentSet -Syntax 'VSIXInstaller' -FinalUnstructuredArguments @($vsixPath)
 
     Write-Host ('Installing {0} using VSIXInstaller version {1}' -f $PackageName, $vsixInstaller.Version)
     $validExitCodes = @(0, 1001)

@@ -25,4 +25,8 @@ This package provides helper functions useful for developing packages for instal
     <dependencies>
     </dependencies>
   </metadata>
+  <files>
+    <file src="*.md" target="" />
+    <file src="extensions\**" target="extensions" />
+  </files>
 </package>
