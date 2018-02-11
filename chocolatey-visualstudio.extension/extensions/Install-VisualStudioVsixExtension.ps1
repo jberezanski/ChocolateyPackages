@@ -67,6 +67,8 @@ compatibility reasons.
     }
     Write-Debug "Running 'Install-VisualStudioVsixExtension' for $PackageName with VsixUrl:'$VsixUrl' Checksum:$Checksum ChecksumType:$ChecksumType VsVersion:$VsVersion Options:$Options File:$File";
 
+    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
+
     if ($VsVersion -ne 0)
     {
         Write-Warning "VsVersion is not supported yet. The extension will be installed in all compatible Visual Studio instances present."
@@ -89,11 +91,61 @@ compatibility reasons.
         -ChecksumType $ChecksumType `
         -Options $Options
 
-    Write-Host ('Installing {0} using VSIXInstaller version {1}' -f $PackageName, $vsixInstaller.Version)
     $logFileName = 'VSIXInstaller_{0}_{1:yyyyMMddHHmmss}.log' -f $PackageName, (Get-Date)
-    $silentArgs = "/quiet /admin /logFile:$logFileName ""$vsixPath"""
+    $argumentSet = @{
+        'quiet' = $null
+        'admin' = $null
+        'logFile' = $logFileName
+    }
+
+    foreach ($kvp in $packageParameters.Clone().GetEnumerator())
+    {
+        $argumentSet[$kvp.Key] = $kvp.Value
+    }
+
+    # --no-foo cancels --foo
+    $negativeSwitches = $packageParameters.GetEnumerator() | Where-Object { $_.Key -match '^no-.' -and $_.Value -eq '' } | Select-Object -ExpandProperty Key
+    foreach ($negativeSwitch in $negativeSwitches)
+    {
+        if ($negativeSwitch -eq $null)
+        {
+            continue
+        }
+
+        $argumentSet.Remove($negativeSwitch.Substring(3))
+        $argumentSet.Remove($negativeSwitch)
+    }
+
+    $exeArgsChunks = $argumentSet.GetEnumerator() | ForEach-Object `
+    {
+        if ([string]::IsNullOrEmpty($_.Value))
+        {
+            '/{0}' -f $_.Key
+        }
+        else
+        {
+            '/{0}:{1}' -f $_.Key, $_.Value
+        }
+    }
+
+    $exeArgsChunks += $vsixPath
+    $quotedExeArgsChunks = $exeArgsChunks | ForEach-Object `
+    {
+        if ($_ -match '^(([^"].*\s)|(\s))')
+        {
+            """$_"""
+        }
+        else
+        {
+            $_
+        }
+    }
+
+    $exeArgsString = $quotedExeArgsChunks -join ' '
+
+    Write-Host ('Installing {0} using VSIXInstaller version {1}' -f $PackageName, $vsixInstaller.Version)
     $validExitCodes = @(0, 1001)
-    $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $vsixInstaller.Path -validExitCodes $validExitCodes
+    $exitCode = Start-VSChocolateyProcessAsAdmin -statements $exeArgsString -exeToRun $vsixInstaller.Path -validExitCodes $validExitCodes
     if ($exitCode -eq 1001)
     {
         Write-Host "Visual Studio extension '${PackageName}' is already installed."
