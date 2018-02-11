@@ -100,7 +100,13 @@ compatibility reasons.
 
     foreach ($kvp in $packageParameters.Clone().GetEnumerator())
     {
-        $argumentSet[$kvp.Key] = $kvp.Value
+        $val = $kvp.Value
+        if ($val -ne $null -and $val -is [string])
+        {
+            $val = $val.Trim('''" ') # quotes will be added later around the entire parameter chunk
+        }
+
+        $argumentSet[$kvp.Key] = $val
     }
 
     # --no-foo cancels --foo
