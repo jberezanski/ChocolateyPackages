@@ -32,7 +32,7 @@
             $argumentSet['quiet'] = ''
         }
 
-        $s = ($argumentSet.GetEnumerator() | ForEach-Object { '--{0} {1}' -f $_.Key, $_.Value }) -f ' '
+        $s = ConvertTo-ArgumentString -Arguments $argumentSet -Syntax 'Willow'
     }
     else
     {

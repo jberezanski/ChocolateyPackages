@@ -38,18 +38,7 @@
         $packageParameters['quiet'] = ''
     }
 
-    # --no-foo cancels --foo
-    $negativeSwitches = $packageParameters.GetEnumerator() | Where-Object { $_.Key -match '^no-.' -and $_.Value -eq '' } | Select-Object -ExpandProperty Key
-    foreach ($negativeSwitch in $negativeSwitches)
-    {
-        if ($negativeSwitch -eq $null)
-        {
-            continue
-        }
-
-        $packageParameters.Remove($negativeSwitch.Substring(3))
-        $packageParameters.Remove($negativeSwitch)
-    }
+    Remove-NegatedArguments -Arguments $packageParameters -RemoveNegativeSwitches
 
     $argumentSets = ,$packageParameters
     if ($packageParameters.ContainsKey('installPath'))
@@ -162,15 +151,7 @@
             Write-Debug "Modifying Visual Studio product: [productId = '$($argumentSet.productId)' channelId = '$($argumentSet.channelId)']"
         }
 
-        foreach ($kvp in $argumentSet.Clone().GetEnumerator())
-        {
-            if ($kvp.Value -match '^(([^"].*\s)|(\s))')
-            {
-                $argumentSet[$kvp.Key] = '"{0}"' -f $kvp.Value
-            }
-        }
-
-        $silentArgs = $Operation + (($argumentSet.GetEnumerator() | ForEach-Object { ' --{0} {1}' -f $_.Key, $_.Value }) -join '')
+        $silentArgs = ConvertTo-ArgumentString -InitialUnstructuredArguments @($Operation) -Arguments $argumentSet -Syntax 'Willow'
         $exitCode = -1
         if ($PSCmdlet.ShouldProcess("Executable: $InstallerPath", "Start with arguments: $silentArgs"))
         {

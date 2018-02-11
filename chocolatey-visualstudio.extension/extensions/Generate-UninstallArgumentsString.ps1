@@ -22,7 +22,7 @@
             $argumentSet['quiet'] = ''
         }
 
-        $s = '/uninstall ' + (($argumentSet.GetEnumerator() | ForEach-Object { '--{0} {1}' -f $_.Key, $_.Value }) -f ' ')
+        $s = ConvertTo-ArgumentString -InitialUnstructuredArguments @('/uninstall') -Arguments $argumentSet -Syntax 'Willow'
     }
     else
     {
