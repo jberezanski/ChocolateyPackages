@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
     <metadata>
         <id>stylecop-vsix</id>
-        <version>5.0.6419.0-rc1</version>
+        <version>5.0.6419.0-rc2</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/stylecop-vsix</packageSourceUrl>
         <owners>jberezanski</owners>
         <title>StyleCop extension for Visual Studio</title>
@@ -37,7 +37,7 @@ This package is a successor of the [classic StyleCop package](https://chocolatey
 5.0.6419.0: Initial package release for software version 5.0.6419.0.
         </releaseNotes>
         <dependencies>
-            <dependency id="chocolatey-visualstudio.extension" version="1.6.0" />
+            <dependency id="chocolatey-visualstudio.extension" version="1.6.0-rc2" />
         </dependencies>
     </metadata>
     <files>
