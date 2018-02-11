@@ -1,5 +1,8 @@
 ﻿# CHANGELOG
 
+## Version 1.6.0
+- New helper: Install-VisualStudioVsixExtension. Supports Visual Studio 2010-2017 and replaces Install-ChocolateyVsixPackage.
+
 ## Version 1.5.1
 - Changed the method of locating the VS 2017 installer during modify and uninstall operations to not depend on Uninstall registry
   keys anymore. This avoids the problem caused by registry key changes in a recent VS 2017 update.
