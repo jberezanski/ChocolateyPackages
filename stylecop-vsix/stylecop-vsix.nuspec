@@ -25,14 +25,15 @@ This extension allows analysis to be performed on any project opened in Visual S
 Alternatively, the [StyleCop.MSBuild NuGet package](https://www.nuget.org/packages/StyleCop.MSBuild) can be added to a project to allow analysis to be performed during the project build without installing any Visual Studio extensions.
 
 This package is a successor of the [classic StyleCop package](https://chocolatey.org/packages/stylecop), which bundled all StyleCop bits in a single MSI. It allows existing projects already using StyleCop to use modern Visual Studio versions and at least some of the recent C# language features. No major development is planned, however, and developers are [encouraged](https://marketplace.visualstudio.com/items?itemName=ChrisDahlberg.StyleCop#qna) to consider using something like [StyleCopAnalyzers](https://github.com/DotNetAnalyzers/StyleCopAnalyzers) going forward.
-
-**Note**: there is a [known incompatibility](https://github.com/StyleCop/StyleCop/issues/50) between this version of the StyleCop extension for Visual Studio and the [StyleCop extension for ReSharper](https://resharper-plugins.jetbrains.com/packages/StyleCop.StyleCop/). Until it is [fixed](https://github.com/StyleCop/StyleCop/pull/167), a workaround is to use the Visual Studio extension from the last "classic" (MSI) StyleCop release (4.7.55.0), which can be obtained from the [StyleCop CodePlex project archive](https://archive.codeplex.com/?p=stylecop).
-
-**Note 2**: there is a [known bug](https://github.com/StyleCop/StyleCop/issues/166) in this version of the StyleCop extension for Visual Studio, which prevents it from installing on a machine where only Visual Studio 2013 Professional/Premium/Ultimate is installed and there is no later Visual Studio version present. Until it is fixed, a workaround is to install any newer Visual Studio product (for example, the free [2017 Feedback Client](https://chocolatey.org/packages/visualstudio2017feedbackclient)), which will update the Visual Studio extension installer program and unblock the installation of this extension in Visual Studio 2013.
         </description>
         <releaseNotes>
 ##### Software
 [Changes since StyleCop 4.7.55](https://github.com/StyleCop/StyleCop/compare/4.7.55.0...master@%7B2017-07-29%7D)
+
+**Note 1**: there is a [known incompatibility](https://github.com/StyleCop/StyleCop/issues/50) between this version of the StyleCop extension for Visual Studio and the [StyleCop extension for ReSharper](https://resharper-plugins.jetbrains.com/packages/StyleCop.StyleCop/). Until it is [fixed](https://github.com/StyleCop/StyleCop/pull/167), a workaround is to use the Visual Studio extension from the last "classic" (MSI) StyleCop release (4.7.55.0), which can be obtained from the [StyleCop CodePlex project archive](https://archive.codeplex.com/?p=stylecop).
+
+**Note 2**: there is a [known bug](https://github.com/StyleCop/StyleCop/issues/166) in this version of the StyleCop extension for Visual Studio, which prevents it from installing on a machine where only Visual Studio 2013 Professional/Premium/Ultimate is installed and there is no later Visual Studio version present. Until it is fixed, a workaround is to install any newer Visual Studio product (for example, the free [2017 Feedback Client](https://chocolatey.org/packages/visualstudio2017feedbackclient)), which will update the Visual Studio extension installer program and unblock the installation of this extension in Visual Studio 2013.
+
 ##### Package
 5.0.6419.0: Initial package release for software version 5.0.6419.0.
         </releaseNotes>
