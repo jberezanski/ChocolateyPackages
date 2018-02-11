@@ -14,7 +14,8 @@ function Get-VSWebFile
         [string] $ChecksumType = '',
         [string] $Checksum64 = '',
         [string] $ChecksumType64 = '',
-        [string] $LocalFilePath
+        [string] $LocalFilePath,
+        [hashtable] $Options
     )
 
     Write-Debug "Running 'Get-VSWebFile' for $PackageName with Url:'$Url', Url64Bit:'$Url64Bit', Checksum:'$Checksum', ChecksumType:'$ChecksumType', Checksum64:'$Checksum64', ChecksumType64:'$ChecksumType64', LocalFilePath:'$LocalFilePath'";
@@ -42,6 +43,20 @@ function Get-VSWebFile
             Checksum64 = $Checksum64
             ChecksumType64 = $ChecksumType64
         }
+
+        $gcwf = Get-Command -Name Get-ChocolateyWebFile
+        if ($gcwf.Parameters.ContainsKey('Options'))
+        {
+            $arguments.Options = $Options
+        }
+        else
+        {
+            if ($Options -ne $null -and $Options.Keys.Count -gt 0)
+            {
+                Write-Warning "This Chocolatey version does not support passing custom Options to Get-ChocolateyWebFile."
+            }
+        }
+
         Set-StrictMode -Off
         Get-ChocolateyWebFile @arguments | Out-Null
         Set-StrictMode -Version 2
