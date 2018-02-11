@@ -1,15 +1,20 @@
-﻿<?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>stylecop</id>
     <version>4.7.49.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/stylecop</packageSourceUrl>
+    <owners>andyr,HowardvanRooijen,jberezanski</owners>
     <title>StyleCop</title>
     <authors>andyr,HowardvanRooijen</authors>
-    <owners>andyr,HowardvanRooijen,jberezanski</owners>
-    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/stylecop</packageSourceUrl>
-    <licenseUrl>https://web.archive.org/web/20170904232326/http://stylecop.codeplex.com/license</licenseUrl>
     <projectUrl>http://stylecop.codeplex.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6b020a7becf2fb65d21d31165e994bf040397f5c/icons/stylecop.png</iconUrl>
+    <licenseUrl>https://web.archive.org/web/20170904232326/http://stylecop.codeplex.com/license</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://archive.codeplex.com/?p=stylecop</projectSourceUrl>
+    <tags>stylecop vsix admin visualstudio resharper</tags>
+    <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules.</summary>
     <description>
 StyleCop analyzes C# source code to enforce a set of style and consistency rules. It can be run from inside of Visual Studio or integrated into an MSBuild project. StyleCop has also been integrated into many third-party development tools.
 
@@ -25,8 +30,6 @@ Install order should be:
 * R#
 * StyleCop
     </description>
-    <summary>StyleCop analyzes C# source code to enforce a set of style and consistency rules.</summary>
-    <tags>stylecop vsix admin visualstudio resharper</tags>
     <releaseNotes>
 #### Package
 4.7.49.0: converted to embedded package after CodePlex switched to archive mode.
