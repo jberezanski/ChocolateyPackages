@@ -27,40 +27,41 @@
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
 
+    $baseArgumentSet = $packageParameters
     for ($i = 0; $i -lt $ArgumentList.Length; $i += 2)
     {
-        $packageParameters[$ArgumentList[$i]] = $ArgumentList[$i + 1]
+        $baseArgumentSet[$ArgumentList[$i]] = $ArgumentList[$i + 1]
     }
 
-    $packageParameters['norestart'] = ''
-    if (-not $packageParameters.ContainsKey('quiet') -and -not $packageParameters.ContainsKey('passive'))
+    $baseArgumentSet['norestart'] = ''
+    if (-not $baseArgumentSet.ContainsKey('quiet') -and -not $baseArgumentSet.ContainsKey('passive'))
     {
-        $packageParameters['quiet'] = ''
+        $baseArgumentSet['quiet'] = ''
     }
 
-    Remove-NegatedArguments -Arguments $packageParameters -RemoveNegativeSwitches
+    Remove-NegatedArguments -Arguments $baseArgumentSet -RemoveNegativeSwitches
 
-    $argumentSets = ,$packageParameters
-    if ($packageParameters.ContainsKey('installPath'))
+    $argumentSets = ,$baseArgumentSet
+    if ($baseArgumentSet.ContainsKey('installPath'))
     {
-        if ($packageParameters.ContainsKey('productId'))
+        if ($baseArgumentSet.ContainsKey('productId'))
         {
             Write-Warning 'Parameter issue: productId is ignored when installPath is specified.'
         }
 
-        if ($packageParameters.ContainsKey('channelId'))
+        if ($baseArgumentSet.ContainsKey('channelId'))
         {
             Write-Warning 'Parameter issue: channelId is ignored when installPath is specified.'
         }
     }
-    elseif ($packageParameters.ContainsKey('productId'))
+    elseif ($baseArgumentSet.ContainsKey('productId'))
     {
-        if (-not $packageParameters.ContainsKey('channelId'))
+        if (-not $baseArgumentSet.ContainsKey('channelId'))
         {
             throw "Parameter error: when productId is specified, channelId must be specified, too."
         }
     }
-    elseif ($packageParameters.ContainsKey('channelId'))
+    elseif ($baseArgumentSet.ContainsKey('channelId'))
     {
         throw "Parameter error: when channelId is specified, productId must be specified, too."
     }
@@ -74,15 +75,15 @@
 
         if ($Operation -eq 'modify')
         {
-            if ($packageParameters.ContainsKey('add'))
+            if ($baseArgumentSet.ContainsKey('add'))
             {
-                $packageIdsList = @($packageParameters['add'])
+                $packageIdsList = $baseArgumentSet['add']
                 $unwantedPackageSelector = { $productInfo.selectedPackages.ContainsKey($_) }
                 $unwantedStateDescription = 'contains'
             }
-            elseif ($packageParameters.ContainsKey('remove'))
+            elseif ($baseArgumentSet.ContainsKey('remove'))
             {
-                $packageIdsList = @($packageParameters['remove'])
+                $packageIdsList = $baseArgumentSet['remove']
                 $unwantedPackageSelector = { -not $productInfo.selectedPackages.ContainsKey($_) }
                 $unwantedStateDescription = 'does not contain'
             }
@@ -93,7 +94,7 @@
         }
         elseif ($Operation -eq 'uninstall')
         {
-            $packageIdsList = @()
+            $packageIdsList = ''
             $unwantedPackageSelector = { $false }
             $unwantedStateDescription = '<unused>'
         }
@@ -102,8 +103,7 @@
             throw "Unsupported Operation: $Operation"
         }
 
-        # handle syntax "--add Workload2;includeRecommended;includeOptional" - extract the actual id only
-        $packageIds = $packageIdsList | ForEach-Object { $_ -split ';' | Select-Object -First 1 }
+        $packageIds = ($packageIdsList -split ' ') | ForEach-Object { $_ -split ';' | Select-Object -First 1 }
         $applicableProductIds = $ApplicableProducts | ForEach-Object { "Microsoft.VisualStudio.Product.$_" }
         Write-Debug ('This package supports Visual Studio product id(s): {0}' -f ($applicableProductIds -join ' '))
 
@@ -134,7 +134,7 @@
                 continue
             }
 
-            $argumentSet = $packageParameters.Clone()
+            $argumentSet = $baseArgumentSet.Clone()
             $argumentSet['installPath'] = $productInfo.installationPath
             $argumentSets += $argumentSet
         }
