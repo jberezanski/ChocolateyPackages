@@ -15,6 +15,8 @@ function Parse-Parameters
         return $parameters
     }
 
+    $multiValuedParameterNames = @{ add = 1; remove = 1; addProductLang = 1; removeProductLang = 2 }
+
     Write-Debug "Package parameters: $s"
     $s = ' ' + $s
     [String[]] $kvpPrefix = @(" --")
@@ -39,7 +41,24 @@ function Parse-Parameters
         }
 
         Write-Debug "Package parameter: key=$key, value=$value"
-        $parameters.Add($key, $value)
+        if ($multiValuedParameterNames.ContainsKey($key) -and $parameters.ContainsKey($key))
+        {
+            $existingValue = $parameters[$key]
+            if ($existingValue -is [System.Collections.IList])
+            {
+                Write-Debug "Parameter is multi-valued, appending to existing list of values"
+                $existingValue.Add($value)
+            }
+            else
+            {
+                Write-Debug "Parameter is multi-valued, converting value to list of values"
+                $parameters[$key] = New-Object -TypeName System.Collections.Generic.List``1[System.String] -ArgumentList (,[string[]]($existingValue, $value))
+            }
+        }
+        else
+        {
+            $parameters.Add($key, $value)
+        }
     }
 
     return $parameters

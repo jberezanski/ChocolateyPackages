@@ -36,22 +36,30 @@ function ConvertTo-ArgumentString
 
     foreach ($kvp in $Arguments.GetEnumerator())
     {
-        if ([string]::IsNullOrEmpty($kvp.Value))
+        if ($kvp.Value -eq $null -or ($kvp.Value -isnot [System.Collections.IList] -and [string]::IsNullOrEmpty($kvp.Value)))
         {
             $chunk = '{0}{1}' -f $prefix, $kvp.Key
+            $chunks.Add($chunk)
         }
         else
         {
-            $val = $kvp.Value
-            if ($rxNeedsQuoting.IsMatch($val))
+            $vals = $kvp.Value
+            if ($vals -isnot [System.Collections.IList])
             {
-                $val = """$val"""
+                $vals = ,$vals
             }
 
-            $chunk = '{0}{1}{2}{3}' -f $prefix, $kvp.Key, $separator, $val
-        }
+            foreach ($val in $vals)
+            {
+                if ($rxNeedsQuoting.IsMatch($val))
+                {
+                    $val = """$val"""
+                }
 
-        $chunks.Add($chunk)
+                $chunk = '{0}{1}{2}{3}' -f $prefix, $kvp.Key, $separator, $val
+                $chunks.Add($chunk)
+            }
+        }
     }
 
     if (($FinalUnstructuredArguments | Measure-Object).Count -gt 0)
