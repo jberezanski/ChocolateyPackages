@@ -79,7 +79,7 @@ compatibility reasons.
         $VsixUrl = $File
     }
 
-    $vsixInstaller = Get-VsixInstaller -Latest
+    $vsixInstaller = Get-VisualStudioVsixInstaller -Latest
     Write-Verbose ('Found VSIXInstaller version {0}: {1}' -f $vsixInstaller.Version, $vsixInstaller.Path)
 
     $vsixPath = Get-VSWebFile `

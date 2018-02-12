@@ -1,11 +1,33 @@
-function Get-VsixInstaller
+function Get-VisualStudioVsixInstaller
 {
+<#
+.SYNOPSIS
+Locates the Visual Studio extension (VSIX) installer.
+
+.DESCRIPTION
+Locates all instances of the Visual Studio extension installer
+(VSIXInstaller.exe) present on the machine and returns their
+paths and version numbers.
+
+.PARAMETER Latest
+Returns the VSIXInstaller.exe with the highest version number only.
+
+.OUTPUTS
+For each VSIXInstaller.exe instance found, returns an object
+containing these properties:
+Path - the path to the VSIXInstaller.exe instance.
+Version - the program version number, extracted from the ProductVersion
+          property of the version resource embedded in the program.
+
+.NOTES
+Supports both VS 2017 and "legacy" VS versions (2015 and earlier).
+#>
     [CmdletBinding()]
     Param
     (
         [switch] $Latest
     )
-    Write-Debug "Running 'Get-VsixInstaller' with Latest:'$Latest'";
+    Write-Debug "Running 'Get-VisualStudioVsixInstaller' with Latest:'$Latest'";
 
     $candidates = New-Object System.Collections.ArrayList
     $modernProducts = Get-WillowInstalledProducts

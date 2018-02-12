@@ -13,6 +13,7 @@ $publicFunctions = @(
     'Get-VisualStudioInstance'
     'Get-VisualStudioInstaller'
     'Install-VisualStudioInstaller'
+    'Get-VisualStudioVsixInstaller'
     'Install-VisualStudioVsixExtension'
 )
 
