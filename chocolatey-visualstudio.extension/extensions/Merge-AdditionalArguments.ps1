@@ -15,6 +15,6 @@ function Merge-AdditionalArguments
             $val = $val.Trim('''" ') # quotes will be added later around the entire parameter chunk
         }
 
-        $argumentSet[$kvp.Key] = $val
+        $Arguments[$kvp.Key] = $val
     }
 }
