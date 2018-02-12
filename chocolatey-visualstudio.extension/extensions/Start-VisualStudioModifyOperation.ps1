@@ -76,13 +76,13 @@
         {
             if ($packageParameters.ContainsKey('add'))
             {
-                $packageIdsList = $packageParameters['add']
+                $packageIdsList = @($packageParameters['add'])
                 $unwantedPackageSelector = { $productInfo.selectedPackages.ContainsKey($_) }
                 $unwantedStateDescription = 'contains'
             }
             elseif ($packageParameters.ContainsKey('remove'))
             {
-                $packageIdsList = $packageParameters['remove']
+                $packageIdsList = @($packageParameters['remove'])
                 $unwantedPackageSelector = { -not $productInfo.selectedPackages.ContainsKey($_) }
                 $unwantedStateDescription = 'does not contain'
             }
@@ -93,7 +93,7 @@
         }
         elseif ($Operation -eq 'uninstall')
         {
-            $packageIdsList = ''
+            $packageIdsList = @()
             $unwantedPackageSelector = { $false }
             $unwantedStateDescription = '<unused>'
         }
@@ -102,7 +102,8 @@
             throw "Unsupported Operation: $Operation"
         }
 
-        $packageIds = ($packageIdsList -split ' ') | ForEach-Object { $_ -split ';' | Select-Object -First 1 }
+        # handle syntax "--add Workload2;includeRecommended;includeOptional" - extract the actual id only
+        $packageIds = $packageIdsList | ForEach-Object { $_ -split ';' | Select-Object -First 1 }
         $applicableProductIds = $ApplicableProducts | ForEach-Object { "Microsoft.VisualStudio.Product.$_" }
         Write-Debug ('This package supports Visual Studio product id(s): {0}' -f ($applicableProductIds -join ' '))
 
