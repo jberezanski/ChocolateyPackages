@@ -27,10 +27,29 @@
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
 
-    $baseArgumentSet = $packageParameters
+    $argumentSetFromArgumentList = @{}
     for ($i = 0; $i -lt $ArgumentList.Length; $i += 2)
     {
-        $baseArgumentSet[$ArgumentList[$i]] = $ArgumentList[$i + 1]
+        $argumentSetFromArgumentList[$ArgumentList[$i]] = $ArgumentList[$i + 1]
+    }
+
+    $baseArgumentSet = $argumentSetFromArgumentList.Clone()
+    Merge-AdditionalArguments -Arguments $baseArgumentSet -AdditionalArguments $packageParameters
+    @('add', 'remove') | Where-Object { $argumentSetFromArgumentList.ContainsKey($_) } | ForEach-Object `
+    {
+        $value = $argumentSetFromArgumentList[$_]
+        $existingValue = $baseArgumentSet[$_]
+        if ($existingValue -is [System.Collections.IList])
+        {
+            if ($existingValue -notcontains $value)
+            {
+                [void]$existingValue.Add($value)
+            }
+        }
+        else
+        {
+            $baseArgumentSet[$_] = New-Object -TypeName System.Collections.Generic.List``1[System.String] -ArgumentList (,[string[]]($existingValue, $value))
+        }
     }
 
     $baseArgumentSet['norestart'] = ''
