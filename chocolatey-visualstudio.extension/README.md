@@ -58,6 +58,17 @@ Supports the new "Willow" installer of Visual Studio 2017 RC only.
 Installs or updates the Visual Studio Installer.
 Supports the new "Willow" installer of Visual Studio 2017 RC only.
 
+### Get-VisualStudioVsixInstaller
+
+Locates all versions of the Visual Studio extension installer installed on the machine.
+The returned object contain properties: Path, Version.
+Supports Visual Studio 2017 and earlier Visual Studio versions.
+
+### Install-VisualStudioVsixExtension
+
+Installs or updates a Visual Studio extension (*.vsix).
+Replaces Install-ChocolateyVsixPackage, adding support for Visual Studio 2017.
+
 ## Installation
 
 End users typically do not install this package directly - it is usually installed automatically as a dependency of another package.
@@ -119,6 +130,12 @@ You can now test any of the functions:
         -Checksum '6A63984CAFE972D655817395CC12054068077015' `
         -ChecksumType 'SHA1' `
         -InstallerTechnology 'MsiVS2015OrEarlier'
+
+    Install-VisualStudioVsixExtension `
+        -PackageName 'stylecop-vsix'
+        -VsixUrl 'https://chrisdahlberg.gallerycdn.vsassets.io/extensions/chrisdahlberg/stylecop/5.0.6419.0/1501345807969/231103/4/StyleCop.vsix'
+        -Checksum '212738A32AB1AF0EDE8C42F1B574EE6A67A88E69AF7EFD744E48B9AD05EE84A5'
+        -ChecksumType 'sha256'
 
 Keep in mind that functions may work fully only in the context of the `chocolateyInstaller` module.
 

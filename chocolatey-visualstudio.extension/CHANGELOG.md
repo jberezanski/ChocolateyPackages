@@ -2,6 +2,7 @@
 
 ## Version 1.6.0
 - New helper: Install-VisualStudioVsixExtension. Supports Visual Studio 2010-2017 and replaces Install-ChocolateyVsixPackage.
+- New helper: Get-VisualStudioVsixInstaller.
 - Parameters: --add, --remove, --addProductLang and --removeProductLang can now be specified multiple times in package parameters ((GH-16)[https://github.com/jberezanski/ChocolateyPackages/issues/16]).
 
 ## Version 1.5.1
