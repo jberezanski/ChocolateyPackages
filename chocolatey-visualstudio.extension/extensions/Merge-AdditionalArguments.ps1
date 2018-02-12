@@ -37,6 +37,10 @@ function Merge-AdditionalArguments
             }
         }
 
-        $Arguments[$kvp.Key] = $val
+        if ($Arguments.ContainsKey($kvp.Key) -and $Arguments[$kvp.Key] -ne $val)
+        {
+            Write-Debug "Replacing argument '$($kvp.Key)' value '$($Arguments[$kvp.Key])' with '$val'"
+            $Arguments[$kvp.Key] = $val
+        }
     }
 }
