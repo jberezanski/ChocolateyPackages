@@ -43,12 +43,17 @@
         {
             if ($existingValue -notcontains $value)
             {
+                Write-Debug "Adding back argument '$_' value '$value' (adding to existing list)"
                 [void]$existingValue.Add($value)
             }
         }
         else
         {
-            $baseArgumentSet[$_] = New-Object -TypeName System.Collections.Generic.List``1[System.String] -ArgumentList (,[string[]]($existingValue, $value))
+            if ($existingValue -ne $value)
+            {
+                Write-Debug "Adding back argument '$_' value '$value' (converting to list)"
+                $baseArgumentSet[$_] = New-Object -TypeName System.Collections.Generic.List``1[System.String] -ArgumentList (,[string[]]($existingValue, $value))
+            }
         }
     }
 
