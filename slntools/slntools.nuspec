@@ -22,5 +22,8 @@ Key features include:
     <releaseNotes>
 1.1.3.0: Initial package release.
     </releaseNotes>
+    <dependencies>
+      <dependency id="dotnet3.5" version="3.5.20160716" />
+    </dependencies>
   </metadata>
 </package>
