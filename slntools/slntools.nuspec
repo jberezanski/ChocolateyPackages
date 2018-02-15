@@ -1,0 +1,26 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>slntools</id>
+    <version>1.1.3.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/slntools</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Solution Tools for Visual Studio</title>
+    <authors>Christian Warren, Mike Therien</authors>
+    <projectUrl>https://github.com/mtherien/slntools</projectUrl>
+    <licenseUrl>https://github.com/mtherien/slntools/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://github.com/mtherien/slntools/tree/master/docs</docsUrl>
+    <tags>visual studio solution sln slnfilter filter diff compare merge developer admin</tags>
+    <summary>A helpful utility for managing Visual Studio solutions.</summary>
+    <description>A helpful utility for managing Visual Studio solutions.
+
+Key features include:
+- Merging 2 solution files
+- Maintaining subsets of a solution file from a master solution file
+</description>
+    <releaseNotes>
+1.1.3.0: Initial package release.
+    </releaseNotes>
+  </metadata>
+</package>
