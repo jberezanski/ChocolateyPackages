@@ -12,4 +12,9 @@ $arguments = @{
     checksumType = 'sha256'
 }
 
+if (-not (Test-Path -Path 'Registry::HKEY_CLASSES_ROOT\VisualStudio.Launcher.sln'))
+{
+    Write-Warning 'Visual Studio does not seem to be installed. SLNTools Windows Explorer integration for sln files ("Create Filter") will only appear after you install Visual Studio.'
+}
+
 Install-ChocolateyPackage @arguments
