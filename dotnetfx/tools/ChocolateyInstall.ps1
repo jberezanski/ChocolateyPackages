@@ -28,4 +28,15 @@ if (Test-Installed -Release $release) {
 }
 
 Install-ChocolateyPackage @arguments
-Write-Host "A restart may be required to finalize $productNameWithVersion installation."
+
+if ($Env:ChocolateyExitCode -eq '3010')
+{
+    Write-Warning "A restart is required to finalize $productNameWithVersion installation."
+}
+else
+{
+    if ($Env:ChocolateyExitCode -eq $null)
+    { 
+        Write-Host "A restart may be required to finalize $productNameWithVersion installation."
+    }
+}
