@@ -2,10 +2,10 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnetfx</id>
-    <version>4.7.1.0</version>
+    <version>4.7.2.0-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>Microsoft .NET Framework 4.7.1</title>
+    <title>Microsoft .NET Framework 4.7.2</title>
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/net/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
@@ -19,17 +19,30 @@
 
 The .NET Framework provides many services, including memory management, type and memory safety, security, networking, and application deployment. It provides easy-to-use data structures and APIs that abstract the lower-level Windows operating system. You can use a variety of programming languages with the .NET Framework, including C#, F#, and Visual Basic. 
 
-The Microsoft .NET Framework 4.7.1 is a highly compatible, in-place update to the Microsoft .NET Framework 4, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, and 4.7.
-You can see the full set of changes in the .NET Framework 4.7.1 in the [change list](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-changes.md) and [API diff](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-api-changes.md) on [GitHub](https://github.com/microsoft/dotnet).
+.NET Framework 4.7.2 is the next version of the .NET Framework. This release is feature complete and in the testing phase but is not supported for production use. The current Early Access build number being shared is 3052.
 
-The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.7.1-devpack).</description>
+This pre-release build 3052 includes improvements in several areas:
+
+* [ASP.NET] Support for SameSite cookie in ASP.NET
+* [ASP.NET] Support for ASP.NET Dependency Injection
+* [ClickOnce] Per-monitor support for WPF and HDPI-aware VSTO apps deployed via ClickOnce
+* [SQL] Always Encrypted enhancements in SQL Connectivity
+* [Networking &amp; BCL] Enhanced .NET Framework support for .NET Standard 2.0
+* [BCL] Cryptography improvements
+* [WPF] Diagnostic enhancements
+
+You can see the complete list of improvements in this build in the [release notes](https://github.com/Microsoft/dotnet-framework-early-access/tree/master/release-notes/build-3052/readme.md).
+
+The .NET Framework build 3052 will replace any existing .NET Framework 4 and later installation on your machine. This means all .NET Framework 4 and later applications on your machine will run on the .NET Framework early access builds upon installation. The .NET Framework build 3052 installs on Windows 10 Fall Creators Update, Windows 10 Creators Update, Windows 10 Anniversary Update, Windows 8.1, Windows 7 SP1, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 and Windows Server 2008 R2 SP1 OS platforms. .NET Framework build 3052 is also included in the next update for Windows 10.
+
+The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.7.2-devpack).</description>
     <releaseNotes>
 ##### Software
-[.NET Framework 4.7.1 announcement](https://blogs.msdn.microsoft.com/dotnet/2017/10/17/announcing-the-net-framework-4-7-1/)
-[.NET Framework 4.7.1 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net471/README.md)
-[.NET Framework 4.7.1 known issues](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-known-issues.md)
+[.NET Framework 4.7.2 build 3052 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/02/05/announcing-net-framework-4-7-2-early-access-build-3052/)
+[.NET Framework 4.7.2 build 3052 release notes](https://github.com/Microsoft/dotnet-framework-early-access/tree/master/release-notes/build-3052/readme.md)
+[.NET Framework 4.7.2 build 3052 changes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/build-3052/dotnet-build-3052-changes.md)
 ##### Package
-4.7.1.0: Initial package release.
+4.7.2.0-preview1: Initial package release for early access build 3052.
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />
