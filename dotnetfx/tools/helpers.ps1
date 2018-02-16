@@ -27,33 +27,44 @@ function Test-Installed($Release)
     return $props -ne $null -and $props.Release -ge $Release
 }
 
-function Install-ChocolateyInstallPackage
+function Get-DefaultChocolateyLocalFilePath
 {
+    [CmdletBinding()]
     Param
     (
-        [parameter(Mandatory=$true, Position=0)][string] $packageName,
-        [parameter(Mandatory=$false, Position=1)]
-        [alias("installerType","installType")][string] $fileType = 'exe',
-        [parameter(Mandatory=$false, Position=2)][string[]] $silentArgs = '',
-        [alias("fileFullPath")][parameter(Mandatory=$false, Position=3)][string] $file,
-        [alias("fileFullPath64")][parameter(Mandatory=$false)][string] $file64,
-        [parameter(Mandatory=$false)] $validExitCodes = @(0),
-        [parameter(Mandatory=$false)]
-        [alias("useOnlyPackageSilentArgs")][switch] $useOnlyPackageSilentArguments = $false,
-        [parameter(ValueFromRemainingArguments = $true)][Object[]] $ignoredArguments
+        [Parameter(Mandatory = $true)] [string] $OriginalFileName
+    )
+
+    # adapted from Install-ChocolateyPackage 0.10.8
+    $chocTempDir = $env:TEMP
+    $tempDir = Join-Path $chocTempDir "$($env:chocolateyPackageName)"
+    if ($env:chocolateyPackageVersion -ne $null) { $tempDir = Join-Path $tempDir "$($env:chocolateyPackageVersion)"; }
+    $tempDir = $tempDir -replace '\\chocolatey\\chocolatey\\', '\chocolatey\'
+    if (![System.IO.Directory]::Exists($tempDir)) { [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null }
+    $downloadFilePath = Join-Path $tempDir $OriginalFileName
+    Write-Debug "Local file path: $downloadFilePath"
+    return $downloadFilePath
+}
+
+function Invoke-CommandWithTempPath
+{
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $true)] [string] $TempPath,
+        [Parameter(Mandatory = $true)] [scriptblock] $ScriptBlock
     )
 
     $oldTemp = $Env:TEMP
-    $safeLogPath = Get-SafeLogPath
-    if ($Env:TEMP -ne $safeLogPath)
+    if ($Env:TEMP -ne $TempPath)
     {
-        Write-Debug "Changing `$Env:TEMP from '$oldTemp' to '$safeLogPath'"
-        $Env:TEMP = $safeLogPath
+        Write-Debug "Changing `$Env:TEMP from '$oldTemp' to '$TempPath'"
+        $Env:TEMP = $TempPath
     }
 
     try
     {
-        chocolateyInstaller\Install-ChocolateyInstallPackage @PSBoundParameters
+        & $ScriptBlock
     }
     finally
     {
