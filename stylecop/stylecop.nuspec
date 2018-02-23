@@ -20,6 +20,8 @@ StyleCop analyzes C# source code to enforce a set of style and consistency rules
 
 The package installs the standalone StyleCop binaries, an extension for Visual Studio 2008-2015 and an extension for ReSharper 8.2 or earlier.
 
+**This is the last version of StyleCop published as an MSI installer.** Later StyleCop releases (5.x) provide separate packages for the Visual Studio extension ([stylecop-vsix](https://chocolatey.org/packages/stylecop-vsix)) and the ReSharper extension (installable from the ReSharper gallery).
+
 This version is compatible with the following versions of ReSharper:
 * 5.1 (5.1.3000.12)
 * 6.0 (6.0.2202.688)
