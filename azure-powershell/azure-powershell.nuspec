@@ -15,12 +15,14 @@
     <bugTrackerUrl>https://github.com/Azure/azure-powershell/issues</bugTrackerUrl>
     <tags>microsoft azure powershell module azurerm resource manager admin</tags>
     <summary>Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure resources.</summary>
-    <description>Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure resources. You can use it in your browser with Azure Cloud Shell, or you can install it on your local machine and use it in any PowerShell session.</description>
+    <description>Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure resources. You can use it in your browser with Azure Cloud Shell, or you can install it on your local machine and use it in any PowerShell session.
+
+Azure PowerShell requires PowerShell 3.0 or later, which can be installed using the [powershell](https://chocolatey.org/packages/powershell) package. This package does not define a dependency on that package to avoid causing a potentially undesired update to the newest PowerShell.</description>
     <releaseNotes>
 ##### Software
 [Azure PowerShell release notes](https://docs.microsoft.com/en-us/powershell/azure/release-notes-azureps)
 ##### Package
-5.0.0.0: Initial package release.
+5.0.0.0: Initial package release for software version 5.0.0.
     </releaseNotes>
     <dependencies>
       <dependency id="dotnet4.5.2" version="4.5.2.20140902" />
