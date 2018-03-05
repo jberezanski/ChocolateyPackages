@@ -6,6 +6,9 @@
 - Parameters: --add, --remove, --addProductLang and --removeProductLang can now be specified multiple times in package parameters ((GH-16)[https://github.com/jberezanski/ChocolateyPackages/issues/16]).
 - Parameters: --add, --remove specified in package parameters are no longer ignored when adding/removing workloads and components.
 - New parameter for Add-VisualStudioWorkload and Add-VisualStudioComponent: -RequiredProductVersion. If a workload/component package provides a value for this parameter and a Visual Studio product supported by that package but not meeting this requirement is found, package installation will fail with a message asking the user to upgrade that product.
+- ISO mounting feature ported from existing VS 2015 packages. The ISO path can be specified in package parameters as '--IsoPath D:\path\vs.iso' or via an environment variable named 'visualStudio:isoImage'.
+ Supported by Install-VisualStudio.
+- For compatibility with existing VS 2015 packages, Install-VisualStudio also recognizes an environment variable named 'visualStudio:setupFolder' and will attempt to use the installer executable from there, unless the bootstrapperPath package parameter is present. The installer executable name is obtained from the Url parameter (vs_<ProductName>.exe) or, if the Url is not provided or does not contain the executable name, vs_Setup.exe is assumed.
 
 ## Version 1.5.1
 - Changed the method of locating the VS 2017 installer during modify and uninstall operations to not depend on Uninstall registry

@@ -102,38 +102,35 @@ Install-ChocolateyPackage
         Write-Debug "Log file path: $logFilePath"
     }
 
-    if ($packageParameters.ContainsKey('bootstrapperPath'))
+    $installSourceInfo = Open-VSInstallSource -PackageParameters $packageParameters -Url $Url
+    try
     {
-        $installerFilePath = $packageParameters['bootstrapperPath']
-        $packageParameters.Remove('bootstrapperPath')
-        Write-Debug "User-provided bootstrapper path: $installerFilePath"
+        $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer
+
+        if ($creatingLayout)
+        {
+            $layoutPath = $packageParameters['layout']
+            Write-Warning "Creating an offline installation source for $PackageName in '$layoutPath'. $PackageName will not be actually installed."
+        }
+
+        $arguments = @{
+            packageName = $PackageName
+            silentArgs = $silentArgs
+            url = $Url
+            checksum = $Checksum
+            checksumType = $ChecksumType
+            logFilePath = $logFilePath
+            assumeNewVS2017Installer = $assumeNewVS2017Installer
+            installerFilePath = $installSourceInfo.InstallerFilePath
+        }
+        $argumentsDump = ($arguments.GetEnumerator() | ForEach-Object { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
+        Write-Debug "Install-VSChocolateyPackage $argumentsDump"
+        Install-VSChocolateyPackage @arguments
     }
-    else
+    finally
     {
-        $installerFilePath = $null
+        Close-VSInstallSource -InstallSourceInfo $installSourceInfo
     }
-
-    $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer
-
-    if ($creatingLayout)
-    {
-        $layoutPath = $packageParameters['layout']
-        Write-Warning "Creating an offline installation source for $PackageName in '$layoutPath'. $PackageName will not be actually installed."
-    }
-
-    $arguments = @{
-        packageName = $PackageName
-        silentArgs = $silentArgs
-        url = $Url
-        checksum = $Checksum
-        checksumType = $ChecksumType
-        logFilePath = $logFilePath
-        assumeNewVS2017Installer = $assumeNewVS2017Installer
-        installerFilePath = $installerFilePath
-    }
-    $argumentsDump = ($arguments.GetEnumerator() | ForEach-Object { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
-    Write-Debug "Install-VSChocolateyPackage $argumentsDump"
-    Install-VSChocolateyPackage @arguments
 
     if ($creatingLayout)
     {
