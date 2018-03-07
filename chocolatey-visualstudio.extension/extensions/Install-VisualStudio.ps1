@@ -90,7 +90,7 @@ Install-ChocolateyPackage
     }
     else
     {
-        $defaultAdminFile = (Join-Path $PSScriptRoot 'AdminDeployment.xml')
+        $defaultAdminFile = (Join-Path $Env:ChocolateyPackageFolder 'tools\AdminDeployment.xml')
         Write-Debug "Default AdminFile: $defaultAdminFile"
 
         $adminFile = Generate-AdminFile $packageParameters $defaultAdminFile $PackageName
