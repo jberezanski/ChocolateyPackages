@@ -48,10 +48,40 @@ function Open-VSInstallSource
 
             if ($isoPath -ne $null)
             {
+                $storageModule = Get-Module -ListAvailable -Name Storage
+                if ($storageModule -eq $null)
+                {
+                    throw "ISO mounting is not available on this operating system (requires Windows 8 or later)."
+                }
+
+                Write-Host "Mounting ISO image $isoPath"
                 $mountedIso = Mount-DiskImage -PassThru -ImagePath $isoPath
+                Write-Host "Obtaining drive letter of the mounted ISO image"
                 $isoDrive = Get-Volume -DiskImage $mountedIso | Select-Object -ExpandProperty DriveLetter
                 Write-Host "Mounted ISO to $isoDrive"
                 $setupFolder = "${isoDrive}:\"
+
+                # on some systems the new drive is not recognized by PowerShell until the PSDrive subsystem is "touched"
+                # - probably a caching issue inside PowerShell
+                Get-PSDrive | Format-Table -AutoSize | Out-String | Write-Debug
+                # if it does not immediately resolve the issue, give it some more time
+                if (-not (Test-Path -Path $setupFolder))
+                {
+                    Write-Debug "The new drive has not been recognized by PowerShell yet, giving it some time"
+                    $counter = 10
+                    do
+                    {
+                        Write-Debug 'Sleeping for 500 ms'
+                        Start-Sleep -Milliseconds 500
+                        Get-PSDrive | Format-Table -AutoSize | Out-String | Write-Debug
+                        $counter -= 1
+                    }
+                    while (-not (Test-Path -Path $setupFolder) -and $counter -gt 0)
+                    if (-not (Test-Path -Path $setupFolder))
+                    {
+                        Write-Warning "Unable to test access to the mounted ISO image. Installation will probably fail."
+                    }
+                }
             }
         }
 
@@ -69,7 +99,7 @@ function Open-VSInstallSource
             }
 
             Write-Host "Installing Visual Studio from $setupFolder"
-            $installerFilePath = "$setupFolder\$exeName"
+            $installerFilePath = Join-Path -Path $setupFolder -ChildPath $exeName
             Write-Debug "Installer path in setup folder: $installerFilePath"
         }
         else

@@ -8,7 +8,7 @@ function Close-VSInstallSource
 
     if ($InstallSourceInfo.MountedDiskImage -ne $null)
     {
-        Write-Verbose "Dismounting ISO"
+        Write-Host "Dismounting ISO"
         $InstallSourceInfo.MountedDiskImage | Dismount-DiskImage
     }
     else
