@@ -16,7 +16,7 @@ function Update-AdminFile
     [xml]$xml = Get-Content $adminFile
 
     $selectableItemCustomizations = $xml.DocumentElement.SelectableItemCustomizations
-    $featuresSelectedByDefault = $selectableItemCustomizations.ChildNodes | Where-Object { $_.GetAttribute('Hidden') -eq 'no' -and $_.GetAttribute('Selected') -eq 'yes' } | Select-Object -ExpandProperty Id
+    $featuresSelectedByDefault = $selectableItemCustomizations.ChildNodes | Where-Object { $_.NodeType -eq 'Element' -and $_.GetAttribute('Hidden') -eq 'no' -and $_.GetAttribute('Selected') -eq 'yes' } | Select-Object -ExpandProperty Id
     $selectedFeatures = New-Object System.Collections.ArrayList
     $invalidFeatures = New-Object System.Collections.ArrayList
     foreach ($feature in $features)
@@ -35,7 +35,7 @@ function Update-AdminFile
     if ($invalidFeatures.Count -gt 0)
     {
         $errorMessage = "Invalid feature name(s): $invalidFeatures"
-        $validFeatureNames = $selectableItemCustomizations.ChildNodes | Select-Object -ExpandProperty Id
+        $validFeatureNames = $selectableItemCustomizations.ChildNodes | Where-Object { $_.NodeType -eq 'Element' } | Select-Object -ExpandProperty Id
         Write-Warning $errorMessage
         Write-Warning "Valid feature names are: $validFeatureNames"
         throw $errorMessage

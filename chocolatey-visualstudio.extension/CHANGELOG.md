@@ -10,6 +10,8 @@
  Supported by Install-VisualStudio.
 - For compatibility with existing VS 2015 packages, Install-VisualStudio also recognizes an environment variable named 'visualStudio:setupFolder' and will attempt to use the installer executable from there, unless the bootstrapperPath package parameter is present. The installer executable name is obtained from the Url parameter (vs_<ProductName>.exe) or, if the Url is not provided or does not contain the executable name, vs_Setup.exe is assumed.
 - New package parameter: '--RegenerateAdminFile'. When installing Visual Studio 2015, this parameter instructs the packages to create a fresh admin file by invoking the VS installer with the /CreateAdminFile option, instead of using the default admin file embedded in the package. This can be used to ensure that feature names passed via the --Features package parameter are up to date and will be recognized by the VS installer (some feature names tend to change with minor VS installer updates), because the package will raise an error if one of the features specified by the user is not present in the admin file. Ignored for VS 2017.
+- Log files generated during VS 2015 installation now have unique names (with timestamps), preventing overwrite during repeated package installation attempts.
+- XML comments in VS 2015 admin files should not cause errors anymore.
 
 ## Version 1.5.1
 - Changed the method of locating the VS 2017 installer during modify and uninstall operations to not depend on Uninstall registry
