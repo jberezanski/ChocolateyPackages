@@ -96,7 +96,7 @@ Install-ChocolateyPackage
             $defaultAdminFile = (Join-Path $Env:ChocolateyPackageFolder 'tools\AdminDeployment.xml')
             Write-Debug "Default AdminFile: $defaultAdminFile"
 
-            $adminFile = Generate-AdminFile -parameters $packageParameters -defaultAdminFile $defaultAdminFile -packageName $PackageName -installSourceInfo $installSourceInfo -url $Url -checksum $Checksum -checksumType $ChecksumType
+            $adminFile = Generate-AdminFile -Parameters $packageParameters -DefaultAdminFile $defaultAdminFile -PackageName $PackageName -InstallSourceInfo $installSourceInfo -Url $Url -Checksum $Checksum -ChecksumType $ChecksumType
             Write-Debug "AdminFile: $adminFile"
 
             Update-AdminFile $packageParameters $adminFile

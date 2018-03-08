@@ -5,9 +5,11 @@ function Generate-AdminFile
     Param (
         [Parameter(Mandatory = $true)]
         [hashtable] $Parameters,
+        [Parameter(Mandatory = $true)]
         [string] $DefaultAdminFile,
         [Parameter(Mandatory = $true)]
         [string] $PackageName,
+        [Parameter(Mandatory = $true)]
         [PSObject] $InstallSourceInfo,
         [string] $Url,
         [string] $Checksum,
