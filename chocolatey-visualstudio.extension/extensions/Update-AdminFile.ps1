@@ -24,6 +24,7 @@ function Update-AdminFile
         $node = $selectableItemCustomizations.SelectSingleNode("*[@Id=""$feature""]")
         if ($node -ne $null)
         {
+            Write-Host "Enabling requested feature: $feature"
             $node.Selected = "yes"
             $selectedFeatures.Add($feature) | Out-Null
         }
@@ -46,7 +47,7 @@ function Update-AdminFile
     foreach ($nodeToRemove in $notSelectedNodes)
     {
         Write-Verbose "Removing not selected AdminDeployment node: $($nodeToRemove.Id)"
-        $nodeToRemove.ParentNode.RemoveChild($nodeToRemove)
+        $nodeToRemove.ParentNode.RemoveChild($nodeToRemove) | Out-Null
     }
     $xml.Save($adminFile)
 }
