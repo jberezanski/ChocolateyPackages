@@ -42,5 +42,11 @@ function Update-AdminFile
     }
     Write-Verbose "Features selected by default: $featuresSelectedByDefault"
     Write-Verbose "Features selected using package parameters: $selectedFeatures"
+    $notSelectedNodes = $xml.DocumentElement.SelectableItemCustomizations.ChildNodes | Where-Object { $_.NodeType -eq 'Element' -and $_.Selected -eq "no" }
+    foreach ($nodeToRemove in $notSelectedNodes)
+    {
+        Write-Verbose "Removing not selected AdminDeployment node: $($nodeToRemove.Id)"
+        $nodeToRemove.ParentNode.RemoveChild($nodeToRemove)
+    }
     $xml.Save($adminFile)
 }
