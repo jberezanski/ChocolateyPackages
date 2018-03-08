@@ -83,28 +83,28 @@ Install-ChocolateyPackage
         }
     }
 
-    if ($assumeNewVS2017Installer)
-    {
-        $adminFile = $null
-        $logFilePath = $null
-    }
-    else
-    {
-        $defaultAdminFile = (Join-Path $Env:ChocolateyPackageFolder 'tools\AdminDeployment.xml')
-        Write-Debug "Default AdminFile: $defaultAdminFile"
-
-        $adminFile = Generate-AdminFile $packageParameters $defaultAdminFile $PackageName
-        Write-Debug "AdminFile: $adminFile"
-
-        Update-AdminFile $packageParameters $adminFile
-
-        $logFilePath = Join-Path $Env:TEMP "${PackageName}.log"
-        Write-Debug "Log file path: $logFilePath"
-    }
-
     $installSourceInfo = Open-VSInstallSource -PackageParameters $packageParameters -Url $Url
     try
     {
+        if ($assumeNewVS2017Installer)
+        {
+            $adminFile = $null
+            $logFilePath = $null
+        }
+        else
+        {
+            $defaultAdminFile = (Join-Path $Env:ChocolateyPackageFolder 'tools\AdminDeployment.xml')
+            Write-Debug "Default AdminFile: $defaultAdminFile"
+
+            $adminFile = Generate-AdminFile -parameters $packageParameters -defaultAdminFile $defaultAdminFile -packageName $PackageName -installSourceInfo $installSourceInfo -url $Url -checksum $Checksum -checksumType $ChecksumType
+            Write-Debug "AdminFile: $adminFile"
+
+            Update-AdminFile $packageParameters $adminFile
+
+            $logFilePath = Join-Path $Env:TEMP ('{0}_{1:yyyyMMddHHmmss}.log' -f $PackageName, (Get-Date))
+            Write-Debug "Log file path: $logFilePath"
+        }
+
         $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer
 
         if ($creatingLayout)
