@@ -27,6 +27,7 @@ To find out what's new or to see the known issues, see the [Visual Studio 2017 R
 ### Customizations
 
 By default, the package installs only the bare minimum required (the MSBuild Tools workload). The easiest way to add more workloads is to use the workload packages:
+- [.NET Core build tools](https://chocolatey.org/packages/visualstudio2017-workload-netcorebuildtools)
 - [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2017-workload-vctools)
 - [Web development build tools](https://chocolatey.org/packages/visualstudio2017-workload-webbuildtools).
 
@@ -54,6 +55,8 @@ If control over reboots is required, it is advisable to install the dependencies
 15.2.26430.20170605:
 - Package metadata updated for Visual Studio 2017 version 15.2.26430.12 (the native installer always installs the latest released Visual Studio 2017 build).
 - To avoid problems with upgrade, installation is skipped if the product is already installed.
+vNext:
+- Added a link to the .NET Core Build Tools workload package.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.4.0" />
