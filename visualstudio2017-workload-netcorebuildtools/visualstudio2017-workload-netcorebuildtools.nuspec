@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-workload-netcorebuildtools</id>
-    <version>1.0.0-rc1</version>
+    <version>1.0.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-netcorebuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET Core build tools workload for Visual Studio 2017 Build Tools</title>
@@ -55,7 +55,7 @@ Example 3. Installing the workload, including only required components:
 This workload requires Build Tools 15.3 or later, but the VS 2017 Chocolatey packages do not support upgrades yet and packages for 15.3 and later are not available. The published Build Tools 15.2 package will actually install the latest Build Tools published by Microsoft, so new instalations will be handled correctly. On existing installations of Build Tools 15.2 or older, the package will fail to install with a message instructing the user to upgrade the Build Tools first.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.6.0-rc8" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.6.0" />
       <!-- this should be 15.3 but there is no package for it yet -->
       <dependency id="visualstudio2017buildtools" version="15.2" />
     </dependencies>
