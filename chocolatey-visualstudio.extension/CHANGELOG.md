@@ -4,7 +4,7 @@
 - New helper: Install-VisualStudioVsixExtension. Supports Visual Studio 2010-2017 and replaces Install-ChocolateyVsixPackage.
 - New helper: Get-VisualStudioVsixInstaller.
 - Parameters: --add, --remove, --addProductLang and --removeProductLang can now be specified multiple times in package parameters ([GH-16](https://github.com/jberezanski/ChocolateyPackages/issues/16)).
-- Parameters: --add, --remove specified in package parameters are no longer ignored when adding/removing workloads and components.
+- Parameters: --add, --remove specified in package parameters are no longer ignored when adding/removing workloads and components ([GH-27](https://github.com/jberezanski/ChocolateyPackages/issues/27)).
 - New parameter for Add-VisualStudioWorkload and Add-VisualStudioComponent: -RequiredProductVersion. If a workload/component package provides a value for this parameter and a Visual Studio product supported by that package but not meeting this requirement is found, package installation will fail with a message asking the user to upgrade that product.
 - ISO mounting feature ported from existing VS 2015 packages. The ISO path can be specified in package parameters as '--IsoPath D:\path\vs.iso' or via an environment variable named 'visualStudio:isoImage'.
  Supported by Install-VisualStudio.
