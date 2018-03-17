@@ -17,12 +17,11 @@
     <summary>The .NET Framework is a development platform for building apps for web, Windows, Windows Phone, Windows Server, and Microsoft Azure.</summary>
     <description>The .NET Framework is a development platform for building apps for web, Windows, Windows Phone, Windows Server, and Microsoft Azure. It consists of the common language runtime (CLR) and the .NET Framework class library, which includes a broad range of functionality and support for many industry standards.
 
-The .NET Framework provides many services, including memory management, type and memory safety, security, networking, and application deployment. It provides easy-to-use data structures and APIs that abstract the lower-level Windows operating system. You can use a variety of programming languages with the .NET Framework, including C#, F#, and Visual Basic. 
+This is a **metapackage** intended to help transition from earlier Chocolatey .NET Framework packaging convention. Actual installation is performed by the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package.
 
-.NET Framework 4.7.2 is the next version of the .NET Framework. This release is feature complete and in the testing phase but is not supported for production use. The current Early Access build number being shared is 3052.
+Note that due to the way package dependencies work in Chocolatey, if you install this package and the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package is not installed yet, Chocolatey will install the *latest* [dotnetfx](https://chocolatey.org/packages/dotnetfx) package version, which may be newer than 4.7.2. If you need to install specifically .NET Framework 4.7.2, install that version of the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package (`choco install dotnetfx --version 4.7.2`).
 </description>
     <releaseNotes>
-This is a metapackage intended to help transition from earlier Chocolatey .NET Framework packaging convention. Actual installation is performed by the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package.
     </releaseNotes>
     <dependencies>
       <dependency id="dotnetfx" version="4.7.2.0-preview1" />
