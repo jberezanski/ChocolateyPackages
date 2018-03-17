@@ -1,0 +1,36 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>netfx-4.7.2-devpack</id>
+    <version>4.7.3056.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.7.2-devpack</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft .NET Framework 4.7.2 Developer Pack</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2018/03/08/net-framework-4-7-2-developer-pack-early-access-build-3056-is-available/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
+    <bugTrackerUrl>https://github.com/Microsoft/dotnet/issues</bugTrackerUrl>
+    <tags>microsoft .net framework 4.7.2 developer target targeting pack multi dotnet netfx admin</tags>
+    <summary>The .NET Framework 4.7.2 Developer Pack lets developers build applications that target the .NET Framework 4.7.2.</summary>
+    <description>The .NET Framework 4.7.2 Developer Pack lets developers build applications that target the .NET Framework 4.7.2 by using Visual Studio 2017, Visual Studio 2015 or other IDEs. This is a single package that bundles the .NET Framework 4.7.2, the .NET 4.7.2 Targeting Pack, and the .NET Framework 4.7.2 SDK.
+
+The main difference between the .NET Framework 4.7.2 preview build 3052 shared a few weeks back and this build (3056) is the Developer Pack. This pre-release build enables you to try out the new features available in .NET Framework 4.7.2. You can refer to the [Early Access build 3052 blogpost](https://blogs.msdn.microsoft.com/dotnet/2018/02/05/announcing-net-framework-4-7-2-early-access-build-3052/) for supported platforms and release notes.
+
+Note: this release is currently feature-complete and in the testing phase, but is not supported for production use.
+    </description>
+    <releaseNotes>
+##### Software
+[.NET Framework 4.7.2 Developer Pack preview build 3056 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/03/08/net-framework-4-7-2-developer-pack-early-access-build-3056-is-available/)
+##### Package
+4.7.3056.0: Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="KB2919355" version="1.0.20160915" />
+<!-- TODO: fix this once a matching runtime package is published -->
+<!--      <dependency id="dotnetfx" version="4.7.2" /> -->
+    </dependencies>
+  </metadata>
+</package>
