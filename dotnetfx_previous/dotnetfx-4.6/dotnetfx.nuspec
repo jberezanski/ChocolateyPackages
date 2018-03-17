@@ -22,7 +22,7 @@ The .NET Framework provides many services, including memory management, type and
 The Microsoft .NET Framework 4.6 is a highly compatible, in-place update to the Microsoft .NET Framework 4, 4.5, 4.5.1 and 4.5.2.
 You can see the full set of changes in the .NET Framework 4.6 in the [what's new list](https://docs.microsoft.com/en-us/dotnet/framework/whats-new/index#v46), [change list](https://github.com/Microsoft/dotnet/blob/master/releases/net46/dotnet46-changes.md) and [API diff](https://github.com/Microsoft/dotnet/blob/master/releases/net46/dotnet46-api-changes.md) on [GitHub](https://github.com/microsoft/dotnet).
 
-The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.6-devpack).</description>
+The matching Targeting Pack can be installed using [this package](https://chocolatey.org/packages/dotnet4.6-targetpack).</description>
     <releaseNotes>
 ##### Software
 [.NET Framework 4.6 announcement](https://blogs.msdn.microsoft.com/dotnet/2015/07/20/announcing-net-framework-4-6/)

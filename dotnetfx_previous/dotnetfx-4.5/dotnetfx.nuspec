@@ -22,7 +22,7 @@ The .NET Framework provides many services, including memory management, type and
 The Microsoft .NET Framework 4.5 is a highly compatible, in-place update to the Microsoft .NET Framework 4.
 You can see the changes in the .NET Framework 4.5 in the [what's new list](https://docs.microsoft.com/en-us/dotnet/framework/whats-new/index#v45).
 
-The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.5-devpack).</description>
+The matching Developer Pack is included in Visual Studio 2012, it is also available as part of the [Windows 8 SDK](https://developer.microsoft.com/en-us/windows/downloads/sdk-archive).</description>
     <releaseNotes>
 ##### Software
 [.NET Framework 4.5 announcement](https://blogs.msdn.microsoft.com/dotnet/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/)
