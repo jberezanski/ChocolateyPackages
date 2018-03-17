@@ -32,7 +32,6 @@ The matching Developer Pack can be installed using [this package](https://chocol
 4.5.2.0: Initial package release.
     </releaseNotes>
     <dependencies>
-      <dependency id="KB2919355" version="1.0.20160915" />
     </dependencies>
   </metadata>
 </package>
