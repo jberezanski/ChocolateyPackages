@@ -1,5 +1,5 @@
 ﻿$packageName = 'netfx-4.7.2-devpack'
-$url = 'http://download.microsoft.com/download/8/0/2/802C4F8E-954E-48E9-B621-39D966110D4F/NDP472-DevPack-ENU.exe'
+$url = 'https://download.microsoft.com/download/8/0/2/802C4F8E-954E-48E9-B621-39D966110D4F/NDP472-DevPack-ENU.exe'
 $checksum = '4238ABA129D2B77976C93D51252E5CF06B627B6E1685410DFC9CF35E971B4239'
 $checksumType = 'sha256'
 $arguments = @{
