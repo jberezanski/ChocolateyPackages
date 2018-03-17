@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.7.2-devpack</id>
-    <version>4.7.3056.0</version>
+    <version>4.7.2.0-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.7.2-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.7.2 Developer Pack</title>
@@ -25,7 +25,7 @@ Note: this release is currently feature-complete and in the testing phase, but i
 ##### Software
 [.NET Framework 4.7.2 Developer Pack preview build 3056 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/03/08/net-framework-4-7-2-developer-pack-early-access-build-3056-is-available/)
 ##### Package
-4.7.3056.0: Initial package release.
+4.7.2.0-preview1: Initial package release.
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />
