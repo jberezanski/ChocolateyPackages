@@ -1,0 +1,38 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>dotnetfx</id>
+    <version>4.5.1.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft .NET Framework 4.5.1</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/net/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/dotnet/framework/</docsUrl>
+    <bugTrackerUrl>https://github.com/Microsoft/dotnet/issues</bugTrackerUrl>
+    <tags>microsoft .net framework dotnet desktop clr redistributable runtime admin</tags>
+    <summary>The .NET Framework is a development platform for building apps for web, Windows, Windows Phone, Windows Server, and Microsoft Azure.</summary>
+    <description>The .NET Framework is a development platform for building apps for web, Windows, Windows Phone, Windows Server, and Microsoft Azure. It consists of the common language runtime (CLR) and the .NET Framework class library, which includes a broad range of functionality and support for many industry standards.
+
+The .NET Framework provides many services, including memory management, type and memory safety, security, networking, and application deployment. It provides easy-to-use data structures and APIs that abstract the lower-level Windows operating system. You can use a variety of programming languages with the .NET Framework, including C#, F#, and Visual Basic. 
+
+The Microsoft .NET Framework 4.5.1 is a highly compatible, in-place update to the Microsoft .NET Framework 4 and 4.5.
+You can see the changes in the .NET Framework 4.5.1 in the [what's new list](https://docs.microsoft.com/en-us/dotnet/framework/whats-new/index#v451).
+
+The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.5.1-devpack).</description>
+    <releaseNotes>
+##### Software
+[.NET Framework 4.5.1 announcement](https://blogs.msdn.microsoft.com/dotnet/2013/10/17/net-framework-4-5-1-rtm-start-coding/)
+[.NET Framework 4.5.1 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net451/README.md)
+[.NET Framework 4.5.1 known issues](https://support.microsoft.com/en-us/help/2890857/known-issues-for-the-.net-framework-4.5.1)
+##### Package
+4.5.1.0: Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="KB2919355" version="1.0.20160915" />
+    </dependencies>
+  </metadata>
+</package>
