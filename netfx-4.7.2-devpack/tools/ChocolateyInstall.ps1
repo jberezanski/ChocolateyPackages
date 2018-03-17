@@ -1,17 +1,11 @@
 ﻿. (Join-Path -Path (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition) -ChildPath 'helpers.ps1')
 
-$packageName = 'dotnetfx'
-$release = 461804
+$packageName = 'netfx-4.7.2-devpack'
 $version = '4.7.2'
-$productNameWithVersion = "Microsoft .NET Framework $version early access build 3052"
-$url = 'https://download.microsoft.com/download/1/6/8/16836289-8414-4AF6-805F-27A4714FF242/NDP472-KB4038188-x86-x64-AllOS-ENU.exe'
-$checksum = '2A7566EEE290B17D9DDB1BECC34791B74C0A8B34497A374AF35E2EA16920D535'
+$productNameWithVersion = "Microsoft .NET Framework $version Developer Pack early access build 3056"
+$url = 'https://download.microsoft.com/download/8/0/2/802C4F8E-954E-48E9-B621-39D966110D4F/NDP472-DevPack-ENU.exe'
+$checksum = '4238ABA129D2B77976C93D51252E5CF06B627B6E1685410DFC9CF35E971B4239'
 $checksumType = 'sha256'
-
-if (Test-Installed -Release $release) {
-    Write-Host "$productNameWithVersion or later is already installed."
-    return
-}
 
 $originalFileName = Split-Path -Leaf -Path ([uri]$url).LocalPath
 $downloadFilePath = Get-DefaultChocolateyLocalFilePath -OriginalFileName $originalFileName
@@ -48,7 +42,7 @@ if ($Env:ChocolateyExitCode -eq '3010')
 else
 {
     if ($Env:ChocolateyExitCode -eq $null)
-    { 
+    {
         Write-Host "A restart may be required to finalize $productNameWithVersion installation."
     }
 }
