@@ -1,0 +1,17 @@
+dotnet4.6.2\dotnet4.6.2.nuspec
+dotnet4.7\dotnet4.7.nuspec
+dotnet4.7.1\dotnet4.7.1.nuspec
+dotnet4.7.2\dotnet4.7.2.nuspec
+dotnetfx\dotnetfx.nuspec
+dotnetfx_previous\dotnetfx-4.5\dotnetfx.nuspec
+dotnetfx_previous\dotnetfx-4.5.1\dotnetfx.nuspec
+dotnetfx_previous\dotnetfx-4.5.2\dotnetfx.nuspec
+dotnetfx_previous\dotnetfx-4.6\dotnetfx.nuspec
+dotnetfx_previous\dotnetfx-4.6.1\dotnetfx.nuspec
+dotnetfx_previous\dotnetfx-4.6.2\dotnetfx.nuspec
+dotnetfx_previous\dotnetfx-4.7\dotnetfx.nuspec
+dotnetfx_previous\dotnetfx-4.7.1\dotnetfx.nuspec
+netfx-4.6.2-devpack\netfx-4.6.2-devpack.nuspec
+netfx-4.7-devpack\netfx-4.7-devpack.nuspec
+netfx-4.7.1-devpack\netfx-4.7-devpack.nuspec
+netfx-4.7.2-devpack\netfx-4.7-devpack.nuspec
