@@ -54,6 +54,19 @@ function Test-AzurePowerShellInstalled
     }
 }
 
+function Invoke-Method
+{
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $true)] [object] $Object,
+        [Parameter(Mandatory = $true)] [string] $MethodName,
+        [Parameter(Mandatory = $true)] [AllowEmptyCollection()] [object[]] $ArgumentList
+    )
+
+    return $Object.GetType().InvokeMember($MethodName, 'Public, Instance, InvokeMethod', $null, $Object, $ArgumentList)
+}
+
 function New-ModifiedAzurePowerShellInstaller
 {
     [CmdletBinding()]
@@ -64,7 +77,9 @@ function New-ModifiedAzurePowerShellInstaller
     )
 
     $originalMsi = Get-Item -Path $OriginalMsiPath
-    $modifiedMsiPath = Join-Path -Path (Split-Path -Path $OriginalMsiPath -Parent) -ChildPath ('{0}_patched{1}' -f $originalMsi.BaseName, $originalMsi.Extension)
+    # Curiously, Join-Path seems to return an object which "looks" like System.String but is not accepted by COM
+    # (OpenDatabase throws DISP_E_TYPEMISMATCH). An explicit cast to [string] prevents that.
+    [string]$modifiedMsiPath = Join-Path -Path (Split-Path -Path $OriginalMsiPath -Parent) -ChildPath ('{0}_patched{1}' -f $originalMsi.BaseName, $originalMsi.Extension)
 
     Write-Debug "Creating $modifiedMsiPath as a copy of $OriginalMsiPath"
     $originalMsi | Copy-Item -Destination $modifiedMsiPath -Force
@@ -77,17 +92,17 @@ function New-ModifiedAzurePowerShellInstaller
     try
     {
         Write-Debug "Opening MSI $modifiedMsiPath"
-        $db = $wi.OpenDatabase($modifiedMsiPath, $script:msiOpenDatabaseModeTransact)
+        $db = Invoke-Method -Object $wi -MethodName OpenDatabase -ArgumentList @($modifiedMsiPath, $script:msiOpenDatabaseModeTransact)
         try
         {
             Write-Debug "Opening view with query: $query"
-            $v = $db.OpenView($query)
+            $v = Invoke-Method -Object $db -MethodName OpenView -ArgumentList @($query)
             try
             {
                 Write-Debug 'Executing query'
-                $v.Execute() | Out-Null
+                Invoke-Method -Object $v -MethodName Execute -ArgumentList @() | Out-Null
                 Write-Debug 'Closing view'
-                $v.Close() | Out-Null
+                Invoke-Method -Object $v -MethodName Close -ArgumentList @() | Out-Null
             }
             finally
             {
@@ -96,7 +111,7 @@ function New-ModifiedAzurePowerShellInstaller
             }
 
             Write-Debug 'Committing MSI changes'
-            $db.Commit() | Out-Null
+            Invoke-Method -Object $db -MethodName Commit -ArgumentList @() | Out-Null
         }
         finally
         {
@@ -124,24 +139,25 @@ function New-AzurePowerShellInstallerTransform
 
     $originalMsi = Get-Item -Path $OriginalMsiPath
     $modifiedMsiPath = New-ModifiedAzurePowerShellInstaller @PSBoundParameters
-    $transformPath = Join-Path -Path (Split-Path -Path $OriginalMsiPath -Parent) -ChildPath ('{0}_transform.mst' -f $originalMsi.BaseName)
+    # explicit cast to [string] explained in New-ModifiedAzurePowerShellInstaller
+    [string]$transformPath = Join-Path -Path (Split-Path -Path $OriginalMsiPath -Parent) -ChildPath ('{0}_transform.mst' -f $originalMsi.BaseName)
 
     Write-Debug 'Creating WindowsInstaller.Installer object'
     $wi = New-Object -ComObject WindowsInstaller.Installer
     try
     {
         Write-Debug "Opening MSI $modifiedMsiPath (read-only)"
-        $db = $wi.OpenDatabase($modifiedMsiPath, $script:msiOpenDatabaseModeReadOnly)
+        $db = Invoke-Method -Object $wi -MethodName OpenDatabase -ArgumentList @($modifiedMsiPath, $script:msiOpenDatabaseModeReadOnly)
         try
         {
             Write-Debug "Opening MSI $OriginalMsiPath (read-only)"
-            $dbOrig = $wi.OpenDatabase($OriginalMsiPath, $script:msiOpenDatabaseModeReadOnly)
+            $dbOrig = Invoke-Method -Object $wi -MethodName OpenDatabase -ArgumentList @($OriginalMsiPath, $script:msiOpenDatabaseModeReadOnly)
             try
             {
                 Write-Debug "Generating transform $transformPath"
-                $db.GenerateTransform($dbOrig, $transformPath) | Out-Null
+                Invoke-Method -Object $db -MethodName GenerateTransform -ArgumentList @($dbOrig, $transformPath) | Out-Null
                 Write-Debug "Creating transform summary info in $transformPath"
-                $db.CreateTransformSummaryInfo($dbOrig, $transformPath, $msiTransformErrorNone, $msiTransformValidationNone) | Out-Null
+                Invoke-Method -Object $db -MethodName CreateTransformSummaryInfo -ArgumentList @($dbOrig, $transformPath, $msiTransformErrorNone, $msiTransformValidationNone) | Out-Null
             }
             finally
             {
