@@ -1,7 +1,10 @@
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 2
 
+Set-Variable -Option Constant -Scope Script -Name msiOpenDatabaseModeReadOnly -Value 0
 Set-Variable -Option Constant -Scope Script -Name msiOpenDatabaseModeTransact -Value 1
+Set-Variable -Option Constant -Scope Script -Name msiTransformErrorNone -Value 0
+Set-Variable -Option Constant -Scope Script -Name msiTransformValidationNone -Value 0
 
 function Ensure-RequiredPowerShellVersionPresent
 {
@@ -108,4 +111,55 @@ function New-ModifiedAzurePowerShellInstaller
     }
 
     return $modifiedMsiPath
+}
+
+function New-AzurePowerShellInstallerTransform
+{
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $true)] [string] $OriginalMsiPath,
+        [Parameter(Mandatory = $true)] [string[]] $ActionsToRemove
+    )
+
+    $originalMsi = Get-Item -Path $OriginalMsiPath
+    $modifiedMsiPath = New-ModifiedAzurePowerShellInstaller @PSBoundParameters
+    $transformPath = Join-Path -Path (Split-Path -Path $OriginalMsiPath -Parent) -ChildPath ('{0}_transform.mst' -f $originalMsi.BaseName)
+
+    Write-Debug 'Creating WindowsInstaller.Installer object'
+    $wi = New-Object -ComObject WindowsInstaller.Installer
+    try
+    {
+        Write-Debug "Opening MSI $modifiedMsiPath (read-only)"
+        $db = $wi.OpenDatabase($modifiedMsiPath, $script:msiOpenDatabaseModeReadOnly)
+        try
+        {
+            Write-Debug "Opening MSI $OriginalMsiPath (read-only)"
+            $dbOrig = $wi.OpenDatabase($OriginalMsiPath, $script:msiOpenDatabaseModeReadOnly)
+            try
+            {
+                Write-Debug "Generating transform $transformPath"
+                $db.GenerateTransform($dbOrig, $transformPath) | Out-Null
+                Write-Debug "Creating transform summary info in $transformPath"
+                $db.CreateTransformSummaryInfo($dbOrig, $transformPath, $msiTransformErrorNone, $msiTransformValidationNone) | Out-Null
+            }
+            finally
+            {
+                [Runtime.InteropServices.Marshal]::ReleaseComObject($dbOrig) | Out-Null
+                $dbOrig = $null
+            }
+        }
+        finally
+        {
+            [Runtime.InteropServices.Marshal]::ReleaseComObject($db) | Out-Null
+            $db = $null
+        }
+    }
+    finally
+    {
+        [Runtime.InteropServices.Marshal]::ReleaseComObject($wi) | Out-Null
+        $wi = $null
+    }
+
+    return $transformPath
 }

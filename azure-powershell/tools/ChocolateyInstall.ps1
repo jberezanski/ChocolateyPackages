@@ -32,13 +32,13 @@ Get-ChocolateyWebFile @downloadArguments | Out-Null
 Set-StrictMode -Version 2
 
 Write-Host 'Modifying the Azure PowerShell installer to prevent it from killing powershell.exe and adjusting the execution policy'
-$modifiedMsiLocalPath = New-ModifiedAzurePowerShellInstaller -OriginalMsiPath $originalMsiLocalPath -ActionsToRemove @('WixCloseApplications', 'SetExecutionPolicy')
+$transformLocalPath = New-AzurePowerShellInstallerTransform -OriginalMsiPath $originalMsiLocalPath -ActionsToRemove @('WixCloseApplications', 'SetExecutionPolicy')
 
 $instArguments = @{
     packageName = $packageName
     installerType = 'msi'
-    file = $modifiedMsiLocalPath
-    silentArgs = '/Quiet /NoRestart /Log "{0}\{1}_{2:yyyyMMddHHmmss}.log"' -f $Env:TEMP, $packageName, (Get-Date)
+    file = $originalMsiLocalPath
+    silentArgs = '/Quiet /NoRestart /Log "{0}\{1}_{2:yyyyMMddHHmmss}.log" TRANSFORMS="{3}"' -f $Env:TEMP, $packageName, (Get-Date), $transformLocalPath
     validExitCodes = @(
         0, # success
         3010 # success, restart required
