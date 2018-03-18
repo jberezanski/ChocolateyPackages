@@ -161,5 +161,8 @@ function New-AzurePowerShellInstallerTransform
         $wi = $null
     }
 
+    Write-Debug "Removing $modifiedMsiPath"
+    Remove-Item -Path $modifiedMsiPath -ErrorAction SilentlyContinue
+
     return $transformPath
 }
