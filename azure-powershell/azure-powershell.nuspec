@@ -34,4 +34,7 @@ This package modifies the Azure PowerShell installation process in order to stop
       <!-- <dependency id="powershell" version="3.0" /> -->
     </dependencies>
   </metadata>
+  <files>
+    <file src="tools\*.ps1" target="tools" />
+  </files>
 </package>
