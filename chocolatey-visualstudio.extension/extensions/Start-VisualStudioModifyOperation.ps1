@@ -61,15 +61,6 @@
         }
     }
 
-    # TODO: move this closer to actual installer/bootstrapper invocation
-    $baseArgumentSet['norestart'] = ''
-    if (-not $baseArgumentSet.ContainsKey('quiet') -and -not $baseArgumentSet.ContainsKey('passive'))
-    {
-        $baseArgumentSet['quiet'] = ''
-    }
-
-    Remove-NegatedArguments -Arguments $baseArgumentSet -RemoveNegativeSwitches
-
     $argumentSets = ,$baseArgumentSet
     if ($baseArgumentSet.ContainsKey('installPath'))
     {
@@ -243,7 +234,10 @@
             }
         }
 
-        # TODO: use bootstrapper if possible (layout or $BootstrapperUrl)
+        # TODO: use bootstrapper if possible (layout or $BootstrapperUrl) and operation is 'update'
+        # that way, users can expect that packages using Install-VisualStudio will always call the bootstrapper
+        # and workload packages will always call the installer, so the users will know which arguments will
+        # be supported in each case.
 
         if ($installer -eq $null)
         {
@@ -272,6 +266,14 @@
                 $argumentSet['layoutPath'] = $layoutPath
             }
         }
+
+        $argumentSet['norestart'] = ''
+        if (-not $argumentSet.ContainsKey('quiet') -and -not $argumentSet.ContainsKey('passive'))
+        {
+            $argumentSet['quiet'] = ''
+        }
+
+        Remove-NegatedArguments -Arguments $argumentSet -RemoveNegativeSwitches
 
         $blacklist = @('bootstrapperPath', 'installLayoutPath')
         Remove-VSPackageParametersNotPassedToNativeInstaller -PackageParameters $argumentSet -TargetDescription 'VS Installer' -Blacklist $blacklist
