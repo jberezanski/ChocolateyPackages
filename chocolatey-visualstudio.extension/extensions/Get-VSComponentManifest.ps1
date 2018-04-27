@@ -9,7 +9,16 @@ function Get-VSComponentManifest
         [switch] $UseInstallChannelUri
     )
 
-    $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
+    # look in LayoutPath only if --noWeb
+    if ($packageParameters.ContainsKey('noWeb'))
+    {
+        Write-Debug 'Not looking in LayoutPath because --noWeb was passed in package parameters'
+        $layoutPath = $null
+    }
+    else
+    {
+        $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
+    }
 
     if ($ChannelManifest -eq $null)
     {
@@ -26,7 +35,6 @@ function Get-VSComponentManifest
         return $null
     }
 
-    # TODO: look in LayoutPath only if --noWeb
     # -Checksum and -ChecksumType are not passed, because the info from the channel manifest seems bogus - does not match reality
     $catalogManifest = Get-VSManifest -Description 'catalog manifest' -Url $url -LayoutFileName 'Catalog.json' -LayoutPath $layoutPath
 

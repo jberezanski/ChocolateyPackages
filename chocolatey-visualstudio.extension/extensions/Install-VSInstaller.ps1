@@ -85,7 +85,6 @@ function Install-VSInstaller
     }
 
     # if installing from layout, check for existence of vs_installer.opc and auto add --offline
-    # TODO: only if --noWeb or if the version in layout will satisfy version requirements
     if (-not $packageParameters.ContainsKey('offline'))
     {
         $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
@@ -94,8 +93,17 @@ function Install-VSInstaller
             $installerOpcPath = Join-Path -Path $layoutPath -ChildPath 'vs_installer.opc'
             if (Test-Path -Path $installerOpcPath)
             {
-                Write-Debug "Using the VS Installer package present in the layout path: $installerOpcPath"
-                $packageParameters['offline'] = $installerOpcPath
+                Write-Debug "The VS Installer package is present in the layout path: $installerOpcPath"
+                # TODO: also if the version in layout will satisfy version requirements
+                if ($packageParameters.ContainsKey('noWeb'))
+                {
+                    Write-Debug "Using the VS Installer package present in the layout path because --noWeb was passed in package parameters"
+                    $packageParameters['offline'] = $installerOpcPath
+                }
+                else
+                {
+                    Write-Debug "Not using the VS Installer package present in the layout path because --noWeb was not passed in package parameters"
+                }
             }
         }
     }

@@ -5,7 +5,8 @@ function Get-VSChannelManifest
     (
         [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
         [PSObject] $ProductReference,
-        [switch] $UseInstallChannelUri
+        [switch] $UseInstallChannelUri,
+        [string] $LayoutPath
     )
 
     $manifestUri = $null
@@ -101,9 +102,24 @@ function Get-VSChannelManifest
         Write-Debug "Fallback: using hardcoded channel manifest URI: '$manifestUri'"
     }
 
-    # TODO: look in LayoutPath only if --noWeb
-    $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
-    $manifest = Get-VSManifest -Description 'channel manifest' -Url $manifestUri -LayoutFileName 'ChannelManifest.json' -LayoutPath $layoutPath
+    if ($LayoutPath -eq '')
+    {
+        # look in LayoutPath only if --noWeb
+        if ($packageParameters.ContainsKey('noWeb'))
+        {
+            Write-Debug 'Not looking in LayoutPath because --noWeb was passed in package parameters'
+        }
+        else
+        {
+            $LayoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
+        }
+    }
+    else
+    {
+        Write-Debug "Using provided LayoutPath: $LayoutPath"
+    }
+
+    $manifest = Get-VSManifest -Description 'channel manifest' -Url $manifestUri -LayoutFileName 'ChannelManifest.json' -LayoutPath $LayoutPath
 
     return $manifest
 }
