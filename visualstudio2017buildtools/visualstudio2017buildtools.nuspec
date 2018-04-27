@@ -59,7 +59,7 @@ vNext:
 - Added a link to the .NET Core Build Tools workload package.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.6.0-dev" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.7.0-dev" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnet4.6.1" version="4.6.01055.20161213" />
