@@ -223,8 +223,17 @@
 
         if ($shouldFixInstaller -or ($Operation -ne 'uninstall' -and -not $installerUpdated))
         {
-            # TODO: $useInstallChannelUri only if --noWeb
-            $useInstallChannelUri = $Operation -ne 'update'
+            if ($Operation -ne 'update' -and $argumentSet.ContainsKey('noWeb'))
+            {
+                Write-Debug 'InstallChannelUri will be used for VS Installer update because operation is not "update" and --noWeb was passed in package parameters'
+                $useInstallChannelUri = $true
+            }
+            else
+            {
+                Write-Debug 'InstallChannelUri will not be used for VS Installer update because either operation is "update" or --noWeb was not passed in package parameters'
+                $useInstallChannelUri = $false
+            }
+
             if ($PSCmdlet.ShouldProcess("Visual Studio Installer", "update"))
             {
                 Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $thisProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -UseInstallChannelUri:$useInstallChannelUri
