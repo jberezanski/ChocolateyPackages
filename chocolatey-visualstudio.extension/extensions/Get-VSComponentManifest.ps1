@@ -23,6 +23,9 @@ function Get-VSComponentManifest
         return $null
     }
 
+    # TODO: if bootstrapperPath present, check for existence of Catalog.json instead of downloading the VS component manifest
+    # TODO: same for installLayoutPath
+
     # TODO: pass -LayoutPath
     # TODO: pass -Checksum and -ChecksumType
     $catalogManifest = Get-VSManifest -Description 'catalog manifest' -Url $url -LayoutFileName 'Catalog.json'
