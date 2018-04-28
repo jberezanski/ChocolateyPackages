@@ -134,17 +134,6 @@ Install-ChocolateyPackage
             Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $productReference -Url $Url -Checksum $Checksum -ChecksumType $ChecksumType
         }
 
-        if ($packageParameters.ContainsKey('bootstrapperPath'))
-        {
-            $installerFilePath = $packageParameters['bootstrapperPath']
-            $packageParameters.Remove('bootstrapperPath')
-            Write-Debug "User-provided bootstrapper path: $installerFilePath"
-        }
-        else
-        {
-            $installerFilePath = $null
-        }
-
         $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer
 
         $arguments = @{
