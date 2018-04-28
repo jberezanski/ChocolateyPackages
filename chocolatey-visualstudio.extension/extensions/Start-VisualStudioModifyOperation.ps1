@@ -179,7 +179,7 @@
             {
                 if ($DesiredProductVersion -le $existingProductVersion)
                 {
-                    Write-Verbose ('Product at path ''{0}'' will not be updated because its version ({1}) is greater or equal than the desired version of {2}.' -f $productInfo.installationPath, $existingProductVersion, $DesiredProductVersion)
+                    Write-Verbose ('Product at path ''{0}'' will not be updated because its version ({1}) is greater than or equal to the desired version of {2}.' -f $productInfo.installationPath, $existingProductVersion, $DesiredProductVersion)
                     continue
                 }
                 else
@@ -203,12 +203,14 @@
     {
         if ($argumentSet.ContainsKey('installPath'))
         {
-            Write-Debug "Modifying Visual Studio product: [installPath = '$($argumentSet.installPath)']"
+            $productDescription = "Visual Studio product: [installPath = '$($argumentSet.installPath)']"
         }
         else
         {
-            Write-Debug "Modifying Visual Studio product: [productId = '$($argumentSet.productId)' channelId = '$($argumentSet.channelId)']"
+            $productDescription = "Visual Studio product: [productId = '$($argumentSet.productId)' channelId = '$($argumentSet.channelId)']"
         }
+
+        Write-Debug "Modifying $productDescription"
 
         $thisProductReference = $ProductReference
         if ($argumentSet.ContainsKey('__internal_productReference'))
@@ -309,7 +311,27 @@
                 $exitCode = $auxExitCode
             }
 
-            # TODO: if update, Resolve-VSProductInstance, get current version, compare with $DesiredProductVersion and throw if not updated
+            if ($Operation -eq 'update')
+            {
+                $instance = Resolve-VSProductInstance -ProductReference $productReference -PackageParameters $packageParameters
+                if (($instance | Measure-Object).Count -eq 1)
+                {
+                    $currentProductVersion = [version]$productInfo.installationVersion
+                    if ($DesiredProductVersion -ne $null)
+                    {
+                        if ($currentProductVersion -ge $DesiredProductVersion)
+                        {
+                            Write-Debug "After update operation, $productDescription is at version $currentProductVersion, which is greater than or equal to the desired version ($DesiredProductVersion)."
+                        }
+                        else
+                        {
+                            throw "After update operation, $productDescription is at version $currentProductVersion, which is lower than the desired version ($DesiredProductVersion). This means the update failed."
+                        }
+                    }
+
+                    Write-Verbose "$productDescription is now at version $currentProductVersion."
+                }
+            }
         }
 
         if ($overallExitCode -eq 0)
