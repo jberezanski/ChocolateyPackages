@@ -71,7 +71,7 @@ Install-ChocolateyPackage
             # there is a single Programs and Features entry for all products, so its presence is not enough
             if ($productReference -ne $null)
             {
-                $products = Get-WillowInstalledProducts | Where-Object { $_ -ne $null -and $_.channelId -eq $productReference.ChannelId -and $_.productId -eq $productReference.ProductId }
+                $products = Resolve-VSProductInstance -ProductReference $productReference -PackageParameters $packageParameters
                 $productsCount = ($products | Measure-Object).Count
                 Write-Verbose ("Found {0} installed Visual Studio product(s) with ChannelId = {1} and ProductId = {2}" -f $productsCount, $productReference.ChannelId, $productReference.ProductId)
                 if ($productsCount -gt 0)
