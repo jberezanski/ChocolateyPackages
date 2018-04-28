@@ -162,9 +162,9 @@
                 continue
             }
 
+            $existingProductVersion = [version]$productInfo.installationVersion
             if ($RequiredProductVersion -ne $null)
             {
-                $existingProductVersion = [version]$productInfo.installationVersion
                 if ($existingProductVersion -lt $RequiredProductVersion)
                 {
                     throw ('Product at path ''{0}'' will not be modified because its version ({1}) is lower than the required minimum ({2}). Please update the product first and reinstall this package.' -f $productInfo.installationPath, $existingProductVersion, $RequiredProductVersion)
@@ -175,7 +175,18 @@
                 }
             }
 
-            # TODO if $DesiredProductVersion is not null, check if product already at $DesiredProductVersion or later and skip it in that case
+            if ($Operation -eq 'update' -and $DesiredProductVersion -ne $null)
+            {
+                if ($DesiredProductVersion -le $existingProductVersion)
+                {
+                    Write-Verbose ('Product at path ''{0}'' will not be updated because its version ({1}) is greater or equal than the desired version of {2}.' -f $productInfo.installationPath, $existingProductVersion, $DesiredProductVersion)
+                    continue
+                }
+                else
+                {
+                    Write-Debug ('Product at path ''{0}'' will be updated because its version ({1}) is lower than the desired version of {2}.' -f $productInfo.installationPath, $existingProductVersion, $DesiredProductVersion)
+                }
+            }
 
             $argumentSet = $baseArgumentSet.Clone()
             $argumentSet['installPath'] = $productInfo.installationPath
