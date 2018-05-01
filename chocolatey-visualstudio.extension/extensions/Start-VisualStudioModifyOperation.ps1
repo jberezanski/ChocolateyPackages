@@ -18,8 +18,6 @@
     )
     Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType'";
 
-    Wait-VSInstallerProcesses -Behavior 'Fail'
-
     $frobbed, $frobbing, $frobbage = $OperationTexts
 
     if ($PackageParameters -eq $null)
@@ -303,15 +301,22 @@
         $silentArgs = ConvertTo-ArgumentString -InitialUnstructuredArguments @($Operation) -Arguments $argumentSet -Syntax 'Willow'
         $exitCode = -1
         $processed = $false
-        if ($PSCmdlet.ShouldProcess("Executable: $($installer.Path)", "Start with arguments: $silentArgs"))
+        if ($PSCmdlet.ShouldProcess("Executable: $($installer.Path)", "Install-VSChocolateyPackage with arguments: $silentArgs"))
         {
-            $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $installer.Path -validExitCodes @(0, 3010)
-            $auxExitCode = Wait-VSInstallerProcesses -Behavior 'Wait'
-            if ($auxExitCode -ne $null -and $exitCode -eq 0)
-            {
-                $exitCode = $auxExitCode
+            $arguments = @{
+                packageName = $PackageName
+                silentArgs = $silentArgs
+                url = $null
+                checksum = $null
+                checksumType = $null
+                logFilePath = $null
+                assumeNewVS2017Installer = $true
+                installerFilePath = $installer.Path
             }
-
+            $argumentsDump = ($arguments.GetEnumerator() | ForEach-Object { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
+            Write-Debug "Install-VSChocolateyPackage $argumentsDump"
+            Install-VSChocolateyPackage @arguments
+            $exitCode = [int]$Env:ChocolateyExitCode
             $processed = $true
         }
 
