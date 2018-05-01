@@ -12,6 +12,11 @@ function Assert-VSInstallerUpdated
         [switch] $UseInstallChannelUri
     )
 
+    if ($PackageParameters.ContainsKey('noUpdateInstaller'))
+    {
+        Write-Verbose "Skipping update of the VS Installer because --noUpdateInstaller was passed in package parameters"
+    }
+
     $requiredVersionInfo = Get-VSRequiredInstallerVersion -PackageParameters $PackageParameters -ProductReference $productReference -UseInstallChannelUri:$UseInstallChannelUri
     Install-VSInstaller `
         -RequiredInstallerVersion $requiredVersionInfo.Version `
