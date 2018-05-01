@@ -78,7 +78,19 @@ Install-ChocolateyPackage
                 {
                     if ($AllowUpdate)
                     {
-                        Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList @() -VisualStudioYear $VisualStudioYear -ApplicableProducts @($Product) -OperationTexts @('update', 'updating', 'update') -Operation 'update' -PackageParameters $packageParameters -BootstrapperUrl $Url -BootstrapperChecksum $Checksum -BootstrapperChecksumType $ChecksumType -ProductReference $productReference -DesiredProductVersion $DesiredProductVersion
+                        Start-VisualStudioModifyOperation `
+                            -PackageName $PackageName `
+                            -ArgumentList @() `
+                            -VisualStudioYear $VisualStudioYear `
+                            -ApplicableProducts @($Product) `
+                            -OperationTexts @('update', 'updating', 'update') `
+                            -Operation 'update' `
+                            -DesiredProductVersion $DesiredProductVersion `
+                            -PackageParameters $packageParameters `
+                            -BootstrapperUrl $Url `
+                            -BootstrapperChecksum $Checksum `
+                            -BootstrapperChecksumType $ChecksumType `
+                            -ProductReference $productReference
                     }
                     else
                     {
