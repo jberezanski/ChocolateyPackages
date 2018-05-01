@@ -302,6 +302,7 @@
 
         $silentArgs = ConvertTo-ArgumentString -InitialUnstructuredArguments @($Operation) -Arguments $argumentSet -Syntax 'Willow'
         $exitCode = -1
+        $processed = $false
         if ($PSCmdlet.ShouldProcess("Executable: $($installer.Path)", "Start with arguments: $silentArgs"))
         {
             $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $installer.Path -validExitCodes @(0, 3010)
@@ -311,26 +312,28 @@
                 $exitCode = $auxExitCode
             }
 
-            if ($Operation -eq 'update')
-            {
-                $instance = Resolve-VSProductInstance -ProductReference $productReference -PackageParameters $packageParameters
-                if (($instance | Measure-Object).Count -eq 1)
-                {
-                    $currentProductVersion = [version]$productInfo.installationVersion
-                    if ($DesiredProductVersion -ne $null)
-                    {
-                        if ($currentProductVersion -ge $DesiredProductVersion)
-                        {
-                            Write-Debug "After update operation, $productDescription is at version $currentProductVersion, which is greater than or equal to the desired version ($DesiredProductVersion)."
-                        }
-                        else
-                        {
-                            throw "After update operation, $productDescription is at version $currentProductVersion, which is lower than the desired version ($DesiredProductVersion). This means the update failed."
-                        }
-                    }
+            $processed = $true
+        }
 
-                    Write-Verbose "$productDescription is now at version $currentProductVersion."
+        if ($processed -and $Operation -eq 'update')
+        {
+            $instance = Resolve-VSProductInstance -ProductReference $productReference -PackageParameters $packageParameters
+            if (($instance | Measure-Object).Count -eq 1)
+            {
+                $currentProductVersion = [version]$productInfo.installationVersion
+                if ($DesiredProductVersion -ne $null)
+                {
+                    if ($currentProductVersion -ge $DesiredProductVersion)
+                    {
+                        Write-Debug "After update operation, $productDescription is at version $currentProductVersion, which is greater than or equal to the desired version ($DesiredProductVersion)."
+                    }
+                    else
+                    {
+                        throw "After update operation, $productDescription is at version $currentProductVersion, which is lower than the desired version ($DesiredProductVersion). This means the update failed."
+                    }
                 }
+
+                Write-Verbose "$productDescription is now at version $currentProductVersion."
             }
         }
 
