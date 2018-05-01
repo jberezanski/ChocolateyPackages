@@ -78,6 +78,10 @@ Install-ChocolateyPackage
                 {
                     if ($AllowUpdate)
                     {
+                        # The bootstrapper is used for updating (either from layout - indicated via bootstrapperPath, or downloaded from $Url).
+                        # That way, users can expect that packages using Install-VisualStudio will always call the bootstrapper
+                        # and workload packages will always call the installer, so the users will know which arguments will
+                        # be supported in each case.
                         Start-VisualStudioModifyOperation `
                             -PackageName $PackageName `
                             -ArgumentList @() `
@@ -90,7 +94,8 @@ Install-ChocolateyPackage
                             -BootstrapperUrl $Url `
                             -BootstrapperChecksum $Checksum `
                             -BootstrapperChecksumType $ChecksumType `
-                            -ProductReference $productReference
+                            -ProductReference $productReference `
+                            -UseBootstrapper
                     }
                     else
                     {

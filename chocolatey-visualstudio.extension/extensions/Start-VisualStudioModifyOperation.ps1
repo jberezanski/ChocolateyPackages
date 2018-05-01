@@ -14,7 +14,8 @@
         [string] $BootstrapperUrl,
         [string] $BootstrapperChecksum,
         [string] $BootstrapperChecksumType,
-        [PSObject] $ProductReference
+        [PSObject] $ProductReference,
+        [switch] $UseBootstrapper
     )
     Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType'";
 
@@ -193,6 +194,36 @@
         }
     }
 
+    $layoutPath = Resolve-VSLayoutPath -PackageParameters $baseArgumentSet
+    $nativeInstallerPath = $null
+    if ($UseBootstrapper)
+    {
+        $nativeInstallerDescription = 'VS Bootstrapper'
+        $nativeInstallerArgumentBlacklist = @('bootstrapperPath', 'layoutPath')
+        $layoutPathArgumentName = 'installLayoutPath'
+        if ($baseArgumentSet.ContainsKey('bootstrapperPath'))
+        {
+            $nativeInstallerPath = $baseArgumentSet['bootstrapperPath']
+            Write-Debug "Using bootstrapper path from package parameters: $nativeInstallerPath"
+        }
+        elseif ($BootstrapperUrl -ne '')
+        {
+            Write-Debug "Using bootstrapper url: $BootstrapperUrl"
+        }
+        else
+        {
+            throw 'When -UseBootstrapper is specified, BootstrapperUrl must not be empty and/or package parameters must contain bootstrapperPath'
+        }
+    }
+    else
+    {
+        $nativeInstallerDescription = 'VS Installer'
+        $nativeInstallerArgumentBlacklist = @('bootstrapperPath', 'installLayoutPath')
+        $layoutPathArgumentName = 'layoutPath'
+    }
+
+    Write-Debug "The $nativeInstallerDescription will be used as the native installer"
+
     $installer = $null
     $installerUpdated = $false
     $channelCacheCleared = $false
@@ -254,14 +285,16 @@
             }
         }
 
-        # TODO: use bootstrapper if possible (layout or $BootstrapperUrl) and operation is 'update'
-        # that way, users can expect that packages using Install-VisualStudio will always call the bootstrapper
-        # and workload packages will always call the installer, so the users will know which arguments will
-        # be supported in each case.
-
-        if ($installer -eq $null)
+        if (-not $UseBootstrapper)
         {
-            throw 'The Visual Studio Installer is not present. Unable to continue.'
+            if ($installer -eq $null)
+            {
+                throw 'The Visual Studio Installer is not present. Unable to continue.'
+            }
+            else
+            {
+                $nativeInstallerPath = $installer.Path
+            }
         }
 
         if ($Operation -ne 'uninstall' -and -not $channelCacheCleared)
@@ -277,13 +310,12 @@
         }
 
         # if updating/modifying from layout, auto add --layoutPath
-        if (-not $argumentSet.ContainsKey('layoutPath'))
+        if (-not $argumentSet.ContainsKey($layoutPathArgumentName))
         {
-            $layoutPath = Resolve-VSLayoutPath -PackageParameters $argumentSet
             if ($layoutPath -ne $null)
             {
                 Write-Debug "Using layout path: $layoutPath"
-                $argumentSet['layoutPath'] = $layoutPath
+                $argumentSet[$layoutPathArgumentName] = $layoutPath
             }
         }
 
@@ -294,24 +326,23 @@
         }
 
         Remove-NegatedArguments -Arguments $argumentSet -RemoveNegativeSwitches
-
-        $blacklist = @('bootstrapperPath', 'installLayoutPath')
-        Remove-VSPackageParametersNotPassedToNativeInstaller -PackageParameters $argumentSet -TargetDescription 'VS Installer' -Blacklist $blacklist
+        Remove-VSPackageParametersNotPassedToNativeInstaller -PackageParameters $argumentSet -TargetDescription $nativeInstallerDescription -Blacklist $nativeInstallerArgumentBlacklist
 
         $silentArgs = ConvertTo-ArgumentString -InitialUnstructuredArguments @($Operation) -Arguments $argumentSet -Syntax 'Willow'
+
         $exitCode = -1
         $processed = $false
-        if ($PSCmdlet.ShouldProcess("Executable: $($installer.Path)", "Install-VSChocolateyPackage with arguments: $silentArgs"))
+        if ($PSCmdlet.ShouldProcess("Executable: $nativeInstallerPath", "Install-VSChocolateyPackage with arguments: $silentArgs"))
         {
             $arguments = @{
                 packageName = $PackageName
                 silentArgs = $silentArgs
-                url = $null
-                checksum = $null
-                checksumType = $null
+                url = $BootstrapperUrl
+                checksum = $BootstrapperChecksum
+                checksumType = $BootstrapperChecksumType
                 logFilePath = $null
                 assumeNewVS2017Installer = $true
-                installerFilePath = $installer.Path
+                installerFilePath = $nativeInstallerPath
             }
             $argumentsDump = ($arguments.GetEnumerator() | ForEach-Object { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
             Write-Debug "Install-VSChocolateyPackage $argumentsDump"
