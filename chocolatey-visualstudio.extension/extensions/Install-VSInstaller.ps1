@@ -14,6 +14,7 @@ function Install-VSInstaller
       [switch] $UseInstallChannelUri
     )
     Write-Debug "Running 'Install-VSInstaller' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType RequiredInstallerVersion:'$RequiredInstallerVersion' RequiredEngineVersion:'$RequiredEngineVersion' Force:'$Force' UseInstallChannelUri:'$UseInstallChannelUri'";
+    $argumentSet = $PackageParameters.Clone()
 
     Write-Debug 'Determining whether the Visual Studio Installer needs to be installed/updated/reinstalled'
     $shouldUpdate = $false
@@ -85,9 +86,9 @@ function Install-VSInstaller
     }
 
     # if installing from layout, check for existence of vs_installer.opc and auto add --offline
-    if (-not $packageParameters.ContainsKey('offline'))
+    if (-not $argumentSet.ContainsKey('offline'))
     {
-        $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
+        $layoutPath = Resolve-VSLayoutPath -PackageParameters $argumentSet
         if ($layoutPath -ne $null)
         {
             $installerOpcPath = Join-Path -Path $layoutPath -ChildPath 'vs_installer.opc'
@@ -95,10 +96,10 @@ function Install-VSInstaller
             {
                 Write-Debug "The VS Installer package is present in the layout path: $installerOpcPath"
                 # TODO: also if the version in layout will satisfy version requirements
-                if ($packageParameters.ContainsKey('noWeb'))
+                if ($argumentSet.ContainsKey('noWeb'))
                 {
                     Write-Debug "Using the VS Installer package present in the layout path because --noWeb was passed in package parameters"
-                    $packageParameters['offline'] = $installerOpcPath
+                    $argumentSet['offline'] = $installerOpcPath
                 }
                 else
                 {
@@ -108,10 +109,10 @@ function Install-VSInstaller
         }
     }
 
-    if ($packageParameters.ContainsKey('bootstrapperPath'))
+    if ($argumentSet.ContainsKey('bootstrapperPath'))
     {
-        $installerFilePath = $packageParameters['bootstrapperPath']
-        $packageParameters.Remove('bootstrapperPath')
+        $installerFilePath = $argumentSet['bootstrapperPath']
+        $argumentSet.Remove('bootstrapperPath')
         Write-Debug "User-provided bootstrapper path: $installerFilePath"
     }
     else
@@ -119,7 +120,7 @@ function Install-VSInstaller
         $installerFilePath = $null
         if ($Url -eq '')
         {
-            $Url, $Checksum, $ChecksumType = Get-VSBootstrapperUrlFromChannelManifest -PackageParameters $PackageParameters -ProductReference $ProductReference -UseInstallChannelUri:$UseInstallChannelUri
+            $Url, $Checksum, $ChecksumType = Get-VSBootstrapperUrlFromChannelManifest -PackageParameters $argumentSet -ProductReference $ProductReference -UseInstallChannelUri:$UseInstallChannelUri
         }
     }
 
@@ -152,11 +153,11 @@ function Install-VSInstaller
     $vsSetupBootstrapperExe = Join-Path -Resolve -Path $extractedBoxPath -ChildPath 'vs_bootstrapper_d15\vs_setup_bootstrapper.exe'
 
     $whitelist = @('quiet', 'offline')
-    Remove-VSPackageParametersNotPassedToNativeInstaller -PackageParameters $PackageParameters -TargetDescription 'bootstrapper during VS Installer update' -Whitelist $whitelist
+    Remove-VSPackageParametersNotPassedToNativeInstaller -PackageParameters $argumentSet -TargetDescription 'bootstrapper during VS Installer update' -Whitelist $whitelist
 
     # --update must be last
-    $packageParameters['quiet'] = $null
-    $silentArgs = ConvertTo-ArgumentString -Arguments $packageParameters -FinalUnstructuredArguments @('--update') -Syntax 'Willow'
+    $argumentSet['quiet'] = $null
+    $silentArgs = ConvertTo-ArgumentString -Arguments $argumentSet -FinalUnstructuredArguments @('--update') -Syntax 'Willow'
     $arguments = @{
         packageName = 'Visual Studio Installer'
         silentArgs = $silentArgs
