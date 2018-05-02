@@ -32,6 +32,11 @@
             $argumentSet['quiet'] = ''
         }
 
+        $nativeInstallerDescription = 'VS Bootstrapper'
+        $nativeInstallerArgumentBlacklist = @('bootstrapperPath', 'layoutPath')
+        Remove-NegatedArguments -Arguments $argumentSet -RemoveNegativeSwitches
+        Remove-VSPackageParametersNotPassedToNativeInstaller -PackageParameters $argumentSet -TargetDescription $nativeInstallerDescription -Blacklist $nativeInstallerArgumentBlacklist
+
         $s = ConvertTo-ArgumentString -Arguments $argumentSet -Syntax 'Willow'
     }
     else
