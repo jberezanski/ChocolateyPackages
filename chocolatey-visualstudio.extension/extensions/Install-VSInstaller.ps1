@@ -123,6 +123,34 @@ function Install-VSInstaller
         }
     }
 
+    $boxExe = Get-VSWebFile `
+        -PackageName 'Visual Studio Installer' `
+        -DefaultFileName 'vs_setup.exe' `
+        -FileDescription 'installer executable' `
+        -Url $Url `
+        -Checksum $Checksum `
+        -ChecksumType $ChecksumType `
+        -LocalFilePath $installerFilePath
+
+    $chocTempDir = $env:TEMP
+    $tempDir = Join-Path $chocTempDir "$PackageName"
+    if ($env:packageVersion -ne $null) { $tempDir = Join-Path $tempDir "$env:packageVersion" }
+
+    $extractedBoxPath = Join-Path -Path $tempDir -ChildPath (Get-Item -Path $boxExe).BaseName
+    if (Test-Path -Path $extractedBoxPath)
+    {
+        Write-Debug "Removing already existing box extraction path: $extractedBoxPath"
+        Remove-Item -Path $extractedBoxPath -Recurse
+    }
+
+    Get-ChocolateyUnzip `
+        -PackageName 'Visual Studio Installer' `
+        -FileFullPath $boxExe `
+        -Destination $extractedBoxPath `
+        | Out-Null
+
+    $vsSetupBootstrapperExe = Join-Path -Resolve -Path $extractedBoxPath -ChildPath 'vs_bootstrapper_d15\vs_setup_bootstrapper.exe'
+
     $whitelist = @('quiet', 'offline')
     Remove-VSPackageParametersNotPassedToNativeInstaller -PackageParameters $PackageParameters -TargetDescription 'bootstrapper during VS Installer update' -Whitelist $whitelist
 
@@ -132,12 +160,9 @@ function Install-VSInstaller
     $arguments = @{
         packageName = 'Visual Studio Installer'
         silentArgs = $silentArgs
-        url = $Url
-        checksum = $Checksum
-        checksumType = $ChecksumType
+        file = $vsSetupBootstrapperExe
         logFilePath = $null
         assumeNewVS2017Installer = $true
-        installerFilePath = $installerFilePath
     }
     $argumentsDump = ($arguments.GetEnumerator() | ForEach-Object { '-{0}:''{1}''' -f $_.Key,"$($_.Value)" }) -join ' '
 
@@ -146,8 +171,8 @@ function Install-VSInstaller
     {
         $retry = $false
         $attempt += 1
-        Write-Debug "Install-VSChocolateyPackage $argumentsDump"
-        Install-VSChocolateyPackage @arguments
+        Write-Debug "Install-VSChocolateyInstallPackage $argumentsDump"
+        Install-VSChocolateyInstallPackage @arguments
 
         $updated = Get-VisualStudioInstaller
         if ($updated -eq $null)
