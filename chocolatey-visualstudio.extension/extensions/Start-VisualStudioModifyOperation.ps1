@@ -218,7 +218,7 @@
     else
     {
         $nativeInstallerDescription = 'VS Installer'
-        $nativeInstallerArgumentBlacklist = @('bootstrapperPath', 'installLayoutPath')
+        $nativeInstallerArgumentBlacklist = @('bootstrapperPath', 'installLayoutPath', 'wait')
         $layoutPathArgumentName = 'layoutPath'
     }
 
@@ -319,6 +319,7 @@
             }
         }
 
+        $argumentSet['wait'] = ''
         $argumentSet['norestart'] = ''
         if (-not $argumentSet.ContainsKey('quiet') -and -not $argumentSet.ContainsKey('passive'))
         {
