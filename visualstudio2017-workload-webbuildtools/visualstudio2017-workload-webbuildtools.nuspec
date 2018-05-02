@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-workload-webbuildtools</id>
-    <version>1.3.0-dev</version>
+    <version>1.3.0-rc1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-webbuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Web development build tools workload for Visual Studio 2017 Build Tools</title>
@@ -50,10 +50,10 @@ Example 3. Installing the workload, including only required components:
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.2.0: Added dependency on visualstudio2017buildtools, updated extension dependency to take advantage of parameter handling fixes.
+1.3.0: Updated extension dependency to take advantage of reliability improvements and offline installation support.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.7.0-dev" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.7.0-rc1" />
       <dependency id="visualstudio2017buildtools" version="15.0" />
     </dependencies>
   </metadata>
