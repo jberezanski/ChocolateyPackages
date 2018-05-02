@@ -59,9 +59,13 @@ function Wait-VSInstallerProcesses
                 }
                 Write-Warning "Waiting for the processes to finish..."
                 Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Waiting for the processes to finish' -f (Get-Date))
-                $vsInstallerProcesses | Wait-Process
+                $vsInstallerProcesses | Wait-Process -Timeout 60 -ErrorAction SilentlyContinue
                 foreach ($proc in $vsInstallerProcesses)
                 {
+                    if (-not $proc.HasExited)
+                    {
+                        continue
+                    }
                     if ($exitCode -eq $null)
                     {
                         $exitCode = $proc.ExitCode
@@ -122,9 +126,13 @@ function Wait-VSInstallerProcesses
                     $p.CloseMainWindow()
                 }
                 Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Waiting for all vs_installer.windows.exe processes to exit' -f (Get-Date))
-                $uninstallerProcesses | Wait-Process
+                $uninstallerProcesses | Wait-Process -Timeout 60 -ErrorAction SilentlyContinue
                 foreach ($proc in $uninstallerProcesses)
                 {
+                    if (-not $proc.HasExited)
+                    {
+                        continue
+                    }
                     if ($exitCode -eq $null)
                     {
                         $exitCode = $proc.ExitCode
