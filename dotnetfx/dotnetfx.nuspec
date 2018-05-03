@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnetfx</id>
-    <version>4.7.2.0-preview1</version>
+    <version>4.7.2.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.7.2</title>
@@ -19,9 +19,7 @@
 
 The .NET Framework provides many services, including memory management, type and memory safety, security, networking, and application deployment. It provides easy-to-use data structures and APIs that abstract the lower-level Windows operating system. You can use a variety of programming languages with the .NET Framework, including C#, F#, and Visual Basic. 
 
-.NET Framework 4.7.2 is the next version of the .NET Framework. This release is feature complete and in the testing phase but is not supported for production use. The current Early Access build number being shared is 3052.
-
-This pre-release build 3052 includes improvements in several areas:
+The .NET Framework 4.7.2 includes improvements in several areas:
 
 * [ASP.NET] Support for SameSite cookie in ASP.NET
 * [ASP.NET] Support for ASP.NET Dependency Injection
@@ -33,16 +31,16 @@ This pre-release build 3052 includes improvements in several areas:
 
 You can see the complete list of improvements in this build in the [release notes](https://github.com/Microsoft/dotnet-framework-early-access/tree/master/release-notes/build-3052/readme.md).
 
-The .NET Framework build 3052 will replace any existing .NET Framework 4 and later installation on your machine. This means all .NET Framework 4 and later applications on your machine will run on the .NET Framework early access builds upon installation. The .NET Framework build 3052 installs on Windows 10 Fall Creators Update, Windows 10 Creators Update, Windows 10 Anniversary Update, Windows 8.1, Windows 7 SP1, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 and Windows Server 2008 R2 SP1 OS platforms. .NET Framework build 3052 is also included in the next update for Windows 10.
+The .NET Framework 4.7.2 will replace any existing .NET Framework 4 and later installation on your machine. This means all .NET Framework 4 and later applications on your machine will run on the .NET Framework 4.7.2 upon installation. The .NET Framework 4.7.2 installs on Windows 10 Fall Creators Update, Windows 10 Creators Update, Windows 10 Anniversary Update, Windows 8.1, Windows 7 SP1, Windows Server version 1709, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 and Windows Server 2008 R2 SP1 OS platforms. .NET Framework 4.7.2 is also included in Windows 10 April 2018 Update.
 
 The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.7.2-devpack).</description>
     <releaseNotes>
 ##### Software
-[.NET Framework 4.7.2 build 3052 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/02/05/announcing-net-framework-4-7-2-early-access-build-3052/)
-[.NET Framework 4.7.2 build 3052 release notes](https://github.com/Microsoft/dotnet-framework-early-access/tree/master/release-notes/build-3052/readme.md)
-[.NET Framework 4.7.2 build 3052 changes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/build-3052/dotnet-build-3052-changes.md)
+[.NET Framework 4.7.2 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/)
+[.NET Framework 4.7.2 readme](https://github.com/Microsoft/dotnet/blob/master/releases/net472/README.md)
+[.NET Framework 4.7.2 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net472/dotnet472-changes.md)
 ##### Package
-4.7.2.0-preview1: Initial package release for early access build 3052.
+4.7.2.0: Initial package release for .NET Framework 4.7.2.
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />

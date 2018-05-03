@@ -1,11 +1,11 @@
 ﻿. (Join-Path -Path (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition) -ChildPath 'helpers.ps1')
 
 $packageName = 'dotnetfx'
-$release = 461804
+$release = 461808
 $version = '4.7.2'
-$productNameWithVersion = "Microsoft .NET Framework $version early access build 3052"
-$url = 'https://download.microsoft.com/download/1/6/8/16836289-8414-4AF6-805F-27A4714FF242/NDP472-KB4038188-x86-x64-AllOS-ENU.exe'
-$checksum = '2A7566EEE290B17D9DDB1BECC34791B74C0A8B34497A374AF35E2EA16920D535'
+$productNameWithVersion = "Microsoft .NET Framework $version"
+$url = 'https://download.microsoft.com/download/3/D/7/3D72C5C2-4CCB-4EEF-925D-B5FA33EAC25A/NDP472-KB4054530-x86-x64-AllOS-ENU.exe'
+$checksum = '41EEC7F2CFE216B7C063CA771485DCB18218EC329C48C80FD4AD1CDDDFABC506'
 $checksumType = 'sha256'
 
 if (Test-Installed -Release $release) {
@@ -26,7 +26,7 @@ $downloadArguments = @{
     checksumType64 = $checksumType
 }
 
-$filePath = Get-ChocolateyWebFile @downloadArguments
+Get-ChocolateyWebFile @downloadArguments | Out-Null
 
 $safeLogPath = Get-SafeLogPath
 $installerExeArguments = @{

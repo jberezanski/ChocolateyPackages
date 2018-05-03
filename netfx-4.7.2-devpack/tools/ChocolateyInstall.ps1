@@ -2,9 +2,9 @@
 
 $packageName = 'netfx-4.7.2-devpack'
 $version = '4.7.2'
-$productNameWithVersion = "Microsoft .NET Framework $version Developer Pack early access build 3056"
-$url = 'https://download.microsoft.com/download/8/0/2/802C4F8E-954E-48E9-B621-39D966110D4F/NDP472-DevPack-ENU.exe'
-$checksum = '4238ABA129D2B77976C93D51252E5CF06B627B6E1685410DFC9CF35E971B4239'
+$productNameWithVersion = "Microsoft .NET Framework $version Developer Pack"
+$url = 'https://download.microsoft.com/download/5/F/E/5FE505D0-E753-4F1A-B8D6-D9E73C0C28C7/NDP472-DevPack-ENU.exe'
+$checksum = '15916F064A0AD061463ACE80D9405F2D80D29655A13516F3676D421D0337D756'
 $checksumType = 'sha256'
 
 $originalFileName = Split-Path -Leaf -Path ([uri]$url).LocalPath
@@ -20,7 +20,7 @@ $downloadArguments = @{
     checksumType64 = $checksumType
 }
 
-$filePath = Get-ChocolateyWebFile @downloadArguments
+Get-ChocolateyWebFile @downloadArguments | Out-Null
 
 $safeLogPath = Get-SafeLogPath
 $installerExeArguments = @{
