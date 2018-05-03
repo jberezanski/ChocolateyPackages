@@ -29,8 +29,6 @@ The .NET Framework 4.7.2 includes improvements in several areas:
 * [BCL] Cryptography improvements
 * [WPF] Diagnostic enhancements
 
-You can see the complete list of improvements in this build in the [release notes](https://github.com/Microsoft/dotnet-framework-early-access/tree/master/release-notes/build-3052/readme.md).
-
 The .NET Framework 4.7.2 will replace any existing .NET Framework 4 and later installation on your machine. This means all .NET Framework 4 and later applications on your machine will run on the .NET Framework 4.7.2 upon installation. The .NET Framework 4.7.2 installs on Windows 10 Fall Creators Update, Windows 10 Creators Update, Windows 10 Anniversary Update, Windows 8.1, Windows 7 SP1, Windows Server version 1709, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 and Windows Server 2008 R2 SP1 OS platforms. .NET Framework 4.7.2 is also included in Windows 10 April 2018 Update.
 
 The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.7.2-devpack).</description>
