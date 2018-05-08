@@ -105,9 +105,9 @@ function Get-VSChannelManifest
     if ($LayoutPath -eq '')
     {
         # look in LayoutPath only if --noWeb
-        if ($packageParameters.ContainsKey('noWeb'))
+        if (-not $packageParameters.ContainsKey('noWeb'))
         {
-            Write-Debug 'Not looking in LayoutPath because --noWeb was passed in package parameters'
+            Write-Debug 'Not looking in LayoutPath because --noWeb was not passed in package parameters'
         }
         else
         {
