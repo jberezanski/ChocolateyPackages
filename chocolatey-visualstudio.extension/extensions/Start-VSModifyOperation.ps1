@@ -1,4 +1,4 @@
-﻿function Start-VisualStudioModifyOperation
+﻿function Start-VSModifyOperation
 {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
@@ -17,7 +17,7 @@
         [PSObject] $ProductReference,
         [switch] $UseBootstrapper
     )
-    Write-Debug "Running 'Start-VisualStudioModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType'";
+    Write-Debug "Running 'Start-VSModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType'";
 
     $frobbed, $frobbing, $frobbage = $OperationTexts
 

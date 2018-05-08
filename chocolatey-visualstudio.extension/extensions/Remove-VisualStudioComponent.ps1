@@ -17,5 +17,5 @@ function Remove-VisualStudioComponent
     Write-Debug "Running 'Remove-VisualStudioComponent' with PackageName:'$PackageName' Component:'$Component' VisualStudioYear:'$VisualStudioYear'";
     $argumentList = @('remove', "$Component")
 
-    Start-VisualStudioModifyOperation -PackageName $PackageName -ArgumentList $argumentList -VisualStudioYear $VisualStudioYear -ApplicableProducts $ApplicableProducts -OperationTexts @('uninstalled', 'uninstalling', 'uninstallation')
+    Start-VSModifyOperation -PackageName $PackageName -ArgumentList $argumentList -VisualStudioYear $VisualStudioYear -ApplicableProducts $ApplicableProducts -OperationTexts @('uninstalled', 'uninstalling', 'uninstallation')
 }
