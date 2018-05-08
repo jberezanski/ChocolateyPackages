@@ -40,7 +40,6 @@ Install-ChocolateyPackage
       [string] $ProgramsAndFeaturesDisplayName = $ApplicationName,
       [string] $VisualStudioYear,
       [string] $Product,
-      [switch] $AllowUpdate,
       [version] $DesiredProductVersion
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
@@ -49,7 +48,7 @@ Install-ChocolateyPackage
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName' VisualStudioYear:'$VisualStudioYear' Product:'$Product' AllowUpdate:'$AllowUpdate' DesiredProductVersion:'$DesiredProductVersion'";
+    Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName' VisualStudioYear:'$VisualStudioYear' Product:'$Product' DesiredProductVersion:'$DesiredProductVersion'";
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     $creatingLayout = $packageParameters.ContainsKey('layout')
@@ -76,8 +75,10 @@ Install-ChocolateyPackage
                 Write-Verbose ("Found {0} installed Visual Studio product(s) with ChannelId = {1} and ProductId = {2}" -f $productsCount, $productReference.ChannelId, $productReference.ProductId)
                 if ($productsCount -gt 0)
                 {
-                    if ($AllowUpdate)
+                    $allowUpdate = -not $packageParameters.ContainsKey('no-update')
+                    if ($allowUpdate)
                     {
+                        Write-Debug 'Updating existing VS instances is enabled (default)'
                         # The bootstrapper is used for updating (either from layout - indicated via bootstrapperPath, or downloaded from $Url).
                         # That way, users can expect that packages using Install-VisualStudio will always call the bootstrapper
                         # and workload packages will always call the installer, so the users will know which arguments will
@@ -99,6 +100,7 @@ Install-ChocolateyPackage
                     }
                     else
                     {
+                        Write-Debug 'Updating existing VS instances is disabled because --no-update was passed in package parameters'
                         Write-Warning "$ApplicationName is already installed. Please use the Visual Studio Installer to modify or repair it."
                     }
 

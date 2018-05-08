@@ -10,6 +10,10 @@
 
     cinst visualstudio2017professional --params "--locale en-US --addProductLang de-DE --addProductLang fr-FR --passive"
 
+##### Install the latest version of VS 2017 Professional from the Internet only if it is not installed yet (do not attempt to update already installed VS 2017 Professional instances). Use the language currently selected in the operating system by the user. Do not display any graphical progress information.
+
+    cinst visualstudio2017professional --params "--no-update"
+
 ##### Create an offline installation source ("layout") for the VS 2017 Build Tools, in English language.
 
     cinst visualstudio2017buildtools --params "--layout C:\VS 2017 BT 15.7.0 --lang en-US"

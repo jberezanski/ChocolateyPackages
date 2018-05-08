@@ -9,7 +9,7 @@
 - Package parameter '--noUpdateInstaller' can be specified to turn off the VS Installer repair/update logic listed above. To prevent this parameter from being passed to the native installer, specify also '--no-noUpdateInstaller'.
 - Package parameter '--installLayoutPath D:\Path' can be specified to indicate the offline installation source for VS workload/component addition (VS product installation/update still needs --bootstrapperPath).
 - Package parameter '--noWeb' can be specified for fully offline installation (no Internet access). Works only together with --bootstrapperPath (for product packages) or --installLayoutPath (for workload packages).
-- Install-VisualStudio can now update existing VS products.
+- Install-VisualStudio will now update existing VS products. To turn this off, specify '--no-update' in package parameters.
 
 ## Version 1.6.0
 
