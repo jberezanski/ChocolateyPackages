@@ -6,5 +6,4 @@
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'BuildTools' `
-    -VisualStudioYear '2017' `
-    -AllowUpdate
+    -VisualStudioYear '2017'
