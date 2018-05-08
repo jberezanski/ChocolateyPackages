@@ -309,13 +309,17 @@
             }
         }
 
-        # if updating/modifying from layout, auto add --layoutPath
+        # if updating/modifying from layout, auto add --layoutPath (VS Installer) or --installLayoutPath (VS Bootstrapper)
         if (-not $argumentSet.ContainsKey($layoutPathArgumentName))
         {
             if ($layoutPath -ne $null)
             {
                 Write-Debug "Using layout path: $layoutPath"
                 $argumentSet[$layoutPathArgumentName] = $layoutPath
+                if ($UseBootstrapper)
+                {
+                    Write-Debug 'Note: some older versions of the VS Setup Bootstrapper do not recognize the --installLayoutPath argument and, instead of consuming it, pass it unmodified to the VS Installer, which does not recognize it and signals an error. If installation fails, try suppressing the usage of this argument by passing --no-installLayoutPath in package parameters.'
+                }
             }
         }
 

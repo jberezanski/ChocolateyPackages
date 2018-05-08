@@ -12,15 +12,19 @@
 
 ##### Create an offline installation source ("layout") for the VS 2017 Build Tools, in English language.
 
-    cinst visualstudio2017buildtools --params "--layout C:\VS 2017 BT --lang en-US"
+    cinst visualstudio2017buildtools --params "--layout C:\VS 2017 BT 15.7.0 --lang en-US"
 
 ##### Install VS 2017 Build Tools or update all installed VS 2017 Build Tools instances, using files from the offline installation source (created earlier) if possible, but downloading any newer files from the Internet.
 
-    cinst visualstudio2017buildtools --params "--bootstrapperPath C:\VS 2017 BT\vs_BuildTools.exe"
+    cinst visualstudio2017buildtools --params "--bootstrapperPath C:\VS 2017 BT 15.7.0\vs_BuildTools.exe"
 
 ##### Install VS 2017 Build Tools or update all installed VS 2017 Build Tools instances, using only files from the offline installation source (created earlier), with no attempts to access the Internet.
 
-    cinst visualstudio2017buildtools --params "--bootstrapperPath C:\VS 2017 BT\vs_BuildTools.exe --noWeb"
+    cinst visualstudio2017buildtools --params "--bootstrapperPath C:\VS 2017 BT 15.7.0\vs_BuildTools.exe --noWeb"
+
+##### Install VS 2017 Build Tools or update all installed VS 2017 Build Tools instances, using only files from the offline installation source (created earlier), with no attempts to access the Internet, working around an issue with some older versions of the VS Setup Bootstrapper.
+
+    cinst visualstudio2017buildtools --params "--bootstrapperPath C:\VS 2017 BT 15.5.1\vs_BuildTools.exe --noWeb --no-installLayoutPath"
 
 ## Workload packages
 
