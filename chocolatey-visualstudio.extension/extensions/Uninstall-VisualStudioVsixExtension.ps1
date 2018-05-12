@@ -32,8 +32,7 @@ Alias: VisualStudioVersion
     Param
     (
         [Alias('Name')] [string] $PackageName,
-        [Alias('Id')] [string] $VsixId,
-        [Alias('VisualStudioVersion')] [int] $VsVersion
+        [Alias('Id')] [string] $VsixId
     )
 
     if ($Env:ChocolateyPackageDebug -ne $null) {
@@ -43,17 +42,7 @@ Alias: VisualStudioVersion
     }
     Write-Debug "Running 'Uninstall-VisualStudioVsixExtension' for $PackageName with VsixId:'$VsixId' VsVersion:$VsVersion"
 
-    # We need to source a few extension files since they aren't automatically exported
-  $extensionDir = Split-Path -Parent ${function:Install-VisualStudioVsixExtension}.File
-  @('Parse-Parameters'; 'Merge-AdditionalArguments';'Remove-NegatedArguments';'ConvertTo-ArgumentString';'Start-VSChocolateyProcessAsAdmin') | % {
-    . "$extensionDir\$_.ps1"
-  }
-
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
-
-    if ($VsVersion -ne 0) {
-        Write-Warning "VsVersion is not supported yet. The extension will be uninstalled in all compatible Visual Studio instances present."
-    }
 
     $vsixInstaller = Get-VisualStudioVsixInstaller -Latest
     Write-Verbose ('Found VSIXInstaller version {0}: {1}' -f $vsixInstaller.Version, $vsixInstaller.Path)
