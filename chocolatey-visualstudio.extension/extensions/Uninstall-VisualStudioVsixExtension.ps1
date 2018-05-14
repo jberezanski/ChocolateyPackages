@@ -21,12 +21,6 @@ The Identification of the extension to be uninstalled.
 Typically located inside a vsixmanifest file in the software source
 repository, or found in the vsix installer after extracting it.
 Alias: Id
-
-.PARAMETER VsVersion
-NOT USED. The newest available VSIXInstaller.exe program
-will be used and the extension will be installed in all supported
-Visual Studio products present on the machine.
-Alias: VisualStudioVersion
 #>
     [CmdletBinding()]
     Param
