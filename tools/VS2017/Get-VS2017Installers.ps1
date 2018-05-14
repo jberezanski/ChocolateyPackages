@@ -1,14 +1,24 @@
 [CmdletBinding()]
 Param
 (
-    [Parameter(Mandatory = $true, ValueFromPipeline = $true)] [PSObject[]] $InputObject
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true)] [PSObject[]] $InputObject,
+    [string] $DestinationPath
 )
 Begin
 {
-    #Requires -Version 5
-    Set-StrictMode -Version 5
-    $root = Split-Path -Parent -Path (Split-Path -Parent -Path $PSScriptRoot)
-    $dest = '{0}\output\vs2017_{1:yyyyMMdd}' -f $root, (Get-Date)
+    #Requires -Version 4
+    Set-StrictMode -Version 4
+
+    if ($DestinationPath -eq '')
+    {
+        $root = Split-Path -Parent -Path (Split-Path -Parent -Path $PSScriptRoot)
+        $dest = '{0}\output\vs2017_{1:yyyyMMdd}' -f $root, (Get-Date)
+    }
+    else
+    {
+        $dest = $DestinationPath
+    }
+
     mkdir $dest -Force | Out-Null
     $oldpp = $ProgressPreference
     $ProgressPreference = 'SilentlyContinue'
