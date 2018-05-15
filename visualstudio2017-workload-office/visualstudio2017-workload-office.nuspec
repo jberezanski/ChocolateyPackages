@@ -67,6 +67,8 @@ Example 3. Installing the workload on all products, including only required comp
 - Updated chocolatey-visualstudio.extension dependency version to take advantage of reliability and functionality improvements.
 - Opted out of Chocolatey auto uninstaller feature in order to prevent premature removal of shared Visual Studio components.
 - Added dependency on visualstudio2017-installer.
+
+[Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.7.0-rc2" />
