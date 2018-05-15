@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017testprofessional</id>
-    <version>15.2.26430.20170605</version>
+    <version>15.7.1.0-rc2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017testprofessional</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Test Professional</title>
