@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-workload-netcoretools</id>
-    <version>1.1.1</version>
+    <version>1.2.0-rc2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-netcoretools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET Core cross-platform development workload for Visual Studio 2017</title>
@@ -64,10 +64,12 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.1.1: Updated chocolatey-visualstudio.extension dependency version to [support recent VS 2017 updates](https://github.com/jberezanski/ChocolateyPackages/issues/28).
+1.2.0:
+- Updated chocolatey-visualstudio.extension dependency version to take advantage of reliability and functionality improvements.
+- Opted out of Chocolatey auto uninstaller feature in order to prevent premature removal of shared Visual Studio components.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.5.1" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.7.0-rc2" />
       <dependency id="vcredist2013" version="12.0.30501.20150616" />
       <dependency id="vcredist2017" version="14.10.25008.0" />
       <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" />
