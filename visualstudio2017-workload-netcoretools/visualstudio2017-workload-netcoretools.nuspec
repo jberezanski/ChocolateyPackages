@@ -67,6 +67,7 @@ Example 3. Installing the workload on all products, including only required comp
 1.2.0:
 - Updated chocolatey-visualstudio.extension dependency version to take advantage of reliability and functionality improvements.
 - Opted out of Chocolatey auto uninstaller feature in order to prevent premature removal of shared Visual Studio components.
+- Added dependency on visualstudio2017-installer.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.7.0-rc2" />
@@ -75,6 +76,7 @@ Example 3. Installing the workload on all products, including only required comp
       <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" />
       <dependency id="netfx-4.5.2-devpack" version="4.5.5165101" />
       <dependency id="KB2882822" version="1.0.0" />
+      <dependency id="visualstudio2017-installer" version="1.0.2-rc2" />
     </dependencies>
   </metadata>
 </package>
