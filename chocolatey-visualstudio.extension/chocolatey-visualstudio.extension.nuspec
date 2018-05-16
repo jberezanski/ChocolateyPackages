@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>chocolatey-visualstudio.extension</id>
-    <version>1.6.0</version>
+    <version>1.7.0-rc2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-visualstudio.extension</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Chocolatey Visual Studio servicing extensions</title>

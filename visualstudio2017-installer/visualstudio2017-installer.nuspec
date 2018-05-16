@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-installer</id>
-    <version>1.0.1</version>
+    <version>1.0.2-rc2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-installer</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Installer (remove only)</title>
@@ -23,10 +23,11 @@ Uninstalling this package removes the Visual Studio 2017 Installer, which remain
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.0.1: Updated dependency version to fix uninstall of recent Visual Studio 2017 versions.
+1.0.2: Added dependency on .NET 4.6.2, because the VS Installer update may require it to avoid problems with OPC package signature verification.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.5.1" />
+      <dependency id="dotnet4.6.2" version="4.6.01590.20170129" />
     </dependencies>
   </metadata>
 </package>

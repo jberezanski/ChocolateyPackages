@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017buildtools</id>
-    <version>15.2.26430.20170605</version>
+    <version>15.7.1.0-rc2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017buildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Build Tools</title>
@@ -35,7 +35,7 @@ All package parameters are passed to the Visual Studio installer, enabling full 
 
 After installing the package, more features can also be added by launching the Visual Studio Installer application from the Start Menu.
 
-The language of the installed software can be controlled using the package parameter `--locale &lt;language&gt;`.
+The language of the installed software can be controlled using the package parameter `--locale language`.
 The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio#list-of-language-locales). By default, the operating system display language is used.
 
 #### Full installation
@@ -46,24 +46,30 @@ This command will install Visual Studio Build Tools with all available workloads
 ### Notes
 
 A reboot may be required after (or even _before_) installing/uninstalling this package.
-If control over reboots is required, it is advisable to install the dependencies (esp. dotnet4.6.1 or later) first, perform a reboot if necessary, and then install this package.
+If control over reboots is required, it is advisable to install the dependencies (esp. dotnet4.6.2 or later) first, perform a reboot if necessary, and then install this package.
     </description>
     <releaseNotes>
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.2.26430.20170605:
-- Package metadata updated for Visual Studio 2017 version 15.2.26430.12 (the native installer always installs the latest released Visual Studio 2017 build).
-- To avoid problems with upgrade, installation is skipped if the product is already installed.
-vNext:
+15.7.1.0:
+- Package versioning scheme changed to reflect official Visual Studio release numbers instead of file versions.
+- Package metadata updated for Visual Studio 2017 version 15.7.1 (the native installer always installs the latest released Visual Studio 2017 build).
+- Updated bootstrapper url.
 - Added a link to the .NET Core Build Tools workload package.
+- Updated chocolatey-visualstudio.extension dependency version to take advantage of reliability and functionality improvements.
+- Opted out of Chocolatey auto uninstaller feature in order to prevent premature removal of shared Visual Studio components.
+- Updated .NET Framework dependency to 4.6.2 to avoid problems with VS Installer OPC package signature verification.
+- Upgrade of existing installations is now enabled.
+
+[Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.4.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.7.0-rc2" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="KB2999226" version="1.0.20161201" />
-      <dependency id="dotnet4.6.1" version="4.6.01055.20161213" />
-      <dependency id="visualstudio2017-installer" version="1.0.0" />
+      <dependency id="dotnet4.6.2" version="4.6.01590.20170129" />
+      <dependency id="visualstudio2017-installer" version="1.0.2-rc2" />
     </dependencies>
   </metadata>
 </package>

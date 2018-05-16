@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-workload-netcorebuildtools</id>
-    <version>1.0.0</version>
+    <version>1.1.0-rc2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-netcorebuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET Core build tools workload for Visual Studio 2017 Build Tools</title>
@@ -50,14 +50,18 @@ Example 3. Installing the workload, including only required components:
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.0.0: Initial package release.
+1.1.0:
+- Added dependency on Build Tools 15.3 or later.
+- Updated chocolatey-visualstudio.extension dependency version to take advantage of reliability and functionality improvements.
+- Opted out of Chocolatey auto uninstaller feature in order to prevent premature removal of shared Visual Studio components.
+- Added dependency on visualstudio2017-installer.
 
-This workload requires Build Tools 15.3 or later, but the VS 2017 Chocolatey packages do not support upgrades yet and packages for 15.3 and later are not available. The published Build Tools 15.2 package will actually install the latest Build Tools published by Microsoft, so new instalations will be handled correctly. On existing installations of Build Tools 15.2 or older, the package will fail to install with a message instructing the user to upgrade the Build Tools first.
+[Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.6.0" />
-      <!-- this should be 15.3 but there is no package for it yet -->
-      <dependency id="visualstudio2017buildtools" version="15.2" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.7.0-rc2" />
+      <dependency id="visualstudio2017-installer" version="1.0.2-rc2" />
+      <dependency id="visualstudio2017buildtools" version="15.3" />
     </dependencies>
   </metadata>
 </package>

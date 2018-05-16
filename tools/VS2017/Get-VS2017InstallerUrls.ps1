@@ -1,7 +1,7 @@
 [CmdletBinding()]
 Param ()
-#Requires -Version 5
-Set-StrictMode -Version 5
+#Requires -Version 4
+Set-StrictMode -Version 4
 
 # VC++ Redistributable and other tools
 #$x = iwr 'https://www.visualstudio.com/downloads/'
