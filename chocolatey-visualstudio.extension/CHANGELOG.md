@@ -2,6 +2,7 @@
 
 ## Version 1.7.0
 
+- New helper: Uninstall-VisualStudioVsixExtension.
 - New helper: Get-VisualStudioInstallerHealth (checks for corruption observed sometimes after installer update)
 - Install-VisualStudioInstaller will check for installer corruption after update and will attempt to repair the installer by renaming the installer directory and retrying the update.
 - The VS Installer will also be repaired before each VS install/update/modify/uninstall operation.
