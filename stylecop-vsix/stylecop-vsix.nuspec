@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
     <metadata>
         <id>stylecop-vsix</id>
-        <version>5.0.6419.0</version>
+        <version>5.0.6419.20180518-rc2</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/stylecop-vsix</packageSourceUrl>
         <owners>jberezanski</owners>
         <title>StyleCop extension for Visual Studio</title>
@@ -35,10 +35,10 @@ This package is a successor of the [classic StyleCop package](https://chocolatey
 **Note 2**: there is a [known bug](https://github.com/StyleCop/StyleCop/issues/166) in this version of the StyleCop extension for Visual Studio, which prevents it from installing on a machine where only Visual Studio 2013 Professional/Premium/Ultimate is installed and there is no later Visual Studio version present. Until it is fixed, a workaround is to install any newer Visual Studio product (for example, the free [2017 Feedback Client](https://chocolatey.org/packages/visualstudio2017feedbackclient)), which will update the Visual Studio extension installer program and unblock the installation of this extension in Visual Studio 2013.
 
 ##### Package
-5.0.6419.0: Initial package release for software version 5.0.6419.0.
+5.0.6419.20180518: Added uninstall script.
         </releaseNotes>
         <dependencies>
-            <dependency id="chocolatey-visualstudio.extension" version="1.6.0" />
+            <dependency id="chocolatey-visualstudio.extension" version="1.7.0-rc2" />
         </dependencies>
     </metadata>
     <files>
