@@ -34,7 +34,7 @@ Alias: Id
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Uninstall-VisualStudioVsixExtension' for $PackageName with VsixId:'$VsixId' VsVersion:$VsVersion"
+    Write-Debug "Running 'Uninstall-VisualStudioVsixExtension' for $PackageName with VsixId:'$VsixId'"
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
 
