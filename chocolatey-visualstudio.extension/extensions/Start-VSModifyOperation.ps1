@@ -353,6 +353,7 @@
             Write-Debug "Install-VSChocolateyPackage $argumentsDump"
             Install-VSChocolateyPackage @arguments
             $exitCode = [int]$Env:ChocolateyExitCode
+            Write-Debug "Exit code set by Install-VSChocolateyPackage: '$exitCode'"
             $processed = $true
         }
 
@@ -380,10 +381,12 @@
 
         if ($overallExitCode -eq 0)
         {
+            Write-Debug "Setting overall exit code to '$exitCode'"
             $overallExitCode = $exitCode
         }
     }
 
+    Write-Debug "Setting Env:ChocolateyExitCode to overall exit code: '$overallExitCode'"
     $Env:ChocolateyExitCode = $overallExitCode
     if ($overallExitCode -eq 3010)
     {

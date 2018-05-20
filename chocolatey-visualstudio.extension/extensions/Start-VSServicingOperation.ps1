@@ -36,14 +36,17 @@
     if (($blockExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $blockExitCodes }
 
     $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
+    Write-Debug "Exit code returned from Start-VSChocolateyProcessAsAdmin: '$exitCode'"
     if ($assumeNewVS2017Installer)
     {
         $auxExitCode = Wait-VSInstallerProcesses -Behavior 'Wait'
         if ($auxExitCode -ne $null -and $exitCode -eq 0)
         {
+            Write-Debug "Using aux exit code returned from Wait-VSInstallerProcesses ('$auxExitCode')"
             $exitCode = $auxExitCode
         }
     }
+    Write-Debug "Setting Env:ChocolateyExitCode to '$exitCode'"
     $Env:ChocolateyExitCode = $exitCode
     $warnings = @()
     if (($blockExitCodes | Measure-Object).Count -gt 0 -and $blockExitCodes -contains $exitCode)
