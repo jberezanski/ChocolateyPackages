@@ -118,12 +118,28 @@ function Wait-VSInstallerProcesses
                 foreach ($p in $uninstallerProcesses)
                 {
                     [void] $p.Handle # make sure we get the exit code http://stackoverflow.com/a/23797762/266876
-                    $p.WaitForInputIdle()
+                    $result = $p.WaitForInputIdle($waitSeconds * 1000)
+                    if ($result)
+                    {
+                        Write-Debug "Process $($p.Id) has reached input idle state"
+                    }
+                    else
+                    {
+                        Write-Debug "Process $($p.Id) has not reached input idle state, continuing regardless"
+                    }
                 }
                 Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Sending CloseMainWindow to all vs_installer.windows.exe processes' -f (Get-Date))
                 foreach ($p in $uninstallerProcesses)
                 {
-                    $p.CloseMainWindow()
+                    $result = $p.CloseMainWindow()
+                    if ($result)
+                    {
+                        Write-Debug "Successfully sent CloseMainWindow to process $($p.Id)"
+                    }
+                    else
+                    {
+                        Write-Debug "Failed to send CloseMainWindow to process $($p.Id), continuing regardless"
+                    }
                 }
                 Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Waiting for all vs_installer.windows.exe processes to exit' -f (Get-Date))
                 $uninstallerProcesses | Wait-Process -Timeout 60 -ErrorAction SilentlyContinue
