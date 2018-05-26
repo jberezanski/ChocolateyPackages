@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017feedbackclient</id>
-    <version>15.7.1.0-rc2</version>
+    <version>15.7.2.0-rc1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017feedbackclient</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Feedback Client</title>
@@ -47,9 +47,9 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.7.1.0:
+15.7.2.0:
 - Package versioning scheme changed to reflect official Visual Studio release numbers instead of file versions.
-- Package metadata updated for Visual Studio 2017 version 15.7.1 (the native installer always installs the latest released Visual Studio 2017 build).
+- Package metadata updated for Visual Studio 2017 version 15.7.2 (the native installer always installs the latest released Visual Studio 2017 build).
 - Updated bootstrapper url.
 - Updated chocolatey-visualstudio.extension dependency version to take advantage of reliability and functionality improvements.
 - Opted out of Chocolatey auto uninstaller feature in order to prevent premature removal of shared Visual Studio components.
@@ -59,7 +59,7 @@ If control over reboots is required, it is advisable to install the dependencies
 [Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.7.0-rc2" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.7.0-rc4" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="dotnet4.6.2" version="4.6.01590.20170129" />
       <dependency id="visualstudio2017-installer" version="1.0.2-rc2" />
