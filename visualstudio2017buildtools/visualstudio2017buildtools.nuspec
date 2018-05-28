@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017buildtools</id>
-    <version>15.7.2.0-rc1</version>
+    <version>15.7.2.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017buildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Build Tools</title>
@@ -65,11 +65,11 @@ If control over reboots is required, it is advisable to install the dependencies
 [Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.7.0-rc4" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.7.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnet4.6.2" version="4.6.01590.20170129" />
-      <dependency id="visualstudio2017-installer" version="1.0.2-rc2" />
+      <dependency id="visualstudio2017-installer" version="1.0.2" />
     </dependencies>
   </metadata>
 </package>
