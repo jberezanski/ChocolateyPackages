@@ -14,7 +14,8 @@ Process
     {
         $baseDir = Split-Path -Path $filePath
         $fileBaseName = (Get-Item -Path $filePath).BaseName
-        $dest = "$baseDir\$fileBaseName"
+        $destDirName = $fileBaseName -replace 'vs_', ''
+        $dest = "$baseDir\$destDirName"
         Write-Host "$filePath -> $dest"
         $p = Start-Process -FilePath $filePath -ArgumentList @('--layout', $dest, '--lang', 'en-us', '--locale', 'en-us', '--wait', '--passive') -PassThru
         $p | Wait-Process
