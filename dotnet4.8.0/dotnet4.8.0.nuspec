@@ -1,0 +1,30 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>dotnet4.8.0</id>
+    <version>4.8.0.0-preview1</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnet4.8.0</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft .NET Framework 4.8.0</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/net/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/dotnet/framework/</docsUrl>
+    <bugTrackerUrl>https://github.com/Microsoft/dotnet/issues</bugTrackerUrl>
+    <tags>microsoft .net framework dotnet desktop clr redistributable runtime admin</tags>
+    <summary>The .NET Framework is a development platform for building apps for web, Windows, Windows Phone, Windows Server, and Microsoft Azure.</summary>
+    <description>The .NET Framework is a development platform for building apps for web, Windows, Windows Phone, Windows Server, and Microsoft Azure. It consists of the common language runtime (CLR) and the .NET Framework class library, which includes a broad range of functionality and support for many industry standards.
+
+This is a **metapackage** intended to help transition from earlier Chocolatey .NET Framework packaging convention. Actual installation is performed by the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package.
+
+Note that due to the way package dependencies work in Chocolatey, if you install this package and the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package is not installed yet, Chocolatey will install the *latest* [dotnetfx](https://chocolatey.org/packages/dotnetfx) package version, which may be newer than 4.8.0. If you need to install specifically .NET Framework 4.8.0, install that version of the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package (`choco install dotnetfx --version 4.8.0`).
+</description>
+    <releaseNotes>
+    </releaseNotes>
+    <dependencies>
+      <dependency id="dotnetfx" version="4.8.0.0-preview1" />
+    </dependencies>
+  </metadata>
+</package>

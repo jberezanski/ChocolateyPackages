@@ -1,11 +1,11 @@
 ﻿. (Join-Path -Path (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition) -ChildPath 'helpers.ps1')
 
 $packageName = 'dotnetfx'
-$release = 461808
-$version = '4.7.2'
-$productNameWithVersion = "Microsoft .NET Framework $version"
-$url = 'https://download.microsoft.com/download/3/D/7/3D72C5C2-4CCB-4EEF-925D-B5FA33EAC25A/NDP472-KB4054530-x86-x64-AllOS-ENU.exe'
-$checksum = '41EEC7F2CFE216B7C063CA771485DCB18218EC329C48C80FD4AD1CDDDFABC506'
+$release = 462373
+$version = '4.8.0'
+$productNameWithVersion = "Microsoft .NET Framework $version early access build 3621"
+$url = 'https://download.microsoft.com/download/A/A/A/AAAF9C70-BE62-4C4E-9510-A7755AB35ABD/NDP48-Preview-x86-x64-AllOS-ENU.exe'
+$checksum = 'DE223A4899BC3EC1EB83959208D1C74A43F7291DF5906D52AB9D5DDF2C9CACEE'
 $checksumType = 'sha256'
 
 if (Test-Installed -Release $release) {

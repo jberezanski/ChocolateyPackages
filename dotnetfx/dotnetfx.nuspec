@@ -2,10 +2,10 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnetfx</id>
-    <version>4.7.2.0</version>
+    <version>4.8.0.0-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>Microsoft .NET Framework 4.7.2</title>
+    <title>Microsoft .NET Framework 4.8.0</title>
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/net/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
@@ -19,29 +19,24 @@
 
 The .NET Framework provides many services, including memory management, type and memory safety, security, networking, and application deployment. It provides easy-to-use data structures and APIs that abstract the lower-level Windows operating system. You can use a variety of programming languages with the .NET Framework, including C#, F#, and Visual Basic. 
 
-The .NET Framework 4.7.2 includes improvements in several areas:
+.NET Framework 4.8.0 is the next version of the .NET Framework. This is one of the in-development builds of the next version of the .NET Framework. The changes in this build have been functionally validated by the .NET teams. This build is not supported for production use. The current Early Access build number being shared is 3621.
 
-* [ASP.NET] Support for SameSite cookie in ASP.NET
-* [ASP.NET] Support for ASP.NET Dependency Injection
-* [ClickOnce] Per-monitor support for WPF and HDPI-aware VSTO apps deployed via ClickOnce
-* [SQL] Always Encrypted enhancements in SQL Connectivity
-* [Networking &amp; BCL] Enhanced .NET Framework support for .NET Standard 2.0
-* [BCL] Cryptography improvements
-* [WPF] Diagnostic enhancements
+This pre-release build 3621 includes improvements in [several areas](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/build-3621/dotnet-build-3621-changes.md). This includes accessibility improvements in Winforms and WPF areas as well. You can see the complete list of improvements in this build in the [release notes](https://github.com/Microsoft/dotnet-framework-early-access/tree/master/release-notes/build-3621/readme.md).
 
-The .NET Framework 4.7.2 will replace any existing .NET Framework 4 and later installation on your machine. This means all .NET Framework 4 and later applications on your machine will run on the .NET Framework 4.7.2 upon installation. The .NET Framework 4.7.2 installs on Windows 10 Fall Creators Update, Windows 10 Creators Update, Windows 10 Anniversary Update, Windows 8.1, Windows 7 SP1, Windows Server version 1709, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 and Windows Server 2008 R2 SP1 OS platforms. .NET Framework 4.7.2 is also included in Windows 10 April 2018 Update.
+The .NET Framework build 3621 will replace any existing .NET Framework 4 and later installation on your machine. This means all .NET Framework 4 and later applications on your machine will run on the .NET Framework early access builds upon installation. The .NET Framework build 3621 installs on Windows 10 April 2018 Update, Windows 10 Fall Creators Update, Windows 10 Creators Update, Windows 10 Anniversary Update, Windows Server version 1709 and Windows Server 2016.
 
-The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.7.2-devpack).</description>
+Once released, the matching Developer Pack will be able to be installed using [this package](https://chocolatey.org/packages/netfx-4.8.0-devpack).</description>
     <releaseNotes>
 ##### Software
-[.NET Framework 4.7.2 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/)
-[.NET Framework 4.7.2 readme](https://github.com/Microsoft/dotnet/blob/master/releases/net472/README.md)
-[.NET Framework 4.7.2 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net472/dotnet472-changes.md)
+[.NET Framework 4.8.0 build 3621 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/06/06/announcing-net-framework-4-8-early-access-build-3621/)
+[.NET Framework 4.8.0 build 3621 release notes](https://github.com/Microsoft/dotnet-framework-early-access/tree/master/release-notes/build-3621/readme.md)
+[.NET Framework 4.8.0 build 3621 changes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/build-3621/dotnet-build-3621-changes.md)
 ##### Package
-4.7.2.0: Initial package release for .NET Framework 4.7.2.
+4.8.0.0-preview1: Initial package release for early access build 3621.
     </releaseNotes>
     <dependencies>
-      <dependency id="KB2919355" version="1.0.20160915" />
+      <!-- this prerelease build does not support Windows 8.1 -->
+      <!-- <dependency id="KB2919355" version="1.0.20160915" /> -->
     </dependencies>
   </metadata>
 </package>
