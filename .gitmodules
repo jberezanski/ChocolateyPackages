@@ -2,3 +2,6 @@
 	path = dotnetcore
 	url = https://github.com/jberezanski/dotnetcore-chocolateypackages.git
 	branch = master
+[submodule "au"]
+	path = au
+	url = https://github.com/majkinetor/au.git
