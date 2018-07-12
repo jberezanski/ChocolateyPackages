@@ -12,6 +12,7 @@ dotnetfx_previous\dotnetfx-4.6.1\dotnetfx.nuspec
 dotnetfx_previous\dotnetfx-4.6.2\dotnetfx.nuspec
 dotnetfx_previous\dotnetfx-4.7\dotnetfx.nuspec
 dotnetfx_previous\dotnetfx-4.7.1\dotnetfx.nuspec
+dotnetfx_previous\dotnetfx-4.7.2\dotnetfx.nuspec
 netfx-4.6.2-devpack\netfx-4.6.2-devpack.nuspec
 netfx-4.7-devpack\netfx-4.7-devpack.nuspec
 netfx-4.7.1-devpack\netfx-4.7.1-devpack.nuspec
