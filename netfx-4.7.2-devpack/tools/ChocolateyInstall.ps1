@@ -3,8 +3,8 @@
 $packageName = 'netfx-4.7.2-devpack'
 $version = '4.7.2'
 $productNameWithVersion = "Microsoft .NET Framework $version Developer Pack"
-$url = 'https://download.microsoft.com/download/5/F/E/5FE505D0-E753-4F1A-B8D6-D9E73C0C28C7/NDP472-DevPack-ENU.exe'
-$checksum = '15916F064A0AD061463ACE80D9405F2D80D29655A13516F3676D421D0337D756'
+$url = 'https://download.microsoft.com/download/3/B/F/3BFB9C35-405D-45DF-BDAF-0EB57D047888/NDP472-DevPack-ENU.exe'
+$checksum = '2F4EE2852B95C37A806E2DEEC567751DD59B0DD27049641BBD4E1C0E22ADFE46'
 $checksumType = 'sha256'
 
 $originalFileName = Split-Path -Leaf -Path ([uri]$url).LocalPath

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnet4.7.2</id>
-    <version>4.7.2.0</version>
+    <version>4.7.2.20180712</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnet4.7.2</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.7.2</title>
@@ -24,7 +24,7 @@ Note that due to the way package dependencies work in Chocolatey, if you install
     <releaseNotes>
     </releaseNotes>
     <dependencies>
-      <dependency id="dotnetfx" version="4.7.2.0" />
+      <dependency id="dotnetfx" version="4.7.2.20180712" />
     </dependencies>
   </metadata>
 </package>

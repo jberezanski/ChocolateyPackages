@@ -4,8 +4,8 @@ $packageName = 'dotnetfx'
 $release = 461808
 $version = '4.7.2'
 $productNameWithVersion = "Microsoft .NET Framework $version"
-$url = 'https://download.microsoft.com/download/3/D/7/3D72C5C2-4CCB-4EEF-925D-B5FA33EAC25A/NDP472-KB4054530-x86-x64-AllOS-ENU.exe'
-$checksum = '41EEC7F2CFE216B7C063CA771485DCB18218EC329C48C80FD4AD1CDDDFABC506'
+$url = 'https://download.microsoft.com/download/6/E/4/6E48E8AB-DC00-419E-9704-06DD46E5F81D/NDP472-KB4054530-x86-x64-AllOS-ENU.exe'
+$checksum = 'C908F0A5BEA4BE282E35ACBA307D0061B71B8B66CA9894943D3CBB53CAD019BC'
 $checksumType = 'sha256'
 
 if (Test-Installed -Release $release) {
