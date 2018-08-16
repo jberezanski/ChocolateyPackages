@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2017testagent' `
     -ApplicationName 'Microsoft Visual Studio Test Agent 2017' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/4658da18-8b95-46af-b86d-45755f7db931/a49606b47ad7f91ddf7746d167016870/vs_testagent.exe' `
-    -Checksum 'BDB74895B8A471357E8D66F5CED7741E66BA84A10ECA0D32B417126160445C53' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/69f9d0ea-00a8-4d1e-873a-3fcca05dd078/32f270146af835b8b86fc3b122cefd26/vs_testagent.exe' `
+    -Checksum 'DA629DBBD7416420A15CA6CDAF753D0DD5F9190B8FAC6458821E047C02C809DE' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'TestAgent' `
