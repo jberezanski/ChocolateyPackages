@@ -1,4 +1,12 @@
-﻿$msuData = @{
+$os = Get-WmiObject -Class Win32_OperatingSystem
+$version = [Version]$os.Version
+
+if ($version -eq $null -or $version -gt [Version]'6.3') {
+	Write-Host "Skipping installation because this update only applies to Windows Vista/Server 2008 through Windows 8.1/Server 2012R2."
+	return
+}
+
+ $msuData = @{
     '6.3-client' = @{
         Url = 'https://download.microsoft.com/download/D/2/B/D2B466AA-E011-42D6-92DA-4FA8FCDAB8CB/Windows8.1-KB3035131-x86.msu'
         Checksum = '61C80C09EBE58558A7CF15F6892B392BC73A2EF669255A236562B6196FFE47C0'
