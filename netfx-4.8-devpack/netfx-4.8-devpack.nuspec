@@ -1,0 +1,36 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>netfx-4.8-devpack</id>
+    <version>4.8.0.0-preview3</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.8-devpack</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft .NET Framework 4.8 Developer Pack</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/net/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
+    <bugTrackerUrl>https://github.com/Microsoft/dotnet/issues</bugTrackerUrl>
+    <tags>microsoft .net framework 4.8 developer target targeting pack multi dotnet netfx admin</tags>
+    <summary>The .NET Framework 4.8 Developer Pack lets developers build applications that target the .NET Framework 4.8.</summary>
+    <description>The .NET Framework 4.8 Developer Pack lets developers build applications that target the .NET Framework 4.8 by using Visual Studio 2017, Visual Studio 2015 or other IDEs. This is a single package that bundles the .NET Framework 4.8, the .NET 4.8 Targeting Pack, and the .NET Framework 4.8 SDK.
+
+.NET Framework 4.8.0 is the next version of the .NET Framework. This is one of the in-development builds of the next version of the .NET Framework. The changes in this build have been functionally validated by the .NET teams. This build is not supported for production use. The current Early Access build number being shared is 3646.
+    </description>
+    <releaseNotes>
+##### Software
+[.NET Framework 4.8.0 build 3646 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/09/17/announcing-net-framework-4-8-early-access-build-3646/)
+[.NET Framework 4.8.0 build 3646 release notes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3646/readme.md)
+[.NET Framework 4.8.0 build 3646 changes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3646/changes.md)
+##### Package
+4.8.0.0-preview3: Initial package release for early access build 3646.
+    </releaseNotes>
+    <dependencies>
+      <!-- this prerelease build does not support Windows 8.1 -->
+      <!-- <dependency id="KB2919355" version="1.0.20160915" /> -->
+      <dependency id="dotnetfx" version="4.8.0.0-preview3" />
+    </dependencies>
+  </metadata>
+</package>
