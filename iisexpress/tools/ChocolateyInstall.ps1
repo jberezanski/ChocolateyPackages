@@ -8,10 +8,10 @@ $arguments = @{
         3010 # success, restart required
     )
     url = 'https://download.microsoft.com/download/C/E/8/CE8D18F5-D4C0-45B5-B531-ADECD637A1AA/iisexpress_x86_en-US.msi'
-    checksum = 'CA111AB3463DAD634B5DFDA46326F3D626C8BE41D5EF6CA34F17700F920AAB7D'
+    checksum = '15D4FF941F77F7BDFC9DFB2399B7B952A0A2C860976EF3E835998FF4796E5E91'
     checksumType = 'sha256'
     url64 = 'https://download.microsoft.com/download/C/E/8/CE8D18F5-D4C0-45B5-B531-ADECD637A1AA/iisexpress_amd64_en-US.msi'
-    checksum64 = '6C33A9944F5AD75B223F291141FF1C5AEE3294CBFDCA5FD0E27EFB512F9A075B'
+    checksum64 = '53C79320755D7E5702447374B0B2D6B54EE8A99345475587A876A9BF2372FCA6'
     checksumType64 = 'sha256'
 }
 
