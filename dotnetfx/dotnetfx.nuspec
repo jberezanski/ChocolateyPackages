@@ -25,7 +25,7 @@ This pre-release build 3646 includes improvements in [several areas](https://git
 
 The .NET Framework build 3646 will replace any existing .NET Framework 4 and later installation on your machine. This means all .NET Framework 4 and later applications on your machine will run on the .NET Framework early access builds upon installation. The .NET Framework build 3646 installs on Windows 10 April 2018 Update, Windows 10 Fall Creators Update, Windows 10 Creators Update, Windows 10 Anniversary Update, Windows Server version 1709 and Windows Server 2016.
 
-The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.8.0-devpack).</description>
+The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.8-devpack).</description>
     <releaseNotes>
 ##### Software
 [.NET Framework 4.8 build 3646 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/09/17/announcing-net-framework-4-8-early-access-build-3646/)
