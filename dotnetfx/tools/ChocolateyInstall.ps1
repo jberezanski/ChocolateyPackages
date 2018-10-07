@@ -1,7 +1,7 @@
 ﻿. (Join-Path -Path (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition) -ChildPath 'helpers.ps1')
 
 $packageName = 'dotnetfx'
-$release = 999999
+$release = 527934
 $version = '4.8'
 $productNameWithVersion = "Microsoft .NET Framework $version early access build 3646"
 $url = 'https://download.microsoft.com/download/6/5/7/6577634A-8D5D-4558-BA22-A81CC6D5BB06/NDP48-Preview-x86-x64-AllOS-ENU.exe'
