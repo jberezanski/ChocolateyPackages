@@ -17,13 +17,13 @@
     <summary>The .NET Framework 4.8 Developer Pack lets developers build applications that target the .NET Framework 4.8.</summary>
     <description>The .NET Framework 4.8 Developer Pack lets developers build applications that target the .NET Framework 4.8 by using Visual Studio 2017, Visual Studio 2015 or other IDEs. This is a single package that bundles the .NET Framework 4.8, the .NET 4.8 Targeting Pack, and the .NET Framework 4.8 SDK.
 
-.NET Framework 4.8.0 is the next version of the .NET Framework. This is one of the in-development builds of the next version of the .NET Framework. The changes in this build have been functionally validated by the .NET teams. This build is not supported for production use. The current Early Access build number being shared is 3646.
+.NET Framework 4.8 is the next version of the .NET Framework. This is one of the in-development builds of the next version of the .NET Framework. The changes in this build have been functionally validated by the .NET teams. This build is not supported for production use. The current Early Access build number being shared is 3646.
     </description>
     <releaseNotes>
 ##### Software
-[.NET Framework 4.8.0 build 3646 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/09/17/announcing-net-framework-4-8-early-access-build-3646/)
-[.NET Framework 4.8.0 build 3646 release notes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3646/readme.md)
-[.NET Framework 4.8.0 build 3646 changes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3646/changes.md)
+[.NET Framework 4.8 build 3646 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/09/17/announcing-net-framework-4-8-early-access-build-3646/)
+[.NET Framework 4.8 build 3646 release notes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3646/readme.md)
+[.NET Framework 4.8 build 3646 changes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3646/changes.md)
 ##### Package
 4.8.0.0-preview3: Initial package release for early access build 3646.
     </releaseNotes>
