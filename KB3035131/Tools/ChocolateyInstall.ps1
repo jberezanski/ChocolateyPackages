@@ -48,4 +48,4 @@ $servicePackRequirements = @{
     '6.0' = @{ ServicePackNumber = 2; ChocolateyPackage = $null }
 }
 
-Install-WindowsUpdate -Id 'KB3035131' -MsuData $msuData -ChecksumType 'sha256' -ServicePackRequirements $servicePackRequirements
+chocolatey-windowsupdate\Install-WindowsUpdate -Id 'KB3035131' -MsuData $msuData -ChecksumType 'sha256' -ServicePackRequirements $servicePackRequirements
