@@ -48,4 +48,6 @@ $servicePackRequirements = @{
     '6.0' = @{ ServicePackNumber = 2; ChocolateyPackage = $null }
 }
 
+Get-Module | fl * | Out-String -Width 1000 | Write-Warning
+Get-Command Install-WindowsUpdate | fl * | Out-String -Width 1000 | Write-Warning
 chocolatey-windowsupdate\Install-WindowsUpdate -Id 'KB3035131' -MsuData $msuData -ChecksumType 'sha256' -ServicePackRequirements $servicePackRequirements

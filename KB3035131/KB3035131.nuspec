@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>KB3035131</id>
-        <version>1.0.2-preview1</version>
+        <version>1.0.2-preview2</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB3035131</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
         <title>Security update for Windows kernel: March 10, 2015</title>
