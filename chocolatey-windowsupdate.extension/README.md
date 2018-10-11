@@ -145,6 +145,11 @@ To get help for a specific function use the [help](https://msdn.microsoft.com/en
 
     help Install-WindowsUpdate -Full
 
+### Boxstarter issue
+
+For increased reliability, it is advisable to call the Install-WindowsUpdate function in Chocolatey package scripts using the module-qualified syntax (chocolateyInstaller\Install-WindowsUpdate).
+This works around an issue in the Boxstarter framework (https://github.com/chocolatey/boxstarter/issues/293).
+
 ### Acknowledgement
 
 The structure of the Markdown files was inspired by [chocolatey-core.extension](https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/extensions/chocolatey-core.extension).

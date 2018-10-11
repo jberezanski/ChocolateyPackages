@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version 1.0.3
+
+- Documented the Boxstarter issue (https://github.com/chocolatey/boxstarter/issues/293).
+
 ## Version 1.0.2
 
 - Added recognition of WU_S_ALREADY_INSTALLED exit code to handle superseded KBs which are not exposed as Win32_QuickFixEngineering instances.

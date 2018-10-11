@@ -52,6 +52,12 @@
     to accurately specify dependencies on prerequisite KBs and/or pass the
     appropriate service pack requirements to this functions.
 
+    For increased reliability, in Chocolatey package scripts it is advisable
+    to call this function using the module-qualified syntax
+    (chocolateyInstaller\Install-WindowsUpdate).
+    This works around an issue in the Boxstarter framework
+    (https://github.com/chocolatey/boxstarter/issues/293).
+
 .PARAMETER Id
     The identifier of the update, in the format "KBnnnnnnnn".
 
@@ -76,7 +82,11 @@
         10.0 - Windows 10 / Server 2016 (any build)
         10.0.10240 - Windows 10 RTM
         10.0.10586 - Windows 10 1511
-        10.0.14393 - Windows 10 1607 / Server 2016 RTM
+        10.0.14393 - Windows 10 1607 / Server 2016
+        10.0.15063 - Windows 10 1703
+        10.0.16299 - Windows 10 1709 / Server 1709
+        10.0.17134 - Windows 10 1803
+        10.0.17763 - Windows 10 1809 / Server 2019
 
     The optional suffixes are "-client" and "-server", for respective operating
     system variants.

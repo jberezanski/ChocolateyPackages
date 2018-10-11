@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>chocolatey-windowsupdate.extension</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-windowsupdate.extension</packageSourceUrl>
     <owners>Jakub Bereżański</owners>
     <title>Chocolatey Windows Update extensions</title>
