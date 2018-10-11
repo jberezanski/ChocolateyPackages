@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>KB4019990</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB4019990</packageSourceUrl>
         <owners>jberezanski</owners>
         <title>Update for the d3dcompiler_47.dll component on Windows Server 2012, Windows 7, and Windows Server 2008 R2</title>
@@ -23,7 +23,7 @@ On systems running Windows 8.1 / Windows Server 2012 R2 or later, this package i
 This update is a prerequisite for installing the .NET Framework 4.7 on Windows 7, Windows Server 2008 R2 or Windows Server 2012.
         </description>
         <releaseNotes>
-1.0.0: initial package release
+1.0.1: ensure the correct Install-WindowsUpdate function is called (work around [Boxstarter issue](https://github.com/chocolatey/boxstarter/issues/293))
         </releaseNotes>
         <dependencies>
             <dependency id="chocolatey-windowsupdate.extension" version="1.0.2" />

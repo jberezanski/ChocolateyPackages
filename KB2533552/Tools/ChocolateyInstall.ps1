@@ -7,4 +7,4 @@ $msuData = @{
     }
 }
 
-Install-WindowsUpdate -Id 'KB2533552' -MsuData $msuData -ChecksumType 'SHA256'
+chocolateyInstaller\Install-WindowsUpdate -Id 'KB2533552' -MsuData $msuData -ChecksumType 'SHA256'

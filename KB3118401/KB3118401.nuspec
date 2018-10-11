@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>KB3118401</id>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB3118401</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
         <title>Update for Universal C Runtime in Windows (version 10.0.10586)</title>
@@ -35,7 +35,7 @@ This package applies to the following operating systems:
 On other systems this package installs successfully, but does nothing.
         </description>
         <releaseNotes>
-1.0.2: updated dependency to ensure correct handling of cases when the update is already installed
+1.0.3: ensure the correct Install-WindowsUpdate function is called (work around [Boxstarter issue](https://github.com/chocolatey/boxstarter/issues/293))
         </releaseNotes>
         <dependencies>
             <dependency id="chocolatey-windowsupdate.extension" version="1.0.2" />

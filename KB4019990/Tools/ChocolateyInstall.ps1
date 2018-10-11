@@ -15,4 +15,4 @@ $servicePackRequirements = @{
     '6.1' = @{ ServicePackNumber = 1; ChocolateyPackage = 'KB976932' }
 }
 
-Install-WindowsUpdate -Id 'KB4019990' -MsuData $msuData -ChecksumType 'sha256' -ServicePackRequirements $servicePackRequirements
+chocolateyInstaller\Install-WindowsUpdate -Id 'KB4019990' -MsuData $msuData -ChecksumType 'sha256' -ServicePackRequirements $servicePackRequirements

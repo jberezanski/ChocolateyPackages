@@ -27,4 +27,4 @@
     }
 }
 
-Install-WindowsUpdate -Id 'KB2533623' -MsuData $msuData -ChecksumType 'SHA256'
+chocolateyInstaller\Install-WindowsUpdate -Id 'KB2533623' -MsuData $msuData -ChecksumType 'SHA256'

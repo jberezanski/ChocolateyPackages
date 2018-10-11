@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>KB3033929</id>
-        <version>1.0.3</version>
+        <version>1.0.4</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB3033929</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
         <title>Microsoft security advisory: Availability of SHA-2 code signing support for Windows 7 and Windows Server 2008 R2: March 10, 2015</title>
@@ -24,11 +24,11 @@ On systems other than Windows 7 or Windows Server 2008 R2, this package installs
 This update is required to install Visual Studio 2017 on Windows 7 or Windows Server 2008 R2.
         </description>
         <releaseNotes>
-1.0.3: updated dependencies to ensure correct handling of cases when the update is already installed
+1.0.4: ensure the correct Install-WindowsUpdate function is called (work around [Boxstarter issue](https://github.com/chocolatey/boxstarter/issues/293))
         </releaseNotes>
         <dependencies>
             <dependency id="chocolatey-windowsupdate.extension" version="1.0.2" />
-            <dependency id="KB3035131" version="1.0.1" />
+            <dependency id="KB3035131" version="1.0.2" />
         </dependencies>
     </metadata>
 </package>
