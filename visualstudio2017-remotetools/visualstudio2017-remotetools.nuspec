@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-remotetools</id>
-    <version>15.0.26430.2</version>
+    <version>15.0.28010.0</version>
     <packageSourceUrl>https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/manual/visualstudio2017-remotetools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft Visual Studio 2017 Remote Tools</title>
@@ -27,7 +27,7 @@
 ##### Software
 [Visual Studio 2017 Release Notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.0.26430.2: Initial package release for software version 15.0.26430.2.
+15.0.28010.0: Initial package release for software version 15.0.28010.0.
 </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-core.extension" version="1.1.0" />

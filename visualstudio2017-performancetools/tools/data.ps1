@@ -1,12 +1,12 @@
 ﻿$installData32 = @{
-  Url = 'https://download.microsoft.com/download/a/e/4/ae48fba9-a69f-4c7e-b5e9-b7a5f3b05ab4/vs_standaloneprofiler.exe'
-  Checksum = '7DCB705D12E9AD1684F5CA35461E6D479F4D3CB46ABF8269DF91FB516343DF96'
+  Url = 'https://download.visualstudio.microsoft.com/download/pr/1b724ffe-6f9f-45e2-9773-1a69be2c4ee6/c1d002b02919c8b67c3524caeaab7441/vs_standaloneprofiler.exe'
+  Checksum = '82E5C2ABB5CA292298C853DD698BF4B5BD51EFDF3698B036BA14C7AAA5F6188E'
   ChecksumType = 'sha256'
 }
 
 $installData64 = @{
-  Url64 = 'https://download.microsoft.com/download/a/6/6/a66ae677-017b-404d-b520-e448f3f72958/vs_standaloneprofiler.exe'
-  Checksum64 = '48206CB136C7214DB417EB8C4B8884D50D2AD6D39ACFEAB7DD00175AA6B9EE5A'
+  Url64 = 'https://download.visualstudio.microsoft.com/download/pr/4ce9ad6c-36af-4785-8eb5-8f41809bd49d/bc1eb35391ee9a1fc11259a0c792639f/vs_standaloneprofiler.exe'
+  Checksum64 = '2594E98D9FF4A19294DEFCA2F5E4E0C094B13DFD1E28BC14B92FF916CE322E0E'
   ChecksumType64 = 'sha256'
 }
 

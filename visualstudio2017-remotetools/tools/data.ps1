@@ -1,12 +1,12 @@
 ﻿$installData32 = @{
-  Url = 'https://download.microsoft.com/download/c/c/2/cc280cbd-db55-43db-8aed-41ed0d2f37fd/vs_remotetools.exe'
-  Checksum = '05F8D1F917391571CD2458551F635B6A839268AEC1BC9D552A1FD92B8A092635'
+  Url = 'https://download.visualstudio.microsoft.com/download/pr/3c5df094-a958-4c73-be1e-de99ff0b8a75/fec1d0f584d2de31def97ebe94617436/vs_remotetools.exe'
+  Checksum = '55DBCE25A1961ED90DB35264813B640D362F25BDEE543C5E7BFDE143BB7FEACC'
   ChecksumType = 'sha256'
 }
 
 $installData64 = @{
-  Url64 = 'https://download.microsoft.com/download/8/8/8/888988f5-43db-4882-ac1a-e7f79ee70712/vs_remotetools.exe'
-  Checksum64 = 'ED44BD676E418E105F9A8DD55495BBDEC8449E912A96B146A4823985D42193D5'
+  Url64 = 'https://download.visualstudio.microsoft.com/download/pr/7dc739dc-7ac6-4d3e-9a1a-8545ec7b4b2b/5ad9ec4cc15ad30e7560dfb8620ad4bf/vs_remotetools.exe'
+  Checksum64 = '55918E506970CE0F4859EE61D1094CDEBC4FBDBDC115B3CC7B55E6B4C0719835'
   ChecksumType64 = 'sha256'
 }
 
