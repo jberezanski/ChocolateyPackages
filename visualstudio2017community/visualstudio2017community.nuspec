@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017community</id>
-    <version>15.8.6.0</version>
+    <version>15.8.7.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017community</packageSourceUrl>
     <owners>Jivko Kolev,jberezanski</owners>
     <title>Visual Studio 2017 Community</title>
@@ -62,8 +62,8 @@ If control over reboots is required, please install the dependencies (like dotne
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.8.6.0:
-- Package metadata updated for Visual Studio 2017 version 15.8.6 (the native installer always installs the latest released Visual Studio 2017 build).
+15.8.7.0:
+- Package metadata updated for Visual Studio 2017 version 15.8.7 (the native installer always installs the latest released Visual Studio 2017 build).
 - Updated bootstrapper url.
 
 [Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
