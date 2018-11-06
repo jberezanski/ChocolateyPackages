@@ -1,0 +1,64 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2017-workload-manageddesktopbuildtools</id>
+    <version>1.0.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-manageddesktopbuildtools</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>.NET desktop build tools workload for Visual Studio 2017 Build Tools</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.visualstudio.com/vs/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
+    <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
+    <licenseUrl>https://www.visualstudio.com/license-terms/mlt687465/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
+    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs 2017 workload .net desktop wpf windows forms build tools msbuild admin</tags>
+    <summary>Tools for building WPF, Windows Forms, and console applications using C#, Visual Basic, and F#.</summary>
+    <description>
+### Overview
+
+This package adds the .NET desktop build tools workload to an existing installation of Visual Studio 2017 Build Tools.
+
+The list of components included in this workload is shown [here](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2017#net-desktop-build-tools).
+
+Visual Studio 2017 Build Tools must be installed first, for example using the Chocolatey package [visualstudio2017buildtools](https://chocolatey.org/packages/visualstudio2017buildtools).
+
+### Customizations
+
+The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --includeRecommended` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+
+By default, the package installs components required by and recommended for the workload. Package parameters can be used to adjust this behavior:
+
+- `--no-includeRecommended` - Does not include the recommended components.
+- `--includeOptional` - Includes the optional components.
+
+Example 1. Installing the workload, including recommended, but not optional components:
+
+    choco install visualstudio2017-workload-manageddesktopbuildtools --package-parameters "--includeRecommended"
+
+Example 2. Installing the workload, including all recommended and optional components:
+
+    choco install visualstudio2017-workload-manageddesktopbuildtools --package-parameters "--includeOptional"
+
+Example 3. Installing the workload, including only required components:
+
+    choco install visualstudio2017-workload-manageddesktopbuildtools --package-parameters "--no-includeRecommended"
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
+##### Package
+1.0.0:
+- Initial package release.
+
+[Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.7.0" />
+      <dependency id="visualstudio2017-installer" version="1.0.2" />
+      <dependency id="visualstudio2017buildtools" version="15.7" />
+    </dependencies>
+  </metadata>
+</package>
