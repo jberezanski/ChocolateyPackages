@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-workload-nativemobile</id>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-nativemobile</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Mobile development with C++ workload for Visual Studio 2017</title>
@@ -22,9 +22,9 @@
 This package adds the Mobile development with C++ workload to an existing installation of Visual Studio 2017 (Enterprise, Professional or Community).
 
 The lists of components included in this workload in respective Visual Studio 2017 products are shown here:
-- [Enterprise](https://www.visualstudio.com/en-us/productinfo/vs2017-install-product-Enterprise.workloads#mobile-development-with-c)
-- [Professional](https://www.visualstudio.com/en-us/productinfo/vs2017-install-product-Professional.workloads#mobile-development-with-c)
-- [Community](https://www.visualstudio.com/en-us/productinfo/vs2017-install-product-Community.workloads#mobile-development-with-c)
+- [Enterprise](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-enterprise?view=vs-2017#mobile-development-with-c)
+- [Professional](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-professional?view=vs-2017#mobile-development-with-c)
+- [Community](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-community?view=vs-2017#mobile-development-with-c)
 
 Visual Studio 2017 must be installed first, for example using Chocolatey packages: [visualstudio2017enterprise](https://chocolatey.org/packages/visualstudio2017enterprise), [visualstudio2017professional](https://chocolatey.org/packages/visualstudio2017professional), [visualstudio2017community](https://chocolatey.org/packages/visualstudio2017community).
 
@@ -64,10 +64,8 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.2.0:
-- Updated chocolatey-visualstudio.extension dependency version to take advantage of reliability and functionality improvements.
-- Opted out of Chocolatey auto uninstaller feature in order to prevent premature removal of shared Visual Studio components.
-- Added dependency on visualstudio2017-installer.
+1.2.1:
+- Fixed links to component lists.
 
 [Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </releaseNotes>

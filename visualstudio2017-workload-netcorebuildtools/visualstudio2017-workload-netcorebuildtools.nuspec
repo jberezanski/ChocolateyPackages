@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-workload-netcorebuildtools</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-netcorebuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET Core build tools workload for Visual Studio 2017 Build Tools</title>
@@ -21,7 +21,7 @@
 
 This package adds the .NET Core build tools workload to an existing installation of Visual Studio 2017 Build Tools.
 
-The list of components included in this workload is shown [here](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools).
+The list of components included in this workload is shown [here](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2017#net-core-build-tools).
 
 Visual Studio 2017 Build Tools must be installed first, for example using the Chocolatey package [visualstudio2017buildtools](https://chocolatey.org/packages/visualstudio2017buildtools).
 
@@ -50,11 +50,8 @@ Example 3. Installing the workload, including only required components:
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.1.0:
-- Added dependency on Build Tools 15.3 or later.
-- Updated chocolatey-visualstudio.extension dependency version to take advantage of reliability and functionality improvements.
-- Opted out of Chocolatey auto uninstaller feature in order to prevent premature removal of shared Visual Studio components.
-- Added dependency on visualstudio2017-installer.
+1.1.1:
+- Fixed link to component list.
 
 [Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </releaseNotes>
