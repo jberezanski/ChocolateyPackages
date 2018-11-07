@@ -1,5 +1,5 @@
 ﻿Remove-VisualStudioWorkload `
-    -PackageName 'visualstudio2017-workload-officebuildtools' `
-    -Workload 'OfficeBuildTools' `
+    -PackageName 'visualstudio2017-workload-universalbuildtools' `
+    -Workload 'UniversalBuildTools' `
     -VisualStudioYear '2017' `
     -ApplicableProducts @('BuildTools')
