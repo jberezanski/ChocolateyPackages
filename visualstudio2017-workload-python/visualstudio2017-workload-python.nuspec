@@ -19,7 +19,7 @@
     <description>
 ### Overview
 
-This package adds the Node.js development workload to an existing installation of Visual Studio 2017 (Enterprise, Professional or Community).
+This package adds the Python development workload to an existing installation of Visual Studio 2017 (Enterprise, Professional or Community).
 
 The lists of components included in this workload in respective Visual Studio 2017 products are shown here:
 - [Enterprise](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-enterprise?view=vs-2017#python-development)
