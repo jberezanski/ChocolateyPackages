@@ -147,7 +147,7 @@ To get help for a specific function use the [help](https://msdn.microsoft.com/en
 
 ### Boxstarter issue
 
-For increased reliability, it is advisable to call the Install-WindowsUpdate function in Chocolatey package scripts using the module-qualified syntax (chocolateyInstaller\Install-WindowsUpdate).
+For increased reliability, in Chocolatey package scripts it is advisable to call the Install-WindowsUpdate function using the module-qualified syntax (chocolateyInstaller\Install-WindowsUpdate).
 This works around an issue in the Boxstarter framework (https://github.com/chocolatey/boxstarter/issues/293).
 
 ### Acknowledgement
