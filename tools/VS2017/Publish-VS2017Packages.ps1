@@ -1,8 +1,10 @@
 ﻿[CmdletBinding(SupportsShouldProcess = $true)]
 Param
 (
+    [string] $Pattern = '^visualstudio2017[a-z]'
 )
 
+#Requires -Version 5
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
@@ -10,7 +12,7 @@ Push-Location -Path "$PSScriptRoot\..\.."
 try
 {
     $todo = New-Object Collections.ArrayList
-    Get-ChildItem | Where-Object Name -match '^visualstudio2017[a-z]' | ForEach-Object {
+    Get-ChildItem | Where-Object Name -match $Pattern | ForEach-Object {
         $n = $_.Name
         $v = ([xml](Get-Content -Path ".\$n\$n.nuspec")).package.metadata.version
         $p = "$PWD\output\$n.$v.nupkg"
