@@ -19,13 +19,14 @@
     <description>
 ### Overview
 
-This package adds the Office/SharePoint development workload to an existing installation of Visual Studio 2017 (Enterprise or Professional).
+This package adds the Office/SharePoint development workload to an existing installation of Visual Studio 2017 (Enterprise, Professional or Community).
 
 The lists of components included in this workload in respective Visual Studio 2017 products are shown here:
 - [Enterprise](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-enterprise?view=vs-2017#officesharepoint-development)
 - [Professional](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-professional?view=vs-2017#officesharepoint-development)
+- [Community](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-community?view=vs-2017#officesharepoint-development)
 
-Visual Studio 2017 must be installed first, for example using Chocolatey packages: [visualstudio2017enterprise](https://chocolatey.org/packages/visualstudio2017enterprise), [visualstudio2017professional](https://chocolatey.org/packages/visualstudio2017professional).
+Visual Studio 2017 must be installed first, for example using Chocolatey packages: [visualstudio2017enterprise](https://chocolatey.org/packages/visualstudio2017enterprise), [visualstudio2017professional](https://chocolatey.org/packages/visualstudio2017professional), [visualstudio2017community](https://chocolatey.org/packages/visualstudio2017community).
 
 ### Customizations
 
@@ -66,6 +67,7 @@ Example 3. Installing the workload on all products, including only required comp
 1.2.1:
 - Fixed links to component lists.
 - Updated vcredist2017 dependency version.
+- Fixed supported Visual Studio products list.
 
 [Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </releaseNotes>
