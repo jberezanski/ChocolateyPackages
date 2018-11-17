@@ -38,6 +38,8 @@ This command will install Visual Studio with all available workloads and optiona
 
     choco install visualstudio2017community --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
 
+[More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+
 ### Notes
 
 A reboot may be required after (or even _before_) installing/uninstalling this package.
@@ -50,10 +52,10 @@ If control over reboots is required, it is advisable to install the dependencies
 15.9.1.0:
 - Package metadata updated for Visual Studio 2017 version 15.9.1 (the native installer always installs the latest released Visual Studio 2017 build).
 - Updated bootstrapper url.
+
 vNext:
 - Added links to new workload packages.
-
-[Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+- Updated description.
 
 #### Available workload packages
 - [Azure development](https://chocolatey.org/packages/visualstudio2017-workload-azure)

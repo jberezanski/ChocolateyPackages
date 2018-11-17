@@ -36,6 +36,8 @@ This command will install Visual Studio Test Controller, display progress during
 
     choco install visualstudio2017testcontroller --package-parameters "--passive --locale en-US"
 
+[More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+
 ### Notes
 
 A reboot may be required after (or even _before_) installing/uninstalling this package.
@@ -48,10 +50,10 @@ If control over reboots is required, it is advisable to install the dependencies
 15.9.1.0:
 - Package metadata updated for Visual Studio 2017 version 15.9.1 (the native installer always installs the latest released Visual Studio 2017 build).
 - Updated bootstrapper url.
+
 vNext:
 - Updated vcredist2017 dependency version.
-
-[Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+- Updated description.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.7.0" />
