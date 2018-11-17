@@ -118,50 +118,62 @@ cup -y visualstudio2017buildtools --pre --source "https://www.myget.org/F/jberez
 
 cinst -y visualstudio2017-remotetools visualstudio2017-performancetools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
 
-# dev workloads
+# dev ide workloads
 cinst -y visualstudio2017enterprise --params "--locale en-US" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-azure --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-data --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-manageddesktop --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-managedgame --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-nativecrossplat --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-nativedesktop --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-nativegame --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-nativemobile --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-netcoretools --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-netcrossplat --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-netweb --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-node --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-office --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-universal --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-visualstudioextension --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-webcrossplat --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-azure --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-data --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-manageddesktop --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-managedgame --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-nativecrossplat --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-nativedesktop --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-nativegame --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-nativemobile --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-netcoretools --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-netcrossplat --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-netweb --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-node --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-office --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-universal --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-visualstudioextension --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-webcrossplat --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+# new in 15.?
+cinst -y visualstudio2017-workload-datascience --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-python --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
 
 cinst -y visualstudio2017-workload-node visualstudio2017-workload-office visualstudio2017-workload-universal visualstudio2017-workload-visualstudioextension visualstudio2017-workload-webcrossplat --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
 cinst -y visualstudio2017-workload-netcoretools visualstudio2017-workload-netcrossplat visualstudio2017-workload-netweb --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-manageddesktop visualstudio2017-workload-managedgame visualstudio2017-workload-nativecrossplat visualstudio2017-workload-nativedesktop visualstudio2017-workload-nativegame visualstudio2017-workload-nativemobile --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-azure visualstudio2017-workload-data visualstudio2017-workload-datascience visualstudio2017-workload-python --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
 
-# new in 15.?
-[ok] cinst -y visualstudio2017-workload-datascience --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-python --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-
+# dev buildtools workloads
 cinst -y visualstudio2017buildtools --params "--locale en-US" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-netcorebuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-vctools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-webbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-netcorebuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-vctools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-webbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
 # new in 15.?
-[ok] cinst -y visualstudio2017-workload-azurebuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-databuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-manageddesktopbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-msbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-nodebuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-officebuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-universalbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-visualstudioextensionbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
-[ok] cinst -y visualstudio2017-workload-xamarinbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-azurebuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-databuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-manageddesktopbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-nodebuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-officebuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-universalbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-visualstudioextensionbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-xamarinbuildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
 
+cinst -y visualstudio2017-workload-netcorebuildtools visualstudio2017-workload-vctools visualstudio2017-workload-webbuildtools --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-azurebuildtools visualstudio2017-workload-databuildtools visualstudio2017-workload-manageddesktopbuildtools visualstudio2017-workload-nodebuildtools --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+cinst -y visualstudio2017-workload-officebuildtools visualstudio2017-workload-universalbuildtools visualstudio2017-workload-visualstudioextensionbuildtools visualstudio2017-workload-xamarinbuildtools --params "--no-includeRecommended" --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages-dev/api/v2,https://chocolatey.org/api/v2"
+
+# some prerequisites of some ide workloads (around 2018-11-16)
 python => vcredist2017 14.15.26706
+azure => dotnetcore-sdk 2.1.403
+netcoretools => dotnetcore-sdk 2.1.500
+netcrossplat => dotnetcore-sdk 2.1.202
+netweb => dotnetcore-sdk 2.1.403
+office => dotnetcore-sdk 2.1.403
+universal => dotnetcore-sdk 2.1.500
 
-msbuildtools => 15.1?
+# prerequisites of buildtools workloads (around 2018-11-16)
 azurebuildtools => dotnetcore-sdk 2.1.403, devpack 4.0-4.6.1
 databuildtools => vcredist2017 14.15.26706, devpack 4.0-4.6
 manageddesktopbuildtools => dotnetcore-sdk 2.1.202,  dotnetcore-sdk 2.1.403, devpack 4.0-4.6.1
@@ -175,7 +187,7 @@ vctools => vcredist2017 14.15.26706
 webbuildtools => dotnetcore-sdk 2.1.403, devpack 4.0-4.6.1
 
 # rc
-cinst -y KB2999226 KB3033929 KB3035131
+cinst -y KB2999226 KB3033929 KB3035131 KB2533623
 cinst -ydv visualstudio2017buildtools --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages/api/v2,https://chocolatey.org/api/v2" --params "--locale en-US"
 cinst -ydv visualstudio2017community --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages/api/v2,https://chocolatey.org/api/v2"
 cinst -ydv visualstudio2017enterprise --pre --source "https://www.myget.org/F/jberezanski-chocolateypackages/api/v2,https://chocolatey.org/api/v2"
