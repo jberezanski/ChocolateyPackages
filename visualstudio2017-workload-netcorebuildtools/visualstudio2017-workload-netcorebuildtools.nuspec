@@ -54,12 +54,10 @@ Example 3. Installing the workload, including only required components:
 ##### Package
 1.1.1:
 - Fixed link to component list.
-- Added dependency on dotnetcore-sdk.
 - Updated description.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.7.0" />
-      <dependency id="dotnetcore-sdk" version="2.1.403" />
       <dependency id="visualstudio2017-installer" version="1.0.2" />
       <dependency id="visualstudio2017buildtools" version="15.3" />
     </dependencies>

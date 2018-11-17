@@ -57,7 +57,6 @@ Example 3. Installing the workload, including only required components:
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.7.0" />
-      <dependency id="dotnetcore-sdk" version="2.1.403" />
       <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" />
       <dependency id="dotnet4.6-targetpack" version="4.6.00081.20150925" />
       <dependency id="netfx-4.5.2-devpack" version="4.5.5165101" />
