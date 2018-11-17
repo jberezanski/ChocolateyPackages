@@ -59,6 +59,8 @@ Example 2. Installing the workload on one specific product, including all recomm
 Example 3. Installing the workload on all products, including only required components:
 
     choco install visualstudio2017-workload-managedgame --package-parameters "--no-includeRecommended"
+
+[More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </description>
     <releaseNotes>
 ##### Software
@@ -67,8 +69,7 @@ Example 3. Installing the workload on all products, including only required comp
 1.2.1:
 - Fixed links to component lists.
 - Updated vcredist2017 dependency version.
-
-[Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+- Updated description.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.7.0" />

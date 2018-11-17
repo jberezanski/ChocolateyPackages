@@ -45,6 +45,8 @@ Example 2. Installing the workload, including all recommended and optional compo
 Example 3. Installing the workload, including only required components:
 
     choco install visualstudio2017-workload-vctools --package-parameters "--no-includeRecommended"
+
+[More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </description>
     <releaseNotes>
 ##### Software
@@ -53,8 +55,7 @@ Example 3. Installing the workload, including only required components:
 1.3.1:
 - Fixed link to component list.
 - Updated vcredist2017 dependency version.
-
-[Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+- Updated description.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.7.0" />
