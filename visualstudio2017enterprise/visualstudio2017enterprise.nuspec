@@ -18,31 +18,13 @@
     <summary>An integrated, end-to-end solution for developers looking for high productivity and seamless coordination across teams of any size.</summary>
     <description>
 ### Overview
-
 Visual Studio Enterprise 2017 offers a new installation experience. The minimum installation is under 500MB, it installs and updates within minutes, and it uninstalls cleanly. You get basic code editing support for more than 20 languages along with debugging and source code control capabilities. You can also optionally add support for 17 different development workloads and related features.
 
 To find out what's new or to see the known issues, see the [Visual Studio 2017 Release Notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).  
 [System requirements](https://www.visualstudio.com/en-us/productinfo/vs2017-system-requirements-vs)
 
-### Customizations
-
-By default, the package installs only the bare minimum required (the Core Editor workload). The easiest way to add more development features is to use the workload packages:
-- [Azure development](https://chocolatey.org/packages/visualstudio2017-workload-azure)
-- [Data storage and processing](https://chocolatey.org/packages/visualstudio2017-workload-data)
-- [.NET desktop dev.](https://chocolatey.org/packages/visualstudio2017-workload-manageddesktop)
-- [Game dev. with Unity](https://chocolatey.org/packages/visualstudio2017-workload-managedgame)
-- [Linux dev. with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativecrossplat)
-- [Desktop dev. with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativedesktop)
-- [Game dev. with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativegame)
-- [Mobile dev. with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativemobile)
-- [.NET Core cross-platform dev.](https://chocolatey.org/packages/visualstudio2017-workload-netcoretools)
-- [Mobile dev. with .NET](https://chocolatey.org/packages/visualstudio2017-workload-netcrossplat)
-- [ASP.NET and web dev.](https://chocolatey.org/packages/visualstudio2017-workload-netweb)
-- [Node.js dev.](https://chocolatey.org/packages/visualstudio2017-workload-node)
-- [Office/SharePoint dev.](https://chocolatey.org/packages/visualstudio2017-workload-office)
-- [Universal Windows Platform dev.](https://chocolatey.org/packages/visualstudio2017-workload-universal)
-- [Visual Studio extension dev.](https://chocolatey.org/packages/visualstudio2017-workload-visualstudioextension)
-- [Mobile dev. with JavaScript](https://chocolatey.org/packages/visualstudio2017-workload-webcrossplat)
+### Customizations and Optional features
+By default, the package installs only the bare minimum required (the Core Editor workload). The easiest way to add more development features is to use the workload packages listed in the Release Notes section.
 
 All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
 
@@ -68,8 +50,30 @@ If control over reboots is required, it is advisable to install the dependencies
 15.9.1.0:
 - Package metadata updated for Visual Studio 2017 version 15.9.1 (the native installer always installs the latest released Visual Studio 2017 build).
 - Updated bootstrapper url.
+vNext:
+- Added links to new workload packages.
 
 [Package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+
+#### Available workload packages
+- [Azure development](https://chocolatey.org/packages/visualstudio2017-workload-azure)
+- [Data storage and processing](https://chocolatey.org/packages/visualstudio2017-workload-data)
+- [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2017-workload-datascience)
+- [.NET desktop development](https://chocolatey.org/packages/visualstudio2017-workload-manageddesktop)
+- [Game development with Unity](https://chocolatey.org/packages/visualstudio2017-workload-managedgame)
+- [Linux development with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativecrossplat)
+- [Desktop development with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativedesktop)
+- [Game development with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativegame)
+- [Mobile development with C++](https://chocolatey.org/packages/visualstudio2017-workload-nativemobile)
+- [.NET Core cross-platform development](https://chocolatey.org/packages/visualstudio2017-workload-netcoretools)
+- [Mobile development with .NET](https://chocolatey.org/packages/visualstudio2017-workload-netcrossplat)
+- [ASP.NET and web development](https://chocolatey.org/packages/visualstudio2017-workload-netweb)
+- [Node.js development](https://chocolatey.org/packages/visualstudio2017-workload-node)
+- [Office/SharePoint development](https://chocolatey.org/packages/visualstudio2017-workload-office)
+- [Python development](https://chocolatey.org/packages/visualstudio2017-workload-python)
+- [Universal Windows Platform development](https://chocolatey.org/packages/visualstudio2017-workload-universal)
+- [Visual Studio extension development](https://chocolatey.org/packages/visualstudio2017-workload-visualstudioextension)
+- [Mobile development with JavaScript](https://chocolatey.org/packages/visualstudio2017-workload-webcrossplat)
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.7.0" />
