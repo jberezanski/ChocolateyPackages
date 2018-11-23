@@ -108,7 +108,7 @@ Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may t
   # The Visual Studio Installer uses Electron, some versions can crash if NODE_OPTIONS is set
   # https://github.com/electron/electron/issues/12695
   # https://github.com/nodejs/node/issues/24360
-  $process.StartInfo.Environment.Remove("NODE_OPTIONS") | Out-Null
+  $process.StartInfo.EnvironmentVariables.Remove("NODE_OPTIONS") | Out-Null
 
   $process.Start() | Out-Null
   if ($process.StartInfo.RedirectStandardOutput) { $process.BeginOutputReadLine() }
