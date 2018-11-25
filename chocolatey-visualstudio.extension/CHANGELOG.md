@@ -2,7 +2,8 @@
 
 ## Version 1.7.1
 
-- Works around an issue in the Visual Studio Installer (https://github.com/electron/electron/issues/12695, https://github.com/nodejs/node/issues/24360) by ensuring the NODE_OPTIONS environment variable is not passed to the Visual Studio Installer.
+- Works around an issue in the Visual Studio Installer (https://github.com/electron/electron/issues/12695, https://github.com/nodejs/node/issues/24360) by ensuring the NODE_OPTIONS environment variable is not passed to the Visual Studio Installer ([GH-56](https://github.com/jberezanski/ChocolateyPackages/pull/56)).
+- Fixed offline installation from layout ([GH-51](https://github.com/jberezanski/ChocolateyPackages/issues/51)).
 
 ## Version 1.7.0
 

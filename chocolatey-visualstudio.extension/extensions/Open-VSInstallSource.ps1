@@ -11,7 +11,6 @@ function Open-VSInstallSource
     if ($packageParameters.ContainsKey('bootstrapperPath'))
     {
         $installerFilePath = $packageParameters['bootstrapperPath']
-        $packageParameters.Remove('bootstrapperPath')
         Write-Debug "User-provided bootstrapper path: $installerFilePath"
     }
     else
