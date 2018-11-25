@@ -124,7 +124,7 @@ function Install-VSInstaller
         }
     }
 
-    $boxExe = Get-VSWebFile `
+    $downloadedOrProvidedExe = Get-VSWebFile `
         -PackageName 'Visual Studio Installer' `
         -DefaultFileName 'vs_setup.exe' `
         -FileDescription 'installer executable' `
@@ -133,24 +133,52 @@ function Install-VSInstaller
         -ChecksumType $ChecksumType `
         -LocalFilePath $installerFilePath
 
-    $chocTempDir = $env:TEMP
-    $tempDir = Join-Path $chocTempDir "$PackageName"
-    if ($env:packageVersion -ne $null) { $tempDir = Join-Path $tempDir "$env:packageVersion" }
-
-    $extractedBoxPath = Join-Path -Path $tempDir -ChildPath (Get-Item -Path $boxExe).BaseName
-    if (Test-Path -Path $extractedBoxPath)
+    $isBox = (Split-Path -Leaf -Path $downloadedOrProvidedExe) -ne 'vs_setup_bootstrapper.exe' # in case the user pointed us to already extracted vs_setup_bootstrapper.exe
+    if ($isBox)
     {
-        Write-Debug "Removing already existing box extraction path: $extractedBoxPath"
-        Remove-Item -Path $extractedBoxPath -Recurse
+        # vs_Setup.exe 15.6 has a flaw in its handling of --quiet --update:
+        # because vs_Setup.exe appends an additional argument (--env) to vs_setup_bootstrapper.exe,
+        # the latter thinks it is in "roundtrip update" and starts vs_installer.exe at the end.
+        # This flaw is not present in vs_Setup.exe 15.7 or later, presumably because of improved
+        # parameter handling in vs_setup_bootstrapper.exe.
+        Write-Debug 'Checking the version of the box executable'
+        $boxVersion = [version](Get-Item -Path $downloadedOrProvidedExe).VersionInfo.FileVersion
+        $shouldUnpackBox = [version]'15.6' -le $boxVersion -and $boxVersion -lt [version]'15.7'
+        if ($shouldUnpackBox)
+        {
+            Write-Debug "The box executable (version $boxVersion) is affected by the --quiet --update flaw, so it will be unpacked as a workaround"
+
+            $chocTempDir = $env:TEMP
+            $tempDir = Join-Path $chocTempDir "$PackageName"
+            if ($env:packageVersion -ne $null) { $tempDir = Join-Path $tempDir "$env:packageVersion" }
+
+            $extractedBoxPath = Join-Path -Path $tempDir -ChildPath (Get-Item -Path $downloadedOrProvidedExe).BaseName
+            if (Test-Path -Path $extractedBoxPath)
+            {
+                Write-Debug "Removing already existing box extraction path: $extractedBoxPath"
+                Remove-Item -Path $extractedBoxPath -Recurse
+            }
+
+            Get-ChocolateyUnzip `
+                -PackageName 'Visual Studio Installer' `
+                -FileFullPath $downloadedOrProvidedExe `
+                -Destination $extractedBoxPath `
+                | Out-Null
+
+            $vsSetupBootstrapperExe = Join-Path -Resolve -Path $extractedBoxPath -ChildPath 'vs_bootstrapper_d15\vs_setup_bootstrapper.exe'
+            $installerToRun = $vsSetupBootstrapperExe
+        }
+        else
+        {
+            Write-Debug "The box executable (version $boxVersion) is not affected by the --quiet --update flaw, so it will be used directly"
+            $installerToRun = $downloadedOrProvidedExe
+        }
     }
-
-    Get-ChocolateyUnzip `
-        -PackageName 'Visual Studio Installer' `
-        -FileFullPath $boxExe `
-        -Destination $extractedBoxPath `
-        | Out-Null
-
-    $vsSetupBootstrapperExe = Join-Path -Resolve -Path $extractedBoxPath -ChildPath 'vs_bootstrapper_d15\vs_setup_bootstrapper.exe'
+    else
+    {
+        Write-Debug "It looks like the provided bootstrapperPath points to an already extracted vs_setup_bootstrapper.exe"
+        $installerToRun = $downloadedOrProvidedExe
+    }
 
     $whitelist = @('quiet', 'offline')
     Remove-VSPackageParametersNotPassedToNativeInstaller -PackageParameters $argumentSet -TargetDescription 'bootstrapper during VS Installer update' -Whitelist $whitelist
@@ -161,7 +189,7 @@ function Install-VSInstaller
     $arguments = @{
         packageName = 'Visual Studio Installer'
         silentArgs = $silentArgs
-        file = $vsSetupBootstrapperExe
+        file = $installerToRun
         logFilePath = $null
         assumeNewVS2017Installer = $true
     }
