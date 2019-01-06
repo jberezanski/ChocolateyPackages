@@ -40,6 +40,7 @@ Install-ChocolateyPackage
       [string] $ProgramsAndFeaturesDisplayName = $ApplicationName,
       [string] $VisualStudioYear,
       [string] $Product,
+      [switch] $Preview,
       [version] $DesiredProductVersion
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
@@ -48,7 +49,7 @@ Install-ChocolateyPackage
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to Continue due to the presence of ChocolateyPackageDebug environment variable"
     }
-    Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName' VisualStudioYear:'$VisualStudioYear' Product:'$Product' DesiredProductVersion:'$DesiredProductVersion'";
+    Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName' VisualStudioYear:'$VisualStudioYear' Product:'$Product' Preview:'$Preview' DesiredProductVersion:'$DesiredProductVersion'";
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     $creatingLayout = $packageParameters.ContainsKey('layout')
@@ -56,7 +57,7 @@ Install-ChocolateyPackage
 
     if ($VisualStudioYear -ne '' -and $Product -ne '')
     {
-        $productReference = Get-VSProductReference -VisualStudioYear $VisualStudioYear -Product $Product
+        $productReference = Get-VSProductReference -VisualStudioYear $VisualStudioYear -Product $Product -Preview:$Preview
     }
     else
     {
