@@ -82,17 +82,7 @@ function Get-VSChannelManifest
         }
         if ($channelId -ne $null)
         {
-            $success = $channelId -match '^VisualStudio\.(?<version>\d+)\.(?<kind>\w+)$' # VisualStudio.15.Release
-            if ($success)
-            {
-                throw 'CHANGE ME: Preview -> /pre/'
-                $manifestUri = 'https://aka.ms/vs/{0}/{1}/channel' -f $Matches['version'], $Matches['kind'].ToLowerInvariant()
-                Write-Debug "Using channel manifest URI computed from the channel id: '$manifestUri'"
-            }
-            else
-            {
-                Write-Debug "Channel id '$channelId' does not match the expected pattern and cannot be used to compute the channel manifest URI"
-            }
+            $manifestUri = Get-VSChannelUri -ChannelId $channelId -ErrorAction SilentlyContinue
         }
     }
 
