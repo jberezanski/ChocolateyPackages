@@ -20,7 +20,7 @@ Version - the program version number, extracted from the ProductVersion
           property of the version resource embedded in the program.
 
 .NOTES
-Supports both VS 2017 and "legacy" VS versions (2015 and earlier).
+Supports both VS 2017+ and "legacy" VS versions (2015 and earlier).
 #>
     [CmdletBinding()]
     Param

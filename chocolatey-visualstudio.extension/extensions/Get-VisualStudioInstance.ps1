@@ -12,8 +12,8 @@ containing the basic properties of the instance.
 A System.Management.Automation.PSObject with the following properties:
 InstallationPath (System.String)
 InstallationVersion (System.Version)
-ProductId (System.String; Visual Studio 2017 only)
-ChannelId (System.String; Visual Studio 2017 only)
+ProductId (System.String; Visual Studio 2017+ only)
+ChannelId (System.String; Visual Studio 2017+ only)
 #>
     [CmdletBinding()]
     Param

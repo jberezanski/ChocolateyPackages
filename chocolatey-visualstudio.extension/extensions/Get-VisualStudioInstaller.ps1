@@ -2,11 +2,11 @@
 {
 <#
 .SYNOPSIS
-Returns information about the Visual Studio 2017 Installer.
+Returns information about the Visual Studio Installer.
 
 .DESCRIPTION
 This function returns an object containing the basic properties (path, version)
-of the Visual Studio Installer used by VS 2017 (vs_installer.exe),
+of the Visual Studio Installer used by VS 2017+ (vs_installer.exe),
 if it is present.
 
 .OUTPUTS

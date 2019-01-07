@@ -2,7 +2,7 @@ function Get-VisualStudioInstallerHealth
 {
 <#
 .SYNOPSIS
-Checks the Visual Studio 2017 Installer for signs of corruption.
+Checks the Visual Studio Installer for signs of corruption.
 
 .DESCRIPTION
 This function returns an object containing the health status
