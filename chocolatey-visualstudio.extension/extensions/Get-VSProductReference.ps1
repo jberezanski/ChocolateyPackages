@@ -3,7 +3,7 @@
     [CmdletBinding()]
     Param
     (
-        [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
+        [Parameter(Mandatory = $true)] [ValidateSet('2017', '2019')] [string] $VisualStudioYear,
         [Parameter(Mandatory = $true)] [string] $Product,
         [switch] $Preview
     )
@@ -15,8 +15,7 @@
         default { throw "Unsupported VisualStudioYear: $VisualStudioYear"}
     }
 
-    throw 'CHANGE ME: swap'
-    $mapPreviewOrReleaseToChannelTypeSuffix = @{ $true = 'Release'; $false = 'Preview' }
+    $mapPreviewOrReleaseToChannelTypeSuffix = @{ $true = 'Preview'; $false = 'Release' }
     $channelId = 'VisualStudio.{0}.{1}' -f $majorVersion, $mapPreviewOrReleaseToChannelTypeSuffix[$Preview.ToBool()]
     $productId = "Microsoft.VisualStudio.Product." + $Product
 
