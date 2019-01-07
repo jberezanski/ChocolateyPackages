@@ -23,6 +23,8 @@ If the Installer is present, it will be updated/reinstalled if:
       [string] $ChecksumType,
       [Alias('RequiredVersion')] [version] $RequiredInstallerVersion,
       [version] $RequiredEngineVersion,
+      [ValidateSet('2017', '2019')] [string] $VisualStudioYear = '2017',
+      [switch] $Preview,
       [switch] $Force
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
@@ -35,5 +37,10 @@ If the Installer is present, it will be updated/reinstalled if:
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
 
-    Install-VSInstaller -PackageParameters $packageParameters @PSBoundParameters
+    # this is a way of passing the channel id to lower layers; product id does not matter in this scenario
+    $productReference = Get-VSProductReference -VisualStudioYear $VisualStudioYear -Product 'Microsoft.VisualStudio.Product.Enterprise' -Preview:$Preview
+    $PSBoundParameters.Remove('VisualStudioYear')
+    $PSBoundParameters.Remove('Preview')
+
+    Install-VSInstaller -PackageParameters $packageParameters -ProductReference $productReference @PSBoundParameters
 }
