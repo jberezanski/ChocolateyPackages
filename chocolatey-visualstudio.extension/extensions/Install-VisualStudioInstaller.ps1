@@ -37,10 +37,9 @@ If the Installer is present, it will be updated/reinstalled if:
 
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
 
-    # this is a way of passing the channel id to lower layers; product id does not matter in this scenario
-    $productReference = Get-VSProductReference -VisualStudioYear $VisualStudioYear -Product 'Microsoft.VisualStudio.Product.Enterprise' -Preview:$Preview
+    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$Preview
     $PSBoundParameters.Remove('VisualStudioYear')
     $PSBoundParameters.Remove('Preview')
 
-    Install-VSInstaller -PackageParameters $packageParameters -ProductReference $productReference @PSBoundParameters
+    Install-VSInstaller -PackageParameters $packageParameters -ChannelReference $channelReference @PSBoundParameters
 }

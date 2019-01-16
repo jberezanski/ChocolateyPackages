@@ -5,7 +5,7 @@ function Assert-VSInstallerUpdated
     (
         [Parameter(Mandatory = $true)] [string] $PackageName,
         [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
-        [PSObject] $ProductReference,
+        [PSObject] $ChannelReference,
         [string] $Url,
         [string] $Checksum,
         [string] $ChecksumType,
@@ -18,7 +18,7 @@ function Assert-VSInstallerUpdated
         return
     }
 
-    $requiredVersionInfo = Get-VSRequiredInstallerVersion -PackageParameters $PackageParameters -ProductReference $productReference -UseInstallChannelUri:$UseInstallChannelUri
+    $requiredVersionInfo = Get-VSRequiredInstallerVersion -PackageParameters $PackageParameters -ChannelReference $ChannelReference -UseInstallChannelUri:$UseInstallChannelUri
     Install-VSInstaller `
         -RequiredInstallerVersion $requiredVersionInfo.Version `
         -RequiredEngineVersion $requiredVersionInfo.EngineVersion `

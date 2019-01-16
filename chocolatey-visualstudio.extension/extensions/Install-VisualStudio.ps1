@@ -55,13 +55,15 @@ Install-ChocolateyPackage
     $creatingLayout = $packageParameters.ContainsKey('layout')
     $assumeNewVS2017Installer = $InstallerTechnology -eq 'WillowVS2017OrLater'
 
-    if ($VisualStudioYear -ne '' -and $Product -ne '')
+    $channelReference = $null
+    $productReference = $null
+    if ($VisualStudioYear -ne '')
     {
-        $productReference = Get-VSProductReference -VisualStudioYear $VisualStudioYear -Product $Product -Preview:$Preview
-    }
-    else
-    {
-        $productReference = $null
+        $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$Preview
+        if ($Product -ne '')
+        {
+            $productReference = Get-VSProductReference -ChannelReference $channelReference -Product $Product
+        }
     }
 
     if (-not $creatingLayout)
@@ -151,7 +153,7 @@ Install-ChocolateyPackage
 
         if ($assumeNewVS2017Installer)
         {
-            Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $productReference -Url $Url -Checksum $Checksum -ChecksumType $ChecksumType
+            Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ChannelReference $channelReference -Url $Url -Checksum $Checksum -ChecksumType $ChecksumType
         }
 
         $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer

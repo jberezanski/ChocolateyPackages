@@ -276,9 +276,10 @@
                 $useInstallChannelUri = $false
             }
 
+            $thisChannelReference = Convert-VSProductReferenceToChannelReference -ProductReference $thisProductReference
             if ($PSCmdlet.ShouldProcess("Visual Studio Installer", "update"))
             {
-                Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ProductReference $thisProductReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -UseInstallChannelUri:$useInstallChannelUri
+                Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ChannelReference $thisChannelReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -UseInstallChannelUri:$useInstallChannelUri
                 $installerUpdated = $true
                 $shouldFixInstaller = $false
                 $installer = Get-VisualStudioInstaller

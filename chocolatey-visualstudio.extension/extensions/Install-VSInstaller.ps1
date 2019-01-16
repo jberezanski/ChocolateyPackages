@@ -4,7 +4,7 @@ function Install-VSInstaller
     param(
       [Parameter(Mandatory = $true)] [string] $PackageName,
       [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
-      [PSObject] $ProductReference,
+      [PSObject] $ChannelReference,
       [string] $Url,
       [string] $Checksum,
       [string] $ChecksumType,
@@ -120,7 +120,7 @@ function Install-VSInstaller
         $installerFilePath = $null
         if ($Url -eq '')
         {
-            $Url, $Checksum, $ChecksumType = Get-VSBootstrapperUrlFromChannelManifest -PackageParameters $argumentSet -ProductReference $ProductReference -UseInstallChannelUri:$UseInstallChannelUri
+            $Url, $Checksum, $ChecksumType = Get-VSBootstrapperUrlFromChannelManifest -PackageParameters $argumentSet -ChannelReference $ChannelReference -UseInstallChannelUri:$UseInstallChannelUri
         }
     }
 

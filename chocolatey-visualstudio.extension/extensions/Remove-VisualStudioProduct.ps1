@@ -15,8 +15,9 @@
     }
 
     Write-Debug "Running 'Remove-VisualStudioProduct' with PackageName:'$PackageName' Product:'$Product' VisualStudioYear:'$VisualStudioYear' Preview:'$Preview'";
-    $productReference = Get-VSProductReference -VisualStudioYear $VisualStudioYear -Product $Product -Preview:$Preview
-    $packageParameters = @{ channelId = $productReference.ChannelId; productId = $productReference.ProductId }
+    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$Preview
+    $productReference = Get-VSProductReference -ChannelReference $channelReference -Product $Product
+    $packageParameters = @{ channelId = $channelReference.ChannelId; productId = $productReference.ProductId }
     Start-VSModifyOperation `
         -PackageName $PackageName `
         -ArgumentList @() `

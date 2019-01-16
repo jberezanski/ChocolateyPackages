@@ -4,13 +4,13 @@ function Get-VSChannelManifest
     Param
     (
         [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
-        [PSObject] $ProductReference,
+        [PSObject] $ChannelReference,
         [switch] $UseInstallChannelUri,
         [string] $LayoutPath
     )
 
     $manifestUri = $null
-    # first, see if the caller provided the manifest uri via package parameters or ProductReference
+    # first, see if the caller provided the manifest uri via package parameters or ChannelReference
     Write-Debug 'Checking if the channel manifest URI has been provided'
     Write-Debug ('InstallChannelUri will {0}' -f @{ $true = 'be used, if present'; $false = 'not be used' }[[bool]$UseInstallChannelUri])
     if ($UseInstallChannelUri -and $PackageParameters.ContainsKey('installChannelUri') -and -not [string]::IsNullOrEmpty($PackageParameters['installChannelUri']))
@@ -29,30 +29,30 @@ function Get-VSChannelManifest
         else
         {
             Write-Debug "Package parameters do not contain 'channelUri' or it is empty"
-            if ($ProductReference -ne $null)
+            if ($ChannelReference -ne $null)
             {
-                if ($UseInstallChannelUri -and -not [string]::IsNullOrEmpty($ProductReference.InstallChannelUri))
+                if ($UseInstallChannelUri -and -not [string]::IsNullOrEmpty($ChannelReference.InstallChannelUri))
                 {
-                    $manifestUri = $ProductReference.InstallChannelUri
-                    Write-Debug "Using manifest URI from the InstallChannelUri property of the provided ProductReference: '$manifestUri'"
+                    $manifestUri = $ChannelReference.InstallChannelUri
+                    Write-Debug "Using manifest URI from the InstallChannelUri property of the provided ChannelReference: '$manifestUri'"
                 }
                 else
                 {
-                    Write-Debug "ProductReference InstallChannelUri property is empty"
-                    if (-not [string]::IsNullOrEmpty($ProductReference.ChannelUri))
+                    Write-Debug "ChannelReference InstallChannelUri property is empty"
+                    if (-not [string]::IsNullOrEmpty($ChannelReference.ChannelUri))
                     {
-                        $manifestUri = $ProductReference.ChannelUri
-                        Write-Debug "Using manifest URI from the ChannelUri property of the provided ProductReference: '$manifestUri'"
+                        $manifestUri = $ChannelReference.ChannelUri
+                        Write-Debug "Using manifest URI from the ChannelUri property of the provided ChannelReference: '$manifestUri'"
                     }
                     else
                     {
-                        Write-Debug "ProductReference ChannelUri property is empty"
+                        Write-Debug "ChannelReference ChannelUri property is empty"
                     }
                 }
             }
             else
             {
-                Write-Debug "ProductReference has not been provided"
+                Write-Debug "ChannelReference has not been provided"
             }
         }
     }
@@ -70,14 +70,14 @@ function Get-VSChannelManifest
         else
         {
             Write-Debug "Package parameters do not contain 'channelId' or it is empty"
-            if ($ProductReference -ne $null)
+            if ($ChannelReference -ne $null)
             {
-                $channelId = $ProductReference.ChannelId
-                Write-Debug "Using channel id from the provided ProductReference: '$channelId'"
+                $channelId = $ChannelReference.ChannelId
+                Write-Debug "Using channel id from the provided ChannelReference: '$channelId'"
             }
             else
             {
-                Write-Debug "ProductReference has not been provided; channel id is not known"
+                Write-Debug "ChannelReference has not been provided; channel id is not known"
             }
         }
         if ($channelId -ne $null)
@@ -92,7 +92,7 @@ function Get-VSChannelManifest
         # This may currently happen in these scenarios:
         # - Add/Remove-VisualStudioWorkload/Component with --installPath package parameter
         # - Install-VisualStudio without -VisualStudioVersion and -Product (which are not mandatory for backward compat with old package versions)
-        # Ultimately, code should be reworked to make ProductReference mandatory in this function and eliminate this hardcoded value.
+        # Ultimately, code should be reworked to make ChannelReference mandatory in this function and eliminate this hardcoded value.
         $manifestUri = 'https://aka.ms/vs/15/release/channel'
         Write-Warning "Fallback: using hardcoded channel manifest URI: '$manifestUri'"
     }
