@@ -2,6 +2,8 @@
 Param
 (
     [ValidateNotNullOrEmpty()] [string] $DestinationPath,
+    [int] $MajorVersion = 15,
+    [switch] $Preview,
     [switch] $SkipLayout,
     [switch] $AllLayouts
 )
@@ -10,8 +12,9 @@ Set-StrictMode -Version 5
 Push-Location -Path $PSScriptRoot
 try
 {
+    $channelArgs = @{ MajorVersion = $MajorVersion; Preview = $Preview.ToBool() }
     $mainProducts = @('BuildTools','Community','Enterprise','FeedbackClient','Professional','TeamExplorer','TestAgent','TestController','TestProfessional')
-    $inst = .\Get-VS2017InstallerUrls.ps1 | .\Get-VS2017Installers.ps1 -DestinationPath $DestinationPath
+    $inst = .\Get-VS2017InstallerUrls.ps1 @channelArgs | .\Get-VS2017Installers.ps1 -DestinationPath $DestinationPath @channelArgs
     $outputPath = $inst | Select-Object -First 1 -ExpandProperty Path | Split-Path -Parent
     $mainInst = $inst | Where-Object Url -imatch ('vs_({0}).exe$' -f (($mainProducts | ForEach-Object { "($_)" }) -join '|'))
     $auxInst = $inst | Where-Object { $mainInst -notcontains $_ }

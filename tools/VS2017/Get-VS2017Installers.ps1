@@ -2,7 +2,9 @@
 Param
 (
     [Parameter(Mandatory = $true, ValueFromPipeline = $true)] [PSObject[]] $InputObject,
-    [string] $DestinationPath
+    [string] $DestinationPath,
+    [int] $MajorVersion = 15,
+    [switch] $Preview
 )
 Begin
 {
@@ -12,7 +14,8 @@ Begin
     if ($DestinationPath -eq '')
     {
         $root = Split-Path -Parent -Path (Split-Path -Parent -Path $PSScriptRoot)
-        $dest = '{0}\output\vs2017_{1:yyyyMMdd}' -f $root, (Get-Date)
+        $channel = @{ $true = 'pre'; $false = 'release' }[$Preview.ToBool()]
+        $dest = '{0}\output\vs{1}{2}_{3:yyyyMMdd}' -f $root, $MajorVersion, $channel, (Get-Date)
     }
     else
     {
