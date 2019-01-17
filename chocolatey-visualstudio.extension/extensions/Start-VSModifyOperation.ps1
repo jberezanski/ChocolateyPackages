@@ -94,13 +94,22 @@
 
         if ($Operation -eq 'modify')
         {
-            if ($baseArgumentSet.ContainsKey('add'))
+            # The VS instance filtering logic should be based on the primary operation,
+            # i.e. 'add' for Add-VisualStudio* and 'remove' for Remove-VisualStudio*.
+            # This can be extrapolated from ArgumentList, which is only set by those cmdlets, so trustworthy.
+            $addArgumentIsPresent = $ArgumentList -contains 'add'
+            $removeArgumentIsPresent = $ArgumentList -contains 'remove'
+            if ($addArgumentIsPresent -and $removeArgumentIsPresent)
+            {
+                throw "Unsupported scenario: both 'add' and 'remove' are present in ArgumentList"
+            }
+            elseif ($addArgumentIsPresent)
             {
                 $packageIdsList = $baseArgumentSet['add']
                 $unwantedPackageSelector = { $productInfo.selectedPackages.ContainsKey($_) }
                 $unwantedStateDescription = 'contains'
             }
-            elseif ($baseArgumentSet.ContainsKey('remove'))
+            elseif ($removeArgumentIsPresent)
             {
                 $packageIdsList = $baseArgumentSet['remove']
                 $unwantedPackageSelector = { -not $productInfo.selectedPackages.ContainsKey($_) }
@@ -108,7 +117,7 @@
             }
             else
             {
-                throw "Unsupported scenario: neither 'add' nor 'remove' is present in parameters collection"
+                throw "Unsupported scenario: neither 'add' nor 'remove' is present in ArgumentList"
             }
         }
         elseif (@('uninstall', 'update') -contains $Operation)
