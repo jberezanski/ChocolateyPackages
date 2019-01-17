@@ -15,7 +15,8 @@
         [string] $BootstrapperChecksum,
         [string] $BootstrapperChecksumType,
         [PSObject] $ProductReference,
-        [switch] $UseBootstrapper
+        [switch] $UseBootstrapper,
+        [PSObject[]] $ProductInstance
     )
     Write-Debug "Running 'Start-VSModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' ChannelReference:'$ChannelReference' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType' ProductReference:'$ProductReference' UseBootstrapper:'$UseBootstrapper'";
 
@@ -117,10 +118,17 @@
     }
     else
     {
-        $installedProducts = Resolve-VSProductInstance -ChannelReference $ChannelReference -PackageParameters $PackageParameters
-        if (($installedProducts | Measure-Object).Count -eq 0)
+        if (($ProductInstance | Measure-Object).Count -ne 0)
         {
-            throw "Unable to detect any supported Visual Studio product. You may try passing --installPath or both --productId and --channelId parameters."
+            $installedProducts = $ProductInstance
+        }
+        else
+        {
+            $installedProducts = Resolve-VSProductInstance -ChannelReference $ChannelReference -PackageParameters $PackageParameters
+            if (($installedProducts | Measure-Object).Count -eq 0)
+            {
+                throw "Unable to detect any supported Visual Studio product. You may try passing --installPath or both --productId and --channelId parameters."
+            }
         }
 
         if ($Operation -eq 'modify')

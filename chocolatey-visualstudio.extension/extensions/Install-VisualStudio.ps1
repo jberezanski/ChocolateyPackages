@@ -99,7 +99,8 @@ Install-ChocolateyPackage
                             -BootstrapperChecksum $Checksum `
                             -BootstrapperChecksumType $ChecksumType `
                             -ProductReference $productReference `
-                            -UseBootstrapper
+                            -UseBootstrapper `
+                            -ProductInstance $products
                     }
                     else
                     {
