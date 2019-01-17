@@ -93,6 +93,8 @@
                 {
                     Write-Warning "Product at path '$($productInfo.installationPath)' has product id '$($productInfo.productId)', expected '$($ProductReference.ProductId)'."
                 }
+
+                $baseArgumentSet['__internal_productReference'] = New-VSProductReference -ChannelId $productInfo.channelId -ProductId $productInfo.productId -ChannelUri $productInfo.channelUri -InstallChannelUri $productInfo.installChannelUri
             }
         }
         else
@@ -106,6 +108,8 @@
         {
             throw "Parameter error: when productId is specified, channelId must be specified, too."
         }
+
+        $baseArgumentSet['__internal_productReference'] = New-VSProductReference -ChannelId $baseArgumentSet['channelId'] -ProductId $baseArgumentSet['productId']
     }
     elseif ($baseArgumentSet.ContainsKey('channelId'))
     {
