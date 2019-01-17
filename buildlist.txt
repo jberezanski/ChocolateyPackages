@@ -3,6 +3,7 @@ KB2882822\KB2882822.nuspec
 KB3033929\KB3033929.nuspec
 KB3035131\KB3035131.nuspec
 visualstudio2017buildtools\visualstudio2017buildtools.nuspec
+visualstudio2017buildtools-preview\visualstudio2017buildtools-preview.nuspec
 visualstudio2017community\visualstudio2017community.nuspec
 visualstudio2017enterprise\visualstudio2017enterprise.nuspec
 visualstudio2017enterprise-preview\visualstudio2017enterprise-preview.nuspec
@@ -45,6 +46,8 @@ visualstudio2017-workload-vctools\visualstudio2017-workload-vctools.nuspec
 visualstudio2017-workload-webbuildtools\visualstudio2017-workload-webbuildtools.nuspec
 visualstudio2017-workload-webcrossplat\visualstudio2017-workload-webcrossplat.nuspec
 visualstudio2017-workload-xamarinbuildtools\visualstudio2017-workload-xamarinbuildtools.nuspec
+visualstudio2019buildtools-preview\visualstudio2019buildtools-preview.nuspec
+visualstudio2019enterprise-preview\visualstudio2019enterprise-preview.nuspec
 ..\KennethB-Chocolatey-Packages\VisualStudio2015Community\VisualStudio2015Community.nuspec
 ..\KennethB-Chocolatey-Packages\VisualStudio2015Enterprise\VisualStudio2015Enterprise.nuspec
 ..\KennethB-Chocolatey-Packages\VisualStudio2015Professional\VisualStudio2015Professional.nuspec
