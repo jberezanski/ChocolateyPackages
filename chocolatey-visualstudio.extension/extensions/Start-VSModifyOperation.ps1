@@ -19,6 +19,11 @@
     )
     Write-Debug "Running 'Start-VSModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType'";
 
+    if ($ProductReference -eq $null -and $Operation -eq 'update')
+    {
+        throw 'ProductReference is mandatory for update operations.'
+    }
+
     $frobbed, $frobbing, $frobbage = $OperationTexts
 
     if ($PackageParameters -eq $null)
@@ -198,7 +203,7 @@
 
             $argumentSet = $baseArgumentSet.Clone()
             $argumentSet['installPath'] = $productInfo.installationPath
-            $argumentSet['__internal_productReference'] = New-VSProductReference -ChannelId $productInfo.channelId -ProductId $productInfo.productid -ChannelUri $productInfo.channelUri -InstallChannelUri $productInfo.installChannelUri
+            $argumentSet['__internal_productReference'] = New-VSProductReference -ChannelId $productInfo.channelId -ProductId $productInfo.productId -ChannelUri $productInfo.channelUri -InstallChannelUri $productInfo.installChannelUri
             $argumentSets += $argumentSet
         }
     }
@@ -369,10 +374,11 @@
 
         if ($processed -and $Operation -eq 'update')
         {
-            $instance = Resolve-VSProductInstance -ProductReference $productReference -PackageParameters $packageParameters
-            if (($instance | Measure-Object).Count -eq 1)
+            $instance = Resolve-VSProductInstance -ProductReference $thisProductReference -PackageParameters $argumentSet
+            $instanceCount = ($instance | Measure-Object).Count
+            if ($instanceCount -eq 1)
             {
-                $currentProductVersion = [version]$productInfo.installationVersion
+                $currentProductVersion = [version]$instance.installationVersion
                 if ($DesiredProductVersion -ne $null)
                 {
                     if ($currentProductVersion -ge $DesiredProductVersion)
@@ -386,6 +392,10 @@
                 }
 
                 Write-Verbose "$productDescription is now at version $currentProductVersion."
+            }
+            elseif ($instanceCount -eq 0)
+            {
+                Write-Warning "Unable to detect the updated $productDescription instance. This might mean that update failed. "
             }
         }
 

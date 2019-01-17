@@ -4,6 +4,7 @@
 
 - Install-VisualStudio and Remove-VisualStudioProduct now support preview releases (via a new -Preview switch) and Visual Studio 2019 (-VisualStudioYear 2019).
 - Remove-VisualStudioWorkload/Component no longer acts like Add-VisualStudioWorkload/Component if the user passes the '--add' package parameter to `choco uninstall`.
+- Fixed determination of outcome of a Visual Studio update operation.
 
 ## Version 1.7.1
 
