@@ -89,9 +89,7 @@ function Get-VSChannelManifest
     if ($manifestUri -eq $null)
     {
         # Finally, fall back to hardcoded.
-        # This may currently happen in these scenarios:
-        # - Add/Remove-VisualStudioWorkload/Component with --installPath package parameter
-        # - Install-VisualStudio without -VisualStudioVersion and -Product (which are not mandatory for backward compat with old package versions)
+        # This may currently happen only when Install-VisualStudio is called without -VisualStudioVersion and -Product (which are not mandatory for backward compat with old package versions).
         # Ultimately, code should be reworked to make ChannelReference mandatory in this function and eliminate this hardcoded value.
         $manifestUri = 'https://aka.ms/vs/15/release/channel'
         Write-Warning "Fallback: using hardcoded channel manifest URI: '$manifestUri'"

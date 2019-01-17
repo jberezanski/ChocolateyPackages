@@ -15,5 +15,8 @@
     }
 
     Write-Debug "Running 'Remove-VisualStudioWorkload' with PackageName:'$PackageName' Workload:'$Workload' VisualStudioYear:'$VisualStudioYear'";
-    Start-VSModifyOperation -PackageName $PackageName -ArgumentList @('remove', "Microsoft.VisualStudio.Workload.$Workload") -VisualStudioYear $VisualStudioYear -ApplicableProducts $ApplicableProducts -OperationTexts @('uninstalled', 'uninstalling', 'uninstallation')
+    $argumentList = @('remove', "Microsoft.VisualStudio.Workload.$Workload")
+
+    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$false
+    Start-VSModifyOperation -PackageName $PackageName -ArgumentList $argumentList -ChannelReference $channelReference -ApplicableProducts $ApplicableProducts -OperationTexts @('uninstalled', 'uninstalling', 'uninstallation')
 }

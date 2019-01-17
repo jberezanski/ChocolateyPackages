@@ -4,7 +4,7 @@
     param(
         [Parameter(Mandatory = $true)] [string] $PackageName,
         [AllowEmptyCollection()] [AllowEmptyString()] [Parameter(Mandatory = $true)] [string[]] $ArgumentList,
-        [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
+        [Parameter(Mandatory = $true)] [PSObject] $ChannelReference,
         [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
         [Parameter(Mandatory = $true)] [string[]] $OperationTexts,
         [ValidateSet('modify', 'uninstall', 'update')] [string] $Operation = 'modify',
@@ -17,7 +17,7 @@
         [PSObject] $ProductReference,
         [switch] $UseBootstrapper
     )
-    Write-Debug "Running 'Start-VSModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' VisualStudioYear:'$VisualStudioYear' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType'";
+    Write-Debug "Running 'Start-VSModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' ChannelReference:'$ChannelReference' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType' ProductReference:'$ProductReference' UseBootstrapper:'$UseBootstrapper'";
 
     if ($ProductReference -eq $null -and $Operation -eq 'update')
     {
@@ -91,10 +91,10 @@
     }
     else
     {
-        $installedProducts = Get-WillowInstalledProducts -VisualStudioYear $VisualStudioYear
+        $installedProducts = Resolve-VSProductInstance -ChannelReference $ChannelReference -PackageParameters $PackageParameters
         if (($installedProducts | Measure-Object).Count -eq 0)
         {
-            throw "Unable to detect any supported Visual Studio $VisualStudioYear product. You may try passing --installPath or both --productId and --channelId parameters."
+            throw "Unable to detect any supported Visual Studio product. You may try passing --installPath or both --productId and --channelId parameters."
         }
 
         if ($Operation -eq 'modify')
@@ -262,6 +262,12 @@
             $argumentSet.Remove('__internal_productReference')
         }
 
+        $thisChannelReference = $ChannelReference
+        if ($thisProductReference -ne $null)
+        {
+            $thisChannelReference = Convert-VSProductReferenceToChannelReference -ProductReference $thisProductReference
+        }
+
         $shouldFixInstaller = $false
         if ($installer -eq $null)
         {
@@ -290,7 +296,6 @@
                 $useInstallChannelUri = $false
             }
 
-            $thisChannelReference = Convert-VSProductReferenceToChannelReference -ProductReference $thisProductReference
             if ($PSCmdlet.ShouldProcess("Visual Studio Installer", "update"))
             {
                 Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ChannelReference $thisChannelReference -Url $BootstrapperUrl -Checksum $BootstrapperChecksum -ChecksumType $BootstrapperChecksumType -UseInstallChannelUri:$useInstallChannelUri

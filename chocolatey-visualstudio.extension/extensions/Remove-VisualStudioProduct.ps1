@@ -21,7 +21,7 @@
     Start-VSModifyOperation `
         -PackageName $PackageName `
         -ArgumentList @() `
-        -VisualStudioYear $VisualStudioYear `
+        -ChannelReference $channelReference `
         -ApplicableProducts @($Product) `
         -OperationTexts @('uninstalled', 'uninstalling', 'uninstallation') `
         -Operation 'uninstall' `

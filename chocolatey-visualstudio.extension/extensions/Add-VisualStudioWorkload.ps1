@@ -23,5 +23,6 @@
         $argumentList += @('includeRecommended', '')
     }
 
-    Start-VSModifyOperation -PackageName $PackageName -ArgumentList $argumentList -VisualStudioYear $VisualStudioYear -ApplicableProducts $ApplicableProducts -RequiredProductVersion $RequiredProductVersion -OperationTexts @('installed', 'installing', 'installation')
+    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$false
+    Start-VSModifyOperation -PackageName $PackageName -ArgumentList $argumentList -ChannelReference $channelReference -ApplicableProducts $ApplicableProducts -RequiredProductVersion $RequiredProductVersion -OperationTexts @('installed', 'installing', 'installation')
 }

@@ -89,7 +89,7 @@ Install-ChocolateyPackage
                         Start-VSModifyOperation `
                             -PackageName $PackageName `
                             -ArgumentList @() `
-                            -VisualStudioYear $VisualStudioYear `
+                            -ChannelReference $channelReference `
                             -ApplicableProducts @($Product) `
                             -OperationTexts @('update', 'updating', 'update') `
                             -Operation 'update' `

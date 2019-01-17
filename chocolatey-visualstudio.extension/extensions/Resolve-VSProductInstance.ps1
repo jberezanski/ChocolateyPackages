@@ -2,14 +2,29 @@ function Resolve-VSProductInstance
 {
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory = $true)] [PSObject] $ProductReference,
+        [Parameter(Mandatory = $true, ParameterSetName = 'ByProductReference')] [PSObject] $ProductReference,
+        [Parameter(Mandatory = $true, ParameterSetName = 'ByChannelReference')] [PSObject] $ChannelReference,
         [Parameter(Mandatory = $true)] [hashtable] $PackageParameters
     )
 
     Write-Debug 'Resolving VS product instance(s)'
 
-    Write-Debug "Detecting instances of VS productS with ProductId = '$($ProductReference.ProductId)' ChannelId = '$($ProductReference.ChannelId)'"
-    $products = Get-WillowInstalledProducts | Where-Object { $_ -ne $null -and $_.channelId -eq $productReference.ChannelId -and $_.productId -eq $productReference.ProductId }
+    $products = Get-WillowInstalledProducts
+    if ($ProductReference -ne $null)
+    {
+        Write-Debug "Detecting instances of VS products with ProductId = '$($ProductReference.ProductId)' ChannelId = '$($ProductReference.ChannelId)'"
+        $products = Get-WillowInstalledProducts | Where-Object { $_ -ne $null -and $_.channelId -eq $productReference.ChannelId -and $_.productId -eq $productReference.ProductId }
+    }
+    elseif ($ChannelReference -ne $null)
+    {
+        Write-Debug "Detecting instances of VS products with ChannelId = '$($ChannelReference.ChannelId)'"
+        $products = Get-WillowInstalledProducts | Where-Object { $_ -ne $null -and $_.channelId -eq $channelReference.ChannelId }
+    }
+    else
+    {
+        throw 'Unsupported scenario!'
+    }
+
     if ($PackageParameters.ContainsKey('installPath'))
     {
         $installPath = $PackageParameters['installPath']
