@@ -77,6 +77,28 @@
         {
             Write-Warning 'Parameter issue: channelId is ignored when installPath is specified.'
         }
+
+        $installedProducts = Resolve-VSProductInstance -AnyProductAndChannel -PackageParameters $PackageParameters
+        if (($installedProducts | Measure-Object).Count -gt 0)
+        {
+            # Should be only one, but it is not guaranteed, hence the loop.
+            foreach ($productInfo in $installedProducts)
+            {
+                if ($productInfo.channelId -ne $ChannelReference.ChannelId)
+                {
+                    Write-Warning "Product at path '$($productInfo.installationPath)' has channel id '$($productInfo.channelId)', expected '$($ChannelReference.ChannelId)'."
+                }
+
+                if ($ProductReference -ne $null -and $productInfo.productId -ne $ProductReference.ProductId)
+                {
+                    Write-Warning "Product at path '$($productInfo.installationPath)' has product id '$($productInfo.productId)', expected '$($ProductReference.ProductId)'."
+                }
+            }
+        }
+        else
+        {
+            Write-Warning "Did not detect any installed Visual Studio products at path $($baseArgumentSet['installPath'])."
+        }
     }
     elseif ($baseArgumentSet.ContainsKey('productId'))
     {

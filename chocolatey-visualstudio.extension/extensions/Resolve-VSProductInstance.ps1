@@ -4,6 +4,7 @@ function Resolve-VSProductInstance
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'ByProductReference')] [PSObject] $ProductReference,
         [Parameter(Mandatory = $true, ParameterSetName = 'ByChannelReference')] [PSObject] $ChannelReference,
+        [Parameter(Mandatory = $true, ParameterSetName = 'AnyProductAndChannel')] [switch] $AnyProductAndChannel,
         [Parameter(Mandatory = $true)] [hashtable] $PackageParameters
     )
 
@@ -22,7 +23,8 @@ function Resolve-VSProductInstance
     }
     else
     {
-        throw 'Unsupported scenario!'
+        Write-Debug 'Detecting instances of any VS products'
+        $products = Get-WillowInstalledProducts
     }
 
     if ($PackageParameters.ContainsKey('installPath'))
