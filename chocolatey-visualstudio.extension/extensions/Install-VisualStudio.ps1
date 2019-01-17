@@ -40,7 +40,7 @@ Install-ChocolateyPackage
       [string] $ProgramsAndFeaturesDisplayName = $ApplicationName,
       [string] $VisualStudioYear,
       [string] $Product,
-      [switch] $Preview,
+      [bool] $Preview,
       [version] $DesiredProductVersion
     )
     if ($Env:ChocolateyPackageDebug -ne $null)
@@ -59,7 +59,7 @@ Install-ChocolateyPackage
     $productReference = $null
     if ($VisualStudioYear -ne '')
     {
-        $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$Preview
+        $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview $Preview
         if ($Product -ne '')
         {
             $productReference = Get-VSProductReference -ChannelReference $channelReference -Product $Product

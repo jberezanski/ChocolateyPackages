@@ -4,7 +4,7 @@ function Get-VSChannelReference
     Param
     (
         [Parameter(Mandatory = $true)] [ValidateSet('2017', '2019')] [string] $VisualStudioYear,
-        [switch] $Preview
+        [bool] $Preview
     )
 
     switch ($VisualStudioYear)
@@ -15,7 +15,7 @@ function Get-VSChannelReference
     }
 
     $mapPreviewOrReleaseToChannelTypeSuffix = @{ $true = 'Preview'; $false = 'Release' }
-    $channelId = 'VisualStudio.{0}.{1}' -f $majorVersion, $mapPreviewOrReleaseToChannelTypeSuffix[$Preview.ToBool()]
+    $channelId = 'VisualStudio.{0}.{1}' -f $majorVersion, $mapPreviewOrReleaseToChannelTypeSuffix[$Preview]
 
     $obj = New-VSChannelReference -ChannelId $channelId
     return $obj

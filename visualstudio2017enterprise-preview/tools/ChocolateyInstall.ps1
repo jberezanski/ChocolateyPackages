@@ -7,4 +7,4 @@
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Enterprise' `
     -VisualStudioYear '2017' `
-    -Preview
+    -Preview $true
