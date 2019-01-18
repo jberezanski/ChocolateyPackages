@@ -20,7 +20,7 @@
 ### Overview
 Visual Studio Build Tools 2019 Preview is a preview of the next major version of Visual Studio.
 
-Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/).
+Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/). Visual Studio and Visual Studio Preview can be installed side-by-side on the same device.
 
 **This release is not "go-live" and not intended for use on production computers or for creating production code.**
 

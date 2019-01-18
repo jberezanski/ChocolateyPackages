@@ -20,7 +20,7 @@
 ### Overview
 Visual Studio Enterprise 2017 offers a new installation experience. The minimum installation is under 500MB, it installs and updates within minutes, and it uninstalls cleanly. You get basic code editing support for more than 20 languages along with debugging and source code control capabilities. You can also optionally add support for 17 different development workloads and related features.
 
-Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/).
+Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/). Visual Studio and Visual Studio Preview can be installed side-by-side on the same device.
 
 **This release is not "go-live" and not intended for use on production computers or for creating production code.**
 
