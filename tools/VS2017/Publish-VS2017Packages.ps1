@@ -1,7 +1,7 @@
 ﻿[CmdletBinding(SupportsShouldProcess = $true)]
 Param
 (
-    [string] $Pattern = '^visualstudio2017[a-z]'
+    [string] $Pattern = '^visualstudio2017[a-z]+$'
 )
 
 #Requires -Version 5
