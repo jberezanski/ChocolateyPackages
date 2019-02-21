@@ -3,7 +3,7 @@
 $packageName = 'dotnetfx'
 $release = 528033
 $version = '4.8'
-$productNameWithVersion = "Microsoft .NET Framework $version early access build 3734"
+$productNameWithVersion = "Microsoft .NET Framework $version early access build 3745"
 $url = 'https://download.visualstudio.microsoft.com/download/pr/9854b5f2-2341-4136-ad7d-1d881ab8d603/a59983c9bf08c7ae7200f356c9a604c1/NDP48-Preview-x86-x64-AllOS-ENU.exe'
 $checksum = 'D1C399178BF9733BC56C223F212512879E6ECDD6C647F25A1589C86C05591281'
 $checksumType = 'sha256'

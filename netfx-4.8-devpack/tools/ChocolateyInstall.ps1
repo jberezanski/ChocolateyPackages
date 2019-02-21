@@ -2,7 +2,7 @@
 
 $packageName = 'netfx-4.8-devpack'
 $version = '4.8'
-$productNameWithVersion = "Microsoft .NET Framework $version Developer Pack early access build 3734"
+$productNameWithVersion = "Microsoft .NET Framework $version Developer Pack early access build 3745"
 $url = 'https://download.visualstudio.microsoft.com/download/pr/9854b5f2-2341-4136-ad7d-1d881ab8d603/e3a011f2a41a59b086f78d64e1c7a3fc/NDP48-DevPack-ENU.exe'
 $checksum = '67979C8FBA2CD244712A31A7FE323FD8BD69AA7971F152F8233CB109A7260F06'
 $checksumType = 'sha256'
