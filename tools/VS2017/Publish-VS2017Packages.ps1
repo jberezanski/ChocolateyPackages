@@ -8,6 +8,7 @@ Param
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
+Write-Information "Using filter pattern: $Pattern" -InformationAction Continue
 Push-Location -Path "$PSScriptRoot\..\.."
 try
 {
