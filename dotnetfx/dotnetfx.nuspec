@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnetfx</id>
-    <version>4.8.0.0-preview6</version>
+    <version>4.8.0.0-preview7</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8</title>
@@ -19,11 +19,11 @@
 
 The .NET Framework provides many services, including memory management, type and memory safety, security, networking, and application deployment. It provides easy-to-use data structures and APIs that abstract the lower-level Windows operating system. You can use a variety of programming languages with the .NET Framework, including C#, F#, and Visual Basic. 
 
-.NET Framework 4.8 is the next version of the .NET Framework. This is one of the in-development builds of the next version of the .NET Framework. The changes in this build have been functionally validated by the .NET teams. This build is not supported for production use. The current Early Access build number being shared is 3707.
+.NET Framework 4.8 is the next version of the .NET Framework. This is one of the in-development builds of the next version of the .NET Framework. The changes in this build have been functionally validated by the .NET teams. This build is not supported for production use. The current Early Access build number being shared is 3734.
 
-This pre-release build 3707 includes improvements in [several areas](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3707/changes.md). This includes accessibility improvements in Winforms and WPF areas as well. You can see the complete list of improvements in this build in the [release notes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3707/readme.md).
+This pre-release build 3734 includes improvements in [several areas](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3734/changes.md). This includes accessibility improvements in Winforms and WPF areas as well. You can see the complete list of improvements in this build in the [release notes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3734/readme.md).
 
-The .NET Framework build 3707 will replace any existing .NET Framework 4 and later installation on your machine. This means all .NET Framework 4 and later applications on your machine will run on the .NET Framework early access builds upon installation. The set of supported OS platforms for this build now matches the same set of OS platforms supported for .NET 4.7.2 (with Windows 10, version 1809 and Windows Server 2019 being new additions.
+The .NET Framework build 3734 will replace any existing .NET Framework 4 and later installation on your machine. This means all .NET Framework 4 and later applications on your machine will run on the .NET Framework early access builds upon installation. The set of supported OS platforms for this build now matches the same set of OS platforms supported for .NET 4.7.2 (with Windows 10, version 1809 and Windows Server 2019 being new additions.
 
 Supported Windows Client versions: Windows 10 version 1809, Windows 10 version 1803, Windows 10 version 1709, Windows 10 version 1703, Windows 10 version 1607, Windows 8.1, Windows 7 SP1
 
@@ -32,11 +32,11 @@ Supported Windows Server versions: Windows Server 2019, Windows Server version 1
 The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.8-devpack).</description>
     <releaseNotes>
 ##### Software
-[.NET Framework 4.8 build 3707 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/12/14/announcing-net-framework-4-8-early-access-build-3707/)
-[.NET Framework 4.8 build 3707 release notes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3707/readme.md)
-[.NET Framework 4.8 build 3707 changes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3707/changes.md)
+[.NET Framework 4.8 build 3734 announcement](https://devblogs.microsoft.com/dotnet/announcing-net-framework-4-8-early-access-build-3734/)
+[.NET Framework 4.8 build 3734 release notes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3734/readme.md)
+[.NET Framework 4.8 build 3734 changes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3734/changes.md)
 ##### Package
-4.8.0.0-preview6: Initial package release for early access build 3707.
+4.8.0.0-preview7: Initial package release for early access build 3734.
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />

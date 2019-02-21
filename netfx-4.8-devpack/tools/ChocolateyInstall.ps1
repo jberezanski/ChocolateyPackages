@@ -2,9 +2,9 @@
 
 $packageName = 'netfx-4.8-devpack'
 $version = '4.8'
-$productNameWithVersion = "Microsoft .NET Framework $version Developer Pack early access build 3707"
-$url = 'https://download.visualstudio.microsoft.com/download/pr/527536c4-929d-4770-a57f-5e90c14f8455/ab94e35aa678283b419a810067a0955a/NDP48-DevPack-ENU.exe'
-$checksum = '5CDBDA1D045194A5AF46EF8F430EBDD580AC73B99A554D05FD67219351081A8F'
+$productNameWithVersion = "Microsoft .NET Framework $version Developer Pack early access build 3734"
+$url = 'https://download.visualstudio.microsoft.com/download/pr/9854b5f2-2341-4136-ad7d-1d881ab8d603/e3a011f2a41a59b086f78d64e1c7a3fc/NDP48-DevPack-ENU.exe'
+$checksum = '67979C8FBA2CD244712A31A7FE323FD8BD69AA7971F152F8233CB109A7260F06'
 $checksumType = 'sha256'
 
 $originalFileName = Split-Path -Leaf -Path ([uri]$url).LocalPath
