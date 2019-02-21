@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017enterprise-preview</id>
-    <version>15.9.5.10000-preview1</version>
+    <version>15.9.7.10000-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017enterprise-preview</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Enterprise Preview</title>
@@ -55,8 +55,9 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.9.5.10000:
-- Initial package release for Visual Studio 2017 version 15.9.5 Preview 1 (the native installer always installs the latest released Visual Studio 2017 build).
+15.9.7.10000-preview1:
+- Package metadata updated for Visual Studio 2017 version 15.9.7 Preview 1.0 (the native installer always installs the latest released Visual Studio 2017 build).
+- Updated bootstrapper url.
 
 #### Available workload packages
 - [Azure development](https://chocolatey.org/packages/visualstudio2017-workload-azure)
