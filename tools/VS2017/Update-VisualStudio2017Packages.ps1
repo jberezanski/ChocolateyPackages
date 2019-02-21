@@ -1,4 +1,11 @@
-﻿Set-StrictMode -Version 5
+﻿[CmdletBinding()]
+Param
+(
+    [switch] $Preview,
+    [ValidateSet('2017', '2019')] [string] $VisualStudioYear = '2017'
+)
+
+Set-StrictMode -Version 5
 #Requires -Version 5
 $ErrorActionPreference = 'Stop'
 $InformationPreference = 'Continue'
@@ -43,7 +50,7 @@ function global:au_SearchReplace
         }
         "$($Latest.PackageName).nuspec" = @{
             "^\d+\.\d+\.\d+\.\d+\:$" = "$($Latest.Version):"
-            "(Package\smetadata\supdated\sfor\sVisual\sStudio\s\d+\sversion\s)(\d+\.\d+\.\d+)" = "`${1}$($Latest.ProductVersion)"
+            "(?:(?:(?:Package\smetadata\supdated)|(?:Initial\spackage\srelease))\sfor\sVisual\sStudio\s(\d+)\sversion\s)(?:\d+\.\d+\.\d+(?:\sPreview\s\d+(?:\.\d+)*)?)" = "Package metadata updated for Visual Studio `${1} version $($Latest.ProductDisplayVersion)"
         }
     }
 }
@@ -60,49 +67,65 @@ function global:au_AfterUpdate() {
 
 function global:au_GetLatest
 {
-    $product = (Split-Path -Leaf -Path (Get-Location)) -replace 'visualstudio2017', ''
+    $product = ((Split-Path -Leaf -Path (Get-Location)) -replace "visualstudio${VisualStudioYear}", '') -replace '-preview', ''
 
-    $channel = 'release'
-    $akaUrl = 'https://aka.ms/vs/15/{0}/vs_{1}.exe' -f $channel, $product
+    $akaUrl = 'https://aka.ms/vs/{0}/{1}/vs_{2}.exe' -f $script:vsMajorVersion, $script:channelUrlToken, $product
     $res = Invoke-WebRequest -Uri $akaUrl -UseBasicParsing -MaximumRedirection 0 -ErrorAction SilentlyContinue
     if ($res.StatusCode -ne 301 -and $res.StatusCode -ne 302)
     {
         $res | Format-List -Property * | Out-String | Write-Warning
         Write-Error "Unable to resolve url $akaUrl"
-    } else
+    }
+    else
     {
         $url = $res.Headers.Location
+        if ($url -eq 'https://www.microsoft.com')
+        {
+            throw "File '$akaUrl' redirects to www.microsoft.com"
+        }
     }
 
     $version = $script:visualStudioProductVersion
-    $packageVersion = [version]"${version}.0"
+    $displayVersion = $script:visualStudioProductDisplayVersion
+    $packageVersion = "${version}${script:packageVersionSuffix}"
 
-    return @{ Version = $packageVersion; Product = $product; ProductVersion = $version; BootstrapperUrl = $url; BootstrapperChecksum = '' }
+    return @{ Version = $packageVersion; Product = $product; ProductVersion = $version; ProductDisplayVersion = $displayVersion; BootstrapperUrl = $url; BootstrapperChecksum = '' }
 }
 
 function Get-VSVersion
 {
-    $channelUri = 'https://aka.ms/vs/15/release/channel'
+    $channelUri = 'https://aka.ms/vs/{0}/{1}/channel' -f $script:vsMajorVersion, $script:channelUrlToken
     $fn = Invoke-WebRequest -Uri $channelUri -Method HEAD -UseBasicParsing | ForEach-Object { $_.Headers['Content-Disposition'] -split '=' | Select-Object -Last 1 }
     $res = Invoke-WebRequest -Uri $channelUri -UseBasicParsing
     $channelManifest = ConvertFrom-Json ([Text.Encoding]::UTF8.GetString($res.Content))
-    $version = [version]$channelManifest.info.productDisplayVersion
-    return $version
+    $productDisplayVersion = $channelManifest.info.productDisplayVersion
+    $version = [version](($productDisplayVersion -split ' ')[0])
+    Write-Output $version
+    Write-Output $productDisplayVersion
+    Write-Output ([version]$channelManifest.info.productPreReleaseMilestoneSuffix)
 }
 
+$dirSuffix = @{ $true = '-preview'; $false = '' }[$Preview.ToBool()]
+$channelUrlToken = @{ $true = 'pre'; $false = 'release' }[$Preview.ToBool()]
+$vsMajorVersion = @{ '2017' = 15; '2019' = 16 }[$VisualStudioYear]
 $mainProducts = @('BuildTools','Community','Enterprise','FeedbackClient','Professional','TeamExplorer','TestAgent','TestController','TestProfessional')
-$visualStudioProductVersion = Get-VSVersion
-Write-Information "Current published Visual Studio version: $visualStudioProductVersion"
+$visualStudioProductVersion, $visualStudioProductDisplayVersion, $productPreReleaseMilestoneSuffix = Get-VSVersion
+Write-Information "Current published Visual Studio version: $visualStudioProductVersion ('$visualStudioProductDisplayVersion', milestone: $productPreReleaseMilestoneSuffix)"
+$packageVersionSuffix = @{ $true = ('.{0}-preview1' -f ($productPreReleaseMilestoneSuffix.Major * 10000 + $productPreReleaseMilestoneSuffix.Minor * 100)); $false = '.0' }[$Preview.ToBool()]
 foreach ($product in $mainProducts)
 {
-    Write-Information "Processing package for product: $product"
-    Push-Location -Path "$repoRoot\visualstudio2017$($product.ToLowerInvariant())"
-    try
+    $dirPath = "$repoRoot\visualstudio${VisualStudioYear}$($product.ToLowerInvariant())$dirSuffix"
+    if (Test-Path -Path $dirPath)
     {
-        AU\Update-Package -ChecksumFor none
-    }
-    finally
-    {
-        Pop-Location
+        Write-Information "Processing package for product: $product"
+        Push-Location -Path $dirPath
+        try
+        {
+            AU\Update-Package -ChecksumFor none
+        }
+        finally
+        {
+            Pop-Location
+        }
     }
 }
