@@ -25,4 +25,10 @@ This package provides helper functions useful for developing packages for Window
     <dependencies>
     </dependencies>
   </metadata>
+  <files>
+    <file src="extensions\*.*" target="extensions" />
+    <file src="..\shared\Get-NativeInstallerExitCode.ps1" target="extensions" />
+    <file src="..\shared\Install-ChocolateyPackageAndHandleExitCode.ps1" target="extensions" />
+    <file src="..\shared\Set-PowerShellExitCode.ps1" target="extensions" />
+  </files>
 </package>
