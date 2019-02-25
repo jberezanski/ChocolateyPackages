@@ -18,16 +18,20 @@
     <description>The Microsoft .NET Framework 4.7.1 is a highly compatible, in-place update to the Microsoft .NET Framework 4, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, and 4.7.
 You can see the full set of changes in the .NET Framework 4.7.1 in the [change list](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-changes.md) and [API diff](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-api-changes.md) on [GitHub](https://github.com/microsoft/dotnet).
 
+This is a **metapackage** intended to help transition from earlier Chocolatey .NET Framework packaging convention. Actual installation is performed by the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package.
+
+Note that due to the way package dependencies work in Chocolatey, if you install this package and the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package is not installed yet, Chocolatey will install the *latest* [dotnetfx](https://chocolatey.org/packages/dotnetfx) package version, which may be newer than 4.7.1. If you need to install specifically .NET Framework 4.7.1, install that version of the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package (`choco install dotnetfx --version 4.7.1`).
+
 The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.7.1-devpack).</description>
     <releaseNotes>
 ##### Software
 [.NET Framework 4.7.1 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net471/README.md)
 [.NET Framework 4.7.1 known issues](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-known-issues.md)
 ##### Package
-4.7.2558.0: Initial package release.
+4.7.2558.20190226: Converted to a metapackage.
     </releaseNotes>
     <dependencies>
-      <dependency id="KB2919355" version="1.0.20160915" />
+      <dependency id="dotnetfx" version="4.7.1.20180317" />
     </dependencies>
   </metadata>
 </package>

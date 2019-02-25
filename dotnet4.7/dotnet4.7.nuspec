@@ -18,16 +18,19 @@
     <description>The .NET Framework 4.7 is a highly compatible and in-place update to the .NET Framework 4, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, and 4.6.2.
 You can see the full set of changes in the .NET Framework 4.7 in the [change list](https://github.com/Microsoft/dotnet/blob/master/releases/net47/dotnet47-changes.md) and [API diff](https://github.com/Microsoft/dotnet/blob/master/releases/net47/dotnet47-api-changes.md) on [GitHub](https://github.com/microsoft/dotnet).
 
+This is a **metapackage** intended to help transition from earlier Chocolatey .NET Framework packaging convention. Actual installation is performed by the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package.
+
+Note that due to the way package dependencies work in Chocolatey, if you install this package and the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package is not installed yet, Chocolatey will install the *latest* [dotnetfx](https://chocolatey.org/packages/dotnetfx) package version, which may be newer than 4.7. If you need to install specifically .NET Framework 4.7, install that version of the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package (`choco install dotnetfx --version 4.7`).
+
 The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.7-devpack).</description>
     <releaseNotes>
 ##### Software
 https://support.microsoft.com/en-us/kb/4015088
 ##### Package
-4.7.2053.0: Initial package release.
+4.7.2053.20190226: Converted to a metapackage.
     </releaseNotes>
     <dependencies>
-      <dependency id="KB2919355" version="1.0.20160915" />
-      <dependency id="KB4019990" version="1.0.0" />
+      <dependency id="dotnetfx" version="4.7.0.0" />
     </dependencies>
   </metadata>
 </package>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnet4.6.2</id>
-    <version>4.6.01590.20170129</version>
+    <version>4.6.01590.20190226</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnet4.6.2</packageSourceUrl>
     <owners>Jakub Bereżański</owners>
     <title>Microsoft .NET Framework 4.6.2</title>
@@ -18,15 +18,20 @@
     <description>The Microsoft .NET Framework 4.6.2 is a highly compatible in-place update to the Microsoft .NET Framework 4, the .NET Framework 4.5, the .NET Framework 4.5.1, the .NET Framework 4.5.2, the .NET Framework 4.6, and the .NET Framework 4.6.1.
 You can see the full set of changes in the .NET Framework 4.6.2 in the [change list](https://github.com/Microsoft/dotnet/blob/master/releases/net462/dotnet462-changes.md) and [API diff](https://github.com/Microsoft/dotnet/blob/master/releases/net462/dotnet462-api-changes.md) on [GitHub](https://github.com/microsoft/dotnet).
 
-The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.6.2-devpack).</description>
+This is a **metapackage** intended to help transition from earlier Chocolatey .NET Framework packaging convention. Actual installation is performed by the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package.
+
+Note that due to the way package dependencies work in Chocolatey, if you install this package and the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package is not installed yet, Chocolatey will install the *latest* [dotnetfx](https://chocolatey.org/packages/dotnetfx) package version, which may be newer than 4.6.2. If you need to install specifically .NET Framework 4.6.2, install that version of the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package (`choco install dotnetfx --version 4.6.2`).
+
+The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.6.2-devpack).
+</description>
     <releaseNotes>
 ##### Software
 https://support.microsoft.com/en-us/kb/3151796
 ##### Package
-4.6.01590.20170129: Switched to Quiet mode to fix installation on Windows Server Core.
+4.6.01590.20190226: Converted to a metapackage.
     </releaseNotes>
     <dependencies>
-      <dependency id="KB2919355" version="1.0.20160719" />
+      <dependency id="dotnetfx" version="4.6.2.0" />
     </dependencies>
   </metadata>
 </package>
