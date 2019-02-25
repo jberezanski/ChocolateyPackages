@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.7.1-devpack</id>
-    <version>4.7.2558.0</version>
+    <version>4.7.2558.20190225</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.7.1-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.7.1 Developer Pack</title>
@@ -21,7 +21,7 @@
 [.NET Framework 4.7.1 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net471/README.md)
 [.NET Framework 4.7.1 known issues](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-known-issues.md)
 ##### Package
-4.7.2558.0: Initial package release.
+4.7.2558.20190225: Implemented workaround for native installer crash under WinRM/DSC (https://github.com/jberezanski/ChocolateyPackages/issues/22).
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />
@@ -31,5 +31,8 @@
   <files>
     <file src="tools\*.*" target="tools" />
     <file src="..\shared\DotNetDevPackHelpers.ps1" target="tools" />
+    <file src="..\shared\Get-NativeInstallerExitCode.ps1" target="tools" />
+    <file src="..\shared\Install-ChocolateyInstallPackageAndHandleExitCode.ps1" target="tools" />
+    <file src="..\shared\Set-PowerShellExitCode.ps1" target="tools" />
   </files>
 </package>
