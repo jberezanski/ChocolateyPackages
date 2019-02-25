@@ -30,4 +30,8 @@
       <dependency id="dotnetfx" version="4.7.2.20180712" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="tools\*.*" target="tools" />
+    <file src="..\shared\DotNetDevPackHelpers.ps1" target="tools" />
+  </files>
 </package>
