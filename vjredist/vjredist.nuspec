@@ -1,0 +1,27 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>vjredist</id>
+    <version>2.0.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/vjredist</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft Visual J# 2.0 Redistributable Package</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/en-us/download/details.aspx?id=4712</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://msdn.microsoft.com/en-us/vstudio/bb188593</docsUrl>
+    <tags>microsoft .net framework visual j# jsharp redistributable admin</tags>
+    <summary>The Microsoft Visual J# Redistributable Package version 2.0 includes everything you need to run your Visual J# applications on a computer that already has the Microsoft .NET Framework v2.0 installed.</summary>
+    <description>The Microsoft Visual J# Redistributable Package version 2.0 includes everything you need to run your Visual J# applications on a computer that already has the Microsoft .NET Framework v2.0 installed.
+
+This is the "first edition" of the J# 2.0 Redistributable, published in 2006. The installed libraries are 32-bit only, meaning that on 64-bit systems they will execute in the Windows-On-Windows environment.</description>
+    <releaseNotes>
+2.0.0: Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="dotnet3.5" version="3.5.20160716" />
+    </dependencies>
+  </metadata>
+</package>
