@@ -21,15 +21,35 @@ Get-ChocolateyWebFile @downloadArguments | Out-Null
 $ERROR_SUCCESS = 0
 $ERROR_SUCCESS_REBOOT_REQUIRED = 3010
 
-$installerExeArguments = @{
-    packageName = $packageName
+$downloadDir = Split-Path -Parent -Path $downloadFilePath
+$unpackDir = Join-Path -Path $downloadDir -ChildPath 'vjredist_unpacked'
+Write-Verbose "Creating intermediate directory for installer contents extraction ($unpackDir)"
+Remove-Item -Path $unpackDir -Recurse -Force -ErrorAction SilentlyContinue
+New-Item -ItemType Directory -Path $unpackDir -ErrorAction SilentlyContinue | Out-Null
+$unpackArguments = @{
+    packageName = "$packageName (unpack)"
     fileType = 'exe'
     file = $downloadFilePath
-    silentArgs = '/q:a /c:"install.exe /q"'
+    silentArgs = "/q:a /t:""$unpackDir"" /c"
+    validExitCodes = @(
+        $ERROR_SUCCESS # success
+    )
+}
+
+Write-Verbose 'Unpacking installer contents'
+Install-ChocolateyInstallPackage @unpackArguments
+
+$installExePath = Join-Path -Path $unpackDir -ChildPath 'install.exe'
+$installerExeArguments = @{
+    packageName = "$packageName (install)"
+    fileType = 'exe'
+    file = $installExePath
+    silentArgs = '/q'
     validExitCodes = @(
         $ERROR_SUCCESS # success
         $ERROR_SUCCESS_REBOOT_REQUIRED # success, restart required
     )
 }
 
+Write-Verbose 'Invoking inner installer'
 Install-ChocolateyInstallPackage @installerExeArguments
