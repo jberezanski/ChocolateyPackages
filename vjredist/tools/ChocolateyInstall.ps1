@@ -38,6 +38,8 @@ $unpackArguments = @{
 
 Write-Verbose 'Unpacking installer contents'
 Install-ChocolateyInstallPackage @unpackArguments
+Write-Verbose 'Clearing ReadOnly attribute from extracted files to avoid harmless error messages during uninstallation'
+Get-ChildItem -Path $unpackDir | Set-ItemProperty -Name 'Attributes' -Value 'Archive' -ErrorAction SilentlyContinue
 
 Write-Verbose 'Turning off Internet Explorer check to fix installation on Server Core systems'
 $installIniPath = Join-Path -Path $unpackDir -ChildPath 'install.ini'
