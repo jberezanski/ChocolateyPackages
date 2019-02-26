@@ -24,4 +24,8 @@ This is the "first edition" of the J# 2.0 Redistributable, published in 2006. Th
       <dependency id="dotnet3.5" version="3.5.20160716" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="tools\*.*" target="tools" />
+    <file src="..\shared\Get-DefaultChocolateyLocalFilePath.ps1" target="tools" />
+  </files>
 </package>
