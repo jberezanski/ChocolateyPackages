@@ -41,7 +41,7 @@ Install-ChocolateyInstallPackage @unpackArguments
 
 Write-Verbose 'Turning off Internet Explorer check to fix installation on Server Core systems'
 $installIniPath = Join-Path -Path $unpackDir -ChildPath 'install.ini'
-Copy-Item -Path $installIniPath -ChildPath "${installIniPath}.orig"
+Copy-Item -Path $installIniPath -Destination "${installIniPath}.orig" -Force
 $installIniContent = Get-Content -Path $installIniPath
 <#
 [DetectIE]
