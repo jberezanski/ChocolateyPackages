@@ -39,6 +39,24 @@ $unpackArguments = @{
 Write-Verbose 'Unpacking installer contents'
 Install-ChocolateyInstallPackage @unpackArguments
 
+Write-Verbose 'Turning off Internet Explorer check to fix installation on Server Core systems'
+$installIniPath = Join-Path -Path $unpackDir -ChildPath 'install.ini'
+Copy-Item -Path $installIniPath -ChildPath "${installIniPath}.orig"
+$installIniContent = Get-Content -Path $installIniPath
+<#
+[DetectIE]
+X86=5.0.2919.6307
+A64=5.0.2919.6307
+I64=5.0.2919.6307
+#>
+$installIniContent -replace [regex]::Escape('5.0.2919.6307'), '' | Set-Content -Path $installIniPath -Encoding Ascii
+<#
+[DetectIE]
+X86=
+A64=
+I64=
+#>
+
 $installExePath = Join-Path -Path $unpackDir -ChildPath 'install.exe'
 $installerExeArguments = @{
     packageName = "$packageName (install)"
