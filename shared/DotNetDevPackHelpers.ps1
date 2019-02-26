@@ -1,4 +1,5 @@
 ﻿$scriptDirectory = Split-Path -Parent -Path $MyInvocation.MyCommand.Definition
+. (Join-Path -Path $scriptDirectory -ChildPath 'Get-DefaultChocolateyLocalFilePath.ps1')
 . (Join-Path -Path $scriptDirectory -ChildPath 'Get-NativeInstallerExitCode.ps1')
 . (Join-Path -Path $scriptDirectory -ChildPath 'Install-ChocolateyInstallPackageAndHandleExitCode.ps1')
 . (Join-Path -Path $scriptDirectory -ChildPath 'Set-PowerShellExitCode.ps1')
@@ -28,25 +29,6 @@ function Test-Installed($Release)
 {
     $props = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full' -Name Release -ErrorAction SilentlyContinue
     return $props -ne $null -and $props.Release -ge $Release
-}
-
-function Get-DefaultChocolateyLocalFilePath
-{
-    [CmdletBinding()]
-    Param
-    (
-        [Parameter(Mandatory = $true)] [string] $OriginalFileName
-    )
-
-    # adapted from Install-ChocolateyPackage 0.10.8
-    $chocTempDir = $env:TEMP
-    $tempDir = Join-Path $chocTempDir "$($env:chocolateyPackageName)"
-    if ($env:chocolateyPackageVersion -ne $null) { $tempDir = Join-Path $tempDir "$($env:chocolateyPackageVersion)"; }
-    $tempDir = $tempDir -replace '\\chocolatey\\chocolatey\\', '\chocolatey\'
-    if (![System.IO.Directory]::Exists($tempDir)) { [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null }
-    $downloadFilePath = Join-Path $tempDir $OriginalFileName
-    Write-Debug "Local file path: $downloadFilePath"
-    return $downloadFilePath
 }
 
 function Invoke-CommandWithTempPath
