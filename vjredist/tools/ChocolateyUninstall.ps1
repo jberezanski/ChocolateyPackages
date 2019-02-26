@@ -6,7 +6,8 @@ if (Test-Path -Path $installExePath)
         -ExeToRun $installExePath `
         -Statements '/qu' `
         -ValidExitCodes @(0, 3010) `
-        -WorkingDirectory "${Env:SystemDrive}\"
+        -WorkingDirectory "${Env:SystemDrive}\" `
+        | Out-Null
 }
 else
 {
