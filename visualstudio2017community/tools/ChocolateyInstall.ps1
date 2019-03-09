@@ -6,4 +6,5 @@
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Community' `
-    -VisualStudioYear '2017'
+    -VisualStudioYear '2017' `
+    -Preview $false
