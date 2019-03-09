@@ -6,6 +6,7 @@
 - Remove-VisualStudioWorkload/Component no longer acts like Add-VisualStudioWorkload/Component if the user passes the '--add' package parameter to `choco uninstall`.
 - Fixed determination of outcome of a Visual Studio update operation.
 - Visual Studio 2017+ modify/update/uninstall operations now act on either official or preview product instances, but never on both kinds at the same time. This enables developing independent package families for both kinds.
+- Fixed installation when current directory is a network share ([GH-59](https://github.com/jberezanski/ChocolateyPackages/issues/59)).
 
 ## Version 1.7.1
 

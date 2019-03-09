@@ -97,7 +97,7 @@ Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may t
   $process.StartInfo.RedirectStandardOutput = $true
   $process.StartInfo.RedirectStandardError = $true
   $process.StartInfo.UseShellExecute = $false
-  $process.StartInfo.WorkingDirectory = Get-Location
+  $process.StartInfo.WorkingDirectory = "${Env:SystemDrive}\"
   if ([Environment]::OSVersion.Version -ge (New-Object 'Version' 6,0)){
     Write-Debug "Setting RunAs for elevation"
     $process.StartInfo.Verb = "RunAs"
