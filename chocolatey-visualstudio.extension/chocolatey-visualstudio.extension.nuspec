@@ -3,13 +3,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>chocolatey-visualstudio.extension</id>
-    <version>1.8.0-preview4</version>
+    <version>1.8.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-visualstudio.extension</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Chocolatey Visual Studio servicing extensions</title>
     <authors>Jakub Bereżański</authors>
     <projectUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-visualstudio.extension</projectUrl>
-    <copyright>© 2017, 2018 Jakub Bereżański</copyright>
+    <copyright>© 2017-2019 Jakub Bereżański</copyright>
     <licenseUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/8086c84fed16d4150a50ba1e97fd6b75e3c4f511/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-visualstudio.extension/README.md</docsUrl>
