@@ -1,8 +1,8 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019buildtools-preview</id>
-    <version>16.0.0.30000-preview1</version>
+    <version>16.0.0.40100-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019buildtools-preview</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2019 Build Tools Preview</title>
