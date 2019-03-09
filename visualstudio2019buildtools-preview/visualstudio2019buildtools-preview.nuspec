@@ -32,12 +32,12 @@ To find out what's new or to see the known issues, see the [Visual Studio 2019 P
 ### Customizations and Optional features
 By default, the package installs only the bare minimum required (the MSBuild Tools workload). The easiest way to add more development features is to use the workload packages listed in the Release Notes section.
 
-All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2019). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
 
 After installing the package, more features can also be added by launching the Visual Studio Installer application from the Start Menu.
 
 The language of the installed software can be controlled using the package parameter `--locale language`.
-The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio#list-of-language-locales). By default, the operating system display language is used.
+The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2019#list-of-language-locales). By default, the operating system display language is used.
 
 #### Full installation
 This command will install Visual Studio Build Tools with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
@@ -49,7 +49,7 @@ This command will install Visual Studio Build Tools with all available workloads
 ### Notes
 
 A reboot may be required after (or even _before_) installing/uninstalling this package.
-If control over reboots is required, it is advisable to install the dependencies (esp. dotnet4.6.2 or later) first, perform a reboot if necessary, and then install this package.
+If control over reboots is required, it is advisable to install the dependencies (esp. dotnetfx 4.7.2 or later) first, perform a reboot if necessary, and then install this package.
     </description>
     <releaseNotes>
 ##### Software
@@ -58,6 +58,9 @@ If control over reboots is required, it is advisable to install the dependencies
 16.0.0.30000-preview1:
 - Package metadata updated for Visual Studio 2019 version 16.0.0 Preview 3.0 (the native installer always installs the latest released Visual Studio 2019 Preview build).
 - Updated bootstrapper url.
+vNext:
+- Updated links in description to point to VS 2019 versions of the docs.
+- Updated extension dependency.
     </releaseNotes>
 <!--
 
@@ -75,7 +78,7 @@ If control over reboots is required, it is advisable to install the dependencies
 - [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2017-workload-xamarinbuildtools)
 -->
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.8.0-preview4" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnetfx" version="4.7.2" />
