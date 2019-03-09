@@ -100,18 +100,52 @@ function Get-VSVersion
     $channelManifest = ConvertFrom-Json ([Text.Encoding]::UTF8.GetString($res.Content))
     $productDisplayVersion = $channelManifest.info.productDisplayVersion
     $version = [version](($productDisplayVersion -split ' ')[0])
+    if ($channelManifest.info.PSObject.Properties['productReleaseNameSuffix'] -ne $null)
+    {
+        $productReleaseNameSuffix = $channelManifest.info.productReleaseNameSuffix
+    }
+    else
+    {
+        $productReleaseNameSuffix = $null
+    }
+
     Write-Output $version
     Write-Output $productDisplayVersion
     Write-Output ([version]$channelManifest.info.productPreReleaseMilestoneSuffix)
+    Write-Output $productReleaseNameSuffix
 }
 
 $dirSuffix = @{ $true = '-preview'; $false = '' }[$Preview.ToBool()]
 $channelUrlToken = @{ $true = 'pre'; $false = 'release' }[$Preview.ToBool()]
 $vsMajorVersion = @{ '2017' = 15; '2019' = 16 }[$VisualStudioYear]
 $mainProducts = @('BuildTools','Community','Enterprise','FeedbackClient','Professional','TeamExplorer','TestAgent','TestController','TestProfessional')
-$visualStudioProductVersion, $visualStudioProductDisplayVersion, $productPreReleaseMilestoneSuffix = Get-VSVersion
-Write-Information "Current published Visual Studio version: $visualStudioProductVersion ('$visualStudioProductDisplayVersion', milestone: $productPreReleaseMilestoneSuffix)"
-$packageVersionSuffix = @{ $true = ('.{0}-preview1' -f ($productPreReleaseMilestoneSuffix.Major * 10000 + $productPreReleaseMilestoneSuffix.Minor * 100)); $false = '.0' }[$Preview.ToBool()]
+$visualStudioProductVersion, $visualStudioProductDisplayVersion, $productPreReleaseMilestoneSuffix, $productReleaseNameSuffix = Get-VSVersion
+Write-Information "Current published Visual Studio version: $visualStudioProductVersion ('$visualStudioProductDisplayVersion', milestone: $productPreReleaseMilestoneSuffix, release name suffix: $productReleaseNameSuffix)"
+if ($Preview)
+{
+    $packageVersionSuffix = ('.{0}-preview1' -f ($productPreReleaseMilestoneSuffix.Major * 10000 + $productPreReleaseMilestoneSuffix.Minor * 100))
+}
+else
+{
+    if ($productReleaseNameSuffix -eq $null -or $productReleaseNameSuffix -notmatch '^RC')
+    {
+        $packageVersionSuffix = '.0'
+    }
+    else
+    {
+        if ($productReleaseNameSuffix -match '^RC(\.(?<rcn>\d+))?(\s+SVC(?<svcn>\d+))?')
+        {
+            $rcn = [int]$matches['rcn']
+            $svcn = [int]$matches['svcn']
+            $packageVersionSuffix = ('.0-rc{0}' -f ($rcn * 10000 + $svcn * 100))
+        }
+        else
+        {
+            throw "Unable to match RC productReleaseNameSuffix: [$productReleaseNameSuffix]"
+        }
+    }
+}
+
 foreach ($product in $mainProducts)
 {
     $dirPath = "$repoRoot\visualstudio${VisualStudioYear}$($product.ToLowerInvariant())$dirSuffix"
