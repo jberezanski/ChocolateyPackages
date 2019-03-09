@@ -5,7 +5,7 @@
     <version>16.0.0.0-rc10100</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019enterprise</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>Visual Studio 2019 Enterprise</title>
+    <title>Visual Studio 2019 Enterprise Release Candidate</title>
     <authors>Microsoft</authors>
     <projectUrl>https://devblogs.microsoft.com/visualstudio/visual-studio-2019-release-candidate-rc-now-available/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
@@ -18,11 +18,9 @@
     <summary>An integrated, end-to-end solution for developers looking for high productivity and seamless coordination across teams of any size.</summary>
     <description>
 ### Overview
-Visual Studio Enterprise 2019
+Microsoft DevOps solution for productivity and coordination across teams of any size.
 
-**This release is not "go-live" and not intended for use on production computers or for creating production code.**
-
-Please note that the preview version is continuously evolving and certain features may not work as expected. This version is also not licensed to build shipping applications.
+The Visual Studio 2019 Release Candidate (RC) gives you early access to the upcoming release. Users of Visual Studio 2019 RC will get upgraded to the full release on April 2.
 
 To find out what's new or to see the known issues, see the [Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes).  
 [System requirements](https://docs.microsoft.com/en-us/visualstudio/releases/2019/system-requirements)
@@ -47,7 +45,7 @@ This command will install Visual Studio with all available workloads and optiona
 ### Notes
 
 A reboot may be required after (or even _before_) installing/uninstalling this package.
-If control over reboots is required, it is advisable to install the dependencies (esp. dotnet4.6.2 or later) first, perform a reboot if necessary, and then install this package.
+If control over reboots is required, it is advisable to install the dependencies (esp. dotnetfx 4.7.2 or later) first, perform a reboot if necessary, and then install this package.
     </description>
     <releaseNotes>
 ##### Software
