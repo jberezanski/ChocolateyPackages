@@ -14,7 +14,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs 2017 build tools admin</tags>
+    <tags>microsoft visual studio visualstudio vs 2017 build tools preview admin</tags>
     <summary>Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE.</summary>
     <description>
 ### Overview
@@ -26,7 +26,7 @@ Visual Studio Preview gives you early access to the latest features and improvem
 
 Please note that the preview version is continuously evolving and certain features may not work as expected. This version is also not licensed to build shipping applications.
 
-To find out what's new or to see the known issues, see the [Visual Studio 2017 Release Notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).  
+To find out what's new or to see the known issues, see the [Visual Studio 2017 15.9 Preview Release Notes](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2017-preview-relnotes-v15.9).  
 [System requirements](https://www.visualstudio.com/en-us/productinfo/vs2017-system-requirements-vs)
 
 ### Customizations and Optional features
@@ -42,7 +42,7 @@ The list of languages is [presented here](https://docs.microsoft.com/en-us/visua
 #### Full installation
 This command will install Visual Studio Build Tools with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
 
-    choco install visualstudio2017buildtools --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+    choco install visualstudio2017buildtools-preview --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
 
 [More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
 
@@ -53,7 +53,7 @@ If control over reboots is required, it is advisable to install the dependencies
     </description>
     <releaseNotes>
 ##### Software
-[Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
+[Visual Studio 2017 15.9 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2017-preview-relnotes-v15.9)
 ##### Package
 15.9.7.10000-preview1:
 - Package metadata updated for Visual Studio 2017 version 15.9.7 Preview 1.0 (the native installer always installs the latest released Visual Studio 2017 build).
@@ -61,20 +61,23 @@ If control over reboots is required, it is advisable to install the dependencies
 vNext:
 - Updated links in description to point to VS 2017 versions of the docs.
 - Updated extension dependency.
+    </releaseNotes>
+<!--
 
 #### Available workload packages
-- [Azure development build tools](https://chocolatey.org/packages/visualstudio2017-workload-azurebuildtools)
-- [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2017-workload-databuildtools)
-- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2017-workload-manageddesktopbuildtools)
-- [.NET Core build tools](https://chocolatey.org/packages/visualstudio2017-workload-netcorebuildtools)
-- [Node.js build tools](https://chocolatey.org/packages/visualstudio2017-workload-nodebuildtools)
-- [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2017-workload-officebuildtools)
-- [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2017-workload-universalbuildtools)
-- [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2017-workload-vctools)
-- [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2017-workload-visualstudioextensionbuildtools)
-- [Web development build tools](https://chocolatey.org/packages/visualstudio2017-workload-webbuildtools)
-- [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2017-workload-xamarinbuildtools)
-    </releaseNotes>
+- [Azure development build tools](https://chocolatey.org/packages/visualstudio2017-preview-workload-azurebuildtools)
+- [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2017-preview-workload-databuildtools)
+- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2017-preview-workload-manageddesktopbuildtools)
+- [.NET Core build tools](https://chocolatey.org/packages/visualstudio2017-preview-workload-netcorebuildtools)
+- [Node.js build tools](https://chocolatey.org/packages/visualstudio2017-preview-workload-nodebuildtools)
+- [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2017-preview-workload-officebuildtools)
+- [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2017-preview-workload-universalbuildtools)
+- [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2017-preview-workload-vctools)
+- [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2017-preview-workload-visualstudioextensionbuildtools)
+- [Web development build tools](https://chocolatey.org/packages/visualstudio2017-preview-workload-webbuildtools)
+- [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2017-preview-workload-xamarinbuildtools)
+
+-->
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
