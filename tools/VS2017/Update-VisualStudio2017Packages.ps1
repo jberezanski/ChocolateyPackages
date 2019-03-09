@@ -49,7 +49,7 @@ function global:au_SearchReplace
             "(^\s*-Checksum\s+)('.*')" = "`$1'$($Latest.BootstrapperChecksum)'"
         }
         "$($Latest.PackageName).nuspec" = @{
-            "^\d+\.\d+\.\d+\.\d+\:$" = "$($Latest.Version):"
+            "^\d+\.\d+\.\d+\.\d+(-[a-z]+\d*)?\:$" = "$($Latest.Version):"
             "(?:(?:(?:Package\smetadata\supdated)|(?:Initial\spackage\srelease))\sfor\sVisual\sStudio\s(\d+)\sversion\s)(?:\d+\.\d+\.\d+(?:\sPreview\s\d+(?:\.\d+)*)?)" = "Package metadata updated for Visual Studio `${1} version $($Latest.ProductDisplayVersion)"
         }
     }
