@@ -118,7 +118,7 @@ function Get-VSVersion
 $dirSuffix = @{ $true = '-preview'; $false = '' }[$Preview.ToBool()]
 $channelUrlToken = @{ $true = 'pre'; $false = 'release' }[$Preview.ToBool()]
 $vsMajorVersion = @{ '2017' = 15; '2019' = 16 }[$VisualStudioYear]
-$mainProducts = @('BuildTools','Community','Enterprise','FeedbackClient','Professional','TeamExplorer','TestAgent','TestController','TestProfessional')
+$mainProducts = @('BuildTools','Community','Enterprise','FeedbackClient','Professional','SQL','TeamExplorer','TestAgent','TestController','TestProfessional')
 $visualStudioProductVersion, $visualStudioProductDisplayVersion, $productPreReleaseMilestoneSuffix, $productReleaseNameSuffix = Get-VSVersion
 Write-Information "Current published Visual Studio version: $visualStudioProductVersion ('$visualStudioProductDisplayVersion', milestone: $productPreReleaseMilestoneSuffix, release name suffix: $productReleaseNameSuffix)"
 if ($Preview)
