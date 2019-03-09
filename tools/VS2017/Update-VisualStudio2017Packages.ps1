@@ -50,7 +50,7 @@ function global:au_SearchReplace
         }
         "$($Latest.PackageName).nuspec" = @{
             "^\d+\.\d+\.\d+\.\d+(-[a-z]+\d*)?\:$" = "$($Latest.Version):"
-            "(?:(?:(?:Package\smetadata\supdated)|(?:Initial\spackage\srelease))\sfor\sVisual\sStudio\s(\d+)\sversion\s)(?:\d+\.\d+\.\d+(?:\sPreview\s\d+(?:\.\d+)*)?)" = "Package metadata updated for Visual Studio `${1} version $($Latest.ProductDisplayVersion)"
+            "(?:(?:(?:Package\smetadata\supdated)|(?:Initial\spackage\srelease))\sfor\sVisual\sStudio\s(\d+)\sversion\s)(?:[^(]+)" = "Package metadata updated for Visual Studio `${1} version $($Latest.ProductDisplayVersion) "
         }
     }
 }
