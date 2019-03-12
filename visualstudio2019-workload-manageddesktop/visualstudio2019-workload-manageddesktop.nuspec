@@ -1,0 +1,84 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2019-workload-manageddesktop</id>
+    <version>1.0.0-preview1</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-workload-manageddesktop</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>.NET Desktop Development workload for Visual Studio 2019</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt021219/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
+    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs vs16 2019 ide workload .net managed desktop wpf windows-forms admin</tags>
+    <summary>Build WPF, Windows Forms and console applications using the .NET Framework.</summary>
+    <description>
+### Overview
+
+This package adds the .NET Desktop Development workload to an existing installation of Visual Studio 2019 (Enterprise, Professional or Community).
+
+The lists of components included in this workload in respective Visual Studio 2019 products are shown here:
+- [Enterprise](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-enterprise?view=vs-2019#net-desktop-development)
+- [Professional](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-professional?view=vs-2019#net-desktop-development)
+- [Community](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-community?view=vs-2019#net-desktop-development)
+
+Visual Studio 2019 must be installed first, for example using Chocolatey packages: [visualstudio2019enterprise](https://chocolatey.org/packages/visualstudio2019enterprise), [visualstudio2019professional](https://chocolatey.org/packages/visualstudio2019professional), [visualstudio2019community](https://chocolatey.org/packages/visualstudio2019community).
+
+### Customizations
+
+The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --includeRecommended` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+
+By default, the package installs components required by and recommended for the workload. Package parameters can be used to adjust this behavior:
+
+- `--no-includeRecommended` - Does not include the recommended components.
+- `--includeOptional` - Includes the optional components.
+
+By default, the package will detect installed Visual Studio products and add the workload to all products that support it and do not have it installed already.
+
+In order to act on one specific product when several are installed, the product needs to be indicated to the package via parameters, either:
+
+- `--installPath` - the path where the product is installed, for example "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise"
+
+or (both are needed):
+
+- `--productId` - the identifier of the product, for example "Microsoft.VisualStudio.Product.Enterprise"
+- `--channelId` - the release channel, should be "VisualStudio.15.Release"
+
+Example 1. Installing the workload on all products, including recommended, but not optional components:
+
+    choco install visualstudio2019-workload-manageddesktop
+
+Example 2. Installing the workload on one specific product, including all recommended and optional components:
+
+    choco install visualstudio2019-workload-manageddesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.15.Release --includeOptional"
+
+Example 3. Installing the workload on all products, including only required components:
+
+    choco install visualstudio2019-workload-manageddesktop --package-parameters "--no-includeRecommended"
+
+[More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)
+##### Package
+1.0.0:
+- Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
+      <dependency id="vcredist140" version="14.16.27027.1" />
+      <dependency id="dotnetfx" version="4.7.2" />
+      <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" />
+      <dependency id="dotnet4.6-targetpack" version="4.6.00081.20150925" />
+      <dependency id="netfx-4.5.2-devpack" version="4.5.5165101" />
+      <dependency id="netfx-4.5.1-devpack" version="4.5.50932" />
+      <dependency id="KB2882822" version="1.0.0" />
+      <dependency id="visualstudio2017-installer" version="1.0.2" />
+    </dependencies>
+  </metadata>
+</package>

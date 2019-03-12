@@ -54,15 +54,16 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Package
 16.0.0.0-rc20000:
 - Package metadata updated for Visual Studio 2019 version 16.0.0 RC.2 (the native installer always installs the latest released Visual Studio 2019 build).
+
+#### Available workload packages
+- [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-workload-manageddesktop)
     </releaseNotes>
 <!--
 - Updated bootstrapper url.
 
-#### Available workload packages
 - [Azure development](https://chocolatey.org/packages/visualstudio2019-workload-azure)
 - [Data storage and processing](https://chocolatey.org/packages/visualstudio2019-workload-data)
 - [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2019-workload-datascience)
-- [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-workload-manageddesktop)
 - [Game development with Unity](https://chocolatey.org/packages/visualstudio2019-workload-managedgame)
 - [Linux development with C++](https://chocolatey.org/packages/visualstudio2019-workload-nativecrossplat)
 - [Desktop development with C++](https://chocolatey.org/packages/visualstudio2019-workload-nativedesktop)
