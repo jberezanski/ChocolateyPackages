@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>visualstudio2019enterprise-preview</id>
+    <id>visualstudio2019community-preview</id>
     <version>16.0.0.40200-preview1</version>
-    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019enterprise-preview</packageSourceUrl>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019community-preview</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>Visual Studio 2019 Enterprise Preview</title>
+    <title>Visual Studio 2019 Community Preview</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
-    <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt021219/</licenseUrl>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt022619/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs vs16 2019 enterprise preview ide admin</tags>
-    <summary>An integrated, end-to-end solution for developers looking for high productivity and seamless coordination across teams of any size.</summary>
+    <tags>microsoft visual studio visualstudio vs vs16 2019 community preview ide admin</tags>
+    <summary>Free, full-featured and extensible tool for students, open-source and individual developers</summary>
     <description>
 ### Overview
-Visual Studio Enterprise 2019 Preview is a preview of the next major version of Visual Studio.
+Visual Studio Community 2019 Preview is a preview of the next major version of Visual Studio.
 
 Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/). Visual Studio and Visual Studio Preview can be installed side-by-side on the same device.
 
@@ -42,7 +42,7 @@ The list of languages is [presented here](https://docs.microsoft.com/en-us/visua
 #### Full installation
 This command will install Visual Studio with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
 
-    choco install visualstudio2019enterprise-preview --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+    choco install visualstudio2019community-preview --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
 
 [More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
 
@@ -56,38 +56,35 @@ If control over reboots is required, it is advisable to install the dependencies
 [Visual Studio 2019 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes-preview)
 ##### Package
 16.0.0.40200-preview1:
-- Package metadata updated for Visual Studio 2019 version 16.0.0 Preview 4.2 (the native installer always installs the latest released Visual Studio 2019 Preview build).
-- Updated bootstrapper url.
-vNext:
-- Updated links in description to point to VS 2019 versions of the docs.
-- Updated extension dependency.
+- Initial package release for Visual Studio 2019 version 16.0.0 Preview 4.2 (the native installer always installs the latest released Visual Studio 2019 build).
     </releaseNotes>
 <!--
+- Updated bootstrapper url.
 
 #### Available workload packages
-- [Azure development](https://chocolatey.org/packages/visualstudio2019-preview-workload-azure)
-- [Data storage and processing](https://chocolatey.org/packages/visualstudio2019-preview-workload-data)
-- [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2019-preview-workload-datascience)
-- [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-preview-workload-manageddesktop)
-- [Game development with Unity](https://chocolatey.org/packages/visualstudio2019-preview-workload-managedgame)
-- [Linux development with C++](https://chocolatey.org/packages/visualstudio2019-preview-workload-nativecrossplat)
-- [Desktop development with C++](https://chocolatey.org/packages/visualstudio2019-preview-workload-nativedesktop)
-- [Game development with C++](https://chocolatey.org/packages/visualstudio2019-preview-workload-nativegame)
-- [Mobile development with C++](https://chocolatey.org/packages/visualstudio2019-preview-workload-nativemobile)
-- [.NET Core cross-platform development](https://chocolatey.org/packages/visualstudio2019-preview-workload-netcoretools)
-- [Mobile development with .NET](https://chocolatey.org/packages/visualstudio2019-preview-workload-netcrossplat)
-- [ASP.NET and web development](https://chocolatey.org/packages/visualstudio2019-preview-workload-netweb)
-- [Node.js development](https://chocolatey.org/packages/visualstudio2019-preview-workload-node)
-- [Office/SharePoint development](https://chocolatey.org/packages/visualstudio2019-preview-workload-office)
-- [Python development](https://chocolatey.org/packages/visualstudio2019-preview-workload-python)
-- [Universal Windows Platform development](https://chocolatey.org/packages/visualstudio2019-preview-workload-universal)
-- [Visual Studio extension development](https://chocolatey.org/packages/visualstudio2019-preview-workload-visualstudioextension)
-- [Mobile development with JavaScript](https://chocolatey.org/packages/visualstudio2019-preview-workload-webcrossplat)
+- [Azure development](https://chocolatey.org/packages/visualstudio2019-workload-azure)
+- [Data storage and processing](https://chocolatey.org/packages/visualstudio2019-workload-data)
+- [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2019-workload-datascience)
+- [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-workload-manageddesktop)
+- [Game development with Unity](https://chocolatey.org/packages/visualstudio2019-workload-managedgame)
+- [Linux development with C++](https://chocolatey.org/packages/visualstudio2019-workload-nativecrossplat)
+- [Desktop development with C++](https://chocolatey.org/packages/visualstudio2019-workload-nativedesktop)
+- [Game development with C++](https://chocolatey.org/packages/visualstudio2019-workload-nativegame)
+- [Mobile development with C++](https://chocolatey.org/packages/visualstudio2019-workload-nativemobile)
+- [.NET Core cross-platform development](https://chocolatey.org/packages/visualstudio2019-workload-netcoretools)
+- [Mobile development with .NET](https://chocolatey.org/packages/visualstudio2019-workload-netcrossplat)
+- [ASP.NET and web development](https://chocolatey.org/packages/visualstudio2019-workload-netweb)
+- [Node.js development](https://chocolatey.org/packages/visualstudio2019-workload-node)
+- [Office/SharePoint development](https://chocolatey.org/packages/visualstudio2019-workload-office)
+- [Python development](https://chocolatey.org/packages/visualstudio2019-workload-python)
+- [Universal Windows Platform development](https://chocolatey.org/packages/visualstudio2019-workload-universal)
+- [Visual Studio extension development](https://chocolatey.org/packages/visualstudio2019-workload-visualstudioextension)
+- [Mobile development with JavaScript](https://chocolatey.org/packages/visualstudio2019-workload-webcrossplat)
 -->
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
-      <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
-      <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
+      <dependency id="KB3033929" version="1.0.0" />
+      <dependency id="KB2919355" version="1.0.20160915" />
       <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnetfx" version="4.7.2" />
       <dependency id="visualstudio2017-installer" version="1.0.2" />

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>visualstudio2019buildtools-preview</id>
+    <id>visualstudio2019sql-preview</id>
     <version>16.0.0.40200-preview1</version>
-    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019buildtools-preview</packageSourceUrl>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019sql-preview</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>Visual Studio 2019 Build Tools Preview</title>
+    <title>SQL Server Data Tools for Visual Studio 2019 Preview</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
@@ -14,11 +14,11 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs vs16 2019 build tools preview admin</tags>
-    <summary>Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE.</summary>
+    <tags>microsoft visual studio visualstudio vs vs16 2019 sql server data tools preview admin</tags>
+    <summary>SQL Server Data Tools is a modern development tool for building SQL Server relational databases, Azure SQL databases, Analysis Services (AS) data models, Integration Services (IS) packages, and Reporting Services (RS) reports.</summary>
     <description>
 ### Overview
-Visual Studio Build Tools 2019 Preview is a preview of the next major version of Visual Studio.
+Visual Studio 2019 Preview is a preview of the next major version of Visual Studio.
 
 Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/). Visual Studio and Visual Studio Preview can be installed side-by-side on the same device.
 
@@ -29,20 +29,16 @@ Please note that the preview version is continuously evolving and certain featur
 To find out what's new or to see the known issues, see the [Visual Studio 2019 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes-preview).  
 [System requirements](https://docs.microsoft.com/en-us/visualstudio/releases/2019/system-requirements)
 
-### Customizations and Optional features
-By default, the package installs only the bare minimum required (the MSBuild Tools workload). The easiest way to add more development features is to use the workload packages listed in the Release Notes section.
-
+### Customizations
 All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2019). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
-
-After installing the package, more features can also be added by launching the Visual Studio Installer application from the Start Menu.
 
 The language of the installed software can be controlled using the package parameter `--locale language`.
 The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2019#list-of-language-locales). By default, the operating system display language is used.
 
-#### Full installation
-This command will install Visual Studio Build Tools with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
+#### Example
+This command will install SQL Server Data Tools for Visual Studio 2019, display progress during the installation and specify the English language regardless of operating system settings:
 
-    choco install visualstudio2019buildtools-preview --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+    choco install visualstudio2019sql-preview --package-parameters "--passive --locale en-US"
 
 [More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
 
@@ -56,31 +52,14 @@ If control over reboots is required, it is advisable to install the dependencies
 [Visual Studio 2019 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes-preview)
 ##### Package
 16.0.0.40200-preview1:
-- Package metadata updated for Visual Studio 2019 version 16.0.0 Preview 4.2 (the native installer always installs the latest released Visual Studio 2019 Preview build).
-- Updated bootstrapper url.
-vNext:
-- Updated links in description to point to VS 2019 versions of the docs.
-- Updated extension dependency.
+- Initial package release for Visual Studio 2019 version 16.0.0 Preview 4.2 (the native installer always installs the latest released Visual Studio 2019 build).
     </releaseNotes>
 <!--
-
-#### Available workload packages
-- [Azure development build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-azurebuildtools)
-- [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-databuildtools)
-- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-manageddesktopbuildtools)
-- [.NET Core build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-netcorebuildtools)
-- [Node.js build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-nodebuildtools)
-- [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-officebuildtools)
-- [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-universalbuildtools)
-- [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-vctools)
-- [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-visualstudioextensionbuildtools)
-- [Web development build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-webbuildtools)
-- [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2019-preview-workload-xamarinbuildtools)
+- Updated bootstrapper url.
 -->
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
-      <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnetfx" version="4.7.2" />
       <dependency id="visualstudio2017-installer" version="1.0.2" />
     </dependencies>
