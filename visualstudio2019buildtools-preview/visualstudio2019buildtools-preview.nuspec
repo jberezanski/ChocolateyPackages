@@ -7,14 +7,14 @@
     <owners>jberezanski</owners>
     <title>Visual Studio 2019 Build Tools Preview</title>
     <authors>Microsoft</authors>
-    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2018/12/04/making-every-developer-more-productive-with-visual-studio-2019/</projectUrl>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
-    <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
-    <licenseUrl>https://www.visualstudio.com/license-terms/mlt687465/</licenseUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt110718/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs 2019 build tools admin</tags>
+    <tags>microsoft visual studio visualstudio vs vs16 2019 build tools admin</tags>
     <summary>Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE.</summary>
     <description>
 ### Overview
@@ -65,17 +65,17 @@ vNext:
 <!--
 
 #### Available workload packages
-- [Azure development build tools](https://chocolatey.org/packages/visualstudio2017-workload-azurebuildtools)
-- [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2017-workload-databuildtools)
-- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2017-workload-manageddesktopbuildtools)
-- [.NET Core build tools](https://chocolatey.org/packages/visualstudio2017-workload-netcorebuildtools)
-- [Node.js build tools](https://chocolatey.org/packages/visualstudio2017-workload-nodebuildtools)
-- [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2017-workload-officebuildtools)
-- [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2017-workload-universalbuildtools)
-- [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2017-workload-vctools)
-- [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2017-workload-visualstudioextensionbuildtools)
-- [Web development build tools](https://chocolatey.org/packages/visualstudio2017-workload-webbuildtools)
-- [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2017-workload-xamarinbuildtools)
+- [Azure development build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-azurebuildtools)
+- [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-databuildtools)
+- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-manageddesktopbuildtools)
+- [.NET Core build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-netcorebuildtools)
+- [Node.js build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-nodebuildtools)
+- [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-officebuildtools)
+- [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-universalbuildtools)
+- [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-vctools)
+- [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-visualstudioextensionbuildtools)
+- [Web development build tools](https://chocolatey.org/packages/visualstudio2019-preview-workload-webbuildtools)
+- [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2019-preview-workload-xamarinbuildtools)
 -->
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
