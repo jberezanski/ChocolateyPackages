@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019-workload-manageddesktopbuildtools</id>
-    <version>1.0.0</version>
+    <version>1.0.0-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-workload-manageddesktopbuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET desktop build tools workload for Visual Studio 2019 Build Tools</title>
