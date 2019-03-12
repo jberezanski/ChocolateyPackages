@@ -58,17 +58,17 @@ If control over reboots is required, it is advisable to install the dependencies
 16.0.0.40200-preview1:
 - Package metadata updated for Visual Studio 2019 version 16.0.0 Preview 4.2 (the native installer always installs the latest released Visual Studio 2019 Preview build).
 - Updated bootstrapper url.
-vNext:
-- Updated links in description to point to VS 2019 versions of the docs.
+- Updated description and metadata.
 - Updated extension dependency.
+
+#### Available workload packages
+- [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-preview-workload-manageddesktop)
     </releaseNotes>
 <!--
 
-#### Available workload packages
 - [Azure development](https://chocolatey.org/packages/visualstudio2019-preview-workload-azure)
 - [Data storage and processing](https://chocolatey.org/packages/visualstudio2019-preview-workload-data)
 - [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2019-preview-workload-datascience)
-- [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-preview-workload-manageddesktop)
 - [Game development with Unity](https://chocolatey.org/packages/visualstudio2019-preview-workload-managedgame)
 - [Linux development with C++](https://chocolatey.org/packages/visualstudio2019-preview-workload-nativecrossplat)
 - [Desktop development with C++](https://chocolatey.org/packages/visualstudio2019-preview-workload-nativedesktop)
