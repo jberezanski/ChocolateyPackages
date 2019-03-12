@@ -72,11 +72,7 @@ Example 3. Installing the workload on all products, including only required comp
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <dependency id="vcredist140" version="14.16.27027.1" />
-      <dependency id="dotnetfx" version="4.7.2" />
-      <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" />
-      <dependency id="dotnet4.6-targetpack" version="4.6.00081.20150925" />
-      <dependency id="netfx-4.5.2-devpack" version="4.5.5165101" />
-      <dependency id="netfx-4.5.1-devpack" version="4.5.50932" />
+      <dependency id="netfx-4.7.2-devpack" version="4.7.2.20190225" />
       <dependency id="KB2882822" version="1.0.0" />
       <dependency id="visualstudio2017-installer" version="1.0.2" />
     </dependencies>
