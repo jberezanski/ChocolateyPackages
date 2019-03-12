@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>visualstudio2019buildtools</id>
+    <id>visualstudio2019testagent</id>
     <version>16.0.0.0-rc20000</version>
-    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019buildtools</packageSourceUrl>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019testagent</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>Visual Studio 2019 Build Tools Release Candidate</title>
+    <title>Visual Studio 2019 Test Agent Release Candidate</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
@@ -14,31 +14,27 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
     <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs vs16 2019 build tools admin</tags>
-    <summary>Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE.</summary>
+    <tags>microsoft visual studio visualstudio vs vs16 2019 test agent admin</tags>
+    <summary>Supports running automated tests and load tests remotely.</summary>
     <description>
 ### Overview
-The Visual Studio Build Tools allows you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE. There are options to install the Visual C++ compilers and libraries, MFC, ATL, and C++/CLI support.
+Agents for Visual Studio 2019 can be used for load, functional, and automated testing. For more details, please refer to the [ALM blog](https://aka.ms/tctaversionblog).
 
 The Visual Studio 2019 Release Candidate (RC) gives you early access to the upcoming release. Users of Visual Studio 2019 RC will get upgraded to the full release on April 2.
 
 To find out what's new or to see the known issues, see the [Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes).  
 [System requirements](https://docs.microsoft.com/en-us/visualstudio/releases/2019/system-requirements)
 
-### Customizations and Optional features
-By default, the package installs only the bare minimum required (the MSBuild Tools workload). The easiest way to add more development features is to use the workload packages listed in the Release Notes section.
-
+### Customizations
 All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2019). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
-
-After installing the package, more features can also be added by launching the Visual Studio Installer application from the Start Menu.
 
 The language of the installed software can be controlled using the package parameter `--locale language`.
 The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2019#list-of-language-locales). By default, the operating system display language is used.
 
-#### Full installation
-This command will install Visual Studio Build Tools with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
+#### Example
+This command will install Visual Studio Test Agent, display progress during the installation and specify the English language regardless of operating system settings:
 
-    choco install visualstudio2019buildtools --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+    choco install visualstudio2019testagent --package-parameters "--passive --locale en-US"
 
 [More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
 
@@ -53,28 +49,15 @@ If control over reboots is required, it is advisable to install the dependencies
 [Visual Studio 2019 Release Candidate announcement](https://devblogs.microsoft.com/visualstudio/visual-studio-2019-release-candidate-rc-now-available/)
 ##### Package
 16.0.0.0-rc20000:
-- Package metadata updated for Visual Studio 2019 version 16.0.0 RC.2 (the native installer always installs the latest released Visual Studio 2019 build).
+- Initial package release for Visual Studio 2019 version 16.0.0 RC.2 (the native installer always installs the latest released Visual Studio 2019 build).
     </releaseNotes>
 <!--
 - Updated bootstrapper url.
-
-#### Available workload packages
-- [Azure development build tools](https://chocolatey.org/packages/visualstudio2019-workload-azurebuildtools)
-- [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2019-workload-databuildtools)
-- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2019-workload-manageddesktopbuildtools)
-- [.NET Core build tools](https://chocolatey.org/packages/visualstudio2019-workload-netcorebuildtools)
-- [Node.js build tools](https://chocolatey.org/packages/visualstudio2019-workload-nodebuildtools)
-- [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2019-workload-officebuildtools)
-- [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2019-workload-universalbuildtools)
-- [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2019-workload-vctools)
-- [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2019-workload-visualstudioextensionbuildtools)
-- [Web development build tools](https://chocolatey.org/packages/visualstudio2019-workload-webbuildtools)
-- [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2019-workload-xamarinbuildtools)
 -->
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
-      <dependency id="KB2999226" version="1.0.20161201" />
+      <dependency id="vcredist140" version="14.16.27027.1" />
       <dependency id="dotnetfx" version="4.7.2" />
       <dependency id="visualstudio2017-installer" version="1.0.2" />
     </dependencies>
