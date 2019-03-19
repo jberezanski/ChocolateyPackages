@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2019sql' `
     -ApplicationName 'SQL Server Data Tools for Visual Studio 2019' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/6ec8f04d-924c-40dc-bf69-7d9186178488/9e1f9473ecc33c301a6f51cce58bd65b/vs_sql.exe' <# https://aka.ms/vs/16/release/vs_sql.exe #> `
-    -Checksum '2853ADA3DE0C046F1C0A7892B67074392B2A6EA518E842FBF483EA229829D5BA' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/4fedefe8-e8db-46f9-abaf-fb7e5698ec5c/97b5272ba8f7b856f254642198cbbe97/vs_sql.exe' <# https://aka.ms/vs/16/release/vs_sql.exe #> `
+    -Checksum '4C030C225FFDFEB68B176192BA74680D5B0B8D5077764D5B4589A0383CC8C608' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'SQL' `
