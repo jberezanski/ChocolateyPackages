@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2019community-preview' `
     -ApplicationName 'Microsoft Visual Studio Community 2019 Preview' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/ab043a45-e926-48c1-92c7-d4112b6fdfb4/be1b58483cbb117d6a9c116bb5e7a2ff/vs_community.exe' <# https://aka.ms/vs/16/pre/vs_community.exe #> `
-    -Checksum 'F7FEFA1887E749C5B5D6268A1E0D7DED5BC4C130EC943080F28B64478B944E5B' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/534265fd-685a-444f-8c90-7bb1ccba53fe/7d3a8755dabde1f1f50a5db59baaa033/vs_community.exe' <# https://aka.ms/vs/16/pre/vs_community.exe #> `
+    -Checksum '6E42F4D4C45A7051F9AF71214FD62311B82C95F637C942B4C5BB017FC2BA35C6' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Community' `
