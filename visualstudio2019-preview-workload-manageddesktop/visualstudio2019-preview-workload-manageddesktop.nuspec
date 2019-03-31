@@ -2,18 +2,18 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019-preview-workload-manageddesktop</id>
-    <version>1.0.0-preview1</version>
+    <version>1.0.1-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-preview-workload-manageddesktop</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET Desktop Development workload for Visual Studio 2019 Preview</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/21d70aedb9304792378a9f68d07d704cd0855827/icons/vs2019.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
-    <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt021219/</licenseUrl>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
-    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
     <tags>microsoft visual studio visualstudio vs vs16 2019 ide workload .net managed desktop wpf windows-forms preview admin</tags>
     <summary>Build WPF, Windows Forms and console applications using the .NET Framework.</summary>
     <description>
@@ -66,15 +66,15 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2019 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes-preview)
 ##### Package
-1.0.0:
-- Initial package release.
+1.0.1:
+- Updated metadata and dependencies.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <dependency id="vcredist140" version="14.16.27027.1" />
       <dependency id="netfx-4.7.2-devpack" version="4.7.2.20190225" />
       <dependency id="KB2882822" version="1.0.0" />
-      <dependency id="visualstudio2017-installer" version="1.0.2" />
+      <dependency id="visualstudio-installer" version="2.0.0" />
     </dependencies>
   </metadata>
 </package>

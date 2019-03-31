@@ -8,12 +8,12 @@
     <title>Visual Studio 2019 Load Test Controller Preview</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/21d70aedb9304792378a9f68d07d704cd0855827/icons/vs2019preview.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
     <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt110718/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
-    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
     <tags>microsoft visual studio visualstudio vs vs16 2019 load test controller preview admin</tags>
     <summary>Distribute automated tests to multiple machines.</summary>
     <description>
@@ -53,16 +53,15 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Package
 16.0.0.40400-preview1:
 - Package metadata updated for Visual Studio 2019 version 16.0.0 Preview 4.4 (the native installer always installs the latest released Visual Studio 2019 build).
-    </releaseNotes>
-<!--
 - Updated bootstrapper url.
--->
+- Updated metadata and dependencies.
+    </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="vcredist140" version="14.16.27027.1" />
       <dependency id="dotnetfx" version="4.7.2" />
-      <dependency id="visualstudio2017-installer" version="1.0.2" />
+      <dependency id="visualstudio-installer" version="2.0.0" />
     </dependencies>
   </metadata>
 </package>
