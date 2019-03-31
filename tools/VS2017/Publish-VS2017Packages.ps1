@@ -13,7 +13,7 @@ Push-Location -Path "$PSScriptRoot\..\.."
 try
 {
     $todo = New-Object Collections.ArrayList
-    Get-ChildItem | Where-Object Name -match $Pattern | ForEach-Object {
+    Get-ChildItem | Where-Object Name -match $Pattern | Where-Object { -not (Test-Path -Path "$($_.FullName)\disabled.marker") } | ForEach-Object {
         $n = $_.Name
         $v = ([xml](Get-Content -Path ".\$n\$n.nuspec")).package.metadata.version
         $p = "$PWD\output\$n.$v.nupkg"

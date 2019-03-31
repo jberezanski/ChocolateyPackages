@@ -149,7 +149,7 @@ else
 foreach ($product in $mainProducts)
 {
     $dirPath = "$repoRoot\visualstudio${VisualStudioYear}$($product.ToLowerInvariant())$dirSuffix"
-    if (Test-Path -Path $dirPath)
+    if ((Test-Path -Path $dirPath) -and (-not (Test-Path -Path "$dirPath\disabled.marker")))
     {
         Write-Information "Processing package for product: $product"
         Push-Location -Path $dirPath
