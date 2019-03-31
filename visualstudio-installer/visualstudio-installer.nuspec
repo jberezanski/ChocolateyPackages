@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>visualstudio-installer</id>
+    <version>2.0.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio-installer</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Visual Studio Installer (remove only)</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/21d70aedb9304792378a9f68d07d704cd0855827/icons/vs2019.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs 2017 2019 installer admin</tags>
+    <summary>Provides a way to uninstall the Visual Studio Installer.</summary>
+    <description>
+Uninstalling this package removes the Visual Studio Installer, which remains present after the Visual Studio product packages (such as [visualstudio2017enterprise](https://chocolatey.org/packages/visualstudio2017enterprise) or [visualstudio2019buildtools](https://chocolatey.org/packages/visualstudio2019buildtools)) are uninstalled.
+
+This package does not install anything by itself.
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)
+[Visual Studio 2017 release notes](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2017-relnotes)
+##### Package
+2.0.0: Initial package release (based on [visualstudio2017-installer](https://chocolatey.org/packages/visualstudio2017-installer)).
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
+    </dependencies>
+  </metadata>
+</package>

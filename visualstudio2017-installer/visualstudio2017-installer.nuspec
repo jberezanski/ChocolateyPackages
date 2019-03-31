@@ -2,32 +2,31 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-installer</id>
-    <version>1.0.2</version>
+    <version>2.0.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-installer</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Installer (remove only)</title>
     <authors>Microsoft</authors>
-    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/03/07/announcing-visual-studio-2017-general-availability-and-more/</projectUrl>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
-    <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
-    <licenseUrl>https://www.visualstudio.com/license-terms/mlt687465/</licenseUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
-    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
     <tags>microsoft visual studio visualstudio vs 2017 installer admin</tags>
-    <summary>Provides a way to uninstall the Visual Studio 2017 Installer.</summary>
+    <summary>Obsolete package, left for compatibility reasons.</summary>
     <description>
-Uninstalling this package removes the Visual Studio 2017 Installer, which remains present after the Visual Studio product packages (such as [visualstudio2017enterprise](https://chocolatey.org/packages/visualstudio2017enterprise) or [visualstudio2017buildtools](https://chocolatey.org/packages/visualstudio2017buildtools)) are uninstalled.
+Obsolete package, left for compatibility reasons. Visual Studio Installer uninstallation is now handled by the [visualstudio-installer](https://chocolatey.org/packages/visualstudio-installer) package.
     </description>
     <releaseNotes>
 ##### Software
-[Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
+[Visual Studio 2017 release notes](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2017-relnotes)
 ##### Package
-1.0.2: Added dependency on .NET 4.6.2, because the VS Installer update may require it to avoid problems with OPC package signature verification.
+2.0.0: Package renamed to [visualstudio-installer](https://chocolatey.org/packages/visualstudio-installer). This package kept as a metapackage to avoid breaking existing dependent packages.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.5.1" />
-      <dependency id="dotnet4.6.2" version="4.6.01590.20170129" />
+      <dependency id="visualstudio-installer" version="2.0.0" />
     </dependencies>
   </metadata>
 </package>
