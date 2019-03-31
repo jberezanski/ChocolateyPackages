@@ -53,7 +53,7 @@ If control over reboots is required, it is advisable to install the dependencies
 - Package metadata updated for Visual Studio 2017 version 15.9.10 (the native installer always installs the latest released Visual Studio 2017 build).
 - Updated bootstrapper url.
 - Updated links in description to point to VS 2017 versions of the docs.
-- Updated extension dependency.
+- Updated metadata and dependencies.
 
 #### Available workload packages
 - [Azure development](https://chocolatey.org/packages/visualstudio2017-workload-azure)
@@ -80,8 +80,8 @@ If control over reboots is required, it is advisable to install the dependencies
       <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="KB2999226" version="1.0.20161201" />
-      <dependency id="dotnet4.6.2" version="4.6.01590.20170129" />
-      <dependency id="visualstudio2017-installer" version="1.0.2" />
+      <dependency id="dotnetfx" version="4.6.2.0" />
+      <dependency id="visualstudio-installer" version="2.0.0" />
     </dependencies>
   </metadata>
 </package>

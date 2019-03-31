@@ -51,14 +51,14 @@ If control over reboots is required, it is advisable to install the dependencies
 - Package metadata updated for Visual Studio 2017 version 15.9.10 (the native installer always installs the latest released Visual Studio 2017 build).
 - Updated bootstrapper url.
 - Updated links in description to point to VS 2017 versions of the docs.
-- Updated extension dependency.
+- Updated metadata and dependencies.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
-      <dependency id="vcredist2017" version="14.15.26706.0" />
-      <dependency id="dotnet4.6.2" version="4.6.01590.20170129" />
-      <dependency id="visualstudio2017-installer" version="1.0.2" />
+      <dependency id="vcredist140" version="14.16.27027.1" />
+      <dependency id="dotnetfx" version="4.6.2.0" />
+      <dependency id="visualstudio-installer" version="2.0.0" />
     </dependencies>
   </metadata>
 </package>
