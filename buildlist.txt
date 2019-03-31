@@ -121,6 +121,7 @@ visualstudio2019-workload-vctools\visualstudio2019-workload-vctools.nuspec
 visualstudio2019-workload-webbuildtools\visualstudio2019-workload-webbuildtools.nuspec
 visualstudio2019-workload-webcrossplat\visualstudio2019-workload-webcrossplat.nuspec
 visualstudio2019-workload-xamarinbuildtools\visualstudio2019-workload-xamarinbuildtools.nuspec
+visualstudio-installer\visualstudio-installer.nuspec
 ..\KennethB-Chocolatey-Packages\VisualStudio2015Community\VisualStudio2015Community.nuspec
 ..\KennethB-Chocolatey-Packages\VisualStudio2015Enterprise\VisualStudio2015Enterprise.nuspec
 ..\KennethB-Chocolatey-Packages\VisualStudio2015Professional\VisualStudio2015Professional.nuspec
