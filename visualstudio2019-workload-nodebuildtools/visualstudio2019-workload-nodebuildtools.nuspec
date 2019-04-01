@@ -1,0 +1,64 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2019-workload-nodebuildtools</id>
+    <version>1.0.0-preview1</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-workload-nodebuildtools</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Node.js build tools workload for Visual Studio 2019 Build Tools</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/21d70aedb9304792378a9f68d07d704cd0855827/icons/vs2019.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs vs16 2019 workload node.js javascript build tools msbuild admin</tags>
+    <summary>MSBuild tasks and targets for building scalable network applications using Node.js, an asynchronous event-driven JavaScript runtime.</summary>
+    <description>
+### Overview
+
+This package adds the Node.js build tools workload to an existing installation of Visual Studio 2019 Build Tools.
+
+The list of components included in this workload is shown [here](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2019#nodejs-build-tools).
+
+Visual Studio 2019 Build Tools must be installed first, for example using the Chocolatey package [visualstudio2019buildtools](https://chocolatey.org/packages/visualstudio2019buildtools).
+
+### Customizations
+
+The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2019). The package passes `--norestart --includeRecommended` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+
+By default, the package installs components required by and recommended for the workload. Package parameters can be used to adjust this behavior:
+
+- `--no-includeRecommended` - Does not include the recommended components.
+- `--includeOptional` - Includes the optional components.
+
+Example 1. Installing the workload, including recommended, but not optional components:
+
+    choco install visualstudio2019-workload-nodebuildtools --package-parameters "--includeRecommended"
+
+Example 2. Installing the workload, including all recommended and optional components:
+
+    choco install visualstudio2019-workload-nodebuildtools --package-parameters "--includeOptional"
+
+Example 3. Installing the workload, including only required components:
+
+    choco install visualstudio2019-workload-nodebuildtools --package-parameters "--no-includeRecommended"
+
+[More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)
+##### Package
+1.0.0:
+- Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
+      <dependency id="visualstudio-installer" version="2.0.0" />
+      <dependency id="visualstudio2019buildtools" version="16.0.0.0-rc40000" />
+    </dependencies>
+  </metadata>
+</package>

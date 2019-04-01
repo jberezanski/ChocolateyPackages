@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019-preview-workload-manageddesktop</id>
-    <version>1.0.1-preview1</version>
+    <version>1.0.1-preview2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-preview-workload-manageddesktop</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET Desktop Development workload for Visual Studio 2019 Preview</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/21d70aedb9304792378a9f68d07d704cd0855827/icons/vs2019.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/21d70aedb9304792378a9f68d07d704cd0855827/icons/vs2019preview.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
     <licenseUrl>https://visualstudio.microsoft.com/license-terms/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -71,9 +71,9 @@ Example 3. Installing the workload on all products, including only required comp
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
-      <dependency id="vcredist140" version="14.16.27027.1" />
+      <!-- <dependency id="vcredist140" version="14.16.27027.1" /> -->
       <dependency id="netfx-4.7.2-devpack" version="4.7.2.20190225" />
-      <dependency id="KB2882822" version="1.0.0" />
+      <!-- <dependency id="KB2882822" version="1.0.0" /> -->
       <dependency id="visualstudio-installer" version="2.0.0" />
     </dependencies>
   </metadata>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019professional</id>
-    <version>16.0.0.0-rc40000</version>
+    <version>16.0.0.0-rc40001</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019professional</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2019 Professional Release Candidate</title>
@@ -55,17 +55,14 @@ If control over reboots is required, it is advisable to install the dependencies
 16.0.0.0-rc40000:
 - Package metadata updated for Visual Studio 2019 version 16.0.0 RC.4 (the native installer always installs the latest released Visual Studio 2019 build).
 - Updated bootstrapper url.
-- Updated metadata and dependencies.
+16.0.0.0-rc40001:
+- Added links to other workload packages.
 
 #### Available workload packages
-- [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-workload-manageddesktop)
-    </releaseNotes>
-<!--
-- Updated bootstrapper url.
-
 - [Azure development](https://chocolatey.org/packages/visualstudio2019-workload-azure)
 - [Data storage and processing](https://chocolatey.org/packages/visualstudio2019-workload-data)
 - [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2019-workload-datascience)
+- [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-workload-manageddesktop)
 - [Game development with Unity](https://chocolatey.org/packages/visualstudio2019-workload-managedgame)
 - [Linux development with C++](https://chocolatey.org/packages/visualstudio2019-workload-nativecrossplat)
 - [Desktop development with C++](https://chocolatey.org/packages/visualstudio2019-workload-nativedesktop)
@@ -79,6 +76,8 @@ If control over reboots is required, it is advisable to install the dependencies
 - [Python development](https://chocolatey.org/packages/visualstudio2019-workload-python)
 - [Universal Windows Platform development](https://chocolatey.org/packages/visualstudio2019-workload-universal)
 - [Visual Studio extension development](https://chocolatey.org/packages/visualstudio2019-workload-visualstudioextension)
+    </releaseNotes>
+<!--
 - [Mobile development with JavaScript](https://chocolatey.org/packages/visualstudio2019-workload-webcrossplat)
 -->
     <dependencies>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019-workload-manageddesktopbuildtools</id>
-    <version>1.0.1-preview1</version>
+    <version>1.0.1-preview2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-workload-manageddesktopbuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET desktop build tools workload for Visual Studio 2019 Build Tools</title>
@@ -27,7 +27,7 @@ Visual Studio 2019 Build Tools must be installed first, for example using the Ch
 
 ### Customizations
 
-The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --includeRecommended` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2019). The package passes `--norestart --includeRecommended` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
 
 By default, the package installs components required by and recommended for the workload. Package parameters can be used to adjust this behavior:
 
