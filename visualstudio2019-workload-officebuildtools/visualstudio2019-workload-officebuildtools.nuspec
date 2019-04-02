@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019-workload-officebuildtools</id>
-    <version>1.0.0-preview1</version>
+    <version>1.0.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-workload-officebuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Office/SharePoint build tools workload for Visual Studio 2019 Build Tools</title>
@@ -61,7 +61,7 @@ Example 3. Installing the workload, including only required components:
       <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" />
       <dependency id="netfx-4.5.2-devpack" version="4.5.5165101.20180721" />
       <dependency id="visualstudio-installer" version="2.0.0" />
-      <dependency id="visualstudio2019buildtools" version="16.0.0.0-rc40000" />
+      <dependency id="visualstudio2019buildtools" version="16.0.0.0" />
     </dependencies>
   </metadata>
 </package>

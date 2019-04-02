@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019-workload-managedgame</id>
-    <version>1.0.0-preview1</version>
+    <version>1.0.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-workload-managedgame</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Game development with Unity workload for Visual Studio 2019</title>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019-workload-azurebuildtools</id>
-    <version>1.0.0-preview1</version>
+    <version>1.0.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-workload-azurebuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Azure development build tools workload for Visual Studio 2019 Build Tools</title>
@@ -59,7 +59,7 @@ Example 3. Installing the workload, including only required components:
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <dependency id="netfx-4.7.2-devpack" version="4.7.2.20190225" />
       <dependency id="visualstudio-installer" version="2.0.0" />
-      <dependency id="visualstudio2019buildtools" version="16.0.0.0-rc40000" />
+      <dependency id="visualstudio2019buildtools" version="16.0.0.0" />
     </dependencies>
   </metadata>
 </package>
