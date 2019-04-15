@@ -18,7 +18,7 @@
     <summary>Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE.</summary>
     <description>
 ### Overview
-Visual Studio Build Tools 2019 Preview is a preview of the next major version of Visual Studio.
+The Visual Studio Build Tools allows you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE. There are options to install the Visual C++ compilers and libraries, MFC, ATL, and C++/CLI support.
 
 Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/). Visual Studio and Visual Studio Preview can be installed side-by-side on the same device.
 
@@ -58,7 +58,6 @@ If control over reboots is required, it is advisable to install the dependencies
 16.0.0.40400-preview1:
 - Package metadata updated for Visual Studio 2019 version 16.0.0 Preview 4.4 (the native installer always installs the latest released Visual Studio 2019 Preview build).
 - Updated bootstrapper url.
-- Updated metadata and dependencies.
     </releaseNotes>
 <!--
 

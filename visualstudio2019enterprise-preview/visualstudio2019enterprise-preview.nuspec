@@ -18,7 +18,7 @@
     <summary>An integrated, end-to-end solution for developers looking for high productivity and seamless coordination across teams of any size.</summary>
     <description>
 ### Overview
-Visual Studio Enterprise 2019 Preview is a preview of the next major version of Visual Studio.
+Microsoft DevOps solution for productivity and coordination across teams of any size.
 
 Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/). Visual Studio and Visual Studio Preview can be installed side-by-side on the same device.
 
@@ -58,14 +58,11 @@ If control over reboots is required, it is advisable to install the dependencies
 16.0.0.40400-preview1:
 - Package metadata updated for Visual Studio 2019 version 16.0.0 Preview 4.4 (the native installer always installs the latest released Visual Studio 2019 Preview build).
 - Updated bootstrapper url.
-- Updated description and metadata.
-- Updated extension dependency.
 
 #### Available workload packages
 - [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-preview-workload-manageddesktop)
     </releaseNotes>
 <!--
-
 - [Azure development](https://chocolatey.org/packages/visualstudio2019-preview-workload-azure)
 - [Data storage and processing](https://chocolatey.org/packages/visualstudio2019-preview-workload-data)
 - [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2019-preview-workload-datascience)
