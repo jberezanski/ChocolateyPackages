@@ -30,7 +30,7 @@ Visual Studio 2019 must be installed first, for example using Chocolatey package
 
 ### Customizations
 
-The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --includeRecommended` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2019). The package passes `--norestart --includeRecommended` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
 
 By default, the package installs components required by and recommended for the workload. Package parameters can be used to adjust this behavior:
 
@@ -46,7 +46,7 @@ In order to act on one specific product when several are installed, the product 
 or (both are needed):
 
 - `--productId` - the identifier of the product, for example "Microsoft.VisualStudio.Product.Enterprise"
-- `--channelId` - the release channel, should be "VisualStudio.15.Release"
+- `--channelId` - the release channel, should be "VisualStudio.16.Preview"
 
 Example 1. Installing the workload on all products, including recommended, but not optional components:
 
@@ -54,7 +54,7 @@ Example 1. Installing the workload on all products, including recommended, but n
 
 Example 2. Installing the workload on one specific product, including all recommended and optional components:
 
-    choco install visualstudio2019-preview-workload-manageddesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.15.Release --includeOptional"
+    choco install visualstudio2019-preview-workload-manageddesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.16.Preview --includeOptional"
 
 Example 3. Installing the workload on all products, including only required components:
 
