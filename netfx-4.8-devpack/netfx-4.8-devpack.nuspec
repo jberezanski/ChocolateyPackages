@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.8-devpack</id>
-    <version>4.8.0.0-previewv0801</version>
+    <version>4.8.0.0-rtw1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.8-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8 Developer Pack</title>
@@ -16,21 +16,18 @@
     <tags>microsoft .net framework 4.8 developer target targeting pack multi dotnet netfx admin</tags>
     <summary>The .NET Framework 4.8 Developer Pack lets developers build applications that target the .NET Framework 4.8.</summary>
     <description>The .NET Framework 4.8 Developer Pack lets developers build applications that target the .NET Framework 4.8 by using Visual Studio 2017, Visual Studio 2015 or other IDEs. This is a single package that bundles the .NET Framework 4.8, the .NET 4.8 Targeting Pack, and the .NET Framework 4.8 SDK.
-
-.NET Framework 4.8 is the next version of the .NET Framework. This is one of the in-development builds of the next version of the .NET Framework. The changes in this build have been functionally validated by the .NET teams. This build is not supported for production use. The current Early Access build number being shared is 3745.
     </description>
     <releaseNotes>
 ##### Software
-[.NET Framework 4.8 build 3745 announcement](https://devblogs.microsoft.com/dotnet/announcing-net-framework-4-8-early-access-build-3745/)
-[.NET Framework 4.8 build 3745 release notes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3745/readme.md)
-[.NET Framework 4.8 build 3745 changes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3745/changes.md)
+[.NET Framework 4.8 announcement](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-8/)
+[.NET Framework 4.8 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/README.md)
+[.NET Framework 4.8 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/dotnet48-changes.md)
 ##### Package
-4.8.0.0-previewv0801: Implemented workaround for native installer crash under WinRM/DSC (https://github.com/jberezanski/ChocolateyPackages/issues/22).
+4.8.0.0-rtw1: Initial package release for official .NET 4.8 release. Package still retains a prerelease version suffix because the dotnetfx package does.
     </releaseNotes>
-<!-- 4.8.0.0-previewv0900: Initial package release for early access build 3745. -->
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />
-      <dependency id="dotnetfx" version="4.8.0.0-preview8" />
+      <dependency id="dotnetfx" version="4.8.0.0-rtw1" />
     </dependencies>
   </metadata>
   <files>

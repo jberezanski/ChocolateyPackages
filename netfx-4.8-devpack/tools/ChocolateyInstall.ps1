@@ -4,9 +4,9 @@ $version = '4.8'
 $arguments = @{
     PackageName = 'netfx-4.8-devpack'
     Version = $version
-    ProductNameWithVersion = "Microsoft .NET Framework $version Developer Pack early access build 3745"
-    Url = 'https://download.visualstudio.microsoft.com/download/pr/9854b5f2-2341-4136-ad7d-1d881ab8d603/e3a011f2a41a59b086f78d64e1c7a3fc/NDP48-DevPack-ENU.exe'
-    Checksum = '67979C8FBA2CD244712A31A7FE323FD8BD69AA7971F152F8233CB109A7260F06'
+    ProductNameWithVersion = "Microsoft .NET Framework $version Developer Pack"
+    Url = 'https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/c8c829444416e811be84c5765ede6148/NDP48-DevPack-ENU.exe'
+    Checksum = '3AEB6E4B1D3D5D36689A50026231F725AB0BCC145E72A09B13394FD9C8480B7F'
     ChecksumType = 'sha256'
 }
 

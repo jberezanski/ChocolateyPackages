@@ -1,11 +1,11 @@
 ﻿. (Join-Path -Path (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition) -ChildPath 'helpers.ps1')
 
 $packageName = 'dotnetfx'
-$release = 528033
+$release = 528040
 $version = '4.8'
-$productNameWithVersion = "Microsoft .NET Framework $version early access build 3745"
-$url = 'https://download.visualstudio.microsoft.com/download/pr/9854b5f2-2341-4136-ad7d-1d881ab8d603/a59983c9bf08c7ae7200f356c9a604c1/NDP48-Preview-x86-x64-AllOS-ENU.exe'
-$checksum = 'D1C399178BF9733BC56C223F212512879E6ECDD6C647F25A1589C86C05591281'
+$productNameWithVersion = "Microsoft .NET Framework $version"
+$url = 'https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/NDP48-x86-x64-AllOS-ENU.exe'
+$checksum = '95889D6DE3F2070C07790AD6CF2000D33D9A1BDFC6A381725AB82AB1C314FD53'
 $checksumType = 'sha256'
 
 if (Test-Installed -Release $release) {
@@ -48,7 +48,7 @@ if ($Env:ChocolateyExitCode -eq '3010')
 else
 {
     if ($Env:ChocolateyExitCode -eq $null)
-    { 
+    {
         Write-Host "A restart may be required to finalize $productNameWithVersion installation."
     }
 }
