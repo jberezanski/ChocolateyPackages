@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.7-devpack</id>
-    <version>4.7.2053.0</version>
+    <version>4.7.2053.20190419-rc1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.7-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.7 Developer Pack</title>
@@ -20,10 +20,18 @@
 ##### Software
 https://support.microsoft.com/en-us/help/3186612/the-net-framework-4-7-developer-pack-and-language-packs
 ##### Package
-4.7.2053.0: Initial package release.
+4.7.2053.20190419: Changed depedency from dotnet4.7 to netfx-4.7 and refactored the installation script.
     </releaseNotes>
     <dependencies>
-      <dependency id="dotnet4.7" version="4.7.2053.0" />
+      <dependency id="netfx-4.7" version="4.7.0.0" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="tools\*.*" target="tools" />
+    <file src="..\shared\DotNetFrameworkHelpers.ps1" target="tools" />
+    <file src="..\shared\Get-DefaultChocolateyLocalFilePath.ps1" target="tools" />
+    <file src="..\shared\Get-NativeInstallerExitCode.ps1" target="tools" />
+    <file src="..\shared\Install-ChocolateyInstallPackageAndHandleExitCode.ps1" target="tools" />
+    <file src="..\shared\Set-PowerShellExitCode.ps1" target="tools" />
+  </files>
 </package>

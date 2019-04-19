@@ -2,9 +2,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.6.2-devpack</id>
-    <version>4.6.01590.20170129</version>
+    <version>4.6.01590.20190419-rc1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.6.2-devpack</packageSourceUrl>
-    <owners>Jakub Bereżański</owners>
+    <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.6.2 Developer Pack</title>
     <authors>Microsoft</authors>
     <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2016/08/02/announcing-net-framework-4-6-2/</projectUrl>
@@ -20,10 +20,18 @@
 ##### Software
 https://support.microsoft.com/en-us/kb/3151796
 ##### Package
-4.6.01590.20170129: Updated dotnet4.6.2 dependency to fix installation on Windows Server Core; switched to Quiet mode for symmetry, too.
+4.6.01590.20190419: Changed depedency from dotnet4.6.2 to netfx-4.6.2, refactored the installation script, updated checksum to SHA-256.
     </releaseNotes>
     <dependencies>
-      <dependency id="dotnet4.6.2" version="4.6.01590.20170129" />
+      <dependency id="netfx-4.6.2" version="4.6.2.0-rc1" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="tools\*.*" target="tools" />
+    <file src="..\shared\DotNetFrameworkHelpers.ps1" target="tools" />
+    <file src="..\shared\Get-DefaultChocolateyLocalFilePath.ps1" target="tools" />
+    <file src="..\shared\Get-NativeInstallerExitCode.ps1" target="tools" />
+    <file src="..\shared\Install-ChocolateyInstallPackageAndHandleExitCode.ps1" target="tools" />
+    <file src="..\shared\Set-PowerShellExitCode.ps1" target="tools" />
+  </files>
 </package>
