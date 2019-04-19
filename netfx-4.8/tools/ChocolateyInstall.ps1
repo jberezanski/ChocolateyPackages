@@ -2,7 +2,7 @@
 
 $version = '4.8'
 $arguments = @{
-    PackageName = 'dotnetfx'
+    PackageName = "netfx-$version"
     Release = 528040
     Version = $version
     ProductNameWithVersion = "Microsoft .NET Framework $version"

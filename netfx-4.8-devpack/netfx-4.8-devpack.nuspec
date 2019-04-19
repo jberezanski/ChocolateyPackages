@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.8-devpack</id>
-    <version>4.8.0.0-rtw1</version>
+    <version>4.8.0.0-rtw2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.8-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8 Developer Pack</title>
@@ -23,16 +23,16 @@
 [.NET Framework 4.8 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/README.md)
 [.NET Framework 4.8 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/dotnet48-changes.md)
 ##### Package
-4.8.0.0-rtw1: Initial package release for official .NET 4.8 release. Package still retains a prerelease version suffix because the dotnetfx package does.
+4.8.0.0-rtw2: Changed depedency from dotnetfx to netfx-4.8.
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />
-      <dependency id="dotnetfx" version="4.8.0.0-rtw1" />
+      <dependency id="netfx-4.8" version="4.8.0.0-rc1" />
     </dependencies>
   </metadata>
   <files>
     <file src="tools\*.*" target="tools" />
-    <file src="..\shared\DotNetDevPackHelpers.ps1" target="tools" />
+    <file src="..\shared\DotNetFrameworkHelpers.ps1" target="tools" />
     <file src="..\shared\Get-DefaultChocolateyLocalFilePath.ps1" target="tools" />
     <file src="..\shared\Get-NativeInstallerExitCode.ps1" target="tools" />
     <file src="..\shared\Install-ChocolateyInstallPackageAndHandleExitCode.ps1" target="tools" />

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>dotnetfx</id>
-    <version>4.8.0.0-rtw2</version>
-    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
+    <id>netfx-4.8</id>
+    <version>4.8.0.0-rc1</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.8</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8</title>
     <authors>Microsoft</authors>
@@ -23,14 +23,19 @@ Supported Windows Client versions: Windows 10 version 1903, Windows 10 version 1
 
 Supported Windows Server versions: Windows Server 2019, Windows Server version 1803, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1
 
-The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.8-devpack).</description>
+The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.8-devpack).
+
+**This package is intended to be used by package maintainers as a dependency.** For end users the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package is recommended, because it provides an easy way to upgrade the .NET Framework to a future release using standard Chocolatey mechanisms.
+
+On systems which have a newer version of the .NET Framework installed, this package installs successfully, but does nothing.
+</description>
     <releaseNotes>
 ##### Software
 [.NET Framework 4.8 announcement](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-8/)
 [.NET Framework 4.8 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/README.md)
 [.NET Framework 4.8 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/dotnet48-changes.md)
 ##### Package
-4.8.0.0-rtw2: Refactored installation script.
+4.8.0.0: Initial package release.
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />

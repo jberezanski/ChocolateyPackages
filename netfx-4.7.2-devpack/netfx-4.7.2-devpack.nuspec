@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.7.2-devpack</id>
-    <version>4.7.2.20190225</version>
+    <version>4.7.2.20190419-rc1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.7.2-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.7.2 Developer Pack</title>
@@ -23,16 +23,16 @@
 [.NET Framework 4.7.2 readme](https://github.com/Microsoft/dotnet/blob/master/releases/net472/README.md)
 [.NET Framework 4.7.2 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net472/dotnet472-changes.md)
 ##### Package
-4.7.2.20190225: Implemented workaround for native installer crash under WinRM/DSC (https://github.com/jberezanski/ChocolateyPackages/issues/22).
+4.7.2.20190419: Changed depedency from dotnetfx to netfx-4.7.2.
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />
-      <dependency id="dotnetfx" version="4.7.2.20180712" />
+      <dependency id="netfx-4.7.2" version="4.7.2.0" />
     </dependencies>
   </metadata>
   <files>
     <file src="tools\*.*" target="tools" />
-    <file src="..\shared\DotNetDevPackHelpers.ps1" target="tools" />
+    <file src="..\shared\DotNetFrameworkHelpers.ps1" target="tools" />
     <file src="..\shared\Get-DefaultChocolateyLocalFilePath.ps1" target="tools" />
     <file src="..\shared\Get-NativeInstallerExitCode.ps1" target="tools" />
     <file src="..\shared\Install-ChocolateyInstallPackageAndHandleExitCode.ps1" target="tools" />

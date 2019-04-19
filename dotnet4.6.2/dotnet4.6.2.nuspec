@@ -2,10 +2,10 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnet4.6.2</id>
-    <version>4.6.01590.20190226</version>
+    <version>4.6.01590.20190419-rc1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnet4.6.2</packageSourceUrl>
-    <owners>Jakub Bereżański</owners>
-    <title>Microsoft .NET Framework 4.6.2</title>
+    <owners>jberezanski</owners>
+    <title>(DEPRECATED) Microsoft .NET Framework 4.6.2</title>
     <authors>Microsoft</authors>
     <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2016/08/02/announcing-net-framework-4-6-2/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
@@ -14,24 +14,21 @@
     <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
     <bugTrackerUrl>http://connect.microsoft.com/VisualStudio</bugTrackerUrl>
     <tags>Microsoft .NET Framework 4.6.2 Redistributable admin</tags>
-    <summary>The Microsoft .NET Framework 4.6.2 is a highly compatible in-place update to the Microsoft .NET Framework 4, the .NET Framework 4.5, the .NET Framework 4.5.1, the .NET Framework 4.5.2, the .NET Framework 4.6, and the .NET Framework 4.6.1.</summary>
-    <description>The Microsoft .NET Framework 4.6.2 is a highly compatible in-place update to the Microsoft .NET Framework 4, the .NET Framework 4.5, the .NET Framework 4.5.1, the .NET Framework 4.5.2, the .NET Framework 4.6, and the .NET Framework 4.6.1.
-You can see the full set of changes in the .NET Framework 4.6.2 in the [change list](https://github.com/Microsoft/dotnet/blob/master/releases/net462/dotnet462-changes.md) and [API diff](https://github.com/Microsoft/dotnet/blob/master/releases/net462/dotnet462-api-changes.md) on [GitHub](https://github.com/microsoft/dotnet).
+    <summary>This package is deprecated.</summary>
+    <description>**This package is deprecated.**
 
-This is a **metapackage** intended to help transition from earlier Chocolatey .NET Framework packaging convention. Actual installation is performed by the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package.
+End users should install the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package.
 
-Note that due to the way package dependencies work in Chocolatey, if you install this package and the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package is not installed yet, Chocolatey will install the *latest* [dotnetfx](https://chocolatey.org/packages/dotnetfx) package version, which may be newer than 4.6.2. If you need to install specifically .NET Framework 4.6.2, install that version of the [dotnetfx](https://chocolatey.org/packages/dotnetfx) package (`choco install dotnetfx --version 4.6.2`).
-
-The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.6.2-devpack).
+Package maintainers should depend on the [netfx-4.6.2](https://chocolatey.org/packages/netfx-4.6.2) package.
 </description>
     <releaseNotes>
 ##### Software
 https://support.microsoft.com/en-us/kb/3151796
 ##### Package
-4.6.01590.20190226: Converted to a metapackage.
+4.6.01590.20190419: Deprecated; dependency changed from dotnetfx to netfx-4.6.2.
     </releaseNotes>
     <dependencies>
-      <dependency id="dotnetfx" version="4.6.2.0" />
+      <dependency id="netfx-4.6.2" version="4.6.2.0-rc1" />
     </dependencies>
   </metadata>
 </package>

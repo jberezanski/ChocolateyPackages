@@ -1,8 +1,8 @@
-﻿. (Join-Path -Path (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition) -ChildPath 'DotNetDevPackHelpers.ps1')
+﻿. (Join-Path -Path (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition) -ChildPath 'DotNetFrameworkHelpers.ps1')
 
 $version = '4.7.2'
 $arguments = @{
-    PackageName = 'netfx-4.7.2-devpack'
+    PackageName = "netfx-$version-devpack"
     Version = $version
     ProductNameWithVersion = "Microsoft .NET Framework $version Developer Pack"
     Url = 'https://download.microsoft.com/download/3/B/F/3BFB9C35-405D-45DF-BDAF-0EB57D047888/NDP472-DevPack-ENU.exe'
