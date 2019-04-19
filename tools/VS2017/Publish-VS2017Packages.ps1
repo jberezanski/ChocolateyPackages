@@ -1,7 +1,8 @@
 ﻿[CmdletBinding(SupportsShouldProcess = $true)]
 Param
 (
-    [string] $Pattern = '^visualstudio2017[a-z]+$'
+    [string] $Pattern = '^visualstudio2017[a-z]+$',
+    [SecureString] $ApiKey
 )
 
 #Requires -Version 5
@@ -37,7 +38,13 @@ try
         $p = $_.Nupkg
         if ($PSCmdlet.ShouldProcess($p, 'Push'))
         {
-            cpush $p
+            $keyArg = @()
+            if ($ApiKey -ne $null)
+            {
+                $keyArg = @('--api-key', (New-Object Management.Automation.PSCredential -ArgumentList @('dummy', $ApiKey)).GetNetworkCredential().Password)
+            }
+
+            cpush @keyArg $p
         }
 
         $t = $_.Tag
