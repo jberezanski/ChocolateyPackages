@@ -68,11 +68,13 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Package
 1.0.0:
 - Initial package release.
+vNext:
+- Updated dependency version.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <!-- <dependency id="vcredist140" version="14.16.27027.1" /> -->
-      <dependency id="visualstudio-installer" version="2.0.0" />
+      <dependency id="visualstudio-installer" version="2.0.1" />
     </dependencies>
   </metadata>
 </package>

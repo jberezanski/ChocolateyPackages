@@ -68,6 +68,8 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Package
 1.0.0:
 - Initial package release.
+vNext:
+- Updated dependency version.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
@@ -77,7 +79,7 @@ Example 3. Installing the workload on all products, including only required comp
       <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" />
       <dependency id="netfx-4.5.2-devpack" version="4.5.5165101.20180721" />
       <!-- <dependency id="KB2882822" version="1.0.0" /> -->
-      <dependency id="visualstudio-installer" version="2.0.0" />
+      <dependency id="visualstudio-installer" version="2.0.1" />
     </dependencies>
   </metadata>
 </package>

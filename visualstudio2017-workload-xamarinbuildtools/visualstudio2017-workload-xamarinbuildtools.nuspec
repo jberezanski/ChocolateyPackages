@@ -54,11 +54,13 @@ Example 3. Installing the workload, including only required components:
 ##### Package
 1.0.1:
 - Updated metadata and dependencies.
+vNext:
+- Updated dependency version.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" />
-      <dependency id="visualstudio-installer" version="2.0.0" />
+      <dependency id="visualstudio-installer" version="2.0.1" />
       <dependency id="visualstudio2017buildtools" version="15.7" />
     </dependencies>
   </metadata>
