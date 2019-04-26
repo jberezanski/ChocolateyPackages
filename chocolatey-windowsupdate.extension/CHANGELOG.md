@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version 1.0.4
+
+- Fixed exit code detection on licensed Chocolatey (https://github.com/jberezanski/ChocolateyPackages/issues/62).
+
 ## Version 1.0.3
 
 - Documented the Boxstarter issue (https://github.com/chocolatey/boxstarter/issues/293).

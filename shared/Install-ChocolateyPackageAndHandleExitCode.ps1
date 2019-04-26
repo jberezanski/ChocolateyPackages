@@ -47,12 +47,20 @@ function Install-ChocolateyPackageAndHandleExitCode
         }
         catch [System.Management.Automation.RuntimeException]
         {
-            if ($_.Exception.Message -notlike '*Running * was not successful. Exit code was*')
+            Write-Debug "Caught $($_.Exception.GetType().FullName) with message = [$($_.Exception.Message)]"
+            if ($_.Exception.Message -notmatch '(?s)Running\s+.+\s+was\s+not\s+successful.+Exit\s+code\s+was')
             {
+                Write-Debug 'Exception message was not recognized, rethrowing'
                 throw
             }
 
+            Write-Debug 'Exception message was recognized as command execution failure with exit code.'
             $invalidExitCodeErrorMessage = $_.Exception.Message
+        }
+        catch
+        {
+            Write-Debug "Caught and rethrowing unexpected $($_.Exception.GetType().FullName) with message = [$($_.Exception.Message)]"
+            throw
         }
         finally
         {
