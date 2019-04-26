@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>KB3035131</id>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB3035131</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
         <title>Security update for Windows kernel: March 10, 2015</title>
@@ -23,10 +23,10 @@ On systems later than Windows 8.1 or Windows Server 2012 R2, this package instal
 This update is recommended to install before installing KB3033929 on Windows 7 or Windows Server 2008 R2.
         </description>
         <releaseNotes>
-1.0.2: ensure the correct Install-WindowsUpdate function is called (work around [Boxstarter issue](https://github.com/chocolatey/boxstarter/issues/293))
+1.0.3: update extension dependency to fix exit code handling on licensed Chocolatey.
         </releaseNotes>
         <dependencies>
-            <dependency id="chocolatey-windowsupdate.extension" version="1.0.2" />
+            <dependency id="chocolatey-windowsupdate.extension" version="1.0.4" />
         </dependencies>
     </metadata>
 </package>

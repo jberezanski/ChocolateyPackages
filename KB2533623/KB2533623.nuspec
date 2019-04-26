@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>KB2533623</id>
-        <version>1.0.3</version>
+        <version>1.0.4</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB2533623</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
         <title>Microsoft Security Advisory: Insecure library loading could allow remote code execution</title>
@@ -27,10 +27,10 @@ On systems other than Windows 7, Windows Server 2008 R2, Windows Vista or Window
 This update is required for .NET Core on Windows 7 or Windows Server 2008 R2.
         </description>
         <releaseNotes>
-1.0.3: ensure the correct Install-WindowsUpdate function is called (work around [Boxstarter issue](https://github.com/chocolatey/boxstarter/issues/293))
+1.0.4: update extension dependency to fix exit code handling on licensed Chocolatey.
         </releaseNotes>
         <dependencies>
-            <dependency id="chocolatey-windowsupdate.extension" version="1.0.2" />
+            <dependency id="chocolatey-windowsupdate.extension" version="1.0.4" />
         </dependencies>
     </metadata>
 </package>
