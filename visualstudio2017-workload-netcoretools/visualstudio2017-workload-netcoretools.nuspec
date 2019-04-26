@@ -77,7 +77,7 @@ vNext:
       <dependency id="vcredist140" version="14.16.27027.1" />
       <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" />
       <dependency id="netfx-4.5.2-devpack" version="4.5.5165101" />
-      <dependency id="KB2882822" version="1.0.0" />
+      <dependency id="KB2882822" version="1.0.3" />
       <dependency id="visualstudio-installer" version="2.0.1" />
     </dependencies>
   </metadata>

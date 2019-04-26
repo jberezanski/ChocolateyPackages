@@ -30,10 +30,11 @@ The matching Developer Pack can be installed using [this package](https://chocol
 [.NET Framework 4.7 known issues](https://support.microsoft.com/en-us/help/4015088/known-issues-in-the-net-framework-4-7)
 ##### Package
 4.7.0.0: Initial package release.
+vNext: update dependency to fix exit code handling on licensed Chocolatey.
     </releaseNotes>
     <dependencies>
       <dependency id="KB2919355" version="1.0.20160915" />
-      <dependency id="KB4019990" version="1.0.0" />
+      <dependency id="KB4019990" version="1.0.2" />
     </dependencies>
   </metadata>
 </package>

@@ -59,6 +59,8 @@ If control over reboots is required, it is advisable to install the dependencies
 - Package metadata updated for Visual Studio 2019 version 16.1.0 Preview 2.0 (the native installer always installs the latest released Visual Studio 2019 Preview build).
 - Bootstrapper url not updated to avoid a bug in the latest bootstrapper.
 - Updated dependency version.
+vNext:
+- Updated dependency version.
 
 #### Available workload packages
 - [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-preview-workload-manageddesktop)
@@ -85,7 +87,7 @@ If control over reboots is required, it is advisable to install the dependencies
 -->
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
-      <dependency id="KB3033929" version="1.0.0" /> <!-- for Win7 SP1/2008R2-->
+      <dependency id="KB3033929" version="1.0.5" /> <!-- for Win7 SP1/2008R2-->
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnetfx" version="4.7.2" />

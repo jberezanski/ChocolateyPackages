@@ -79,7 +79,7 @@ vNext:
 -->
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
-      <dependency id="KB3033929" version="1.0.0" />
+      <dependency id="KB3033929" version="1.0.5" />
       <dependency id="KB2919355" version="1.0.20160915" />
       <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnetfx" version="4.7.2" />
