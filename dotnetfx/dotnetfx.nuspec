@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnetfx</id>
-    <version>4.8.0.0-rtw3</version>
+    <version>4.8.0.0-rtw4</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8</title>
@@ -30,18 +30,11 @@ The matching Developer Pack can be installed using [this package](https://chocol
 [.NET Framework 4.8 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/README.md)
 [.NET Framework 4.8 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/dotnet48-changes.md)
 ##### Package
-4.8.0.0-rtw3: Updated installer url after .NET 4.8 release to Windows Update.
+4.8.0.0-rtw4: Refactored installation script.
     </releaseNotes>
     <dependencies>
+      <dependency id="chocolatey-dotnetfx.extension" version="1.0.0-rc1" />
       <dependency id="KB2919355" version="1.0.20160915" />
     </dependencies>
   </metadata>
-  <files>
-    <file src="tools\*.*" target="tools" />
-    <file src="..\shared\DotNetFrameworkHelpers.ps1" target="tools" />
-    <file src="..\shared\Get-DefaultChocolateyLocalFilePath.ps1" target="tools" />
-    <file src="..\shared\Get-NativeInstallerExitCode.ps1" target="tools" />
-    <file src="..\shared\Install-ChocolateyInstallPackageAndHandleExitCode.ps1" target="tools" />
-    <file src="..\shared\Set-PowerShellExitCode.ps1" target="tools" />
-  </files>
 </package>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>chocolatey-dotnetfx.extension</id>
+    <version>1.0.0-rc1</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-dotnetfx.extension</packageSourceUrl>
+    <owners>Jakub Bereżański</owners>
+    <title>Chocolatey .NET Framework extensions</title>
+    <authors>Jakub Bereżański</authors>
+    <projectUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-dotnetfx.extension</projectUrl>
+    <copyright>© 2019 Jakub Bereżański</copyright>
+    <licenseUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/8086c84fed16d4150a50ba1e97fd6b75e3c4f511/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-dotnetfx.extension/README.md</docsUrl>
+    <bugTrackerUrl>https://github.com/jberezanski/ChocolateyPackages/issues</bugTrackerUrl>
+    <tags>chocolatey extension admin windows update .net net dotnet framework devpack developer pack</tags>
+    <summary>Helper functions useful for developing packages for Microsoft .NET Framework runtime and Developer Pack.</summary>
+    <description>
+This package provides helper functions useful for developing packages for Microsoft .NET Framework runtime and Developer Pack.
+    </description>
+    <releaseNotes>
+    [Change log](https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-dotnetfx.extension/CHANGELOG.md)
+</releaseNotes>
+    <dependencies>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="extensions\*.*" target="extensions" />
+    <file src="..\shared\Get-DefaultChocolateyLocalFilePath.ps1" target="extensions" />
+    <file src="..\shared\Get-NativeInstallerExitCode.ps1" target="extensions" />
+    <file src="..\shared\Install-ChocolateyInstallPackageAndHandleExitCode.ps1" target="extensions" />
+    <file src="..\shared\Set-PowerShellExitCode.ps1" target="extensions" />
+  </files>
+</package>

@@ -1,6 +1,4 @@
-﻿. (Join-Path -Path (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition) -ChildPath 'DotNetFrameworkHelpers.ps1')
-
-$version = '4.6.2'
+﻿$version = '4.6.2'
 $arguments = @{
     PackageName = "netfx-$version"
     Release = 394802

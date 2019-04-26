@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.6.2-devpack</id>
-    <version>4.6.01590.20190419-rc1</version>
+    <version>4.6.01590.20190419-rc2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.6.2-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.6.2 Developer Pack</title>
@@ -23,15 +23,8 @@ https://support.microsoft.com/en-us/kb/3151796
 4.6.01590.20190419: Changed depedency from dotnet4.6.2 to netfx-4.6.2, refactored the installation script, updated checksum to SHA-256.
     </releaseNotes>
     <dependencies>
-      <dependency id="netfx-4.6.2" version="4.6.2.0-rc1" />
+      <dependency id="chocolatey-dotnetfx.extension" version="1.0.0-rc1" />
+      <dependency id="netfx-4.6.2" version="4.6.2.0-rc2" />
     </dependencies>
   </metadata>
-  <files>
-    <file src="tools\*.*" target="tools" />
-    <file src="..\shared\DotNetFrameworkHelpers.ps1" target="tools" />
-    <file src="..\shared\Get-DefaultChocolateyLocalFilePath.ps1" target="tools" />
-    <file src="..\shared\Get-NativeInstallerExitCode.ps1" target="tools" />
-    <file src="..\shared\Install-ChocolateyInstallPackageAndHandleExitCode.ps1" target="tools" />
-    <file src="..\shared\Set-PowerShellExitCode.ps1" target="tools" />
-  </files>
 </package>

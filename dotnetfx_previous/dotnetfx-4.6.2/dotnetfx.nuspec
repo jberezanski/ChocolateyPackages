@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnetfx</id>
-    <version>4.6.2.20190419-rc1</version>
+    <version>4.6.2.20190419-rc2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.6.2</title>
@@ -32,15 +32,8 @@ The matching Developer Pack can be installed using [this package](https://chocol
 4.6.2.20190419: Refactored installation script.
     </releaseNotes>
     <dependencies>
+      <dependency id="chocolatey-dotnetfx.extension" version="1.0.0-rc1" />
       <dependency id="KB2919355" version="1.0.20160915" />
     </dependencies>
   </metadata>
-  <files>
-    <file src="tools\*.*" target="tools" />
-    <file src="..\..\shared\DotNetFrameworkHelpers.ps1" target="tools" />
-    <file src="..\..\shared\Get-DefaultChocolateyLocalFilePath.ps1" target="tools" />
-    <file src="..\..\shared\Get-NativeInstallerExitCode.ps1" target="tools" />
-    <file src="..\..\shared\Install-ChocolateyInstallPackageAndHandleExitCode.ps1" target="tools" />
-    <file src="..\..\shared\Set-PowerShellExitCode.ps1" target="tools" />
-  </files>
 </package>
