@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>diskspd</id>
-    <version>2.0.17</version>
+    <version>2.0.21</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/diskspd</packageSourceUrl>
     <owners>Jakub Bereżański</owners>
     <title>The DiskSpd Storage Performance Tool</title>
@@ -11,9 +11,9 @@
     <copyright>2016 Microsoft</copyright>
     <licenseUrl>http://aka.ms/diskspd</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://github.com/microsoft/diskspd</projectSourceUrl>
-    <docsUrl>https://github.com/Microsoft/diskspd/blob/master/DiskSpd_Documentation.pdf</docsUrl>
-    <bugTrackerUrl>https://github.com/microsoft/diskspd/issues</bugTrackerUrl>
+    <projectSourceUrl>https://github.com/Microsoft/diskspd</projectSourceUrl>
+    <docsUrl>https://github.com/Microsoft/diskspd/wiki</docsUrl>
+    <bugTrackerUrl>https://github.com/Microsoft/diskspd/issues</bugTrackerUrl>
     <tags>diskspd storage test performance benchmark load generator iops sqliosim sqlio sql server</tags>
     <summary>DiskSpd is a storage load generator / performance test tool from the Microsoft Windows, Windows Server and Cloud Server Infrastructure Engineering teams.</summary>
     <description>
@@ -27,13 +27,13 @@ Select highlights include:
 - Synchronization and tracing functionality
 
 For a few basic usage examples, see the [DiskSpd page on the TechNet Gallery](http://aka.ms/diskspd).
-The full documentation is installed with the package; you can also [read it online](https://github.com/Microsoft/diskspd/blob/master/DiskSpd_Documentation.pdf).
+The full documentation is available as a [wiki on GitHub](https://github.com/Microsoft/diskspd/wiki).
     </description>
     <releaseNotes>
 ##### Software
 [DiskSpd Release Notes](https://github.com/Microsoft/diskspd/blob/master/README.md)
 ##### Package
-2.0.17: Initial package release for software version 2.0.17.
+2.0.21: Initial package release for software version 2.0.21a.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey" version="0.9.8.20" />

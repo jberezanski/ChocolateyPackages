@@ -3,16 +3,16 @@
 $targetPath = Join-Path -Path $Env:chocolateyPackageFolder -ChildPath tools
 $arguments = @{
     packageName    = 'diskspd'
-    url            = 'https://gallery.technet.microsoft.com/DiskSpd-a-robust-storage-6cd2f223/file/152702/1/Diskspd-v2.0.17.zip'
-    url64bit       = 'https://gallery.technet.microsoft.com/DiskSpd-a-robust-storage-6cd2f223/file/152702/1/Diskspd-v2.0.17.zip'
-    checksum       = 'FD830EC6DE0F0ACD4FD91826EF218676E98347D17DE13AC412D967BF5AE326AA'
+    url            = 'https://gallery.technet.microsoft.com/DiskSpd-A-Robust-Storage-6ef84e62/file/199535/2/DiskSpd-2.0.21a.zip'
+    url64bit       = 'https://gallery.technet.microsoft.com/DiskSpd-A-Robust-Storage-6ef84e62/file/199535/2/DiskSpd-2.0.21a.zip'
+    checksum       = 'D02F6BE976C518D4134E62AF7F518BAAD6C7C81F924CAAFBEBA65BD0831CE139'
     checksumType   = 'sha256'
-    checksum64     = 'FD830EC6DE0F0ACD4FD91826EF218676E98347D17DE13AC412D967BF5AE326AA'
+    checksum64     = 'D02F6BE976C518D4134E62AF7F518BAAD6C7C81F924CAAFBEBA65BD0831CE139'
     checksumType64 = 'sha256'
     unzipLocation  = $targetPath
 }
 
-$ignoreFilePath = Join-Path -Path $targetPath -ChildPath "${Env:PROCESSOR_ARCHITECTURE}fre\diskspd.exe.ignore"
+$ignoreFilePath = Join-Path -Path $targetPath -ChildPath "${Env:PROCESSOR_ARCHITECTURE}\diskspd.exe.ignore"
 if (Test-Path -Path $ignoreFilePath)
 {
     Remove-Item -Path $ignoreFilePath
@@ -24,4 +24,4 @@ else
 
 Install-ChocolateyZipPackage @arguments
 
-Write-Output "The DiskSpd documentation is included in the package, please look in this directory: $targetPath"
+Write-Output 'The DiskSpd documentation is available as a wiki on GitHub: https://github.com/Microsoft/diskspd/wiki'
