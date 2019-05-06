@@ -74,7 +74,7 @@ vNext:
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
       <!-- <dependency id="vcredist140" version="14.16.27027.1" />
-      <dependency id="KB2882822" version="1.0.0" /> -->
+      <dependency id="KB2882822" version="1.0.3" /> -->
       <dependency id="visualstudio-installer" version="2.0.1" />
     </dependencies>
   </metadata>
