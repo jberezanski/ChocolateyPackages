@@ -4,8 +4,21 @@
     Param
     (
         [Parameter(Mandatory = $false)] [string] $VisualStudioYear,
-        [Parameter(Mandatory = $false)] [string] $BasePath = "$Env:ProgramData\Microsoft\VisualStudio\Packages\_Instances"
+        [Parameter(Mandatory = $false)] [string] $BasePath
     )
+    
+    $defaultSearchPath = "$Env:ProgramData\Microsoft\VisualStudio\Packages\_Instances"
+
+    # If BasePath is specified, use it, otherwise look in the registry for the cache location
+    if (-not ($BasePath)) { 
+        # Package cache may have been moved, so check registry - https://blogs.msdn.microsoft.com/heaths/2017/04/17/moving-or-disabling-the-package-cache-for-visual-studio-2017/
+        $cachePath = (Test-RegistryValue HKLM:\SOFTWARE\Policies\Microsoft\VisualStudio\Setup -Name CachePath -PassThru),
+            (Test-RegistryValue HKLM:\SOFTWARE\Microsoft\VisualStudio\Setup -Name CachePath -PassThru),
+            (Test-RegistryValue HKLM:\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\Setup -Name CachePath -PassThru) | Select-Object -First 1
+            
+        # If unable to locate the cache, try the default location
+        $BasePath = if ($cachePath) { [IO.Path]::Combine($cachePath.CachePath, "_Instances") } else { $defaultSearchPath }
+    }
 
     Write-Debug 'Detecting Visual Studio products installed using the Willow installer (2017+)'
     if (-not (Test-Path -Path $BasePath))
