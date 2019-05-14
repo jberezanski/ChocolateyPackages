@@ -58,7 +58,7 @@ function Get-WillowInstalledProducts
     $instanceDataPaths = Get-ChildItem -Path $BasePath | Where-Object { $_.PSIsContainer -eq $true } | Select-Object -ExpandProperty FullName
     foreach ($instanceDataPath in $instanceDataPaths)
     {
-        if ($instanceDataPath -eq $null)
+        if ($null -eq $instanceDataPath)
         {
             continue
         }
@@ -82,7 +82,7 @@ function Get-WillowInstalledProducts
         $matches = $rxBasicInfo.Matches($text)
         foreach ($match in $matches)
         {
-            if ($match -eq $null -or -not $match.Success)
+            if ($null -eq $match -or -not $match.Success)
             {
                 continue
             }
