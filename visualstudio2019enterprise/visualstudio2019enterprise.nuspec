@@ -52,6 +52,7 @@ If control over reboots is required, it is advisable to install the dependencies
 16.1.2.0:
 - Package metadata updated for Visual Studio 2019 version 16.1.2 (the native installer always installs the latest released Visual Studio 2019 build).
 - Updated bootstrapper url.
+- Updated extension dependency.
 
 #### Available workload packages
 - [Azure development](https://chocolatey.org/packages/visualstudio2019-workload-azure)
@@ -76,7 +77,7 @@ If control over reboots is required, it is advisable to install the dependencies
 - [Mobile development with JavaScript](https://chocolatey.org/packages/visualstudio2019-workload-webcrossplat)
 -->
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.8.1" />
       <dependency id="KB3033929" version="1.0.5" /> <!-- for Win7 SP1/2008R2-->
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="KB2999226" version="1.0.20161201" />
