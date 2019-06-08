@@ -3,7 +3,6 @@ function Get-WillowInstalledProducts
     [CmdletBinding()]
     Param
     (
-        [Parameter(Mandatory = $false)] [string] $VisualStudioYear,
         [Parameter(Mandatory = $false)] [string] $BasePath
     )
 
@@ -107,12 +106,6 @@ function Get-WillowInstalledProducts
         if (($missingExpectedProperties | Measure-Object).Count -gt 0)
         {
             Write-Warning "Failed to fully parse state.json, perhaps the file structure has changed! (path: '$stateJsonPath' missing properties: $missingExpectedProperties)"
-            continue
-        }
-
-        if ($VisualStudioYear -ne '' -and $instanceData.productLineVersion -ne $VisualStudioYear)
-        {
-            Write-Debug "Skipping product because its productLineVersion ($($instanceData.productLineVersion)) is not equal to VisualStudioYear argument value ($VisualStudioYear)"
             continue
         }
 
