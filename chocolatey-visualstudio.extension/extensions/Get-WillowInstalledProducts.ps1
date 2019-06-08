@@ -8,6 +8,74 @@ function Get-WillowInstalledProducts
 
     Write-Debug 'Detecting Visual Studio products installed using the Willow installer (2017+)'
 
+    $loadedVsSetup = Get-Module -Name VSSetup
+    if (($loadedVsSetup | Measure-Object).Count -eq 0)
+    {
+        if ((Get-Module -Name VSSetup -ListAvailable | Measure-Object).Count -gt 0)
+        {
+            Write-Debug 'Importing the VSSetup module'
+            Import-Module -Name VSSetup
+            $loadedVsSetup = Get-Module -Name VSSetup
+        }
+    }
+
+    $hasVsSetup = $false
+    if ($null -ne $loadedVsSetup)
+    {
+        # check if VSSetup is at least 2.0 (which has prerelease VS support)
+        Write-Debug 'Checking version of VSSetup module'
+        if ($loadedVsSetup.Version.Major -ge 2)
+        {
+            Write-Debug "A supported VSSetup version is present ($($loadedVsSetup.Version))"
+            $hasVsSetup = $true
+        }
+    }
+
+    if ($hasVsSetup)
+    {
+        Write-Debug 'Using VSSetup to detect Visual Studio instances'
+        $instances = Get-VSSetupInstance -All -Prerelease
+        foreach ($instance in $instances)
+        {
+            if ($null -eq $instance)
+            {
+                continue
+            }
+
+            Write-Debug "Found product instance: $($instance.InstallationPath)"
+
+            $instancePackages = @{}
+            foreach ($package in $instance.Packages)
+            {
+                if ($null -eq $instance)
+                {
+                    continue
+                }
+
+                $instancePackages[$package.Id] = $true
+            }
+
+            $instanceData = @{
+                installChannelUri = $null # Get-VSSetupInstance does not seem to provide it
+                channelUri = $instance.ChannelUri
+                channelId = $instance.ChannelId
+                nickname = $instance.Properties['nickname']
+                installationVersion = $instance.InstallationVersion
+                enginePath = $instance.EnginePath
+                productId = $instance.Product.Id
+                productLineVersion = $instance.CatalogInfo['ProductLineVersion']
+                installationPath = $instance.InstallationPath
+                selectedPackages = $instancePackages # in this case all installed, not only selected by the user
+            }
+
+            Write-Debug ('Instance data: {0}' -f (($instanceData.GetEnumerator() | Where-Object Key -ne 'selectedPackages' | ForEach-Object { '{0} = ''{1}''' -f $_.Key, $_.Value }) -join ' '))
+            Write-Debug ('Instance packages: {0}' -f ($instanceData.selectedPackages.Keys -join ' '))
+            Write-Output $instanceData
+        }
+
+        return
+    }
+
     # If BasePath is specified, use it, otherwise look in the registry for the cache location
     if ($BasePath -eq '')
     {
