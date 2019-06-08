@@ -20,6 +20,7 @@ function Assert-VSInstallerUpdated
 
     $requiredVersionInfo = Get-VSRequiredInstallerVersion -PackageParameters $PackageParameters -ChannelReference $ChannelReference -UseInstallChannelUri:$UseInstallChannelUri
     Install-VSInstaller `
+        -DoNotInstallIfNotPresent `
         -RequiredInstallerVersion $requiredVersionInfo.Version `
         -RequiredEngineVersion $requiredVersionInfo.EngineVersion `
         @PSBoundParameters

@@ -4,6 +4,7 @@
 
 - The VSSetup PowerShell module, if present, is used to detect VS instances ((GH-9)[https://github.com/jberezanski/ChocolateyPackages/issues/9]). This protects against future failures due to changes in the (undocumented) VS instance info storage format. On PowerShell 5+ (also 3 and 4 with the PackageManagement Preview module installed) this module can be installed using `Install-Module -Name VSSetup`.
 - (On systems without VSSetup) Fixed detection of installed VS instances when package cache had been moved from the default location ((GH-49)[https://github.com/jberezanski/ChocolateyPackages/issues/49], thanks @bryan5989!).
+- Fixed clean install of VS 2019 16.1+ (which fails to install the VS installer via --quiet --update if it is not installed or is same version). Install-VisualStudioInstaller remains broken. ((GH-64)[https://github.com/jberezanski/ChocolateyPackages/issues/64])
 
 ## Version 1.8.0
 
