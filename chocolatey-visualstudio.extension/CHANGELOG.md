@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version 1.8.1
+
+- Fixed detection of installed VS instances when package cache had been moved from the default location ((GH-49)[https://github.com/jberezanski/ChocolateyPackages/issues/49], thanks @bryan5989!).
+
 ## Version 1.8.0
 
 - Install-VisualStudio, Add-VisualStudioWorkload/Component and Remove-VisualStudioProduct/Workload/Component now support preview releases (via a new -Preview parameter) and Visual Studio 2019 (-VisualStudioYear 2019).
