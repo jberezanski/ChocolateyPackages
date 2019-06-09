@@ -7,29 +7,39 @@ function Get-WillowInstalledProducts
         [Parameter(Mandatory = $false)] [string] $BasePath
     )
 
-    $defaultBasePath = "$Env:ProgramData\Microsoft\VisualStudio\Packages\_Instances"
-
-    $searchPath = @(
-        "HKLM:\SOFTWARE\Policies\Microsoft\VisualStudio\Setup",
-        "HKLM:\SOFTWARE\Microsoft\VisualStudio\Setup",
-        "HKLM:\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\Setup"
-    )
+    Write-Debug 'Detecting Visual Studio products installed using the Willow installer (2017+)'
 
     # If BasePath is specified, use it, otherwise look in the registry for the cache location
-    if (-not ($BasePath)) { 
+    if ($BasePath -eq '')
+    {
         # Package cache may have been moved, so check registry - https://blogs.msdn.microsoft.com/heaths/2017/04/17/moving-or-disabling-the-package-cache-for-visual-studio-2017/
 
-        $cachePath = foreach($path in $searchPath) {
-            Get-ItemProperty -Path $path -Name CachePath -ErrorAction SilentlyContinue | Select-Object -ExpandProperty CachePath
-        }
+        $searchPath = @(
+            "HKLM:\SOFTWARE\Policies\Microsoft\VisualStudio\Setup",
+            "HKLM:\SOFTWARE\Microsoft\VisualStudio\Setup",
+            "HKLM:\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\Setup"
+        )
 
-        $cachePath = $cachePath | Select-Object -First 1
+        $cachePath = $searchPath | Get-ItemProperty -Name CachePath -ErrorAction SilentlyContinue | Select-Object -ExpandProperty CachePath -First 1
 
         # If unable to locate the cache, try the default location
-        $BasePath = if ($cachePath) { [IO.Path]::Combine($cachePath, "_Instances") } else { $defaultBasePath }
+        if ($null -ne $cachePath)
+        {
+            Write-Debug "Using VS CachePath obtained from registry: $cachePath"
+        }
+        else
+        {
+            $cachePath = "${Env:ProgramData}\Microsoft\VisualStudio\Packages"
+            Write-Debug "Using the default VS CachePath: $cachePath"
+        }
+
+        $BasePath = Join-Path -Path $cachePath -ChildPath '_Instances'
+    }
+    else
+    {
+        Write-Debug "Using provided BasePath: $BasePath"
     }
 
-    Write-Debug 'Detecting Visual Studio products installed using the Willow installer (2017+)'
     if (-not (Test-Path -Path $BasePath))
     {
         Write-Debug "Base path '$BasePath' does not exist, assuming no products installed"
