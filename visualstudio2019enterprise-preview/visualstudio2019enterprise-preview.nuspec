@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019enterprise-preview</id>
-    <version>16.1.0.20000-preview1</version>
+    <version>16.2.0.10000-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019enterprise-preview</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2019 Enterprise Preview</title>
@@ -55,18 +55,15 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Software
 [Visual Studio 2019 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes-preview)
 ##### Package
-16.1.0.20000-preview1:
-- Package metadata updated for Visual Studio 2019 version 16.1.0 Preview 2.0 (the native installer always installs the latest released Visual Studio 2019 Preview build).
-- Bootstrapper url not updated to avoid a bug in the latest bootstrapper.
-- Updated dependency version.
-vNext:
+16.2.0.10000-preview1:
+- Package metadata updated for Visual Studio 2019 version 16.2.0 Preview 1.0 (the native installer always installs the latest released Visual Studio 2019 Preview build).
+- Updated bootstrapper url.
 - Updated dependency version.
 
 #### Available workload packages
 - [.NET desktop development](https://chocolatey.org/packages/visualstudio2019-preview-workload-manageddesktop)
     </releaseNotes>
 <!--
-- Updated bootstrapper url.
 - [Azure development](https://chocolatey.org/packages/visualstudio2019-preview-workload-azure)
 - [Data storage and processing](https://chocolatey.org/packages/visualstudio2019-preview-workload-data)
 - [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2019-preview-workload-datascience)
