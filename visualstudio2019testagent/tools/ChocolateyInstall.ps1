@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2019testagent' `
     -ApplicationName 'Microsoft Visual Studio Test Agent 2019' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/a06481ba-ff45-46ec-ac88-747baabbb0d3/35b7285540814ee76c313787f330bb32/vs_testagent.exe' <# https://aka.ms/vs/16/release/vs_testagent.exe #> `
-    -Checksum '222ED56521630FEAD8324B8B288BAEDC23F3F36549B1B292D8EAE81B34736E41' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/a7441925-633c-4a94-8607-ed0b2d2aa8ca/898b3957712205bf07b2e77e2a77aef8/vs_testagent.exe' <# https://aka.ms/vs/16/release/vs_testagent.exe #> `
+    -Checksum '68B3F7849911B5D26F3E8D67CC4E77CFCDAC71A0561764B22E81A07659106EEA' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'TestAgent' `
