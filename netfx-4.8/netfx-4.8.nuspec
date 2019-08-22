@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.8</id>
-    <version>4.8.0.0-rc3</version>
+    <version>4.8.0.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.8</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8</title>
@@ -38,7 +38,7 @@ On systems which have a newer version of the .NET Framework installed, this pack
 4.8.0.0: Initial package release.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-dotnetfx.extension" version="1.0.0-rc1" />
+      <dependency id="chocolatey-dotnetfx.extension" version="1.0.0" />
       <dependency id="KB2919355" version="1.0.20160915" />
     </dependencies>
   </metadata>
