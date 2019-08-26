@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.8-devpack</id>
-    <version>4.8.0.0-rtw4</version>
+    <version>4.8.0.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.8-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8 Developer Pack</title>
@@ -23,12 +23,12 @@
 [.NET Framework 4.8 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/README.md)
 [.NET Framework 4.8 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/dotnet48-changes.md)
 ##### Package
-4.8.0.0-rtw4: Refactored the installation script.
+4.8.0.0: Removed prerelease suffix from package version.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-dotnetfx.extension" version="1.0.0-rc1" />
+      <dependency id="chocolatey-dotnetfx.extension" version="1.0.0" />
       <dependency id="KB2919355" version="1.0.20160915" />
-      <dependency id="netfx-4.8" version="4.8.0.0-rc3" />
+      <dependency id="netfx-4.8" version="4.8.0.0" />
     </dependencies>
   </metadata>
 </package>
