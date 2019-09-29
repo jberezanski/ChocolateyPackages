@@ -73,7 +73,7 @@ function Invoke-CommandWithTempPath
 
 function Install-DotNetFrameworkOrDevPack
 {
-    [CmdletBinding(PositionalBinding = $false)]
+    [CmdletBinding()]
     Param
     (
         [Parameter(Mandatory = $true)] [string] $PackageName,
@@ -116,7 +116,7 @@ function Install-DotNetFrameworkOrDevPack
 
 function Install-DotNetFramework
 {
-    [CmdletBinding(PositionalBinding = $false)]
+    [CmdletBinding()]
     Param
     (
         [Parameter(Mandatory = $true)] [string] $PackageName, # = 'netfx-4.8'
@@ -158,7 +158,7 @@ function Install-DotNetFramework
 
 function Install-DotNetDevPack
 {
-    [CmdletBinding(PositionalBinding = $false)]
+    [CmdletBinding()]
     Param
     (
         [Parameter(Mandatory = $true)] [string] $PackageName, # = 'netfx-4.8-devpack'
