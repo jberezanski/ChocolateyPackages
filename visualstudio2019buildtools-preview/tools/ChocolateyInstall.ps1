@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2019buildtools-preview' `
     -ApplicationName 'Microsoft Visual Studio Build Tools 2019 Preview' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/52db9598-507a-4a89-8ee9-a4863ffeb8a0/370859717533ba31edb3f0494e962efa1a4bc59525e500a8100b744f16f993c7/vs_BuildTools.exe' <# https://aka.ms/vs/16/pre/vs_buildtools.exe #> `
-    -Checksum '370859717533BA31EDB3F0494E962EFA1A4BC59525E500A8100B744F16F993C7' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/8e58c1ed-7d29-4ddb-afb0-63f55b36d59d/8e51244b4a07d79054c2051ce0aee4fd348ee9fef0ab769906910893fc3400cc/vs_BuildTools.exe' <# https://aka.ms/vs/16/pre/vs_buildtools.exe #> `
+    -Checksum '8E51244B4A07D79054C2051CE0AEE4FD348EE9FEF0AB769906910893FC3400CC' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'BuildTools' `
