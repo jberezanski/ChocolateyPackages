@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.6.2-devpack</id>
-    <version>4.6.01590.20190822</version>
+    <version>4.6.01590.20190930</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.6.2-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.6.2 Developer Pack</title>
@@ -20,10 +20,10 @@
 ##### Software
 https://support.microsoft.com/en-us/kb/3151796
 ##### Package
-4.6.01590.20190822: Changed depedency from dotnet4.6.2 to netfx-4.6.2, refactored the installation script, updated checksum to SHA-256.
+4.6.01590.20190930: Updated extension dependency.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-dotnetfx.extension" version="1.0.0" />
+      <dependency id="chocolatey-dotnetfx.extension" version="1.0.1" />
       <dependency id="netfx-4.6.2" version="4.6.2.0" />
     </dependencies>
   </metadata>
