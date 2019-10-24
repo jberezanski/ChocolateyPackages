@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2019testcontroller' `
     -ApplicationName 'Microsoft Visual Studio Load Test Controller 2019' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/affe0a26-d4e9-4a1e-8e58-6c7061389fac/a0dc86f02aefe4c69a4dd6348bf3aad19772f10c3facf9632d488e29bd84e15e/vs_TestController.exe' <# https://aka.ms/vs/16/release/vs_testcontroller.exe #> `
-    -Checksum 'A0DC86F02AEFE4C69A4DD6348BF3AAD19772F10C3FACF9632D488E29BD84E15E' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/f4e14058-49e0-457c-b3cf-f14e6f2f073e/942edeb0e914a4ef320ca1d535aa6930f05c7dde0a0458e3f166115b0b582a67/vs_TestController.exe' <# https://aka.ms/vs/16/release/vs_testcontroller.exe #> `
+    -Checksum '942EDEB0E914A4EF320CA1D535AA6930F05C7DDE0A0458E3F166115B0B582A67' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'TestController' `
