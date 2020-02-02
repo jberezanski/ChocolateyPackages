@@ -14,7 +14,7 @@
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/profiling/using-the-profiling-tools-from-the-command-line</docsUrl>
-    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
     <tags>microsoft visual studio visualstudio vs 2017 performance tools profiling profiler standalone admin</tags>
     <summary>Enables performance profiling without Visual Studio.</summary>
     <description>Standalone command line tools that enable performance profiling without Visual Studio. For more information, see [Using the Profiling Tools From the Command-Line](https://docs.microsoft.com/en-us/visualstudio/profiling/using-the-profiling-tools-from-the-command-line).
