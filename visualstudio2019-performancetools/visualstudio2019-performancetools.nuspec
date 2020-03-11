@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2019-performancetools</id>
+    <version>16.0.29519.18100</version>
+    <packageSourceUrl>https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/manual/visualstudio2017-performancetools</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft Visual Studio 2019 Performance Tools</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/21d70aedb9304792378a9f68d07d704cd0855827/icons/vs2019.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt031519/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/profiling/using-the-profiling-tools-from-the-command-line</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs 2019 performance tools profiling profiler standalone admin</tags>
+    <summary>Enables performance profiling without Visual Studio.</summary>
+    <description>Standalone command line tools that enable performance profiling without Visual Studio. For more information, see [Using the Profiling Tools From the Command-Line](https://docs.microsoft.com/en-us/visualstudio/profiling/using-the-profiling-tools-from-the-command-line).
+
+## Notes
+
+[Supported Operating Systems](https://docs.microsoft.com/en-us/visualstudio/releases/2019/system-requirements): Windows 10, Windows Server 2019, Windows Server 2016, Windows 8.1 / Server 2012 R2 (with KB2919355), Windows Server 2012, Windows 7 SP1 / Server 2008 R2 SP1
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2019 Release Notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)
+##### Package
+16.0.29519.18100: Initial package release for software version 16.0.29519.181.
+</releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-core.extension" version="1.1.0" />
+      <dependency id="KB2919355" version="1.0.20160915" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2019-remotetools</id>
+    <version>16.0.29905.13400</version>
+    <packageSourceUrl>https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/manual/visualstudio2017-remotetools</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft Visual Studio 2019 Remote Tools</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/21d70aedb9304792378a9f68d07d704cd0855827/icons/vs2019.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt031519/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/debugger/remote-debugging</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs 2019 remote tools debugging debugger msvsmon admin</tags>
+    <summary>Enables app deployment, remote debugging, remote testing, performance profiling, and unit testing on computers that do not have Visual Studio installed.</summary>
+    <description>Remote Tools for Visual Studio 2019 enables app deployment, remote debugging, remote testing, performance profiling, and unit testing on computers that do not have Visual Studio installed.
+
+## Notes
+
+[Supported Operating Systems](https://docs.microsoft.com/en-us/visualstudio/releases/2019/system-requirements): Windows 10, Windows Server 2019, Windows Server 2016, Windows 8.1 / Server 2012 R2 (with KB2919355), Windows Server 2012, Windows 7 SP1 / Server 2008 R2 SP1
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2019 Release Notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)
+##### Package
+16.0.29905.13400: Initial package release for software version 16.0.29905.134.
+</releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-core.extension" version="1.1.0" />
+      <dependency id="KB2919355" version="1.0.20160915" />
+    </dependencies>
+  </metadata>
+</package>
