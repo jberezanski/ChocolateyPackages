@@ -19,7 +19,7 @@
     <description>
 ### Overview
 Distribute automated tests to multiple machines.
-Agents for Visual Studio 2019 can be used for load, functional, and automated testing. For more details, please refer to the [ALM blog](https://aka.ms/tctaversionblog).
+Agents for Visual Studio 2019 can be used for load, functional, and automated testing. For more details, please refer to the [documentation](https://docs.microsoft.com/en-us/visualstudio/test/configure-test-agents-and-controllers-for-load-tests?view=vs-2019).
 
 Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/). Visual Studio and Visual Studio Preview can be installed side-by-side on the same device.
 
