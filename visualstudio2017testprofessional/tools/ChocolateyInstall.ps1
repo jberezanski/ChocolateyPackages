@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2017testprofessional' `
     -ApplicationName 'Microsoft Visual Studio Test Professional 2017' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/57c99182-2828-4fc1-8b36-271e2472c838/0cba968d1bf29a999142e1af3b229340ec8035459b2f79dfc6bf6d02862031b5/vs_TestProfessional.exe' `
-    -Checksum '0CBA968D1BF29A999142E1AF3B229340EC8035459B2F79DFC6BF6D02862031B5' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/dd3eb7bc-5549-45f2-be9a-80984f4d4d90/33e893930f34e72230708b271e46a2daffdbe71fd59edc4b7c36c416494ce672/vs_TestProfessional.exe' `
+    -Checksum '33E893930F34E72230708B271E46A2DAFFDBE71FD59EDC4B7C36C416494CE672' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'TestProfessional' `
