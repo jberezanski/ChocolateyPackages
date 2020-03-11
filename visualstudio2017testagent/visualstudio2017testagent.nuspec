@@ -19,7 +19,7 @@
     <description>
 ### Overview
 
-Agents for Visual Studio 2017 can be used for load, functional, and automated testing. For more details, please refer to the [ALM blog](https://aka.ms/tctaversionblog).
+Agents for Visual Studio 2017 can be used for load, functional, and automated testing. For more details, please refer to the [documentation](https://docs.microsoft.com/en-us/visualstudio/test/configure-test-agents-and-controllers-for-load-tests?view=vs-2017).
 
 To find out what's new or to see the known issues, see the [Visual Studio 2017 Release Notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).  
 [System requirements](https://www.visualstudio.com/en-us/productinfo/vs2017-system-requirements-vs)

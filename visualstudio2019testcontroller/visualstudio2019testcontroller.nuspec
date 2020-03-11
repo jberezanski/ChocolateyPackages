@@ -19,7 +19,7 @@
     <description>
 ### Overview
 Distribute automated tests to multiple machines.
-Agents for Visual Studio 2019 can be used for load, functional, and automated testing. For more details, please refer to the [ALM blog](https://aka.ms/tctaversionblog).
+Agents for Visual Studio 2019 can be used for load, functional, and automated testing. For more details, please refer to the [documentation](https://docs.microsoft.com/en-us/visualstudio/test/configure-test-agents-and-controllers-for-load-tests?view=vs-2019).
 
 To find out what's new or to see the known issues, see the [Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes).  
 [System requirements](https://docs.microsoft.com/en-us/visualstudio/releases/2019/system-requirements)
