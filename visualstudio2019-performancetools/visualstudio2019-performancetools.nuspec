@@ -4,7 +4,7 @@
   <metadata>
     <id>visualstudio2019-performancetools</id>
     <version>16.0.29519.18100</version>
-    <packageSourceUrl>https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/manual/visualstudio2017-performancetools</packageSourceUrl>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-performancetools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft Visual Studio 2019 Performance Tools</title>
     <authors>Microsoft</authors>

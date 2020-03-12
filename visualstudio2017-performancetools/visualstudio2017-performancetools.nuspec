@@ -4,7 +4,7 @@
   <metadata>
     <id>visualstudio2017-performancetools</id>
     <version>15.0.28010.0</version>
-    <packageSourceUrl>https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/manual/visualstudio2017-performancetools</packageSourceUrl>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-performancetools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft Visual Studio 2017 Performance Tools</title>
     <authors>Microsoft</authors>

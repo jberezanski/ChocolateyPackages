@@ -4,7 +4,7 @@
   <metadata>
     <id>visualstudio2019-remotetools</id>
     <version>16.0.29905.13400</version>
-    <packageSourceUrl>https://github.com/chocolatey/chocolatey-coreteampackages/tree/master/manual/visualstudio2017-remotetools</packageSourceUrl>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-remotetools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft Visual Studio 2019 Remote Tools</title>
     <authors>Microsoft</authors>
