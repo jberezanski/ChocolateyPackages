@@ -6,3 +6,6 @@
     Checksum = '88739EC82BA16A0B4A3C83C1DD2FCA6336AD8E2A1E5F1238C085B1E86AB8834A'
 }
 Get-ChocolateyWebFile @arguments
+
+# remove any leftovers from older package versions
+Remove-Item -Path "$Env:ChocolateyPackageFolder\Err" -Recurse -ErrorAction SilentlyContinue
