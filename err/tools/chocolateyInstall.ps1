@@ -1,8 +1,8 @@
 ﻿$arguments = @{
-    packageName = 'err'
-    url = 'http://download.microsoft.com/download/2/7/9/279ed965-1acb-4449-9054-46900909b401/Err.EXE'
-    checksumType = 'sha1'
-    checksum = '0CBE4D3FE3798D8BC6F9C5813E7A61E714BF3A3A'
-    unzipLocation = $Env:chocolateyPackageFolder
+    PackageName = $Env:ChocolateyPackageName
+    FileFullPath = "$Env:ChocolateyPackageFolder\err.exe"
+    Url = 'https://download.microsoft.com/download/4/3/2/432140e8-fb6c-4145-8192-25242838c542/Err_6.4.5/Err_6.4.5.exe'
+    ChecksumType = 'sha256'
+    Checksum = '88739EC82BA16A0B4A3C83C1DD2FCA6336AD8E2A1E5F1238C085B1E86AB8834A'
 }
-Install-ChocolateyZipPackage @arguments
+Get-ChocolateyWebFile @arguments

@@ -2,22 +2,22 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>err</id>
-    <version>6.0.4011.20150904</version>
-    <title>Win32 error code look-up tool</title>
+    <version>6.4.5.0</version>
+    <title>Microsoft Error Lookup Tool</title>
     <authors>Microsoft</authors>
     <owners>Jakub Bereżański</owners>
-    <projectUrl>http://www.microsoft.com/en-us/download/details.aspx?id=985</projectUrl>
-    <licenseUrl>https://raw.github.com/jberezanski/ChocolateyPackages/master/err/eula.txt</licenseUrl>
+    <projectUrl>https://docs.microsoft.com/en-us/windows/win32/debug/system-error-code-lookup-tool</projectUrl>
+    <licenseUrl>https://www.microsoft.com/en-us/servicesagreement</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use the Error Code Lookup tool to determine error values from decimal and hexadecimal error codes in Microsoft Windows® operating systems. The tool can look up one or more values at a time. All values on the command line will be looked up in the tool's internal tables (generated from Win32 API header files) and presented to you. If available, informational data associated with the value or values will also be shown. The tool is also able to show error codes associated with symbolic error names (e.g. E_FAIL).
-Although published as "Microsoft Exchange Server Error Code Look-up", this tool is not in fact specific to Exchange.
+
+This is a "point-in-time" tool. The Microsoft Error Lookup Tool decodes most Microsoft error codes as of the date on which the tool was compiled. As new releases of Windows add new event and error codes, you may have to download a new version of the Error Lookup Tool.
+
 Run "err /?" for usage instructions.</description>
     <summary>Determine error values from decimal and hexadecimal error codes in Microsoft Windows® operating systems.</summary>
     <tags>error code hresult ntstatus lookup</tags>
     <releaseNotes>
-    6.0.4011.20150904:
-    Added checksum.
-    Removed dependency on minimum Chocolatey version, as Chocolatey has long since included the necessary functionality and handling of such dependency is buggy in current client.
+    6.4.5.0: Initial package release for software version 6.4.5. The err.exe file version number is 10.0.17763.1.
     </releaseNotes>
   </metadata>
 </package>
