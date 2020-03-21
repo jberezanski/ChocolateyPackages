@@ -9,7 +9,7 @@
     <authors>Microsoft</authors>
     <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2017/04/05/announcing-the-net-framework-4-7/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
-    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <licenseUrl>https://www.microsoft.com/en-us/servicesagreement</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
     <bugTrackerUrl>http://connect.microsoft.com/VisualStudio</bugTrackerUrl>

@@ -9,7 +9,7 @@
     <authors>Microsoft</authors>
     <projectUrl>https://support.microsoft.com/en-us/kb/2977003</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
-    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <licenseUrl>https://www.microsoft.com/en-us/servicesagreement</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://msdn.microsoft.com/library/jj620919.aspx</docsUrl>
     <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>

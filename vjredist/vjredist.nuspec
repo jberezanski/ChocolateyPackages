@@ -9,7 +9,7 @@
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/en-us/download/details.aspx?id=4712</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
-    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <licenseUrl>https://www.microsoft.com/en-us/servicesagreement</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://msdn.microsoft.com/en-us/vstudio/bb188593</docsUrl>
     <tags>microsoft .net framework visual j# jsharp redistributable admin</tags>

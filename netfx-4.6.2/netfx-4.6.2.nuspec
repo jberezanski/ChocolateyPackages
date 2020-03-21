@@ -9,7 +9,7 @@
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/net/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
-    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <licenseUrl>https://www.microsoft.com/en-us/servicesagreement</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/dotnet/framework/</docsUrl>
     <bugTrackerUrl>https://github.com/Microsoft/dotnet/issues</bugTrackerUrl>

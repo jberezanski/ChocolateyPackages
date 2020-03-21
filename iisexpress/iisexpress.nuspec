@@ -9,7 +9,7 @@
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/en-us/download/details.aspx?id=48264/</projectUrl>
     <iconUrl>https://www.microsoft.com/web/media/gallery/apps-screenshots/Microsoft-App-Request-Routing.png</iconUrl>
-    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <licenseUrl>https://www.microsoft.com/en-us/servicesagreement</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://www.iis.net/learn/extensions/introduction-to-iis-express</docsUrl>
     <tags>microsoft iis express web server developer admin</tags>
