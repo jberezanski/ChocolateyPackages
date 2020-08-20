@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019teamexplorer</id>
-    <version>16.7.0.0</version>
+    <version>16.7.2.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019teamexplorer</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2019 Team Explorer</title>
@@ -45,8 +45,8 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Software
 [Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)
 ##### Package
-16.7.0.0:
-- Package metadata updated for Visual Studio 2019 version 16.7.0 (the native installer always installs the latest released Visual Studio 2019 build).
+16.7.2.0:
+- Package metadata updated for Visual Studio 2019 version 16.7.2 (the native installer always installs the latest released Visual Studio 2019 build).
 - Updated bootstrapper url.
     </releaseNotes>
     <dependencies>
