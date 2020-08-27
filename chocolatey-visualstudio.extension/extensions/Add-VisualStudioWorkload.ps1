@@ -1,4 +1,4 @@
-﻿function Add-VisualStudioWorkloadModified
+﻿function Add-VisualStudioWorkload
 {
     [CmdletBinding()]
     param(
