@@ -25,14 +25,6 @@
         Url64 = 'https://download.microsoft.com/download/E/6/5/E658276A-0ADF-439B-A63F-7E60C60728B6/Windows6.1-KB3118401-x64.msu'
         Checksum64 = '145623E0B85037B90E1EF5C45AEE1AAA4120C4D12A388D94C48CFBB083E914E4'
     }
-    '6.2-client' = @{
-        # Windows 8 - not officially supported
-        # 32-bit MSU not available (use fake url to cause package install failure), use server MSU for 64-bit
-        Url = 'https://download.microsoft.com/not/available/Windows8-RT-KB3118401-x86.msu'
-        Url64 = 'https://download.microsoft.com/download/8/E/3/8E3AED94-65F6-43A4-A502-1DE3881EA4DA/Windows8-RT-KB3118401-x64.msu'
-        Checksum = 'unavailable'
-        Checksum64 = 'FC2FB2DD6F25739F7E0938B9D24FE590EE03E62DE3B4132193F424F0BBB8B0FD'
-    }
     '6.2-server' = @{
         # Windows Server 2012
         Url64 = 'https://download.microsoft.com/download/8/E/3/8E3AED94-65F6-43A4-A502-1DE3881EA4DA/Windows8-RT-KB3118401-x64.msu'

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>KB3118401</id>
-        <version>1.0.4</version>
+        <version>1.0.5</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB3118401</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
         <title>Update for Universal C Runtime in Windows (version 10.0.10586)</title>
@@ -24,18 +24,15 @@ This package applies to the following operating systems:
 - Windows Server 2012 R2
 - Windows 8.1
 - Windows Server 2012
-- Windows 8 (*)
 - Windows Server 2008 R2 Service Pack 1 (SP1)
 - Windows 7 SP1
 - Windows Server 2008 Service Pack 2 (SP2)
 - Windows Vista SP2
 
-(*) Windows 8 is no longer supported by Microsoft and an official installer for KB3118401 has not been released for this OS. On 64-bit Windows 8 this package will use the installer for Windows Server 2012. On 32-bit Windows 8 this package will fail to install; you should upgrade to Windows 8.1 or use the KB2999226 package, which installs an older version of the Universal CRT.
-
 On other systems this package installs successfully, but does nothing.
         </description>
         <releaseNotes>
-1.0.4: update extension dependency to fix exit code handling on licensed Chocolatey.
+1.0.5: drop unofficial Windows 8 support due to problems with the Chocolatey Package Internalizer.
         </releaseNotes>
         <dependencies>
             <dependency id="chocolatey-windowsupdate.extension" version="1.0.4" />
