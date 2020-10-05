@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>KB2533623</id>
-        <version>1.0.4</version>
+        <version>2.0.0</version>
         <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB2533623</packageSourceUrl>
         <owners>Jakub Bereżański</owners>
         <title>Microsoft Security Advisory: Insecure library loading could allow remote code execution</title>
@@ -22,15 +22,15 @@ Microsoft has released new API enhancements for Windows to help developers corre
 [AddDllDirectory](http://msdn.microsoft.com/en-us/library/hh310513(VS.85).aspx)
 [RemoveDllDirectory](http://msdn.microsoft.com/en-us/library/hh310514(VS.85).aspx)
 
-On systems other than Windows 7, Windows Server 2008 R2, Windows Vista or Windows Server 2008, this package installs successfully, but does nothing.
-
 This update is required for .NET Core on Windows 7 or Windows Server 2008 R2.
+
+Note: KB2533623 is no longer available for download from Microsoft. This package now redirects to a later update, KB3063858, which supersedes it.
         </description>
         <releaseNotes>
-1.0.4: update extension dependency to fix exit code handling on licensed Chocolatey.
+2.0.0: redirect to KB3063858 because KB2533623 is no longer available for download.
         </releaseNotes>
         <dependencies>
-            <dependency id="chocolatey-windowsupdate.extension" version="1.0.4" />
+            <dependency id="KB3063858" version="1.0.0" />
         </dependencies>
     </metadata>
 </package>

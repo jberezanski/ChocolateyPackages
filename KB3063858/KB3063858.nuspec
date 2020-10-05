@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>KB3063858</id>
+        <version>1.0.0</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/KB3063858</packageSourceUrl>
+        <owners>Jakub Bereżański</owners>
+        <title>Vulnerability in Windows kernel could allow elevation of privilege: June 9, 2015 (KB3063858)</title>
+        <authors>Microsoft</authors>
+        <projectUrl>https://support.microsoft.com/en-us/kb/3063858</projectUrl>
+        <iconUrl>https://assets.onestore.ms/cdnfiles/onestorerolling-1509-17011/shell/v1_2/images/logo/microsoft.png</iconUrl>
+        <licenseUrl>https://support.microsoft.com/en-us/kb/3063858</licenseUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>Microsoft Windows Update KB3063858 admin .NET Core</tags>
+        <summary>This security update resolves a vulnerability in Microsoft Windows.</summary>
+        <description>
+This security update resolves a vulnerability in Microsoft Windows. The vulnerability could allow elevation of privilege if a user visits a network share (or visits a website that points to a network share) that contains a specially crafted file. However, in every case an attacker would be unable to force a user to visit such a network share or website.
+
+Microsoft has released a Microsoft security advisory about this issue for IT professionals. The security advisory contains additional security-related information. To view the security advisory, visit the following Microsoft website: 
+https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2015/ms15-063
+
+This update supersedes and includes an earlier update (KB2533623), which is no longer available for download, but remains a required update for .NET Core on Windows 7 or Windows Server 2008 R2.
+
+On systems other than Windows 8, Windows Server 2012, Windows 7, Windows Server 2008 R2, Windows Vista or Windows Server 2008, this package installs successfully, but does nothing.
+        </description>
+        <releaseNotes>
+1.0.0: initial package release.
+        </releaseNotes>
+        <dependencies>
+            <dependency id="chocolatey-windowsupdate.extension" version="1.0.4" />
+        </dependencies>
+    </metadata>
+</package>
