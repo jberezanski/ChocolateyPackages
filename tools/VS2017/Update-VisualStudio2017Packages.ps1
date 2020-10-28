@@ -80,12 +80,11 @@ function global:au_GetLatest
 function Get-VSVersion
 {
     $channelUri = 'https://aka.ms/vs/{0}/{1}/channel' -f $script:vsMajorVersion, $script:channelUrlToken
-    $fn = Invoke-WebRequest -Uri $channelUri -Method HEAD -UseBasicParsing | ForEach-Object { $_.Headers['Content-Disposition'] -split '=' | Select-Object -Last 1 }
     $res = Invoke-WebRequest -Uri $channelUri -UseBasicParsing
     $channelManifest = ConvertFrom-Json ([Text.Encoding]::UTF8.GetString($res.Content))
     $productDisplayVersion = $channelManifest.info.productDisplayVersion
     $version = [version](($productDisplayVersion -split ' ')[0])
-    if ($channelManifest.info.PSObject.Properties['productReleaseNameSuffix'] -ne $null)
+    if ($null -ne $channelManifest.info.PSObject.Properties['productReleaseNameSuffix'])
     {
         $productReleaseNameSuffix = $channelManifest.info.productReleaseNameSuffix
     }
@@ -112,7 +111,7 @@ if ($Preview)
 }
 else
 {
-    if ($productReleaseNameSuffix -eq $null -or $productReleaseNameSuffix -notmatch '^RC')
+    if ($null -eq $productReleaseNameSuffix -or $productReleaseNameSuffix -notmatch '^RC')
     {
         $packageVersionSuffix = '.0'
     }
