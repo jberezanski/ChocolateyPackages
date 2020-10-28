@@ -11,34 +11,19 @@ $ErrorActionPreference = 'Stop'
 $InformationPreference = 'Continue'
 
 $repoRoot = Split-Path -Parent -Path (Split-Path -Parent -Path $PSScriptRoot)
-if ((Get-Module -Name au -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0)
+if ((Get-Module -Name AU -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0)
 {
-    Import-Module -Name "$repoRoot\au\AU\AU.psm1" -Alias @()
+    Import-Module -Name "$repoRoot\au\AU\AU.psm1" -Alias @() -Function *
 }
 
-# based on Get-RemoteChecksum from AU, with different progress indication
-# (progress shown by Invoke-WebRequest slows it down tremendously)
-function Get-RemoteChecksumFast( [string] $Url, $Algorithm='sha256' ) {
-    $pp = $ProgressPreference
-    $act = "Obtaining checksum of $Url"
-    Write-Progress -Activity $act -CurrentOperation 'Creating temporary file'
-    $fn = [System.IO.Path]::GetTempFileName()
-    Write-Progress -Activity $act -CurrentOperation 'Downloading remote file'
+# Wraps Get-RemoteChecksum from AU, with different progress indication
+# (progress shown by Invoke-WebRequest slows it down tremendously).
+# Note that we cannot simply call Get-RemoteChecksum because preference variables
+# do not flow into module functions by default.
+function Get-RemoteChecksumFast([string] $Url, $Algorithm='sha256', $Headers)
+{
     $ProgressPreference = 'SilentlyContinue'
-    try
-    {
-        Invoke-WebRequest $Url -OutFile $fn -UseBasicParsing
-    }
-    finally
-    {
-        $ProgressPreference = $pp
-    }
-    Write-Progress -Activity $act -CurrentOperation 'Computing the checksum of downloaded file'
-    $res = Get-FileHash $fn -Algorithm $Algorithm | % Hash
-    Write-Progress -Activity $act -CurrentOperation 'Removing temporary file'
-    rm $fn -ea ignore
-    Write-Progress -Activity $act -Completed
-    return $res.ToLower()
+    & (Get-Command -Name Get-RemoteChecksum -Module AU).ScriptBlock.GetNewClosure() @PSBoundParameters
 }
 
 function global:au_SearchReplace
