@@ -26,6 +26,56 @@ function Get-RemoteChecksumFast([string] $Url, $Algorithm='sha256', $Headers)
     & (Get-Command -Name Get-RemoteChecksum -Module AU).ScriptBlock.GetNewClosure() @PSBoundParameters
 }
 
+function Invoke-WebRequestAcceptingAllStatusCodes
+{
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $true)] [Uri] $Uri,
+        [switch] $UseBasicParsing,
+        [int] $MaximumRedirection
+    )
+
+    try
+    {
+        # There is a subtle difference in behavior between $ErrorActionPreference and -ErrorAction.
+        # We want to suppress errors returned by Invoke-WebRequest in Win PS for 3xx responses
+        # (so pass -ErrorAction SilentlyContinue), but still detect and throw more serious errors
+        # such as DNS resolution failures (those would be suppressed if $ErrorActionPreference was
+        # more lax, such as when _our caller_ passed -ErrorAction SilentlyContinue).
+        # More info: https://github.com/MicrosoftDocs/PowerShell-Docs/issues/1583
+        $iwrArgs = $PSBoundParameters.PSObject.Copy()
+        [void]$iwrArgs.Remove('ErrorAction')
+        $ea = $ErrorActionPreference
+        $ErrorActionPreference = 'Stop'
+        try
+        {
+            $res = Microsoft.PowerShell.Utility\Invoke-WebRequest @iwrArgs -ErrorAction SilentlyContinue
+        }
+        finally
+        {
+            $ErrorActionPreference = $ea
+        }
+    }
+    catch
+    {
+        $x = $_.Exception
+        # duck typing FTW: in PS Core x is HttpResponseException, in Win PS x is WebException
+        if ($null -ne $x.PSObject.Properties['Response'] -and $null -ne $x.Response)
+        {
+            $res = $x.Response
+        }
+        else
+        {
+            # respect user preference, so that if we are called with -ErrorAction SilentlyContinue no error is raised
+            Write-Error $_
+            return $null
+        }
+    }
+
+    return $res
+}
+
 function global:au_SearchReplace
 {
     @{
@@ -55,7 +105,7 @@ function global:au_GetLatest
     $product = ((Split-Path -Leaf -Path (Get-Location)) -replace "visualstudio${VisualStudioYear}", '') -replace '-preview', ''
 
     $akaUrl = 'https://aka.ms/vs/{0}/{1}/vs_{2}.exe' -f $script:vsMajorVersion, $script:channelUrlToken, $product
-    $res = Invoke-WebRequest -Uri $akaUrl -UseBasicParsing -MaximumRedirection 0 -ErrorAction SilentlyContinue
+    $res = Invoke-WebRequestAcceptingAllStatusCodes -Uri $akaUrl -UseBasicParsing -MaximumRedirection 0
     if ($res.StatusCode -ne 301 -and $res.StatusCode -ne 302)
     {
         $res | Format-List -Property * | Out-String | Write-Warning
