@@ -1,9 +1,9 @@
 ﻿# Download and extract fciv to package path. Chocolatey will automatically create a stub exe in a directory in PATH.
 $arguments = @{
     packageName = 'fciv'
-    url = 'http://download.microsoft.com/download/c/f/4/cf454ae0-a4bb-4123-8333-a1b6737712f7/Windows-KB841290-x86-ENU.exe'
-    checksumType = 'sha1'
-    checksum = '99FB35D97A5EE0DF703F0CDD02F2D787D6741F65'
+    url = 'https://download.microsoft.com/download/c/f/4/cf454ae0-a4bb-4123-8333-a1b6737712f7/Windows-KB841290-x86-ENU.exe'
+    checksumType = 'sha256'
+    checksum = '79A7CA1098982E1467E2EBE609298A44159084B2C82439189D5F0AC350683C8F'
     installerType = 'exe'
     silentArgs = """/T:${Env:chocolateyPackageFolder}"" /Q"
     validExitCodes = @(0)
@@ -21,7 +21,7 @@ try {
     }
 
     $userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
-    if ($userPath -ne $null -and $userPath -like "*$fcivPath*") {
+    if ($null -ne $userPath -and $userPath -like "*$fcivPath*") {
       Write-Debug "Removing previous installation location $fcivPath from the user PATH variable"
       $newUserPathChunks = $userPath -split ';' | Where-Object { $_ -ne '' -and $_.TrimEnd('\') -ne $fcivPath }
       $newUserPath = $newUserPathChunks -join ';'
@@ -31,7 +31,7 @@ try {
     }
 
     $currentPath = $Env:PATH
-    if ($currentPath -ne $null -and $currentPath -like "*$fcivPath*") {
+    if ($null -ne $currentPath -and $currentPath -like "*$fcivPath*") {
       Write-Debug "Removing previous installation location $fcivPath from the current Powershell PATH variable"
       $newCurrentPathChunks = $currentPath -split ';' | Where-Object { $_ -ne '' -and $_.TrimEnd('\') -ne $fcivPath }
       $newCurrentPath = $newCurrentPathChunks -join ';'

@@ -2,18 +2,26 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>fciv</id>
-        <version>1.0.0.20150904</version>
+        <version>1.0.0.20210103</version>
+        <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/fciv</packageSourceUrl>
         <title>File Checksum Integrity Verifier</title>
         <authors>Microsoft</authors>
         <owners>Thai Phan, Jakub Bereżański</owners>
-        <licenseUrl>http://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx</licenseUrl>
-        <projectUrl>http://support.microsoft.com/kb/841290</projectUrl>
+        <licenseUrl>https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default</licenseUrl>
+        <projectUrl>https://docs.microsoft.com/en-us/troubleshoot/windows-server/windows-security/fciv-availability-and-description</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>The File Checksum Integrity Verifier tool is an command line utility that computes MD5 or SHA1 cryptographic hashes for files</description>
+        <summary>The File Checksum Integrity Verifier (FCIV) is a command-prompt utility that computes and verifies MD5 or SHA-1 cryptographic hash values of files.</summary>
+        <description>The File Checksum Integrity Verifier (FCIV) is a command-prompt utility that computes and verifies cryptographic hash values of files. FCIV can compute MD5 or SHA-1 cryptographic hash values. These values can be displayed on the screen or saved in an XML file database for later use and verification.  
+
+Microsoft does not provide support for this utility. Use this utility at your own risk. Microsoft Product Support Services (PSS) cannot answer questions about the File Checksum Integrity Verifier utility.  
+
+**This utility should be considered obsolete.** The cryptographic algorithms it supports are considered weak and insufficient by modern security standards. A reasonable alternative is the [`Get-FileHash`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-5.1) PowerShell cmdlet.</description>
         <tags>microsoft file checksum md5 sha1 KB841290</tags>
-        <releaseNotes>
-        1.0.0.20150904:
-        Added checksum.
-        </releaseNotes>
+        <releaseNotes>1.0.0.20210103:
+ - fixed checksum
+ - updated url to use https
+ - updated metadata
+
+ Note: the package version number follows the version shown on [the official download page](https://www.microsoft.com/en-us/download/details.aspx?id=11533). The actual extracted fciv.exe executable describes itself as version 2.05.</releaseNotes>
     </metadata>
 </package>
