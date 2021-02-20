@@ -20,41 +20,46 @@ function Get-VSComponentManifest
         $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
     }
 
-    if ($null -eq $ChannelManifest)
-    {
-        Write-Debug 'Obtaining the channel manifest'
-        $ChannelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ChannelReference $ChannelReference -LayoutPath $layoutPath -UseInstallChannelUri:$UseInstallChannelUri
-    }
-
     # https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2017#layout-options
-    # Advanced install options: Parameter --installCatalogUri <uri>
     if ($packageParameters.ContainsKey('installCatalogUri'))
     {
-        Write-Debug 'Obtaining the installCatalogUri from the Parameters'
-        $url = $packageParameters['installCatalogUri']
+        <#
+            Advanced install options: Parameter --installCatalogUri <uri>
 
-        if ($null -eq $url)
+            Optional: The URI of the catalog manifest to use for the installation. If specified, the channel manager attempts to download
+            the catalog manifest from this URI before using the URI in the install channel manifest. This parameter is used to support offline
+            install, where the layout cache will be created with the product catalog already downloaded. This can be used for the install command;
+            it is ignored for other commands.
+        #>
+        Write-Debug 'Obtaining the installCatalogUri from the Parameters'
+        $installCatalogUri = $packageParameters['installCatalogUri']
+
+        if ([string]::IsNullOrEmpty($installCatalogUri))
         {
-            Write-Verbose 'Unable to determine the catalog manifest url'
+            Write-Verbose 'The installCatalogUri parameter was present in package parameters, but empty. The component manifest will be loaded from the url supplied in the channel manifest (default behavior).'
             # If the installCatalogUri is null continue with the url from the ChannelManifest as the Microsoft documentation says.
         }
         else 
         {
             try
             {
-                return Get-VSManifest -Description 'catalog manifest' -Url $url -LayoutFileName 'Catalog.json' -LayoutPath $layoutPath
+                Write-Verbose 'Attempting to obtain the component manifest from installCatalogUri provided via package parameters'
+                return Get-VSManifest -Description 'catalog manifest' -Url $installCatalogUri -LayoutFileName 'Catalog.json' -LayoutPath $layoutPath
             }
             catch
             {
                 # The catalog manifest could not be downloaded from the installCatalogUri.
                 # Catch the error and continue with the url from the ChannelManifest as the Microsoft documentation says.
+                $_ | Format-List -Property * -Force | Out-String -Width 1000 | Write-Warning
+                Write-Verbose "Failed to obtain the component manifest from installCatalogUri provided via package parameters ($installCatalogUri). The component manifest will be loaded from the url supplied in the channel manifest (default behavior)."
             }
         }
+    }
 
-        # Optional: The URI of the catalog manifest to use for the installation. If specified, the channel manager attempts to download
-        # the catalog manifest from this URI before using the URI in the install channel manifest. This parameter is used to support offline
-        # install, where the layout cache will be created with the product catalog already downloaded. This can be used for the install command;
-        # it is ignored for other commands.
+    if ($null -eq $ChannelManifest)
+    {
+        Write-Debug 'Obtaining the channel manifest'
+        $ChannelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ChannelReference $ChannelReference -LayoutPath $layoutPath -UseInstallChannelUri:$UseInstallChannelUri
     }
 
     Write-Debug 'Parsing the channel manifest'
