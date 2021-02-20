@@ -1,5 +1,7 @@
 ﻿# CHANGELOG
 
+## Version 1.9.0
+
 ## Version 1.8.1
 
 - The VSSetup PowerShell module, if present, is used to detect VS instances ((GH-9)[https://github.com/jberezanski/ChocolateyPackages/issues/9]). This protects against future failures due to changes in the (undocumented) VS instance info storage format. On PowerShell 5+ (also 3 and 4 with the PackageManagement Preview module installed) this module can be installed using `Install-Module -Name VSSetup`.
