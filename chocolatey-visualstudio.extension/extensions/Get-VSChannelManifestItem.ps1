@@ -40,7 +40,7 @@ function Get-VSChannelManifestItem
         Write-Debug 'Manifest parsing error: manifest is not IDictionary or does not contain channelItems'
     }
 
-    if ($result -ne $null)
+    if ($null -ne $result)
     {
         Write-Debug "Located channel manifest item of type $ChannelItemType"
     }

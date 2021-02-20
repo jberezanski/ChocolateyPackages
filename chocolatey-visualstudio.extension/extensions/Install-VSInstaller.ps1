@@ -20,10 +20,10 @@ function Install-VSInstaller
     Write-Debug 'Determining whether the Visual Studio Installer needs to be installed/updated/reinstalled'
     $shouldUpdate = $false
     $existing = Get-VisualStudioInstaller
-    if ($existing -ne $null)
+    if ($null -ne $existing)
     {
         Write-Debug 'The Visual Studio Installer is already present'
-        if ($existing.Version -ne $null -and $RequiredInstallerVersion -ne $null)
+        if ($null -ne $existing.Version -and $null -ne $RequiredInstallerVersion)
         {
             if ($existing.Version -lt $RequiredInstallerVersion)
             {
@@ -40,7 +40,7 @@ function Install-VSInstaller
             }
         }
 
-        if ($existing.EngineVersion -ne $null -and $RequiredEngineVersion -ne $null)
+        if ($null -ne $existing.EngineVersion -and $null -ne $RequiredEngineVersion)
         {
             if ($existing.EngineVersion -lt $RequiredEngineVersion)
             {
@@ -74,7 +74,7 @@ function Install-VSInstaller
     if (-not $shouldUpdate)
     {
         $existingHealth = $existing | Get-VisualStudioInstallerHealth
-        if ($existingHealth -ne $null -and -not $existingHealth.IsHealthy)
+        if ($null -ne $existingHealth -and -not $existingHealth.IsHealthy)
         {
             Write-Warning "The Visual Studio Installer is broken (missing files: $($existingHealth.MissingFiles -join ', ')). Attempting to reinstall it."
             $shouldUpdate = $true
@@ -97,7 +97,7 @@ function Install-VSInstaller
     if (-not $argumentSet.ContainsKey('offline'))
     {
         $layoutPath = Resolve-VSLayoutPath -PackageParameters $argumentSet
-        if ($layoutPath -ne $null)
+        if ($null -ne $layoutPath)
         {
             $installerOpcPath = Join-Path -Path $layoutPath -ChildPath 'vs_installer.opc'
             if (Test-Path -Path $installerOpcPath)
@@ -158,7 +158,7 @@ function Install-VSInstaller
 
             $chocTempDir = $env:TEMP
             $tempDir = Join-Path $chocTempDir "$PackageName"
-            if ($env:packageVersion -ne $null) { $tempDir = Join-Path $tempDir "$env:packageVersion" }
+            if ($null -ne $env:packageVersion) { $tempDir = Join-Path $tempDir "$env:packageVersion" }
 
             $extractedBoxPath = Join-Path -Path $tempDir -ChildPath (Get-Item -Path $downloadedOrProvidedExe).BaseName
             if (Test-Path -Path $extractedBoxPath)
@@ -212,12 +212,12 @@ function Install-VSInstaller
         Install-VSChocolateyInstallPackage @arguments
 
         $updated = Get-VisualStudioInstaller
-        if ($updated -eq $null)
+        if ($null -eq $updated)
         {
             throw 'The Visual Studio Installer is not present even after supposedly successful update!'
         }
 
-        if ($existing -eq $null)
+        if ($null -eq $existing)
         {
             Write-Verbose "The Visual Studio Installer version $($updated.Version) (engine version $($updated.EngineVersion)) was installed."
         }
@@ -247,9 +247,9 @@ function Install-VSInstaller
             }
         }
 
-        if ($updated.Version -ne $null)
+        if ($null -ne $updated.Version)
         {
-            if ($RequiredInstallerVersion -ne $null)
+            if ($null -ne $RequiredInstallerVersion)
             {
                 if ($updated.Version -lt $RequiredInstallerVersion)
                 {
@@ -266,9 +266,9 @@ function Install-VSInstaller
             Write-Warning "Unable to determine the Visual Studio Installer version after the update."
         }
 
-        if ($updated.EngineVersion -ne $null)
+        if ($null -ne $updated.EngineVersion)
         {
-            if ($RequiredEngineVersion -ne $null)
+            if ($null -ne $RequiredEngineVersion)
             {
                 if ($updated.EngineVersion -lt $RequiredEngineVersion)
                 {

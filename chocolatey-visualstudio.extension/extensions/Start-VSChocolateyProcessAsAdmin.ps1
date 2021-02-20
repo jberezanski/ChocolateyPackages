@@ -11,7 +11,7 @@ param(
   Write-Debug "Running 'Start-VSChocolateyProcessAsAdmin' with exeToRun:'$exeToRun', statements:'$statements', minimized:$minimized, noSleep:$noSleep, validExitCodes:'$validExitCodes'";
 
   $wrappedStatements = $statements
-  if ($wrappedStatements -eq $null) { $wrappedStatements = ''}
+  if ($null -eq $wrappedStatements) { $wrappedStatements = ''}
 
   if ($exeToRun -eq 'powershell') {
     $exeToRun = "$($env:SystemRoot)\System32\WindowsPowerShell\v1.0\powershell.exe"
@@ -67,13 +67,13 @@ Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may t
 
   # Redirecting output slows things down a bit.
   $writeOutput = {
-    if ($EventArgs.Data -ne $null) {
+    if ($null -ne $EventArgs.Data) {
       Write-Host "$($EventArgs.Data)"
     }
   }
 
   $writeError = {
-    if ($EventArgs.Data -ne $null) {
+    if ($null -ne $EventArgs.Data) {
       Write-Error "$($EventArgs.Data)"
     }
   }

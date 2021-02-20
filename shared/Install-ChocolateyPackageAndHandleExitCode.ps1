@@ -68,7 +68,7 @@ function Install-ChocolateyPackageAndHandleExitCode
         }
 
         $exitCode = Get-NativeInstallerExitCode
-        if ($exitCode -eq $null -and $invalidExitCodeErrorMessage -ne $null)
+        if ($null -eq $exitCode -and $null -ne $invalidExitCodeErrorMessage)
         {
             # 0.10.1 "Running [`"$exeToRun`" $wrappedStatements] was not successful. Exit code was '$exitCode'. See log for possible error messages."
             # 0.9.10-rc1 "Running [`"$exeToRun`" $statements] was not successful. Exit code was '$exitCode'. See log for possible error messages."
@@ -95,10 +95,10 @@ function Install-ChocolateyPackageAndHandleExitCode
                 }
             }
 
-            if ($exitCode -eq $null)
+            if ($null -eq $exitCode)
             {
                 # are we running PowerShell Chocolatey?
-                if ($Env:ChocolateyInstall -ne $null -and (Test-Path -Path (Join-Path -Path $Env:ChocolateyInstall -ChildPath 'chocolateyInstall\chocolatey.ps1')))
+                if ($null -ne $Env:ChocolateyInstall -and (Test-Path -Path (Join-Path -Path $Env:ChocolateyInstall -ChildPath 'chocolateyInstall\chocolatey.ps1')))
                 {
                     Write-Warning 'This Chocolatey version does not provide a way to determine the installation result (exit code). Please upgrade to a newer version (at least 0.9.8.17).'
                 }
@@ -109,8 +109,8 @@ function Install-ChocolateyPackageAndHandleExitCode
             }
         }
 
-        $shouldFail = $exitCode -ne $null -and ($validExitCodes | Measure-Object).Count -gt 0 -and $validExitCodes -notcontains $exitCode
-        if ($invalidExitCodeErrorMessage -eq $null)
+        $shouldFail = $null -ne $exitCode -and ($validExitCodes | Measure-Object).Count -gt 0 -and $validExitCodes -notcontains $exitCode
+        if ($null -eq $invalidExitCodeErrorMessage)
         {
             $errorMessage = "Installation of $packageName was not successful (exit code: $exitCode)."
         }
@@ -119,7 +119,7 @@ function Install-ChocolateyPackageAndHandleExitCode
             $errorMessage = $invalidExitCodeErrorMessage
         }
 
-        if ($ExitCodeHandler -ne $null)
+        if ($null -ne $ExitCodeHandler)
         {
             $context = New-Object -TypeName PSObject -Property @{ ExitCode = $exitCode; ErrorMessage = $errorMessage; ShouldFailInstallation = $shouldFail }
             $_ = $context
@@ -127,14 +127,14 @@ function Install-ChocolateyPackageAndHandleExitCode
 
             $shouldFail = $context.ShouldFailInstallation -eq $true
             $shouldGenerateErrorMessage = $false
-            if ($context.ExitCode -ne $null -and $context.ExitCode -ne $exitCode)
+            if ($null -ne $context.ExitCode -and $context.ExitCode -ne $exitCode)
             {
                 $exitCode = $context.ExitCode
                 Set-PowerShellExitCode -ExitCode $exitCode
                 $shouldGenerateErrorMessage = $true
             }
 
-            if ($context.ErrorMessage -ne $null -and $context.ErrorMessage -ne $errorMessage)
+            if ($null -ne $context.ErrorMessage -and $context.ErrorMessage -ne $errorMessage)
             {
                 $errorMessage = $context.ErrorMessage
                 $shouldGenerateErrorMessage = $false

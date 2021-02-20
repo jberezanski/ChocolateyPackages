@@ -20,7 +20,7 @@ ChannelId (System.String; Visual Studio 2017+ only)
     (
     )
 
-    Get-WillowInstalledProducts | Where-Object { $_ -ne $null } | ForEach-Object {
+    Get-WillowInstalledProducts | Where-Object { $null -ne $_ } | ForEach-Object {
         $props = @{
             InstallationPath = $_.installationPath
             InstallationVersion = [version]$_.installationVersion
@@ -31,7 +31,7 @@ ChannelId (System.String; Visual Studio 2017+ only)
         Write-Output $obj
     }
 
-    Get-VSLegacyInstance | Where-Object { $_ -ne $null } | ForEach-Object {
+    Get-VSLegacyInstance | Where-Object { $null -ne $_ } | ForEach-Object {
         $props = @{
             InstallationPath = $_.Path
             InstallationVersion = $_.Version

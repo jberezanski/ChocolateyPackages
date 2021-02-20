@@ -10,16 +10,16 @@ $validExitCodes = @(0, 3010)  # http://msdn.microsoft.com/en-us/library/aa368542
 Set-StrictMode -Off
 [array] $uninstallKeys = Get-UninstallRegistryKey @uninstallData
 Set-StrictMode -Version 2
-[array] $filteredUninstallKeys = $uninstallKeys | Where-Object { $_ -ne $null -and ($_.PSObject.Properties['SystemComponent'] -eq $null -or $_.SystemComponent -eq 0) }
+[array] $filteredUninstallKeys = $uninstallKeys | Where-Object { $null -ne $_ -and ($null -eq $_.PSObject.Properties['SystemComponent'] -or $_.SystemComponent -eq 0) }
 foreach ($uninstallKey in $filteredUninstallKeys)
 {
-  if ($uninstallKey -eq $null)
+  if ($null -eq $uninstallKey)
   {
     # this might happen on PS 2.0
     continue
   }
 
-  if ($uninstallKey.PSObject.Properties['UninstallString'] -ne $null)
+  if ($null -ne $uninstallKey.PSObject.Properties['UninstallString'])
   {
     $uninstallString = $uninstallKey.UninstallString
     Write-Verbose "Found uninstall key, UninstallString = $uninstallString"

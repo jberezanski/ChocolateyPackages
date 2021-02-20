@@ -4,7 +4,7 @@ $silentArgs = "/quiet /norestart /nodialog"
 $os = Get-WmiObject -Class Win32_OperatingSystem
 $version = [Version]$os.Version
 
-if ($version -eq $null -or $version -lt [Version]'6.1' -or $version -ge [Version]'6.2') {
+if ($null -eq $version -or $version -lt [Version]'6.1' -or $version -ge [Version]'6.2') {
     Write-Host "Skipping installation because this update only applies to Windows 7 and Windows Server 2008 R2."
     return
 }

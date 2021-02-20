@@ -66,11 +66,11 @@ Get-ChildItem -Path $destinationPath -Filter '*.exe' -Recurse | ForEach-Object {
     New-Item -ItemType File -Path $shimControlFile | Out-Null
 }
 
-if ((Get-Command -Name 'Install-ChocolateyShortcut' -ErrorAction SilentlyContinue) -ne $null)
+if ($null -ne (Get-Command -Name 'Install-ChocolateyShortcut' -ErrorAction SilentlyContinue))
 {
     if (Test-ProcessAdminRights)
     {
-        if (([System.Environment+SpecialFolder] | Get-Member -Static -Name 'CommonPrograms') -ne $null)
+        if ($null -ne ([System.Environment+SpecialFolder] | Get-Member -Static -Name 'CommonPrograms'))
         {
             Write-Verbose "Installing with administrator rights, so the program shortcut will be created in the all users Start Menu."
             $shortcutSpecialFolder = [System.Environment+SpecialFolder]::CommonPrograms

@@ -36,7 +36,7 @@ function ConvertTo-ArgumentString
 
     foreach ($kvp in $Arguments.GetEnumerator())
     {
-        if ($kvp.Value -eq $null -or ($kvp.Value -isnot [System.Collections.IList] -and [string]::IsNullOrEmpty($kvp.Value)))
+        if ($null -eq $kvp.Value -or ($kvp.Value -isnot [System.Collections.IList] -and [string]::IsNullOrEmpty($kvp.Value)))
         {
             $chunk = '{0}{1}' -f $prefix, $kvp.Key
             $chunks.Add($chunk)

@@ -23,7 +23,7 @@ function Get-VSWebFile
     if ($LocalFilePath -eq '') {
         $chocTempDir = $env:TEMP
         $tempDir = Join-Path $chocTempDir "$PackageName"
-        if ($env:packageVersion -ne $null) { $tempDir = Join-Path $tempDir "$env:packageVersion" }
+        if ($null -ne $env:packageVersion) { $tempDir = Join-Path $tempDir "$env:packageVersion" }
 
         if (![System.IO.Directory]::Exists($tempDir)) { [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null }
         $urlForFileNameDetermination = $Url
@@ -51,7 +51,7 @@ function Get-VSWebFile
         }
         else
         {
-            if ($Options -ne $null -and $Options.Keys.Count -gt 0)
+            if ($null -ne $Options -and $Options.Keys.Count -gt 0)
             {
                 Write-Warning "This Chocolatey version does not support passing custom Options to Get-ChocolateyWebFile."
             }

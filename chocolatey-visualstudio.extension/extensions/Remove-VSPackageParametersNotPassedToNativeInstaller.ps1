@@ -15,7 +15,7 @@ function Remove-VSPackageParametersNotPassedToNativeInstaller
     $parametersToRemove = $PackageParameters.Keys | Where-Object { $Blacklist -contains $_ -or ($hasWhitelist -and $Whitelist -notcontains $_) }
     foreach ($parameterToRemove in $parametersToRemove)
     {
-        if ($parameterToRemove -eq $null)
+        if ($null -eq $parameterToRemove)
         {
             continue
         }

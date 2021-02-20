@@ -29,7 +29,7 @@ function Get-VSChannelManifest
         else
         {
             Write-Debug "Package parameters do not contain 'channelUri' or it is empty"
-            if ($ChannelReference -ne $null)
+            if ($null -ne $ChannelReference)
             {
                 if ($UseInstallChannelUri -and -not [string]::IsNullOrEmpty($ChannelReference.InstallChannelUri))
                 {
@@ -57,7 +57,7 @@ function Get-VSChannelManifest
         }
     }
 
-    if ($manifestUri -eq $null)
+    if ($null -eq $manifestUri)
     {
         # second, try to compute the uri from the channel id
         Write-Debug 'Checking if the channel id has been provided'
@@ -70,7 +70,7 @@ function Get-VSChannelManifest
         else
         {
             Write-Debug "Package parameters do not contain 'channelId' or it is empty"
-            if ($ChannelReference -ne $null)
+            if ($null -ne $ChannelReference)
             {
                 $channelId = $ChannelReference.ChannelId
                 Write-Debug "Using channel id from the provided ChannelReference: '$channelId'"
@@ -80,13 +80,13 @@ function Get-VSChannelManifest
                 Write-Debug "ChannelReference has not been provided; channel id is not known"
             }
         }
-        if ($channelId -ne $null)
+        if ($null -ne $channelId)
         {
             $manifestUri = Get-VSChannelUri -ChannelId $channelId -ErrorAction SilentlyContinue
         }
     }
 
-    if ($manifestUri -eq $null)
+    if ($null -eq $manifestUri)
     {
         # Finally, fall back to hardcoded.
         # This may currently happen only when Install-VisualStudio is called without -VisualStudioVersion and -Product (which are not mandatory for backward compat with old package versions).

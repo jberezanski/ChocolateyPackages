@@ -47,7 +47,7 @@ if ($Env:ChocolateyExitCode -eq '3010')
 }
 else
 {
-    if ($Env:ChocolateyExitCode -eq $null)
+    if ($null -eq $Env:ChocolateyExitCode)
     { 
         Write-Host "A restart may be required to finalize $productNameWithVersion installation."
     }

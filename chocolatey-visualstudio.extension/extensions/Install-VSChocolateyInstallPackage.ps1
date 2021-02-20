@@ -18,7 +18,7 @@ function Install-VSChocolateyInstallPackage {
     $installMessage = "Installing $packageName..."
     Write-Host $installMessage
 
-    if ($file -eq '' -or $file -eq $null) {
+    if ([string]::IsNullOrEmpty($file)) {
         throw 'Package parameters incorrect, File cannot be empty.'
     }
 

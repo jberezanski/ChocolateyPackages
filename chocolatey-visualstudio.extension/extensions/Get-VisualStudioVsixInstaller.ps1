@@ -32,7 +32,7 @@ Supports both VS 2017+ and "legacy" VS versions (2015 and earlier).
     $candidates = New-Object System.Collections.ArrayList
     $modernProducts = Get-WillowInstalledProducts
     $modernProducts `
-        | Where-Object { $_ -ne $null } `
+        | Where-Object { $null -ne $_ } `
         | ForEach-Object { $_['enginePath'] } `
         | Where-Object { -not [string]::IsNullOrEmpty($_) } `
         | Select-Object -Unique `
@@ -43,7 +43,7 @@ Supports both VS 2017+ and "legacy" VS versions (2015 and earlier).
     {
         $legacyProducts = Get-VSLegacyInstance
         $legacyProducts `
-            | Where-Object { $_ -ne $null } `
+            | Where-Object { $null -ne $_ } `
             | Select-Object -ExpandProperty Path -Unique `
             | Where-Object { -not [string]::IsNullOrEmpty($_) } `
             | ForEach-Object { Get-Item -Path "$_\Common7\IDE\VSIXInstaller.exe" -ErrorAction SilentlyContinue } `

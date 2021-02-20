@@ -8,7 +8,7 @@
         [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
         [bool] $Preview
     )
-    if ($Env:ChocolateyPackageDebug -ne $null)
+    if ($null -ne $Env:ChocolateyPackageDebug)
     {
         $VerbosePreference = 'Continue'
         $DebugPreference = 'Continue'

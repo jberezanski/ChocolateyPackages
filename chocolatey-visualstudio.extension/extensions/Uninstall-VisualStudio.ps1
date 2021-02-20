@@ -36,7 +36,7 @@ Uninstall-ChocolateyPackage
       [ValidateSet('MsiVS2015OrEarlier', 'WillowVS2017OrLater')] [string] $InstallerTechnology,
       [string] $ProgramsAndFeaturesDisplayName = $ApplicationName
     )
-    if ($Env:ChocolateyPackageDebug -ne $null)
+    if ($null -ne $Env:ChocolateyPackageDebug)
     {
         $VerbosePreference = 'Continue'
         $DebugPreference = 'Continue'
@@ -50,7 +50,7 @@ Uninstall-ChocolateyPackage
     if ($assumeNewVS2017Installer)
     {
         $vsInstaller = Get-VisualStudioInstaller
-        if ($vsInstaller -eq $null)
+        if ($null -eq $vsInstaller)
         {
             Write-Warning "Uninstall information for $PackageName could not be found. This probably means the application was uninstalled outside Chocolatey."
             return

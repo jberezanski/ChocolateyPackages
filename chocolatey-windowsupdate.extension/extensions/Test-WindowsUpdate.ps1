@@ -41,7 +41,7 @@ function Test-WindowsUpdate
     {
         Write-Verbose "Looking for Win32_QuickFixEngineering with HotFixID = $Id"
         $qfe = Get-WmiObject -Class Win32_QuickFixEngineering -Filter ('HotFixID = "{0}"' -f $Id)
-        $found = $qfe -ne $null
+        $found = $null -ne $qfe
         Write-Verbose "QFE $Id found: $found"
         return $found
     }

@@ -11,7 +11,7 @@ function Remove-NegatedArguments
     $negativeSwitches = $Arguments.GetEnumerator() | Where-Object { $_.Key -match '^no-.' -and $_.Value -eq '' } | Select-Object -ExpandProperty Key
     foreach ($negativeSwitch in $negativeSwitches)
     {
-        if ($negativeSwitch -eq $null)
+        if ($null -eq $negativeSwitch)
         {
             continue
         }

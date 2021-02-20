@@ -22,7 +22,7 @@ EngineVersion (System.Version)
 
     $rxVersion = [regex]'"version":\s+"(?<value>[0-9\.]+)"'
     $basePaths = @(${Env:ProgramFiles}, ${Env:ProgramFiles(x86)}, ${Env:ProgramW6432})
-    $installer = $basePaths | Where-Object { $_ -ne $null } | Sort-Object -Unique | ForEach-Object {
+    $installer = $basePaths | Where-Object { $null -ne $_ } | Sort-Object -Unique | ForEach-Object {
         $basePath = $_
         $candidateDirPath = Join-Path -Path $basePath -ChildPath 'Microsoft Visual Studio\Installer'
         $candidateDirFiles = Get-ChildItem -Path $candidateDirPath -ErrorAction SilentlyContinue | Where-Object { -not $_.PSIsContainer }
@@ -34,10 +34,10 @@ EngineVersion (System.Version)
             if (Test-Path -Path $versionJsonPath)
             {
                 $text = Get-Content -Path $versionJsonPath
-                $matches = $rxVersion.Matches($text)
-                foreach ($match in $matches)
+                $matchesCollection = $rxVersion.Matches($text)
+                foreach ($match in $matchesCollection)
                 {
-                    if ($match -eq $null -or -not $match.Success)
+                    if ($null -eq $match -or -not $match.Success)
                     {
                         continue
                     }

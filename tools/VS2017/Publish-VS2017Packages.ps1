@@ -39,7 +39,7 @@ try
         if ($PSCmdlet.ShouldProcess($p, 'Push'))
         {
             $keyArg = @()
-            if ($ApiKey -ne $null)
+            if ($null -ne $ApiKey)
             {
                 $keyArg = @('--api-key', (New-Object Management.Automation.PSCredential -ArgumentList @('dummy', $ApiKey)).GetNetworkCredential().Password)
             }

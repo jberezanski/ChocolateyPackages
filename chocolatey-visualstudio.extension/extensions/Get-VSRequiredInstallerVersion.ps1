@@ -39,7 +39,7 @@ function Get-VSRequiredInstallerVersion
         Write-Debug 'Manifest parsing error: channelItem is not IDictionary or does not contain version'
     }
 
-    if ($version -ne $null)
+    if ($null -ne $version)
     {
         Write-Verbose "Required installer version determined from the channel manifest: '$version'"
     }
@@ -70,7 +70,7 @@ function Get-VSRequiredInstallerVersion
         Write-Debug 'Manifest parsing error: manifest is not IDictionary or does not contain engineVersion'
     }
 
-    if ($engineVersion -ne $null)
+    if ($null -ne $engineVersion)
     {
         Write-Verbose "Required engine version determined from the component manifest: '$engineVersion'"
     }

@@ -10,7 +10,7 @@ function Merge-AdditionalArguments
     foreach ($kvp in $AdditionalArguments.GetEnumerator())
     {
         $val = $kvp.Value
-        if ($val -ne $null)
+        if ($null -ne $val)
         {
             # strip quotes; will be added later, if needed
             if ($val -is [string])

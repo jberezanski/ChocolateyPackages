@@ -27,13 +27,13 @@ function Get-VSManifest
     $localFilePath = Join-Path $tempDir $localFileName
 
     $localFile = Get-Item -Path $localFilePath -ErrorAction SilentlyContinue
-    if ($localFile -ne $null -and (Get-Date).ToUniversalTime().AddDays(-1) -lt $localFile.LastWriteTimeUtc -and $localFile.LastWriteTimeUtc -lt (Get-Date).ToUniversalTime())
+    if ($null -ne $localFile -and (Get-Date).ToUniversalTime().AddDays(-1) -lt $localFile.LastWriteTimeUtc -and $localFile.LastWriteTimeUtc -lt (Get-Date).ToUniversalTime())
     {
         Write-Verbose ("Found cached file '{0}' last updated on {1:yyyy-MM-dd HH:mm:ss} UTC - less than one day ago (now is {2:yyyy-MM-dd HH:mm:ss} UTC)" -f $localFilePath, $localFile.LastWriteTimeUtc, (Get-Date).ToUniversalTime())
     }
     else
     {
-        if ($localFile -eq $null)
+        if ($null -eq $localFile)
         {
             Write-Verbose ("Local cached file '{0}' does not exist" -f $localFilePath)
         }
@@ -49,7 +49,7 @@ function Get-VSManifest
             $fileInLayout = Join-Path -Path $LayoutPath -ChildPath $LayoutFileName
         }
 
-        if ($fileInLayout -ne $null)
+        if ($null -ne $fileInLayout)
         {
             Write-Verbose "Found the manifest file in the layout: '$fileInLayout'"
             Copy-Item -Path $fileInLayout -Destination $localFilePath

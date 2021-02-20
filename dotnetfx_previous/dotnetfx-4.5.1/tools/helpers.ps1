@@ -24,7 +24,7 @@ function Get-SafeLogPath
 function Test-Installed($Release)
 {
     $props = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full' -Name Release -ErrorAction SilentlyContinue
-    return $props -ne $null -and $props.Release -ge $Release
+    return $null -ne $props -and $props.Release -ge $Release
 }
 
 function Get-DefaultChocolateyLocalFilePath
@@ -38,7 +38,7 @@ function Get-DefaultChocolateyLocalFilePath
     # adapted from Install-ChocolateyPackage 0.10.8
     $chocTempDir = $env:TEMP
     $tempDir = Join-Path $chocTempDir "$($env:chocolateyPackageName)"
-    if ($env:chocolateyPackageVersion -ne $null) { $tempDir = Join-Path $tempDir "$($env:chocolateyPackageVersion)"; }
+    if ($null -ne $env:chocolateyPackageVersion) { $tempDir = Join-Path $tempDir "$($env:chocolateyPackageVersion)"; }
     $tempDir = $tempDir -replace '\\chocolatey\\chocolatey\\', '\chocolatey\'
     if (![System.IO.Directory]::Exists($tempDir)) { [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null }
     $downloadFilePath = Join-Path $tempDir $OriginalFileName

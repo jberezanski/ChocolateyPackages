@@ -239,7 +239,7 @@ function Install-WindowsUpdate
 
         Write-Verbose 'Locating MSU rules for this operating system'
         $urlArguments = Get-RulesForOS -OS $os -Rules $MsuData -RulesDescription 'MSU'
-        if ($urlArguments -eq $null)
+        if ($null -eq $urlArguments)
         {
             Write-Host "Skipping installation because update $Id does not apply to this operating system ($($os.Caption))."
             return
@@ -252,11 +252,11 @@ function Install-WindowsUpdate
             return
         }
 
-        if ($ServicePackRequirements -ne $null)
+        if ($null -ne $ServicePackRequirements)
         {
             Write-Verbose 'Locating Service Pack rules for this operating system'
             $spRules = Get-RulesForOS -OS $os -Rules $ServicePackRequirements -RulesDescription 'Service Pack'
-            if ($spRules -ne $null)
+            if ($null -ne $spRules)
             {
                 if ($os.ServicePackMajorVersion -lt $spRules.ServicePackNumber)
                 {
@@ -314,14 +314,14 @@ function Install-WindowsUpdate
             {
                 Write-Verbose "Update $Id has been installed successfully, a reboot is not required."
             }
-            elseif ($exitCode -eq $null)
+            elseif ($null -eq $exitCode)
             {
                 Write-Warning "Update $Id installation has finished, but this Chocolatey version does not provide the installer exit code. Please inform the maintainer of the chocolatey-windowsupdate.extension package."
             }
             else
             {
                 $errorDesc = Get-WindowsUpdateErrorDescription -ErrorCode $exitCode
-                if ($errorDesc -ne $null)
+                if ($null -ne $errorDesc)
                 {
                     $errorMessage = 'Update {0} installation failed with code 0x{1:X8} ({2}: {3}).' -f $Id, [int]$exitCode, $errorDesc.Name, $errorDesc.Description
                 }

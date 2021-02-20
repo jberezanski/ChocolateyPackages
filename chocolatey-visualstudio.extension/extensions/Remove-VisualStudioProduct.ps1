@@ -7,7 +7,7 @@
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
         [bool] $Preview
     )
-    if ($Env:ChocolateyPackageDebug -ne $null)
+    if ($null -ne $Env:ChocolateyPackageDebug)
     {
         $VerbosePreference = 'Continue'
         $DebugPreference = 'Continue'

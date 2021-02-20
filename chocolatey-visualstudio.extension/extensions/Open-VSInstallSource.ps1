@@ -25,7 +25,7 @@ function Open-VSInstallSource
             $setupFolder = $null
         }
 
-        if ($setupFolder -eq $null -or -not (Test-Path -Path $setupFolder))
+        if ($null -eq $setupFolder -or -not (Test-Path -Path $setupFolder))
         {
             if ($PackageParameters.ContainsKey('IsoImage'))
             {
@@ -45,10 +45,10 @@ function Open-VSInstallSource
                 }
             }
 
-            if ($isoPath -ne $null)
+            if ($null -ne $isoPath)
             {
                 $storageModule = Get-Module -ListAvailable -Name Storage
-                if ($storageModule -eq $null)
+                if ($null -eq $storageModule)
                 {
                     throw "ISO mounting is not available on this operating system (requires Windows 8 or later)."
                 }
@@ -84,7 +84,7 @@ function Open-VSInstallSource
             }
         }
 
-        if ($setupFolder -ne $null)
+        if ($null -ne $setupFolder)
         {
             if ($Url -like '*.exe')
             {
@@ -107,7 +107,7 @@ function Open-VSInstallSource
         }
     }
 
-    if ($installerFilePath -eq $null)
+    if ($null -eq $installerFilePath)
     {
         Write-Verbose "Visual Studio installer will be downloaded from the Web"
     }

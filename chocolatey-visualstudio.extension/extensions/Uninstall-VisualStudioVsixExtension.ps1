@@ -29,7 +29,8 @@ Alias: Id
         [Alias('Id')] [string] $VsixId
     )
 
-    if ($Env:ChocolateyPackageDebug -ne $null) {
+    if ($null -ne $Env:ChocolateyPackageDebug)
+    {
         $VerbosePreference = 'Continue'
         $DebugPreference = 'Continue'
         Write-Warning "VerbosePreference and DebugPreference set to continue due to the presence of ChocolateyPackageDebug environment variable"

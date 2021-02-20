@@ -59,7 +59,7 @@ compatibility reasons.
         [hashtable] $Options,
         [string] $File
     )
-    if ($Env:ChocolateyPackageDebug -ne $null)
+    if ($null -ne $Env:ChocolateyPackageDebug)
     {
         $VerbosePreference = 'Continue'
         $DebugPreference = 'Continue'

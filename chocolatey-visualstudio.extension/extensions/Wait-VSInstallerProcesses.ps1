@@ -12,7 +12,7 @@ function Wait-VSInstallerProcesses
     $lazyQuitterProcessNames = @('vs_installershell', 'vs_installerservice')
     do
     {
-        $lazyQuitterProcesses = Get-Process -Name $lazyQuitterProcessNames -ErrorAction SilentlyContinue | Where-Object { $_ -ne $null -and -not $_.HasExited }
+        $lazyQuitterProcesses = Get-Process -Name $lazyQuitterProcessNames -ErrorAction SilentlyContinue | Where-Object { $null -ne $_ -and -not $_.HasExited }
         $lazyQuitterProcessCount = ($lazyQuitterProcesses | Measure-Object).Count
         if ($lazyQuitterProcessCount -gt 0)
         {
@@ -39,7 +39,7 @@ function Wait-VSInstallerProcesses
     $vsInstallerProcessNames = @('vs_bootstrapper', 'vs_setup_bootstrapper', 'vs_installer', 'vs_installershell', 'vs_installerservice')
     do
     {
-        $vsInstallerProcesses = Get-Process -Name $vsInstallerProcessNames -ErrorAction SilentlyContinue | Where-Object { $_ -ne $null -and -not $_.HasExited }
+        $vsInstallerProcesses = Get-Process -Name $vsInstallerProcessNames -ErrorAction SilentlyContinue | Where-Object { $null -ne $_ -and -not $_.HasExited }
         $vsInstallerProcessCount = ($vsInstallerProcesses | Measure-Object).Count
         if ($vsInstallerProcessCount -gt 0)
         {
@@ -66,12 +66,12 @@ function Wait-VSInstallerProcesses
                     {
                         continue
                     }
-                    if ($exitCode -eq $null)
+                    if ($null -eq $exitCode)
                     {
                         $exitCode = $proc.ExitCode
                     }
                     Write-Debug ("[{0:yyyyMMdd HH:mm:ss.fff}] $($proc.Name) process $($proc.Id) exited with code '$($proc.ExitCode)'" -f (Get-Date))
-                    if ($proc.ExitCode -ne 0 -and $proc.ExitCode -ne $null)
+                    if ($proc.ExitCode -ne 0 -and $null -ne $proc.ExitCode)
                     {
                         Write-Warning "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
                         if ($exitCode -eq 0)
@@ -101,7 +101,7 @@ function Wait-VSInstallerProcesses
     Write-Debug ('[{0:yyyyMMdd HH:mm:ss.fff}] Looking for vs_installer.windows.exe processes spawned by the uninstaller' -f (Get-Date))
     do
     {
-        $uninstallerProcesses = Get-Process -Name 'vs_installer.windows' -ErrorAction SilentlyContinue | Where-Object { $_ -ne $null -and -not $_.HasExited }
+        $uninstallerProcesses = Get-Process -Name 'vs_installer.windows' -ErrorAction SilentlyContinue | Where-Object { $null -ne $_ -and -not $_.HasExited }
         $uninstallerProcessesCount = ($uninstallerProcesses | Measure-Object).Count
         if ($uninstallerProcessesCount -gt 0)
         {
@@ -158,12 +158,12 @@ function Wait-VSInstallerProcesses
                     {
                         continue
                     }
-                    if ($exitCode -eq $null)
+                    if ($null -eq $exitCode)
                     {
                         $exitCode = $proc.ExitCode
                     }
                     Write-Debug ("[{0:yyyyMMdd HH:mm:ss.fff}] $($proc.Name) process $($proc.Id) exited with code '$($proc.ExitCode)'" -f (Get-Date))
-                    if ($proc.ExitCode -ne 0 -and $proc.ExitCode -ne $null)
+                    if ($proc.ExitCode -ne 0 -and $null -ne $proc.ExitCode)
                     {
                         Write-Warning "$($proc.Name) process $($proc.Id) exited with code $($proc.ExitCode)"
                         if ($exitCode -eq 0)

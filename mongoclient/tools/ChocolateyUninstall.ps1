@@ -2,7 +2,7 @@
 Set-StrictMode -Version 2
 
 $specialFolders = @([System.Environment+SpecialFolder]::Programs)
-if ((Test-ProcessAdminRights) -and ([System.Environment+SpecialFolder] | Get-Member -Static -Name 'CommonPrograms') -ne $null)
+if ((Test-ProcessAdminRights) -and $null -ne ([System.Environment+SpecialFolder] | Get-Member -Static -Name 'CommonPrograms'))
 {
     $specialFolders += [System.Environment+SpecialFolder]::CommonPrograms
 }

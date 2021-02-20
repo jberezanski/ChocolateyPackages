@@ -6,7 +6,7 @@ function Convert-VSProductReferenceToChannelReference
         [Parameter(Mandatory = $true)] [AllowNull()] [PSObject] $ProductReference
     )
 
-    if ($ProductReference -eq $null)
+    if ($null -eq $ProductReference)
     {
         return $null
     }

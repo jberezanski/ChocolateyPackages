@@ -22,7 +22,7 @@ function Update-AdminFile
     foreach ($feature in $features)
     {
         $node = $selectableItemCustomizations.SelectSingleNode("*[@Id=""$feature""]")
-        if ($node -ne $null)
+        if ($null -ne $node)
         {
             Write-Host "Enabling requested feature: $feature"
             $node.Selected = "yes"

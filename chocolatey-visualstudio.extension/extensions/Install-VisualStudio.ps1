@@ -43,7 +43,7 @@ Install-ChocolateyPackage
       [bool] $Preview,
       [version] $DesiredProductVersion
     )
-    if ($Env:ChocolateyPackageDebug -ne $null)
+    if ($null -ne $Env:ChocolateyPackageDebug)
     {
         $VerbosePreference = 'Continue'
         $DebugPreference = 'Continue'
@@ -71,7 +71,7 @@ Install-ChocolateyPackage
         if ($assumeNewVS2017Installer)
         {
             # there is a single Programs and Features entry for all products, so its presence is not enough
-            if ($productReference -ne $null)
+            if ($null -ne $productReference)
             {
                 $products = Resolve-VSProductInstance -ProductReference $productReference -PackageParameters $packageParameters
                 $productsCount = ($products | Measure-Object).Count

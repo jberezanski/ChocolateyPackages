@@ -6,7 +6,7 @@ function Close-VSInstallSource
         [Parameter(Mandatory = $true)] [PSObject] $InstallSourceInfo
     )
 
-    if ($InstallSourceInfo.MountedDiskImage -ne $null)
+    if ($null -ne $InstallSourceInfo.MountedDiskImage)
     {
         Write-Host "Dismounting ISO"
         $InstallSourceInfo.MountedDiskImage | Dismount-DiskImage

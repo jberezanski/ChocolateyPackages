@@ -40,7 +40,7 @@
     if ($assumeNewVS2017Installer)
     {
         $auxExitCode = Wait-VSInstallerProcesses -Behavior 'Wait'
-        if ($auxExitCode -ne $null -and $exitCode -eq 0)
+        if ($null -ne $auxExitCode -and $exitCode -eq 0)
         {
             Write-Debug "Using aux exit code returned from Wait-VSInstallerProcesses ('$auxExitCode')"
             $exitCode = $auxExitCode
@@ -99,7 +99,7 @@
     }
     else
     {
-        if ($warnings -ne $null)
+        if ($null -ne $warnings)
         {
             $warnings | Write-Warning
         }

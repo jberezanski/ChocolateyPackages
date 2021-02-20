@@ -27,7 +27,7 @@ If the Installer is present, it will be updated/reinstalled if:
       [switch] $Preview,
       [switch] $Force
     )
-    if ($Env:ChocolateyPackageDebug -ne $null)
+    if ($null -ne $Env:ChocolateyPackageDebug)
     {
         $VerbosePreference = 'Continue'
         $DebugPreference = 'Continue'

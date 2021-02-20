@@ -38,7 +38,7 @@ function Generate-AdminFile
         }
         else
         {
-            if (($adminFile -as [System.URI]).AbsoluteURI -ne $null)
+            if ($null -ne ($adminFile -as [System.URI]).AbsoluteURI)
             {
                 Get-ChocolateyWebFile 'adminFile' $localAdminFile $adminFile
             }

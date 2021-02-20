@@ -20,7 +20,7 @@ function Get-VSComponentManifest
         $layoutPath = Resolve-VSLayoutPath -PackageParameters $PackageParameters
     }
 
-    if ($ChannelManifest -eq $null)
+    if ($null -eq $ChannelManifest)
     {
         Write-Debug 'Obtaining the channel manifest'
         $ChannelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ChannelReference $ChannelReference -LayoutPath $layoutPath -UseInstallChannelUri:$UseInstallChannelUri
@@ -33,7 +33,7 @@ function Get-VSComponentManifest
         Write-Debug 'Obtaining the installCatalogUri from the Parameters'
         $url = $packageParameters['installCatalogUri']
 
-        if ($url -eq $null)
+        if ($null -eq $url)
         {
             Write-Verbose 'Unable to determine the catalog manifest url'
             # If the installCatalogUri is null continue with the url from the ChannelManifest as the Microsoft documentation says.
@@ -60,7 +60,7 @@ function Get-VSComponentManifest
     Write-Debug 'Parsing the channel manifest'
     $url, $checksum, $checksumType = Get-VSChannelManifestItemUrl -Manifest $ChannelManifest -ChannelItemType 'Manifest'
 
-    if ($url -eq $null)
+    if ($null -eq $url)
     {
         Write-Verbose 'Unable to determine the catalog manifest url'
         return $null

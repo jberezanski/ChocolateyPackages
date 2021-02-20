@@ -11,15 +11,15 @@ function Resolve-VSProductInstance
     Write-Debug 'Resolving VS product instance(s)'
 
     $products = Get-WillowInstalledProducts
-    if ($ProductReference -ne $null)
+    if ($null -ne $ProductReference)
     {
         Write-Debug "Detecting instances of VS products with ProductId = '$($ProductReference.ProductId)' ChannelId = '$($ProductReference.ChannelId)'"
-        $products = Get-WillowInstalledProducts | Where-Object { $_ -ne $null -and $_.channelId -eq $productReference.ChannelId -and $_.productId -eq $productReference.ProductId }
+        $products = Get-WillowInstalledProducts | Where-Object { $null -ne $_ -and $_.channelId -eq $productReference.ChannelId -and $_.productId -eq $productReference.ProductId }
     }
-    elseif ($ChannelReference -ne $null)
+    elseif ($null -ne $ChannelReference)
     {
         Write-Debug "Detecting instances of VS products with ChannelId = '$($ChannelReference.ChannelId)'"
-        $products = Get-WillowInstalledProducts | Where-Object { $_ -ne $null -and $_.channelId -eq $channelReference.ChannelId }
+        $products = Get-WillowInstalledProducts | Where-Object { $null -ne $_ -and $_.channelId -eq $channelReference.ChannelId }
     }
     else
     {
@@ -31,7 +31,7 @@ function Resolve-VSProductInstance
     {
         $installPath = $PackageParameters['installPath']
         Write-Debug "Filtering detected product instances by installPath: '$installPath'"
-        $products = $products | Where-Object { $_ -ne $null -and $_.installationPath -eq $installPath }
+        $products = $products | Where-Object { $null -ne $_ -and $_.installationPath -eq $installPath }
     }
 
     $count = ($products | Measure-Object).Count
