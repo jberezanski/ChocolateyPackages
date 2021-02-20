@@ -1,6 +1,8 @@
 ﻿# CHANGELOG
 
 ## Version 1.9.0
+- Added custom handling for '--installCatalogUri' to better support installations from layout without '--noWeb' ([GH-65](https://github.com/jberezanski/ChocolateyPackages/pull/65)).
+- New switch for Add-VisualStudioWorkload: -IncludeOptionalComponentsByDefault ([GH-92](https://github.com/jberezanski/ChocolateyPackages/pull/92)).
 
 ## Version 1.8.1
 
