@@ -18,7 +18,8 @@ MissingFiles (System.String[])
     [CmdletBinding()]
     Param
     (
-        [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true)] [string] $Path
+        [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true)] [string] $Path,
+        [version] $Version
     )
     Process
     {
@@ -31,7 +32,20 @@ MissingFiles (System.String[])
             $dirPath = $Path
         }
 
-        $expectedFiles = @('vs_installer.exe', 'vs_installershell.exe', 'node.dll', 'ffmpeg.dll')
+        if ($null -eq $Version)
+        {
+            # be conservative
+            $expectedFiles = @('vs_installer.exe')
+        }
+        elseif ($Version -lt [version]'2.9')
+        {
+            $expectedFiles = @('vs_installer.exe', 'vs_installershell.exe', 'node.dll', 'ffmpeg.dll')
+        }
+        else
+        {
+            $expectedFiles = @('vs_installer.exe', 'vs_installershell.exe', 'setup.exe')
+        }
+
         $missingFiles = $expectedFiles | Where-Object { -not (Test-Path (Join-Path -Path $dirPath -ChildPath $_))}
         $obj = New-Object -TypeName PSObject -Property @{
             Path = $Path
