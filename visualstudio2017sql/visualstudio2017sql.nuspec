@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017sql</id>
-    <version>15.9.33.0</version>
+    <version>15.9.33.20210221</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017sql</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>SQL Server Data Tools for Visual Studio 2017</title>
@@ -50,10 +50,11 @@ If control over reboots is required, it is advisable to install the dependencies
 15.9.33.0:
 - Package metadata updated for Visual Studio 2017 version 15.9.33 (the native installer always installs the latest released Visual Studio 2017 build).
 - Updated bootstrapper url.
+15.9.33.20210221:
 - Updated dependency version.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.8.1" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.9.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="dotnetfx" version="4.6.2.0" />
       <dependency id="visualstudio-installer" version="2.0.1" />

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019-workload-office</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-workload-office</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Office/SharePoint development workload for Visual Studio 2019</title>
@@ -66,13 +66,11 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)
 ##### Package
-1.0.0:
-- Initial package release.
-vNext:
+1.0.1:
 - Updated dependency version.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.9.0" />
       <!-- <dependency id="vcredist2013" version="12.0.30501.20150616" />
       <dependency id="vcredist140" version="14.16.27027.1" /> -->
       <dependency id="netfx-4.7.2-devpack" version="4.7.2.20190225" />

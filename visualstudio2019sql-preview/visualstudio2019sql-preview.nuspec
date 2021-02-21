@@ -58,7 +58,7 @@ vNext:
 - Updated metadata and dependencies.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.9.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="dotnetfx" version="4.7.2" />
       <dependency id="visualstudio-installer" version="2.0.1" />

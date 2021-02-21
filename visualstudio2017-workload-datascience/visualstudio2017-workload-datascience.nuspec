@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-workload-datascience</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-workload-datascience</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Data science and analytical applications workload for Visual Studio 2017</title>
@@ -66,13 +66,11 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-1.0.1:
-- Updated metadata and dependencies.
-vNext:
+1.0.2:
 - Updated dependency version.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.9.0" />
       <dependency id="visualstudio-installer" version="2.0.1" />
     </dependencies>
   </metadata>

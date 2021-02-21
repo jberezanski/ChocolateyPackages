@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019testagent</id>
-    <version>16.8.5.0</version>
+    <version>16.8.5.20210221</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019testagent</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2019 Test Agent</title>
@@ -48,9 +48,11 @@ If control over reboots is required, it is advisable to install the dependencies
 16.8.5.0:
 - Package metadata updated for Visual Studio 2019 version 16.8.5 (the native installer always installs the latest released Visual Studio 2019 build).
 - Updated bootstrapper url.
+16.8.5.20210221:
+- Updated dependency version.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.8.1" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.9.0" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="vcredist140" version="14.16.27027.1" />
       <dependency id="dotnetfx" version="4.7.2" />
