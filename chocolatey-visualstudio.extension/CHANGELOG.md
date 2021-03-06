@@ -1,6 +1,7 @@
 ﻿# CHANGELOG
 
 ## Version 1.10.0
+- Fixed installed products detection being invoked twice by mistake.
 
 ## Version 1.9.0
 - Added custom handling for '--installCatalogUri' to better support installations from layout without '--noWeb' ([GH-65](https://github.com/jberezanski/ChocolateyPackages/pull/65)).

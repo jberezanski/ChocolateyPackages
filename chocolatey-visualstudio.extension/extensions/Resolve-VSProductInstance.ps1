@@ -10,7 +10,6 @@ function Resolve-VSProductInstance
 
     Write-Debug 'Resolving VS product instance(s)'
 
-    $products = Get-WillowInstalledProducts
     if ($null -ne $ProductReference)
     {
         Write-Debug "Detecting instances of VS products with ProductId = '$($ProductReference.ProductId)' ChannelId = '$($ProductReference.ChannelId)'"
