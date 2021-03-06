@@ -12,33 +12,7 @@ function Get-VSRequiredInstallerVersion
     Write-Debug 'Obtaining the channel manifest in order to determine the required installer version'
     $channelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ChannelReference $ChannelReference -UseInstallChannelUri:$UseInstallChannelUri
 
-    Write-Debug 'Parsing the channel manifest'
-    $version = $null
-    $channelItem = Get-VSChannelManifestItem -Manifest $channelManifest -ChannelItemType 'Bootstrapper'
-    if ($channelItem -is [Collections.IDictionary] -and $channelItem.ContainsKey('version'))
-    {
-        $versionString = $channelItem['version']
-        if ($versionString -is [string])
-        {
-            try
-            {
-                $version = [version]$versionString
-            }
-            catch
-            {
-                Write-Debug ('Manifest parsing error: failed to parse version string ''{0}''' -f $versionString)
-            }
-        }
-        else
-        {
-            Write-Debug 'Manifest parsing error: version is not a string'
-        }
-    }
-    else
-    {
-        Write-Debug 'Manifest parsing error: channelItem is not IDictionary or does not contain version'
-    }
-
+    $version = Get-VSChannelManifestItemVersion -Manifest $channelManifest -ChannelItemType 'Bootstrapper'
     if ($null -ne $version)
     {
         Write-Verbose "Required installer version determined from the channel manifest: '$version'"
