@@ -222,16 +222,34 @@
                 }
             }
 
-            if ($Operation -eq 'update' -and $null -ne $DesiredProductVersion)
+            if ($Operation -eq 'update')
             {
-                if ($DesiredProductVersion -le $existingProductVersion)
+                if ($null -eq $DesiredProductVersion)
                 {
-                    Write-Verbose ('Product at path ''{0}'' will not be updated because its version ({1}) is greater than or equal to the desired version of {2}.' -f $productInfo.installationPath, $existingProductVersion, $DesiredProductVersion)
-                    continue
+                    $firstProductId = $thisProductIds | Select-Object -First 1
+                    Write-Verbose "DesiredProductVersion is not set, trying to obtain it from the channel manifest using product id $firstProductId"
+                    $DesiredProductVersion = Get-VSProductVersionFromChannelManifest -ProductId $firstProductId -PackageParameters $PackageParameters -ChannelReference $ChannelReference
+                    if ($null -ne $DesiredProductVersion)
+                    {
+                        Write-Verbose "Determined DesiredProductVersion from the channel manifest: $DesiredProductVersion"
+                    }
+                    else
+                    {
+                        Write-Verbose "Unable to determine DesiredProductVersion from the channel manifest. The script will not be able to determine the need for the update and to verify the update executed successfully."
+                    }
                 }
-                else
+
+                if ($null -ne $DesiredProductVersion)
                 {
-                    Write-Debug ('Product at path ''{0}'' will be updated because its version ({1}) is lower than the desired version of {2}.' -f $productInfo.installationPath, $existingProductVersion, $DesiredProductVersion)
+                    if ($DesiredProductVersion -le $existingProductVersion)
+                    {
+                        Write-Verbose ('Product at path ''{0}'' will not be updated because its version ({1}) is greater than or equal to the desired version of {2}.' -f $productInfo.installationPath, $existingProductVersion, $DesiredProductVersion)
+                        continue
+                    }
+                    else
+                    {
+                        Write-Debug ('Product at path ''{0}'' will be updated because its version ({1}) is lower than the desired version of {2}.' -f $productInfo.installationPath, $existingProductVersion, $DesiredProductVersion)
+                    }
                 }
             }
 
