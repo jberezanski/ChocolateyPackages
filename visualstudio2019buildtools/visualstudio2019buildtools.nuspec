@@ -51,10 +51,9 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 ##### Software
 [Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)
 ##### Package
-16.9.3.0:
+16.9.3.1:
 - Package metadata updated for Visual Studio 2019 version 16.9.3 (the native installer always installs the latest released Visual Studio 2019 build).
 - Updated bootstrapper url.
-- Added warning about parameters not valid during upgrade.
 
 #### Available workload packages
 - [Azure development build tools](https://chocolatey.org/packages/visualstudio2019-workload-azurebuildtools)
