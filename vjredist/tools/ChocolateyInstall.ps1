@@ -3,7 +3,7 @@
 
 $packageName = 'vjredist'
 $url = 'https://download.microsoft.com/download/9/a/0/9a01eb1e-fe80-41af-a3f8-ea41220918f7/vjredist.exe'
-$checksum = '9CA38A30AB317120DD0F0D2C6C5A1EDD04259CF63269C7121707C9BC70F239D7'
+$checksum = '602587003735BE073198B9D2A0A0BD0FCACC0FFC38601055E941FC926E38C27D'
 $checksumType = 'sha256'
 
 $originalFileName = Split-Path -Leaf -Path ([uri]$url).LocalPath

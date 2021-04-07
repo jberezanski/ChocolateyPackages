@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>vjredist</id>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/vjredist</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft Visual J# 2.0 Redistributable Package</title>
@@ -18,7 +18,7 @@
 
 This is the "first edition" of the J# 2.0 Redistributable, published in 2006. The installed libraries are 32-bit only, meaning that on 64-bit systems they will execute in the Windows-On-Windows environment.</description>
     <releaseNotes>
-2.0.0: Initial package release.
+2.0.1: Fixed checksum after Microsoft updated the native installer in-place.
     </releaseNotes>
     <dependencies>
       <dependency id="dotnet3.5" version="3.5.20160716" />
