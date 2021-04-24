@@ -1,8 +1,8 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019buildtools-preview</id>
-    <version>16.10.0.20000-preview1</version>
+    <version>16.10.0.20100-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019buildtools-preview</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2019 Build Tools Preview</title>
@@ -57,8 +57,8 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 ##### Software
 [Visual Studio 2019 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes-preview)
 ##### Package
-16.10.0.20000-preview1:
-- Package metadata updated for Visual Studio 2019 version 16.10.0 Preview 2.0 (the native installer always installs the latest released Visual Studio 2019 Preview build).
+16.10.0.20100-preview1:
+- Package metadata updated for Visual Studio 2019 version 16.10.0 Preview 2.1 (the native installer always installs the latest released Visual Studio 2019 Preview build).
 - Updated bootstrapper url.
 - Added warning about parameters not valid during upgrade.
     </releaseNotes>
