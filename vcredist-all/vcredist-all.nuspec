@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>vcredist-all</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/vcredist-all</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft Visual C++ Runtime - all versions</title>
@@ -22,10 +22,10 @@ This metapackage installs packages for all Visual C++ Runtime releases since 200
 (Yes, dependencies on vcredist2015 and vcredist2017 are redundant, but are included here because other packages depend on them.)
     </description>
     <releaseNotes>
-Initial package release.
+1.0.1: Updated dependency on vcredist2005.
     </releaseNotes>
     <dependencies>
-      <dependency id="vcredist2005" version="8.1.0.20160118" />
+      <dependency id="vcredist2005" version="8.0.50727.619501" />
       <dependency id="vcredist2008" version="9.0.30729.6161" />
       <dependency id="vcredist2010" version="10.0.40219.2" />
       <dependency id="vcredist2012" version="11.0.61031" />
