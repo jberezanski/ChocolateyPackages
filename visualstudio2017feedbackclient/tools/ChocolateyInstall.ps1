@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2017feedbackclient' `
     -ApplicationName 'Microsoft Visual Studio Feedback Client 2017' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/eb4282eb-23ed-42ca-8b41-935d6d91cd00/ebdea3969fe33fc4e2f5fbbd3507b0ab33bcfc7d503c1ce1feb15081c6e55edb/vs_FeedbackClient.exe' `
-    -Checksum 'EBDEA3969FE33FC4E2F5FBBD3507B0AB33BCFC7D503C1CE1FEB15081C6E55EDB' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/67f7bfaa-2635-43d9-ba82-26564f458881/f28b892648d6cf13424c06dd964ae3dfa9aad53432a063e04937dfa803f5744e/vs_FeedbackClient.exe' `
+    -Checksum 'F28B892648D6CF13424C06DD964AE3DFA9AAD53432A063E04937DFA803F5744E' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'FeedbackClient' `
