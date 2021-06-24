@@ -2,7 +2,7 @@
 Param
 (
     [switch] $Preview,
-    [ValidateSet('2017', '2019')] [string] $VisualStudioYear = '2017'
+    [ValidateSet('2017', '2019', '2022')] [string] $VisualStudioYear = '2017'
 )
 
 Set-StrictMode -Version 5
@@ -151,7 +151,7 @@ function Get-VSVersion
 
 $dirSuffix = @{ $true = '-preview'; $false = '' }[$Preview.ToBool()]
 $channelUrlToken = @{ $true = 'pre'; $false = 'release' }[$Preview.ToBool()]
-$vsMajorVersion = @{ '2017' = 15; '2019' = 16 }[$VisualStudioYear]
+$vsMajorVersion = @{ '2017' = 15; '2019' = 16; '2022' = 17 }[$VisualStudioYear]
 $mainProducts = @('BuildTools','Community','Enterprise','FeedbackClient','Professional','SQL','TeamExplorer','TestAgent','TestController','TestProfessional')
 $visualStudioProductVersion, $visualStudioProductDisplayVersion, $productPreReleaseMilestoneSuffix, $productReleaseNameSuffix = Get-VSVersion
 Write-Information "Current published Visual Studio version: $visualStudioProductVersion ('$visualStudioProductDisplayVersion', milestone: $productPreReleaseMilestoneSuffix, release name suffix: $productReleaseNameSuffix)"

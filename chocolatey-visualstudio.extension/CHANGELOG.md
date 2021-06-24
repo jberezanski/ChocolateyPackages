@@ -6,6 +6,7 @@
   - After the update, the installed product version is checked to determine if the update actually happened. This makes it possible to detect a bug in the Visual Studio installer, which sometimes fails to download the channel manifest and thinks no update is needed.
 - Fixed installed products detection being invoked twice by mistake.
 - Updated workaround for the bootstrapper ignoring --wait when updating the VS Installer to account for a new process used by the VS Installer in 16.9+ (GH-7, GH-97).
+- Install-VisualStudio, Add-VisualStudioWorkload/Component and Remove-VisualStudioProduct/Workload/Component now support Visual Studio 2022 (-VisualStudioYear 2022).
 
 ## Version 1.9.0
 - Added custom handling for '--installCatalogUri' to better support installations from layout without '--noWeb' ([GH-65](https://github.com/jberezanski/ChocolateyPackages/pull/65)).
