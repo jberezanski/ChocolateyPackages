@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>visualstudio2022enterprise-preview</id>
+    <id>visualstudio2022buildtools-preview</id>
     <version>17.0.0.0-preview1</version>
-    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022enterprise-preview</packageSourceUrl>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022buildtools-preview</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>Visual Studio 2022 Enterprise Preview</title>
+    <title>Visual Studio 2022 Build Tools Preview</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/392d7c669d382c262b060375f917f14ba873d774/icons/vs2022preview.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
-    <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt021219/</licenseUrl>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt110718/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
     <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs vs17 2022 enterprise preview ide admin</tags>
-    <summary>An integrated, end-to-end solution for developers looking for high productivity and seamless coordination across teams of any size.</summary>
+    <tags>microsoft visual studio visualstudio vs vs17 2022 build tools preview admin</tags>
+    <summary>Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE.</summary>
     <description>
 ### Overview
-Microsoft DevOps solution for productivity and coordination across teams of any size.
+The Visual Studio Build Tools allows you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE. There are options to install the Visual C++ compilers and libraries, MFC, ATL, and C++/CLI support.
 
 Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/). Visual Studio and Visual Studio Preview can be installed side-by-side on the same device.
 
@@ -30,7 +30,7 @@ To find out what's new or to see the known issues, see the [Visual Studio 2022 P
 [System requirements](https://docs.microsoft.com/en-us/visualstudio/releases/2022/system-requirements)
 
 ### Customizations and Optional features
-By default, the package installs only the bare minimum required (the Core Editor workload). The easiest way to add more development features is to use the workload packages listed in the Release Notes section.
+By default, the package installs only the bare minimum required (the MSBuild Tools workload). The easiest way to add more development features is to use the workload packages listed in the Release Notes section.
 
 All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2022). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
 
@@ -40,9 +40,9 @@ The language of the installed software can be controlled using the package param
 The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2022#list-of-language-locales). By default, the operating system display language is used.
 
 #### Full installation
-This command will install Visual Studio with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
+This command will install Visual Studio Build Tools with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
 
-    choco install visualstudio2022enterprise-preview --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+    choco install visualstudio2022buildtools-preview --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
 
 [More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
 
@@ -57,35 +57,26 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 ##### Software
 [Visual Studio 2022 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes-preview)
 ##### Package
-17.0.0.0-preview1:
-- Package metadata updated for Visual Studio 2022 version 17.0.0.0 Preview 1.0 (the native installer always installs the latest released Visual Studio 2022 Preview build).
+17.0.0.10000-preview1:
+- Package metadata updated for Visual Studio 2022 version 17.0.0 Preview 1.0 (the native installer always installs the latest released Visual Studio 2022 Preview build).
 - Updated bootstrapper url.
-
-#### Available workload packages
-- [.NET desktop development](https://chocolatey.org/packages/visualstudio2022-preview-workload-manageddesktop)
     </releaseNotes>
 <!--
-- [Azure development](https://chocolatey.org/packages/visualstudio2022-preview-workload-azure)
-- [Data storage and processing](https://chocolatey.org/packages/visualstudio2022-preview-workload-data)
-- [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2022-preview-workload-datascience)
-- [Game development with Unity](https://chocolatey.org/packages/visualstudio2022-preview-workload-managedgame)
-- [Linux development with C++](https://chocolatey.org/packages/visualstudio2022-preview-workload-nativecrossplat)
-- [Desktop development with C++](https://chocolatey.org/packages/visualstudio2022-preview-workload-nativedesktop)
-- [Game development with C++](https://chocolatey.org/packages/visualstudio2022-preview-workload-nativegame)
-- [Mobile development with C++](https://chocolatey.org/packages/visualstudio2022-preview-workload-nativemobile)
-- [.NET Core cross-platform development](https://chocolatey.org/packages/visualstudio2022-preview-workload-netcoretools)
-- [Mobile development with .NET](https://chocolatey.org/packages/visualstudio2022-preview-workload-netcrossplat)
-- [ASP.NET and web development](https://chocolatey.org/packages/visualstudio2022-preview-workload-netweb)
-- [Node.js development](https://chocolatey.org/packages/visualstudio2022-preview-workload-node)
-- [Office/SharePoint development](https://chocolatey.org/packages/visualstudio2022-preview-workload-office)
-- [Python development](https://chocolatey.org/packages/visualstudio2022-preview-workload-python)
-- [Universal Windows Platform development](https://chocolatey.org/packages/visualstudio2022-preview-workload-universal)
-- [Visual Studio extension development](https://chocolatey.org/packages/visualstudio2022-preview-workload-visualstudioextension)
-- [Mobile development with JavaScript](https://chocolatey.org/packages/visualstudio2022-preview-workload-webcrossplat)
+#### Available workload packages
+- [Azure development build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-azurebuildtools)
+- [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-databuildtools)
+- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-manageddesktopbuildtools)
+- [.NET Core build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-netcorebuildtools)
+- [Node.js build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-nodebuildtools)
+- [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-officebuildtools)
+- [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-universalbuildtools)
+- [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-vctools)
+- [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-visualstudioextensionbuildtools)
+- [Web development build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-webbuildtools)
+- [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2022-preview-workload-xamarinbuildtools)
 -->
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0-preview2" />
-      <dependency id="KB3033929" version="1.0.5" /> <!-- for Win7 SP1/2008R2-->
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
       <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnetfx" version="4.8.0" />

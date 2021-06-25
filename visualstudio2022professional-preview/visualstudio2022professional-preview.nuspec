@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>visualstudio2022enterprise-preview</id>
+    <id>visualstudio2022professional-preview</id>
     <version>17.0.0.0-preview1</version>
-    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022enterprise-preview</packageSourceUrl>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022professional-preview</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>Visual Studio 2022 Enterprise Preview</title>
+    <title>Visual Studio 2022 Professional Preview</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/392d7c669d382c262b060375f917f14ba873d774/icons/vs2022preview.png</iconUrl>
@@ -14,11 +14,11 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
     <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs vs17 2022 enterprise preview ide admin</tags>
-    <summary>An integrated, end-to-end solution for developers looking for high productivity and seamless coordination across teams of any size.</summary>
+    <tags>microsoft visual studio visualstudio vs vs17 2022 professional preview ide admin</tags>
+    <summary>Professional developer tools, services, and subscription benefits for small teams</summary>
     <description>
 ### Overview
-Microsoft DevOps solution for productivity and coordination across teams of any size.
+Professional developer tools, services, and subscription benefits for small teams.
 
 Visual Studio Preview gives you early access to the latest features and improvements not yet available in the main release. By trying Preview, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Preview installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/). Visual Studio and Visual Studio Preview can be installed side-by-side on the same device.
 
@@ -42,7 +42,7 @@ The list of languages is [presented here](https://docs.microsoft.com/en-us/visua
 #### Full installation
 This command will install Visual Studio with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
 
-    choco install visualstudio2022enterprise-preview --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+    choco install visualstudio2022professional-preview --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
 
 [More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
 
@@ -85,8 +85,8 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 -->
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0-preview2" />
-      <dependency id="KB3033929" version="1.0.5" /> <!-- for Win7 SP1/2008R2-->
-      <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
+      <dependency id="KB3033929" version="1.0.5" />
+      <dependency id="KB2919355" version="1.0.20160915" />
       <dependency id="KB2999226" version="1.0.20161201" />
       <dependency id="dotnetfx" version="4.8.0" />
       <dependency id="visualstudio-installer" version="2.0.1" />
