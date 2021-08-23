@@ -26,7 +26,7 @@ The lists of components included in this workload in respective Visual Studio 20
 - [Professional](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-professional?view=vs-2022#net-desktop-development)
 - [Community](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-community?view=vs-2022#net-desktop-development)
 
-Visual Studio 2022 must be installed first, for example using Chocolatey packages: [visualstudio2022enterprise](https://chocolatey.org/packages/visualstudio2022enterprise), [visualstudio2022professional](https://chocolatey.org/packages/visualstudio2022professional), [visualstudio2022community](https://chocolatey.org/packages/visualstudio2022community).
+Visual Studio 2022 must be installed first, for example using Chocolatey packages: [visualstudio2022enterprise-preview](https://chocolatey.org/packages/visualstudio2022enterprise-preview), [visualstudio2022professional-preview](https://chocolatey.org/packages/visualstudio2022professional-preview), [visualstudio2022community-preview](https://chocolatey.org/packages/visualstudio2022community-preview).
 
 ### Customizations
 
