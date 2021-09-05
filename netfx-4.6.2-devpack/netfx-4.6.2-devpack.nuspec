@@ -20,10 +20,11 @@
 ##### Software
 https://support.microsoft.com/en-us/kb/3151796
 ##### Package
-4.6.01590.20210905: Removed dependency on .NET Framework Runtime (its download urls stopped working). Updated download url.
+4.6.01590.20210905: Updated download url.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-dotnetfx.extension" version="1.0.1" />
+      <dependency id="netfx-4.6.2" version="4.6.2.0" />
     </dependencies>
   </metadata>
 </package>

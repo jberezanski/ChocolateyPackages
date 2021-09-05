@@ -21,11 +21,12 @@
 [.NET Framework 4.7.1 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net471/README.md)
 [.NET Framework 4.7.1 known issues](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-known-issues.md)
 ##### Package
-4.7.2558.20210905: Removed dependency on .NET Framework Runtime (its download urls stopped working) and refactored the installation script. Updated download url.
+4.7.2558.20210905: Changed depedency from dotnet4.7.1 to netfx-4.7.1 and refactored the installation script. Updated download url.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-dotnetfx.extension" version="1.0.1" />
       <dependency id="KB2919355" version="1.0.20160915" />
+      <dependency id="netfx-4.7.1" version="4.7.1.0" />
     </dependencies>
   </metadata>
 </package>
