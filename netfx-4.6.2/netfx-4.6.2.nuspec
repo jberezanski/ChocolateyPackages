@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.6.2</id>
-    <version>4.6.2.20190930</version>
+    <version>4.6.2.20210905</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.6.2</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.6.2</title>
@@ -34,7 +34,7 @@ On systems which have a newer version of the .NET Framework installed, this pack
 [.NET Framework 4.6.2 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net462/README.md)
 [.NET Framework 4.6.2 known issues](https://support.microsoft.com/en-us/help/3151796/known-issues-for-the-.net-framework-4.6.2)
 ##### Package
-4.6.2.20190930: Updated extension dependency.
+4.6.2.20210905: Updated download url.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-dotnetfx.extension" version="1.0.1" />
