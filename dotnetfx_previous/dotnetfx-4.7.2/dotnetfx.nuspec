@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnetfx</id>
-    <version>4.7.2.20180712</version>
+    <version>4.7.2.20210909</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.7.2</title>
@@ -38,6 +38,7 @@ The matching Developer Pack can be installed using [this package](https://chocol
 [.NET Framework 4.7.2 readme](https://github.com/Microsoft/dotnet/blob/master/releases/net472/README.md)
 [.NET Framework 4.7.2 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net472/dotnet472-changes.md)
 ##### Package
+4.7.2.20210909: Updated the package to use correct installer url
 4.7.2.20180712: Updated installer url after .NET Framework 4.7.2 [release on Microsoft Update](https://blogs.msdn.microsoft.com/dotnet/2018/07/10/net-framework-4-7-2-is-available-on-windows-update-wsus-and-mu-catalog/) with additional quality fixes.
     </releaseNotes>
     <dependencies>
