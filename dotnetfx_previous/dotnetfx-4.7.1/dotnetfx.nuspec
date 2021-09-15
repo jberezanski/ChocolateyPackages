@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnetfx</id>
-    <version>4.7.1.20180317</version>
+    <version>4.7.1.20210915</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.7.1</title>
@@ -29,9 +29,10 @@ The matching Developer Pack can be installed using [this package](https://chocol
 [.NET Framework 4.7.1 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net471/README.md)
 [.NET Framework 4.7.1 known issues](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-known-issues.md)
 ##### Package
-4.7.1.20180317: Updated description.
+4.7.2.20210915: Updated the package to use correct installer url, refactored the installation script
     </releaseNotes>
     <dependencies>
+      <dependency id="chocolatey-dotnetfx.extension" version="1.0.1" />
       <dependency id="KB2919355" version="1.0.20160915" />
     </dependencies>
   </metadata>

@@ -1,54 +1,12 @@
-﻿. (Join-Path -Path (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition) -ChildPath 'helpers.ps1')
-
-$packageName = 'dotnetfx'
-$release = 461308
-$version = '4.7.1'
-$productNameWithVersion = "Microsoft .NET Framework $version"
-$url = 'https://download.microsoft.com/download/9/E/6/9E63300C-0941-4B45-A0EC-0008F96DD480/NDP471-KB4033342-x86-x64-AllOS-ENU.exe'
-$checksum = '63DC850DF091F3F137B5D4392F47917F847F8926DC8AF1DA9BFBA6422E495805'
-$checksumType = 'sha256'
-
-if (Test-Installed -Release $release) {
-    Write-Host "$productNameWithVersion or later is already installed."
-    return
+﻿$version = '4.7.1'
+$arguments = @{
+    PackageName = 'dotnetfx'
+    Release = 461308
+    Version = $version
+    ProductNameWithVersion = "Microsoft .NET Framework $version"
+    Url = 'https://download.visualstudio.microsoft.com/download/pr/4312fa21-59b0-4451-9482-a1376f7f3ba4/9947fce13c11105b48cba170494e787f/ndp471-kb4033342-x86-x64-allos-enu.exe'
+    Checksum = 'DF6E700D37FF416E2E1D8463DEDEDDF76522CEAF5BB4CC3F197A7F2B9ECCC4AD'
+    ChecksumType = 'sha256'
 }
 
-$originalFileName = Split-Path -Leaf -Path ([uri]$url).LocalPath
-$downloadFilePath = Get-DefaultChocolateyLocalFilePath -OriginalFileName $originalFileName
-$downloadArguments = @{
-    packageName = $packageName
-    fileFullPath = $downloadFilePath
-    url = $url
-    checksum = $checksum
-    checksumType = $checksumType
-    url64 = $url
-    checksum64 = $checksum
-    checksumType64 = $checksumType
-}
-
-$filePath = Get-ChocolateyWebFile @downloadArguments
-
-$safeLogPath = Get-SafeLogPath
-$installerExeArguments = @{
-    packageName = $packageName
-    file = $downloadFilePath
-    silentArgs = ('/Quiet /NoRestart /Log "{0}\{1}_{2}_{3:yyyyMMddHHmmss}.log"' -f $safeLogPath, $packageName, $version, (Get-Date))
-    validExitCodes = @(
-        0, # success
-        3010 # success, restart required
-    )
-}
-
-Invoke-CommandWithTempPath -TempPath $safeLogPath -ScriptBlock { Install-ChocolateyInstallPackage @installerExeArguments }
-
-if ($Env:ChocolateyExitCode -eq '3010')
-{
-    Write-Warning "A restart is required to finalize $productNameWithVersion installation."
-}
-else
-{
-    if ($null -eq $Env:ChocolateyExitCode)
-    { 
-        Write-Host "A restart may be required to finalize $productNameWithVersion installation."
-    }
-}
+Install-DotNetFramework @arguments
