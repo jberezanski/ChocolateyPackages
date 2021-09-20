@@ -14,6 +14,7 @@ A System.Management.Automation.PSObject with the following properties:
 Path (System.String)
 Version (System.Version)
 EngineVersion (System.Version)
+Traits (System.String[])
 #>
     [CmdletBinding()]
     Param
@@ -98,14 +99,23 @@ EngineVersion (System.Version)
             {
                 Write-Warning ('Visual Studio Installer engine file not found: {0}' -f $engineDllPath)
             }
+
+            $traits = @()
+            if ($version -lt [version]'2.9')
+            {
+                # Before Visual Studio 2019 16.9 (VS Installer 2.9.*), the installer supported the --norestart switch for the special /uninstall command.
+                $traits += 'SelfUninstallNoRestart'
+            }
+
             $installerExePath = Join-Path -Path $candidateDirPath -ChildPath 'vs_installer.exe'
             $props = @{
                 Path = $installerExePath
                 Version = $version
                 EngineVersion = $engineVersion
+                Traits = ([string[]]$traits)
             }
             $obj = New-Object -TypeName PSObject -Property $props
-            Write-Verbose ('Visual Studio Installer version {0} (engine version {1}) is present ({2}).' -f $obj.Version, $obj.EngineVersion, $obj.Path)
+            Write-Verbose ('Visual Studio Installer version {0} (engine version {1}) (traits: {3}) is present ({2}).' -f $obj.Version, $obj.EngineVersion, $obj.Path, ($obj.Traits -join ' '))
             $health = $obj | Get-VisualStudioInstallerHealth -Version $version
             if (-not $health.IsHealthy)
             {

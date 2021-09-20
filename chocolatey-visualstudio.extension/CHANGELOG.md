@@ -1,6 +1,7 @@
 ﻿# CHANGELOG
 
 ## Version 1.10.0
+- Fixed uninstallation of modern versions of the Visual Studio Installer.
 - During an update operation, if the package author did not provide DesiredProductVersion, the version is automatically determined from the channel manifest. This lights up two features:
   - The update process is short-circuited if the installed product version is already DesiredProductVersion or higher.
   - After the update, the installed product version is checked to determine if the update actually happened. This makes it possible to detect a bug in the Visual Studio installer, which sometimes fails to download the channel manifest and thinks no update is needed.

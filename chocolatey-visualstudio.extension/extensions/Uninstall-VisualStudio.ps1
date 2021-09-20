@@ -58,6 +58,7 @@ Uninstall-ChocolateyPackage
 
         $uninstallerPath = $vsInstaller.Path
         $logFilePath = $null
+        $supportsNoRestart = $vsInstaller.Traits -contains 'SelfUninstallNoRestart'
     }
     else
     {
@@ -69,9 +70,10 @@ Uninstall-ChocolateyPackage
 
         $logFilePath = Join-Path $Env:TEMP "${PackageName}_uninstall.log"
         Write-Debug "Log file path: $logFilePath"
+        $supportsNoRestart = $true
     }
 
-    $silentArgs = Generate-UninstallArgumentsString -parameters $packageParameters -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer
+    $silentArgs = Generate-UninstallArgumentsString -parameters $packageParameters -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer -supportsNoRestart:$supportsNoRestart
 
     $arguments = @{
         packageName = $PackageName
