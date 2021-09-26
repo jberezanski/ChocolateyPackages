@@ -37,7 +37,7 @@ function Wait-VSInstallerProcesses
     # The initial process exits, leaving another instance of the VS installer performing the actual install in the background.
     # This happens despite passing '--wait'.
     $vsInstallerProcessNames = @('vs_bootstrapper', 'vs_setup_bootstrapper', 'vs_installer', 'vs_installershell', 'vs_installerservice', 'setup')
-    $vsInstallerProcessFilter = { $_.Name -ne 'setup' -or $_.Path -like '*\Microsoft Visual Studio\Installer\setup.exe' }
+    $vsInstallerProcessFilter = { $_.Name -ne 'setup' -or $_.Path -like '*\Microsoft Visual Studio\Installer*\setup.exe' }
     do
     {
         $vsInstallerProcesses = Get-Process -Name $vsInstallerProcessNames -ErrorAction SilentlyContinue | Where-Object { $null -ne $_ -and -not $_.HasExited } | Where-Object $vsInstallerProcessFilter
