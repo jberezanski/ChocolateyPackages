@@ -2,6 +2,7 @@
 
 ## Version 1.10.0
 
+- When checking if the Visual Studio Installer needs update, channels of other installed Visual Studio products are also used to determine the highest required installer version. This aligns with the native Visual Studio Installer behavior and prevents the Installer from exiting early to perform a self-update when, for example, installing or upgrading Visual Studio 2017 on a machine with Visual Studio 2019 installed ([GH-97](https://github.com/jberezanski/ChocolateyPackages/issues/97)).
 - Fixed uninstallation of modern versions of the Visual Studio Installer.
 - During an update operation, if the package author did not provide DesiredProductVersion, the version is automatically determined from the channel manifest. This lights up two features:
   - The update process is short-circuited if the installed product version is already DesiredProductVersion or higher.
