@@ -1,24 +1,26 @@
 ﻿# CHANGELOG
 
 ## Version 1.10.0
+
 - Fixed uninstallation of modern versions of the Visual Studio Installer.
 - During an update operation, if the package author did not provide DesiredProductVersion, the version is automatically determined from the channel manifest. This lights up two features:
   - The update process is short-circuited if the installed product version is already DesiredProductVersion or higher.
   - After the update, the installed product version is checked to determine if the update actually happened. This makes it possible to detect a bug in the Visual Studio installer, which sometimes fails to download the channel manifest and thinks no update is needed.
 - Fixed installed products detection being invoked twice by mistake.
-- Updated workaround for the bootstrapper ignoring --wait when updating the VS Installer to account for a new process used by the VS Installer in 16.9+ (GH-7, GH-97).
+- Updated workaround for the bootstrapper ignoring --wait when updating the VS Installer to account for a new process used by the VS Installer in 16.9+ ([GH-7](https://github.com/jberezanski/ChocolateyPackages/issues/7), [GH-97](https://github.com/jberezanski/ChocolateyPackages/issues/97)).
 - Install-VisualStudio, Add-VisualStudioWorkload/Component and Remove-VisualStudioProduct/Workload/Component now support Visual Studio 2022 (-VisualStudioYear 2022).
 
 ## Version 1.9.0
+
 - Added custom handling for '--installCatalogUri' to better support installations from layout without '--noWeb' ([GH-65](https://github.com/jberezanski/ChocolateyPackages/pull/65)).
 - New switch for Add-VisualStudioWorkload: -IncludeOptionalComponentsByDefault ([GH-92](https://github.com/jberezanski/ChocolateyPackages/pull/92)).
 - Fixed support for Visual Studio 2019 16.9 installer, which is no longer based on Electron.
 
 ## Version 1.8.1
 
-- The VSSetup PowerShell module, if present, is used to detect VS instances ((GH-9)[https://github.com/jberezanski/ChocolateyPackages/issues/9]). This protects against future failures due to changes in the (undocumented) VS instance info storage format. On PowerShell 5+ (also 3 and 4 with the PackageManagement Preview module installed) this module can be installed using `Install-Module -Name VSSetup`.
-- (On systems without VSSetup) Fixed detection of installed VS instances when package cache had been moved from the default location ((GH-49)[https://github.com/jberezanski/ChocolateyPackages/issues/49], thanks @bryan5989!).
-- Fixed clean install of VS 2019 16.1+ (which fails to install the VS installer via --quiet --update if it is not installed or is same version). Install-VisualStudioInstaller remains broken. ((GH-64)[https://github.com/jberezanski/ChocolateyPackages/issues/64])
+- The VSSetup PowerShell module, if present, is used to detect VS instances [(GH-9](https://github.com/jberezanski/ChocolateyPackages/issues/9)). This protects against future failures due to changes in the (undocumented) VS instance info storage format. On PowerShell 5+ (also 3 and 4 with the PackageManagement Preview module installed) this module can be installed using `Install-Module -Name VSSetup`.
+- (On systems without VSSetup) Fixed detection of installed VS instances when package cache had been moved from the default location [(GH-49](https://github.com/jberezanski/ChocolateyPackages/issues/49), thanks @bryan5989!).
+- Fixed clean install of VS 2019 16.1+ (which fails to install the VS installer via --quiet --update if it is not installed or is same version). Install-VisualStudioInstaller remains broken. [(GH-64](https://github.com/jberezanski/ChocolateyPackages/issues/64))
 
 ## Version 1.8.0
 
@@ -30,7 +32,7 @@
 
 ## Version 1.7.1
 
-- Works around an issue in the Visual Studio Installer (https://github.com/electron/electron/issues/12695, https://github.com/nodejs/node/issues/24360) by ensuring the NODE_OPTIONS environment variable is not passed to the Visual Studio Installer ([GH-56](https://github.com/jberezanski/ChocolateyPackages/pull/56)).
+- Works around an issue in the Visual Studio Installer ([electron#12695](https://github.com/electron/electron/issues/12695), [electron#24360](https://github.com/nodejs/node/issues/24360)) by ensuring the NODE_OPTIONS environment variable is not passed to the Visual Studio Installer ([GH-56](https://github.com/jberezanski/ChocolateyPackages/pull/56)).
 - Fixed offline installation from layout ([GH-51](https://github.com/jberezanski/ChocolateyPackages/issues/51)).
 - The workaround for undesired vs_Setup.exe behavior when updating the Visual Studio Installer is now only applied to affected vs_Setup.exe versions (15.6.*).
 
