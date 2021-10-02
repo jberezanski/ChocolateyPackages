@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2022-preview-workload-manageddesktop</id>
-    <version>1.0.0-preview1</version>
+    <version>1.0.1-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022-preview-workload-manageddesktop</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET Desktop Development workload for Visual Studio 2022 Preview</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/392d7c669d382c262b060375f917f14ba873d774/icons/vs2022preview.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f63edc3432e28149095ba47c7c38552141aa4faf/icons/vs2022preview.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
-    <licenseUrl>https://visualstudio.microsoft.com/license-terms/</licenseUrl>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2022-prerelease/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
     <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
@@ -66,14 +66,17 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2022 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes-preview)
 ##### Package
-1.0.0:
-- Initial package release.
+1.0.1:
+- Updated dependencies and metadata.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.10.0-preview2" />
-      <!-- <dependency id="vcredist140" version="14.16.27027.1" /> -->
-      <dependency id="netfx-4.7.2-devpack" version="4.7.2.20190225" />
-      <!-- <dependency id="KB2882822" version="1.0.3" /> -->
+      <dependency id="chocolatey-visualstudio.extension" version="1.10.0-preview5" />
+      <!-- <dependency id="vcredist140" version="14.30.30528" /> -->
+      <dependency id="netfx-4.7.2-devpack" version="4.7.2.20210903" />
+      <dependency id="dotnet-6.0-runtime" version="6.0.0-rc12145113" />
+      <dependency id="dotnet-6.0-desktopruntime" version="6.0.0-rc1214513" />
+      <dependency id="dotnet-6.0-aspnetruntime" version="6.0.0-rc12145215" />
+      <dependency id="dotnet-6.0-sdk" version="6.0.100-rc1214636" />
       <dependency id="visualstudio-installer" version="2.0.1" />
     </dependencies>
   </metadata>

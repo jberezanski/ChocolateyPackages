@@ -8,9 +8,9 @@
     <title>Visual Studio 2022 Test Agent Preview</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/392d7c669d382c262b060375f917f14ba873d774/icons/vs2022preview.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f63edc3432e28149095ba47c7c38552141aa4faf/icons/vs2022preview.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
-    <licenseUrl>https://visualstudio.microsoft.com/license-terms/mlt110718/</licenseUrl>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2022-prerelease/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
     <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
@@ -54,11 +54,11 @@ If control over reboots is required, it is advisable to install the dependencies
 17.0.0.40100-preview1:
 - Package metadata updated for Visual Studio 2022 version 17.0.0 Preview 4.1 (the native installer always installs the latest released Visual Studio 2022 Preview build).
 - Updated bootstrapper url.
+- Updated dependencies and metadata.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.10.0-preview2" />
-      <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
-      <dependency id="vcredist140" version="14.16.27027.1" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.10.0-preview5" />
+      <dependency id="vcredist140" version="14.29.30133" />
       <dependency id="dotnetfx" version="4.8.0" />
       <dependency id="visualstudio-installer" version="2.0.1" />
     </dependencies>
