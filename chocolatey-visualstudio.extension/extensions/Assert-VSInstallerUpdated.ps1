@@ -25,6 +25,7 @@ function Assert-VSInstallerUpdated
     # If there are other VS products installed (e.g. we are installing/updating VS 2017 and a 2019 product is installed),
     # the VS Installer will also check other channels for installer update requirement.
     $installedProductsUpdateableChannels = Get-WillowInstalledProducts `
+        | Where-Object { $null -ne $_ } `
         | ForEach-Object { New-VSChannelReference -ChannelId $_.channelId -ChannelUri $_.channelUri } `
         | Where-Object { -not [string]::IsNullOrEmpty($_.ChannelUri) <# may be empty to disable updates #> } `
         | Sort-Object -Property ChannelId, ChannelUri -Unique

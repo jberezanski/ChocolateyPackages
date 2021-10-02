@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>chocolatey-visualstudio.extension</id>
-    <version>1.10.0-preview4</version>
+    <version>1.10.0-preview5</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-visualstudio.extension</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Chocolatey Visual Studio servicing extensions</title>
@@ -18,6 +18,8 @@
     <summary>Helper functions useful for developing packages for installing and servicing Microsoft Visual Studio.</summary>
     <description>
 This package provides helper functions useful for developing packages for installing and servicing Microsoft Visual Studio.
+
+For best results, it is recommended to install the [VSSetup](https://www.powershellgallery.com/packages/VSSetup) PowerShell module before installing any Visual Studio packages.
     </description>
     <releaseNotes>
     [Change log](https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-visualstudio.extension/CHANGELOG.md)
