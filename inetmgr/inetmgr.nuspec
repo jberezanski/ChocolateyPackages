@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>inetmgr</id>
+    <version>1.2.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/inetmgr</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft IIS Manager for Remote Administration</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.iis.net/downloads/microsoft/iis-manager</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/07fd250715fa51089c58db1e3ff025b27b80958d/icons/inetmgr.png</iconUrl>
+    <licenseUrl>https://www.microsoft.com/en-us/servicesagreement</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/iis/manage/remote-administration/remote-administration-for-iis-manager</docsUrl>
+    <tags>microsoft iis web server remote mmc admin</tags>
+    <summary>IIS Manager for Remote Administration is an administration tool that provides end users and administrators with the ability to remotely manage IIS servers of version 7.0 and above.</summary>
+    <description>Internet Information Services (IIS) Manager for Remote Administration provides end users and administrators with the ability to securely manage remote IIS servers (version 7 and above) from Windows clients (XP and above). A Web server administrator can perform almost all IIS administrative tasks while site owners and developers that have been delegated administrative privileges can use IIS Manager for Remote Administration to make allowed changes to the remote Web server. IIS Manager for Remote offers the same user interface available on Windows Server to ensure a more consistent experience when managing and configuring the Web server.
+
+Features
+- Remotely manages IIS from Windows clients (XP and above)
+- Connects directly to a Web server, Web site, or Web application
+- Installs even when you don't have IIS on the local machine
+- Allows multiple simultaneous connections
+- Supports delegated administration to Web sites and Web applications so owners can connect to and manage their own site directly
+- Familiar and easy to use administration tool
+- Supports HTTP over SSL for more secure management
+- Automatically downloads features to the local IIS Manager for Remote Administration console to match features newly installed on the remote Web server
+
+Note: the local IIS Management Console needs to be enabled (using `choco install IIS-ManagementConsole -source WindowsFeatures`, `Enable-WindowsOptionalFeature -Online -FeatureName IIS-ManagementConsole` from PowerShell, "Control Panel->Programs->Turn Windows Features On or Off" or other means) before installing this package.
+</description>
+    <releaseNotes>
+1.2.0: Initial package release.
+    </releaseNotes>
+    <dependencies>
+    </dependencies>
+  </metadata>
+</package>
