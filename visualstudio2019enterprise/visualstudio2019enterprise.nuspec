@@ -54,7 +54,6 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 16.11.4.0:
 - Package metadata updated for Visual Studio 2019 version 16.11.4 (the native installer always installs the latest released Visual Studio 2019 build).
 - Updated bootstrapper url.
-- Updated dependency version.
 
 #### Available workload packages
 - [Azure development](https://chocolatey.org/packages/visualstudio2019-workload-azure)

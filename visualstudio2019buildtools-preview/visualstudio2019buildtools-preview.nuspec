@@ -60,7 +60,6 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 16.11.4.10000-preview1:
 - Package metadata updated for Visual Studio 2019 version 16.11.4 Preview 1.0 (the native installer always installs the latest released Visual Studio 2019 Preview build).
 - Updated bootstrapper url.
-- Updated dependency version.
     </releaseNotes>
 <!--
 #### Available workload packages
