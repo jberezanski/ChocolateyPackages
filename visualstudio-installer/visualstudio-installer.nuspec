@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio-installer</id>
-    <version>2.0.1</version>
+    <version>2.0.2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio-installer</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio Installer (remove only)</title>
@@ -26,10 +26,10 @@ This package does not install anything by itself.
 [Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)
 [Visual Studio 2017 release notes](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2017-relnotes)
 ##### Package
-2.0.1: Fixed uninstall script.
+2.0.2: Updated extension dependency.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.8.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
     </dependencies>
   </metadata>
 </package>

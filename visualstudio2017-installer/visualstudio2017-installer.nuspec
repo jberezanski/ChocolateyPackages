@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017-installer</id>
-    <version>2.0.1</version>
+    <version>2.0.2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017-installer</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Installer (remove only)</title>
@@ -23,10 +23,10 @@ Obsolete package, left for compatibility reasons. Visual Studio Installer uninst
 ##### Software
 [Visual Studio 2017 release notes](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2017-relnotes)
 ##### Package
-2.0.1: Updated dependency version.
+2.0.2: Updated dependency version.
     </releaseNotes>
     <dependencies>
-      <dependency id="visualstudio-installer" version="2.0.1" />
+      <dependency id="visualstudio-installer" version="2.0.2" />
     </dependencies>
   </metadata>
 </package>

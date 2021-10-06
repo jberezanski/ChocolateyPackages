@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2019-workload-nativecrossplat</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2019-workload-nativecrossplat</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Linux development with C++ workload for Visual Studio 2019</title>
@@ -66,12 +66,12 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2019 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)
 ##### Package
-1.0.1:
+1.0.2:
 - Updated dependency version.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.9.0" />
-      <dependency id="visualstudio-installer" version="2.0.1" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
+      <dependency id="visualstudio-installer" version="2.0.2" />
     </dependencies>
   </metadata>
 </package>
