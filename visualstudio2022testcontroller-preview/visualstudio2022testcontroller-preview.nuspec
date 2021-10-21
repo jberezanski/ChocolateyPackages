@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2022testcontroller-preview</id>
@@ -55,7 +55,6 @@ If control over reboots is required, it is advisable to install the dependencies
 17.0.0.50000-preview1:
 - Package metadata updated for Visual Studio 2022 version 17.0.0 Preview 5.0 (the native installer always installs the latest released Visual Studio 2022 Preview build).
 - Updated bootstrapper url.
-- Updated dependencies and metadata.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
