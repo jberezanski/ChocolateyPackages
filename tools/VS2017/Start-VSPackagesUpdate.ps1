@@ -20,6 +20,9 @@ git commit -am "visualstudio2019*: update to $vsv"
 & "$root\Update-VisualStudio2017Packages.ps1" -VisualStudioYear 2019 -Preview
 $vsv = gc .\visualstudio2019buildtools-preview\visualstudio2019buildtools-preview.nuspec | sls 'metadata updated for Visual Studio \d+ version ([^(]+)\s+\(' | % { $_.Matches[0].Groups[1].Value }
 git commit -am "visualstudio2019*-preview: update to $vsv"
+& "$root\Update-VisualStudio2017Packages.ps1" -VisualStudioYear 2022
+$vsv = gc .\visualstudio2022buildtools\visualstudio2022buildtools.nuspec | sls 'metadata updated for Visual Studio \d+ version ([^(]+)\s+\(' | % { $_.Matches[0].Groups[1].Value }
+git commit -am "visualstudio2022*: update to $vsv"
 & "$root\Update-VisualStudio2017Packages.ps1" -VisualStudioYear 2022 -Preview
 $vsv = gc .\visualstudio2022buildtools-preview\visualstudio2022buildtools-preview.nuspec | sls 'metadata updated for Visual Studio \d+ version ([^(]+)\s+\(' | % { $_.Matches[0].Groups[1].Value }
 git commit -am "visualstudio2022*-preview: update to $vsv"
