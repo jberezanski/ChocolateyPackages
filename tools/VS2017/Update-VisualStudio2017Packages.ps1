@@ -167,7 +167,7 @@ else
     }
     else
     {
-        if ($productReleaseNameSuffix -match '^RC(\.(?<rcn>\d+))?(\s+SVC(?<svcn>\d+))?')
+        if ($productReleaseNameSuffix -match '^RC(\.?(?<rcn>\d+))?(\s+SVC(?<svcn>\d+))?')
         {
             $rcn = [int]$matches['rcn']
             $svcn = [int]$matches['svcn']
