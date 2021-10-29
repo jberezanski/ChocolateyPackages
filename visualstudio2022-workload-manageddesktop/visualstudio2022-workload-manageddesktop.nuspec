@@ -1,32 +1,32 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>visualstudio2022-preview-workload-manageddesktop</id>
-    <version>1.0.2-preview1</version>
-    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022-preview-workload-manageddesktop</packageSourceUrl>
+    <id>visualstudio2022-workload-manageddesktop</id>
+    <version>1.0.0-rc3</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022-workload-manageddesktop</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>.NET Desktop Development workload for Visual Studio 2022 Preview</title>
+    <title>.NET Desktop Development workload for Visual Studio 2022</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f63edc3432e28149095ba47c7c38552141aa4faf/icons/vs2022preview.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/7e32702d4d99f08b5b73ae9c6622b0be61a2066e/icons/vs2022.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
     <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2022-prerelease/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
     <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs vs17 2022 ide workload .net managed desktop wpf windows-forms preview admin</tags>
+    <tags>microsoft visual studio visualstudio vs vs17 2022 ide workload .net managed desktop wpf windows-forms admin</tags>
     <summary>Build WPF, Windows Forms and console applications using the .NET Framework.</summary>
     <description>
 ### Overview
 
-This package adds the .NET Desktop Development workload to an existing installation of Visual Studio 2022 Preview (Enterprise, Professional or Community).
+This package adds the .NET Desktop Development workload to an existing installation of Visual Studio 2022 (Enterprise, Professional or Community).
 
 The lists of components included in this workload in respective Visual Studio 2022 products are shown here:
 - [Enterprise](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-enterprise?view=vs-2022#net-desktop-development)
 - [Professional](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-professional?view=vs-2022#net-desktop-development)
 - [Community](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-community?view=vs-2022#net-desktop-development)
 
-Visual Studio 2022 must be installed first, for example using Chocolatey packages: [visualstudio2022enterprise-preview](https://chocolatey.org/packages/visualstudio2022enterprise-preview), [visualstudio2022professional-preview](https://chocolatey.org/packages/visualstudio2022professional-preview), [visualstudio2022community-preview](https://chocolatey.org/packages/visualstudio2022community-preview).
+Visual Studio 2022 must be installed first, for example using Chocolatey packages: [visualstudio2022enterprise](https://chocolatey.org/packages/visualstudio2022enterprise), [visualstudio2022professional](https://chocolatey.org/packages/visualstudio2022professional), [visualstudio2022community](https://chocolatey.org/packages/visualstudio2022community).
 
 ### Customizations
 
@@ -46,28 +46,28 @@ In order to act on one specific product when several are installed, the product 
 or (both are needed):
 
 - `--productId` - the identifier of the product, for example "Microsoft.VisualStudio.Product.Enterprise"
-- `--channelId` - the release channel, should be "VisualStudio.17.Preview"
+- `--channelId` - the release channel, should be "VisualStudio.17.Release"
 
 Example 1. Installing the workload on all products, including recommended, but not optional components:
 
-    choco install visualstudio2022-preview-workload-manageddesktop
+    choco install visualstudio2022-workload-manageddesktop
 
 Example 2. Installing the workload on one specific product, including all recommended and optional components:
 
-    choco install visualstudio2022-preview-workload-manageddesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.17.Preview --includeOptional"
+    choco install visualstudio2022-workload-manageddesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.17.Release --includeOptional"
 
 Example 3. Installing the workload on all products, including only required components:
 
-    choco install visualstudio2022-preview-workload-manageddesktop --package-parameters "--no-includeRecommended"
+    choco install visualstudio2022-workload-manageddesktop --package-parameters "--no-includeRecommended"
 
 [More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </description>
     <releaseNotes>
 ##### Software
-[Visual Studio 2022 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes-preview)
+[Visual Studio 2022 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes)
 ##### Package
-1.0.2:
-- Updated dependencies and metadata.
+1.0.0:
+- Initial package release.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
