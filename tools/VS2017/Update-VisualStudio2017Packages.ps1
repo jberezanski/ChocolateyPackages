@@ -122,7 +122,20 @@ function global:au_GetLatest
 
     $version = $script:visualStudioProductVersion
     $displayVersion = $script:visualStudioProductDisplayVersion
-    $packageVersion = "${version}${script:packageVersionSuffix}"
+
+    # Packages which always install the latest VS version get major version = 100 + VS major version,
+    # to leave the VS major version free for use by packages which install the exact VS version.
+    # Since this is a rather major change of the versioning philosophy (pun not intended),
+    # it is done only for VS 2022+ for now.
+    if ($script:vsMajorVersion -ge 17)
+    {
+        $packageVersionThreeParts = [version]::new(100 + $script:visualStudioProductVersion.Major, $script:visualStudioProductVersion.Minor, $script:visualStudioProductVersion.Build)
+        $packageVersion = "${packageVersionThreeParts}${script:packageVersionSuffix}"
+    }
+    else
+    {
+        $packageVersion = "${version}${script:packageVersionSuffix}"
+    }
 
     return @{ Version = $packageVersion; Product = $product; ProductVersion = $version; ProductDisplayVersion = $displayVersion; BootstrapperUrl = $url; BootstrapperChecksum = '' }
 }
