@@ -97,7 +97,7 @@ function global:au_BeforeUpdate() {
 function global:au_AfterUpdate() {
     # fix BOM stripped by AU
     $c = Get-Content -Path "$($Latest.PackageName).nuspec" -Encoding UTF8
-    $c | Set-Content -Path "$($Latest.PackageName).nuspec" -Encoding UTF8
+    $c | Set-Content -Path "$($Latest.PackageName).nuspec" -Encoding (@{ Core = 'utf8BOM'; Desktop = 'UTF8' }[$PSVersionTable.PSEdition])
 }
 
 function global:au_GetLatest
