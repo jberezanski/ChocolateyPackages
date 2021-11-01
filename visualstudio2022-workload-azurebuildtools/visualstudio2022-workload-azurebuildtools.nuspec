@@ -1,0 +1,65 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2022-workload-azurebuildtools</id>
+    <version>1.0.0-rc3</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022-workload-azurebuildtools</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Azure development build tools workload for Visual Studio 2022 Build Tools</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/7e32702d4d99f08b5b73ae9c6622b0be61a2066e/icons/vs2022.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2022-prerelease/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs vs17 2022 workload azure build tools msbuild admin</tags>
+    <summary>MSBuild tasks and targets for building Azure applications.</summary>
+    <description>
+### Overview
+
+This package adds the Azure development build tools workload to an existing installation of Visual Studio 2022 Build Tools.
+
+The list of components included in this workload is shown [here](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2022#azure-development-build-tools).
+
+Visual Studio 2022 Build Tools must be installed first, for example using the Chocolatey package [visualstudio2022buildtools](https://chocolatey.org/packages/visualstudio2022buildtools).
+
+### Customizations
+
+The package passes all package parameters to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2022). The package passes `--norestart --includeRecommended` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+
+By default, the package installs components required by and recommended for the workload. Package parameters can be used to adjust this behavior:
+
+- `--no-includeRecommended` - Does not include the recommended components.
+- `--includeOptional` - Includes the optional components.
+
+Example 1. Installing the workload, including recommended, but not optional components:
+
+    choco install visualstudio2022-workload-azurebuildtools --package-parameters "--includeRecommended"
+
+Example 2. Installing the workload, including all recommended and optional components:
+
+    choco install visualstudio2022-workload-azurebuildtools --package-parameters "--includeOptional"
+
+Example 3. Installing the workload, including only required components:
+
+    choco install visualstudio2022-workload-azurebuildtools --package-parameters "--no-includeRecommended"
+
+[More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2022 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes)
+##### Package
+1.0.0:
+- Initial package release.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
+      <dependency id="visualstudio-installer" version="2.0.2" />
+      <dependency id="visualstudio2022buildtools" version="117.0.0.0-rc30000" />
+      <!-- <dependency id="netfx-4.7.2-devpack" version="4.7.2.20220225" /> -->
+    </dependencies>
+  </metadata>
+</package>

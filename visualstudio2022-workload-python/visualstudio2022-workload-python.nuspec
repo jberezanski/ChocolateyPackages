@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>visualstudio2022-workload-manageddesktop</id>
-    <version>1.0.1-rc3</version>
-    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022-workload-manageddesktop</packageSourceUrl>
+    <id>visualstudio2022-workload-python</id>
+    <version>1.0.0-rc3</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022-workload-python</packageSourceUrl>
     <owners>jberezanski</owners>
-    <title>.NET Desktop Development workload for Visual Studio 2022</title>
+    <title>Python development workload for Visual Studio 2022</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/7e32702d4d99f08b5b73ae9c6622b0be61a2066e/icons/vs2022.png</iconUrl>
@@ -14,17 +14,17 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
     <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
-    <tags>microsoft visual studio visualstudio vs vs17 2022 ide workload .net managed desktop wpf windows-forms admin</tags>
-    <summary>Build WPF, Windows Forms and console applications using the .NET Framework.</summary>
+    <tags>microsoft visual studio visualstudio vs vs17 2022 workload ide python admin</tags>
+    <summary>Editing, debugging, interactive development and source control for Python.</summary>
     <description>
 ### Overview
 
-This package adds the .NET Desktop Development workload to an existing installation of Visual Studio 2022 (Enterprise, Professional or Community).
+This package adds the Python development workload to an existing installation of Visual Studio 2022 (Enterprise, Professional or Community).
 
 The lists of components included in this workload in respective Visual Studio 2022 products are shown here:
-- [Enterprise](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-enterprise?view=vs-2022#net-desktop-development)
-- [Professional](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-professional?view=vs-2022#net-desktop-development)
-- [Community](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-community?view=vs-2022#net-desktop-development)
+- [Enterprise](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-enterprise?view=vs-2022#python-development)
+- [Professional](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-professional?view=vs-2022#python-development)
+- [Community](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-community?view=vs-2022#python-development)
 
 Visual Studio 2022 must be installed first, for example using Chocolatey packages: [visualstudio2022enterprise](https://chocolatey.org/packages/visualstudio2022enterprise), [visualstudio2022professional](https://chocolatey.org/packages/visualstudio2022professional), [visualstudio2022community](https://chocolatey.org/packages/visualstudio2022community).
 
@@ -50,15 +50,15 @@ or (both are needed):
 
 Example 1. Installing the workload on all products, including recommended, but not optional components:
 
-    choco install visualstudio2022-workload-manageddesktop
+    choco install visualstudio2022-workload-python
 
 Example 2. Installing the workload on one specific product, including all recommended and optional components:
 
-    choco install visualstudio2022-workload-manageddesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.17.Release --includeOptional"
+    choco install visualstudio2022-workload-python --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.17.Release --includeOptional"
 
 Example 3. Installing the workload on all products, including only required components:
 
-    choco install visualstudio2022-workload-manageddesktop --package-parameters "--no-includeRecommended"
+    choco install visualstudio2022-workload-python --package-parameters "--no-includeRecommended"
 
 [More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
     </description>
@@ -66,18 +66,14 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2022 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes)
 ##### Package
-1.0.1:
-- Updated dependencies.
+1.0.0:
+- Initial package release.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
       <dependency id="visualstudio-installer" version="2.0.2" />
       <dependency id="vcredist140" version="14.30.30704-prerelease" />
-      <dependency id="netfx-4.7.2-devpack" version="4.7.2.20210903" />
-      <dependency id="dotnet-6.0-runtime" version="6.0.0-rc2214805" />
-      <dependency id="dotnet-6.0-desktopruntime" version="6.0.0-rc2215016" />
-      <dependency id="dotnet-6.0-aspnetruntime" version="6.0.0-rc22148010" />
-      <dependency id="dotnet-6.0-sdk" version="6.0.100-rc22150557" />
+      <!-- <dependency id="KB2882822" version="1.0.3" /> -->
     </dependencies>
   </metadata>
 </package>
