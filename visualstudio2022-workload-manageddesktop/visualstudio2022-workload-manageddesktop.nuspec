@@ -74,10 +74,10 @@ Example 3. Installing the workload on all products, including only required comp
       <dependency id="visualstudio-installer" version="2.0.2" />
       <dependency id="vcredist140" version="14.30.30704" />
       <dependency id="netfx-4.7.2-devpack" version="4.7.2.20210903" />
-      <!-- <dependency id="dotnet-6.0-runtime" version="6.0.0-rc2214805" />
-      <dependency id="dotnet-6.0-desktopruntime" version="6.0.0-rc2215016" />
-      <dependency id="dotnet-6.0-aspnetruntime" version="6.0.0-rc22148010" />
-      <dependency id="dotnet-6.0-sdk" version="6.0.100-rc22150557" /> -->
+      <dependency id="dotnet-6.0-runtime" version="6.0.0" />
+      <dependency id="dotnet-6.0-desktopruntime" version="6.0.0" />
+      <dependency id="dotnet-6.0-aspnetruntime" version="6.0.0" />
+      <dependency id="dotnet-6.0-sdk" version="6.0.100" />
     </dependencies>
   </metadata>
 </package>
