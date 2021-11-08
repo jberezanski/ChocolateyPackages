@@ -56,19 +56,14 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - Updated bootstrapper url.
 
 #### Available workload packages
-- [.NET desktop development](https://chocolatey.org/packages/visualstudio2022-workload-manageddesktop)
-    </releaseNotes>
-<!--
-- Bootstrapper url not updated to avoid a bug in the latest bootstrapper.
 - [Azure development](https://chocolatey.org/packages/visualstudio2022-workload-azure)
 - [Data storage and processing](https://chocolatey.org/packages/visualstudio2022-workload-data)
-- [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2022-workload-datascience)
+- [.NET desktop development](https://chocolatey.org/packages/visualstudio2022-workload-manageddesktop)
 - [Game development with Unity](https://chocolatey.org/packages/visualstudio2022-workload-managedgame)
 - [Linux development with C++](https://chocolatey.org/packages/visualstudio2022-workload-nativecrossplat)
 - [Desktop development with C++](https://chocolatey.org/packages/visualstudio2022-workload-nativedesktop)
 - [Game development with C++](https://chocolatey.org/packages/visualstudio2022-workload-nativegame)
 - [Mobile development with C++](https://chocolatey.org/packages/visualstudio2022-workload-nativemobile)
-- [.NET Core cross-platform development](https://chocolatey.org/packages/visualstudio2022-workload-netcoretools)
 - [Mobile development with .NET](https://chocolatey.org/packages/visualstudio2022-workload-netcrossplat)
 - [ASP.NET and web development](https://chocolatey.org/packages/visualstudio2022-workload-netweb)
 - [Node.js development](https://chocolatey.org/packages/visualstudio2022-workload-node)
@@ -76,7 +71,7 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - [Python development](https://chocolatey.org/packages/visualstudio2022-workload-python)
 - [Universal Windows Platform development](https://chocolatey.org/packages/visualstudio2022-workload-universal)
 - [Visual Studio extension development](https://chocolatey.org/packages/visualstudio2022-workload-visualstudioextension)
--->
+    </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
       <dependency id="dotnetfx" version="4.8.0" />

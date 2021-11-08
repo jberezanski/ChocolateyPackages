@@ -67,13 +67,11 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 <!--
 - [Azure development](https://chocolatey.org/packages/visualstudio2022-preview-workload-azure)
 - [Data storage and processing](https://chocolatey.org/packages/visualstudio2022-preview-workload-data)
-- [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2022-preview-workload-datascience)
 - [Game development with Unity](https://chocolatey.org/packages/visualstudio2022-preview-workload-managedgame)
 - [Linux development with C++](https://chocolatey.org/packages/visualstudio2022-preview-workload-nativecrossplat)
 - [Desktop development with C++](https://chocolatey.org/packages/visualstudio2022-preview-workload-nativedesktop)
 - [Game development with C++](https://chocolatey.org/packages/visualstudio2022-preview-workload-nativegame)
 - [Mobile development with C++](https://chocolatey.org/packages/visualstudio2022-preview-workload-nativemobile)
-- [.NET Core cross-platform development](https://chocolatey.org/packages/visualstudio2022-preview-workload-netcoretools)
 - [Mobile development with .NET](https://chocolatey.org/packages/visualstudio2022-preview-workload-netcrossplat)
 - [ASP.NET and web development](https://chocolatey.org/packages/visualstudio2022-preview-workload-netweb)
 - [Node.js development](https://chocolatey.org/packages/visualstudio2022-preview-workload-node)

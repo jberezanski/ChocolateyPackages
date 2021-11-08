@@ -66,7 +66,6 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - [Azure development build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-azurebuildtools)
 - [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-databuildtools)
 - [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-manageddesktopbuildtools)
-- [.NET Core build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-netcorebuildtools)
 - [Node.js build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-nodebuildtools)
 - [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-officebuildtools)
 - [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2022-preview-workload-universalbuildtools)

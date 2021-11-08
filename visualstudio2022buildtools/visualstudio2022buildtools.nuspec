@@ -54,13 +54,11 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 117.0.0.0:
 - Package metadata updated for Visual Studio 2022 version 17.0.0 (the native installer always installs the latest released Visual Studio 2022 build).
 - Updated bootstrapper url.
-    </releaseNotes>
-<!--
+
 #### Available workload packages
 - [Azure development build tools](https://chocolatey.org/packages/visualstudio2022-workload-azurebuildtools)
 - [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2022-workload-databuildtools)
 - [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2022-workload-manageddesktopbuildtools)
-- [.NET Core build tools](https://chocolatey.org/packages/visualstudio2022-workload-netcorebuildtools)
 - [Node.js build tools](https://chocolatey.org/packages/visualstudio2022-workload-nodebuildtools)
 - [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2022-workload-officebuildtools)
 - [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2022-workload-universalbuildtools)
@@ -68,7 +66,7 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2022-workload-visualstudioextensionbuildtools)
 - [Web development build tools](https://chocolatey.org/packages/visualstudio2022-workload-webbuildtools)
 - [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2022-workload-xamarinbuildtools)
--->
+    </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
       <dependency id="dotnetfx" version="4.8.0" />
