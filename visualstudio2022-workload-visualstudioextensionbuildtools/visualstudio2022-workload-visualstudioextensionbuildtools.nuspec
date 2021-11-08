@@ -58,7 +58,7 @@ Example 3. Installing the workload, including only required components:
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
       <dependency id="visualstudio-installer" version="2.0.2" />
-      <dependency id="visualstudio2022buildtools" version="117.0.0.0" />
+      <dependency id="visualstudio2022buildtools" version="17.0.0.0" />
       <!-- <dependency id="netfx-4.7.2-devpack" version="4.7.2.20220225" />
       <dependency id="dotnet4.6-targetpack" version="4.6.00081.20150925" /> -->
     </dependencies>
