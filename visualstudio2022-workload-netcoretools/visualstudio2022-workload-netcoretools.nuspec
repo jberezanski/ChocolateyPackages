@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2022-workload-netcoretools</id>
-    <version>1.0.0-rc3</version>
+    <version>1.0.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022-workload-netcoretools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>.NET Core cross-platform development workload for Visual Studio 2022</title>
@@ -72,7 +72,7 @@ Example 3. Installing the workload on all products, including only required comp
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
       <dependency id="visualstudio-installer" version="2.0.2" />
-      <dependency id="vcredist140" version="14.30.30704-prerelease" />
+      <dependency id="vcredist140" version="14.30.30704" />
       <!-- <dependency id="vcredist2013" version="12.0.30501.20150616" /> -->
       <!-- <dependency id="dotnet-5.0-runtime" version="5.0.0" />
       <dependency id="dotnet-5.0-desktopruntime" version="5.0.0" />

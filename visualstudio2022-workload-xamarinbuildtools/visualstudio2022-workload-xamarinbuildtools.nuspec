@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2022-workload-xamarinbuildtools</id>
-    <version>1.0.0-rc3</version>
+    <version>1.0.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022-workload-xamarinbuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Mobile Development with .NET build tools workload for Visual Studio 2022 Build Tools</title>
@@ -58,7 +58,7 @@ Example 3. Installing the workload, including only required components:
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
       <dependency id="visualstudio-installer" version="2.0.2" />
-      <dependency id="visualstudio2022buildtools" version="117.0.0.0-rc30000" />
+      <dependency id="visualstudio2022buildtools" version="117.0.0.0" />
       <!-- <dependency id="netfx-4.6.1-devpack" version="4.6.01055.00" /> -->
     </dependencies>
   </metadata>
