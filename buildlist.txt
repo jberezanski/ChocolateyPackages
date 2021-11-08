@@ -143,7 +143,6 @@ visualstudio2022-preview-workload-azure\visualstudio2022-preview-workload-azure.
 visualstudio2022-preview-workload-azurebuildtools\visualstudio2022-preview-workload-azurebuildtools.nuspec
 visualstudio2022-preview-workload-data\visualstudio2022-preview-workload-data.nuspec
 visualstudio2022-preview-workload-databuildtools\visualstudio2022-preview-workload-databuildtools.nuspec
-visualstudio2022-preview-workload-datascience\visualstudio2022-preview-workload-datascience.nuspec
 visualstudio2022-preview-workload-manageddesktop\visualstudio2022-preview-workload-manageddesktop.nuspec
 visualstudio2022-preview-workload-manageddesktopbuildtools\visualstudio2022-preview-workload-manageddesktopbuildtools.nuspec
 visualstudio2022-preview-workload-managedgame\visualstudio2022-preview-workload-managedgame.nuspec
@@ -153,8 +152,6 @@ visualstudio2022-preview-workload-nativecrossplat\visualstudio2022-preview-workl
 visualstudio2022-preview-workload-nativedesktop\visualstudio2022-preview-workload-nativedesktop.nuspec
 visualstudio2022-preview-workload-nativegame\visualstudio2022-preview-workload-nativegame.nuspec
 visualstudio2022-preview-workload-nativemobile\visualstudio2022-preview-workload-nativemobile.nuspec
-visualstudio2022-preview-workload-netcoretools\visualstudio2022-preview-workload-netcoretools.nuspec
-visualstudio2022-preview-workload-netcorebuildtools\visualstudio2022-preview-workload-netcorebuildtools.nuspec
 visualstudio2022-preview-workload-netcrossplat\visualstudio2022-preview-workload-netcrossplat.nuspec
 visualstudio2022-preview-workload-netweb\visualstudio2022-preview-workload-netweb.nuspec
 visualstudio2022-preview-workload-node\visualstudio2022-preview-workload-node.nuspec
@@ -173,7 +170,6 @@ visualstudio2022-workload-azure\visualstudio2022-workload-azure.nuspec
 visualstudio2022-workload-azurebuildtools\visualstudio2022-workload-azurebuildtools.nuspec
 visualstudio2022-workload-data\visualstudio2022-workload-data.nuspec
 visualstudio2022-workload-databuildtools\visualstudio2022-workload-databuildtools.nuspec
-visualstudio2022-workload-datascience\visualstudio2022-workload-datascience.nuspec
 visualstudio2022-workload-manageddesktop\visualstudio2022-workload-manageddesktop.nuspec
 visualstudio2022-workload-manageddesktopbuildtools\visualstudio2022-workload-manageddesktopbuildtools.nuspec
 visualstudio2022-workload-managedgame\visualstudio2022-workload-managedgame.nuspec
@@ -183,8 +179,6 @@ visualstudio2022-workload-nativecrossplat\visualstudio2022-workload-nativecrossp
 visualstudio2022-workload-nativedesktop\visualstudio2022-workload-nativedesktop.nuspec
 visualstudio2022-workload-nativegame\visualstudio2022-workload-nativegame.nuspec
 visualstudio2022-workload-nativemobile\visualstudio2022-workload-nativemobile.nuspec
-visualstudio2022-workload-netcoretools\visualstudio2022-workload-netcoretools.nuspec
-visualstudio2022-workload-netcorebuildtools\visualstudio2022-workload-netcorebuildtools.nuspec
 visualstudio2022-workload-netcrossplat\visualstudio2022-workload-netcrossplat.nuspec
 visualstudio2022-workload-netweb\visualstudio2022-workload-netweb.nuspec
 visualstudio2022-workload-node\visualstudio2022-workload-node.nuspec
