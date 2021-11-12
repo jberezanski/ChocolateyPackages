@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2017community' `
     -ApplicationName 'Microsoft Visual Studio Community 2017' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/8807d71a-11f0-4c53-85c1-3f884f4ab74c/c9a7bff557ef07fbefbe25d54ffb1da1d32cb6381cc7bfa2d3195f2722a35cf8/vs_Community.exe' `
-    -Checksum 'C9A7BFF557EF07FBEFBE25D54FFB1DA1D32CB6381CC7BFA2D3195F2722A35CF8' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/0e24e0bf-6d05-4ce0-915f-b2dd398a2e2c/d8eb8fa6ac2b124b52fc540472747bfc65e60ae318fb4f6a2bf3900f4151abd1/vs_Community.exe' `
+    -Checksum 'D8EB8FA6AC2B124B52FC540472747BFC65E60AE318FB4F6A2BF3900F4151ABD1' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Community' `
