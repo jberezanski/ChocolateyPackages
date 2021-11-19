@@ -54,10 +54,12 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 117.0.1.0:
 - Package metadata updated for Visual Studio 2022 version 17.0.1 (the native installer always installs the latest released Visual Studio 2022 build).
 - Updated bootstrapper url.
+- Added missing workload link.
 
 #### Available workload packages
 - [Azure development](https://chocolatey.org/packages/visualstudio2022-workload-azure)
 - [Data storage and processing](https://chocolatey.org/packages/visualstudio2022-workload-data)
+- [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2022-workload-datascience)
 - [.NET desktop development](https://chocolatey.org/packages/visualstudio2022-workload-manageddesktop)
 - [Game development with Unity](https://chocolatey.org/packages/visualstudio2022-workload-managedgame)
 - [Linux development with C++](https://chocolatey.org/packages/visualstudio2022-workload-nativecrossplat)

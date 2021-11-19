@@ -68,6 +68,7 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - Bootstrapper url not updated to avoid a bug in the latest bootstrapper.
 - [Azure development](https://chocolatey.org/packages/visualstudio2022-preview-workload-azure)
 - [Data storage and processing](https://chocolatey.org/packages/visualstudio2022-preview-workload-data)
+- [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2022-preview-workload-datascience)
 - [Game development with Unity](https://chocolatey.org/packages/visualstudio2022-preview-workload-managedgame)
 - [Linux development with C++](https://chocolatey.org/packages/visualstudio2022-preview-workload-nativecrossplat)
 - [Desktop development with C++](https://chocolatey.org/packages/visualstudio2022-preview-workload-nativedesktop)
