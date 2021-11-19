@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2022-workload-datascience</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022-workload-datascience</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Data science and analytical applications workload for Visual Studio 2022</title>
@@ -66,8 +66,8 @@ Example 3. Installing the workload on all products, including only required comp
 ##### Software
 [Visual Studio 2022 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes)
 ##### Package
-1.0.0:
-- Initial package release.
+1.0.1:
+- Incremented version, because the workload was not present in VS 17.0.0 and version 1.0.0 was rejected in moderation.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
