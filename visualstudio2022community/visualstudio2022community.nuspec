@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2022community</id>
-    <version>117.0.1.0</version>
+    <version>117.0.2.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022community</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2022 Community</title>
@@ -51,8 +51,8 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 ##### Software
 [Visual Studio 2022 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes)
 ##### Package
-117.0.1.0:
-- Package metadata updated for Visual Studio 2022 version 17.0.1 (the native installer always installs the latest released Visual Studio 2022 build).
+117.0.2.0:
+- Package metadata updated for Visual Studio 2022 version 17.0.2 (the native installer always installs the latest released Visual Studio 2022 build).
 - Updated bootstrapper url.
 - Added missing workload link.
 
