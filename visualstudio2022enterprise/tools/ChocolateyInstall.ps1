@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2022enterprise' `
     -ApplicationName 'Microsoft Visual Studio Enterprise 2022' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/a53da67f-8d8a-448c-b211-d234d17e6398/39919edf18cf16e1db38032aec636177c948a61a4f5ec8e84443335eb4b21194/vs_Enterprise.exe' <# https://aka.ms/vs/17/release/vs_enterprise.exe #> `
-    -Checksum '39919EDF18CF16E1DB38032AEC636177C948A61A4F5EC8E84443335EB4B21194' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/ab119488-4f37-455b-a5de-86064bd15c4e/618b2ad1d0d4d429dec491ee99a81f44b6cd69b2e3a6c991a529874f3c5ecf4e/vs_Enterprise.exe' <# https://aka.ms/vs/17/release/vs_enterprise.exe #> `
+    -Checksum '618B2AD1D0D4D429DEC491EE99A81F44B6CD69B2E3A6C991A529874F3C5ECF4E' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Enterprise' `
