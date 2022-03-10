@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2017buildtools' `
     -ApplicationName 'Microsoft Visual Studio Build Tools 2017' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/3aefe926-a5a7-49fc-a672-1d8424a9dd1e/85f800722c4aa0e0b6b22f89127aece398841bd2782cff7d40f1e3165138989d/vs_BuildTools.exe' `
-    -Checksum '85F800722C4AA0E0B6B22F89127AECE398841BD2782CFF7D40F1E3165138989D' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/4dfffe3f-2a7e-4dea-922b-62d4beca5e36/e10c2bfb0e7b0358c24bd0df951f3d81897f309a0642a199b93f248db303263c/vs_BuildTools.exe' `
+    -Checksum 'E10C2BFB0E7B0358C24BD0DF951F3D81897F309A0642A199B93F248DB303263C' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'BuildTools' `
