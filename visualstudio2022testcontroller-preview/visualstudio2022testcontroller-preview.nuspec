@@ -8,7 +8,7 @@
     <title>Visual Studio 2022 Load Test Controller Preview</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f63edc3432e28149095ba47c7c38552141aa4faf/icons/vs2022preview.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/f63edc3432e28149095ba47c7c38552141aa4faf/icons/vs2022preview.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
     <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2022-prerelease/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

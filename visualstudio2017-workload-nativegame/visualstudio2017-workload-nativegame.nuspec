@@ -8,7 +8,7 @@
     <title>Game development with C++ workload for Visual Studio 2017</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
     <licenseUrl>https://visualstudio.microsoft.com/license-terms/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

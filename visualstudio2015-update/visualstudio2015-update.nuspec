@@ -8,7 +8,7 @@
         <title>Visual Studio 2015 Update (latest)</title>
         <authors>Microsoft</authors>
         <projectUrl>https://www.visualstudio.com/en-us/news/releasenotes/vs2015-update3-vs</projectUrl>
-        <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs2015.png</iconUrl>
+        <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/6f82ff7ba8313d63997ffa5fbd82495dedf201bf/icons/vs2015.png</iconUrl>
         <licenseUrl>https://www.microsoft.com/en-us/download/details.aspx?id=13350</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <summary>This package installs the latest released update for Visual Studio 2015.</summary>

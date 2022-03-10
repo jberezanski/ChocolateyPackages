@@ -9,7 +9,7 @@
     <title>NuGet Package Manager for Visual Studio 2013</title>
     <authors>Microsoft</authors>
     <projectUrl>https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManagerforVisualStudio2013</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/1ef19971a8402c09220eba2effc971712270a5ef/icons/NugetPackageManagerForVisualStudio2013.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/1ef19971a8402c09220eba2effc971712270a5ef/icons/NugetPackageManagerForVisualStudio2013.png</iconUrl>
     <licenseUrl>https://marketplace.visualstudio.com/items/NuGetTeam.NuGetPackageManagerforVisualStudio2013/license</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/NuGet/Home</projectSourceUrl>

@@ -9,7 +9,7 @@
     <title>mongoclient</title>
     <authors>R. Sercan Özdemir</authors>
     <projectUrl>http://www.mongoclient.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/rsercano/mongoclient/1.5.0/public/logo/head_4.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/rsercano/mongoclient/1.5.0/public/logo/head_4.png</iconUrl>
     <copyright>Copyright R. Sercan Özdemir © 2016</copyright>
     <licenseUrl>https://github.com/rsercano/mongoclient/blob/1.5.0/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>

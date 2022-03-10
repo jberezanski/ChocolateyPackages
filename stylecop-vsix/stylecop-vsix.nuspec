@@ -9,7 +9,7 @@
         <title>StyleCop extension for Visual Studio</title>
         <authors>Chris Dahlberg, Andy Reeves</authors>
         <projectUrl>https://marketplace.visualstudio.com/items?itemName=ChrisDahlberg.StyleCop</projectUrl>
-        <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/6b020a7becf2fb65d21d31165e994bf040397f5c/icons/stylecop.png</iconUrl>
+        <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/6b020a7becf2fb65d21d31165e994bf040397f5c/icons/stylecop.png</iconUrl>
         <licenseUrl>https://marketplace.visualstudio.com/items/ChrisDahlberg.StyleCop/license</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <projectSourceUrl>https://github.com/StyleCop/StyleCop</projectSourceUrl>

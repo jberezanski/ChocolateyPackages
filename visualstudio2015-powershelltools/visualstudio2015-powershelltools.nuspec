@@ -9,7 +9,7 @@
         <title>PowerShell Tools for Visual Studio 2015</title>
         <authors>Microsoft</authors>
         <projectUrl>https://marketplace.visualstudio.com/items?itemName=AdamRDriscoll.PowerShellToolsforVisualStudio2015</projectUrl>
-        <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/8e10836069f1d3139a9c70f844addd3f5d3b1ac2/icons/visualstudio2015-powershelltools.png</iconUrl>
+        <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/8e10836069f1d3139a9c70f844addd3f5d3b1ac2/icons/visualstudio2015-powershelltools.png</iconUrl>
         <licenseUrl>https://marketplace.visualstudio.com/items/AdamRDriscoll.PowerShellToolsforVisualStudio2015/license</licenseUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <projectSourceUrl>https://github.com/adamdriscoll/poshtools/</projectSourceUrl>

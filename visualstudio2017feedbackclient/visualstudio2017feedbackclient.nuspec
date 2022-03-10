@@ -8,7 +8,7 @@
     <title>Visual Studio 2017 Feedback Client</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/vs/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
     <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
     <licenseUrl>https://www.visualstudio.com/license-terms/mlt687465/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

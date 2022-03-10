@@ -7,7 +7,7 @@
         <authors>Microsoft</authors>
         <owners>Jakub Bereżański</owners>
         <projectUrl>http://www.microsoft.com/en-us/search/result.aspx?q=Visual%20Studio%202012%20Update&amp;form=DLC</projectUrl>
-        <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/496e6d3a51067f764b7a1a1b4664a3601791a96f/icons/vs2012.png</iconUrl>
+        <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/496e6d3a51067f764b7a1a1b4664a3601791a96f/icons/vs2012.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
 Visual Studio 2012 updates are cumulative releases that include new features and fixes that were delivered in previous Visual Studio 2012 Updates.

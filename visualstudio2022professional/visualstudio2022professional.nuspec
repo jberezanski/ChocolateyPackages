@@ -8,7 +8,7 @@
     <title>Visual Studio 2022 Professional</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/7e32702d4d99f08b5b73ae9c6622b0be61a2066e/icons/vs2022.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/7e32702d4d99f08b5b73ae9c6622b0be61a2066e/icons/vs2022.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
     <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2022-prerelease/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

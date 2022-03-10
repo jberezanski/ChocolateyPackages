@@ -10,7 +10,7 @@
     <authors>Jakub Bereżański</authors>
     <projectUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-dotnetfx.extension</projectUrl>
     <copyright>© 2019 Jakub Bereżański</copyright>
-    <licenseUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/8086c84fed16d4150a50ba1e97fd6b75e3c4f511/LICENSE</licenseUrl>
+    <licenseUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/8086c84fed16d4150a50ba1e97fd6b75e3c4f511/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-dotnetfx.extension/README.md</docsUrl>
     <bugTrackerUrl>https://github.com/jberezanski/ChocolateyPackages/issues</bugTrackerUrl>

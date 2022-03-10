@@ -8,7 +8,7 @@
     <title>.NET Core build tools workload for Visual Studio 2019 Build Tools</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/21d70aedb9304792378a9f68d07d704cd0855827/icons/vs2019.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/21d70aedb9304792378a9f68d07d704cd0855827/icons/vs2019.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
     <licenseUrl>https://visualstudio.microsoft.com/license-terms/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

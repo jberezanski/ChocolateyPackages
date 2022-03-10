@@ -9,7 +9,7 @@
         <title>NuGet Package Manager for Visual Studio 2015</title>
         <authors>Microsoft</authors>
         <projectUrl>https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManagerforVisualStudio2015</projectUrl>
-        <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/a4590410f8bf8a4682cecb225ab6937df926046b/icons/visualstudio2015-nugetpackagemanager.png</iconUrl>
+        <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/a4590410f8bf8a4682cecb225ab6937df926046b/icons/visualstudio2015-nugetpackagemanager.png</iconUrl>
         <licenseUrl>https://marketplace.visualstudio.com/items/NuGetTeam.NuGetPackageManagerforVisualStudio2015/license</licenseUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <projectSourceUrl>https://github.com/NuGet/Home</projectSourceUrl>
