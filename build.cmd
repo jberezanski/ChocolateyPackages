@@ -9,7 +9,7 @@ for /f %%a in ('dir /s /b %ROOTDIR%\*.nuspec') do (
 	if "%1"=="" set ONLYTHIS=%%~na
 	if "!ONLYTHIS!"=="%%~na" (
 		echo Packing %%~na
-		call cpack %%a
+		call choco pack %%a
 	)
 )
 popd
