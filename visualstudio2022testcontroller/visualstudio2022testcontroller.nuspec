@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2022testcontroller</id>
-    <version>117.1.2.0</version>
+    <version>117.1.3.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022testcontroller</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2022 Load Test Controller</title>
@@ -46,8 +46,8 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Software
 [Visual Studio 2022 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes)
 ##### Package
-117.1.2.0:
-- Package metadata updated for Visual Studio 2022 version 17.1.2 (the native installer always installs the latest released Visual Studio 2022 build).
+117.1.3.0:
+- Package metadata updated for Visual Studio 2022 version 17.1.3 (the native installer always installs the latest released Visual Studio 2022 build).
 - Updated bootstrapper url.
     </releaseNotes>
     <dependencies>
