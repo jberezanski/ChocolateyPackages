@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2017professional' `
     -ApplicationName 'Microsoft Visual Studio Professional 2017' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/4dfffe3f-2a7e-4dea-922b-62d4beca5e36/495b3b498a9b4004f0a7c72e030996e534b66ea15a46fb517150e0f48945d109/vs_Professional.exe' `
-    -Checksum '495B3B498A9B4004F0A7C72E030996E534B66EA15A46FB517150E0F48945D109' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/a828c407-9597-4bb0-9b8f-7d2a1d0a5d5f/f012191bdba0abc3caa3c058da8aca818db50d45a8c08a9aa721aeb1a7680f34/vs_Professional.exe' `
+    -Checksum 'F012191BDBA0ABC3CAA3C058DA8ACA818DB50D45A8C08A9AA721AEB1A7680F34' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Professional' `
