@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2022testcontroller' `
     -ApplicationName 'Microsoft Visual Studio Load Test Controller 2022' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/180ad262-2f90-4974-a63e-3e47a5b2033c/6d27f01fec001ed79a4155fa0d583ce8cbb0e724c1fde85fa3f02283e41bd733/vs_TestController.exe' <# https://aka.ms/vs/17/pre/vs_testcontroller.exe #> `
-    -Checksum '6D27F01FEC001ED79A4155FA0D583CE8CBB0E724C1FDE85FA3F02283E41BD733' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/553d5e50-5346-4e9d-8591-ae2b9a137c9c/df64f2c997522603ceb49ae029c0c75f4b7da282409e39d705b083f9e44b25fd/vs_TestController.exe' <# https://aka.ms/vs/17/pre/vs_testcontroller.exe #> `
+    -Checksum 'DF64F2C997522603CEB49AE029C0C75F4B7DA282409E39D705B083F9E44B25FD' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'TestController' `
