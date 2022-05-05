@@ -3,11 +3,11 @@
 $targetPath = Join-Path -Path $Env:chocolateyPackageFolder -ChildPath tools
 $arguments = @{
     packageName    = 'diskspd'
-    url            = 'https://github.com/microsoft/diskspd/releases/download/v2.0.21a/DiskSpd.zip'
-    url64bit       = 'https://github.com/microsoft/diskspd/releases/download/v2.0.21a/DiskSpd.zip'
-    checksum       = 'D02F6BE976C518D4134E62AF7F518BAAD6C7C81F924CAAFBEBA65BD0831CE139'
+    url            = 'https://github.com/microsoft/diskspd/releases/download/v2.1/DiskSpd.ZIP'
+    url64bit       = 'https://github.com/microsoft/diskspd/releases/download/v2.1/DiskSpd.ZIP'
+    checksum       = 'D1024729CCD0C128E1BC2CB930E4A2B82F13F22788C71CA135D81B406066A55D'
     checksumType   = 'sha256'
-    checksum64     = 'D02F6BE976C518D4134E62AF7F518BAAD6C7C81F924CAAFBEBA65BD0831CE139'
+    checksum64     = 'D1024729CCD0C128E1BC2CB930E4A2B82F13F22788C71CA135D81B406066A55D'
     checksumType64 = 'sha256'
     unzipLocation  = $targetPath
 }
