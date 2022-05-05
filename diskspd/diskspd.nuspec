@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>diskspd</id>
-    <version>2.0.21</version>
+    <version>2.0.21.20220505</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/diskspd</packageSourceUrl>
     <owners>Jakub Bereżański</owners>
     <title>The DiskSpd Storage Performance Tool</title>
@@ -33,7 +33,7 @@ The full documentation is available as a [wiki on GitHub](https://github.com/Mic
 ##### Software
 [DiskSpd Release Notes](https://github.com/Microsoft/diskspd/blob/master/README.md)
 ##### Package
-2.0.21: Initial package release for software version 2.0.21a.
+2.0.21.20220505: Fixed download url (software version still 2.0.21a).
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey" version="0.9.8.20" />
