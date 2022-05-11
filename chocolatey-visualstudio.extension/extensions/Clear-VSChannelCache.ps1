@@ -5,6 +5,6 @@ function Clear-VSChannelCache
     if (Test-Path -Path $cachePath)
     {
         Write-Verbose "Emptying the VS Installer channel cache: '$cachePath'"
-        Get-ChildItem -Path $cachePath | Remove-Item -Recurse
+        Get-ChildItem -Path $cachePath -Force | Remove-Item -Recurse -Force -ErrorAction Continue
     }
 }

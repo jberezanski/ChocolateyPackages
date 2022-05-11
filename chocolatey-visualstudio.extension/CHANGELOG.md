@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version 1.10.1
+
+- Fixed clearing the VS Installer channel cache on recent VS Installer versions ([GH-127](https://github.com/jberezanski/ChocolateyPackages/issues/127)).
+
 ## Version 1.10.0
 
 - When checking if the Visual Studio Installer needs update, channels of other installed Visual Studio products are also used to determine the highest required installer version. This aligns with the native Visual Studio Installer behavior and prevents the Installer from exiting early to perform a self-update when, for example, installing or upgrading Visual Studio 2017 on a machine with Visual Studio 2019 installed ([GH-97](https://github.com/jberezanski/ChocolateyPackages/issues/97)).
