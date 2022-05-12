@@ -29,7 +29,7 @@ This package does not install anything by itself.
 2.0.2: Updated extension dependency.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.10.1" />
     </dependencies>
   </metadata>
 </package>

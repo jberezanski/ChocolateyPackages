@@ -78,7 +78,7 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - [Mobile development with JavaScript](https://chocolatey.org/packages/visualstudio2019-workload-webcrossplat)
 -->
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.10.0" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.10.1" />
       <dependency id="KB3033929" version="1.0.5" />
       <dependency id="KB2919355" version="1.0.20160915" />
       <dependency id="KB2999226" version="1.0.20161201" />
