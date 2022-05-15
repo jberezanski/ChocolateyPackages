@@ -6,7 +6,8 @@ param(
   [string] $exeToRun = 'powershell',
   [switch] $minimized,
   [switch] $noSleep,
-  [int[]]$validExitCodes = @(0)
+  [int[]]$validExitCodes = @(0),
+  [switch] $acceptAllExitCodes
 )
   Write-Debug "Running 'Start-VSChocolateyProcessAsAdmin' with exeToRun:'$exeToRun', statements:'$statements', minimized:$minimized, noSleep:$noSleep, validExitCodes:'$validExitCodes'";
 
@@ -19,10 +20,10 @@ param(
     Get-ChildItem "$helpersPath" -Filter *.psm1 | ForEach-Object { $importChocolateyHelpers = "& import-module -name  `'$($_.FullName)`';$importChocolateyHelpers" };
     $block = @"
       `$noSleep = `$$noSleep
-      $importChocolateyHelpers 
+      $importChocolateyHelpers
       try{
         `$progressPreference="SilentlyContinue"
-        $statements 
+        $statements
         if(!`$noSleep){start-sleep 6}
       }
       catch{
@@ -34,17 +35,17 @@ param(
     $wrappedStatements = "-NoProfile -ExecutionPolicy bypass -EncodedCommand $encoded"
     $dbgMessage = @"
 Elevating Permissions and running powershell block:
-$block 
+$block
 This may take a while, depending on the statements.
 "@
   }
-  else 
+  else
   {
     $dbgMessage = @"
 Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may take a while, depending on the statements.
 "@
   }
-  
+
   Write-Debug $dbgMessage
 
   $exeIsTextFile = [System.IO.Path]::GetFullPath($exeToRun) + ".istext"
@@ -53,7 +54,7 @@ Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may t
     Set-PowerShellExitCode 4
     throw "The file was a text file but is attempting to be run as an executable - '$exeToRun'"
   }
-  
+
   if ($exeToRun -eq 'msiexec' -or $exeToRun -eq 'msiexec.exe') {
     $exeToRun = "$($env:SystemRoot)\System32\msiexec.exe"
   }
@@ -113,7 +114,7 @@ Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may t
   $process.Start() | Out-Null
   if ($process.StartInfo.RedirectStandardOutput) { $process.BeginOutputReadLine() }
   if ($process.StartInfo.RedirectStandardError) { $process.BeginErrorReadLine() }
-  $process.WaitForExit()  
+  $process.WaitForExit()
 
   # For some reason this forces the jobs to finish and waits for
   # them to do so. Without this it never finishes.
@@ -124,12 +125,12 @@ Elevating Permissions and running [`"$exeToRun`" $wrappedStatements]. This may t
   $process.Dispose()
 
   Write-Debug "Command [`"$exeToRun`" $wrappedStatements] exited with `'$exitCode`'."
-  if ($validExitCodes -notcontains $exitCode) {
+  if (-not $acceptAllExitCodes -and $validExitCodes -notcontains $exitCode) {
     Set-StrictMode -Off
     Set-PowerShellExitCode $exitCode
     throw "Running [`"$exeToRun`" $statements] was not successful. Exit code was '$exitCode'. See log for possible error messages."
   }
- 
+
   Write-Debug "Finishing 'Start-VSChocolateyProcessAsAdmin'"
 
   return $exitCode

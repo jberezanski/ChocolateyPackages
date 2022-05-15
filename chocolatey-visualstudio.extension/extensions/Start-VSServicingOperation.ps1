@@ -29,13 +29,8 @@
         -2147172352 # block, restart required
     )
 
-    $validExitCodes = @()
-    if (($successExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $successExitCodes }
-    if (($rebootExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $rebootExitCodes }
-    if (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $priorRebootRequiredExitCodes }
-    if (($blockExitCodes | Measure-Object).Count -gt 0) { $validExitCodes += $blockExitCodes }
-
-    $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -validExitCodes $validExitCodes
+    $startTime = Get-Date
+    $exitCode = Start-VSChocolateyProcessAsAdmin -statements $silentArgs -exeToRun $file -acceptAllExitCodes
     Write-Debug "Exit code returned from Start-VSChocolateyProcessAsAdmin: '$exitCode'"
     if ($assumeNewVS2017Installer)
     {
@@ -49,7 +44,22 @@
     Write-Debug "Setting Env:ChocolateyExitCode to '$exitCode'"
     $Env:ChocolateyExitCode = $exitCode
     $warnings = @()
-    if (($blockExitCodes | Measure-Object).Count -gt 0 -and $blockExitCodes -contains $exitCode)
+    if (($successExitCodes | Measure-Object).Count -gt 0 -and $successExitCodes -contains $exitCode)
+    {
+        $needsReboot = $false
+        $success = $true
+    }
+    elseif (($rebootExitCodes | Measure-Object).Count -gt 0 -and $rebootExitCodes -contains $exitCode)
+    {
+        $needsReboot = $true
+        $success = $true
+    }
+    elseif (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0 -and $priorRebootRequiredExitCodes -contains $exitCode)
+    {
+        $exceptionMessage = "The computer must be rebooted before ${frobbing} ${packageName}. Please reboot the computer and run the ${frobbage} again."
+        $success = $false
+    }
+    elseif (($blockExitCodes | Measure-Object).Count -gt 0 -and $blockExitCodes -contains $exitCode)
     {
         $exceptionMessage = "${packageName} cannot be ${frobbed} on this system."
         $success = $false
@@ -70,20 +80,10 @@
             }
         }
     }
-    elseif (($priorRebootRequiredExitCodes | Measure-Object).Count -gt 0 -and $priorRebootRequiredExitCodes -contains $exitCode)
-    {
-        $exceptionMessage = "The computer must be rebooted before ${frobbing} ${packageName}. Please reboot the computer and run the ${frobbage} again."
-        $success = $false
-    }
-    elseif (($rebootExitCodes | Measure-Object).Count -gt 0 -and $rebootExitCodes -contains $exitCode)
-    {
-        $needsReboot = $true
-        $success = $true
-    }
     else
     {
-        $needsReboot = $false
-        $success = $true
+        $exceptionMessage = "The ${frobbage} of ${packageName} failed (installer exit code: ${exitCode})."
+        $success = $false
     }
 
     if ($success)
@@ -99,9 +99,13 @@
     }
     else
     {
-        if ($null -ne $warnings)
+        if (($warnings | Measure-Object).Count -gt 0)
         {
             $warnings | Write-Warning
+        }
+        if ($assumeNewVS2017Installer)
+        {
+            Show-VSInstallerErrorLog -Since $startTime
         }
         throw $exceptionMessage
     }
