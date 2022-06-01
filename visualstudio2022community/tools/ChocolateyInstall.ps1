@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2022community' `
     -ApplicationName 'Microsoft Visual Studio Community 2022' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/d31b13df-910a-40c8-aca6-778a2a7a56e7/413cb8144f27ed8d9d94ff0b762bc7db9a60244d1ab6500693485ccc78769094/vs_Community.exe' <# https://aka.ms/vs/17/release/vs_community.exe #> `
-    -Checksum '413CB8144F27ED8D9D94FF0B762BC7DB9A60244D1AB6500693485CCC78769094' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/ea24168f-493e-42f7-9d95-83e763d3b0a9/419199aa3180f2ce48cbdc1a115902c08cc09deb57e11fe53c70cf15a6a917a2/vs_Community.exe' <# https://aka.ms/vs/17/release/vs_community.exe #> `
+    -Checksum '419199AA3180F2CE48CBDC1A115902C08CC09DEB57E11FE53C70CF15A6A917A2' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Community' `

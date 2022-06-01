@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2022buildtools' `
     -ApplicationName 'Microsoft Visual Studio Build Tools 2022' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/d31b13df-910a-40c8-aca6-778a2a7a56e7/68c3d21541a365be4ca2f2f5b2cff56b02f04e0f3ffd8777f92732fb66513388/vs_BuildTools.exe' <# https://aka.ms/vs/17/release/vs_buildtools.exe #> `
-    -Checksum '68C3D21541A365BE4CA2F2F5B2CFF56B02F04E0F3FFD8777F92732FB66513388' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/ea24168f-493e-42f7-9d95-83e763d3b0a9/cbfb01323d4a1f01f9480e4b5e1019ae1a4812d05451f9eb5876e0f378f0ed03/vs_BuildTools.exe' <# https://aka.ms/vs/17/release/vs_buildtools.exe #> `
+    -Checksum 'CBFB01323D4A1F01F9480E4B5E1019AE1A4812D05451F9EB5876E0F378F0ED03' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'BuildTools' `
