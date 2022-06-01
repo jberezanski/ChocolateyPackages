@@ -2,12 +2,21 @@
 Param
 (
     [string] $Pattern = '^visualstudio2017[a-z]+$',
-    [SecureString] $ApiKey
+    [SecureString] $ApiKey,
+    [switch] $Force
 )
 
 #Requires -Version 5
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
+
+$forceArg = @()
+$forceDesc = ''
+if ($Force)
+{
+    $forceArg = @('-f')
+    $forceDesc = ' (forced)'
+}
 
 Write-Information "Using filter pattern: $Pattern" -InformationAction Continue
 Push-Location -Path "$PSScriptRoot\..\.."
@@ -25,9 +34,9 @@ try
         }
 
         $t = "$n-$v"
-        if ($PSCmdlet.ShouldProcess("Tag: $t", 'Create'))
+        if ($PSCmdlet.ShouldProcess("Tag: $t", "Create${forceDesc}"))
         {
-            git tag -am "publish $n $v" $t
+            git tag @forceArg -am "publish $n $v" $t
         }
 
         $o = [pscustomobject]@{ Nupkg = $p; Tag = $t }
@@ -44,13 +53,13 @@ try
                 $keyArg = @('--api-key', (New-Object Management.Automation.PSCredential -ArgumentList @('dummy', $ApiKey)).GetNetworkCredential().Password)
             }
 
-            cpush @keyArg $p
+            choco push @keyArg $p
         }
 
         $t = $_.Tag
-        if ($PSCmdlet.ShouldProcess("Tag: $t", 'Push'))
+        if ($PSCmdlet.ShouldProcess("Tag: $t", "Push${forceDesc}"))
         {
-            git push origin $t
+            git push @forceArg origin $t
         }
     }
 }
