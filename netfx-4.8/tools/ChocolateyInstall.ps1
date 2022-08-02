@@ -1,11 +1,11 @@
 ﻿$version = '4.8'
 $arguments = @{
     PackageName = "netfx-$version"
-    Release = 528040
+    Release = 528049
     Version = $version
     ProductNameWithVersion = "Microsoft .NET Framework $version"
-    Url = 'https://download.visualstudio.microsoft.com/download/pr/014120d7-d689-4305-befd-3cb711108212/0fd66638cde16859462a6243a4629a50/ndp48-x86-x64-allos-enu.exe'
-    Checksum = '9B1F71CD1B86BB6EE6303F7BE6FBBE71807A51BB913844C85FC235D5978F3A0F'
+    Url = 'https://download.visualstudio.microsoft.com/download/pr/2d6bb6b2-226a-4baa-bdec-798822606ff1/8494001c276a4b96804cde7829c04d7f/ndp48-x86-x64-allos-enu.exe'
+    Checksum = '68C9986A8DCC0214D909AA1F31BEE9FB5461BB839EDCA996A75B08DDFFC1483F'
     ChecksumType = 'sha256'
 }
 

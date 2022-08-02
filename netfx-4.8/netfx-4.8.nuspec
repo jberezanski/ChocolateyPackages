@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.8</id>
-    <version>4.8.0.20190930</version>
+    <version>4.8.03761</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.8</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8</title>
@@ -19,9 +19,9 @@
 
 The .NET Framework provides many services, including memory management, type and memory safety, security, networking, and application deployment. It provides easy-to-use data structures and APIs that abstract the lower-level Windows operating system. You can use a variety of programming languages with the .NET Framework, including C#, F#, and Visual Basic.
 
-Supported Windows Client versions: Windows 10 version 1903, Windows 10 version 1809, Windows 10 version 1803, Windows 10 version 1709, Windows 10 version 1703, Windows 10 version 1607, Windows 8.1, Windows 7 SP1
+Supported Windows Client versions: Windows 11, Windows 10 versions: 21H2, 21H1, 20H2, 1903, 1809, 1803, 1709, 1703, 1607, Windows 8.1, Windows 7 SP1
 
-Supported Windows Server versions: Windows Server 2019, Windows Server version 1803, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1
+Supported Windows Server versions: Windows Server 2022, Windows Server 2019, Windows Server version 1803, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1
 
 The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.8-devpack).
 
@@ -35,6 +35,7 @@ On systems which have a newer version of the .NET Framework installed, this pack
 [.NET Framework 4.8 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/README.md)
 [.NET Framework 4.8 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/dotnet48-changes.md)
 ##### Package
+4.8.03761: Updated installer certificate.
 4.8.0.20190930: Updated extension dependency.
     </releaseNotes>
     <dependencies>
