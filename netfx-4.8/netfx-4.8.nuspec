@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.8</id>
-    <version>4.8.03761</version>
+    <version>4.8.0.20220524</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.8</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8</title>
@@ -35,7 +35,7 @@ On systems which have a newer version of the .NET Framework installed, this pack
 [.NET Framework 4.8 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/README.md)
 [.NET Framework 4.8 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/dotnet48-changes.md)
 ##### Package
-4.8.03761: Updated installer certificate.
+4.8.0.20220524: Updated url and checksum.
 4.8.0.20190930: Updated extension dependency.
     </releaseNotes>
     <dependencies>
