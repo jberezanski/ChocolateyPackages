@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2022professional</id>
-    <version>117.2.6.0</version>
+    <version>117.3.2.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022professional</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2022 Professional</title>
@@ -51,8 +51,8 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 ##### Software
 [Visual Studio 2022 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes)
 ##### Package
-117.2.6.0:
-- Package metadata updated for Visual Studio 2022 version 17.2.6 (the native installer always installs the latest released Visual Studio 2022 build).
+117.3.2.0:
+- Package metadata updated for Visual Studio 2022 version 17.3.2 (the native installer always installs the latest released Visual Studio 2022 build).
 - Updated bootstrapper url.
 
 #### Available workload packages
