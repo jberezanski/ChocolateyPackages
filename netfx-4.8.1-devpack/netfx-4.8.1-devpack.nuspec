@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>netfx-4.8.1-devpack</id>
+    <version>4.8.1.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.8.1-devpack</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft .NET Framework 4.8.1 Developer Pack</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/net/</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <licenseUrl>https://www.microsoft.com/en-us/servicesagreement</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
+    <bugTrackerUrl>https://github.com/Microsoft/dotnet/issues</bugTrackerUrl>
+    <tags>microsoft .net framework 4.8.1 developer target targeting pack multi dotnet netfx admin</tags>
+    <summary>The .NET Framework 4.8.1 Developer Pack lets developers build applications that target the .NET Framework 4.8.1.</summary>
+    <description>The .NET Framework 4.8.1 Developer Pack lets developers build applications that target the .NET Framework 4.8.1 by using Visual Studio 2022 or other IDEs. This is a single package that bundles the .NET Framework 4.8.1, the .NET 4.8.1 Targeting Pack, and the .NET Framework 4.8.1 SDK.
+    </description>
+    <releaseNotes>
+##### Software
+[.NET Framework 4.8.1 announcement](https://devblogs.microsoft.com/dotnet/announcing-dotnet-framework-481/)
+[.NET Framework 4.8.1 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net481/README.md)
+[.NET Framework 4.8.1 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net481/dotnet481-changes.md)
+##### Package
+4.8.1.0: initial package release for .NET Framework 4.8.1 RTW.
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-dotnetfx.extension" version="1.0.1" />
+      <dependency id="netfx-4.8.1" version="4.8.1.0" />
+    </dependencies>
+  </metadata>
+</package>
