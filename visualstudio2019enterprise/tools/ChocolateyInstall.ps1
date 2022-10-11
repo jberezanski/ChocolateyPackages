@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2019enterprise' `
     -ApplicationName 'Microsoft Visual Studio Enterprise 2019' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/6d7709aa-465b-4604-b797-3f9c1d911e67/7637d74dfcf7d42c81c46bda39a5401ce3abc6bf6cf51fda56f0b35e7c74b3ec/vs_Enterprise.exe' <# https://aka.ms/vs/16/release/vs_enterprise.exe #> `
-    -Checksum '7637D74DFCF7D42C81C46BDA39A5401CE3ABC6BF6CF51FDA56F0B35E7C74B3EC' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/e84651e1-d13a-4bd2-a658-f47a1011ffd1/36473ce6e046149cf1f3cf105526cead19c1f0e88dec4e3a3a968372a5b8a8ab/vs_Enterprise.exe' <# https://aka.ms/vs/16/release/vs_enterprise.exe #> `
+    -Checksum '36473CE6E046149CF1F3CF105526CEAD19C1F0E88DEC4E3A3A968372A5B8A8AB' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Enterprise' `
