@@ -60,6 +60,12 @@ Install-ChocolateyPackage
     if ($VisualStudioYear -ne '')
     {
         $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview $Preview
+
+        $installed = Get-VisualStudioInstance | Where-Object { $_.ChannelId -like ($channelReference.ChannelId+ "*")}
+        if ($null -ne $installed) {
+            $channelReference.ChannelId = $installed.ChannelId
+        }
+
         if ($Product -ne '')
         {
             $productReference = Get-VSProductReference -ChannelReference $channelReference -Product $Product
