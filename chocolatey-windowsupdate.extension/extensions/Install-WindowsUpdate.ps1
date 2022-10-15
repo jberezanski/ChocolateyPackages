@@ -174,7 +174,12 @@ function Install-WindowsUpdate
     {
         function Get-OS
         {
-            $wmiOS = Get-WmiObject -Class Win32_OperatingSystem
+            if ($null -ne (Get-Command -Name Get-CimInstance -ErrorAction SilentlyContinue)) {
+                $wmiOS = Get-CimInstance -ClassName Win32_OperatingSystem
+            } else {
+                $wmiOS = Get-WmiObject -Class Win32_OperatingSystem
+            }
+
             $version = [Version]$wmiOS.Version
             $caption = $wmiOS.Caption.Trim()
             $sp = $wmiOS.ServicePackMajorVersion
