@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version 1.0.5
+
+- Added compatibility with powershell v7
+
 ## Version 1.0.4
 
 - Fixed exit code detection on licensed Chocolatey (https://github.com/jberezanski/ChocolateyPackages/issues/62).

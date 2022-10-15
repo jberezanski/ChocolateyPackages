@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Tests whether a specified Windows update (KB) is installed.
 
@@ -40,7 +40,11 @@ function Test-WindowsUpdate
     End
     {
         Write-Verbose "Looking for Win32_QuickFixEngineering with HotFixID = $Id"
-        $qfe = Get-WmiObject -Class Win32_QuickFixEngineering -Filter ('HotFixID = "{0}"' -f $Id)
+        if ($null -ne (Get-Command -Name Get-CimInstance -ErrorAction SilentlyContinue)) {
+            $qfe = Get-CimInstance -Class Win32_QuickFixEngineering -Filter ('HotFixID = "{0}"' -f $Id)
+        } else {
+            $qfe = Get-WmiObject -Class Win32_QuickFixEngineering -Filter ('HotFixID = "{0}"' -f $Id)
+        }
         $found = $null -ne $qfe
         Write-Verbose "QFE $Id found: $found"
         return $found
