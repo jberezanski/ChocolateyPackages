@@ -1,3 +1,5 @@
 visualstudio2022enterprise-fixed\vs22ent-current-17.2.5\vs22ent-current.nuspec
 visualstudio2022enterprise-fixed\vs22ent-ltsc-17.2.7\vs22ent-ltsc.nuspec
 visualstudio2022enterprise-fixed\vs22ent-ltsc-17.2.8\vs22ent-ltsc.nuspec
+visualstudio2022enterprise-fixed\vs22ent-ltscnodpw-17.2.7\vs22ent-ltscnodpw.nuspec
+visualstudio2022enterprise-fixed\vs22ent-ltscnodpw-17.2.8\vs22ent-ltscnodpw.nuspec
