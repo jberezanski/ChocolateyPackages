@@ -53,7 +53,26 @@ try
                 $keyArg = @('--api-key', (New-Object Management.Automation.PSCredential -ArgumentList @('dummy', $ApiKey)).GetNetworkCredential().Password)
             }
 
-            choco push @keyArg $p
+            $global:LastExitCode = 0
+            $attempts = 5
+            do
+            {
+                $retry = $false
+                choco push @keyArg $p
+                if ($LastExitCode -ne 0)
+                {
+                    Write-Warning "choco push failed (exit code $($LastExitCode))"
+                    $attempts -= 1
+                    if ($attempts -gt 0)
+                    {
+                        Write-Verbose "sleeping"
+                        Start-Sleep -Seconds 5
+                        Write-Verbose "retrying"
+                        $retry = $true
+                    }
+                }
+            }
+            while ($retry)
         }
 
         $t = $_.Tag
