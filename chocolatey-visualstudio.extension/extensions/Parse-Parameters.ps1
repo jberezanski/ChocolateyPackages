@@ -79,7 +79,7 @@ function Parse-Parameters
             if ($null -ne $pathInstallValue)
             {
                 Write-Debug "Found --path install=... in package parameters (among other --path values)."
-                $pathsWithoutInstall = @($pathParameterValue | Where-Object { $rxInstallEquals.IsMatch($_) })
+                $pathsWithoutInstall = @($pathParameterValue | Where-Object { -not $rxInstallEquals.IsMatch($_) })
                 $updatedPathsList = New-Object -TypeName System.Collections.Generic.List``1[System.String] -ArgumentList (,[string[]]($pathsWithoutInstall))
                 if ($updatedPathsList.Count -gt 1)
                 {
