@@ -30,6 +30,14 @@
 
     cinst visualstudio2017buildtools --params "--bootstrapperPath C:\VS 2017 BT 15.5.1\vs_BuildTools.exe --noWeb --no-installLayoutPath"
 
+##### Install the latest version of VS 2022 Professional from the Internet or update an already installed instance, specifying a custom nickname and installation path. Use the English language for the installation process and as the default VS language.
+
+    cinst visualstudio2022professional --params "--locale en-US --installPath C:\VS 2022 Pro --nickname Pro"
+
+##### Install the latest version of VS 2022 Professional from the Internet (do not attempt to update if already installed), specifying all possible custom paths. Use the English language for the installation process and as the default VS language. Install all recommanded and optional workloads.
+
+    cinst visualstudio2022buildtools --params "--locale en-US --path install=C:\VS 2022 BT --path shared=C:\VS 2022 Shared --path cache=C:\VS 2022 Cache --no-update --includeRecommended --includeOptional"
+
 ## Workload packages
 
 ##### Add the VCTools workload to all installed VS 2017 Build Tools instances, downloading needed files from the Internet. Required and recommended components will be added, but not optional ones.

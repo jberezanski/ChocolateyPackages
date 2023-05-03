@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version 1.11.0
+
+- Arguments `--path install=...`, `--path cache=...` and `--path shared=...` are now supported ([GH-142](https://github.com/jberezanski/ChocolateyPackages/issues/142)). `--path install=...` is converted to `--installPath`; those two must not be specified at the same time with different values.
+
 ## Version 1.10.2
 
 - When installation fails, Visual Studio Installer logs are now examined and content of any error logs is printed as warnings, which should help in troubleshooting installation issues (including the unhelpful -1 exit code).
