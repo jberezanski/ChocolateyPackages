@@ -58,13 +58,18 @@ Install-ChocolateyPackage
 
     $channelReference = $null
     $productReference = $null
-    if ($VisualStudioYear -ne '')
+    if ($packageParameters.ContainsKey('channelId'))
+    {
+        $channelReference = New-VSChannelReference -ChannelId $packageParameters['channelId']
+    }
+    elseif ($VisualStudioYear -ne '')
     {
         $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview $Preview
-        if ($Product -ne '')
-        {
-            $productReference = Get-VSProductReference -ChannelReference $channelReference -Product $Product
-        }
+    }
+
+    if ($null -ne $channelReference -and $Product -ne '')
+    {
+        $productReference = Get-VSProductReference -ChannelReference $channelReference -Product $Product
     }
 
     if (-not $creatingLayout)
