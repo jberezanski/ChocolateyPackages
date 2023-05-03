@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version 1.10.3
+
+- Fixed update failed from previous LTSC version to a more recent LTSC version in Visual Studio 2022
+
 ## Version 1.10.2
 
 - When installation fails, Visual Studio Installer logs are now examined and content of any error logs is printed as warnings, which should help in troubleshooting installation issues (including the unhelpful -1 exit code).
