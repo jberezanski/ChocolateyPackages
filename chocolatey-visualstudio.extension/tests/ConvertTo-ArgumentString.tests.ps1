@@ -1,8 +1,9 @@
-Set-StrictMode -Version 5
+Set-StrictMode -Version 2
 $ErrorActionPreference = 'Stop'
 $DebugPreference = 'Continue'
-. $PSScriptRoot\..\extensions\ConvertTo-ArgumentString.ps1
-. $PSScriptRoot\..\extensions\Parse-Parameters.ps1
+$root = Split-Path -Parent -Path $MyInvocation.MyCommand.Path
+. $root\..\extensions\ConvertTo-ArgumentString.ps1
+. $root\..\extensions\Parse-Parameters.ps1
 
 ConvertTo-ArgumentString -Arguments @{} -Syntax VSIXInstaller
 ConvertTo-ArgumentString -Arguments @{} -Syntax VSIXInstaller -InitialUnstructuredArguments @()

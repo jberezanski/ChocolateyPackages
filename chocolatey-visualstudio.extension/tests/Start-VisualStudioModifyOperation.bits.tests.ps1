@@ -1,9 +1,10 @@
-Set-StrictMode -Version 5
+Set-StrictMode -Version 2
 $ErrorActionPreference = 'Stop'
 $DebugPreference = 'Continue'
-. $PSScriptRoot\..\extensions\Parse-Parameters.ps1
-. $PSScriptRoot\..\extensions\Merge-AdditionalArguments.ps1
-. $PSScriptRoot\..\extensions\Remove-NegatedArguments.ps1
+$root = Split-Path -Parent -Path $MyInvocation.MyCommand.Path
+. $root\..\extensions\Merge-AdditionalArguments.ps1
+. $root\..\extensions\Parse-Parameters.ps1
+. $root\..\extensions\Remove-NegatedArguments.ps1
 
 Write-Warning '=========== test bit 1 ==========='
 

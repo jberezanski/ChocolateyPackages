@@ -4,10 +4,19 @@ function Parse-Parameters
 {
     [CmdletBinding()]
     Param (
-        [string] $s
+        [string] $s,
+        [hashtable] $DefaultValues
     )
-    Write-Debug "Running 'Parse-Parameters' with s:'$s'";
-    $parameters = @{}
+    if ($null -ne $DefaultValues)
+    {
+        Write-Debug "Running 'Parse-Parameters' with s:'$s' DefaultValues:'$($DefaultValues.GetEnumerator() | ForEach-Object { $kvp = $_; $_.Value | ForEach-Object { '--{0} {1}' -f $kvp.Key, $_ } })'";
+        $parameters = $DefaultValues
+    }
+    else
+    {
+        Write-Debug "Running 'Parse-Parameters' with s:'$s' DefaultValues:''";
+        $parameters = @{}
+    }
 
     if ($s -eq '')
     {
@@ -21,6 +30,7 @@ function Parse-Parameters
     $s = ' ' + $s
     [String[]] $kvpPrefix = @(" --")
     $kvpDelimiter = ' '
+    $rxResetParameter = New-Object -TypeName System.Text.RegularExpressions.Regex -ArgumentList @('^reset-param(eter)?-(?=.)', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
 
     $kvps = $s.Split($kvpPrefix, [System.StringSplitOptions]::RemoveEmptyEntries)
     foreach ($kvp in $kvps)
@@ -41,7 +51,13 @@ function Parse-Parameters
         }
 
         Write-Debug "Package parameter: key=$key, value=$value"
-        if ($multiValuedParameterNames.ContainsKey($key) -and $parameters.ContainsKey($key))
+        if ($rxResetParameter.IsMatch($key))
+        {
+            $resetParameterName = $rxResetParameter.Replace($key, '')
+            Write-Debug "Removing existing value of --$resetParameterName parameter, if any."
+            $parameters.Remove($resetParameterName)
+        }
+        elseif ($multiValuedParameterNames.ContainsKey($key) -and $parameters.ContainsKey($key))
         {
             $existingValue = $parameters[$key]
             if ($existingValue -is [System.Collections.IList])
@@ -66,7 +82,7 @@ function Parse-Parameters
     {
         $pathInstallValue = $null
         $pathParameterValue = $parameters['path']
-        $rxInstallEquals = New-Object -TypeName System.Text.RegularExpressions.Regex -ArgumentList @('^install=', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+        $rxInstallEquals = New-Object -TypeName System.Text.RegularExpressions.Regex -ArgumentList @('^install=(?=.)', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
         if ($pathParameterValue -is [string] -and $rxInstallEquals.IsMatch($pathParameterValue))
         {
             Write-Debug "Found --path install=... in package parameters (as the only --path value), removing the --path parameter."
@@ -75,7 +91,7 @@ function Parse-Parameters
         }
         elseif ($pathParameterValue -is [System.Collections.IList])
         {
-            $pathInstallValue = $pathParameterValue | Where-Object { $rxInstallEquals.IsMatch($_) } | Select-Object -First 1
+            $pathInstallValue = $pathParameterValue | Where-Object { $rxInstallEquals.IsMatch($_) } | Select-Object -Last 1
             if ($null -ne $pathInstallValue)
             {
                 Write-Debug "Found --path install=... in package parameters (among other --path values)."
@@ -107,7 +123,8 @@ function Parse-Parameters
             {
                 if ($parameters['installPath'] -ne $installPathValue)
                 {
-                    throw "Package parameters contain both '--installPath ...' and '--path install=...' with different values. Please provide one or the other, but not both. Provided installPath: [$($parameters['installPath'])]. provided path install=: [${installPathValue}]."
+                    Write-Error "Package parameters contain both '--installPath ...' and '--path install=...' with different values. Please provide one or the other, but not both. Provided installPath: [$($parameters['installPath'])]. provided path install=: [${installPathValue}]. Using the value of installPath."
+                    $installPathValue = $parameters['installPath']
                 }
                 else
                 {

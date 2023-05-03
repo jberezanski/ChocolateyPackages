@@ -41,7 +41,8 @@ Install-ChocolateyPackage
       [string] $VisualStudioYear,
       [string] $Product,
       [bool] $Preview,
-      [version] $DesiredProductVersion
+      [version] $DesiredProductVersion,
+      [hashtable] $DefaultParameterValues
     )
     if ($null -ne $Env:ChocolateyPackageDebug)
     {
@@ -51,7 +52,7 @@ Install-ChocolateyPackage
     }
     Write-Debug "Running 'Install-VisualStudio' for $PackageName with ApplicationName:'$ApplicationName' Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType InstallerTechnology:'$InstallerTechnology' ProgramsAndFeaturesDisplayName:'$ProgramsAndFeaturesDisplayName' VisualStudioYear:'$VisualStudioYear' Product:'$Product' Preview:'$Preview' DesiredProductVersion:'$DesiredProductVersion'";
 
-    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
+    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters -DefaultValues $DefaultParameterValues
     $creatingLayout = $packageParameters.ContainsKey('layout')
     $assumeNewVS2017Installer = $InstallerTechnology -eq 'WillowVS2017OrLater'
 

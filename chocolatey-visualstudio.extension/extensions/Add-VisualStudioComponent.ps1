@@ -7,7 +7,8 @@ function Add-VisualStudioComponent
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
         [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
         [version] $RequiredProductVersion,
-        [bool] $Preview
+        [bool] $Preview,
+        [hashtable] $DefaultParameterValues
     )
     if ($null -ne $Env:ChocolateyPackageDebug)
     {
@@ -20,5 +21,13 @@ function Add-VisualStudioComponent
     $argumentList = @('add', "$Component")
 
     $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview $Preview
-    Start-VSModifyOperation -PackageName $PackageName -ArgumentList $argumentList -ChannelReference $channelReference -ApplicableProducts $ApplicableProducts -RequiredProductVersion $RequiredProductVersion -OperationTexts @('installed', 'installing', 'installation')
+    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters -DefaultValues $DefaultParameterValues
+    Start-VSModifyOperation `
+        -PackageName $PackageName `
+        -PackageParameters $packageParameters `
+        -ArgumentList $argumentList `
+        -ChannelReference $channelReference `
+        -ApplicableProducts $ApplicableProducts `
+        -RequiredProductVersion $RequiredProductVersion `
+        -OperationTexts @('installed', 'installing', 'installation')
 }

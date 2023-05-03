@@ -6,7 +6,8 @@ function Remove-VisualStudioComponent
         [Parameter(Mandatory = $true)] [string] $Component,
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
         [Parameter(Mandatory = $true)] [string[]] $ApplicableProducts,
-        [bool] $Preview
+        [bool] $Preview,
+        [hashtable] $DefaultParameterValues
     )
     if ($null -ne $Env:ChocolateyPackageDebug)
     {
@@ -19,5 +20,12 @@ function Remove-VisualStudioComponent
     $argumentList = @('remove', "$Component")
 
     $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview $Preview
-    Start-VSModifyOperation -PackageName $PackageName -ArgumentList $argumentList -ChannelReference $channelReference -ApplicableProducts $ApplicableProducts -OperationTexts @('uninstalled', 'uninstalling', 'uninstallation')
+    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters -DefaultValues $DefaultParameterValues
+    Start-VSModifyOperation `
+        -PackageName $PackageName `
+        -PackageParameters $packageParameters `
+        -ArgumentList $argumentList `
+        -ChannelReference $channelReference `
+        -ApplicableProducts $ApplicableProducts `
+        -OperationTexts @('uninstalled', 'uninstalling', 'uninstallation')
 }

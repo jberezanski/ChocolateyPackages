@@ -10,7 +10,7 @@
         [ValidateSet('modify', 'uninstall', 'update')] [string] $Operation = 'modify',
         [version] $RequiredProductVersion,
         [version] $DesiredProductVersion,
-        [hashtable] $PackageParameters,
+        [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
         [string] $BootstrapperUrl,
         [string] $BootstrapperChecksum,
         [string] $BootstrapperChecksumType,
@@ -27,14 +27,7 @@
 
     $frobbed, $frobbing, $frobbage = $OperationTexts
 
-    if ($null -eq $PackageParameters)
-    {
-        $PackageParameters = Parse-Parameters $env:chocolateyPackageParameters
-    }
-    else
-    {
-        $PackageParameters = $PackageParameters.Clone()
-    }
+    $PackageParameters = $PackageParameters.Clone()
 
     $argumentSetFromArgumentList = @{}
     for ($i = 0; $i -lt $ArgumentList.Length; $i += 2)
