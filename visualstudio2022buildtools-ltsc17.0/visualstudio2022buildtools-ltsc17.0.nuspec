@@ -1,0 +1,78 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2022buildtools-ltsc17.0</id>
+    <version>117.0.21.0-preview1</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2022buildtools-ltsc17.0</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Visual Studio 2022 Build Tools LTSC 17.0 (evergreen installer)</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/7e32702d4d99f08b5b73ae9c6622b0be61a2066e/icons/vs2022.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2022-prerelease/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs vs17 2022 build tools admin</tags>
+    <summary>Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE.</summary>
+    <description>
+### Overview
+The Visual Studio Build Tools allows you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE. There are options to install the Visual C++ compilers and libraries, MFC, ATL, and C++/CLI support.
+
+This package installs the latest Visual Studio Build Tools from the Long-Term Servicing Channel (LTSC) 17.0.
+
+To find out what's new or to see the known issues, see the [Visual Studio 2022 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes).  
+[System requirements](https://docs.microsoft.com/en-us/visualstudio/releases/2022/system-requirements)
+
+### Customizations and Optional features
+By default, the package installs only the bare minimum required (the MSBuild Tools workload). The easiest way to add more development features is to use the workload packages listed in the Release Notes section.
+
+All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2022). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+
+After installing the package, more features can also be added by launching the Visual Studio Installer application from the Start Menu.
+
+The language of the installed software can be controlled using the package parameter `--locale language`.
+The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2022#list-of-language-locales). By default, the operating system display language is used.
+
+#### Full installation
+This command will install Visual Studio Build Tools with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
+
+    choco install visualstudio2022buildtools-ltsc17.0 --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+
+[More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+
+### Notes
+
+A reboot may be required after (or even _before_) installing/uninstalling this package.
+If control over reboots is required, it is advisable to install the dependencies (esp. dotnetfx 4.8.0) first, perform a reboot if necessary, and then install this package.
+
+Some parameters, including `--allWorkloads`, `--includeRecommended` and `--includeOptional`, are only valid during the initial installation of Visual Studio and may cause failures if used during upgrade. For reliability, it is recommended to avoid using these parameters and install workloads using the workload packages listed in the Release Notes section.
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2022 release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes)
+##### Package
+117.0.21.0:
+- Package metadata updated for Visual Studio 2022 LTSC 17.0 version 17.0.21 (the native installer always installs the latest released Visual Studio 2022 LTSC 17.0 build).
+- Updated bootstrapper url.
+
+#### Available workload packages
+- [Azure development build tools](https://chocolatey.org/packages/visualstudio2022-workload-azurebuildtools)
+- [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2022-workload-databuildtools)
+- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2022-workload-manageddesktopbuildtools)
+- [Node.js build tools](https://chocolatey.org/packages/visualstudio2022-workload-nodebuildtools)
+- [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2022-workload-officebuildtools)
+- [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2022-workload-universalbuildtools)
+- [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2022-workload-vctools)
+- [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2022-workload-visualstudioextensionbuildtools)
+- [Web development build tools](https://chocolatey.org/packages/visualstudio2022-workload-webbuildtools)
+- [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2022-workload-xamarinbuildtools)
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.11.0-preview6" />
+      <dependency id="dotnetfx" version="4.8.0" />
+      <dependency id="visualstudio-installer" version="2.0.2" />
+    </dependencies>
+  </metadata>
+</package>

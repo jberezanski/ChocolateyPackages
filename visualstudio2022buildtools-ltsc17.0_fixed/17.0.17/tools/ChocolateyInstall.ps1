@@ -1,0 +1,11 @@
+﻿Install-VisualStudio `
+    -PackageName 'visualstudio2022buildtools-ltsc17.0' `
+    -ApplicationName 'Microsoft Visual Studio Build Tools 2022' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/4fa6f781-e75f-43a7-bf51-066503f685ae/7bc8ecedc79b5174525c9d36477fdc0a1c860f3dbaee06e7d53affcd88e6123a/vs_BuildTools.exe' <# https://learn.microsoft.com/en-us/visualstudio/releases/2022/release-history #> `
+    -Checksum '7BC8ECEDC79B5174525C9D36477FDC0A1C860F3DBAEE06E7D53AFFCD88E6123A' `
+    -ChecksumType 'SHA256' `
+    -InstallerTechnology 'WillowVS2017OrLater' `
+    -Product 'BuildTools' `
+    -VisualStudioYear '2022' `
+    -Preview $false `
+    -DefaultParameterValues @{ channelId = 'VisualStudio.17.Release.LTSC.17.0'; channelUri = 'https://aka.ms/vs/17/release.ltsc.17.0/channel'; installChannelUri = 'https://aka.ms/vs/17/release.ltsc.17.0/562311411_1015084326/channel' }
