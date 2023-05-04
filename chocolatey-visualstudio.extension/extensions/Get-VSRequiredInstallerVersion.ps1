@@ -12,14 +12,24 @@ function Get-VSRequiredInstallerVersion
     Write-Debug 'Obtaining the channel manifest in order to determine the required installer version'
     $channelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ChannelReference $ChannelReference -UseInstallChannelUri:$UseInstallChannelUri
 
-    $version = Get-VSChannelManifestItemVersion -Manifest $channelManifest -ChannelItemType 'Bootstrapper'
+    # VS 2022+
+    $version = Get-VSChannelManifestItemVersion -Manifest $channelManifest -ChannelItemType 'Bootstrapper' -PropertyName 'installerVersion'
     if ($null -ne $version)
     {
-        Write-Verbose "Required installer version determined from the channel manifest: '$version'"
+        Write-Verbose "Required installer version determined from the channel manifest (as bootstrapper installerVersion property): '$version'"
     }
     else
     {
-        Write-Verbose "The required installer version could not be determined from the component manifest"
+        # VS 2017-2019
+        $version = Get-VSChannelManifestItemVersion -Manifest $channelManifest -ChannelItemType 'Bootstrapper' -PropertyName 'version'
+        if ($null -ne $version)
+        {
+            Write-Verbose "Required installer version determined from the channel manifest (as bootstrapper version property): '$version'"
+        }
+        else
+        {
+            Write-Verbose "The required installer version could not be determined from the component manifest"
+        }
     }
 
     Write-Debug 'Obtaining the component manifest in order to determine the required engine version'
