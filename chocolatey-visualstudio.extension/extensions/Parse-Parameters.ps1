@@ -18,21 +18,23 @@ function Parse-Parameters
         $parameters = @{}
     }
 
-    if ($s -eq '')
-    {
-        Write-Debug "No package parameters."
-        return $parameters
-    }
-
     $multiValuedParameterNames = @{ add = 1; remove = 1; addProductLang = 1; removeProductLang = 1; path = 1 }
 
-    Write-Debug "Package parameters: $s"
-    $s = ' ' + $s
     [String[]] $kvpPrefix = @(" --")
     $kvpDelimiter = ' '
     $rxResetParameter = New-Object -TypeName System.Text.RegularExpressions.Regex -ArgumentList @('^reset-param(eter)?-(?=.)', [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
 
-    $kvps = $s.Split($kvpPrefix, [System.StringSplitOptions]::RemoveEmptyEntries)
+    if ($s -eq '')
+    {
+        Write-Debug "No package parameters."
+        $kvps = @()
+    }
+    else
+    {
+        Write-Debug "Package parameters: $s"
+        $kvps = (' ' + $s).Split($kvpPrefix, [System.StringSplitOptions]::RemoveEmptyEntries)
+    }
+
     foreach ($kvp in $kvps)
     {
         Write-Debug "Package parameter kvp: $kvp"
@@ -57,18 +59,26 @@ function Parse-Parameters
             Write-Debug "Removing existing value of --$resetParameterName parameter, if any."
             $parameters.Remove($resetParameterName)
         }
-        elseif ($multiValuedParameterNames.ContainsKey($key) -and $parameters.ContainsKey($key))
+        elseif ($parameters.ContainsKey($key))
         {
             $existingValue = $parameters[$key]
-            if ($existingValue -is [System.Collections.IList])
+            if ($multiValuedParameterNames.ContainsKey($key))
             {
-                Write-Debug "Parameter is multi-valued, appending to existing list of values"
-                $existingValue.Add($value)
+                if ($existingValue -is [System.Collections.IList])
+                {
+                    Write-Debug "Parameter is multi-valued, appending to existing list of values."
+                    $existingValue.Add($value)
+                }
+                else
+                {
+                    Write-Debug "Parameter is multi-valued, converting value to list of values."
+                    $parameters[$key] = New-Object -TypeName System.Collections.Generic.List``1[System.String] -ArgumentList (,[string[]]($existingValue, $value))
+                }
             }
             else
             {
-                Write-Debug "Parameter is multi-valued, converting value to list of values"
-                $parameters[$key] = New-Object -TypeName System.Collections.Generic.List``1[System.String] -ArgumentList (,[string[]]($existingValue, $value))
+                Write-Debug "Overwriting existing value of --$key parameter ('$existingValue') with '$value'."
+                $parameters[$key] = $value
             }
         }
         else

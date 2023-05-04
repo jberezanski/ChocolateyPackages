@@ -6,6 +6,7 @@
 - Packages may now specify default values for some package parameters and pass them to Install-VisualStudio, Add-VisualStudioWorkload/Component and Remove-VisualStudioWorkload/Component (via a new -DefaultParameterValues parameter). This, in particular, supports packages which embed the VS bootstrapper and manifests in order to install a specific VS version, or packages which want to install/update VS from the LTSC channel ([GH-139](https://github.com/jberezanski/ChocolateyPackages/pull/139)).
 - The parameters parser now understands the syntax `--reset-parameter-xyz` as a directive to forget the parameter `--xyz` if it has already been specified (possibly via default values set by the package). This is intended to be a way to override some defaults set in the package wihout having to provide an explicit value (i.e. allow the normal VS Installer and/or extension script logic to determine the value).
 - Install-VisualStudio now respects `--channelId` from package parameters for the purpose of determining an existing VS instance to update ([GH-139](https://github.com/jberezanski/ChocolateyPackages/pull/139)).
+- Package parameters can now be specified multiple times and the last value will be used.
 
 ## Version 1.10.2
 

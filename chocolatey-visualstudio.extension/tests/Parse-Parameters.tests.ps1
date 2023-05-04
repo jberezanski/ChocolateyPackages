@@ -8,7 +8,7 @@ Parse-Parameters ''
 Parse-Parameters '--argnoval'
 Parse-Parameters '--arg someval'
 Parse-Parameters '--arg someval --arg2 2val'
-Parse-Parameters '--arg someval --arg shouldexplode' -ErrorAction Continue # should explode
+Parse-Parameters '--arg someval --arg shouldoverwrite'
 Parse-Parameters '--add Microsoft.VisualStudio.Workload.Data'
 Parse-Parameters '--add Microsoft.VisualStudio.Workload.Data;includeOptional --lang pl-PL'
 Parse-Parameters '--arg someval --add Microsoft.VisualStudio.Workload.Data --add Microsoft.VisualStudio.Workload.ManagedDesktop'
