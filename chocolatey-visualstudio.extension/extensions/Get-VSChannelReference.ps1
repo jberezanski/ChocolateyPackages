@@ -4,20 +4,45 @@ function Get-VSChannelReference
     Param
     (
         [Parameter(Mandatory = $true)] [ValidateSet('2017', '2019', '2022')] [string] $VisualStudioYear,
-        [bool] $Preview
+        [bool] $Preview,
+        [hashtable] $PackageParameters
     )
 
-    switch ($VisualStudioYear)
+    $channelId = $null
+    $channelUri = $null
+    $installChannelUri = $null
+    if ($null -ne $PackageParameters)
     {
-        '2017' { $majorVersion = 15 }
-        '2019' { $majorVersion = 16 }
-        '2022' { $majorVersion = 17 }
-        default { throw "Unsupported VisualStudioYear: $VisualStudioYear"}
+        if ($PackageParameters.ContainsKey('channelId'))
+        {
+            $channelId = $PackageParameters['channelId']
+        }
+
+        if ($PackageParameters.ContainsKey('channelUri'))
+        {
+            $channelUri = $PackageParameters['channelUri']
+        }
+
+        if ($PackageParameters.ContainsKey('installChannelUri'))
+        {
+            $installChannelUri = $PackageParameters['installChannelUri']
+        }
     }
 
-    $mapPreviewOrReleaseToChannelTypeSuffix = @{ $true = 'Preview'; $false = 'Release' }
-    $channelId = 'VisualStudio.{0}.{1}' -f $majorVersion, $mapPreviewOrReleaseToChannelTypeSuffix[$Preview]
+    if ($null -eq $channelId)
+    {
+        switch ($VisualStudioYear)
+        {
+            '2017' { $majorVersion = 15 }
+            '2019' { $majorVersion = 16 }
+            '2022' { $majorVersion = 17 }
+            default { throw "Unsupported VisualStudioYear: $VisualStudioYear"}
+        }
 
-    $obj = New-VSChannelReference -ChannelId $channelId
+        $mapPreviewOrReleaseToChannelTypeSuffix = @{ $true = 'Preview'; $false = 'Release' }
+        $channelId = 'VisualStudio.{0}.{1}' -f $majorVersion, $mapPreviewOrReleaseToChannelTypeSuffix[$Preview]
+    }
+
+    $obj = New-VSChannelReference -ChannelId $channelId -ChannelUri $channelUri -InstallChannelUri $installChannelUri
     return $obj
 }

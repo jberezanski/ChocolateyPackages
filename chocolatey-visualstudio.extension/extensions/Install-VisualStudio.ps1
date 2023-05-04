@@ -58,18 +58,29 @@ Install-ChocolateyPackage
 
     $channelReference = $null
     $productReference = $null
-    if ($packageParameters.ContainsKey('channelId'))
+    if ($VisualStudioYear -ne '')
     {
-        $channelReference = New-VSChannelReference -ChannelId $packageParameters['channelId']
+        $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview $Preview -PackageParameters $packageParameters
     }
-    elseif ($VisualStudioYear -ne '')
+    elseif ($packageParameters.ContainsKey('channelId'))
     {
-        $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview $Preview
+        # Fallback for old packages, which did not specify VisualStudioYear.
+        # The actual year value passed here does not matter, because the function will use the channelId from package parameters.
+        $channelReference = Get-VSChannelReference -VisualStudioYear '2017' -Preview $Preview -PackageParameters $packageParameters
     }
 
     if ($null -ne $channelReference -and $Product -ne '')
     {
-        $productReference = Get-VSProductReference -ChannelReference $channelReference -Product $Product
+        if ($Product -ne '')
+        {
+            $productReference = Get-VSProductReference -ChannelReference $channelReference -Product $Product -PackageParameters $packageParameters
+        }
+        elseif ($packageParameters.ContainsKey('productId'))
+        {
+            # Fallback for old packages, which did not specify VisualStudioYear.
+            # The actual product name passed here does not matter, because the function will use the productId from package parameters.
+            $productReference = Get-VSProductReference -ChannelReference $channelReference -Product 'Ignored' -PackageParameters $packageParameters
+        }
     }
 
     if (-not $creatingLayout)

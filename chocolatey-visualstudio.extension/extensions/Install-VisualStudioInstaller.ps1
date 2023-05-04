@@ -25,7 +25,8 @@ If the Installer is present, it will be updated/reinstalled if:
       [version] $RequiredEngineVersion,
       [ValidateSet('2017', '2019', '2022')] [string] $VisualStudioYear = '2017',
       [switch] $Preview,
-      [switch] $Force
+      [switch] $Force,
+      [hashtable] $DefaultParameterValues
     )
     if ($null -ne $Env:ChocolateyPackageDebug)
     {
@@ -35,9 +36,9 @@ If the Installer is present, it will be updated/reinstalled if:
     }
     Write-Debug "Running 'Install-VisualStudioInstaller' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType RequiredInstallerVersion:'$RequiredInstallerVersion' RequiredEngineVersion:'$RequiredEngineVersion' Force:'$Force'";
 
-    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
+    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters -DefaultValues $DefaultParameterValues
+    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$Preview -PackageParameters $packageParameters
 
-    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$Preview
     $PSBoundParameters.Remove('VisualStudioYear')
     $PSBoundParameters.Remove('Preview')
 

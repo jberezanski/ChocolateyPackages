@@ -20,9 +20,19 @@
     )
     Write-Debug "Running 'Start-VSModifyOperation' with PackageName:'$PackageName' ArgumentList:'$ArgumentList' ChannelReference:'$ChannelReference' ApplicableProducts:'$ApplicableProducts' OperationTexts:'$OperationTexts' Operation:'$Operation' RequiredProductVersion:'$RequiredProductVersion' BootstrapperUrl:'$BootstrapperUrl' BootstrapperChecksum:'$BootstrapperChecksum' BootstrapperChecksumType:'$BootstrapperChecksumType' ProductReference:'$ProductReference' UseBootstrapper:'$UseBootstrapper'";
 
-    if ($null -eq $ProductReference -and $Operation -eq 'update')
+    if ($null -eq $ProductReference)
     {
-        throw 'ProductReference is mandatory for update operations.'
+        if ($PackageParameters.ContainsKey('productId'))
+        {
+            # Workload/component packages do not pass a ProductReference, because they may apply to several products.
+            # However, the user can explicitly narrow the operation scope via package parameters.
+            # The actual product name passed here does not matter, because the function will use the productId from package parameters.
+            $ProductReference = Get-VSProductReference -ChannelReference $channelReference -Product 'Ignored' -PackageParameters $packageParameters
+        }
+        elseif ($Operation -eq 'update')
+        {
+            throw 'ProductReference is mandatory for update operations.'
+        }
     }
 
     $frobbed, $frobbing, $frobbage = $OperationTexts
@@ -62,16 +72,6 @@
     $argumentSets = ,$baseArgumentSet
     if ($baseArgumentSet.ContainsKey('installPath'))
     {
-        if ($baseArgumentSet.ContainsKey('productId'))
-        {
-            Write-Warning 'Parameter issue: productId is ignored when installPath is specified.'
-        }
-
-        if ($baseArgumentSet.ContainsKey('channelId'))
-        {
-            Write-Warning 'Parameter issue: channelId is ignored when installPath is specified.'
-        }
-
         $installedProducts = Resolve-VSProductInstance -AnyProductAndChannel -PackageParameters $PackageParameters
         if (($installedProducts | Measure-Object).Count -gt 0)
         {
@@ -96,19 +96,6 @@
             Write-Warning "Did not detect any installed Visual Studio products at path $($baseArgumentSet['installPath'])."
         }
     }
-    elseif ($baseArgumentSet.ContainsKey('productId'))
-    {
-        if (-not $baseArgumentSet.ContainsKey('channelId'))
-        {
-            throw "Parameter error: when productId is specified, channelId must be specified, too."
-        }
-
-        $baseArgumentSet['__internal_productReference'] = New-VSProductReference -ChannelId $baseArgumentSet['channelId'] -ProductId $baseArgumentSet['productId']
-    }
-    elseif ($baseArgumentSet.ContainsKey('channelId'))
-    {
-        throw "Parameter error: when channelId is specified, productId must be specified, too."
-    }
     else
     {
         if (($ProductInstance | Measure-Object).Count -ne 0)
@@ -117,7 +104,15 @@
         }
         else
         {
-            $installedProducts = Resolve-VSProductInstance -ChannelReference $ChannelReference -PackageParameters $PackageParameters
+            if ($null -ne $ProductReference)
+            {
+                $installedProducts = Resolve-VSProductInstance -ProductReference $ProductReference -PackageParameters $PackageParameters
+            }
+            else
+            {
+                $installedProducts = Resolve-VSProductInstance -ChannelReference $ChannelReference -PackageParameters $PackageParameters
+            }
+
             if (($installedProducts | Measure-Object).Count -eq 0)
             {
                 throw "Unable to detect any supported Visual Studio product. You may try passing --installPath or both --productId and --channelId parameters."
@@ -289,15 +284,8 @@
     $overallExitCode = 0
     foreach ($argumentSet in $argumentSets)
     {
-        if ($argumentSet.ContainsKey('installPath'))
-        {
-            $productDescription = "Visual Studio product: [installPath = '$($argumentSet.installPath)']"
-        }
-        else
-        {
-            $productDescription = "Visual Studio product: [productId = '$($argumentSet.productId)' channelId = '$($argumentSet.channelId)']"
-        }
-
+        # installPath should always be present
+        $productDescription = "Visual Studio product: [installPath = '$($argumentSet.installPath)']"
         Write-Debug "Modifying $productDescription"
 
         $thisProductReference = $ProductReference

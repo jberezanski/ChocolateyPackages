@@ -30,8 +30,8 @@
         $argumentList += @('includeOptional', '')
     }
 
-    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview $Preview
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters -DefaultValues $DefaultParameterValues
+    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$Preview -PackageParameters $packageParameters
     Start-VSModifyOperation `
         -PackageName $PackageName `
         -PackageParameters $packageParameters `

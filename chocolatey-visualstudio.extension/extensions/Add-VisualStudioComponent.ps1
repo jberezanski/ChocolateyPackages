@@ -20,8 +20,8 @@ function Add-VisualStudioComponent
     Write-Debug "Running 'Add-VisualStudioComponent' with PackageName:'$PackageName' Component:'$Component' VisualStudioYear:'$VisualStudioYear' RequiredProductVersion:'$RequiredProductVersion' Preview:'$Preview'";
     $argumentList = @('add', "$Component")
 
-    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview $Preview
     $packageParameters = Parse-Parameters $env:chocolateyPackageParameters -DefaultValues $DefaultParameterValues
+    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$Preview -PackageParameters $packageParameters
     Start-VSModifyOperation `
         -PackageName $PackageName `
         -PackageParameters $packageParameters `

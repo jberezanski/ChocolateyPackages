@@ -5,7 +5,8 @@
         [Parameter(Mandatory = $true)] [string] $PackageName,
         [Parameter(Mandatory = $true)] [string] $Product,
         [Parameter(Mandatory = $true)] [string] $VisualStudioYear,
-        [bool] $Preview
+        [bool] $Preview,
+        [hashtable] $DefaultParameterValues
     )
     if ($null -ne $Env:ChocolateyPackageDebug)
     {
@@ -15,9 +16,9 @@
     }
 
     Write-Debug "Running 'Remove-VisualStudioProduct' with PackageName:'$PackageName' Product:'$Product' VisualStudioYear:'$VisualStudioYear' Preview:'$Preview'";
-    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview $Preview
-    $productReference = Get-VSProductReference -ChannelReference $channelReference -Product $Product
-    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters -DefaultValues @{ channelId = $channelReference.ChannelId; productId = $productReference.ProductId }
+    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters -DefaultValues $DefaultParameterValues
+    $channelReference = Get-VSChannelReference -VisualStudioYear $VisualStudioYear -Preview:$Preview -PackageParameters $packageParameters
+    $productReference = Get-VSProductReference -ChannelReference $channelReference -Product $Product -PackageParameters $packageParameters
     Start-VSModifyOperation `
         -PackageName $PackageName `
         -ArgumentList @() `

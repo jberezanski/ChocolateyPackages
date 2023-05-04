@@ -12,7 +12,7 @@ function Get-VSRequiredInstallerVersion
     Write-Debug 'Obtaining the channel manifest in order to determine the required installer version'
     $channelManifest = Get-VSChannelManifest -PackageParameters $PackageParameters -ChannelReference $ChannelReference -UseInstallChannelUri:$UseInstallChannelUri
 
-    # VS 2022+
+    # VS 2022 17.4+
     $version = Get-VSChannelManifestItemVersion -Manifest $channelManifest -ChannelItemType 'Bootstrapper' -PropertyName 'installerVersion'
     if ($null -ne $version)
     {
@@ -20,7 +20,7 @@ function Get-VSRequiredInstallerVersion
     }
     else
     {
-        # VS 2017-2019
+        # VS <= 2022 17.3
         $version = Get-VSChannelManifestItemVersion -Manifest $channelManifest -ChannelItemType 'Bootstrapper' -PropertyName 'version'
         if ($null -ne $version)
         {
