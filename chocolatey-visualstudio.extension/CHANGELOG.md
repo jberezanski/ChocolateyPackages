@@ -7,6 +7,7 @@
 - The parameters parser now understands the syntax `--reset-parameter-xyz` as a directive to forget the parameter `--xyz` if it has already been specified (possibly via default values set by the package). This is intended to be a way to override some defaults set in the package wihout having to provide an explicit value (i.e. allow the normal VS Installer and/or extension script logic to determine the value).
 - Install-VisualStudio now respects `--channelId` from package parameters for the purpose of determining an existing VS instance to update ([GH-139](https://github.com/jberezanski/ChocolateyPackages/pull/139)).
 - Package parameters can now be specified multiple times and the last value will be used.
+- VS Installer parameters which cannot be used when updating an already installed instance will be ignored when passed as package parameters. This avoids failures when package parameters remembered from the initial installation are reused by Chocolatey for upgrades when the 'useRememberedArgumentsForUpgrades' feature is enabled ([GH-99](https://github.com/jberezanski/ChocolateyPackages/issues/99)).
 
 ## Version 1.10.2
 

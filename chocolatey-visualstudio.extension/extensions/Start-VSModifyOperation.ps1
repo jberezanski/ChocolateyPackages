@@ -364,9 +364,9 @@
 
         if ($Operation -ne 'uninstall' -and -not $channelCacheCleared)
         {
-            # this works around concurrency issues in recent VS Installer versions (1.14.x),
+            # This works around concurrency issues in some VS Installer versions (1.14.x),
             # which lead to product updates not being detected
-            # due to the VS Installer failing to update the cached manifests (file in use)
+            # due to the VS Installer failing to update the cached manifests (file in use).
             if ($PSCmdlet.ShouldProcess("Visual Studio Installer channel cache", "clear"))
             {
                 Clear-VSChannelCache
@@ -397,6 +397,14 @@
 
         Remove-NegatedArguments -Arguments $argumentSet -RemoveNegativeSwitches
         Remove-VSPackageParametersNotPassedToNativeInstaller -PackageParameters $argumentSet -TargetDescription $nativeInstallerDescription -Blacklist $nativeInstallerArgumentBlacklist
+        if ($Operation -eq 'update')
+        {
+            # Remove arguments which cannot be used when updating an already installed VS instance.
+            # This supports users who turned on the 'useRememberedArgumentsForUpgrades' feature of Chocolatey.
+            # Reference: https://learn.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2022#install-update-modify-repair-uninstall-and-export-commands-and-command-line-parameters
+            $argumentsNotForUpdate = @('add', 'remove', 'addProductLang', 'removeProductLang', 'all', 'allWorkloads', 'includeRecommended', 'includeOptional', 'nickname', 'productKey', 'config')
+            Remove-VSPackageParametersNotPassedToNativeInstaller -PackageParameters $argumentSet -TargetDescription "$nativeInstallerDescription for '$Operation' operation" -Blacklist $argumentsNotForUpdate
+        }
 
         $silentArgs = ConvertTo-ArgumentString -InitialUnstructuredArguments @($Operation) -Arguments $argumentSet -Syntax 'Willow'
 
