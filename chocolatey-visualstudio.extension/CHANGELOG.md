@@ -9,6 +9,7 @@
 - Package parameters can now be specified multiple times and the last value will be used.
 - VS Installer parameters which cannot be used when updating an already installed instance will be ignored when passed as package parameters. This avoids failures when package parameters remembered from the initial installation are reused by Chocolatey for upgrades when the 'useRememberedArgumentsForUpgrades' feature is enabled ([GH-99](https://github.com/jberezanski/ChocolateyPackages/issues/99)).
 - Fixed reading of installer version from the channel manifest for VS 2022, which caused a harmless warning and triggered unnecessary attempts to upgrade the VS Installer.
+- Install-VisualStudio now automatically sets `--channelId`, `--channelUri` and `--productId` when installing a new VS instance. (This supports using the generic bootstrapper, vs_Setup.exe, to install any product available from the given channel.)
 
 ## Version 1.10.2
 

@@ -171,7 +171,35 @@ Install-ChocolateyPackage
 
         if ($assumeNewVS2017Installer)
         {
-            Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $PackageParameters -ChannelReference $channelReference -Url $Url -Checksum $Checksum -ChecksumType $ChecksumType
+            # Copy channel and product info back to package parameters. This helps packages which use the generic bootstrapper (vs_Setup.exe).
+            $packageParameters = $packageParameters.Clone()
+            if ($null -ne $channelReference)
+            {
+                if (-not $packageParameters.ContainsKey('channelId'))
+                {
+                    $packageParameters['channelId'] = $channelReference.ChannelId
+                }
+
+                if (-not $packageParameters.ContainsKey('channelUri') -and -not [string]::IsNullOrEmpty($channelReference.ChannelUri))
+                {
+                    $packageParameters['channelUri'] = $channelReference.ChannelUri
+                }
+
+                if (-not $packageParameters.ContainsKey('installChannelUri') -and -not [string]::IsNullOrEmpty($channelReference.InstallChannelUri))
+                {
+                    $packageParameters['installChannelUri'] = $channelReference.InstallChannelUri
+                }
+            }
+
+            if ($null -ne $productReference)
+            {
+                if (-not $packageParameters.ContainsKey('productId'))
+                {
+                    $packageParameters['productId'] = $productReference.ProductId
+                }
+            }
+
+            Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $packageParameters -ChannelReference $channelReference -Url $Url -Checksum $Checksum -ChecksumType $ChecksumType -UseInstallChannelUri
         }
 
         $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer

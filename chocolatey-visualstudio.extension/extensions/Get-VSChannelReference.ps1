@@ -43,6 +43,11 @@ function Get-VSChannelReference
         $channelId = 'VisualStudio.{0}.{1}' -f $majorVersion, $mapPreviewOrReleaseToChannelTypeSuffix[$Preview]
     }
 
+    if ($null -eq $channelUri)
+    {
+        $channelUri = Get-VSChannelUri -ChannelId $channelId -ErrorAction SilentlyContinue
+    }
+
     $obj = New-VSChannelReference -ChannelId $channelId -ChannelUri $channelUri -InstallChannelUri $installChannelUri
     return $obj
 }
