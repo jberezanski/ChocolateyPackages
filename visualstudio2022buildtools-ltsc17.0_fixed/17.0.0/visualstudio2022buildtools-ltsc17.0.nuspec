@@ -70,7 +70,7 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2022-workload-xamarinbuildtools)
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.11.0-preview6" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.11.0" />
       <dependency id="dotnetfx" version="4.8.0" />
       <dependency id="visualstudio-installer" version="2.0.2" />
     </dependencies>
