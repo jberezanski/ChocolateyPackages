@@ -54,6 +54,7 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 117.6.3.0:
 - Package metadata updated for Visual Studio 2022 version 17.6.3 (the native installer always installs the latest released Visual Studio 2022 build).
 - Updated bootstrapper url.
+- Updated extension dependency version.
 
 #### Available workload packages
 - [Azure development](https://chocolatey.org/packages/visualstudio2022-workload-azure)
