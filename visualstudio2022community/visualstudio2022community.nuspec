@@ -74,7 +74,7 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - [Visual Studio extension development](https://chocolatey.org/packages/visualstudio2022-workload-visualstudioextension)
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.10.2" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.11.0" />
       <dependency id="dotnetfx" version="4.8.0" />
       <dependency id="visualstudio-installer" version="2.0.2" />
     </dependencies>
