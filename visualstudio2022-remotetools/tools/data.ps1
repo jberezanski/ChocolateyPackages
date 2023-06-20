@@ -1,12 +1,14 @@
+# 17.0.33712.159
+
 ﻿$installData32 = @{
-  Url = 'https://download.visualstudio.microsoft.com/download/pr/6a4c74cd-8ee0-4757-9620-a11a5b48b1a7/37a5dc605533450e9664a82f51128830fc70cb5f940ede139e869130c9227130/VS_RemoteTools.exe'
-  Checksum = '37A5DC605533450E9664A82F51128830FC70CB5F940EDE139E869130C9227130'
+  Url = 'https://download.visualstudio.microsoft.com/download/pr/c8542f60-6185-43c1-a645-a4072ac9abde/6f1019a8e51759b04b511767d4385cce3dfe162e785c6271f1f82a2f7f10329e/VS_RemoteTools.exe'
+  Checksum = '6f1019a8e51759b04b511767d4385cce3dfe162e785c6271f1f82a2f7f10329e'
   ChecksumType = 'sha256'
 }
 
 $installData64 = @{
-  Url64 = 'https://download.visualstudio.microsoft.com/download/pr/6a4c74cd-8ee0-4757-9620-a11a5b48b1a7/8f155fea1367ba32092ed0c408141dc532f21a7c916f5e459e3585bb267222ca/VS_RemoteTools.exe'
-  Checksum64 = '8F155FEA1367BA32092ED0C408141DC532F21A7C916F5E459E3585BB267222CA'
+  Url64 = 'https://download.visualstudio.microsoft.com/download/pr/c8542f60-6185-43c1-a645-a4072ac9abde/918e377f64a53ae50223db1f10567743e9183f044a436f5e4c12f0a90295cfaf/VS_RemoteTools.exe'
+  Checksum64 = '918e377f64a53ae50223db1f10567743e9183f044a436f5e4c12f0a90295cfaf'
   ChecksumType64 = 'sha256'
 }
 
