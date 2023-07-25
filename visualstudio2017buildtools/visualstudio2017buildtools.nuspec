@@ -54,7 +54,6 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 15.9.55.0:
 - Package metadata updated for Visual Studio 2017 version 15.9.55 (the native installer always installs the latest released Visual Studio 2017 build).
 - Updated bootstrapper url.
-- Updated extension dependency version.
 
 #### Available workload packages
 - [Azure development build tools](https://chocolatey.org/packages/visualstudio2017-workload-azurebuildtools)
