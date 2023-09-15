@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version 1.11.1
+
+- Fixed layout creation (`--layout`) broken by adding `--channelId` and `--channelUri` in support of the generic bootstrapper ([GH-148](https://github.com/jberezanski/ChocolateyPackages/issues/148)).
+
 ## Version 1.11.0
 
 - Arguments `--path install=...`, `--path cache=...` and `--path shared=...` are now supported ([GH-142](https://github.com/jberezanski/ChocolateyPackages/issues/142)). `--path install=...` is converted to `--installPath`; those two must not be specified at the same time with different values.

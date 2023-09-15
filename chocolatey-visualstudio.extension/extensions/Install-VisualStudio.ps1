@@ -200,6 +200,49 @@ Install-ChocolateyPackage
             }
 
             Assert-VSInstallerUpdated -PackageName $PackageName -PackageParameters $packageParameters -ChannelReference $channelReference -Url $Url -Checksum $Checksum -ChecksumType $ChecksumType -UseInstallChannelUri
+
+            if ($creatingLayout)
+            {
+                # vs_layout.exe (used internally by the VS Installer) does not support channel parameters on the command line (channelId, channelUri, installChannelUri), even though the docs suggest it should.
+                # Normally, those parameters are passed from a response file embedded inside the VS bootstrapper, so the values are hardwired to the origin of the bootstrapper.
+                # However, in some cases we want the flexibility to use a different channel, and in other cases we use a generic bootstrapper (vs_Setup.exe), which has a blank response file.
+                # Therefore, we need to remove those parameters from the command line and create our own response file (but only if the user did not pass their own!).
+                $channelParameters = @{}
+                foreach ($name in @('channelId', 'channelUri', 'installChannelUri'))
+                {
+                    if ($packageParameters.ContainsKey($name))
+                    {
+                        Write-Debug "Layout: removing ${name} from command line parameters (value: '$($packageParameters[$name])')"
+                        $channelParameters[$name] = $packageParameters[$name]
+                        $packageParameters.Remove($name)
+                    }
+                }
+
+                if ($channelParameters.Count -gt 0)
+                {
+                    if (-not $packageParameters.ContainsKey('in'))
+                    {
+                        if ($channelParameters.ContainsKey('channelId') -and $channelParameters.ContainsKey('channelUri'))
+                        {
+                            $responseFilePath = Join-Path $Env:TEMP ('{0}_layout_{1:yyyyMMddHHmmss}.json' -f $PackageName, (Get-Date))
+                            Write-Debug "Generating response file with path: $responseFilePath"
+                            $responseFileContent = $channelParameters | ConvertTo-Json
+                            Write-Debug "Response file content: $responseFileContent"
+                            Set-Content -Path $responseFilePath -Value $responseFileContent -Encoding utf8
+                            $packageParameters['in'] = $responseFilePath
+                        }
+                        else
+                        {
+                            # This should never happen with known VS packages, but someone somewhere may do something unexpected, so let's leave a hint in the logs.
+                            Write-Verbose "When creating a layout, both channelId and channelUri should be provided if any of: channelId, channelUri, installChannelUri are."
+                        }
+                    }
+                    else
+                    {
+                        Write-Debug "Some channel-related parameters were removed from the command line to the layout command, but a custom response file was passed via the --in parameter. In case of problems, please ensure the provided response file contains those parameters."
+                    }
+                }
+            }
         }
 
         $silentArgs = Generate-InstallArgumentsString -parameters $packageParameters -adminFile $adminFile -logFilePath $logFilePath -assumeNewVS2017Installer:$assumeNewVS2017Installer
