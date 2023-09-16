@@ -60,6 +60,7 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 117.8.0.10000-preview1:
 - Package metadata updated for Visual Studio 2022 version 17.8.0 Preview 1.0 (the native installer always installs the latest released Visual Studio 2022 build).
 - Updated bootstrapper url.
+- Updated extension dependency.
 
 #### Available workload packages
 - [.NET desktop development](https://chocolatey.org/packages/visualstudio2022-preview-workload-manageddesktop)
