@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2017enterprise' `
     -ApplicationName 'Microsoft Visual Studio Enterprise 2017' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/ea921692-5682-4d42-bf5c-91487ba3c7d3/9ce1ca1e620a020279d0140c77350c7722359556fd02d238c8159d7aa562dade/vs_Enterprise.exe' `
-    -Checksum '9CE1CA1E620A020279D0140C77350C7722359556FD02D238C8159D7AA562DADE' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/d7dfc774-2e06-4d37-bb6f-0ec5b109153d/94b82d287624cb5149f852b60574408174187fcba72d74dd692c00af37019cca/vs_Enterprise.exe' `
+    -Checksum '94B82D287624CB5149F852B60574408174187FCBA72D74DD692C00AF37019CCA' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Enterprise' `
