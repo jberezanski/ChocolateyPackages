@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2017testcontroller' `
     -ApplicationName 'Microsoft Visual Studio Test Controller 2017' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/be7f8392-5e3f-40f8-95c5-68f1a895baa1/141b59b7774e6dc6632f9994eb709b9ec11b011a9626f3c49c4a9d92a51c6084/vs_TestController.exe' `
-    -Checksum '141B59B7774E6DC6632F9994EB709B9EC11B011A9626F3C49C4A9D92A51C6084' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/119c57b9-af7b-4970-81ff-824299902e62/177dca7a03052195282aa67683862f7da2854c55d2c3b214c7b6d1be6a772a9c/vs_TestController.exe' `
+    -Checksum '177DCA7A03052195282AA67683862F7DA2854C55D2C3B214C7B6D1BE6A772A9C' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'TestController' `
