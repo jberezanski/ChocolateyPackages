@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2017sql' `
     -ApplicationName 'SQL Server Data Tools for Visual Studio 2017' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/119c57b9-af7b-4970-81ff-824299902e62/6198e1aa4014e6cb0289a3bb4bd3a574140d65241c8ea5eee9eba3e774e43cc0/vs_SQL.exe' `
-    -Checksum '6198E1AA4014E6CB0289A3BB4BD3A574140D65241C8EA5EEE9EBA3E774E43CC0' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/1d202232-0c1d-46c4-8a48-931cf3a1187d/cf75ec7f1419e4c68ce447b2e26db314979dc2d1b96dd5d46172f262a815da29/vs_SQL.exe' `
+    -Checksum 'CF75EC7F1419E4C68CE447B2E26DB314979DC2D1B96DD5D46172F262A815DA29' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'SQL' `
