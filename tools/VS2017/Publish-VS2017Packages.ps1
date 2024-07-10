@@ -26,7 +26,8 @@ try
     Get-ChildItem | Where-Object Name -match $Pattern | Where-Object { -not (Test-Path -Path "$($_.FullName)\disabled.marker") } | ForEach-Object {
         $n = $_.Name
         $v = ([xml](Get-Content -Path ".\$n\$n.nuspec")).package.metadata.version
-        $p = "$PWD\output\$n.$v.nupkg"
+        $nv = ($v -replace '(?<=^[\d\.]*\.)0+(?=\d)','') -replace '(?<=^\d+\.\d+\.\d+)\.0(?=[^0-9\.])','' # trim leading zeros before prerelease suffix, then cut fourth .0
+        $p = "$PWD\output\$n.$nv.nupkg" # choco 2.0.0+ normalizes version when packing
         if ($PSCmdlet.ShouldProcess("Package: $n", 'Build'))
         {
             .\build.cmd $n
