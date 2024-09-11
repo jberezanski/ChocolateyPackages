@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2022testagent-preview' `
     -ApplicationName 'Microsoft Visual Studio Test Agent 2022 Preview' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/da57f786-7b1c-408d-8750-5fe32a7d6a43/5cf796104d506b44e4320e9f3805be48075b75a3dfdd133617fa3b392e1c425c/vs_TestAgent.exe' <# https://aka.ms/vs/17/pre/vs_testagent.exe #> `
-    -Checksum '5CF796104D506B44E4320E9F3805BE48075B75A3DFDD133617FA3B392E1C425C' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/12725588-4883-4728-a713-66775443edc9/d51bdba63dca8078b4f4bf91ef50387fd1cf828e40c01c949b8acde4bd996efa/vs_TestAgent.exe' <# https://aka.ms/vs/17/pre/vs_testagent.exe #> `
+    -Checksum 'D51BDBA63DCA8078B4F4BF91EF50387FD1CF828E40C01C949B8ACDE4BD996EFA' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'TestAgent' `
