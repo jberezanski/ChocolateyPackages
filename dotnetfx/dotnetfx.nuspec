@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnetfx</id>
-    <version>4.8.1.0-rtw</version>
+    <version>4.8.1.20250219-rtw</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8.1</title>
@@ -19,9 +19,11 @@
 
 The .NET Framework provides many services, including memory management, type and memory safety, security, networking, and application deployment. It provides easy-to-use data structures and APIs that abstract the lower-level Windows operating system. You can use a variety of programming languages with the .NET Framework, including C#, F#, and Visual Basic.
 
-Supported Windows Client versions: Windows 11 version 22H2, Windows 11 version 21H2, Windows 10 version 21H2, Windows 10 version 21H1, Windows 10 version 20H2
+Supported Windows Client versions: Windows 11 version 21H2, Windows 10 version 22H2, Windows 10 version 21H2, Windows 10 version 21H1, Windows 10 version 20H2
 
 Supported Windows Server versions: Windows Server 2022
+
+.NET Framework 4.8.1 is preinstalled with the operating system starting from Windows 11 version 22H2 and Windows Server 2025. On these systems, this package installs successfully, but does nothing.
 
 The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.8.1-devpack).</description>
     <releaseNotes>
@@ -30,7 +32,7 @@ The matching Developer Pack can be installed using [this package](https://chocol
 [.NET Framework 4.8.1 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net481/README.md)
 [.NET Framework 4.8.1 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net481/dotnet481-changes.md)
 ##### Package
-4.8.1.0-rtw: initial package release for .NET Framework 4.8.1 RTW. Package version marked with prerelease suffix to prevent automatic installation on systems older than Win 10 20H2 / Server 2022.
+4.8.1.20250219-rtw: Updated installer link to the latest published by Microsoft. Package version still marked with prerelease suffix to prevent automatic installation on systems older than Win 10 20H2 / Server 2022.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-dotnetfx.extension" version="1.0.1" />

@@ -4,8 +4,8 @@ $arguments = @{
     Release = 533320
     Version = $version
     ProductNameWithVersion = "Microsoft .NET Framework $version"
-    Url = 'https://download.visualstudio.microsoft.com/download/pr/6f083c7e-bd40-44d4-9e3f-ffba71ec8b09/3951fd5af6098f2c7e8ff5c331a0679c/ndp481-x86-x64-allos-enu.exe'
-    Checksum = '859B556EE19A33353626682B8B6F7E9CE97CD325B0D8F24C7770DC31F688D3C1'
+    Url = 'https://download.microsoft.com/download/4/b/2/cd00d4ed-ebdd-49ee-8a33-eabc3d1030e3/NDP481-x86-x64-AllOS-ENU.exe'
+    Checksum = 'C0CA2E0C9CD18A24A0A77369A13FAE2C2C4E8BC83355DD24E5DDC00F9D791FE3'
     ChecksumType = 'sha256'
 }
 
