@@ -73,7 +73,8 @@ if ($MajorVersion -eq 15 -and -not $Preview)
 
 # VS products
 
-$channel = @{ $true = 'pre'; $false = 'release' }[$Preview.ToBool()]
+$vsPreviewToken = @{ $true = 'insiders'; $false = 'pre' }[$MajorVersion -ge 18]
+$channel = @{ $true = $vsPreviewToken; $false = 'release' }[$Preview.ToBool()]
 $products = @("BuildTools","Community","Enterprise","FeedbackClient","Professional","TestAgent","TestController","TestProfessional","TeamExplorer")
 $akaUrls = $products | % { 'https://aka.ms/vs/{0}/{1}/vs_{2}.exe' -f $MajorVersion, $channel, $_ }
 $finalUrls = $akaUrls | % {

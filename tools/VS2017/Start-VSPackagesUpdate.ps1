@@ -4,7 +4,7 @@ Param ()
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 5
 
-$scripts = $PSScriptRoot # ad-hoc: $root = ".\tools\VS2017"
+$scripts = $PSScriptRoot # ad-hoc: $scripts = ".\tools\VS2017"
 $root = "$PSScriptRoot\..\.." # ad-hoc: $root = "."
 
 git checkout master; git pull --rebase
@@ -27,6 +27,9 @@ git commit -am "visualstudio2022*: update to $vsv"
 & "$scripts\Update-VisualStudio2017Packages.ps1" -VisualStudioYear 2022 -Preview
 $vsv = gc $root\visualstudio2022buildtools-preview\visualstudio2022buildtools-preview.nuspec | sls 'metadata updated for Visual Studio \d+ version ([^(]+)\s+\(' | % { $_.Matches[0].Groups[1].Value }
 git commit -am "visualstudio2022*-preview: update to $vsv"
+& "$scripts\Update-VisualStudio2017Packages.ps1" -VisualStudioYear 2026 -Preview
+$vsv = gc $root\visualstudio2026buildtools-preview\visualstudio2026buildtools-preview.nuspec | sls 'metadata updated for Visual Studio \d+ version ([^(]+)\s+\(' | % { $_.Matches[0].Groups[1].Value }
+git commit -am "visualstudio2026*-preview: update to $vsv"
 git checkout dev; git reset --hard master; git merge --no-edit origin/selective-build; git merge --no-edit origin/selective-build-vs2017
 git merge --no-edit vs; git push -f
 .\build.cmd

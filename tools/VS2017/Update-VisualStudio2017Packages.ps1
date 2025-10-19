@@ -2,7 +2,7 @@
 Param
 (
     [switch] $Preview,
-    [ValidateSet('2017', '2019', '2022')] [string] $VisualStudioYear = '2017'
+    [ValidateSet('2017', '2019', '2022', '2026')] [string] $VisualStudioYear = '2017'
 )
 
 Set-StrictMode -Version 5
@@ -146,25 +146,39 @@ function Get-VSVersion
     $res = Invoke-WebRequest -Uri $channelUri -UseBasicParsing
     $channelManifest = ConvertFrom-Json ([Text.Encoding]::UTF8.GetString($res.Content))
     $productDisplayVersion = $channelManifest.info.productDisplayVersion
-    $version = [version](($productDisplayVersion -split ' ')[0])
-    if ($null -ne $channelManifest.info.PSObject.Properties['productReleaseNameSuffix'])
+    Write-Verbose "productDisplayVersion: $productDisplayVersion"
+    if ($script:vsMajorVersion -ge 18)
     {
-        $productReleaseNameSuffix = $channelManifest.info.productReleaseNameSuffix
+        $productSemanticVersion = $channelManifest.info.productSemanticVersion
+        Write-Verbose "productSemanticVersion: $productSemanticVersion"
+        $version = [version](($productSemanticVersion -split '[-+]' | Select-Object -First 1))
+        $productPreReleaseMilestoneSuffix = [version](($productSemanticVersion -split '[-+]' | Select-Object -Last 1))
+        $productReleaseNameSuffix = $null
     }
     else
     {
-        $productReleaseNameSuffix = $null
+        $version = [version](($productDisplayVersion -split ' ')[0])
+        $productPreReleaseMilestoneSuffix = [version]$channelManifest.info.productPreReleaseMilestoneSuffix
+        if ($null -ne $channelManifest.info.PSObject.Properties['productReleaseNameSuffix'])
+        {
+            $productReleaseNameSuffix = $channelManifest.info.productReleaseNameSuffix
+        }
+        else
+        {
+            $productReleaseNameSuffix = $null
+        }
     }
 
     Write-Output $version
     Write-Output $productDisplayVersion
-    Write-Output ([version]$channelManifest.info.productPreReleaseMilestoneSuffix)
+    Write-Output $productPreReleaseMilestoneSuffix
     Write-Output $productReleaseNameSuffix
 }
 
+$vsMajorVersion = @{ '2017' = 15; '2019' = 16; '2022' = 17; '2026' = 18 }[$VisualStudioYear]
 $dirSuffix = @{ $true = '-preview'; $false = '' }[$Preview.ToBool()]
-$channelUrlToken = @{ $true = 'pre'; $false = 'release' }[$Preview.ToBool()]
-$vsMajorVersion = @{ '2017' = 15; '2019' = 16; '2022' = 17 }[$VisualStudioYear]
+$vsPreviewToken = @{ $true = 'insiders'; $false = 'pre' }[$vsMajorVersion -ge 18]
+$channelUrlToken = @{ $true = $vsPreviewToken; $false = 'release' }[$Preview.ToBool()]
 $mainProducts = @('BuildTools','Community','Enterprise','FeedbackClient','Professional','SQL','TeamExplorer','TestAgent','TestController','TestProfessional')
 $visualStudioProductVersion, $visualStudioProductDisplayVersion, $productPreReleaseMilestoneSuffix, $productReleaseNameSuffix = Get-VSVersion
 Write-Information "Current published Visual Studio version: $visualStudioProductVersion ('$visualStudioProductDisplayVersion', milestone: $productPreReleaseMilestoneSuffix, release name suffix: $productReleaseNameSuffix)"
