@@ -1,0 +1,83 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2026buildtools-preview</id>
+    <version>118.0.0.0-preview1</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2026buildtools-preview</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Visual Studio 2026 Build Tools Insiders (Preview)</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/a6fd60954badcc30c9e393571a8aa6dce77c4231/icons/vs2026preview.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2026-prerelease/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs vs18 2026 build tools preview insiders admin</tags>
+    <summary>Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE.</summary>
+    <description>
+### Overview
+The Visual Studio Build Tools allows you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE. There are options to install the Visual C++ compilers and libraries, MFC, ATL, and C++/CLI support.
+
+Visual Studio Insiders gives you early access to the latest features and improvements not yet available in the main release. By trying Insiders, you can take advantage of new builds and updates that ship on a frequent cadence. For more information on Visual Studio Insiders installs, visit the [FAQ page](https://visualstudio.microsoft.com/vs/preview/faq/). Visual Studio and Visual Studio Insiders can be installed side-by-side on the same device.
+
+**This release is not "go-live" and not intended for use on production computers or for creating production code.**
+
+Please note that the preview version is continuously evolving and certain features may not work as expected. This version is also not licensed to build shipping applications.
+
+To find out what's new or to see the known issues, see the [Visual Studio 2026 Insiders release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2026/release-notes-preview).  
+[System requirements](https://docs.microsoft.com/en-us/visualstudio/releases/2026/system-requirements)
+
+### Customizations and Optional features
+By default, the package installs only the bare minimum required (the MSBuild Tools workload). The easiest way to add more development features is to use the workload packages listed in the Release Notes section.
+
+All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2026). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+
+After installing the package, more features can also be added by launching the Visual Studio Installer application from the Start Menu.
+
+The language of the installed software can be controlled using the package parameter `--locale language`.
+The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2026#list-of-language-locales). By default, the operating system display language is used.
+
+#### Full installation
+This command will install Visual Studio Build Tools with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
+
+    choco install visualstudio2026buildtools-preview --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+
+[More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+
+### Notes
+
+A reboot may be required after (or even _before_) installing/uninstalling this package.
+If control over reboots is required, it is advisable to install the dependencies (esp. dotnetfx 4.8.0) first, perform a reboot if necessary, and then install this package.
+
+Some parameters, including `--allWorkloads`, `--includeRecommended` and `--includeOptional`, are only valid during the initial installation of Visual Studio and may cause failures if used during upgrade. For reliability, it is recommended to avoid using these parameters and install workloads using the workload packages listed in the Release Notes section.
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2026 Insiders release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2026/release-notes-preview)
+##### Package
+118.0.0.0-preview1:
+- Package metadata updated for Visual Studio 2026 version 18.0.0 Preview 0.0 (the native installer always installs the latest released Visual Studio 2026 Insiders build).
+- Updated bootstrapper url.
+    </releaseNotes>
+<!--
+#### Available workload packages
+- [Azure development build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-azurebuildtools)
+- [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-databuildtools)
+- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-manageddesktopbuildtools)
+- [Node.js build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-nodebuildtools)
+- [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-officebuildtools)
+- [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-universalbuildtools)
+- [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-vctools)
+- [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-visualstudioextensionbuildtools)
+- [Web development build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-webbuildtools)
+- [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2026-preview-workload-xamarinbuildtools)
+-->
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.12.0" />
+      <dependency id="dotnetfx" version="4.8.0" />
+      <dependency id="visualstudio-installer" version="2.0.2" />
+    </dependencies>
+  </metadata>
+</package>
