@@ -10,9 +10,11 @@ function Get-VSChannelUri
     $success = $ChannelId -match '^VisualStudio\.(?<version>\d+)\.(?<kind>[\w\.0-9]+)$' # VisualStudio.15.Release, VisualStudio.17.Release.LTSC.17.4
     if ($success)
     {
+        $vsMajorVersion = [int]$Matches['version']
+        $vsPreviewToken = @{ $true = 'insiders'; $false = 'pre' }[$vsMajorVersion -ge 18]
         $kind = switch ($Matches['kind'])
         {
-            'Preview' { 'pre' }
+            'Preview' { $vsPreviewToken }
             default { $_.ToLowerInvariant() }
         }
 

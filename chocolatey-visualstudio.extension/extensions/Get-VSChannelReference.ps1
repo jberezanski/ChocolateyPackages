@@ -3,7 +3,7 @@ function Get-VSChannelReference
     [CmdletBinding()]
     Param
     (
-        [Parameter(Mandatory = $true)] [ValidateSet('2017', '2019', '2022')] [string] $VisualStudioYear,
+        [Parameter(Mandatory = $true)] [ValidateSet('2017', '2019', '2022', '2026')] [string] $VisualStudioYear,
         [bool] $Preview,
         [hashtable] $PackageParameters
     )
@@ -36,6 +36,7 @@ function Get-VSChannelReference
             '2017' { $majorVersion = 15 }
             '2019' { $majorVersion = 16 }
             '2022' { $majorVersion = 17 }
+            '2026' { $majorVersion = 18 }
             default { throw "Unsupported VisualStudioYear: $VisualStudioYear"}
         }
 

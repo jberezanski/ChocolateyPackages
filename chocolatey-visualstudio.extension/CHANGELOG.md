@@ -1,5 +1,9 @@
 ﻿# CHANGELOG
 
+## Version 1.12.0
+
+- Install-VisualStudio, Add-VisualStudioWorkload/Component and Remove-VisualStudioProduct/Workload/Component now support Visual Studio 2026 (-VisualStudioYear 2026).
+
 ## Version 1.11.1
 
 - Fixed layout creation (`--layout`) broken by adding `--channelId` and `--channelUri` in support of the generic bootstrapper ([GH-148](https://github.com/jberezanski/ChocolateyPackages/issues/148)).

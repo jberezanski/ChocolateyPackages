@@ -23,7 +23,7 @@ If the Installer is present, it will be updated/reinstalled if:
       [string] $ChecksumType,
       [Alias('RequiredVersion')] [version] $RequiredInstallerVersion,
       [version] $RequiredEngineVersion,
-      [ValidateSet('2017', '2019', '2022')] [string] $VisualStudioYear = '2017',
+      [ValidateSet('2017', '2019', '2022', '2026')] [string] $VisualStudioYear = '2017',
       [switch] $Preview,
       [switch] $Force,
       [hashtable] $DefaultParameterValues
