@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2026buildtools-preview</id>
-    <version>118.0.0.111111600-preview1</version>
+    <version>118.0.0.111227200-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2026buildtools-preview</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2026 Build Tools Insiders (Preview)</title>
@@ -57,8 +57,8 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 ##### Software
 [Visual Studio 2026 Insiders release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2026/release-notes-preview)
 ##### Package
-118.0.0.111111600-preview1:
-- Package metadata updated for Visual Studio 2026 version Insiders [11111.16] (the native installer always installs the latest released Visual Studio 2026 Insiders build).
+118.0.0.111227200-preview1:
+- Package metadata updated for Visual Studio 2026 version Insiders [11121.172] (the native installer always installs the latest released Visual Studio 2026 Insiders build).
 - Updated bootstrapper url.
     </releaseNotes>
 <!--
