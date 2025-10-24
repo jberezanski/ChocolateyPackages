@@ -88,6 +88,7 @@
                     Write-Warning "Product at path '$($productInfo.installationPath)' has product id '$($productInfo.productId)', expected '$($ProductReference.ProductId)'."
                 }
 
+                Write-Verbose ('Preparing to perform operation ''{0}'' on product at path ''{1}''.' -f $Operation, $productInfo.installationPath)
                 $baseArgumentSet['__internal_productReference'] = New-VSProductReference -ChannelId $productInfo.channelId -ProductId $productInfo.productId -ChannelUri $productInfo.channelUri -InstallChannelUri $productInfo.installChannelUri
             }
         }
@@ -241,6 +242,7 @@
                 }
             }
 
+            Write-Verbose ('Preparing to perform operation ''{0}'' on product at path ''{1}''.' -f $Operation, $productInfo.installationPath)
             $argumentSet = $baseArgumentSet.Clone()
             $argumentSet['installPath'] = $productInfo.installationPath
             $argumentSet['__internal_productReference'] = New-VSProductReference -ChannelId $productInfo.channelId -ProductId $productInfo.productId -ChannelUri $productInfo.channelUri -InstallChannelUri $productInfo.installChannelUri
