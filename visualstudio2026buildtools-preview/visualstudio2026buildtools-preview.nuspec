@@ -62,17 +62,19 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - Updated bootstrapper url.
 
 #### Available workload packages
-- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-manageddesktopbuildtools)
-    </releaseNotes>
-<!--
 - [Azure development build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-azurebuildtools)
 - [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-databuildtools)
+- [C++ Tools for Linux and Mac Development](https://chocolatey.org/packages/visualstudio2026-preview-workload-linuxbuildtools)
+- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-manageddesktopbuildtools)
+- [.NET Multi-platform App UI development](https://chocolatey.org/packages/visualstudio2026-preview-workload-netcrossplatbuildtools)
 - [Node.js build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-nodebuildtools)
 - [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-officebuildtools)
 - [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-universalbuildtools)
 - [Visual C++ build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-vctools)
 - [Visual Studio extension development build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-visualstudioextensionbuildtools)
 - [Web development build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-webbuildtools)
+    </releaseNotes>
+<!--
 - [Mobile Development with .NET](https://chocolatey.org/packages/visualstudio2026-preview-workload-xamarinbuildtools)
 -->
     <dependencies>
