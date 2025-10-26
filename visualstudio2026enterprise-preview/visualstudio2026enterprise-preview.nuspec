@@ -62,13 +62,10 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - Updated bootstrapper url.
 
 #### Available workload packages
-- [.NET desktop development](https://chocolatey.org/packages/visualstudio2026-preview-workload-manageddesktop)
-    </releaseNotes>
-<!--
-#### Available workload packages
 - [Azure development](https://chocolatey.org/packages/visualstudio2026-preview-workload-azure)
 - [Data storage and processing](https://chocolatey.org/packages/visualstudio2026-preview-workload-data)
 - [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2026-preview-workload-datascience)
+- [.NET desktop development](https://chocolatey.org/packages/visualstudio2026-preview-workload-manageddesktop)
 - [Game development with Unity](https://chocolatey.org/packages/visualstudio2026-preview-workload-managedgame)
 - [Linux development with C++](https://chocolatey.org/packages/visualstudio2026-preview-workload-nativecrossplat)
 - [Desktop development with C++](https://chocolatey.org/packages/visualstudio2026-preview-workload-nativedesktop)
@@ -81,7 +78,7 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 - [Python development](https://chocolatey.org/packages/visualstudio2026-preview-workload-python)
 - [Universal Windows Platform development](https://chocolatey.org/packages/visualstudio2026-preview-workload-universal)
 - [Visual Studio extension development](https://chocolatey.org/packages/visualstudio2026-preview-workload-visualstudioextension)
--->
+    </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.12.0" />
       <dependency id="dotnetfx" version="4.8.0" />
