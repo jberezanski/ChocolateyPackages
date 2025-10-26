@@ -60,12 +60,13 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 118.0.0.111227200-preview1:
 - Package metadata updated for Visual Studio 2026 version Insiders [11121.172] (the native installer always installs the latest released Visual Studio 2026 Insiders build).
 - Updated bootstrapper url.
+
+#### Available workload packages
+- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-manageddesktopbuildtools)
     </releaseNotes>
 <!--
-#### Available workload packages
 - [Azure development build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-azurebuildtools)
 - [Data storage and processing build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-databuildtools)
-- [.NET desktop build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-manageddesktopbuildtools)
 - [Node.js build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-nodebuildtools)
 - [Office/SharePoint build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-officebuildtools)
 - [Universal Windows Platform build tools](https://chocolatey.org/packages/visualstudio2026-preview-workload-universalbuildtools)
