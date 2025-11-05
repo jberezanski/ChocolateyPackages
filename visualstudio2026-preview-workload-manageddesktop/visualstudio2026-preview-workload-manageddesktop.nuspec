@@ -64,7 +64,7 @@ Example 3. Installing the workload on all products, including only required comp
     </description>
     <releaseNotes>
 ##### Software
-[Visual Studio 2026 Preview release notes](https://docs.microsoft.com/en-us/visualstudio/releases/2026/release-notes-preview)
+[Visual Studio 2026 Preview release notes](https://learn.microsoft.com/en-us/visualstudio/releases/vs18/release-notes-insiders)
 ##### Package
 1.0.0:
 - Initial package release.
