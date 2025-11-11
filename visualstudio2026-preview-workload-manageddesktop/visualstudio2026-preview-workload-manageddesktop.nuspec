@@ -67,7 +67,7 @@ Example 3. Installing the workload on all products, including only required comp
 [Visual Studio 2026 Preview release notes](https://learn.microsoft.com/en-us/visualstudio/releases/vs18/release-notes-insiders)
 ##### Package
 1.0.1:
-- Updated metadata.
+- Updated metadata and dependencies.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.12.0" />
@@ -75,10 +75,10 @@ Example 3. Installing the workload on all products, including only required comp
       <dependency id="vcredist140" version="14.44.35211" />
       <dependency id="netfx-4.8-devpack" version="4.8.0.20190930" />
       <dependency id="netfx-4.7.2-devpack" version="4.7.2.20210903" />
-      <dependency id="dotnet-10.0-runtime" version="10.0.0-rc225502107" />
-      <dependency id="dotnet-10.0-desktopruntime" version="10.0.0-rc225502107" />
-      <dependency id="dotnet-10.0-aspnetruntime" version="10.0.0-rc225502107" />
-      <dependency id="dotnet-10.0-sdk" version="10.0.100-rc225502107" />
+      <dependency id="dotnet-10.0-runtime" version="10.0.0" />
+      <dependency id="dotnet-10.0-desktopruntime" version="10.0.0" />
+      <dependency id="dotnet-10.0-aspnetruntime" version="10.0.0" />
+      <dependency id="dotnet-10.0-sdk" version="10.0.100" />
     </dependencies>
   </metadata>
 </package>
