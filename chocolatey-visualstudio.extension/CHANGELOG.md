@@ -1,8 +1,12 @@
 ﻿# CHANGELOG
 
+## Version 1.13.0
+
+- Install-VisualStudio, Add-VisualStudioWorkload/Component and Remove-VisualStudioProduct/Workload/Component now support Visual Studio 2026 (-VisualStudioYear 2026 -Preview $false).
+
 ## Version 1.12.0
 
-- Install-VisualStudio, Add-VisualStudioWorkload/Component and Remove-VisualStudioProduct/Workload/Component now support Visual Studio 2026 (-VisualStudioYear 2026).
+- Install-VisualStudio, Add-VisualStudioWorkload/Component and Remove-VisualStudioProduct/Workload/Component now support Visual Studio 2026 Insiders (-VisualStudioYear 2026 -Preview $true).
 
 ## Version 1.11.1
 
