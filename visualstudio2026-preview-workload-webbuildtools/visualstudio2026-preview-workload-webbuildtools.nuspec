@@ -8,7 +8,7 @@
     <title>Web development build tools workload for Visual Studio 2026 Build Tools Insiders (Preview)</title>
     <authors>Microsoft</authors>
     <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
-    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/7e32702d4d99f08b5b73ae9c6622b0be61a2066e/icons/vs2026preview.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/a6fd60954badcc30c9e393571a8aa6dce77c4231/icons/vs2026preview.png</iconUrl>
     <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
     <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2026-prerelease/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
