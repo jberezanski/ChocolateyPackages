@@ -1,0 +1,82 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2026community</id>
+    <version>0.0.0.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2026community</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Visual Studio 2026 Community</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/0e962f3d7328af29a6382130db5f0b5239970a4d/icons/vs2026.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2026-ga-community/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/ide/</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs vs18 2026 community ide admin</tags>
+    <summary>Free, full-featured and extensible tool for students, open-source and individual developers</summary>
+    <description>
+### Overview
+Free, full-featured and extensible tool for students, open-source and individual developers.
+
+To find out what's new or to see the known issues, see the [Visual Studio 2026 release notes](https://learn.microsoft.com/en-us/visualstudio/releases/2026/release-notes).  
+[System requirements](https://learn.microsoft.com/en-us/visualstudio/releases/vs18/vs-system-requirements)
+
+### Customizations and Optional features
+By default, the package installs only the bare minimum required (the Core Editor workload). The easiest way to add more development features is to use the workload packages listed in the Release Notes section.
+
+All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2026). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+
+After installing the package, more features can also be added by launching the Visual Studio Installer application from the Start Menu.
+
+The language of the installed software can be controlled using the package parameter `--locale language`.
+The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2026#list-of-language-locales). By default, the operating system display language is used.
+
+#### Full installation
+This command will install Visual Studio with all available workloads and optional components, display progress during the installation and specify the English language regardless of operating system settings:
+
+    choco install visualstudio2026community --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+
+[More package parameter examples](https://github.com/jberezanski/ChocolateyPackages/blob/master/chocolatey-visualstudio.extension/EXAMPLES.md)
+
+### Notes
+
+A reboot may be required after (or even _before_) installing/uninstalling this package.
+If control over reboots is required, it is advisable to install the dependencies (esp. dotnetfx 4.8.0) first, perform a reboot if necessary, and then install this package.
+
+Some parameters, including `--allWorkloads`, `--includeRecommended` and `--includeOptional`, are only valid during the initial installation of Visual Studio and may cause failures if used during upgrade. For reliability, it is recommended to avoid using these parameters and install workloads using the workload packages listed in the Release Notes section.
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2026 release notes](https://learn.microsoft.com/en-us/visualstudio/releases/2026/release-notes)
+##### Package
+118.0.0.112010200-preview1:
+- Package metadata updated for Visual Studio 2026 version Insiders [11201.2] (the native installer always installs the latest released Visual Studio 2026 Insiders build).
+- Updated bootstrapper url.
+
+#### Available workload packages
+- [Azure development](https://chocolatey.org/packages/visualstudio2026-workload-azure)
+- [Data storage and processing](https://chocolatey.org/packages/visualstudio2026-workload-data)
+- [Data science and analytical applications](https://chocolatey.org/packages/visualstudio2026-workload-datascience)
+- [.NET desktop development](https://chocolatey.org/packages/visualstudio2026-workload-manageddesktop)
+- [Game development with Unity](https://chocolatey.org/packages/visualstudio2026-workload-managedgame)
+- [Linux development with C++](https://chocolatey.org/packages/visualstudio2026-workload-nativecrossplat)
+- [Desktop development with C++](https://chocolatey.org/packages/visualstudio2026-workload-nativedesktop)
+- [Game development with C++](https://chocolatey.org/packages/visualstudio2026-workload-nativegame)
+- [Mobile development with C++](https://chocolatey.org/packages/visualstudio2026-workload-nativemobile)
+- [Mobile development with .NET](https://chocolatey.org/packages/visualstudio2026-workload-netcrossplat)
+- [ASP.NET and web development](https://chocolatey.org/packages/visualstudio2026-workload-netweb)
+- [Node.js development](https://chocolatey.org/packages/visualstudio2026-workload-node)
+- [Office/SharePoint development](https://chocolatey.org/packages/visualstudio2026-workload-office)
+- [Python development](https://chocolatey.org/packages/visualstudio2026-workload-python)
+- [Universal Windows Platform development](https://chocolatey.org/packages/visualstudio2026-workload-universal)
+- [Visual Studio extension development](https://chocolatey.org/packages/visualstudio2026-workload-visualstudioextension)
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.13.0" />
+      <dependency id="dotnetfx" version="4.8.0" />
+      <dependency id="visualstudio-installer" version="2.0.7" />
+    </dependencies>
+  </metadata>
+</package>
