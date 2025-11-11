@@ -46,7 +46,7 @@ In order to act on one specific product when several are installed, the product 
 or (both are needed):
 
 - `--productId` - the identifier of the product, for example "Microsoft.VisualStudio.Product.Enterprise"
-- `--channelId` - the release channel, should be "VisualStudio.17.Preview"
+- `--channelId` - the release channel, should be "VisualStudio.18.Preview"
 
 Example 1. Installing the workload on all products, including recommended, but not optional components:
 
@@ -54,7 +54,7 @@ Example 1. Installing the workload on all products, including recommended, but n
 
 Example 2. Installing the workload on one specific product, including all recommended and optional components:
 
-    choco install visualstudio2026-preview-workload-manageddesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.17.Preview --includeOptional"
+    choco install visualstudio2026-preview-workload-manageddesktop --package-parameters "--productId Microsoft.VisualStudio.Product.Enterprise --channelId VisualStudio.18.Preview --includeOptional"
 
 Example 3. Installing the workload on all products, including only required components:
 

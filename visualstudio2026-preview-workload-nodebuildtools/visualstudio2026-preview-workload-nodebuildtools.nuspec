@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2026-preview-workload-nodebuildtools</id>
-    <version>1.0.0</version>
+    <version>1.0.0-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2026-preview-workload-nodebuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Node.js build tools workload for Visual Studio 2026 Build Tools Insiders (Preview)</title>
