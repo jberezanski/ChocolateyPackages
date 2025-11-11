@@ -22,6 +22,7 @@ if ((Get-Module -Name AU -ErrorAction SilentlyContinue | Measure-Object).Count -
 # do not flow into module functions by default.
 function Get-RemoteChecksumFast([string] $Url, $Algorithm='sha256', $Headers)
 {
+    Write-Verbose "Getting checksum of: $Url"
     $ProgressPreference = 'SilentlyContinue'
     & (Get-Command -Name Get-RemoteChecksum -Module AU).ScriptBlock.GetNewClosure() @PSBoundParameters
 }
@@ -105,6 +106,7 @@ function global:au_GetLatest
     $product = ((Split-Path -Leaf -Path (Get-Location)) -replace "visualstudio${VisualStudioYear}", '') -replace '-preview', ''
 
     $akaUrl = 'https://aka.ms/vs/{0}/{1}/vs_{2}.exe' -f $script:vsMajorVersion, $script:channelUrlToken, $product
+    Write-Verbose "Downloading: $akaUrl"
     $res = Invoke-WebRequestAcceptingAllStatusCodes -Uri $akaUrl -UseBasicParsing -MaximumRedirection 0
     if ($res.StatusCode -ne 301 -and $res.StatusCode -ne 302)
     {
@@ -143,6 +145,7 @@ function global:au_GetLatest
 function Get-VSVersion
 {
     $channelUri = 'https://aka.ms/vs/{0}/{1}/channel' -f $script:vsMajorVersion, $script:channelUrlToken
+    Write-Verbose "Downloading: $channelUri"
     $res = Invoke-WebRequest -Uri $channelUri -UseBasicParsing
     $channelManifest = ConvertFrom-Json ([Text.Encoding]::UTF8.GetString($res.Content))
     $productDisplayVersion = $channelManifest.info.productDisplayVersion
@@ -178,7 +181,8 @@ function Get-VSVersion
 $vsMajorVersion = @{ '2017' = 15; '2019' = 16; '2022' = 17; '2026' = 18 }[$VisualStudioYear]
 $dirSuffix = @{ $true = '-preview'; $false = '' }[$Preview.ToBool()]
 $vsPreviewToken = @{ $true = 'insiders'; $false = 'pre' }[$vsMajorVersion -ge 18]
-$channelUrlToken = @{ $true = $vsPreviewToken; $false = 'release' }[$Preview.ToBool()]
+$vsStableToken = @{ $true = 'stable'; $false = 'release' }[$vsMajorVersion -ge 18]
+$channelUrlToken = @{ $true = $vsPreviewToken; $false = $vsStableToken }[$Preview.ToBool()]
 $mainProducts = @('BuildTools','Community','Enterprise','FeedbackClient','Professional','SQL','TeamExplorer','TestAgent','TestController','TestProfessional')
 $visualStudioProductVersion, $visualStudioProductDisplayVersion, $productPreReleaseMilestoneSuffix, $productReleaseNameSuffix = Get-VSVersion
 Write-Information "Current published Visual Studio version: $visualStudioProductVersion ('$visualStudioProductDisplayVersion', milestone: $productPreReleaseMilestoneSuffix, release name suffix: $productReleaseNameSuffix)"

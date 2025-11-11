@@ -14,9 +14,10 @@ Begin
     if ($DestinationPath -eq '')
     {
         $root = Split-Path -Parent -Path (Split-Path -Parent -Path $PSScriptRoot)
-        $vsPreviewToken = @{ $true = 'insiders'; $false = 'pre' }[$MajorVersion -ge 18]
-        $channel = @{ $true = $vsPreviewToken; $false = 'release' }[$Preview.ToBool()]
-        $dest = '{0}\output\vs{1}{2}_{3:yyyyMMdd}' -f $root, $MajorVersion, $channel, (Get-Date)
+        $vsPreviewToken = @{ $true = 'insiders'; $false = 'pre' }[$vsMajorVersion -ge 18]
+        $vsStableToken = @{ $true = 'stable'; $false = 'release' }[$vsMajorVersion -ge 18]
+        $channelUrlToken = @{ $true = $vsPreviewToken; $false = $vsStableToken }[$Preview.ToBool()]
+        $dest = '{0}\output\vs{1}{2}_{3:yyyyMMdd}' -f $root, $MajorVersion, $channelUrlToken, (Get-Date)
     }
     else
     {

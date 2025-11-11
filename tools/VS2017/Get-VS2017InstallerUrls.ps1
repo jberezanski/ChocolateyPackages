@@ -73,10 +73,11 @@ if ($MajorVersion -eq 15 -and -not $Preview)
 
 # VS products
 
-$vsPreviewToken = @{ $true = 'insiders'; $false = 'pre' }[$MajorVersion -ge 18]
-$channel = @{ $true = $vsPreviewToken; $false = 'release' }[$Preview.ToBool()]
+$vsPreviewToken = @{ $true = 'insiders'; $false = 'pre' }[$vsMajorVersion -ge 18]
+$vsStableToken = @{ $true = 'stable'; $false = 'release' }[$vsMajorVersion -ge 18]
+$channelUrlToken = @{ $true = $vsPreviewToken; $false = $vsStableToken }[$Preview.ToBool()]
 $products = @("BuildTools","Community","Enterprise","FeedbackClient","Professional","TestAgent","TestController","TestProfessional","TeamExplorer")
-$akaUrls = $products | % { 'https://aka.ms/vs/{0}/{1}/vs_{2}.exe' -f $MajorVersion, $channel, $_ }
+$akaUrls = $products | % { 'https://aka.ms/vs/{0}/{1}/vs_{2}.exe' -f $MajorVersion, $channelUrlToken, $_ }
 $finalUrls = $akaUrls | % {
     $res = iwr $_ -UseBasicParsing -MaximumRedirection 0 -ErrorAction SilentlyContinue -Verbose
     if ($res.StatusCode -ne 301 -and $res.StatusCode -ne 302) {
