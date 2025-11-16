@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>visualstudio2026-remotetools</id>
+    <version>18.0.11205.47</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2026-remotetools</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft Visual Studio 2026 Remote Tools</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://visualstudio.microsoft.com/</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/0e962f3d7328af29a6382130db5f0b5239970a4d/icons/vs2026.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://visualstudio.microsoft.com/license-terms/vs2026-ga-diagnostic-buildtools/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.microsoft.com/en-us/visualstudio/debugger/remote-debugging</docsUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs 2026 remote tools debugging debugger msvsmon admin</tags>
+    <summary>Enables app deployment, remote debugging, remote testing, performance profiling, and unit testing on computers that do not have Visual Studio installed.</summary>
+    <description>Remote Tools for Visual Studio 2026 enables app deployment, remote debugging, remote testing, performance profiling, and unit testing on computers that do not have Visual Studio installed.
+
+## Notes
+
+[Supported Operating Systems](https://learn.microsoft.com/en-us/visualstudio/releases/2026/vs-system-requirements#supported-operating-systems): Windows 11 (x64 and arm64), Windows 10 (x64), Windows Server 2025 / 2022 / 2019 / (x64)
+    </description>
+    <releaseNotes>
+##### Software
+[Visual Studio 2026 release notes](https://learn.microsoft.com/en-us/visualstudio/releases/2026/release-notes)
+##### Package
+18.0.11205.47: Initial package release for software version 18.0.11205.47.
+</releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-core.extension" version="1.1.0" />
+    </dependencies>
+  </metadata>
+</package>
