@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2026-preview-workload-visualstudioextensionbuildtools</id>
-    <version>1.0.0-preview1</version>
+    <version>1.0.0-p1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2026-preview-workload-visualstudioextensionbuildtools</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio extension development workload for Visual Studio 2026 Build Tools Insiders (Preview)</title>
@@ -52,8 +52,8 @@ Example 3. Installing the workload, including only required components:
 ##### Software
 [Visual Studio 2026 Insiders release notes](https://learn.microsoft.com/en-us/visualstudio/releases/vs18/release-notes-insiders)
 ##### Package
-1.0.0:
-- Initial package release.
+1.0.0-p1:
+- Package version prerelease suffix shortened from "preview1" to avoid MAX_PATH issues in the Chocolatey Package Validator Moderation Service.
     </releaseNotes>
     <dependencies>
       <dependency id="chocolatey-visualstudio.extension" version="1.12.0" />
