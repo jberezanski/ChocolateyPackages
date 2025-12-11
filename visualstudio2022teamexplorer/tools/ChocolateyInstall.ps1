@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2022teamexplorer' `
     -ApplicationName 'Microsoft Visual Studio Team Explorer 2022' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/3014ff35-1082-4da0-ba77-9d3664b7c38a/19172a82af178352239c62a03ea69f6fbab52a2b3f0e3e30789911fb54e60607/vs_TeamExplorer.exe' <# https://aka.ms/vs/17/release/vs_teamexplorer.exe #> `
-    -Checksum '19172A82AF178352239C62A03EA69F6FBAB52A2B3F0E3E30789911FB54E60607' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/4f894be7-d4f2-4679-ace9-52a83030dab5/393c6a305571b2cb3e31887f48909f4a31613d696e520bdb23e0d9176b6f8a99/vs_TeamExplorer.exe' <# https://aka.ms/vs/17/release/vs_teamexplorer.exe #> `
+    -Checksum '393C6A305571B2CB3E31887F48909F4A31613D696E520BDB23E0D9176B6F8A99' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'TeamExplorer' `
