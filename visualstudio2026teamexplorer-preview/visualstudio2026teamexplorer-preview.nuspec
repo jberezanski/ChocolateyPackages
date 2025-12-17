@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2026teamexplorer-preview</id>
-    <version>118.3.0.113129400-preview1</version>
+    <version>118.3.0.113141000-preview1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2026teamexplorer-preview</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2026 Team Explorer Insiders (Preview)</title>
@@ -51,8 +51,8 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Software
 [Visual Studio 2026 Insiders release notes](https://learn.microsoft.com/en-us/visualstudio/releases/vs18/release-notes-insiders)
 ##### Package
-118.3.0.113129400-preview1:
-- Package metadata updated for Visual Studio 2026 version Insiders [11310.294] (the native installer always installs the latest released Visual Studio 2026 Insiders build).
+118.3.0.113141000-preview1:
+- Package metadata updated for Visual Studio 2026 version Insiders [11312.210] (the native installer always installs the latest released Visual Studio 2026 Insiders build).
 - Updated bootstrapper url.
     </releaseNotes>
     <dependencies>
