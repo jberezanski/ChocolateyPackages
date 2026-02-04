@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2026community</id>
-    <version>118.2.0.0</version>
+    <version>118.2.1.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2026community</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2026 Community</title>
@@ -51,8 +51,8 @@ Some parameters, including `--allWorkloads`, `--includeRecommended` and `--inclu
 ##### Software
 [Visual Studio 2026 release notes](https://learn.microsoft.com/en-us/visualstudio/releases/2026/release-notes)
 ##### Package
-118.2.0.0:
-- Package metadata updated for Visual Studio 2026 version 18.2.0 (the native installer always installs the latest released Visual Studio 2026 Insiders build).
+118.2.1.0:
+- Package metadata updated for Visual Studio 2026 version 18.2.1 (the native installer always installs the latest released Visual Studio 2026 Insiders build).
 - Updated bootstrapper url.
 
 #### Available workload packages
