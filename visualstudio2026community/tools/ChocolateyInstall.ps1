@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2026community' `
     -ApplicationName 'Microsoft Visual Studio Community 2026' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/691c58af-be53-40df-9b3e-d4fb7c24879f/91b174efa35d4f754ec99d37697b98705eb762066b1584e39ccca8ec409507e1/vs_Community.exe' <# https://aka.ms/vs/18/stable/vs_community.exe #> `
-    -Checksum '91B174EFA35D4F754EC99D37697B98705EB762066B1584E39CCCA8EC409507E1' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/fdc37f6e-59f6-4054-838a-b476eeaa6ec3/16cac9363afc735acf3d366b9e3b352704ebff97bd1b020e0e5b0c5c6a830197/vs_Community.exe' <# https://aka.ms/vs/18/stable/vs_community.exe #> `
+    -Checksum '16CAC9363AFC735ACF3D366B9E3B352704EBFF97BD1B020E0E5B0C5C6A830197' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Community' `
