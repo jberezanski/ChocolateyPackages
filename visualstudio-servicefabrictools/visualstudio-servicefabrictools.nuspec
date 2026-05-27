@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>visualstudio-servicefabrictools</id>
+    <version>18.0.20260523.100</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio-servicefabrictools</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Microsoft Azure Service Fabric Tools for Visual Studio</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://marketplace.visualstudio.com/items?itemName=ms-azuretools.MicrosoftVisualStudioAzureFabricVsix</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/jberezanski/ChocolateyPackages/a3b9976d13af403d5430d4587ec46deab1576f70/icons/service-fabric.png</iconUrl>
+    <copyright>https://www.microsoft.com/en-us/legal/intellectualproperty/permissions</copyright>
+    <licenseUrl>https://marketplace.visualstudio.com/items/ms-azuretools.MicrosoftVisualStudioAzureFabricVsix/license</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://learn.microsoft.com/en-us/azure/service-fabric/</docsUrl>
+    <bugTrackerUrl>https://github.com/microsoft/service-fabric/issues</bugTrackerUrl>
+    <tags>microsoft visual studio visualstudio vs 2026 vsix service fabric tools azure</tags>
+    <summary>Enables development of Azure Service Fabric applications using Visual Studio 2026.</summary>
+    <description>The Service Fabric Tools extension enables Visual Studio 2026 users to create, build, debug, and publish Azure Service Fabric applications — including stateless, stateful, and actor services — to both local and remote clusters.
+
+    This package will install the extension for all instances of Visual Studio installed on the machine.
+
+    Note: For technical reasons, the extension is marked as compatible with Visual Studio 2022, but it is only meant to be used on Visual Studio 2026. Installing it on Visual Studio 2022 requires uninstalling the built-in extension first.
+    </description>
+    <releaseNotes>
+##### Package
+18.0.20260523.100: Initial package release for software version 18.0.20260523.1.
+</releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey-visualstudio.extension" version="1.13.0" />
+    </dependencies>
+  </metadata>
+</package>
