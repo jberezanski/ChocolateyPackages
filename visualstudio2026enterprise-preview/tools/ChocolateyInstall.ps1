@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2026enterprise-preview' `
     -ApplicationName 'Microsoft Visual Studio Enterprise 2026 Insiders' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/dd31513c-f237-4d73-8630-265123182295/fc469991e7d63616d6a7a7e77481447c7bd7899c241eccd6d869a05d09548e01/vs_Enterprise.exe' <# https://aka.ms/vs/18/insiders/vs_enterprise.exe #> `
-    -Checksum 'FC469991E7D63616D6A7A7E77481447C7BD7899C241ECCD6D869A05D09548E01' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/a5832eeb-da50-49c6-a0b9-8532048ebb67/464cbf27d6a578de65dc83920deea047e301cfe67d7105d7c2f14d0c94357e72/vs_Enterprise.exe' <# https://aka.ms/vs/18/insiders/vs_enterprise.exe #> `
+    -Checksum '464CBF27D6A578DE65DC83920DEEA047E301CFE67D7105D7C2F14D0C94357E72' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Enterprise' `
