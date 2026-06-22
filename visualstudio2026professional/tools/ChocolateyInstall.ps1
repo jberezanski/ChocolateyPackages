@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2026professional' `
     -ApplicationName 'Microsoft Visual Studio Professional 2026' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/105ab965-3bff-41cb-a75d-b4020a784328/45ddc542629b63d2d3457abf5a377949aad3e8c93fa83a81bb5ec1fd8f515ae2/vs_Professional.exe' <# https://aka.ms/vs/18/stable/vs_professional.exe #> `
-    -Checksum '45DDC542629B63D2D3457ABF5A377949AAD3E8C93FA83A81BB5EC1FD8F515AE2' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/a95b7880-2074-4c46-bdbf-e1b8c547ac60/e19063c8f692860d595376592c98c4431b918074cd8c82dbd84d95f76130d6b7/vs_Professional.exe' <# https://aka.ms/vs/18/stable/vs_professional.exe #> `
+    -Checksum 'E19063C8F692860D595376592C98C4431B918074CD8C82DBD84D95F76130D6B7' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Professional' `
