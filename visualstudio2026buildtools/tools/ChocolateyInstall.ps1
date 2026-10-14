@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2026buildtools' `
     -ApplicationName 'Microsoft Visual Studio Build Tools 2026' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/e5f740e0-92f9-49d7-ab3b-5d17b84108fd/9203cc1fa53bc4c6254723cdd4bc35e6a658253b98c90c863b0b4a962808254e/vs_BuildTools.exe' <# https://aka.ms/vs/18/stable/vs_buildtools.exe #> `
-    -Checksum '9203CC1FA53BC4C6254723CDD4BC35E6A658253B98C90C863B0B4A962808254E' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/4ee8a2e7-bc71-435a-8180-6703ab4d2017/5f06f1052f562620f27d0c14c5f9ab9658ff6b6908b35c59755ab14e2eb5a473/vs_BuildTools.exe' <# https://aka.ms/vs/18/stable/vs_buildtools.exe #> `
+    -Checksum '5F06F1052F562620F27D0C14C5F9AB9658FF6B6908B35C59755AB14E2EB5A473' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'BuildTools' `
