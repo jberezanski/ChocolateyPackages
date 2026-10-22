@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2026teamexplorer' `
     -ApplicationName 'Microsoft Visual Studio Team Explorer 2026' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/4ee8a2e7-bc71-435a-8180-6703ab4d2017/1de41d702fa75a76c9e0f0fb5a09fb1d3d9d19c88bff3c0eee0939532f97cf42/vs_TeamExplorer.exe' <# https://aka.ms/vs/18/stable/vs_teamexplorer.exe #> `
-    -Checksum '1DE41D702FA75A76C9E0F0FB5A09FB1D3D9D19C88BFF3C0EEE0939532F97CF42' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/e07fb79d-d4ec-45bc-b19d-200bc819ee8d/0f8300f0fbbb32a58edae413bea3e439cb21a280d5284c8cabecae0004197475/vs_TeamExplorer.exe' <# https://aka.ms/vs/18/stable/vs_teamexplorer.exe #> `
+    -Checksum '0F8300F0FBBB32A58EDAE413BEA3E439CB21A280D5284C8CABECAE0004197475' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'TeamExplorer' `
