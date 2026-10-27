@@ -1,8 +1,8 @@
 ﻿Install-VisualStudio `
     -PackageName 'visualstudio2022professional' `
     -ApplicationName 'Microsoft Visual Studio Professional 2022' `
-    -Url 'https://download.visualstudio.microsoft.com/download/pr/c95450be-0a45-4779-b142-33f567ccfd6e/c904a58adad119a296952dea1deda6afc2836bc5099d6cccb9bf313a8b5dba12/vs_Professional.exe' <# https://aka.ms/vs/17/release/vs_professional.exe #> `
-    -Checksum 'C904A58ADAD119A296952DEA1DEDA6AFC2836BC5099D6CCCB9BF313A8B5DBA12' `
+    -Url 'https://download.visualstudio.microsoft.com/download/pr/4bc08c27-bd31-470c-9a30-3b62707fbf0f/96cd50e3d76c17dba8441fb867a9883672311acb09c5bf5404d7ba8418f3c0a9/vs_Professional.exe' <# https://aka.ms/vs/17/release/vs_professional.exe #> `
+    -Checksum '96CD50E3D76C17DBA8441FB867A9883672311ACB09C5BF5404D7BA8418F3C0A9' `
     -ChecksumType 'SHA256' `
     -InstallerTechnology 'WillowVS2017OrLater' `
     -Product 'Professional' `
