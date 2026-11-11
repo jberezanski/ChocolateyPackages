@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>nodejs-lts-24</id>
+    <version>1.0.0</version>
+    <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/nodejs-lts-24</packageSourceUrl>
+    <owners>jberezanski</owners>
+    <title>Node.js LTS pin to major version 24</title>
+    <authors>OpenJS Foundation</authors>
+    <projectUrl>https://nodejs.org/</projectUrl>
+    <copyright>© OpenJS Foundation</copyright>
+    <licenseUrl>https://github.com/nodejs/node/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>nodejs-lts nodejs lts node.js node admin npm javascript 24</tags>
+    <summary>This package prevents upgrading nodejs-lts to a version outside the 24.x range.</summary>
+    <description><![CDATA[Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+
+#### This package prevents upgrading the [nodejs-lts](https://chocolatey.org/packages/nodejs-lts) package to a version outside the 24.x range.
+]]></description>
+    <dependencies>
+      <dependency id="nodejs-lts" version="[24.0.0,25.0.0)" />
+    </dependencies>
+  </metadata>
+  <files />
+</package>
